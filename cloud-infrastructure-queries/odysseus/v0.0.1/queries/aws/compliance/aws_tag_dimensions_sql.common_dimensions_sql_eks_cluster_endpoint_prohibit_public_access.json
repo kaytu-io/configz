@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_eks_cluster_endpoint_prohibit_public_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when resources_vpc_config -\u003e\u003e 'EndpointPublicAccess' = 'true' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when resources_vpc_config -\u003e\u003e 'EndpointPublicAccess' = 'true' then title || ' endpoint publicly accessible.'\n    else title || ' endpoint not publicly accessible.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_eks_cluster;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_eks_cluster",
+  "ListOfTables": [
+    "aws_eks_cluster"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_codebuild_project_artifact_encryption_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with secondary_artifact as (\n  select\n    distinct arn\n  from\n    aws_codebuild_project,\n    jsonb_array_elements(secondary_artifacts) as a\n  where\n    a -\u003e 'EncryptionDisabled' = 'true'\n)\nselect\n  a.arn as resource,\n  case\n    when p.artifacts -\u003e\u003e 'EncryptionDisabled' = 'false'\n    and (p.secondary_artifacts is null or a.arn is null) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when p.artifacts -\u003e\u003e 'EncryptionDisabled' = 'false'\n    and (p.secondary_artifacts is null or a.arn is null) then p.title || ' all artifacts encryption enabled.'\n    else p.title || ' all artifacts encryption not enabled.'\n  end as reason\n  \n  , p.region, p.account_id\nfrom\n  aws_codebuild_project as p\n  left join secondary_artifact as a on a.arn = p.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_codebuild_project",
+  "ListOfTables": [
+    "aws_codebuild_project"
+  ]
+}

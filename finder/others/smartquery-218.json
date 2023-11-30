@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all SQS Queues that are not encrypted at rest",
+  "query": "select\n  -- Required Columns\n  queue_arn as resource,\n  case\n    when kms_master_key_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kms_master_key_id is null then title || ' encryption at rest disabled.'\n    else title || ' encryption at rest enabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_sqs_queue"
+}

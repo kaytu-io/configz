@@ -1,0 +1,45 @@
+{
+  "ID": "aws_ec2",
+  "Title": "EC2 Checks",
+  "Connector": "AWS",
+  "DocumentURI": "benchmarks/aws_ec2.md",
+  "Description": "Thrifty developers eliminate unused and under-utilized EC2 instances.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/EC2"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_ec2_application_lb_unused",
+    "aws_ec2_classic_lb_unused",
+    "aws_ec2_gateway_lb_unused",
+    "aws_ec2_instance_older_generation",
+    "aws_ec2_network_lb_unused",
+    "aws_ec2_reserved_instance_lease_expiration_days",
+    "aws_instances_with_low_utilization",
+    "aws_large_ec2_instances",
+    "aws_long_running_ec2_instances"
+  ]
+}

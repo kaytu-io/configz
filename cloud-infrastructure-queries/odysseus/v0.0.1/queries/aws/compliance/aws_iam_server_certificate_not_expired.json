@@ -1,0 +1,10 @@
+{
+  "ID": "aws_iam_server_certificate_not_expired",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case when expiration \u003c (current_date - interval '1' second) then 'alarm'\n  else 'ok'\n  end as status,\n  case when expiration \u003c (current_date - interval '1' second) then\n    name || ' expired ' || to_char(expiration, 'DD-Mon-YYYY') || '.'\n  else\n    name || ' valid until ' || to_char(expiration, 'DD-Mon-YYYY')  || '.'\n  end as reason\n  \n  , account_id\nfrom\n  aws_iam_server_certificate;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_server_certificate",
+  "ListOfTables": [
+    "aws_iam_server_certificate"
+  ]
+}

@@ -1,0 +1,1136 @@
+[
+  {
+    "ID": "azure_redis_cache_min_tls_1_2",
+    "Title": "Redis Caches 'Minimum TLS version' should be set to 'Version 1.2'",
+    "Description": "This control checks whether 'Minimum TLS version' is set to 1.2. TLS 1.0 is a legacy version and has known vulnerabilities. This minimum TLS version can be configured to later protocols such as TLS 1.2.",
+    "QueryID": "azure_redis_cache_min_tls_1_2",
+    "DocumentURI": "policies/azure_redis_cache_min_tls_1_2.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Redis"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_mariadb_server_ssl_enabled",
+    "Title": "MariaDB servers should have 'Enforce SSL connection' set to 'ENABLED'",
+    "Description": "This control checks whether MariaDB servers SSL enforcement is enabled. This control is non-compliant if SSL enforcement is disabled.",
+    "QueryID": "azure_mariadb_server_ssl_enabled",
+    "DocumentURI": "policies/azure_mariadb_server_ssl_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/PostgreSQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kusto_cluster_sku_with_sla",
+    "Title": "Kusto clusters should use SKU with an SLA",
+    "Description": "This control checks if Kusto clusters use SKU with an SLA. This control is considered non-compliant if Kusto clusters use SKUs without an SLA.",
+    "QueryID": "azure_kusto_cluster_sku_with_sla",
+    "DocumentURI": "policies/azure_kusto_cluster_sku_with_sla.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/DataExplorer"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_plan_minimum_sku",
+    "Title": "Appservice plan should not use free, shared or basic SKU",
+    "Description": "The Free, Shared, and Basic plans are suitable for constrained testing and development purposes. This control is considered non-compliant when free, shared, or basic SKUs are utilized.",
+    "QueryID": "azure_appservice_plan_minimum_sku",
+    "DocumentURI": "policies/azure_appservice_plan_minimum_sku.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_always_on",
+    "Title": "Web apps should be configured to always be on",
+    "Description": "This control ensures that a web app is configured with settings to keep it consistently active. Always On feature of Azure App Service, keeps the host process running. This allows your site to be more responsive to requests after significant idle periods.",
+    "QueryID": "azure_appservice_web_app_always_on",
+    "DocumentURI": "policies/azure_appservice_web_app_always_on.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_max_pod_50",
+    "Title": "Kubernetes clusters should use a minimum number of 50 pods",
+    "Description": "This control checks if Kubernetes clusters is using a minimum number of 50 pods.",
+    "QueryID": "azure_kubernetes_cluster_max_pod_50",
+    "DocumentURI": "policies/azure_kubernetes_cluster_max_pod_50.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_search_service_replica_count_3",
+    "Title": "Cognitive Search services should maintain SLA for index updates",
+    "Description": "This control checks if Cognitive Search maintains SLA for index updates.",
+    "QueryID": "azure_search_service_replica_count_3",
+    "DocumentURI": "policies/azure_search_service_replica_count_3.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/CognitiveSearch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_redis_cache_in_virtual_network",
+    "Title": "Azure Cache for Redis should reside within a virtual network",
+    "Description": "Azure Virtual Network deployment provides enhanced security and isolation for your Azure Cache for Redis, as well as subnets, access control policies, and other features to further restrict access.When an Azure Cache for Redis instance is configured with a virtual network, it is not publicly addressable and can only be accessed from virtual machines and applications within the virtual network.",
+    "QueryID": "azure_redis_cache_in_virtual_network",
+    "DocumentURI": "policies/azure_redis_cache_in_virtual_network.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Redis"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_app_configuration_sku_standard",
+    "Title": "App Configuration should use standard SKU",
+    "Description": "Ensure that App Configuration uses standard SKU tier. This control is non-compliant if App Configuration does not use standard SKU.",
+    "QueryID": "azure_app_configuration_sku_standard",
+    "DocumentURI": "policies/azure_app_configuration_sku_standard.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppConfiguration"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_ftps_enabled",
+    "Title": "FTPS should be required in your Web App",
+    "Description": "Enable FTPS enforcement for enhanced security.",
+    "QueryID": "azure_appservice_web_app_ftps_enabled",
+    "DocumentURI": "policies/azure_appservice_web_app_ftps_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_securitycenter_pricing_standard",
+    "Title": "Security center pricing should be set to standard",
+    "Description": "This control checks whether Security center pricing is set to standard. This control is non-compliant if pricing is set to free.",
+    "QueryID": "azure_securitycenter_pricing_standard",
+    "DocumentURI": "policies/azure_securitycenter_pricing_standard.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/SecurityCenter"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_sku_standard",
+    "Title": "Kubernetes clusters should use standard SKU",
+    "Description": "Ensure that Kubernetes clusters uses standard SKU tier for production workloads. This control is non-compliant if App Configuration does not use standard SKU.",
+    "QueryID": "azure_kubernetes_cluster_sku_standard",
+    "DocumentURI": "policies/azure_kubernetes_cluster_sku_standard.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_signalr_service_no_free_tier_sku",
+    "Title": "SignalR Service should not use free tier SKU",
+    "Description": "This control checks whether SignalR service uses paid SKU for its SLA.",
+    "QueryID": "azure_signalr_service_no_free_tier_sku",
+    "DocumentURI": "policies/azure_signalr_service_no_free_tier_sku.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/SignalRService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_data_factory_uses_git_repository",
+    "Title": "Data factories should use GitHub repository",
+    "Description": "Ensure that Data Factory utilizes a Git repository as its source control mechanism. This control is non-compliant if Data Factory Git repository is not configured.",
+    "QueryID": "azure_data_factory_uses_git_repository",
+    "DocumentURI": "policies/azure_data_factory_uses_git_repository.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/DataFactory"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_slot_use_https",
+    "Title": "Web app slot should only be accessible over HTTPS",
+    "Description": "Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks.",
+    "QueryID": "azure_appservice_web_app_slot_use_https",
+    "DocumentURI": "policies/azure_appservice_web_app_slot_use_https.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_eventgrid_topic_local_auth_enabled",
+    "Title": "Event Grid topics should have local authentication enabled",
+    "Description": "This control checks if Event Grid topics have local authentication enabled.",
+    "QueryID": "azure_eventgrid_topic_local_auth_enabled",
+    "DocumentURI": "policies/azure_eventgrid_topic_local_auth_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/EventGrid"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_logging_enabled",
+    "Title": "Kubernetes clusters should have logging enabled",
+    "Description": "This control checks if OMS agent is enabled for Kubernetes cluster.",
+    "QueryID": "azure_kubernetes_cluster_logging_enabled",
+    "DocumentURI": "policies/azure_kubernetes_cluster_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_upgrade_channel",
+    "Title": "Kubernetes clusters upgrade channel should be configured",
+    "Description": "Ensure Kubernetes clusters upgrade channel is configured. This control is non-compliant if Kubernetes clusters upgrade channel is set to none.",
+    "QueryID": "azure_kubernetes_cluster_upgrade_channel",
+    "DocumentURI": "policies/azure_kubernetes_cluster_upgrade_channel.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_scale_set_logging_enabled",
+    "Title": "Resource logs in Virtual Machine Scale Sets should be enabled",
+    "Description": "It is recommended to enable Logs so that activity trail can be recreated when investigations are required in the event of an incident or a compromise.",
+    "QueryID": "azure_compute_vm_scale_set_logging_enabled",
+    "DocumentURI": "policies/azure_compute_vm_scale_set_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_http_logs_enabled",
+    "Title": "Web app HTTP logs should be enabled",
+    "Description": "Ensure that Web app HTTP logs is enabled. This control is non-compliant if Web app HTTP logs is disabled.",
+    "QueryID": "azure_appservice_web_app_http_logs_enabled",
+    "DocumentURI": "policies/azure_appservice_web_app_http_logs_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_search_service_uses_managed_identity",
+    "Title": "Cognitive Search services should use managed identity",
+    "Description": "Cognitive Search services should use a managed identity for enhanced authentication security.",
+    "QueryID": "azure_search_service_uses_managed_identity",
+    "DocumentURI": "policies/azure_search_service_uses_managed_identity.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/CognitiveSearch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_app_configuration_encryption_enabled",
+    "Title": "App Configuration encryption should be enabled",
+    "Description": "Enabling App Configuration encryption helps protect and safeguard your data to meet your organizational security and compliance commitments.",
+    "QueryID": "azure_app_configuration_encryption_enabled",
+    "DocumentURI": "policies/azure_app_configuration_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppConfiguration"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_monitor_log_profile_retention_365_days",
+    "Title": "Monitor log profiles should have retention set to 365 days or greater",
+    "Description": "This control is non-compliant if Monitor log profile retention is set to less than 365 days.",
+    "QueryID": "azure_monitor_log_profile_retention_365_days",
+    "DocumentURI": "policies/azure_monitor_log_profile_retention_365_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Monitor"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_latest_php_version",
+    "Title": "Ensure that 'PHP version' is the latest, if used as a part of the WEB app",
+    "Description": "Periodically, newer versions are released for PHP software either due to security flaws or to include additional functionality. Using the latest PHP version for web apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version. Currently, this policy only applies to Linux web apps.",
+    "QueryID": "azure_appservice_web_app_latest_php_version",
+    "DocumentURI": "policies/azure_appservice_web_app_latest_php_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_latest_tls_version",
+    "Title": "Latest TLS version should be used in your Web App",
+    "Description": "Upgrade to the latest TLS version.",
+    "QueryID": "azure_appservice_web_app_latest_tls_version",
+    "DocumentURI": "policies/azure_appservice_web_app_latest_tls_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_postgres_db_server_latest_tls_version",
+    "Title": "PostgreSQL servers should have the latest TLS version",
+    "Description": "This control checks if the PostgreSQL server is upgraded to the latest TLS version.",
+    "QueryID": "azure_postgres_db_server_latest_tls_version",
+    "DocumentURI": "policies/azure_postgres_db_server_latest_tls_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_registry_admin_user_disabled",
+    "Title": "Container registries admin user should be disabled",
+    "Description": "Ensure container registry admin user is disabled. This control is non-compliant if admin user is enabled.",
+    "QueryID": "azure_container_registry_admin_user_disabled",
+    "DocumentURI": "policies/azure_container_registry_admin_user_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_latest_java_version",
+    "Title": "Ensure that 'Java version' is the latest, if used as a part of the Web app",
+    "Description": "Periodically, newer versions are released for Java software either due to security flaws or to include additional functionality. Using the latest Java version for web apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version. Currently, this policy only applies to Linux web apps.",
+    "QueryID": "azure_appservice_web_app_latest_java_version",
+    "DocumentURI": "policies/azure_appservice_web_app_latest_java_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_health_check_enabled",
+    "Title": "Web apps should have health check enabled",
+    "Description": "Health check increases your application's availability by rerouting requests away from unhealthy instances and replacing instances if they remain unhealthy.",
+    "QueryID": "azure_appservice_web_app_health_check_enabled",
+    "DocumentURI": "policies/azure_appservice_web_app_health_check_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_server_threat_detection_all_enabled",
+    "Title": "SQL server threat detection should be enabled for all",
+    "Description": "This control ensures that SQL server threat detection is enabled for all.",
+    "QueryID": "azure_sql_server_threat_detection_all_enabled",
+    "DocumentURI": "policies/azure_sql_server_threat_detection_all_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_eventgrid_domain_restrict_public_access",
+    "Title": "Event Grid domains should restrict public network access",
+    "Description": "Ensure that Event Grid Domain public network access is disabled. This control is non-compliant if Event Grid domains have public network access enabled.",
+    "QueryID": "azure_eventgrid_domain_restrict_public_access",
+    "DocumentURI": "policies/azure_eventgrid_domain_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/EventGrid"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_worker_more_than_one",
+    "Title": "Web app should have more than one worker",
+    "Description": "It is recommended to have more than one worker for failover. This control is non-compliant if Web apps have one or less than one worker.",
+    "QueryID": "azure_appservice_web_app_worker_more_than_one",
+    "DocumentURI": "policies/azure_appservice_web_app_worker_more_than_one.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_registry_trust_policy_enabled",
+    "Title": "Container registries trust policy should be enabled",
+    "Description": "Ensure container registry trust policy is enabled. This control is non-compliant if trust policy is disabled.",
+    "QueryID": "azure_container_registry_trust_policy_enabled",
+    "DocumentURI": "policies/azure_container_registry_trust_policy_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_securitycenter_azure_defender_on_for_k8s",
+    "Title": "Azure Defender for Kubernetes should be enabled",
+    "Description": "Azure Defender for Kubernetes provides real-time threat protection for containerized environments and generates alerts for suspicious activities.",
+    "QueryID": "azure_securitycenter_azure_defender_on_for_k8s",
+    "DocumentURI": "policies/azure_securitycenter_azure_defender_on_for_k8s.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/SecurityCenter"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_api_app_uses_managed_identity",
+    "Title": "Managed identity should be used in your API App",
+    "Description": "Use a managed identity for enhanced authentication security.",
+    "QueryID": "azure_appservice_api_app_uses_managed_identity",
+    "DocumentURI": "policies/azure_appservice_api_app_uses_managed_identity.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_latest_python_version",
+    "Title": "Ensure that 'Python version' is the latest, if used as a part of the Web app",
+    "Description": "Periodically, newer versions are released for Python software either due to security flaws or to include additional functionality. Using the latest Python version for web apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version. Currently, this policy only applies to Linux web apps.",
+    "QueryID": "azure_appservice_web_app_latest_python_version",
+    "DocumentURI": "policies/azure_appservice_web_app_latest_python_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_eventgrid_topic_identity_provider_enabled",
+    "Title": "Event Grid topics identity provider should be enabled",
+    "Description": "Ensure that managed identity provider is enabled for the Event Grid Topic. This control is non-compliant if Event Grid topic identity provider is disabled.",
+    "QueryID": "azure_eventgrid_topic_identity_provider_enabled",
+    "DocumentURI": "policies/azure_eventgrid_topic_identity_provider_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/EventGrid"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_restrict_public_access",
+    "Title": "Kubernetes cluster should restrict public access",
+    "Description": "Ensure that Kubernetes cluster enables private clusters to restrict public access.",
+    "QueryID": "azure_kubernetes_cluster_restrict_public_access",
+    "DocumentURI": "policies/azure_kubernetes_cluster_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_network_policy_enabled",
+    "Title": "Kubernetes clusters should have network policy enabled",
+    "Description": "This control checks if network policy is enabled for Kubernetes cluster.",
+    "QueryID": "azure_kubernetes_cluster_network_policy_enabled",
+    "DocumentURI": "policies/azure_kubernetes_cluster_network_policy_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_registry_geo_replication_enabled",
+    "Title": "Container registries should be geo-replicated",
+    "Description": "Ensure that container registries are geo-replicated to align with multi-region container deployments.",
+    "QueryID": "azure_container_registry_geo_replication_enabled",
+    "DocumentURI": "policies/azure_container_registry_geo_replication_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_eventgrid_domain_identity_provider_enabled",
+    "Title": "Event Grid domains identity provider should be enabled",
+    "Description": "Ensure that managed identity provider is enabled for Event Grid Domain. This control is non-compliant if Event Grid domain identity provider is disabled.",
+    "QueryID": "azure_eventgrid_domain_identity_provider_enabled",
+    "DocumentURI": "policies/azure_eventgrid_domain_identity_provider_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/EventGrid"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_data_factory_public_network_access_disabled",
+    "Title": "Data factories should disable public network access",
+    "Description": "Disabling public network access improves security by ensuring that your Data Factory is not exposed on the public internet.",
+    "QueryID": "azure_data_factory_public_network_access_disabled",
+    "DocumentURI": "policies/azure_data_factory_public_network_access_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/DataFactory"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_function_app_latest_java_version",
+    "Title": "Ensure that 'Java version' is the latest, if used as a part of the Function app",
+    "Description": "Periodically, newer versions are released for Java software either due to security flaws or to include additional functionality. Using the latest Java version for Function apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version. Currently, this policy only applies to Linux web apps.",
+    "QueryID": "azure_appservice_function_app_latest_java_version",
+    "DocumentURI": "policies/azure_appservice_function_app_latest_java_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_registry_retention_policy_enabled",
+    "Title": "Container registries retention policy should be enabled",
+    "Description": "Ensure container registry retention policy is enabled. This control is non-compliant if retention policy is disabled.",
+    "QueryID": "azure_container_registry_retention_policy_enabled",
+    "DocumentURI": "policies/azure_container_registry_retention_policy_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_remote_debugging_disabled",
+    "Title": "Remote debugging should be turned off for Web Applications",
+    "Description": "Remote debugging requires inbound ports to be opened on a web application. Remote debugging should be turned off.",
+    "QueryID": "azure_appservice_web_app_remote_debugging_disabled",
+    "DocumentURI": "policies/azure_appservice_web_app_remote_debugging_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_registry_quarantine_policy_enabled",
+    "Title": "Container registries quarantine policy should be enabled",
+    "Description": "Ensure container registry quarantine policy is enabled. This control is non-compliant if quarantine policy is disabled.",
+    "QueryID": "azure_container_registry_quarantine_policy_enabled",
+    "DocumentURI": "policies/azure_container_registry_quarantine_policy_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_data_and_os_disk_uses_managed_disk",
+    "Title": "Compute virtual machines should use managed disk for OS and data disk",
+    "Description": "This control checks whether virtual machines use managed disks for OS and data disks.",
+    "QueryID": "azure_compute_vm_data_and_os_disk_uses_managed_disk",
+    "DocumentURI": "policies/azure_compute_vm_data_and_os_disk_uses_managed_disk.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_addon_azure_policy_enabled",
+    "Title": "Kubernetes cluster addon Azure policy should be enabled",
+    "Description": "Ensure that Kubernetes cluster uses Azure Policies Add-on.",
+    "QueryID": "azure_kubernetes_cluster_addon_azure_policy_enabled",
+    "DocumentURI": "policies/azure_kubernetes_cluster_addon_azure_policy_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_keyvault_vault_public_network_access_disabled",
+    "Title": "Azure Key Vault should disable public network access",
+    "Description": "Disable public network access for your key vault so that it's not accessible over the public internet. This can reduce data leakage risks.",
+    "QueryID": "azure_keyvault_vault_public_network_access_disabled",
+    "DocumentURI": "policies/azure_keyvault_vault_public_network_access_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KeyVault"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_scale_set_automatic_upgrade_enabled",
+    "Title": "Compute virtual machine scale sets should have automatic OS image patching enabled",
+    "Description": "This control checks whether virtual machine scale sets have automatic OS image patching enabled.",
+    "QueryID": "azure_compute_vm_scale_set_automatic_upgrade_enabled",
+    "DocumentURI": "policies/azure_compute_vm_scale_set_automatic_upgrade_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_function_app_latest_python_version",
+    "Title": "Ensure that 'Python version' is the latest, if used as a part of the Function app",
+    "Description": "Periodically, newer versions are released for Python software either due to security flaws or to include additional functionality. Using the latest Python version for Function apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version. Currently, this policy only applies to Linux web apps.",
+    "QueryID": "azure_appservice_function_app_latest_python_version",
+    "DocumentURI": "policies/azure_appservice_function_app_latest_python_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_node_restrict_public_access",
+    "Title": "Kubernetes cluster nodes should prohibit public access",
+    "Description": "Ensure Kubernetes cluster nodes do not have public IP addresses. This control is non-compliant if Kubernetes cluster nodes have a public IP address assigned.",
+    "QueryID": "azure_kubernetes_cluster_node_restrict_public_access",
+    "DocumentURI": "policies/azure_kubernetes_cluster_node_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_apimanagement_service_client_certificate_enabled",
+    "Title": "API Management client certificate should be enabled",
+    "Description": "Ensure API Management client certificate is enabled. This control is non-compliant if API Management client certificate is disabled.",
+    "QueryID": "azure_apimanagement_service_client_certificate_enabled",
+    "DocumentURI": "policies/azure_apimanagement_service_client_certificate_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/APIManagement"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_failed_request_tracing_enabled",
+    "Title": "Web app failed request tracing should be enabled",
+    "Description": "Ensure that Web app enables failed request tracing. This control is non-compliant if Web app failed request tracing is disabled.",
+    "QueryID": "azure_appservice_web_app_failed_request_tracing_enabled",
+    "DocumentURI": "policies/azure_appservice_web_app_failed_request_tracing_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_registry_public_network_access_disabled",
+    "Title": "Container registries public network access should be disabled",
+    "Description": "Ensure that container registries public network access is disabled.",
+    "QueryID": "azure_container_registry_public_network_access_disabled",
+    "DocumentURI": "policies/azure_container_registry_public_network_access_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_scale_set_ssh_key_authentication_linux",
+    "Title": "Compute virtual machine scale sets with linux OS should have SSH key authentication enabled",
+    "Description": "This control checks whether virtual machine scale sets have SSH key authentication enabled. This control is only applicable for Linux-type operating systems.",
+    "QueryID": "azure_compute_vm_scale_set_ssh_key_authentication_linux",
+    "DocumentURI": "policies/azure_compute_vm_scale_set_ssh_key_authentication_linux.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_latest_dotnet_framework_version",
+    "Title": "Web app should use the latest 'Net Framework' version",
+    "Description": "Periodically, newer versions are released for Net Framework software either due to security flaws or to include additional functionality. Using the latest Net Framework for web apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version.",
+    "QueryID": "azure_appservice_web_app_latest_dotnet_framework_version",
+    "DocumentURI": "policies/azure_appservice_web_app_latest_dotnet_framework_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_cluster_key_vault_secret_rotation_enabled",
+    "Title": "Kubernetes clusters key vault secret rotation should be enabled",
+    "Description": "This control checks if key vault secret rotation should is enabled for Kubernetes cluster.",
+    "QueryID": "azure_kubernetes_cluster_key_vault_secret_rotation_enabled",
+    "DocumentURI": "policies/azure_kubernetes_cluster_key_vault_secret_rotation_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_log_analytics_agent_health_issues_resolved",
+    "Title": "Log Analytics agent health issues should be resolved on your machines",
+    "Description": "Security Center uses the Log Analytics agent, formerly known as the Microsoft Monitoring Agent (MMA). To make sure your virtual machines are successfully monitored, you need to make sure the agent is installed on the virtual machines and properly collects security events to the configured workspace.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_log_analytics_agent_health_issues_resolved.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_instance_container_group_in_virtual_network",
+    "Title": "Container instance container groups should be in virtual network",
+    "Description": "This control ensures that the container group is deployed into a virtual network.",
+    "QueryID": "azure_container_instance_container_group_in_virtual_network",
+    "DocumentURI": "policies/azure_container_instance_container_group_in_virtual_network.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerInstance"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_synapse_workspace_data_exfiltration_protection_enabled",
+    "Title": "Synapse workspaces should have data exfiltration protection enabled",
+    "Description": "This control checks whether Synapse workspace has data exfiltration protection enabled.",
+    "QueryID": "azure_synapse_workspace_data_exfiltration_protection_enabled",
+    "DocumentURI": "policies/azure_synapse_workspace_data_exfiltration_protection_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/SynapseAnalytics"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_securitycenter_azure_defender_on_for_containerregistry",
+    "Title": "Azure Defender for container registries should be enabled",
+    "Description": "Azure Defender for container registries provides vulnerability scanning of any images pulled within the last 30 days, pushed to your registry, or imported, and exposes detailed findings per image.",
+    "QueryID": "azure_securitycenter_azure_defender_on_for_containerregistry",
+    "DocumentURI": "policies/azure_securitycenter_azure_defender_on_for_containerregistry.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/SecurityCenter"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_cosmosdb_account_key_based_metadata_write_access_disabled",
+    "Title": "Cosmos DB accounts should disable key based metadata write access",
+    "Description": "Ensure Cosmos DB accounts have key-based metadata write_access disabled. This control is non-compliant if Cosmos DB accounts have key-based metadata write access enabled.",
+    "QueryID": "azure_cosmosdb_account_key_based_metadata_write_access_disabled",
+    "DocumentURI": "policies/azure_cosmosdb_account_key_based_metadata_write_access_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "Azure/CosmosDB"
+      ]
+    },
+    "Managed": true
+  }
+]

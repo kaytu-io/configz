@@ -1,0 +1,10 @@
+{
+  "ID": "aws_insight_vpc_with_public_cidr",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  vpc_id,\n  cidr_block,\n  state,\n  region, account_id, kaytu_account_id, kaytu_resource_id\nfrom\n  aws_vpc\nwhere\n  (not cidr_block \u003c\u003c= '10.0.0.0/8'\n  and not cidr_block \u003c\u003c= '192.168.0.0/16'\n  and not cidr_block \u003c\u003c= '172.16.0.0/12');",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc",
+  "ListOfTables": [
+    "aws_vpc"
+  ]
+}

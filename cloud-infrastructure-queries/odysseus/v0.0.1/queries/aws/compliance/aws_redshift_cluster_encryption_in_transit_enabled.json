@@ -1,0 +1,11 @@
+{
+  "ID": "aws_redshift_cluster_encryption_in_transit_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with pg_with_ssl as (\nselect\n  name as pg_name,\n  p -\u003e\u003e 'ParameterName' as parameter_name,\n  p -\u003e\u003e 'ParameterValue' as parameter_value\nfrom\n  aws_redshift_parameter_group,\n  jsonb_array_elements(parameters) as p\nwhere\n  p -\u003e\u003e 'ParameterName' = 'require_ssl'\n  and p -\u003e\u003e 'ParameterValue' = 'true'\n)\nselect\n  arn as resource,\n  case\n    when cpg -\u003e\u003e 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when cpg -\u003e\u003e 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then title || ' encryption in transit enabled.'\n    else title || ' encryption in transit disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_redshift_cluster,\n  jsonb_array_elements(cluster_parameter_groups) as cpg;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_redshift_cluster",
+  "ListOfTables": [
+    "aws_redshift_cluster",
+    "aws_redshift_parameter_group"
+  ]
+}

@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Key Management Service (KMS)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::kms::key') group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

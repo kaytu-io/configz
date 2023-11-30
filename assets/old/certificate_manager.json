@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Certificate Manager (ACM)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::acmpca::certificateauthority','aws::certificatemanager::certificate') group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

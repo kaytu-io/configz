@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "active",
+    "name": "EC2 Instance (Virtual Machine)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::ec2::instance' group by 1,2;",
+    "tags": {
+        "category": ["Compute"]
+    }
+}

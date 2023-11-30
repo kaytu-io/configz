@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "active",
+    "name": "Application gateway",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/applicationgateways' group by 1,2;",
+    "tags": {
+        "category": ["Networking"]
+    }
+}

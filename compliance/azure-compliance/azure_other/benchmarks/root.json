@@ -1,0 +1,53 @@
+{
+  "ID": "azure_other",
+  "Title": "Other Compliance Checks",
+  "DocumentURI": "benchmarks/azure_other.md",
+  "Description": "",
+  "Children": [
+    "azure_other_aks",
+    "azure_other_apimanagement",
+    "azure_other_appconfiguration",
+    "azure_other_appservice",
+    "azure_other_cognitivesearch",
+    "azure_other_compute",
+    "azure_other_containerinstance",
+    "azure_other_containerregistry",
+    "azure_other_cosmosdb",
+    "azure_other_dataexplorer",
+    "azure_other_datafactory",
+    "azure_other_eventgrid",
+    "azure_other_keyvault",
+    "azure_other_mariadb",
+    "azure_other_monitor",
+    "azure_other_postgres",
+    "azure_other_redis",
+    "azure_other_securitycenter",
+    "azure_other_signalr",
+    "azure_other_sql",
+    "azure_other_synapse"
+  ],
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "other_checks": [
+      "true"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": null
+}

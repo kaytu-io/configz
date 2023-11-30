@@ -1,0 +1,54 @@
+{
+  "ID": "azure_cis_v140",
+  "Title": "CIS v1.4.0 for Azure",
+  "Connector": "Azure",
+  "DocumentURI": "benchmarks/azure_cis_v140.md",
+  "Description": "The CIS Microsoft Azure Foundations Security Benchmark provides prescriptive guidance for establishing a secure baseline configuration for Microsoft Azure.",
+  "Children": [
+    "azure_cis_v140_1",
+    "azure_cis_v140_2",
+    "azure_cis_v140_3",
+    "azure_cis_v140_4",
+    "azure_cis_v140_5",
+    "azure_cis_v140_6",
+    "azure_cis_v140_7",
+    "azure_cis_v140_8",
+    "azure_cis_v140_9"
+  ],
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "kaytu_benchmark_type": [
+      "compliance"
+    ],
+    "kaytu_category": [
+      "Best Practices"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": null
+}

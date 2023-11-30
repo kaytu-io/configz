@@ -1,0 +1,37 @@
+{
+  "ID": "aws_secretsmanager",
+  "Title": "Secrets Manager Checks",
+  "Connector": "AWS",
+  "DocumentURI": "benchmarks/aws_secretsmanager.md",
+  "Description": "Thrifty developers ensure their secrets manager secret is in use.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/Secrets Manager"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_secretsmanager_secret_unused"
+  ]
+}

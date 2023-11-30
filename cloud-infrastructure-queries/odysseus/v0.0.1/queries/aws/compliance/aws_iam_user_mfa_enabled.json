@@ -1,0 +1,10 @@
+{
+  "ID": "aws_iam_user_mfa_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  user_arn as resource,\n  case\n    when not mfa_active then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not mfa_active then user_name || ' MFA device not configured.'\n    else user_name || ' MFA device configured.'\n  end as reason\n  , account_id\nfrom\n  aws_iam_credential_report;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_credential_report",
+  "ListOfTables": [
+    "aws_iam_credential_report"
+  ]
+}

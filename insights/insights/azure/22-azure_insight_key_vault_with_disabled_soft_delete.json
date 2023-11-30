@@ -1,0 +1,19 @@
+{
+  "ID": 22,
+  "QueryID": "azure_insight_key_vault_with_disabled_soft_delete",
+  "Connector": "Azure",
+  "ShortTitle": "Key Vaults with no Deletion Protection",
+  "LongTitle": "List of key vaults where soft deletion is not enabled",
+  "Description": "List of key vaults where soft deletion is not enabled",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt",
+      "Resiliency"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

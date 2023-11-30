@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "DynamoDB",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::dynamodb::table','aws::applicationautoscaling::target') group by 1,2;",
+    "tags": {
+        "category": ["Database"]
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "aws_glue_dev_endpoint_s3_encryption_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  d.arn as resource,\n  case\n    when e is not null and e -\u003e\u003e 'S3EncryptionMode' != 'DISABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when e is not null and e -\u003e\u003e 'S3EncryptionMode' != 'DISABLED' then d.title || ' S3 encryption enabled.'\n    else d.title || ' S3 encryption disabled.'\n  end as reason\n  , d.region, d.account_id\nfrom\n  aws_glue_dev_endpoint as d\n  left join aws_glue_security_configuration s on d.security_configuration = s.name,\n  jsonb_array_elements(s.s3_encryption) e;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_glue_dev_endpoint",
+  "ListOfTables": [
+    "aws_glue_dev_endpoint",
+    "aws_glue_security_configuration"
+  ]
+}

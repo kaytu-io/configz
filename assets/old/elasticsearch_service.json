@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Elasticsearch Service",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::elasticsearch::domain') group by 1,2;",
+    "tags": {
+        "category": ["Data & Analytics"]
+    }
+}

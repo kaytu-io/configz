@@ -1,0 +1,11 @@
+{
+  "ID": "aws_cloudfront_distribution_no_non_existent_s3_origin",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with distribution_with_non_existent_bucket as (\n  select\n    distinct d.arn as arn,\n    to_jsonb(string_to_array((string_agg(split_part(o -\u003e\u003e 'Id', '.s3', 1), ',')),',')) as bucket_name_list\n  from\n    aws_cloudfront_distribution as d,\n    jsonb_array_elements(d.origins) as o\n    left join aws_s3_bucket as b on b.name = split_part(o -\u003e\u003e 'Id', '.s3', 1)\n  where\n    b.name is null\n    and o -\u003e\u003e 'DomainName' like '%.s3.%'\n  group by\n    d.arn\n)\nselect\n  distinct b.arn as resource,\n  case\n    when b.arn is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.arn is null then title || ' does not point to any non-existent S3 origins.'\n    when jsonb_array_length(b.bucket_name_list) \u003e 0\n      then title ||\n    case\n      when jsonb_array_length(b.bucket_name_list) \u003e 2\n        then concat(' point to non-existent S3 origins ', b.bucket_name_list #\u003e\u003e '{0}', ', ', b.bucket_name_list #\u003e\u003e '{1}', ' and ' || (jsonb_array_length(b.bucket_name_list) - 2)::text || ' more.' )\n      when jsonb_array_length(b.bucket_name_list) = 2\n        then concat(' point to non-existent S3 origins ', b.bucket_name_list #\u003e\u003e '{0}', ' and ', b.bucket_name_list #\u003e\u003e '{1}', '.')\n    else concat(' point to non-existent S3 origin ', b.bucket_name_list #\u003e\u003e '{0}', '.')\n    end\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution as d\n  left join distribution_with_non_existent_bucket as b on b.arn = d.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_cloudfront_distribution",
+  "ListOfTables": [
+    "aws_cloudfront_distribution",
+    "aws_s3_bucket"
+  ]
+}

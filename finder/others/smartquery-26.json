@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all accounts missing one multi-region CloudTrail",
+  "query": "with multi_region_trails as (\n  select\n    account_id,\n    count(account_id) as num_multregion_trails\n  from\n    aws_cloudtrail_trail\n  where\n    is_multi_region_trail\n    and is_logging\n  group by\n    account_id,\n    is_multi_region_trail\n)\nselect\n  -- Required Columns\n  a.arn as resource,\n  case\n    when coalesce(num_multregion_trails, 0)  \u003c 1 then 'alarm'\n    else 'ok'\n  end as status,\n  a.title || ' has ' || coalesce(num_multregion_trails, 0) || ' multi-region trail(s).' as reason,\n  -- Additional Dimensions\n  a.account_id\nfrom\n  aws_account as a\nleft join multi_region_trails as b on a.account_id = b.account_id"
+}

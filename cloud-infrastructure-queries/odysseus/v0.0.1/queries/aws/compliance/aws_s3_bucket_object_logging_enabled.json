@@ -1,0 +1,11 @@
+{
+  "ID": "aws_s3_bucket_object_logging_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with object_logging_cloudtrails as (\n  select\n    d -\u003e\u003e 'Type' as type,\n    replace(replace(v::text,'\"',''),'/','') as bucket_arn\n  from\n    aws_cloudtrail_trail,\n    jsonb_array_elements(event_selectors) e,\n    jsonb_array_elements(e -\u003e 'DataResources') as d,\n    jsonb_array_elements(d -\u003e 'Values') v\n  where\n    d -\u003e\u003e 'Type' = 'AWS::S3::Object'\n), object_logging_region as (\n    select\n      region as  cloudtrail_region,\n      replace(replace(v::text,'\"',''),'/','') as bucket_arn\n    from\n      aws_cloudtrail_trail,\n      jsonb_array_elements(event_selectors) e,\n      jsonb_array_elements(e -\u003e 'DataResources') as d,\n      jsonb_array_elements(d -\u003e 'Values') v\n    where\n      d -\u003e\u003e 'Type' = 'AWS::S3::Object'\n      and replace(replace(v::text,'\"',''),'/','') = 'arn:aws:s3'\n    group by\n      region,\n      bucket_arn\n),\nobject_logging_region_advance_es as (\n  select\n    region as  cloudtrail_region\n  from\n    aws_cloudtrail_trail,\n    jsonb_array_elements(advanced_event_selectors) a,\n    jsonb_array_elements(a -\u003e 'FieldSelectors') as f,\n    jsonb_array_elements_text(f -\u003e 'Equals') e\n  where\n    e = 'AWS::S3::Object'\n    and f -\u003e\u003e 'Field' != 'eventCategory'\n  group by\n    region\n)\nselect\n  distinct s.arn as resource,\n  case\n    when (s.arn = c.bucket_arn)\n      or (r.bucket_arn = 'arn:aws:s3' and r. cloudtrail_region = s.region )\n      or a. cloudtrail_region =  s.region then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when (s.arn = c.bucket_arn)\n      or (r.bucket_arn = 'arn:aws:s3' and r. cloudtrail_region = s.region )\n      or a. cloudtrail_region =  s.region then s.name || ' object logging enabled.'\n    else s.name || ' object logging not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket as s\n  left join object_logging_cloudtrails as c on s.arn = c.bucket_arn\n  left join object_logging_region as r on r. cloudtrail_region = s.region\n  left join object_logging_region_advance_es as a on a. cloudtrail_region = s.region;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_s3_bucket",
+  "ListOfTables": [
+    "aws_cloudtrail_trail",
+    "aws_s3_bucket"
+  ]
+}

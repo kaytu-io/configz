@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "active",
+    "name": "EKS (Kubernetes) Cluster",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::eks::cluster' group by 1,2;",
+    "tags": {
+        "category": ["Containers"]
+    }
+}

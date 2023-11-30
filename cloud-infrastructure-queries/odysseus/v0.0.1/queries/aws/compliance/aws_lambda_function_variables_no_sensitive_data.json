@@ -1,0 +1,10 @@
+{
+  "ID": "aws_lambda_function_variables_no_sensitive_data",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with function_vaiable_with_sensitive_data as (\nselect\n  distinct arn,\n  name\nfrom\n  aws_lambda_function\n  join jsonb_each_text(environment_variables) d on true\nwhere\n  d.key ilike any (array['%pass%', '%secret%', '%token%', '%key%'])\n  or d.key ~ '(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?\u0026])[A-Za-z\\d@$!%*?\u0026]'\n  or d.value ilike any (array['%pass%', '%secret%', '%token%', '%key%'])\n  or d.value ~ '(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?\u0026])[A-Za-z\\d@$!%*?\u0026]'\n)\nselect\n  f.arn as resource,\n  case\n    when b.arn is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.arn is null then f.title || ' has no sensitive data.'\n    else f.title || ' has potential sensitive data.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_lambda_function as f\n  left join function_vaiable_with_sensitive_data b on f.arn = b.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_lambda_function",
+  "ListOfTables": [
+    "aws_lambda_function"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_iam_user_access_key_age_90",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  'arn:' || partition || ':iam::' || account_id || ':user/' || user_name || '/accesskey/' || access_key_id as resource,\n  case\n    when create_date \u003c= (current_date - interval '90' day) then 'alarm'\n    else 'ok'\n  end status,\n  user_name || ' ' || access_key_id || ' created ' || to_char(create_date , 'DD-Mon-YYYY') ||\n    ' (' || extract(day from current_timestamp - create_date) || ' days).'\n  as reason\n  , account_id\nfrom\n  aws_iam_access_key;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_access_key",
+  "ListOfTables": [
+    "aws_iam_access_key"
+  ]
+}

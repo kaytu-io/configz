@@ -1,0 +1,19 @@
+{
+  "ID": 10,
+  "QueryID": "aws_insight_acm_certificate_transparency_logging_disabled",
+  "Connector": "AWS",
+  "ShortTitle": "Certificates with no Logging",
+  "LongTitle": "List certificates for which transparency logging is disabled",
+  "Description": "List certificates for which transparency logging is disabled",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt",
+      "Resiliency"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find DynamoDB Tables with autoscaling enabled",
+  "query": "with table_with_autocaling as (\n  select\n    t.resource_id as resource_id,\n    count(t.resource_id) as count\n  from\n    aws_appautoscaling_target as t where service_namespace = 'dynamodb'\n    group by t.resource_id\n)\nselect\n  -- Required Columns\n  d.arn as resource,\n  case\n    when t.resource_id is null then 'alarm'\n    when t.count \u003c 2 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when t.resource_id is null then d.title || ' autoscaling not enabled.'\n    when t.count \u003c 2 then d.title || ' auto scaling not enabled for both read and write capacity.'\n    else d.title || ' autoscaling enabled for both read and write capacity.'\n  end as reason,\n  -- Additional Dimensions\n  d.region,\n  d.account_id\nfrom\n  aws_dynamodb_table as d\n  left join table_with_autocaling as t on concat('table/', d.name) = t.resource_id"
+}

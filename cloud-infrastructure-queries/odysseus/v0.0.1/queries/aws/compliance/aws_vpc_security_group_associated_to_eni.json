@@ -1,0 +1,11 @@
+{
+  "ID": "aws_vpc_security_group_associated_to_eni",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with associated_sg as (\n  select\n    count(sg -\u003e\u003e 'GroupId'),\n    sg -\u003e\u003e 'GroupId' as secgrp_id\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n    group by sg -\u003e\u003e 'GroupId'\n)\nselect\n  distinct s.arn as resource,\n  case\n    when a.secgrp_id = s.group_id then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.secgrp_id = s.group_id then s.title || ' is associated with ' || a.count || ' ENI(s).'\n    else s.title || ' not associated to any ENI.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_vpc_security_group as s\n  left join associated_sg as a on s.group_id = a.secgrp_id;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc_security_group",
+  "ListOfTables": [
+    "aws_ec2_network_interface",
+    "aws_vpc_security_group"
+  ]
+}

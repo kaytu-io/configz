@@ -1,0 +1,11 @@
+{
+  "ID": "aws_eks_cluster_no_default_vpc",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with default_vpc_cluster as (\n  select\n    distinct c.arn\n  from\n    aws_eks_cluster as c\n    left join aws_vpc as v on v.vpc_id = c.resources_vpc_config -\u003e\u003e 'VpcId'\n  where\n    v.is_default\n)\nselect\n  c.arn as resource,\n  case\n    when v.arn is not null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when v.arn is not null then title || ' uses default VPC.'\n    else title || ' does not use default VPC.'\n  end as reason\n  \n  , c.region, c.account_id\nfrom\n  aws_eks_cluster as c\n  left join default_vpc_cluster as v on v.arn = c.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_eks_cluster",
+  "ListOfTables": [
+    "aws_eks_cluster",
+    "aws_vpc"
+  ]
+}

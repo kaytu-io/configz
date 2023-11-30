@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_ebs_snapshot_max_age",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when start_time \u003e current_timestamp - ($1 || ' days')::interval then 'ok'\n    else 'alarm'\n  end as status,\n  snapshot_id || ' created at ' || start_time || '.' as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_snapshot;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ebs_snapshot",
+  "ListOfTables": [
+    "aws_ebs_snapshot"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all CloudFront Distributions where default root object is configured",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when default_root_object = '' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when default_root_object = '' then title || ' default root object not configured.'\n    else title || ' default root object configured.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudfront_distribution"
+}

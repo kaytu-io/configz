@@ -1,0 +1,10 @@
+{
+  "ID": "aws_rds_db_instance_events_subscription",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when source_type \u003c\u003e 'db-instance' then 'skip'\n    when source_type = 'db-instance' and enabled and event_categories_list @\u003e '[\"failure\", \"maintenance\", \"configuration change\"]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when source_type \u003c\u003e 'db-instance' then cust_subscription_id || ' event subscription of ' || source_type || ' type.'\n    when source_type like 'db-instance' and enabled and event_categories_list @\u003e '[\"failure\", \"maintenance\", \"configuration change\"]' then cust_subscription_id || ' event subscription enabled for critical instance events.'\n    else cust_subscription_id || ' event subscription missing critical instance events.'\n  end as reason\n  , region, account_id\nfrom\n  aws_rds_db_event_subscription;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_rds_db_event_subscription",
+  "ListOfTables": [
+    "aws_rds_db_event_subscription"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "aws_vpc_flow_logs_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  distinct arn as resource,\n  case\n    when v.account_id \u003c\u003e v.owner_id then 'skip'\n    when f.resource_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when v.account_id \u003c\u003e v.owner_id then vpc_id || ' is a shared VPC.'\n    when f.resource_id is not null then vpc_id || ' flow logging enabled.'\n    else vpc_id || ' flow logging disabled.'\n  end as reason\n  \n  , v.region, v.account_id\nfrom\n  aws_vpc as v\n  left join aws_vpc_flow_log as f on v.vpc_id = f.resource_id;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc",
+  "ListOfTables": [
+    "aws_vpc",
+    "aws_vpc_flow_log"
+  ]
+}

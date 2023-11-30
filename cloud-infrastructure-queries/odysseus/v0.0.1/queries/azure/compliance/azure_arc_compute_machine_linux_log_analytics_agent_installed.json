@@ -1,0 +1,11 @@
+{
+  "ID": "azure_arc_compute_machine_linux_log_analytics_agent_installed",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with compute_machine as(\n  select\n    id,\n    name,\n    subscription_id,\n    resource_group\n  from\n    azure_hybrid_compute_machine,\n    jsonb_array_elements(extensions) as e\n  where\n  e -\u003e\u003e 'name' = 'OMSAgentForLinux'\n  and e -\u003e\u003e 'provisioningState' = 'Succeeded'\n)\nselect\n  a.id as resource,\n  case\n    when a.os_name \u003c\u003e 'linux' then 'skip'\n    when m.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.os_name \u003c\u003e 'linux' then a.name || ' is of ' || a.os_name || ' operating system.'\n    when m.id is not null then a.name || ' log analytics extension installed.'\n    else a.name || ' log analytics extension not installed.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\nazure_hybrid_compute_machine as a\nleft join compute_machine as m on m.id = a.id,\nazure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_hybrid_compute_machine",
+  "ListOfTables": [
+    "azure_hybrid_compute_machine",
+    "azure_subscription"
+  ]
+}

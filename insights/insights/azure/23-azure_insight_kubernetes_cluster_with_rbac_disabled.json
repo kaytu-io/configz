@@ -1,0 +1,17 @@
+{
+  "ID": 23,
+  "QueryID": "azure_insight_kubernetes_cluster_with_rbac_disabled",
+  "Connector": "Azure",
+  "ShortTitle": "Clusters with no RBAC",
+  "LongTitle": "List clusters that have role-based access control (RBAC) disabled",
+  "Description": "List clusters that have role-based access control (RBAC) disabled",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,13 @@
+{
+  "ID": "aws_iam_policy_in_use",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with all_attached_policy_arn as (\n  select\n    user_arn  as arn\n  from\n    aws_iam_user as p,\n    jsonb_array_elements(attached_policy_arns) as user_arn\n  union\n  select\n  group_arn as arn\n  from\n    aws_iam_group as g,\n    jsonb_array_elements(attached_policy_arns) as group_arn\n  where\n   users is not null\n  union\n  select\n  role_arn  as role_arn\n  from\n    aws_iam_role as r,\n    jsonb_array_elements(attached_policy_arns) as role_arn\n),\ndistinct_attached_policy_arn as (\n  select\n  distinct arn  as arn\n  from\n    all_attached_policy_arn\n)\nselect\n  -- Required Columns\n  p.arn,\n  case\n    when a.arn is not null\n     then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.arn is not null\n     then title || ' is attached to resource.'\n    else  title || ' is not attached to any resource.'\n  end  as reason,\n  -- Additional Dimensions\n  account_id\nfrom\n  aws_iam_policy as p\n  left join distinct_attached_policy_arn\n  as a on p.arn = trim('\"' FROM a.arn::text);",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_policy",
+  "ListOfTables": [
+    "aws_iam_policy",
+    "aws_iam_role",
+    "aws_iam_group",
+    "aws_iam_user"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "ID": "azure_compute_vm_disaster_recovery_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with vm_dr_enabled as (\n  select\n    substr(source_id, 0, length(source_id)) as source_id\n  from\n    azure_resource_link as l\n    left join azure_compute_virtual_machine as vm on lower(substr(source_id, 0, length(source_id)))= lower(vm.id)\n  where\n    l.name like 'ASR-Protect-%'\n)\nselect\n  vm.vm_id as resource,\n  case\n    when l.source_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when l.source_id is null then vm.title || ' disaster recovery disabled.'\n    else vm.title || ' disaster recovery enabled.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm\n  left join vm_dr_enabled as l on lower(vm.id) = lower(l.source_id),\n  azure_subscription sub\nwhere\n  sub.subscription_id = vm.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_virtual_machine",
+  "ListOfTables": [
+    "azure_compute_virtual_machine",
+    "azure_resource_link",
+    "azure_subscription"
+  ]
+}

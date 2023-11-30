@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "IoT Hub",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.devices/iothubs','microsoft.devices/iothubdpses') group by 1,2;",
+    "tags": {
+        "category": ["Network"]
+    }
+}

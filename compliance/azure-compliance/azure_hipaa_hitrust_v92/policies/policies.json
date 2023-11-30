@@ -1,0 +1,2132 @@
+[
+  {
+    "ID": "azure_mysql_ssl_enabled",
+    "Title": "Enforce SSL connection should be enabled for MySQL database servers",
+    "Description": "Azure Database for MySQL supports connecting your Azure Database for MySQL server to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between your database server and your client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and your application. This configuration enforces that SSL is always enabled for accessing your database server.",
+    "QueryID": "azure_mysql_ssl_enabled",
+    "DocumentURI": "policies/azure_mysql_ssl_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/MySQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_no_custom_role",
+    "Title": "Audit usage of custom RBAC roles",
+    "Description": "Audit built-in roles such as 'Owner, Contributor, Reader' instead of custom RBAC roles, which are error prone. Using custom roles is treated as an exception and requires a rigorous review and threat modeling.",
+    "QueryID": "azure_iam_no_custom_role",
+    "DocumentURI": "policies/azure_iam_no_custom_role.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_server_auditing_on",
+    "Title": "Auditing on SQL server should be enabled",
+    "Description": "Auditing on your SQL Server should be enabled to track database activities across all databases on the server and save them in an audit log.",
+    "QueryID": "azure_sql_server_auditing_on",
+    "DocumentURI": "policies/azure_sql_server_auditing_on.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iot_hub_logging_enabled",
+    "Title": "Resource logs in IoT Hub should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_iot_hub_logging_enabled",
+    "DocumentURI": "policies/azure_iot_hub_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/IoTHub"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_network_watcher_enabled",
+    "Title": "Network Watcher should be enabled",
+    "Description": "Network Watcher is a regional service that enables you to monitor and diagnose conditions at a network scenario level in, to, and from Azure. Scenario level monitoring enables you to diagnose problems at an end to end network level view. It is required to have a network watcher resource group to be created in every region where a virtual network is present. An alert is enabled if a network watcher resource group is not available in a particular region.",
+    "QueryID": "azure_network_watcher_enabled",
+    "DocumentURI": "policies/azure_network_watcher_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Network"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_keyvault_logging_enabled",
+    "Title": "Resource logs in Key Vault should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_keyvault_logging_enabled",
+    "DocumentURI": "policies/azure_keyvault_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/KeyVault"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_audit_diagnostic_setting",
+    "Title": "Audit diagnostic setting for selected resource types",
+    "Description": "Audit diagnostic setting for selected resource types. Be sure to select only resource types which support diagnostics settings.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_audit_diagnostic_setting.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Monitor"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_postgres_sql_ssl_enabled",
+    "Title": "Enforce SSL connection should be enabled for PostgreSQL database servers",
+    "Description": "Azure Database for PostgreSQL supports connecting your Azure Database for PostgreSQL server to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between your database server and your client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and your application. This configuration enforces that SSL is always enabled for accessing your database server",
+    "QueryID": "azure_postgres_sql_ssl_enabled",
+    "DocumentURI": "policies/azure_postgres_sql_ssl_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/PostgreSQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_subscription_owner_max_3",
+    "Title": "A maximum of 3 owners should be designated for your subscription",
+    "Description": "It is recommended to designate up to 3 subscription owners in order to reduce the potential for breach by a compromised owner.",
+    "QueryID": "azure_iam_subscription_owner_max_3",
+    "DocumentURI": "policies/azure_iam_subscription_owner_max_3.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_api_app_use_https",
+    "Title": "App Service API apps should only be accessible over HTTPS",
+    "Description": "Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks.",
+    "QueryID": "azure_appservice_api_app_use_https",
+    "DocumentURI": "policies/azure_appservice_api_app_use_https.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_batch_account_logging_enabled",
+    "Title": "Resource logs in Batch accounts should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_batch_account_logging_enabled",
+    "DocumentURI": "policies/azure_batch_account_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Batch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_azure_redis_cache_ssl_enabled",
+    "Title": "Only secure connections to your Azure Cache for Redis should be enabled",
+    "Description": "Audit enabling of only connections via SSL to Azure Cache for Redis. Use of secure connections ensures authentication between the server and the service and protects data in transit from network layer attacks such as man-in-the-middle, eavesdropping, and session-hijacking.",
+    "QueryID": "azure_azure_redis_cache_ssl_enabled",
+    "DocumentURI": "policies/azure_azure_redis_cache_ssl_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Redis"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_search_service_logging_enabled",
+    "Title": "Resource logs in Search services should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_search_service_logging_enabled",
+    "DocumentURI": "policies/azure_search_service_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/CognitiveSearch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_azure_backup_enabled",
+    "Title": "Azure Backup should be enabled for Virtual Machines",
+    "Description": "Ensure protection of your Azure Virtual Machines by enabling Azure Backup. Azure Backup is a secure and cost effective data protection solution for Azure.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_azure_backup_enabled.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_api_app_cors_no_star",
+    "Title": "App Service apps should not have CORS configured to allow every resource to access your apps",
+    "Description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your app. Allow only required domains to interact with your app.",
+    "QueryID": "azure_appservice_api_app_cors_no_star",
+    "DocumentURI": "policies/azure_appservice_api_app_cors_no_star.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_jit_access_protected",
+    "Title": "Management ports of virtual machines should be protected with just-in-time network access control",
+    "Description": "Possible network Just In Time (JIT) access will be monitored by Azure Security Center as recommendations",
+    "QueryID": "azure_compute_vm_jit_access_protected",
+    "DocumentURI": "policies/azure_compute_vm_jit_access_protected.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_kubernetes_instance_rbac_enabled",
+    "Title": "Role-Based Access Control (RBAC) should be used on Kubernetes Services",
+    "Description": "To provide granular filtering on the actions that users can perform, use Role-Based Access Control (RBAC) to manage permissions in Kubernetes Service Clusters and configure relevant authorization policies.",
+    "QueryID": "azure_kubernetes_instance_rbac_enabled",
+    "DocumentURI": "policies/azure_kubernetes_instance_rbac_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_attached_with_network",
+    "Title": "Virtual machines should be connected to an approved virtual network",
+    "Description": "This policy audits any virtual machine connected to a virtual network that is not approved.",
+    "QueryID": "azure_compute_vm_attached_with_network",
+    "DocumentURI": "policies/azure_compute_vm_attached_with_network.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_keyvault_purge_protection_enabled",
+    "Title": "Key vaults should have deletion protection enabled",
+    "Description": "Malicious deletion of a key vault can lead to permanent data loss. A malicious insider in your organization can potentially delete and purge key vaults. Purge protection protects you from insider attacks by enforcing a mandatory retention period for soft deleted key vaults. No one inside your organization or Microsoft will be able to purge your key vaults during the soft delete retention period.",
+    "QueryID": "azure_keyvault_purge_protection_enabled",
+    "DocumentURI": "policies/azure_keyvault_purge_protection_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/KeyVault"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_external_user_with_owner_role",
+    "Title": "Guest accounts with owner permissions on Azure resources should be removed",
+    "Description": "External accounts with owner permissions should be removed from your subscription in order to prevent unmonitored access.",
+    "QueryID": "azure_iam_external_user_with_owner_role",
+    "DocumentURI": "policies/azure_iam_external_user_with_owner_role.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_eventhub_namespace_logging_enabled",
+    "Title": "Resource logs in Event Hub should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_eventhub_namespace_logging_enabled",
+    "DocumentURI": "policies/azure_eventhub_namespace_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/EventHub"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_subscription_owner_more_than_1",
+    "Title": "There should be more than one owner assigned to your subscription",
+    "Description": "It is recommended to designate more than one subscription owner in order to have administrator access redundancy.",
+    "QueryID": "azure_iam_subscription_owner_more_than_1",
+    "DocumentURI": "policies/azure_iam_subscription_owner_more_than_1.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_logic_app_workflow_logging_enabled",
+    "Title": "Resource logs in Logic Apps should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_logic_app_workflow_logging_enabled",
+    "DocumentURI": "policies/azure_logic_app_workflow_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Logic"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_malware_agent_installed",
+    "Title": "Deploy default Microsoft IaaSAntimalware extension for Windows Server",
+    "Description": "This policy deploys a Microsoft IaaSAntimalware extension with a default configuration when a VM is not configured with the antimalware extension.",
+    "QueryID": "azure_compute_vm_malware_agent_installed",
+    "DocumentURI": "policies/azure_compute_vm_malware_agent_installed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_server_and_databases_va_enabled",
+    "Title": "Vulnerability assessment should be enabled on your SQL servers",
+    "Description": "Audit Azure SQL servers which do not have recurring vulnerability assessment scans enabled. Vulnerability assessment can discover, track, and help you remediate potential database vulnerabilities.",
+    "QueryID": "azure_sql_server_and_databases_va_enabled",
+    "DocumentURI": "policies/azure_sql_server_and_databases_va_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_servicebus_namespace_logging_enabled",
+    "Title": "Resource logs in Service Bus should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_servicebus_namespace_logging_enabled",
+    "DocumentURI": "policies/azure_servicebus_namespace_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/ServiceBus"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_system_updates_installed",
+    "Title": "System updates should be installed on your machines",
+    "Description": "Missing security system updates on your servers will be monitored by Azure Security Center as recommendations.",
+    "QueryID": "azure_compute_vm_system_updates_installed",
+    "DocumentURI": "policies/azure_compute_vm_system_updates_installed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_keyvault_managed_hms_logging_enabled",
+    "Title": "Resource logs in Azure Key Vault Managed HSM should be enabled",
+    "Description": "To recreate activity trails for investigation purposes when a security incident occurs or when your network is compromised, you may want to audit by enabling resource logs on Managed HSMs.",
+    "QueryID": "azure_keyvault_managed_hms_logging_enabled",
+    "DocumentURI": "policies/azure_keyvault_managed_hms_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/KeyVault"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_stream_analytics_job_logging_enabled",
+    "Title": "Resource logs in Azure Stream Analytics should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_stream_analytics_job_logging_enabled",
+    "DocumentURI": "policies/azure_stream_analytics_job_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/StreamAnalytics"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_disaster_recovery_enabled",
+    "Title": "Audit virtual machines without disaster recovery configured",
+    "Description": "Audit virtual machines which do not have disaster recovery configured.",
+    "QueryID": "azure_compute_vm_disaster_recovery_enabled",
+    "DocumentURI": "policies/azure_compute_vm_disaster_recovery_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_function_app_cors_no_star",
+    "Title": "Function apps should not have CORS configured to allow every resource to access your apps",
+    "Description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your Function app. Allow only required domains to interact with your Function app.",
+    "QueryID": "azure_appservice_function_app_cors_no_star",
+    "DocumentURI": "policies/azure_appservice_function_app_cors_no_star.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_api_app_latest_tls_version",
+    "Title": "App Service apps should use the latest TLS version",
+    "Description": "Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for App Service apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.",
+    "QueryID": "azure_appservice_api_app_latest_tls_version",
+    "DocumentURI": "policies/azure_appservice_api_app_latest_tls_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_cosmosdb_use_virtual_service_endpoint",
+    "Title": "Cosmos DB should use a virtual network service endpoint",
+    "Description": "This policy audits any Cosmos DB not configured to use a virtual network service endpoint.",
+    "QueryID": "azure_cosmosdb_use_virtual_service_endpoint",
+    "DocumentURI": "policies/azure_cosmosdb_use_virtual_service_endpoint.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/CosmosDB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_datalake_store_account_logging_enabled",
+    "Title": "Resource logs in Azure Data Lake Store should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_datalake_store_account_logging_enabled",
+    "DocumentURI": "policies/azure_datalake_store_account_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/DataLakeStorage"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_uses_azure_resource_manager",
+    "Title": "Virtual machines should be migrated to new Azure Resource Manager resources",
+    "Description": "Use new Azure Resource Manager for your virtual machines to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management.",
+    "QueryID": "azure_compute_vm_uses_azure_resource_manager",
+    "DocumentURI": "policies/azure_compute_vm_uses_azure_resource_manager.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_server_tde_protector_cmk_encrypted",
+    "Title": "SQL servers should use customer-managed keys to encrypt data at rest",
+    "Description": "Implementing Transparent Data Encryption (TDE) with your own key provides increased transparency and control over the TDE Protector, increased security with an HSM-backed external service, and promotion of separation of duties. This recommendation applies to organizations with a related compliance requirement.",
+    "QueryID": "azure_sql_server_tde_protector_cmk_encrypted",
+    "DocumentURI": "policies/azure_sql_server_tde_protector_cmk_encrypted.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_deprecated_account_with_owner_roles",
+    "Title": "Blocked accounts with owner permissions on Azure resources should be removed",
+    "Description": "Deprecated accounts with owner permissions should be removed from your subscription. Deprecated accounts are accounts that have been blocked from signing in.",
+    "QueryID": "azure_iam_deprecated_account_with_owner_roles",
+    "DocumentURI": "policies/azure_iam_deprecated_account_with_owner_roles.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_server_use_virtual_service_endpoint",
+    "Title": "SQL Server should use a virtual network service endpoint",
+    "Description": "This policy audits any SQL Server not configured to use a virtual network service endpoint.",
+    "QueryID": "azure_sql_server_use_virtual_service_endpoint",
+    "DocumentURI": "policies/azure_sql_server_use_virtual_service_endpoint.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_log_analytics_agent_installed",
+    "Title": "Virtual machines should have the Log Analytics extension installed",
+    "Description": "This policy audits any Windows/Linux virtual machines if the Log Analytics extension is not installed.",
+    "QueryID": "azure_compute_vm_log_analytics_agent_installed",
+    "DocumentURI": "policies/azure_compute_vm_log_analytics_agent_installed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_api_app_client_certificates_on",
+    "Title": "App Service apps should have 'Client Certificates (Incoming client certificates)' enabled",
+    "Description": "Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.",
+    "QueryID": "azure_appservice_api_app_client_certificates_on",
+    "DocumentURI": "policies/azure_appservice_api_app_client_certificates_on.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_network_security_group_subnet_associated",
+    "Title": "Subnets should be associated with a Network Security Group",
+    "Description": "This policy denies if a gateway subnet is configured with a network security group. Assigning a network security group to a gateway subnet will cause the gateway to stop functioning.",
+    "QueryID": "azure_network_security_group_subnet_associated",
+    "DocumentURI": "policies/azure_network_security_group_subnet_associated.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Network"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_client_certificates_on",
+    "Title": "App Service apps should have 'Client Certificates (Incoming client certificates)' enabled",
+    "Description": "Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.",
+    "QueryID": "azure_appservice_web_app_client_certificates_on",
+    "DocumentURI": "policies/azure_appservice_web_app_client_certificates_on.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_datalake_store_account_encryption_enabled",
+    "Title": "Require encryption on Data Lake Store accounts",
+    "Description": "This policy ensures encryption is enabled on all Data Lake Store accounts.",
+    "QueryID": "azure_datalake_store_account_encryption_enabled",
+    "DocumentURI": "policies/azure_datalake_store_account_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/DataLakeStorage"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_datalake_analytics_account_logging_enabled",
+    "Title": "Resource logs in Data Lake Analytics should be enabled",
+    "Description": "Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.",
+    "QueryID": "azure_datalake_analytics_account_logging_enabled",
+    "DocumentURI": "policies/azure_datalake_analytics_account_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/DataLakeAnalytics"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_diagnostic_logs_enabled",
+    "Title": "App Service apps should have resource logs enabled",
+    "Description": "Audit enabling of resource logs on the app. This enables you to recreate activity trails for investigation purposes if a security incident occurs or your network is compromised.",
+    "QueryID": "azure_appservice_web_app_diagnostic_logs_enabled",
+    "DocumentURI": "policies/azure_appservice_web_app_diagnostic_logs_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_mariadb_server_geo_redundant_backup_enabled",
+    "Title": "Geo-redundant backup should be enabled for Azure Database for MariaDB",
+    "Description": "Azure Database for MariaDB allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data is not only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option in case of a region failure. Configuring geo-redundant storage for backup is only allowed during server create.",
+    "QueryID": "azure_mariadb_server_geo_redundant_backup_enabled",
+    "DocumentURI": "policies/azure_mariadb_server_geo_redundant_backup_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/MariaDB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_function_app_latest_tls_version",
+    "Title": "Function apps should use the latest TLS version",
+    "Description": "Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for Function apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.",
+    "QueryID": "azure_appservice_function_app_latest_tls_version",
+    "DocumentURI": "policies/azure_appservice_function_app_latest_tls_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_monitor_log_profile_enabled_for_all_regions",
+    "Title": "Azure Monitor should collect activity logs from all regions",
+    "Description": "This policy audits the Azure Monitor log profile which does not export activities from all Azure supported regions including global.",
+    "QueryID": "azure_monitor_log_profile_enabled_for_all_regions",
+    "DocumentURI": "policies/azure_monitor_log_profile_enabled_for_all_regions.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Monitor"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_api_app_remote_debugging_disabled",
+    "Title": "App Service apps should have remote debugging turned off",
+    "Description": "Remote debugging requires inbound ports to be opened on an App Service app. Remote debugging should be turned off.",
+    "QueryID": "azure_appservice_api_app_remote_debugging_disabled",
+    "DocumentURI": "policies/azure_appservice_api_app_remote_debugging_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_mysql_db_server_geo_redundant_backup_enabled",
+    "Title": "Geo-redundant backup should be enabled for Azure Database for MySQL",
+    "Description": "Azure Database for MySQL allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data is not only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option in case of a region failure. Configuring geo-redundant storage for backup is only allowed during server create.",
+    "QueryID": "azure_mysql_db_server_geo_redundant_backup_enabled",
+    "DocumentURI": "policies/azure_mysql_db_server_geo_redundant_backup_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/MySQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_meet_firewall_properties_windows",
+    "Title": "Windows machines should meet requirements for 'Windows Firewall Properties'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'Windows Firewall Properties' for firewall state, connections, rule management, and notifications. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_meet_firewall_properties_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_keyvault_vault_use_virtual_service_endpoint",
+    "Title": "Key Vault should use a virtual network service endpoint",
+    "Description": "This policy audits any Key Vault not configured to use a virtual network service endpoint.",
+    "QueryID": "azure_keyvault_vault_use_virtual_service_endpoint",
+    "DocumentURI": "policies/azure_keyvault_vault_use_virtual_service_endpoint.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/KeyVault"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_database_vulnerability_findings_resolved",
+    "Title": "SQL databases should have vulnerability findings resolved",
+    "Description": "Monitor vulnerability assessment scan results and recommendations for how to remediate database vulnerabilities.",
+    "QueryID": "azure_sql_database_vulnerability_findings_resolved",
+    "DocumentURI": "policies/azure_sql_database_vulnerability_findings_resolved.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_storage_account_use_virtual_service_endpoint",
+    "Title": "Storage Accounts should use a virtual network service endpoint",
+    "Description": "This policy audits any Storage Account not configured to use a virtual network service endpoint.",
+    "QueryID": "azure_storage_account_use_virtual_service_endpoint",
+    "DocumentURI": "policies/azure_storage_account_use_virtual_service_endpoint.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Storage"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_network_security_group_rdp_access_restricted",
+    "Title": "Windows machines should meet requirements for 'User Rights Assignment'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'User Rights Assignment' for allowing log on locally, RDP, access from the network, and many other user activities. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
+    "QueryID": "azure_network_security_group_rdp_access_restricted",
+    "DocumentURI": "policies/azure_network_security_group_rdp_access_restricted.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Network"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_keyvault_managed_hms_purge_protection_enabled",
+    "Title": "Azure Key Vault Managed HSM should have purge protection enabled",
+    "Description": "Malicious deletion of an Azure Key Vault Managed HSM can lead to permanent data loss. A malicious insider in your organization can potentially delete and purge Azure Key Vault Managed HSM. Purge protection protects you from insider attacks by enforcing a mandatory retention period for soft deleted Azure Key Vault Managed HSM. No one inside your organization or Microsoft will be able to purge your Azure Key Vault Managed HSM during the soft delete retention period.",
+    "QueryID": "azure_keyvault_managed_hms_purge_protection_enabled",
+    "DocumentURI": "policies/azure_keyvault_managed_hms_purge_protection_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/KeyVault"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_function_app_only_https_accessible",
+    "Title": "Function apps should only be accessible over HTTPS",
+    "Description": "Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks.",
+    "QueryID": "azure_appservice_function_app_only_https_accessible",
+    "DocumentURI": "policies/azure_appservice_function_app_only_https_accessible.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_tcp_udp_access_restricted_internet",
+    "Title": "Internet-facing virtual machines should be protected with network security groups",
+    "Description": "Protect your virtual machines from potential threats by restricting access to them with network security groups (NSG).",
+    "QueryID": "azure_compute_vm_tcp_udp_access_restricted_internet",
+    "DocumentURI": "policies/azure_compute_vm_tcp_udp_access_restricted_internet.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_remote_access_restricted_all_ports",
+    "Title": "All network ports should be restricted on network security groups associated to your virtual machine",
+    "Description": "Azure Security Center has identified some of your network security groups' inbound rules to be too permissive. Inbound rules should not allow access from 'Any' or 'Internet' ranges. This can potentially enable attackers to target your resources.",
+    "QueryID": "azure_compute_vm_remote_access_restricted_all_ports",
+    "DocumentURI": "policies/azure_compute_vm_remote_access_restricted_all_ports.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_scale_set_system_updates_installed",
+    "Title": "System updates on virtual machine scale sets should be installed",
+    "Description": "Audit whether there are any missing system security updates and critical updates that should be installed to ensure that your Windows and Linux virtual machine scale sets are secure.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_scale_set_system_updates_installed.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_monitor_log_profile_enabled_for_all_categories",
+    "Title": "Azure Monitor log profile should collect logs for categories 'write,' 'delete,' and 'action'",
+    "Description": "This policy ensures that a log profile collects logs for categories 'write,' 'delete,' and 'action'.",
+    "QueryID": "azure_monitor_log_profile_enabled_for_all_categories",
+    "DocumentURI": "policies/azure_monitor_log_profile_enabled_for_all_categories.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Monitor"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_endpoint_protection_agent_installed",
+    "Title": "Monitor missing Endpoint Protection in Azure Security Center",
+    "Description": "Servers without an installed Endpoint Protection agent will be monitored by Azure Security Center as recommendations.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_endpoint_protection_agent_installed.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_postgres_db_server_geo_redundant_backup_enabled",
+    "Title": "Geo-redundant backup should be enabled for Azure Database for PostgreSQL",
+    "Description": "Azure Database for PostgreSQL allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data is not only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option in case of a region failure. Configuring geo-redundant storage for backup is only allowed during server create.",
+    "QueryID": "azure_postgres_db_server_geo_redundant_backup_enabled",
+    "DocumentURI": "policies/azure_postgres_db_server_geo_redundant_backup_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/PostgreSQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_eventhub_namespace_use_virtual_service_endpoint",
+    "Title": "Event Hub should use a virtual network service endpoint",
+    "Description": "This policy audits any Event Hub not configured to use a virtual network service endpoint.",
+    "QueryID": "azure_eventhub_namespace_use_virtual_service_endpoint",
+    "DocumentURI": "policies/azure_eventhub_namespace_use_virtual_service_endpoint.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/EventHub"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_web_app_use_virtual_service_endpoint",
+    "Title": "App Service apps should use a virtual network service endpoint",
+    "Description": "Use virtual network service endpoints to restrict access to your app from selected subnets from an Azure virtual network. To learn more about App Service service endpoints, visit https://aks.ms/appservice-vnet-service-endpoint.",
+    "QueryID": "azure_appservice_web_app_use_virtual_service_endpoint",
+    "DocumentURI": "policies/azure_appservice_web_app_use_virtual_service_endpoint.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_monitor_log_alert_for_administrative_operations",
+    "Title": "An activity log alert should exist for specific Administrative operations",
+    "Description": "This policy audits specific Administrative operations with no activity log alerts configured.",
+    "QueryID": "azure_monitor_log_alert_for_administrative_operations",
+    "DocumentURI": "policies/azure_monitor_log_alert_for_administrative_operations.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Monitor"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_container_registry_use_virtual_service_endpoint",
+    "Title": "Container Registry should use a virtual network service endpoint",
+    "Description": "This policy audits any Container Registry not configured to use a virtual network service endpoint.",
+    "QueryID": "azure_container_registry_use_virtual_service_endpoint",
+    "DocumentURI": "policies/azure_container_registry_use_virtual_service_endpoint.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_network_security_group_remote_access_restricted",
+    "Title": "Management ports should be closed on your virtual machines",
+    "Description": "Open remote management ports are exposing your VM to a high level of risk from Internet-based attacks. These attacks attempt to brute force credentials to gain admin access to the machine.",
+    "QueryID": "azure_network_security_group_remote_access_restricted",
+    "DocumentURI": "policies/azure_network_security_group_remote_access_restricted.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Network"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_database_transparent_data_encryption_enabled",
+    "Title": "SQL databases transparent data encryption should be enabled",
+    "Description": "Transparent data encryption should be enabled to protect data-at-rest and meet compliance requirements.",
+    "QueryID": "azure_sql_database_transparent_data_encryption_enabled",
+    "DocumentURI": "policies/azure_sql_database_transparent_data_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_network_watcher_in_regions_with_virtual_network",
+    "Title": "Deploy network watcher when virtual networks are created",
+    "Description": "This policy creates a network watcher resource in regions with virtual networks. You need to ensure existence of a resource group named networkWatcherRG, which will be used to deploy network watcher instances.",
+    "QueryID": "azure_network_watcher_in_regions_with_virtual_network",
+    "DocumentURI": "policies/azure_network_watcher_in_regions_with_virtual_network.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Network"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_storage_account_secure_transfer_required_enabled",
+    "Title": "Secure transfer to storage accounts should be enabled",
+    "Description": "Audit requirement of Secure transfer in your storage account. Secure transfer is an option that forces your storage account to accept requests only from secure connections (HTTPS). Use of HTTPS ensures authentication between the server and the service and protects data in transit from network layer attacks such as man-in-the-middle, eavesdropping, and session-hijacking.",
+    "QueryID": "azure_storage_account_secure_transfer_required_enabled",
+    "DocumentURI": "policies/azure_storage_account_secure_transfer_required_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Storage"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_adaptive_application_controls_enabled",
+    "Title": "Adaptive application controls for defining safe applications should be enabled on your machines",
+    "Description": "Enable application controls to define the list of known-safe applications running on your machines, and alert you when other applications run. This helps harden your machines against malware. To simplify the process of configuring and maintaining your rules, Security Center uses machine learning to analyze the applications running on each machine and suggest the list of known-safe applications.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_adaptive_application_controls_enabled.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_log_analytics_agent_installed_windows",
+    "Title": "Audit Windows machines on which the Log Analytics agent is not connected as expected",
+    "Description": "Requires that prerequisites are deployed to the policy assignment scope. Machines are non-compliant if the agent is not installed, or if it is installed but the COM object AgentConfigManager.MgmtSvcCfg returns that it is registered to a workspace other than the ID specified in the policy parameter.",
+    "QueryID": "azure_compute_vm_log_analytics_agent_installed_windows",
+    "DocumentURI": "policies/azure_compute_vm_log_analytics_agent_installed_windows.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_appservice_function_app_remote_debugging_disabled",
+    "Title": "Function apps should have remote debugging turned off",
+    "Description": "Remote debugging requires inbound ports to be opened on function apps. Remote debugging should be turned off.",
+    "QueryID": "azure_appservice_function_app_remote_debugging_disabled",
+    "DocumentURI": "policies/azure_appservice_function_app_remote_debugging_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/AppService"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_malware_agent_automatic_upgrade_enabled",
+    "Title": "Microsoft Antimalware for Azure should be configured to automatically update protection signatures",
+    "Description": "This policy audits any Windows virtual machine not configured with automatic update of Microsoft Antimalware protection signatures.",
+    "QueryID": "azure_compute_vm_malware_agent_automatic_upgrade_enabled",
+    "DocumentURI": "policies/azure_compute_vm_malware_agent_automatic_upgrade_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_storage_account_default_network_access_rule_denied",
+    "Title": "Storage accounts should restrict network access",
+    "Description": "Network access to storage accounts should be restricted. Configure network rules so only applications from allowed networks can access the storage account. To allow connections from specific internet or on-premises clients, access can be granted to traffic from specific Azure virtual networks or to public internet IP address ranges.",
+    "QueryID": "azure_storage_account_default_network_access_rule_denied",
+    "DocumentURI": "policies/azure_storage_account_default_network_access_rule_denied.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Storage"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_scale_set_log_analytics_agent_installed",
+    "Title": "The Log Analytics extension should be installed on Virtual Machine Scale Sets",
+    "Description": "This policy audits any Windows/Linux Virtual Machine Scale Sets if the Log Analytics extension is not installed.",
+    "QueryID": "azure_compute_vm_scale_set_log_analytics_agent_installed",
+    "DocumentURI": "policies/azure_compute_vm_scale_set_log_analytics_agent_installed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_sql_database_long_term_geo_redundant_backup_enabled",
+    "Title": "Long-term geo-redundant backup should be enabled for Azure SQL Databases",
+    "Description": "This policy audits any Azure SQL Database with long-term geo-redundant backup not enabled.",
+    "QueryID": "azure_sql_database_long_term_geo_redundant_backup_enabled",
+    "DocumentURI": "policies/azure_sql_database_long_term_geo_redundant_backup_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/SQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_network_security_group_diagnostic_setting_deployed",
+    "Title": "Deploy Diagnostic Settings for Network Security Groups",
+    "Description": "This policy automatically deploys diagnostic settings to network security groups. A storage account with name '{storagePrefixParameter}{NSGLocation}' will be automatically created.",
+    "QueryID": "azure_network_security_group_diagnostic_setting_deployed",
+    "DocumentURI": "policies/azure_network_security_group_diagnostic_setting_deployed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Network"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_mssql_managed_instance_encryption_at_rest_using_cmk",
+    "Title": "SQL managed instances should use customer-managed keys to encrypt data at rest",
+    "Description": "Implementing Transparent Data Encryption (TDE) with your own key provides you with increased transparency and control over the TDE Protector, increased security with an HSM-backed external service, and promotion of separation of duties. This recommendation applies to organizations with a related compliance requirement.",
+    "QueryID": "azure_mssql_managed_instance_encryption_at_rest_using_cmk",
+    "DocumentURI": "policies/azure_mssql_managed_instance_encryption_at_rest_using_cmk.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/MySQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_temp_disks_cache_and_data_flows_encrypted",
+    "Title": "Virtual machines should encrypt temp disks, caches, and data flows between Compute and Storage resources",
+    "Description": "By default, a virtual machine's OS and data disks are encrypted-at-rest using platform-managed keys. Temp disks, data caches and data flowing between compute and storage aren't encrypted. Disregard this recommendation if: 1. using encryption-at-host, or 2. server-side encryption on Managed Disks meets your security requirements. Learn more in: Server-side encryption of Azure Disk Storage: https://aka.ms/disksse, Different disk encryption offerings: https://aka.ms/diskencryptioncomparison",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_temp_disks_cache_and_data_flows_encrypted.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_meet_security_option_requirement_windows",
+    "Title": "Windows machines should meet requirements for 'Security Options - Accounts'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'Security Options - Accounts' for limiting local account use of blank passwords and guest account status. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_meet_security_option_requirement_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_vulnerability_assessment_solution_enabled",
+    "Title": "A vulnerability assessment solution should be enabled on your virtual machines",
+    "Description": "Audits virtual machines to detect whether they are running a supported vulnerability assessment solution. A core component of every cyber risk and security program is the identification and analysis of vulnerabilities. Azure Security Center's standard pricing tier includes vulnerability scanning for your virtual machines at no extra cost. Additionally, Security Center can automatically deploy this tool for you.",
+    "QueryID": "azure_compute_vm_vulnerability_assessment_solution_enabled",
+    "DocumentURI": "policies/azure_compute_vm_vulnerability_assessment_solution_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_meet_security_options_requirement_windows",
+    "Title": "Windows machines should meet requirements for 'Security Options - Recovery console'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'Security Options - Recovery console' for allowing floppy copy and access to all drives and folders. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_meet_security_options_requirement_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_network_security_group_not_configured_gateway_subnets",
+    "Title": "Gateway subnets should not be configured with a network security group",
+    "Description": "Protect your subnet from potential threats by restricting access to it with a Network Security Group (NSG). NSGs contain a list of Access Control List (ACL) rules that allow or deny network traffic to your subnet.",
+    "QueryID": "azure_network_security_group_not_configured_gateway_subnets",
+    "DocumentURI": "policies/azure_network_security_group_not_configured_gateway_subnets.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Network"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_mssql_managed_instance_vulnerability_assessment_enabled",
+    "Title": "Vulnerability assessment should be enabled on SQL Managed Instance",
+    "Description": "Audit each SQL Managed Instance which doesn't have recurring vulnerability assessment scans enabled. Vulnerability assessment can discover, track, and help you remediate potential database vulnerabilities.",
+    "QueryID": "azure_mssql_managed_instance_vulnerability_assessment_enabled",
+    "DocumentURI": "policies/azure_mssql_managed_instance_vulnerability_assessment_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/MySQL"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_user_with_read_permission_on_subscription_mfa_enabled",
+    "Title": "Accounts with read permissions on Azure resources should be MFA enabled",
+    "Description": "Multi-Factor Authentication (MFA) should be enabled for all subscription accounts with read privileges to prevent a breach of accounts or resources.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_iam_user_with_read_permission_on_subscription_mfa_enabled.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+    "Title": "Auto provisioning of the Log Analytics agent should be enabled on your subscription",
+    "Description": "To monitor for security vulnerabilities and threats, Azure Security Center collects data from your Azure virtual machines. Data is collected by the Log Analytics agent, formerly known as the Microsoft Monitoring Agent (MMA), which reads various security-related configurations and event logs from the machine and copies the data to your Log Analytics workspace for analysis. We recommend enabling auto provisioning to automatically deploy the agent to all supported Azure VMs and any new ones that are created.",
+    "QueryID": "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+    "DocumentURI": "policies/azure_securitycenter_automatic_provisioning_monitoring_agent_on.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/SecurityCenter"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_meet_system_audit_policies_requirement_windows",
+    "Title": "Windows machines should meet requirements for 'System Audit Policies - Detailed Tracking'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'System Audit Policies - Detailed Tracking' for auditing DPAPI, process creation/termination, RPC events, and PNP activity. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_meet_system_audit_policies_requirement_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_meet_security_option_audit_requirement_windows",
+    "Title": "Windows machines should meet requirements for 'Security Options - Audit'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'Security Options - Audit' for forcing audit policy subcategory and shutting down if unable to log security audits. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_meet_security_option_audit_requirement_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_user_with_owner_permission_on_subscription_mfa_enabled",
+    "Title": "Accounts with owner permissions on Azure resources should be MFA enabled",
+    "Description": "Multi-Factor Authentication (MFA) should be enabled for all subscription accounts with owner permissions to prevent a breach of accounts or resources.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_iam_user_with_owner_permission_on_subscription_mfa_enabled.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_iam_user_with_write_permission_on_subscription_mfa_enabled",
+    "Title": "Accounts with write permissions on Azure resources should be MFA enabled",
+    "Description": "Multi-Factor Authentication (MFA) should be enabled for all subscription accounts with write privileges to prevent a breach of accounts or resources.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_iam_user_with_write_permission_on_subscription_mfa_enabled.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/ContainerRegistry"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_scale_set_endpoint_protection_solution_installed",
+    "Title": "Endpoint protection solution should be installed on virtual machine scale sets",
+    "Description": "Audit the existence and health of an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_scale_set_endpoint_protection_solution_installed.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_adaptive_network_hardening_recommendation_applied",
+    "Title": "Adaptive network hardening recommendations should be applied on internet facing virtual machines",
+    "Description": "Azure Security Center analyzes the traffic patterns of Internet facing virtual machines and provides Network Security Group rule recommendations that reduce the potential attack surface.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_adaptive_network_hardening_recommendation_applied.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_administrators_group_with_extra_accounts_windows",
+    "Title": "Audit Windows machines that have extra accounts in the Administrators group",
+    "Description": "Requires that prerequisites are deployed to the policy assignment scope. Machines are non-compliant if the local Administrators group contains members that are not listed in the policy parameter.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_administrators_group_with_extra_accounts_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_security_configuration_vulnerabilities_remediated",
+    "Title": "Vulnerabilities in security configuration on your machines should be remediated",
+    "Description": "Servers which do not satisfy the configured baseline will be monitored by Azure Security Center as recommendations.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_security_configuration_vulnerabilities_remediated.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_administrators_group_with_specified_members_windows",
+    "Title": "Audit Windows machines that have the specified members in the Administrators group",
+    "Description": "Requires that prerequisites are deployed to the policy assignment scope. Machines are non-compliant if the local Administrators group contains one or more of the members listed in the policy parameter.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_administrators_group_with_specified_members_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+    "Title": "Network traffic data collection agent should be installed on Linux virtual machines",
+    "Description": "Security Center uses the Microsoft Dependency agent to collect network traffic data from your Azure virtual machines to enable advanced network protection features such as traffic visualization on the network map, network hardening recommendations and specific network threats.",
+    "QueryID": "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+    "DocumentURI": "policies/azure_compute_vm_network_traffic_data_collection_linux_agent_installed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_with_no_specified_certificates_in_trusted_root_windows",
+    "Title": "Audit Windows machines that do not contain the specified certificates in Trusted Root",
+    "Description": "Requires that prerequisites are deployed to the policy assignment scope. Machines are non-compliant if the machine Trusted Root certificate store does not contain one or more of the certificates listed by the policy parameter.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_with_no_specified_certificates_in_trusted_root_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_administrators_group_with_no_specified_members_windows",
+    "Title": "Audit Windows machines missing any of specified members in the Administrators group",
+    "Description": "Requires that prerequisites are deployed to the policy assignment scope. Machines are non-compliant if the local Administrators group does not contain one or more members that are listed in the policy parameter.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_administrators_group_with_no_specified_members_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+    "Title": "Network traffic data collection agent should be installed on Windows virtual machines",
+    "Description": "Security Center uses the Microsoft Dependency agent to collect network traffic data from your Azure virtual machines to enable advanced network protection features such as traffic visualization on the network map, network hardening recommendations and specific network threats.",
+    "QueryID": "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+    "DocumentURI": "policies/azure_compute_vm_network_traffic_data_collection_windows_agent_installed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_meet_security_options_network_access_requirement_windows",
+    "Title": "Windows machines should meet requirements for 'Security Options - Network Access'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'Security Options - Network Access' for including access for anonymous users, local accounts, and remote access to the registry. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope. For details, visit https://aka.ms/gcpol.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_meet_security_options_network_access_requirement_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_scale_set_security_configuration_vulnerabilities_remediated",
+    "Title": "Vulnerabilities in security configuration on your virtual machine scale sets should be remediated",
+    "Description": "Audit the OS vulnerabilities on your virtual machine scale sets to protect them from attacks.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_scale_set_security_configuration_vulnerabilities_remediated.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_container_security_configurations_vulnerabilities_remediated",
+    "Title": "Vulnerabilities in container security configurations should be remediated",
+    "Description": "Audit vulnerabilities in security configuration on machines with Docker installed and display as recommendations in Azure Security Center.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_container_security_configurations_vulnerabilities_remediated.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_vm_meet_security_options_user_account_control_requirement_windows",
+    "Title": "Windows machines should meet requirements for 'Security Options - User Account Control'",
+    "Description": "Windows machines should have the specified Group Policy settings in the category 'Security Options - User Account Control' for mode for admins, behavior of elevation prompt, and virtualizing file and registry write failures. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope. For details, visit https://aka.ms/gcpol.",
+    "QueryID": null,
+    "DocumentURI": "policies/azure_compute_vm_meet_security_options_user_account_control_requirement_windows.md",
+    "ManualVerification": true,
+    "Severity": "",
+    "Tags": {
+      "hipaa_hitrust_v92": [
+        "true"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  }
+]

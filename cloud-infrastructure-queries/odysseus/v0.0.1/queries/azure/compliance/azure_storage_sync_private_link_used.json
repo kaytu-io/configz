@@ -1,0 +1,11 @@
+{
+  "ID": "azure_storage_sync_private_link_used",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with storagesync_service_connection as (\n  select\n    distinct a.id\n  from\n    azure_storage_sync as a,\n    jsonb_array_elements(private_endpoint_connections) as connection\n  where\n    connection -\u003e 'PrivateLinkServiceConnectionState' -\u003e\u003e 'status' = 'Approved'\n)\nselect\n  a.id as resource,\n  case\n    when incoming_traffic_policy = 'AllowAllTraffic' then 'alarm'\n    when c.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when incoming_traffic_policy = 'AllowAllTraffic' then a.name || ' using public networks.'\n    when c.id is null then a.name || ' not uses private link.'\n    else a.name || ' uses private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_sync as a\n  left join storagesync_service_connection as c on c.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_sync",
+  "ListOfTables": [
+    "azure_storage_sync",
+    "azure_subscription"
+  ]
+}

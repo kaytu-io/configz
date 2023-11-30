@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "inactive",
+    "name": "SSH Public Key",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.compute/sshpublickeys' group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

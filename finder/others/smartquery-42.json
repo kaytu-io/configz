@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all DMS Instances which are not publicly accessible",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when publicly_accessible then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when publicly_accessible then title || ' publicly accessible.'\n    else title || ' not publicly accessible.'\n  end reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_dms_replication_instance"
+}

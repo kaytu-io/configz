@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "active",
+    "name": "Azure Cosmos DB PostgreSQL cluster",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.dbforpostgresql/servers' group by 1,2;",
+    "tags": {
+        "category": ["Database"]
+    }
+}

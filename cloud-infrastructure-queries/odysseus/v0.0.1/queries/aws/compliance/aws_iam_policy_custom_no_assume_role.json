@@ -1,0 +1,10 @@
+{
+  "ID": "aws_iam_policy_custom_no_assume_role",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with filter_users as (\n  select\n    user_id,\n    name,\n    policies\n  from\n    aws_iam_user,\n    jsonb_array_elements_text(inline_policies) as policies\n  where\n    policies like '%AssumeRole%'\n)\nselect\n  u.arn as resource,\n  case\n    when fu.user_id is not null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when fu.user_id is not null then u.name || ' custom policies allow STS Role assumption.'\n    else u.name || ' custom policies does not allow STS Role assumption.'\n  end as reason\n  \n  , u.region, u.account_id\nfrom\n  aws_iam_user as u\n  left join filter_users as fu on u.user_id = fu.user_id\norder by\nu.name;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_user",
+  "ListOfTables": [
+    "aws_iam_user"
+  ]
+}

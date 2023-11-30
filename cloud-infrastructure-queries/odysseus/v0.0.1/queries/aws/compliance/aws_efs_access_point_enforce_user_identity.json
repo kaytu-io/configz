@@ -1,0 +1,10 @@
+{
+  "ID": "aws_efs_access_point_enforce_user_identity",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  access_point_arn as resource,\n  case\n    when posix_user is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when posix_user is null then title || ' does not enforce a user identity.'\n    else title || ' enforces a user identity.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_efs_access_point;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_efs_access_point",
+  "ListOfTables": [
+    "aws_efs_access_point"
+  ]
+}

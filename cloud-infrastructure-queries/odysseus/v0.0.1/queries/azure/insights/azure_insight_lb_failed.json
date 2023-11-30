@@ -1,0 +1,10 @@
+{
+  "ID": "azure_insight_lb_failed",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  id,\n  name,\n  type,\n  provisioning_state, subscription_id, kaytu_account_id, kaytu_resource_id\nfrom\n  azure_lb\nwhere\n  provisioning_state = 'Failed';",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_lb",
+  "ListOfTables": [
+    "azure_lb"
+  ]
+}

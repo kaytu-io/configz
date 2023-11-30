@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "inactive",
+    "name": "Front Door (classic)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/frontdoors' group by 1,2;",
+    "tags": {
+        "category": ["Networking"]
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_api_gatewayv2_route_authorization_type_configured",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  'arn:' || partition || ':apigateway:' || region || '::/apis/' || api_id || '/routes/' || route_id as resource,\n  case\n    when authorization_type is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when authorization_type is null then route_id || ' authorization type not configured.'\n    else route_id || ' authorization type ' || authorization_type || ' configured.'\n  end as reason\n  , region, account_id\nfrom\n  aws_api_gatewayv2_route;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_api_gatewayv2_route",
+  "ListOfTables": [
+    "aws_api_gatewayv2_route"
+  ]
+}

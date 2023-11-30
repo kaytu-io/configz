@@ -1,0 +1,18 @@
+{
+  "ID": 9,
+  "QueryID": "aws_insight_iam_user_with_inline_policies",
+  "Connector": "AWS",
+  "ShortTitle": "Users with Inline Policies",
+  "LongTitle": "List users that have inline policies",
+  "Description": "List users that have inline policies",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_glue_data_catalog_encryption_settings_metadata_encryption_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  case\n    when encryption_at_rest is not null and encryption_at_rest -\u003e\u003e 'CatalogEncryptionMode' != 'DISABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encryption_at_rest is not null and encryption_at_rest -\u003e\u003e 'CatalogEncryptionMode' != 'DISABLED' then 'Glue data catalog metadata encryption is enabled in ' || region || '.'\n    else 'Glue data catalog metadata encryption is disabled in ' || region || '.'\n  end as reason\n  , region, account_id\nfrom\n  aws_glue_data_catalog_encryption_settings;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_glue_data_catalog_encryption_settings",
+  "ListOfTables": [
+    "aws_glue_data_catalog_encryption_settings"
+  ]
+}

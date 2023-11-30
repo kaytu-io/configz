@@ -1,0 +1,10 @@
+{
+  "ID": "aws_common_dimensions_sql_unattached_eips",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  'arn:' || partition || ':ec2:' || region || ':' || account_id || ':eip/' || allocation_id as resource,\n  case\n    when association_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when association_id is null then public_ip || ' has no association.'\n    else public_ip || ' associated with ' || private_ip_address || '.'\n  end as reason\n  , region, account_id\nfrom\n  aws_vpc_eip;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc_eip",
+  "ListOfTables": [
+    "aws_vpc_eip"
+  ]
+}

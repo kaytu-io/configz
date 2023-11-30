@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "aws_stale_dynamodb_table_data",
+    "Title": "Tables with stale data should be reviewed",
+    "Description": "If the data has not changed recently and has become stale, the table should be reviewed.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_stale_dynamodb_table_data",
+    "DocumentURI": "policies/aws_stale_dynamodb_table_data.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/DynamoDB"
+      ]
+    },
+    "Managed": true
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_common_dimensions_sql_ebs_with_low_usage",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with ebs_usage as (\n  select\n    partition,\n    account_id,\n    _ctx,\n    region,\n    volume_id,\n    round(avg(max)) as avg_max,\n    count(max) as days\n    from (\n      (\n        select\n          partition,\n          account_id,\n          _ctx,\n          region,\n          volume_id,\n          cast(maximum as numeric) as max\n        from\n          aws_ebs_volume_metric_read_ops_daily\n        where\n          date_part('day', now() - timestamp) \u003c= 30\n      )\n      UNION\n      (\n        select\n          partition,\n          account_id,\n          _ctx,\n          region,\n          volume_id,\n          cast(maximum as numeric) as max\n        from\n          aws_ebs_volume_metric_write_ops_daily\n        where\n          date_part('day', now() - timestamp) \u003c= 30\n      )\n    ) as read_and_write_ops\n    group by 1,2,3,4,5\n)\nselect\n  'arn:' || partition || ':ec2:' || region || ':' || account_id || ':volume/' || volume_id as resource,\n  case\n    when avg_max \u003c= $1 then 'alarm'\n    when avg_max \u003c= $2 then 'info'\n    else 'ok'\n  end as status,\n  volume_id || ' is averaging ' || avg_max || ' read and write ops over the last ' || days || ' days.' as reason\n  , region, account_id\nfrom\n  ebs_usage;\n",
+  "Connector": "AWS",
+  "ListOfTables": [
+    "aws_ebs_volume_metric_read_ops_daily",
+    "aws_ebs_volume_metric_write_ops_daily"
+  ]
+}

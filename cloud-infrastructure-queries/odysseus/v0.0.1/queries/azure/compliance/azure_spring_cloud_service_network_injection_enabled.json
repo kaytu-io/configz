@@ -1,0 +1,11 @@
+{
+  "ID": "azure_spring_cloud_service_network_injection_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  distinct a.name as resource,\n  case\n    when sku_tier \u003c\u003e 'Standard' then 'Skip'\n    when sku_tier = 'Standard' and network_profile -\u003e\u003e 'ServiceRuntimeSubnetID' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sku_tier \u003c\u003e 'Standard' then a.name || ' is of ' || sku_tier || ' tier.'\n    when sku_tier = 'Standard' and network_profile -\u003e\u003e 'ServiceRuntimeSubnetID' is not null then a.name || ' network injection enabled.'\n    else a.name || ' network injection disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_spring_cloud_service as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_spring_cloud_service",
+  "ListOfTables": [
+    "azure_spring_cloud_service",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "ID": "azure_sql",
+  "Title": "SQL Checks",
+  "Connector": "Azure",
+  "DocumentURI": "benchmarks/azure_sql.md",
+  "Description": "Thrifty developers checks long running SQL databases should be associated with reserved capacity.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SQL"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-azure-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "azure_sql_database_long_running_reserved_capacity"
+  ]
+}

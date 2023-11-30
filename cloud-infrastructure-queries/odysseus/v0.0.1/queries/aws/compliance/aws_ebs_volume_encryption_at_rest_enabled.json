@@ -1,0 +1,10 @@
+{
+  "ID": "aws_ebs_volume_encryption_at_rest_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when encrypted then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encrypted then volume_id || ' encrypted.'\n    else volume_id || ' not encrypted.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_volume;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ebs_volume",
+  "ListOfTables": [
+    "aws_ebs_volume"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_insight_iam_user_with_mfa_disabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  name,\n  user_id,\n  mfa_enabled, account_id, kaytu_account_id, kaytu_resource_id\nfrom\n  aws_iam_user\nwhere\n not mfa_enabled;",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_user",
+  "ListOfTables": [
+    "aws_iam_user"
+  ]
+}

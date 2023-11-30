@@ -1,0 +1,13 @@
+{
+  "ID": "azure_iam_external_user_with_owner_role",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with all_owner_users as (\n  select\n  distinct\n    u.display_name,\n    d.role_name,\n    u.account_enabled,\n    u.user_principal_name,\n    d.subscription_id\n  from\n    azuread_user as u\n    left join azure_role_assignment as a on a.principal_id = u.id\n    left join azure_role_definition as d on d.id = a.role_definition_id\n    where d.role_name = 'Owner'\n)\nselect\n  a.user_principal_name as resource,\n  case\n    when a.user_principal_name like '%EXT%' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when a.user_principal_name like '%EXT%' then a.display_name || ' is external user with ' || a.role_name || ' role.'\n    else a.display_name || ' is domain user with ' || a.role_name || ' role.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  all_owner_users as a;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azuread_user",
+  "ListOfTables": [
+    "azure_role_assignment",
+    "azure_role_definition",
+    "azure_tenant",
+    "azuread_user"
+  ]
+}

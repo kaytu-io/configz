@@ -1,0 +1,23 @@
+{
+  "ID": 3,
+  "QueryID": "aws_insight_lambda_function_with_unsupported_engine",
+  "Connector": "AWS",
+  "ShortTitle": "List Lambda Functions with unsupported engines",
+  "LongTitle": "List Lambda Functions which are using unsupported engines",
+  "Description": "List Lambda Functions which are using unsupported engines",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt",
+      "Resiliency"
+    ],
+    "persona": [
+      "Executive",
+      "Product",
+      "FinOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

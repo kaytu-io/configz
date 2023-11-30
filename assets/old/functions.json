@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "Functions",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.web/sites') group by 1,2;",
+    "tags": {
+        "category": ["Serverless"]
+    }
+}

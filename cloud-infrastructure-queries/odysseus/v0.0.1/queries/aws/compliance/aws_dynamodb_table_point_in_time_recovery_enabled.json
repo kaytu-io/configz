@@ -1,0 +1,10 @@
+{
+  "ID": "aws_dynamodb_table_point_in_time_recovery_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when lower( point_in_time_recovery_description -\u003e\u003e 'PointInTimeRecoveryStatus' ) = 'disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when lower( point_in_time_recovery_description -\u003e\u003e 'PointInTimeRecoveryStatus' ) = 'disabled' then title || ' point-in-time recovery not enabled.'\n    else title || ' point-in-time recovery enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_dynamodb_table;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_dynamodb_table",
+  "ListOfTables": [
+    "aws_dynamodb_table"
+  ]
+}

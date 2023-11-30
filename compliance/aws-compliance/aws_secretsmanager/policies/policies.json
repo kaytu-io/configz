@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "aws_secretsmanager_secret_unused",
+    "Title": "Unused Secrets Manager secrets should be deleted",
+    "Description": "AWS Secrets Manager secrets should be accessed within a specified number of days. The default value is 90 days.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_secretsmanager_secret_unused",
+    "DocumentURI": "policies/aws_secretsmanager_secret_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Secrets Manager"
+      ]
+    },
+    "Managed": true
+  }
+]

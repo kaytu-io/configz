@@ -1,0 +1,18 @@
+{
+  "ID": 2,
+  "QueryID": "aws_insight_lambda_function_retention_period_less_than_30_days",
+  "Connector": "AWS",
+  "ShortTitle": "",
+  "LongTitle": "List of lambda function whose retention period is less than 30 days",
+  "Description": "List of lambda function whose retention period is less than 30 days",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt",
+      "Resiliency"
+    ]
+  },
+  "Links": null,
+  "Enabled": false,
+  "Internal": false
+}

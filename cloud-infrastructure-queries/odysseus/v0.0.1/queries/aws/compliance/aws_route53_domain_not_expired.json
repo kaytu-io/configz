@@ -1,0 +1,10 @@
+{
+  "ID": "aws_route53_domain_not_expired",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when expiration_date \u003c (current_date - interval '1' minute) then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when expiration_date \u003c (current_date - interval '1' minute) then title || ' expired on ' || to_char(expiration_date, 'DD-Mon-YYYY') || '.'\n    else title || ' set to expire in ' || extract(day from expiration_date - current_date) || ' days.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_route53_domain;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_route53_domain",
+  "ListOfTables": [
+    "aws_route53_domain"
+  ]
+}

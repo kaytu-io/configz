@@ -1,0 +1,10 @@
+{
+  "ID": "aws_s3_bucket_public_access_blocked",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when\n      block_public_acls\n      and block_public_policy\n      and ignore_public_acls\n      and restrict_public_buckets\n    then\n      'ok'\n    else\n      'alarm'\n  end as status,\n  case\n    when\n      block_public_acls\n      and block_public_policy\n      and ignore_public_acls\n      and restrict_public_buckets\n    then name || ' blocks public access.'\n    else name || ' does not block public access.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_s3_bucket",
+  "ListOfTables": [
+    "aws_s3_bucket"
+  ]
+}

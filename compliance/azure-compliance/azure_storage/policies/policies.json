@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "azure_storage_account_without_lifecycle_policy",
+    "Title": "Storage accounts should have lifecycle policies",
+    "Description": "Storage accounts should have a lifecycle policy associated for data retention.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_storage_account_without_lifecycle_policy",
+    "DocumentURI": "policies/azure_storage_account_without_lifecycle_policy.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Storage"
+      ]
+    },
+    "Managed": true
+  }
+]

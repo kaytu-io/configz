@@ -1,0 +1,3038 @@
+[
+  {
+    "ID": "aws_drs_job_enabled",
+    "Title": "DRS jobs should be enabled",
+    "Description": "Ensure if DRS is enabled with jobs. This rule is non-compliant if DRS is not enabled with jobs for a particular region.",
+    "QueryID": "aws_drs_job_enabled",
+    "DocumentURI": "policies/aws_drs_job_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/DRS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_role_unused_60",
+    "Title": "IAM roles that have not been used in 60 days should be removed",
+    "Description": "This control checks whether the IAM role has been used in 60 days. Unused accounts and roles increase the attack surface area.",
+    "QueryID": "aws_iam_role_unused_60",
+    "DocumentURI": "policies/aws_iam_role_unused_60.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_model_in_vpc",
+    "Title": "SageMaker models should be in a VPC",
+    "Description": "Manage access to the AWS Cloud by ensuring SageMaker models are within an Amazon Virtual Private Cloud (Amazon VPC).",
+    "QueryID": "aws_sagemaker_model_in_vpc",
+    "DocumentURI": "policies/aws_sagemaker_model_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_security_audit_role",
+    "Title": "IAM Security Audit role should be created to conduct security audits",
+    "Description": "Ensure IAM Security Audit role is created. By creating an IAM role with a security audit policy, a distinct segregation of responsibilities is established between the security team and other teams within the organization.",
+    "QueryID": "aws_iam_security_audit_role",
+    "DocumentURI": "policies/aws_iam_security_audit_role.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_domain_not_expired",
+    "Title": "Route 53 domains should not be expired",
+    "Description": "This control identifes any expired domain names registered with AWS Route 53. When the expired domain names are not restored promptly, they will become available for others to register. Restoring on time your Route 53 expired domains will allow you to reestablish full control over their registration.",
+    "QueryID": "aws_route53_domain_not_expired",
+    "DocumentURI": "policies/aws_route53_domain_not_expired.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_eks_cluster_no_default_vpc",
+    "Title": "EKS clusters should not be configured within a default VPC",
+    "Description": "Ensure to configure a new VPC for your EKS cluster as default VPC comes with a default configuration that lacks the proper security controls. Your network should be well configured and should follow the least privilege principle, meaning only the necessary privileges are granted.",
+    "QueryID": "aws_eks_cluster_no_default_vpc",
+    "DocumentURI": "policies/aws_eks_cluster_no_default_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EKS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_in_more_than_one_region",
+    "Title": "VPCs should exist in multiple regions",
+    "Description": "This control checks whether there are VPCs present in multiple regions.",
+    "QueryID": "aws_vpc_in_more_than_one_region",
+    "DocumentURI": "policies/aws_vpc_in_more_than_one_region.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_subnet_multi_az_enabled",
+    "Title": "VPCs subnets should exist in multiple availability zones",
+    "Description": "Ensure that each VPC has subnets spread across multiple availability zones.",
+    "QueryID": "aws_vpc_subnet_multi_az_enabled",
+    "DocumentURI": "policies/aws_vpc_subnet_multi_az_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecs_cluster_instance_in_vpc",
+    "Title": "ECS cluster instances should be in a VPC",
+    "Description": "Deploy AWS ECS cluster instance within an Amazon Virtual Private Cloud (Amazon VPC) for a secure communication between a instance and other services within the Amazon VPC.",
+    "QueryID": "aws_ecs_cluster_instance_in_vpc",
+    "DocumentURI": "policies/aws_ecs_cluster_instance_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_domain_expires_7_days",
+    "Title": "Route 53 domains should not expire within next 7 days",
+    "Description": "This controls ensures that all the domain names registered with AWS Route 53 or transferred to AWS Route 53 are renewed 7 days before their validity period ends.",
+    "QueryID": "aws_route53_domain_expires_7_days",
+    "DocumentURI": "policies/aws_route53_domain_expires_7_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_domain_expires_30_days",
+    "Title": "Route 53 domains should not expire within next 30 days",
+    "Description": "This control ensures that all the domain names registered with AWS Route 53 or transferred to AWS Route 53 are renewed 30 days before their validity period ends.",
+    "QueryID": "aws_route53_domain_expires_30_days",
+    "DocumentURI": "policies/aws_route53_domain_expires_30_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_efs_file_system_enforces_ssl",
+    "Title": "EFS file systems should enforce SSL",
+    "Description": "To help protect data in transit, ensure that your EFS file systems require requests to use Secure Socket Layer (SSL).",
+    "QueryID": "aws_efs_file_system_enforces_ssl",
+    "DocumentURI": "policies/aws_efs_file_system_enforces_ssl.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EFS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_user_hardware_mfa_enabled",
+    "Title": "IAM users should have hardware MFA enabled",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring hardware MFA is enabled for the user.",
+    "QueryID": "aws_iam_user_hardware_mfa_enabled",
+    "DocumentURI": "policies/aws_iam_user_hardware_mfa_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_training_job_in_vpc",
+    "Title": "SageMaker training jobs should be in VPC",
+    "Description": "Manage access to the AWS Cloud by ensuring SageMaker training jobs are within an Amazon Virtual Private Cloud (Amazon VPC).",
+    "QueryID": "aws_sagemaker_training_job_in_vpc",
+    "DocumentURI": "policies/aws_sagemaker_training_job_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_backup_plan_region_configured",
+    "Title": "Backup plan should exist in a region",
+    "Description": "Ensure that there exists at least one backup plan in a region. The rule is non-compliant if there are no backup plans in a region.",
+    "QueryID": "aws_backup_plan_region_configured",
+    "DocumentURI": "policies/aws_backup_plan_region_configured.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Backup"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_subnet_public_and_private",
+    "Title": "VPCs should have both public and private subnets configured",
+    "Description": "Ensure that all VPCs have both public and private subnets configured.",
+    "QueryID": "aws_vpc_subnet_public_and_private",
+    "DocumentURI": "policies/aws_vpc_subnet_public_and_private.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_ami_restrict_public_access",
+    "Title": "EC2 AMIs should restrict public access",
+    "Description": "This control checks whether EC2 AMIs are set as private or not. The control fails if the EC2 AMIs are set as public.",
+    "QueryID": "aws_ec2_ami_restrict_public_access",
+    "DocumentURI": "policies/aws_ec2_ami_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_glue_job_s3_encryption_enabled",
+    "Title": "Glue jobs S3 encryption should be enabled",
+    "Description": "Ensure Glue jobs have S3 encryption enabled to protect sensitive information at rest.",
+    "QueryID": "aws_glue_job_s3_encryption_enabled",
+    "DocumentURI": "policies/aws_glue_job_s3_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "AWS/Glue"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_backup_vault_region_configured",
+    "Title": "Backup vaults should exist in a region",
+    "Description": "Ensure that there exists at least one backup vault in a region. The rule is non-compliant if there are no backup vaults in a region.",
+    "QueryID": "aws_backup_vault_region_configured",
+    "DocumentURI": "policies/aws_backup_vault_region_configured.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Backup"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_guardduty_centrally_configured",
+    "Title": "GuardDuty Detector should be centrally configured",
+    "Description": "Ensure that GuardDuty is centrally configured, if GuardDuty is not under central management, it becomes impossible to centrally manage GuardDuty findings, settings, and member accounts.",
+    "QueryID": "aws_guardduty_centrally_configured",
+    "DocumentURI": "policies/aws_guardduty_centrally_configured.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_lambda_function_tracing_enabled",
+    "Title": "Lambda functions tracing should be enabled",
+    "Description": "AWS X-Ray can be used to visualize the components of application, identify performance bottlenecks, and troubleshoot requests that resulted in an error. Lambda functions send trace data to X-Ray, and X-Ray processes the data to generate a service map and searchable trace summaries.",
+    "QueryID": "aws_lambda_function_tracing_enabled",
+    "DocumentURI": "policies/aws_lambda_function_tracing_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Lambda"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_object_logging_enabled",
+    "Title": "S3 buckets object logging should be enabled",
+    "Description": "Object-Level logging saves events in JSON format in CloudTrail. This is recommended from a security best practice perspective for buckets that contain sensitive data.",
+    "QueryID": "aws_s3_bucket_object_logging_enabled",
+    "DocumentURI": "policies/aws_s3_bucket_object_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_snapshot_encryption_enabled",
+    "Title": "EBS snapshots should be encrypted",
+    "Description": "Ensure that EBS snapshots are encrypted. This rule is non-compliant if the EBS snapshot is not encrypted.",
+    "QueryID": "aws_ebs_snapshot_encryption_enabled",
+    "DocumentURI": "policies/aws_ebs_snapshot_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_networkfirewall_firewall_in_vpc",
+    "Title": "Networkfirewall firewall should be in a VPC",
+    "Description": "Deploy AWS Networkfirewall firewall within an Amazon Virtual Private Cloud (Amazon VPC) for a secure communication between a function and other services within the Amazon VPC.",
+    "QueryID": "aws_networkfirewall_firewall_in_vpc",
+    "DocumentURI": "policies/aws_networkfirewall_firewall_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/NetworkFirewall"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_domain_auto_renew_enabled",
+    "Title": "Route 53 domains auto renew should be enabled",
+    "Description": "This control ensures that AWS Route 53 Auto Renew feature is enabled to automatically renew your domain names as the expiration date approaches.",
+    "QueryID": "aws_route53_domain_auto_renew_enabled",
+    "DocumentURI": "policies/aws_route53_domain_auto_renew_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_policy_no_full_access_to_kms",
+    "Title": "IAM policy should not grant full access to KMS service",
+    "Description": "KMS is a critical service and IAM policies should follow least privilege model for this service in particular. This control is non compliant if the managed IAM policy allows full access to KMS service.",
+    "QueryID": "aws_iam_policy_no_full_access_to_cloudtrail",
+    "DocumentURI": "policies/aws_iam_policy_no_full_access_to_kms.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudwatch_cross_account_sharing",
+    "Title": "CloudWatch should not allow cross-account sharing",
+    "Description": "Ensure that your Amazon CloudWatch is configured to allow access only to friendly AWS accounts in order to prevent unauthorized users from sharing their CloudWatch events.",
+    "QueryID": "aws_cloudwatch_cross_account_sharing",
+    "DocumentURI": "policies/aws_cloudwatch_cross_account_sharing.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudWatch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_user_data_no_secrets",
+    "Title": "EC2 instances user data should not have secrets",
+    "Description": "User data is a metadata field of an EC2 instance that allows custom code to run after the instance is launched. It contains code which is exposed to any entity which has the most basic access to EC2, even read-only configurations. It is recommended to not use secrets in user data.",
+    "QueryID": "aws_ec2_instance_user_data_no_secrets",
+    "DocumentURI": "policies/aws_ec2_instance_user_data_no_secrets.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_policy_custom_no_assume_role",
+    "Title": "IAM roles should not have any assume role policies attached",
+    "Description": "Role assume policies can provide access to roles in external AWS accounts.",
+    "QueryID": "aws_iam_policy_custom_no_assume_role",
+    "DocumentURI": "policies/aws_iam_policy_custom_no_assume_role.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_emr_account_public_access_blocked",
+    "Title": "EMR public access should be blocked at account level",
+    "Description": "The block public access feature prevents a cluster in a public subnet from launching when any security group associated with the cluster has a rule that allows inbound traffic from IPv4 0.0.0.0/0 or IPv6 ::/0 (public access) on a port, unless the port has been specified as an exception - port 22 is an exception by default. This feature is enabled by default for each AWS Region in your AWS account and is not recommended to be turned off.",
+    "QueryID": "aws_emr_account_public_access_blocked",
+    "DocumentURI": "policies/aws_emr_account_public_access_blocked.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EMR"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_classic_lb_with_outbound_rule",
+    "Title": "ELB classic load balancers should have at least one outbound rule",
+    "Description": "Ensure classic load balancers have at least one outbound rule in all the attached security groups. A security group without any outbound rule rejects all outgoing traffic. This means that all outgoing traffic originating from your cloud assets (instances, containers, etc.) will be dropped when it reaches the ELB layer.",
+    "QueryID": "aws_elb_classic_lb_with_outbound_rule",
+    "DocumentURI": "policies/aws_elb_classic_lb_with_outbound_rule.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_zone_query_logging_enabled",
+    "Title": "Route 53 zones should have query logging enabled",
+    "Description": "Ensure Route 53 zones have query logging enabled.",
+    "QueryID": "aws_route53_zone_query_logging_enabled",
+    "DocumentURI": "policies/aws_route53_zone_query_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecs_service_load_balancer_attached",
+    "Title": "ECS services should be attached to a load balancer",
+    "Description": "ECS service can be configured to use Elastic Load Balancing to distribute traffic evenly across the tasks in your service. It is recommended to use Application Load Balancers for your Amazon ECS services so that you can take advantage of these latest features, unless your service requires a feature that is only available with Network Load Balancers or Classic Load Balancers.",
+    "QueryID": "aws_ecs_service_load_balancer_attached",
+    "DocumentURI": "policies/aws_ecs_service_load_balancer_attached.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_tls_listener_protocol_version",
+    "Title": "ELB listeners SSL/TLS protocol version should be checked",
+    "Description": "Using insecure ciphers for your ELB Predefined or Custom Security Policy, could make the SSL connection between the client and the load balancer vulnerable to exploits. TLS 1.0 was recommended to be disabled by PCI Council after June 30, 2016.",
+    "QueryID": "aws_elb_tls_listener_protocol_version",
+    "DocumentURI": "policies/aws_elb_tls_listener_protocol_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_notebook_instance_in_vpc",
+    "Title": "SageMaker notebook instances should be in a VPC",
+    "Description": "Manage access to the AWS Cloud by ensuring SageMaker notebook instances are within an Amazon Virtual Private Cloud (Amazon VPC).",
+    "QueryID": "aws_sagemaker_notebook_instance_in_vpc",
+    "DocumentURI": "policies/aws_sagemaker_notebook_instance_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_listener_use_secure_ssl_cipher",
+    "Title": "ELB listeners should use secure SSL cipher",
+    "Description": "Ensure that ELB listeners do not have any insecure SSL ciphers. Using insecure and deprecated ciphers for your ELB Predefined Security Policy or Custom Security Policy could make the SSL connection between the client and the load balancer vulnerable to exploits.",
+    "QueryID": "aws_elb_listener_use_secure_ssl_cipher",
+    "DocumentURI": "policies/aws_elb_listener_use_secure_ssl_cipher.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_efs_file_system_encrypted_with_cmk",
+    "Title": "EFS file systems should be encrypted with CMK",
+    "Description": "Ensure Amazon Elastic File Systems (Amazon EFS) are encrypted using CMK. The rule is non compliant if the EFS File System is not encrypted using CMK.",
+    "QueryID": "aws_efs_file_system_encrypted_with_cmk",
+    "DocumentURI": "policies/aws_efs_file_system_encrypted_with_cmk.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EFS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecs_task_definition_logging_enabled",
+    "Title": "ECS task definitions should have logging enabled",
+    "Description": "Ensure logging is enabled for task definitions so that you can access your containerized application logs for debugging and auditing purposes. On top of centralized logging, these log drivers often include additional capabilities that are useful for operation.",
+    "QueryID": "aws_ecs_task_definition_logging_enabled",
+    "DocumentURI": "policies/aws_ecs_task_definition_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_trail_bucket_mfa_enabled",
+    "Title": "CloudTrail trail S3 buckets MFA delete should be enabled",
+    "Description": "Ensure that CloudTrail trail S3 buckets should have MFA delete enabled. MFA delete helps prevent accidental bucket deletions by requiring the user who initiates the delete action to prove physical possession of an MFA device with an MFA code and adding an extra layer of friction and security to the delete action.",
+    "QueryID": "aws_cloudtrail_trail_bucket_mfa_enabled",
+    "DocumentURI": "policies/aws_cloudtrail_trail_bucket_mfa_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_domain_transfer_lock_enabled",
+    "Title": "Route 53 domains should have transfer lock enabled",
+    "Description": "Ensure Route 53 registered domains are locked to prevent any unauthorized transfers to another domain name registrar.",
+    "QueryID": "aws_route53_domain_transfer_lock_enabled",
+    "DocumentURI": "policies/aws_route53_domain_transfer_lock_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_lambda_function_restrict_public_url",
+    "Title": "Lambda functions should restrict public URL",
+    "Description": "This control verifies that the Lambda function does not have a publicly accessible URL. Exposing services publicly could potentially make sensitive data accessible to malicious actors.",
+    "QueryID": "aws_lambda_function_restrict_public_url",
+    "DocumentURI": "policies/aws_lambda_function_restrict_public_url.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Lambda"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_guardduty_no_high_severity_findings",
+    "Title": "GuardDuty Detector should not have high severity findings",
+    "Description": "GuardDuty generates a finding whenever it detects unexpected and potentially malicious activity in your AWS environment. If critical findings are not addressed threats can spread in the environment. This rule is non-compliant if there are high severity findings.",
+    "QueryID": "aws_guardduty_no_high_severity_findings",
+    "DocumentURI": "policies/aws_guardduty_no_high_severity_findings.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_glacier_vault_restrict_public_access",
+    "Title": "Glacier vault should restrict public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring AWS Glacier vault cannot be publicly accessed.",
+    "QueryID": "aws_glacier_vault_restrict_public_access",
+    "DocumentURI": "policies/aws_glacier_vault_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Glacier"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudformation_stack_rollback_enabled",
+    "Title": "CloudFormation stacks should have rollback enabled",
+    "Description": "Ensure CloudFormation stacks have the rollback feature enabled. Rollback triggers enable you to have AWS CloudFormation monitor the state of your application during stack creation and updating, and to rollback that operation if the application breaches the threshold of any of the alarms you've specified.",
+    "QueryID": "aws_cloudformation_stack_rollback_enabled",
+    "DocumentURI": "policies/aws_cloudformation_stack_rollback_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFormation"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_glue_job_bookmarks_encryption_enabled",
+    "Title": "Glue jobs bookmarks encryption should be enabled",
+    "Description": "Ensure Glue job bookmarks have encryption enabled to protect sensitive information at rest.",
+    "QueryID": "aws_glue_job_bookmarks_encryption_enabled",
+    "DocumentURI": "policies/aws_glue_job_bookmarks_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "AWS/Glue"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_kms_cmk_policy_prohibit_public_access",
+    "Title": "KMS CMK policies should prohibit public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring AWS KMS CMK cannot be publicly accessed.",
+    "QueryID": "aws_kms_cmk_policy_prohibit_public_access",
+    "DocumentURI": "policies/aws_kms_cmk_policy_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/KMS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_application_lb_with_outbound_rule",
+    "Title": "ELB application load balancers should have at least one outbound rule",
+    "Description": "Ensure application load balancers have at least one outbound rule in all the attached security groups. A security group without any outbound rule rejects all outgoing traffic. This means that all outgoing traffic originating from your cloud assets (instances, containers, etc.) will be dropped when it reaches the ELB layer.",
+    "QueryID": "aws_elb_application_lb_with_outbound_rule",
+    "DocumentURI": "policies/aws_elb_application_lb_with_outbound_rule.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecr_repository_prohibit_public_access",
+    "Title": "ECR repositories should prohibit public access",
+    "Description": "Ensure there are no ECR repositories set as public.",
+    "QueryID": "aws_ecr_repository_prohibit_public_access",
+    "DocumentURI": "policies/aws_ecr_repository_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECR"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_kinesis_stream_encrypted_with_kms_cmk",
+    "Title": "Kinesis streams should be encrypted with CMK",
+    "Description": "Ensure Kinesis streams are encrypted using CMK. Using KMS CMK, you gain full control over who can use the keys to access AWS Kinesis data (including the system metadata).",
+    "QueryID": "aws_kinesis_stream_encrypted_with_kms_cmk",
+    "DocumentURI": "policies/aws_kinesis_stream_encrypted_with_kms_cmk.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Kinesis"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_docdb_cluster_instance_logging_enabled",
+    "Title": "DocumentDB instance logging should be enabled",
+    "Description": "To help with logging and monitoring within your environment, ensure Amazon DocumentDB instance logging is enabled.",
+    "QueryID": "aws_docdb_cluster_instance_logging_enabled",
+    "DocumentURI": "policies/aws_docdb_cluster_instance_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/DocumentDB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_efs_file_system_restrict_public_access",
+    "Title": "EFS file systems should restrict public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring AWS EFS file systems cannot be publicly accessed.",
+    "QueryID": "aws_efs_file_system_restrict_public_access",
+    "DocumentURI": "policies/aws_efs_file_system_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EFS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sqs_queue_dead_letter_queue_configured",
+    "Title": "SQS queues should be configured with a dead-letter queue.",
+    "Description": "Ensure SQS queue is configured with a dead-letter queue. Dead-letter queues are useful for debugging your application or messaging system because they let you isolate problematic messages to determine why their processing didn't succeed.",
+    "QueryID": "aws_sqs_queue_dead_letter_queue_configured",
+    "DocumentURI": "policies/aws_sqs_queue_dead_letter_queue_configured.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SQS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecs_cluster_encryption_at_rest_enabled",
+    "Title": "ECS clusters encryption at rest should be enabled",
+    "Description": "This control checks whether ECS Clustes have encryption at rest enabled. The check fails if encryption at rest is not enabled as sensitive data should be protected.",
+    "QueryID": "aws_ecs_cluster_encryption_at_rest_enabled",
+    "DocumentURI": "policies/aws_ecs_cluster_encryption_at_rest_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_acm_certificate_no_wildcard_domain_name",
+    "Title": "ACM certificates should not use wildcard certificates",
+    "Description": "Ensure that ACM single domain name certificates are used instead of wildcard certificates within your AWS account in order to follow security best practices and protect each domain/subdomain with its own unique private key.",
+    "QueryID": "aws_acm_certificate_no_wildcard_domain_name",
+    "DocumentURI": "policies/aws_acm_certificate_no_wildcard_domain_name.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ACM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_glue_dev_endpoint_s3_encryption_enabled",
+    "Title": "Glue dev endpoints S3 encryption should be enabled",
+    "Description": "Ensure Glue dev endpoints have S3 encryption enabled to protect sensitive information at rest.",
+    "QueryID": "aws_glue_dev_endpoint_s3_encryption_enabled",
+    "DocumentURI": "policies/aws_glue_dev_endpoint_s3_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "AWS/Glue"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_autoscaling_group_no_suspended_process",
+    "Title": "Auto Scaling groups should not have any suspended processes",
+    "Description": "Ensure that there are no Auto Scaling Groups (ASGs) with suspended processes provisioned in your AWS account in order to avoid disrupting the auto scaling workflow.",
+    "QueryID": "aws_autoscaling_group_no_suspended_process",
+    "DocumentURI": "policies/aws_autoscaling_group_no_suspended_process.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/AutoScaling"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_cloudwatch_logs_enabled",
+    "Title": "RDS DB instances should be integrated with CloudWatch logs",
+    "Description": "Use Amazon CloudWatch to centrally collect and manage RDS DB instance activity.",
+    "QueryID": "aws_rds_db_instance_cloudwatch_logs_enabled",
+    "DocumentURI": "policies/aws_rds_db_instance_cloudwatch_logs_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RDS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudformation_stack_output_no_secrets",
+    "Title": "CloudFormation stacks outputs should not have any secrets",
+    "Description": "Ensure CloudFormation stacks outputs do not contain secrets like user names, passwords, and tokens. It is recommended to remove secrets since outputs cannot be encrypted resulting in any entity with basic read-metadata-only and access to CloudFormation outputs having access to these secrets.",
+    "QueryID": "aws_cloudformation_stack_output_no_secrets",
+    "DocumentURI": "policies/aws_cloudformation_stack_output_no_secrets.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFormation"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_policy_no_full_access_to_cloudtrail",
+    "Title": "IAM policy should not grant full access to cloudtrail service",
+    "Description": "CloudTrail is a critical service and IAM policies should follow least privilege model for this service in particular. This control is non compliant if the managed IAM policy allows full access to cloudtrail service.",
+    "QueryID": "aws_iam_policy_no_full_access_to_cloudtrail",
+    "DocumentURI": "policies/aws_iam_policy_no_full_access_to_cloudtrail.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sns_topic_policy_prohibit_public_access",
+    "Title": "SNS topic policies should prohibit public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring AWS SNS topics cannot be publicly accessed.",
+    "QueryID": "aws_sns_topic_policy_prohibit_public_access",
+    "DocumentURI": "policies/aws_sns_topic_policy_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SNS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sqs_queue_policy_prohibit_public_access",
+    "Title": "SQS queue policies should prohibit public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring AWS SQS queues cannot be publicly accessed.",
+    "QueryID": "aws_sqs_queue_policy_prohibit_public_access",
+    "DocumentURI": "policies/aws_sqs_queue_policy_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SQS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_es_domain_internal_user_database_enabled",
+    "Title": "Elasticsearch domains should have internal user database enabled",
+    "Description": "Ensure Elasticsearch domains have internal user database enabled. This control is non compliant if a domain's internal user database is not enabled.",
+    "QueryID": "aws_es_domain_internal_user_database_enabled",
+    "DocumentURI": "policies/aws_es_domain_internal_user_database_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ES"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_es_domain_cognito_authentication_enabled",
+    "Title": "Elasticsearch domains should have cognito authentication enabled",
+    "Description": "Amazon Elasticsearch service uses Amazon Cognito to offer user name and password protection for Kibana. This control is non compliant if Amazon Cognito authentication is not enabled.",
+    "QueryID": "aws_es_domain_cognito_authentication_enabled",
+    "DocumentURI": "policies/aws_es_domain_cognito_authentication_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ES"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_domain_privacy_protection_enabled",
+    "Title": "Route53 domains privacy protection should be enabled",
+    "Description": "Ensure that your Amazon Route 53 domains have Privacy Protection feature enabled in order to hide all their contact information from WHOIS queries and reduce the amount of spam received. The feature allows you to conceal your personal phone number, email and physical address for the domain names registered and/or transferred to AWS Route 53 service.",
+    "QueryID": "aws_route53_domain_privacy_protection_enabled",
+    "DocumentURI": "policies/aws_route53_domain_privacy_protection_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_application_network_lb_use_listeners",
+    "Title": "ELB application and network load balancers should use listeners",
+    "Description": "Ensure that application and network load balancer must have one or more listeners. A listener is a process that checks for connection requests, using the protocol and port that you configure. The rules that you define for a listener determine how the load balancer routes requests to its registered targets.",
+    "QueryID": "aws_elb_application_network_lb_use_listeners",
+    "DocumentURI": "policies/aws_elb_application_network_lb_use_listeners.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_static_website_hosting_disabled",
+    "Title": "S3 buckets static website hosting should be disabled",
+    "Description": "Enabling static website on a S3 bucket requires to grant public read access to the bucket. There is a potential risk of exposure when you turn off block public access settings to make your bucket public. This is recommend to not configure static website on S3 bucket.",
+    "QueryID": "aws_s3_bucket_static_website_hosting_disabled",
+    "DocumentURI": "policies/aws_s3_bucket_static_website_hosting_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_model_network_isolation_enabled",
+    "Title": "SageMaker models should have network isolation enabled",
+    "Description": "SageMaker models are internet-enabled by default. Network isolation should be enabled to avoid external network access to your inference containers.",
+    "QueryID": "aws_sagemaker_model_network_isolation_enabled",
+    "DocumentURI": "policies/aws_sagemaker_model_network_isolation_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecr_repository_image_scan_on_push_enabled",
+    "Title": "ECR repositories should have image scan on push enabled",
+    "Description": "Ensure Amazon Elastic Container Registry (ECR) repositories have image scanning enabled. The rule is non compliant if image scanning is not enabled for the ECR repository.",
+    "QueryID": "aws_ecr_repository_image_scan_on_push_enabled",
+    "DocumentURI": "policies/aws_ecr_repository_image_scan_on_push_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECR"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_api_gatewayv2_route_authorizer_configured",
+    "Title": "API Gateway V2 authorizer should be configured",
+    "Description": "This control checks whether API Gateway V2 has an authorizer configured. This rule is non-compliant if API Gateway V2 has no authorizers configured.",
+    "QueryID": "aws_api_gatewayv2_route_authorizer_configured",
+    "DocumentURI": "policies/aws_api_gatewayv2_route_authorizer_configured.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/APIGateway"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_custom_policy_unattached_no_star_star",
+    "Title": "IAM unattached custom policy should not have statements with admin access",
+    "Description": "AWS Identity and Access Management (IAM) can help you incorporate the principles of least privilege and separation of duties with access permissions and authorizations, restricting policies from containing 'Effect': 'Allow' with 'Action': '*' over 'Resource': '*'.",
+    "QueryID": "aws_iam_custom_policy_unattached_no_star_star",
+    "DocumentURI": "policies/aws_iam_custom_policy_unattached_no_star_star.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_lambda_function_cloudtrail_logging_enabled",
+    "Title": "Lambda functions CloudTrail logging should be enabled",
+    "Description": "Lambda functions logging is essential because once lambdas are triggered, all of the underlying compute resources are automatically managed for you. This control is compliant if CloudTrail logging is enabled.",
+    "QueryID": "aws_lambda_function_cloudtrail_logging_enabled",
+    "DocumentURI": "policies/aws_lambda_function_cloudtrail_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Lambda"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudfront_distribution_use_secure_cipher",
+    "Title": "CloudFront distributions should use secure SSL cipher",
+    "Description": "Ensure that CloudFront distributions do not have any insecure SSL ciphers. Using insecure and deprecated ciphers could make the SSL connection between the CloudFront and the origins vulnerable to exploits.",
+    "QueryID": "aws_cloudfront_distribution_use_secure_cipher",
+    "DocumentURI": "policies/aws_cloudfront_distribution_use_secure_cipher.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFront"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudformation_stack_notifications_enabled",
+    "Title": "CloudFormation stacks should have notifications enabled",
+    "Description": "Ensure CloudFormation stacks are associated with an SNS topic to receive notifications when an event occurs.",
+    "QueryID": "aws_cloudformation_stack_notifications_enabled",
+    "DocumentURI": "policies/aws_cloudformation_stack_notifications_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFormation"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_apigateway_rest_api_authorizers_configured",
+    "Title": "API Gateway stages should have authorizers configured",
+    "Description": "Ensure API Gateway stages have authorizers configured.",
+    "QueryID": "aws_apigateway_rest_api_authorizers_configured",
+    "DocumentURI": "policies/aws_apigateway_rest_api_authorizers_configured.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/APIGateway"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_codebuild_project_build_greater_then_90_days",
+    "Title": "CodeBuild projects should not be unused for 90 days or greater",
+    "Description": "Ensure CodeBuild projects are curently in use. It is recommended to remove the stale ones.",
+    "QueryID": "aws_codebuild_project_build_greater_then_90_days",
+    "DocumentURI": "policies/aws_codebuild_project_build_greater_then_90_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_lambda_function_variables_no_sensitive_data",
+    "Title": "Lambda functions variable should not have any sensitive data",
+    "Description": "Ensure functions environment variables is not having any sensitive data. Leveraging Secrets Manager enables secure provisioning of database credentials to Lambda functions while also ensuring the security of databases. This approach eliminates the need to hardcode secrets in code or pass them through environmental variables. Additionally, Secrets Manager facilitates the secure retrieval of credentials for establishing connections to databases and performing queries, enhancing overall security measures.",
+    "QueryID": "aws_lambda_function_variables_no_sensitive_data",
+    "DocumentURI": "policies/aws_lambda_function_variables_no_sensitive_data.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Lambda"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_glue_job_cloudwatch_logs_encryption_enabled",
+    "Title": "Glue jobs CloudWatch logs encryption should be enabled",
+    "Description": "Ensure Glue jobs have CloudWatch logs encryption enabled to protect sensitive information at rest.",
+    "QueryID": "aws_glue_job_cloudwatch_logs_encryption_enabled",
+    "DocumentURI": "policies/aws_glue_job_cloudwatch_logs_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "AWS/Glue"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_restricted_common_ports",
+    "Title": "Security groups should not allow unrestricted access to ports with high risk",
+    "Description": "This control checks whether unrestricted incoming traffic for the security groups is accessible to the specified ports that have the highest risk. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 for those ports.",
+    "QueryID": "aws_vpc_security_group_restricted_common_ports",
+    "DocumentURI": "policies/aws_vpc_security_group_restricted_common_ports.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_acm_certificate_transparency_logging_enabled",
+    "Title": "ACM certificates should have transparency logging enabled",
+    "Description": "Ensure ACM certificates transparency logging is enabled as certificate transparency logging guards against SSL/TLS certificates issued by mistake or by a compromised certificate authority.",
+    "QueryID": "aws_acm_certificate_transparency_logging_enabled",
+    "DocumentURI": "policies/aws_acm_certificate_transparency_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ACM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_no_launch_wizard_security_group",
+    "Title": "EC2 instances should not be attached to 'launch wizard' security groups",
+    "Description": "Ensure EC2 instances provisioned in your AWS account are not associated with security groups that have their name prefixed with 'launch-wizard', in order to enforce using secure and custom security groups that exercise the principle of least privilege.",
+    "QueryID": "aws_ec2_instance_no_launch_wizard_security_group",
+    "DocumentURI": "policies/aws_ec2_instance_no_launch_wizard_security_group.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_access_analyzer_enabled_without_findings",
+    "Title": "IAM Access analyzer should be enabled without findings",
+    "Description": "This control checks whether the IAM Access analyzer is enabled without findings. If you grant permissions to an S3 bucket in one of your organization member accounts to a principal in another organization member account, IAM Access Analyzer does not generate a finding. But if you grant permission to a principal in an account that is not a member of the organization, IAM Access Analyzer generates a finding.",
+    "QueryID": "aws_iam_access_analyzer_enabled_without_findings",
+    "DocumentURI": "policies/aws_iam_access_analyzer_enabled_without_findings.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_ca_certificate_expires_7_days",
+    "Title": "RDS DB instances CA certificates should not expire within next 7 days",
+    "Description": "Ensure RDS DB instances CA certificates are not getting expired within the next 7 days.",
+    "QueryID": "aws_rds_db_instance_ca_certificate_expires_7_days",
+    "DocumentURI": "policies/aws_rds_db_instance_ca_certificate_expires_7_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RDS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecs_cluster_no_registered_container_instance",
+    "Title": "At least one instance should be registered with ECS cluster",
+    "Description": "This control ensures that at least one container instance is registered with an ECS cluster.",
+    "QueryID": "aws_ecs_cluster_no_registered_container_instance",
+    "DocumentURI": "policies/aws_ecs_cluster_no_registered_container_instance.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_not_uses_launch_wizard_sg",
+    "Title": "VPC security groups should restrict uses of 'launch-wizard' security groups.",
+    "Description": "Ensure the launch-wizard security group in your AWS account is not being used.",
+    "QueryID": "aws_vpc_security_group_not_uses_launch_wizard_sg",
+    "DocumentURI": "policies/aws_vpc_security_group_not_uses_launch_wizard_sg.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_eks_cluster_endpoint_public_access_restricted",
+    "Title": "EKS clusters endpoint public access should be restricted",
+    "Description": "EKS clusters endpoint with private access allows communication between your nodes and the API server stays within. This control is non-compliant if clusters endpoint public access is enabled as cluster API server is accessible from the internet.",
+    "QueryID": "aws_eks_cluster_endpoint_public_access_restricted",
+    "DocumentURI": "policies/aws_eks_cluster_endpoint_public_access_restricted.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EKS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_kinesis_stream_server_side_encryption_enabled",
+    "Title": "Kinesis streams should have server side encryption enabled",
+    "Description": "Enable server side encryption (SSE) of your AWS Kinesis Server data at rest, in order to protect your data and metadata from breaches or unauthorized access, and fulfill compliance requirements for data-at-rest encryption within your organization.",
+    "QueryID": "aws_kinesis_stream_server_side_encryption_enabled",
+    "DocumentURI": "policies/aws_kinesis_stream_server_side_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Kinesis"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_user_with_administrator_access_mfa_enabled",
+    "Title": "IAM administrator users should have MFA enabled",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring MFA is enabled for users with administrative privileges.",
+    "QueryID": "aws_iam_user_with_administrator_access_mfa_enabled",
+    "DocumentURI": "policies/aws_iam_user_with_administrator_access_mfa_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_connections_encryption_enabled",
+    "Title": "RDS DB instances connections should be encrypted",
+    "Description": "This control checks if RDS DB instance connections are encrypted. Secure Sockets Layer (SSL) is used to encrypt between client applications and Amazon RDS DB instances running Microsoft SQL Server or PostgreSQL.",
+    "QueryID": "aws_rds_db_instance_connections_encryption_enabled",
+    "DocumentURI": "policies/aws_rds_db_instance_connections_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RDS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_role_cross_account_read_only_access_policy",
+    "Title": "IAM roles should not have read only access for external AWS accounts",
+    "Description": "Ensure IAM Roles do not have ReadOnlyAccess access for external AWS account. The AWS-managed ReadOnlyAccess policy carries a high risk of potential data leakage, posing a significant threat to customer security and privacy.",
+    "QueryID": "aws_iam_role_cross_account_read_only_access_policy",
+    "DocumentURI": "policies/aws_iam_role_cross_account_read_only_access_policy.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_workspaces_workspace_volume_encryption_enabled",
+    "Title": "WorkSpaces root and user volume encryption should be enabled",
+    "Description": "To help protect data at rest, ensure encryption is enabled for your WorkSpaces root and user volumes.",
+    "QueryID": "aws_workspaces_workspace_volume_encryption_enabled",
+    "DocumentURI": "policies/aws_workspaces_workspace_volume_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/WorkSpaces"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_restrict_ingress_kafka_port",
+    "Title": "VPC security groups should restrict ingress Kafka port access from 0.0.0.0/0",
+    "Description": "Amazon VPC security groups can help in managing network access by providing stateful filtering of ingress and egress network traffic to AWS resources.",
+    "QueryID": "aws_vpc_security_group_restrict_ingress_kafka_port",
+    "DocumentURI": "policies/aws_vpc_security_group_restrict_ingress_kafka_port.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_eks_cluster_control_plane_audit_logging_enabled",
+    "Title": "EKS clusters should have control plane audit logging enabled",
+    "Description": "Amazon EKS clusters should have control plane audit logging enabled. These logs make it easy to secure and run clusters.",
+    "QueryID": "aws_eks_cluster_control_plane_audit_logging_enabled",
+    "DocumentURI": "policies/aws_eks_cluster_control_plane_audit_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EKS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_restrict_ingress_redis_port",
+    "Title": "VPC security groups should restrict ingress redis access from 0.0.0.0/0",
+    "Description": "Amazon VPC security groups can help in managing network access by providing stateful filtering of ingress and egress network traffic to AWS resources.",
+    "QueryID": "aws_vpc_security_group_restrict_ingress_redis_port",
+    "DocumentURI": "policies/aws_vpc_security_group_restrict_ingress_redis_port.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_endpoint_service_acceptance_required_enabled",
+    "Title": "VPC endpoint services should have acceptance required enabled",
+    "Description": "Ensure VPC endpoints connection requests to the service are accepted by the service owner.",
+    "QueryID": "aws_vpc_endpoint_service_acceptance_required_enabled",
+    "DocumentURI": "policies/aws_vpc_endpoint_service_acceptance_required_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_notebook_instance_root_access_disabled",
+    "Title": "SageMaker notebook instances root access should be disabled",
+    "Description": "Users with root access have administrator privileges and users can access and edit all files on a notebook instance. It is recommeneded to disable root access to restrict users from accessing and editing all the files.",
+    "QueryID": "aws_sagemaker_notebook_instance_root_access_disabled",
+    "DocumentURI": "policies/aws_sagemaker_notebook_instance_root_access_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_restrict_ingress_kibana_port",
+    "Title": "VPC security groups should restrict ingress kibana port access from 0.0.0.0/0",
+    "Description": "Amazon VPC security groups can help in managing network access by providing stateful filtering of ingress and egress network traffic to AWS resources.",
+    "QueryID": "aws_vpc_security_group_restrict_ingress_kibana_port",
+    "DocumentURI": "policies/aws_vpc_security_group_restrict_ingress_kibana_port.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_policy_custom_no_permissive_role_assumption",
+    "Title": "IAM custom policy should not have overly permissive STS role assumption",
+    "Description": "Ensure that no custom IAM policies exist which allow permissive role assumption.",
+    "QueryID": "aws_iam_policy_custom_no_permissive_role_assumption",
+    "DocumentURI": "policies/aws_iam_policy_custom_no_permissive_role_assumption.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_training_job_network_isolation_enabled",
+    "Title": "SageMaker training jobs should have network isolation enabled",
+    "Description": "SageMaker training jobs are internet-enabled by default. Network isolation should be enabled to avoid external network access to your training.",
+    "QueryID": "aws_sagemaker_training_job_network_isolation_enabled",
+    "DocumentURI": "policies/aws_sagemaker_training_job_network_isolation_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_codebuild_project_with_user_controlled_buildspec",
+    "Title": "CodeBuild projects should not use an user controlled buildspec",
+    "Description": "This control checks if buildspec.yml is used from a trusted source which user cant interfere with.",
+    "QueryID": "aws_codebuild_project_with_user_controlled_buildspec",
+    "DocumentURI": "policies/aws_codebuild_project_with_user_controlled_buildspec.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_opensearch_domain_internal_user_database_disabled",
+    "Title": "OpenSearch domains internal user database should be disabled",
+    "Description": "Ensure that Amazon OpenSearch domain has internal user database disabled. This control is non compliant if the OpenSearch domain internal user database is enabled.",
+    "QueryID": "aws_opensearch_domain_internal_user_database_disabled",
+    "DocumentURI": "policies/aws_opensearch_domain_internal_user_database_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/OpenSearch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudfront_distribution_geo_restrictions_enabled",
+    "Title": "CloudFront distributions should have geo restriction enabled",
+    "Description": "Geographic restriction is used to restrict access to all of the files that are associated with a distribution at the country level.",
+    "QueryID": "aws_cloudfront_distribution_geo_restrictions_enabled",
+    "DocumentURI": "policies/aws_cloudfront_distribution_geo_restrictions_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFront"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_glue_dev_endpoint_job_bookmarks_encryption_enabled",
+    "Title": "Glue dev endpoints job bookmark encryption should be enabled",
+    "Description": "Ensure Glue dev endpoints have job bookmark encryption enabled to protect sensitive information at rest.",
+    "QueryID": "aws_glue_dev_endpoint_job_bookmarks_encryption_enabled",
+    "DocumentURI": "policies/aws_glue_dev_endpoint_job_bookmarks_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "AWS/Glue"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_allows_ingress_to_oracle_ports",
+    "Title": "VPC security groups should restrict ingress from 0.0.0.0/0 or ::/0 to oracle ports 1521 or 2483",
+    "Description": "This control checks whether the VPC security groups that are in use allow ingress from 0.0.0.0/0 or ::/0 to oracle ports 1521 or 2483. Optionally the rule checks whether the port numbers are listed in the authorizedTcpPorts parameter. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 from ports 1521 or 2483.",
+    "QueryID": "aws_vpc_security_group_allows_ingress_to_oracle_ports",
+    "DocumentURI": "policies/aws_vpc_security_group_allows_ingress_to_oracle_ports.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_notebook_instance_encrypted_with_kms_cmk",
+    "Title": "SageMaker notebook instances should be encrypted using CMK",
+    "Description": "This control checks if SageMaker notebook instance storage volumes are encrypted with Amazon KMS Customer Master Keys (CMKs) instead of AWS managed-keys.",
+    "QueryID": "aws_sagemaker_notebook_instance_encrypted_with_kms_cmk",
+    "DocumentURI": "policies/aws_sagemaker_notebook_instance_encrypted_with_kms_cmk.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_kms_key_decryption_restricted_in_iam_inline_policy",
+    "Title": "KMS key decryption should be restricted in IAM inline policy",
+    "Description": "Checks whether the inline policies that are embedded in your IAM identities (role, user, or group) allow the AWS KMS decryption actions on all KMS keys. This control uses Zelkova, an automated reasoning engine, to validate and warn you about policies that may grant broad access to your secrets across AWS accounts. This control fails if kms:Decrypt or kms:ReEncryptFrom actions are allowed on all KMS keys in an inline policy.",
+    "QueryID": "aws_kms_key_decryption_restricted_in_iam_inline_policy",
+    "DocumentURI": "policies/aws_kms_key_decryption_restricted_in_iam_inline_policy.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/KMS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_no_high_level_finding_in_inspector_scan",
+    "Title": "EC2 instances high level findings should not be there in inspector scans",
+    "Description": "Amazon Inspector scans operating system packages installed on your Amazon EC2 instances for vulnerabilities and network reachability issues. Each finding has the name of the detected vulnerability and provides a severity rating, information about the affected resource, and details such as how to remediate the reported vulnerability.",
+    "QueryID": "aws_ec2_instance_no_high_level_finding_in_inspector_scan",
+    "DocumentURI": "policies/aws_ec2_instance_no_high_level_finding_in_inspector_scan.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_allows_ingress_to_mongodb_ports",
+    "Title": "VPC security groups should restrict ingress from 0.0.0.0/0 or ::/0 to mongoDB ports 27017 and 27018",
+    "Description": "This control checks whether the VPC security groups that are in use allow ingress from 0.0.0.0/0 or ::/0 to mongoDB ports 27017 and 27018. Optionally the rule checks whether the port numbers are listed in the authorizedTcpPorts parameter. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 from ports 27017 and 27018.",
+    "QueryID": "aws_vpc_security_group_allows_ingress_to_mongodb_ports",
+    "DocumentURI": "policies/aws_vpc_security_group_allows_ingress_to_mongodb_ports.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_apigateway_rest_api_endpoint_restrict_public_access",
+    "Title": "API Gateway REST API endpoint type should be configured to private",
+    "Description": "This control checks whether API Gateway endpoint is public or private. This rule is non-compliant if API Gateway endpoint is public.",
+    "QueryID": "aws_apigateway_rest_api_endpoint_restrict_public_access",
+    "DocumentURI": "policies/aws_apigateway_rest_api_endpoint_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/APIGateway"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_allows_ingress_authorized_ports",
+    "Title": "VPC Security groups should only allow unrestricted incoming traffic for authorized ports",
+    "Description": "This control checks whether the VPC security groups that are in use allow unrestricted incoming traffic. Optionally the rule checks whether the port numbers are listed in the authorizedTcpPorts parameter. The default values for authorizedTcpPorts are 80 and 443.",
+    "QueryID": "aws_vpc_security_group_allows_ingress_authorized_ports",
+    "DocumentURI": "policies/aws_vpc_security_group_allows_ingress_authorized_ports.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudformation_stack_termination_protection_enabled",
+    "Title": "Cloudformation stacks termination protection should be enabled",
+    "Description": "Ensure that Amazon CloudFormation stacks have termination protection feature enabled in order to protect them from being accidentally deleted. The safety feature can be enabled when you create the CloudFormation stack or for existing stacks using the AWS API (UpdateTerminationProtection command).",
+    "QueryID": "aws_cloudformation_stack_termination_protection_enabled",
+    "DocumentURI": "policies/aws_cloudformation_stack_termination_protection_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFormation"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_allows_ingress_to_memcached_port",
+    "Title": "VPC security groups should restrict ingress from 0.0.0.0/0 or ::/0 to memcached port 11211",
+    "Description": "This control checks whether the VPC security groups that are in use allow allow ingress from 0.0.0.0/0 or ::/0 to memcached port 11211. Optionally the rule checks whether the port numbers are listed in the authorizedTcpPorts parameter. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 from port 11211.",
+    "QueryID": "aws_vpc_security_group_allows_ingress_to_memcached_port",
+    "DocumentURI": "policies/aws_vpc_security_group_allows_ingress_to_memcached_port.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_publicly_accessible_iam_profile_attached",
+    "Title": "Public EC2 instances should have IAM profile attached",
+    "Description": "Ensure Amazon Elastic Compute Cloud (Amazon EC2) public instances have an Identity and Access Management (IAM) profile attached to them. This rule is non compliant if no IAM profile is attached to public Amazon EC2 instance.",
+    "QueryID": "aws_ec2_instance_publicly_accessible_iam_profile_attached",
+    "DocumentURI": "policies/aws_ec2_instance_publicly_accessible_iam_profile_attached.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_glue_dev_endpoint_cloudwatch_logs_encryption_enabled",
+    "Title": "Glue dev endpoints CloudWatch logs encryption should be enabled",
+    "Description": "Ensure Glue dev endpoints have CloudWatch logs encryption enabled to protect sensitive information at rest.",
+    "QueryID": "aws_glue_dev_endpoint_cloudwatch_logs_encryption_enabled",
+    "DocumentURI": "policies/aws_glue_dev_endpoint_cloudwatch_logs_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "other_checks": [
+        "true"
+      ],
+      "service": [
+        "AWS/Glue"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_application_lb_listener_certificate_expire_7_days",
+    "Title": "ELB application load balancers secured listener certificate should not expire within next 7 days",
+    "Description": "This control ensures that SSL/TLS certificates used in application load balancers are renewed 7 days before their expiration date.",
+    "QueryID": "aws_elb_application_lb_listener_certificate_expire_7_days",
+    "DocumentURI": "policies/aws_elb_application_lb_listener_certificate_expire_7_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_application_lb_listener_certificate_expire_30_days",
+    "Title": "ELB application load balancers secured listener certificate should not expire within next 30 days",
+    "Description": "This control ensures that SSL/TLS certificates used in application load balancers are renewed 30 days before their expiration date.",
+    "QueryID": "aws_elb_application_lb_listener_certificate_expire_30_days",
+    "DocumentURI": "policies/aws_elb_application_lb_listener_certificate_expire_30_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_allows_ingress_to_cassandra_ports",
+    "Title": "VPC security groups should restrict ingress from 0.0.0.0/0 or ::/0 to cassandra ports 7199 or 9160 or 8888",
+    "Description": "This control checks whether the VPC security groups allow ingress from 0.0.0.0/0 or ::/0 to cassandra ports 7199 or 9160 or 8888. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 from ports 7199 or 9160 or 8888.",
+    "QueryID": "aws_vpc_security_group_allows_ingress_to_cassandra_ports",
+    "DocumentURI": "policies/aws_vpc_security_group_allows_ingress_to_cassandra_ports.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_autoscaling_ec2_launch_configuration_no_sensitive_data",
+    "Title": "EC2 auto scaling group launch configurations user data should not have any sensitive data",
+    "Description": "Ensure that sensitive information is not included in the user data of the launch configuration. It is recommended to utilize Secrets Manager as an alternative for securely managing sensitive data.",
+    "QueryID": "aws_autoscaling_ec2_launch_configuration_no_sensitive_data",
+    "DocumentURI": "policies/aws_autoscaling_ec2_launch_configuration_no_sensitive_data.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/AutoScaling"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_trail_insight_selectors_and_logging_enabled",
+    "Title": "CloudTrail trails should have insight selectors and logging enabled",
+    "Description": "CloudTrail Insights provides a powerful way to search and analyze CloudTrail log data using pre-built queries and machine learning algorithms. This can help to identify potential security threats and suspicious activity in near real-time, such as unauthorized access attempts, policy changes, or resource modifications.",
+    "QueryID": "aws_cloudtrail_trail_insight_selectors_and_logging_enabled",
+    "DocumentURI": "policies/aws_cloudtrail_trail_insight_selectors_and_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudfront_distribution_field_level_encryption_enabled",
+    "Title": "CloudFront distributions should have field level encryption enabled",
+    "Description": "This control checks whether an Amazon CloudFront distribution has field-level encryption enabled. The control fails if CloudFront distribution field-level encryption is not enabled.",
+    "QueryID": "aws_cloudfront_distribution_field_level_encryption_enabled",
+    "DocumentURI": "policies/aws_cloudfront_distribution_field_level_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFront"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_training_job_volume_and_data_encryption_enabled",
+    "Title": "SageMaker training jobs volumes and outputs should have KMS encryption enabled",
+    "Description": "Ensure that SageMaker training jobs have volumes and outputs with KMS encryption enabled in order to have a more granular control over the data-at-rest encryption/decryption process and to meet compliance requirements.",
+    "QueryID": "aws_sagemaker_training_job_volume_and_data_encryption_enabled",
+    "DocumentURI": "policies/aws_sagemaker_training_job_volume_and_data_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_application_classic_network_lb_prohibit_public_access",
+    "Title": "ELB load balancers should prohibit public access",
+    "Description": "An internet facing load balancer has a publicly resolvable DNS name, so it can route requests from clients over the internet to the EC2 instances that are registered with the load balancer.",
+    "QueryID": "aws_elb_application_classic_network_lb_prohibit_public_access",
+    "DocumentURI": "policies/aws_elb_application_classic_network_lb_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_transit_gateway_auto_cross_account_attachment_disabled",
+    "Title": "EC2 transit gateways should have auto accept shared attachments disabled",
+    "Description": "Ensure transit gateways have auto accept shared attachments feature disabled. If this setting is disabled, then any VPC that attempts to attach to a transit gateway will need to request authorization, and the account that owns the transit gateway will need to accept the authorization.",
+    "QueryID": "aws_ec2_transit_gateway_auto_cross_account_attachment_disabled",
+    "DocumentURI": "policies/aws_ec2_transit_gateway_auto_cross_account_attachment_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_opensearch_domain_cognito_authentication_enabled_for_kibana",
+    "Title": "OpenSearch domains cognito authentication should be enabled for kibana",
+    "Description": "This control checks whether Amazon OpenSearch domain has Amazon Cognito authentication for Kibana enabled. Amazon Cognito lets you easily add user sign-up and authentication to your mobile and web apps.",
+    "QueryID": "aws_opensearch_domain_cognito_authentication_enabled_for_kibana",
+    "DocumentURI": "policies/aws_opensearch_domain_cognito_authentication_enabled_for_kibana.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/OpenSearch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_kms_key_decryption_restricted_in_iam_customer_managed_policy",
+    "Title": "KMS key decryption should be restricted in IAM customer managed policy",
+    "Description": "Checks whether the default version of IAM customer managed policies allow principals to use the AWS KMS decryption actions on all resources. This control uses Zelkova, an automated reasoning engine, to validate and warn you about policies that may grant broad access to your secrets across AWS accounts. This control fails if the kms:Decrypt or kms:ReEncryptFrom actions are allowed on all KMS keys. The control evaluates both attached and unattached customer managed policies. It does not check inline policies or AWS managed policies.",
+    "QueryID": "aws_kms_key_decryption_restricted_in_iam_customer_managed_policy",
+    "DocumentURI": "policies/aws_kms_key_decryption_restricted_in_iam_customer_managed_policy.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/KMS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_opensearch_domain_updated_with_latest_service_software_version",
+    "Title": "OpenSearch domains should be updated to the latest service software version",
+    "Description": "This control checks whether Amazon OpenSearch domain has any updates available. This control is non compliant if the OpenSearch domain has any updates available.",
+    "QueryID": "aws_opensearch_domain_updated_with_latest_service_software_version",
+    "DocumentURI": "policies/aws_opensearch_domain_updated_with_latest_service_software_version.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/OpenSearch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_training_job_inter_container_traffic_encryption_enabled",
+    "Title": "SageMaker training jobs should be enabled with inter-container traffic encryption",
+    "Description": "Inter-container traffic encryption shoule be used to protect data that is transmitted between instances while performing distributed training. This control in compliant when inter-container traffic encryption is enabled.",
+    "QueryID": "aws_sagemaker_training_job_inter_container_traffic_encryption_enabled",
+    "DocumentURI": "policies/aws_sagemaker_training_job_inter_container_traffic_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudfront_distribution_non_s3_origins_encryption_in_transit_enabled",
+    "Title": "CloudFront distributions should encrypt traffic to non S3 origins",
+    "Description": "This control ensures that conection between cloudfront and oriign server is encrypted. It is recommended to enforce HTTPS-only traffic between a CloudFront distribution and the origin.",
+    "QueryID": "aws_cloudfront_distribution_non_s3_origins_encryption_in_transit_enabled",
+    "DocumentURI": "policies/aws_cloudfront_distribution_non_s3_origins_encryption_in_transit_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "other_checks": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFront"
+      ]
+    },
+    "Managed": true
+  }
+]

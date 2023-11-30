@@ -1,0 +1,10 @@
+{
+  "ID": "aws_insight_account_with_unused_key",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select access_key_1_active, access_key_1_last_used_date, access_key_2_active, access_key_2_last_used_date, user_arn, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where ((access_key_1_active = true AND (access_key_1_last_used_date IS NULL OR (current_date - DATE(access_key_1_last_used_date)) \u003e 90)) OR (access_key_2_active = true AND (access_key_2_last_used_date IS NULL OR (current_date - DATE(access_key_2_last_used_date)) \u003e 90)))",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_credential_report",
+  "ListOfTables": [
+    "aws_iam_credential_report"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all cloudtrails and accounts where CloudTrails are missing cloudwatch integraion",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when log_group_arn != 'null' and ((latest_delivery_time) \u003e current_date - 1) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when log_group_arn != 'null' and ((latest_delivery_time) \u003e current_date - 1) then title || ' integrated with CloudWatch logs.'\n    else title || ' not integrated with CloudWatch logs.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudtrail_trail\nwhere \n  region = home_region"
+}

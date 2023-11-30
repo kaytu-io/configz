@@ -1,0 +1,11 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_emr_cluster_is_idle_30_minutes",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with cluster_metrics as (\n  select\n    id,\n    maximum,\n    date(timestamp) as timestamp\n  from\n    aws_emr_cluster_metric_is_idle\n  where\n    timestamp \u003e= current_timestamp - interval '40 minutes'\n),\n  emr_cluster_isidle as (\n    select\n      id,\n      count(maximum) as count,\n      sum(maximum)/count(maximum) as avagsum\n    from\n      cluster_metrics\n    group by id, timestamp\n  )\n  select\n    i.id as resource,\n    case\n      when u.id is null then 'error'\n      when avagsum = 1 and count \u003e= 7  then 'alarm'\n      else 'ok'\n    end as status,\n    case\n      when u.id is null then 'CloudWatch metrics not available for ' || i.title || '.'\n      else i.title || ' is idle from last ' || (count*5 - 5) ||  ' minutes.'\n    end as reason\n    \n    , i.region, i.account_id\n  from\n    aws_emr_cluster as i\n    left join emr_cluster_isidle as u on u.id = i.id;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_emr_cluster",
+  "ListOfTables": [
+    "aws_emr_cluster",
+    "aws_emr_cluster_metric_is_idle"
+  ]
+}

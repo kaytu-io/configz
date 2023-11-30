@@ -1,0 +1,10 @@
+{
+  "ID": "aws_ecr_repository_image_scan_on_push_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when image_scanning_configuration -\u003e\u003e 'ScanOnPush' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when image_scanning_configuration -\u003e\u003e 'ScanOnPush' = 'true' then title || ' scan on push enabled.'\n    else title || ' scan on push disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecr_repository;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ecr_repository",
+  "ListOfTables": [
+    "aws_ecr_repository"
+  ]
+}

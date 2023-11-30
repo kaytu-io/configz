@@ -1,0 +1,399 @@
+[
+  {
+    "ID": "aws_cis_v140_2_1",
+    "Title": "2.1 Simple Storage Service (S3)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_2_1.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "2.1"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cis_v140_2_1_1",
+      "aws_cis_v140_2_1_2",
+      "aws_cis_v140_2_1_3",
+      "aws_cis_v140_2_1_4",
+      "aws_cis_v140_2_1_5"
+    ]
+  },
+  {
+    "ID": "aws_cis_v140_5",
+    "Title": "5 Networking",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_5.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "5"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cis_v140_5_1",
+      "aws_cis_v140_5_2",
+      "aws_cis_v140_5_3",
+      "aws_cis_v140_5_4"
+    ]
+  },
+  {
+    "ID": "aws_cis_v140_1",
+    "Title": "1 Identity and Access Management",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_1.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "1"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cis_v140_1_1",
+      "aws_cis_v140_1_2",
+      "aws_cis_v140_1_3",
+      "aws_cis_v140_1_4",
+      "aws_cis_v140_1_5",
+      "aws_cis_v140_1_6",
+      "aws_cis_v140_1_7",
+      "aws_cis_v140_1_8",
+      "aws_cis_v140_1_9",
+      "aws_cis_v140_1_10",
+      "aws_cis_v140_1_11",
+      "aws_cis_v140_1_12",
+      "aws_cis_v140_1_13",
+      "aws_cis_v140_1_14",
+      "aws_cis_v140_1_15",
+      "aws_cis_v140_1_16",
+      "aws_cis_v140_1_17",
+      "aws_cis_v140_1_18",
+      "aws_cis_v140_1_19",
+      "aws_cis_v140_1_20",
+      "aws_cis_v140_1_21"
+    ]
+  },
+  {
+    "ID": "aws_cis_v140_2_2",
+    "Title": "2.2 Elastic Compute Cloud (EC2)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_2_2.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "2.1"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cis_v140_2_2_1"
+    ]
+  },
+  {
+    "ID": "aws_cis_v140_3",
+    "Title": "3 Logging",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_3.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "3"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cis_v140_3_1",
+      "aws_cis_v140_3_2",
+      "aws_cis_v140_3_3",
+      "aws_cis_v140_3_4",
+      "aws_cis_v140_3_5",
+      "aws_cis_v140_3_6",
+      "aws_cis_v140_3_7",
+      "aws_cis_v140_3_8",
+      "aws_cis_v140_3_9",
+      "aws_cis_v140_3_10",
+      "aws_cis_v140_3_11"
+    ]
+  },
+  {
+    "ID": "aws_cis_v140_2_3",
+    "Title": "2.3 Relational Database Service (RDS)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_2_3.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "2.1"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cis_v140_2_3_1"
+    ]
+  },
+  {
+    "ID": "aws_cis_v140_4",
+    "Title": "4 Monitoring",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_4.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "4"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudWatch"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cis_v140_4_1",
+      "aws_cis_v140_4_2",
+      "aws_cis_v140_4_3",
+      "aws_cis_v140_4_4",
+      "aws_cis_v140_4_5",
+      "aws_cis_v140_4_6",
+      "aws_cis_v140_4_7",
+      "aws_cis_v140_4_8",
+      "aws_cis_v140_4_9",
+      "aws_cis_v140_4_10",
+      "aws_cis_v140_4_11",
+      "aws_cis_v140_4_12",
+      "aws_cis_v140_4_13",
+      "aws_cis_v140_4_14",
+      "aws_cis_v140_4_15"
+    ]
+  },
+  {
+    "ID": "aws_cis_v140_2",
+    "Title": "2 Storage",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_cis_v140_2.md",
+    "Description": "",
+    "Children": [
+      "aws_cis_v140_2_1",
+      "aws_cis_v140_2_2",
+      "aws_cis_v140_2_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis": [
+        "true"
+      ],
+      "cis_section_id": [
+        "2"
+      ],
+      "cis_version": [
+        "v1.4.0"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  }
+]

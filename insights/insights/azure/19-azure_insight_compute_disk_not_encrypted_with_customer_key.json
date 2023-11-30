@@ -1,0 +1,23 @@
+{
+  "ID": 19,
+  "QueryID": "azure_insight_compute_disk_not_encrypted_with_customer_key",
+  "Connector": "Azure",
+  "ShortTitle": "Unecrypted Disks",
+  "LongTitle": "List of compute disks which are not encrypted with customer key",
+  "Description": "List of compute disks which are not encrypted with customer key",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt"
+    ],
+    "persona": [
+      "Security",
+      "DevOps",
+      "Product"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

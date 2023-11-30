@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_reserved_instance_lease_expiration_days",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  reserved_instance_id as resource,\n  case\n    when date_part('day', end_time - now()) \u003c= $1 then 'alarm'\n    else 'ok'\n  end as status,\n  title || ' lease expires in ' || date_part('day', end_time-now()) || ' days.' as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_reserved_instance;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ec2_reserved_instance",
+  "ListOfTables": [
+    "aws_ec2_reserved_instance"
+  ]
+}

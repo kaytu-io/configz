@@ -1,0 +1,11 @@
+{
+  "ID": "azure_cognitive_account_private_link_used",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with cognitive_account as (\n  select\n    distinct a.id\n  from\n    azure_cognitive_account as a,\n    jsonb_array_elements(capabilities ) as c\n  where\n    c -\u003e\u003e 'name' = 'VirtualNetworks'\n),\ncognitive_account_connections as (\n  select\n    distinct a.id\n  from\n    cognitive_account as a\n    left join azure_cognitive_account as b on a.id = b.id,\n    jsonb_array_elements(private_endpoint_connections ) as c\n  where\n    c -\u003e 'PrivateLinkServiceConnectionState' -\u003e\u003e 'status' = 'Approved'\n)\nselect\n  b.id as resource,\n  case\n    when jsonb_array_length(b.private_endpoint_connections) = 0 then 'info'\n    when c.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when jsonb_array_length(b.private_endpoint_connections) = 0 then b.name || ' no private link exists.'\n    when c.id is not null then b.name || ' uses private link.'\n    else b.name || ' not uses private link.'\n  end as reason\n  \n  , b.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cognitive_account as b\n  left join cognitive_account_connections as c on b.id = c.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = b.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_cognitive_account",
+  "ListOfTables": [
+    "azure_cognitive_account",
+    "azure_subscription"
+  ]
+}

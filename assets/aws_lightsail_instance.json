@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "active",
+    "name": "Lightsail Instance",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::lightsail::instance' group by 1,2;",
+    "tags": {
+        "category": ["PaaS"]
+    }
+}

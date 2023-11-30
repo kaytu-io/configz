@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Glue",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::glue::catalogdatabase','aws::glue::crawler','aws::glue::job') group by 1,2;",
+    "tags": {
+        "category": ["Data & Analytics"]
+    }
+}

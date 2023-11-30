@@ -1,0 +1,16 @@
+{
+  "connectors": [
+    "Azure"
+  ],
+  "status": "active",
+  "name": "Azure Front Door Service",
+  "query": "SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Azure Front Door Service' group by 1,2;",
+  "tables": [
+    "Azure Front Door Service"
+  ],
+  "tags": {
+    "category": [
+      "Networks"
+    ]
+  }
+}

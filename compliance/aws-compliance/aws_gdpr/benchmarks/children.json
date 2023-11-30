@@ -1,0 +1,201 @@
+[
+  {
+    "ID": "aws_article_30",
+    "Title": "Article 30 Records of processing activities",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_article_30.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gdpr_article": [
+        "30"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_security_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+      "aws_config_enabled_all_regions",
+      "aws_elb_application_classic_lb_logging_enabled",
+      "aws_kms_cmk_rotation_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_vpc_flow_logs_enabled"
+    ]
+  },
+  {
+    "ID": "aws_article_32",
+    "Title": "Article 32 Security of processing",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_article_32.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gdpr_article": [
+        "32"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_acm_certificate_expires_30_days",
+      "aws_apigateway_stage_cache_encryption_at_rest_enabled",
+      "aws_cloudfront_distribution_encryption_in_transit_enabled",
+      "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+      "aws_cloudtrail_trail_validation_enabled",
+      "aws_dax_cluster_encryption_at_rest_enabled",
+      "aws_dynamodb_table_encrypted_with_kms",
+      "aws_dynamodb_table_encryption_enabled",
+      "aws_ebs_attached_volume_encryption_enabled",
+      "aws_ebs_volume_encryption_at_rest_enabled",
+      "aws_efs_file_system_encrypt_data_at_rest",
+      "aws_elb_application_lb_drop_http_headers",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_classic_lb_use_ssl_certificate",
+      "aws_elb_classic_lb_use_tls_https_listeners",
+      "aws_es_domain_encryption_at_rest_enabled",
+      "aws_es_domain_node_to_node_encryption_enabled",
+      "aws_log_group_encryption_at_rest_enabled",
+      "aws_rds_db_instance_encryption_at_rest_enabled",
+      "aws_rds_db_instance_in_backup_plan",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_rds_db_snapshot_encrypted_at_rest",
+      "aws_redshift_cluster_automatic_snapshots_min_7_days",
+      "aws_redshift_cluster_encryption_in_transit_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_default_encryption_enabled",
+      "aws_s3_bucket_default_encryption_enabled_kms",
+      "aws_s3_bucket_enforces_ssl",
+      "aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled",
+      "aws_sagemaker_notebook_instance_encryption_at_rest_enabled",
+      "aws_sns_topic_encrypted_at_rest",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_article_25",
+    "Title": "Article 25 Data protection by design and by default",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_article_25.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gdpr_article": [
+        "25"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_bucket_not_public",
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_logging_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+      "aws_cloudtrail_trail_validation_enabled",
+      "aws_config_enabled_all_regions",
+      "aws_iam_account_password_policy_min_length_14",
+      "aws_iam_account_password_policy_one_lowercase_letter",
+      "aws_iam_account_password_policy_one_number",
+      "aws_iam_account_password_policy_one_symbol",
+      "aws_iam_account_password_policy_one_uppercase_letter",
+      "aws_iam_account_password_policy_reuse_24",
+      "aws_iam_account_password_policy_strong",
+      "aws_iam_password_policy_expire_90",
+      "aws_iam_policy_no_star_star",
+      "aws_iam_root_user_hardware_mfa_enabled",
+      "aws_iam_root_user_mfa_enabled",
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_support_role",
+      "aws_iam_user_access_key_age_90",
+      "aws_iam_user_console_access_mfa_enabled",
+      "aws_iam_user_no_inline_attached_policies",
+      "aws_iam_user_unused_credentials_90",
+      "aws_kms_cmk_rotation_enabled",
+      "aws_log_metric_filter_bucket_policy",
+      "aws_log_metric_filter_cloudtrail_configuration",
+      "aws_log_metric_filter_config_configuration",
+      "aws_log_metric_filter_console_authentication_failure",
+      "aws_log_metric_filter_console_login_mfa",
+      "aws_log_metric_filter_disable_or_delete_cmk",
+      "aws_log_metric_filter_iam_policy",
+      "aws_log_metric_filter_network_acl",
+      "aws_log_metric_filter_network_gateway",
+      "aws_log_metric_filter_root_login",
+      "aws_log_metric_filter_route_table",
+      "aws_log_metric_filter_security_group",
+      "aws_log_metric_filter_unauthorized_api",
+      "aws_log_metric_filter_vpc",
+      "aws_vpc_flow_logs_enabled"
+    ]
+  }
+]

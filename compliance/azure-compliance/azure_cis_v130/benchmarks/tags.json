@@ -1,0 +1,107 @@
+[
+  {
+    "ID": 1,
+    "Key": "category",
+    "Value": "Compliance"
+  },
+  {
+    "ID": 3,
+    "Key": "plugin",
+    "Value": "azure"
+  },
+  {
+    "ID": 4,
+    "Key": "service",
+    "Value": "Azure/Compute"
+  },
+  {
+    "ID": 5,
+    "Key": "type",
+    "Value": "Benchmark"
+  },
+  {
+    "ID": 6,
+    "Key": "service",
+    "Value": "Azure"
+  },
+  {
+    "ID": 8,
+    "Key": "service",
+    "Value": "Azure/ActiveDirectory"
+  },
+  {
+    "ID": 10,
+    "Key": "service",
+    "Value": "Azure/AppService"
+  },
+  {
+    "ID": 11,
+    "Key": "service",
+    "Value": "Azure/SecurityCenter"
+  },
+  {
+    "ID": 14,
+    "Key": "cis",
+    "Value": "true"
+  },
+  {
+    "ID": 15,
+    "Key": "cis_section_id",
+    "Value": "6"
+  },
+  {
+    "ID": 17,
+    "Key": "service",
+    "Value": "Azure/Network"
+  },
+  {
+    "ID": 20,
+    "Key": "cis_section_id",
+    "Value": "2"
+  },
+  {
+    "ID": 23,
+    "Key": "cis_section_id",
+    "Value": "8"
+  },
+  {
+    "ID": 24,
+    "Key": "cis_version",
+    "Value": "v1.3.0"
+  },
+  {
+    "ID": 28,
+    "Key": "cis_section_id",
+    "Value": "5"
+  },
+  {
+    "ID": 32,
+    "Key": "service",
+    "Value": "Azure/Storage"
+  },
+  {
+    "ID": 33,
+    "Key": "cis_section_id",
+    "Value": "4"
+  },
+  {
+    "ID": 36,
+    "Key": "cis_section_id",
+    "Value": "9"
+  },
+  {
+    "ID": 41,
+    "Key": "cis_section_id",
+    "Value": "1"
+  },
+  {
+    "ID": 42,
+    "Key": "cis_section_id",
+    "Value": "7"
+  },
+  {
+    "ID": 44,
+    "Key": "cis_section_id",
+    "Value": "3"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "ID": 14,
+  "QueryID": "aws_insight_elb_classic_lb_use_ssl_certificate",
+  "Connector": "AWS",
+  "ShortTitle": "Load Balancers with no SSL",
+  "LongTitle": "List all Load Balancers with out SSL",
+  "Description": "List all Load Balancers with out SSL",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

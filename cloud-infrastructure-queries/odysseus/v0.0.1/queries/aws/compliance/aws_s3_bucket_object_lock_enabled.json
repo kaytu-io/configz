@@ -1,0 +1,10 @@
+{
+  "ID": "aws_s3_bucket_object_lock_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when object_lock_configuration is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when object_lock_configuration is null then title || ' object lock not enabled.'\n    else title || ' object lock enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_s3_bucket",
+  "ListOfTables": [
+    "aws_s3_bucket"
+  ]
+}

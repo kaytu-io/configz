@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "inactive",
+    "name": "Public IP address",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/publicipaddresses' group by 1,2;",
+    "tags": {
+        "category": ["Networking"]
+    }
+}

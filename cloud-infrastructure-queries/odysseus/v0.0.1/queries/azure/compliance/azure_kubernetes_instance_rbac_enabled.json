@@ -1,0 +1,11 @@
+{
+  "ID": "azure_kubernetes_instance_rbac_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  kc.id as resource,\n  case\n    when enable_rbac then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_rbac then name || ' role based access control enabled.'\n    else name || ' role based access control disabled.'\n  end as reason,\n  enable_rbac\n  \n  , kc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster kc,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kc.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_kubernetes_cluster",
+  "ListOfTables": [
+    "azure_kubernetes_cluster",
+    "azure_subscription"
+  ]
+}

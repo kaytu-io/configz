@@ -1,0 +1,11 @@
+{
+  "ID": "azure_iam_no_custom_role",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with custom_roles as (\n  select\n    role_name,\n    role_type,\n    _ctx,\n    subscription_id\n  from\n    azure_role_definition\n  where\n    role_type = 'CustomRole'\n)\nselect\n  cr.subscription_id as resource,\n  case\n    when count(*) \u003e 0 then 'alarm'\n    else 'ok'\n  end as status,\n  'There are ' || count(*) || ' custom roles.' as reason\n  \n  , sub.display_name as subscription\nfrom\n  custom_roles as cr,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = cr.subscription_id\ngroup by\n  cr.subscription_id,\n  cr._ctx,\n  sub.display_name;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_subscription",
+  "ListOfTables": [
+    "azure_role_definition",
+    "azure_subscription"
+  ]
+}

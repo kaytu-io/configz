@@ -1,0 +1,568 @@
+[
+  {
+    "ID": "aws_pci_v321_ssm",
+    "Title": "SSM",
+    "DocumentURI": "benchmarks/aws_pci_v321_ssm.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ssm"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_ssm_1",
+      "aws_pci_v321_ssm_2",
+      "aws_pci_v321_ssm_3"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_dms",
+    "Title": "DMS",
+    "DocumentURI": "benchmarks/aws_pci_v321_dms.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "dms"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_dms_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_redshift",
+    "Title": "Redshift",
+    "DocumentURI": "benchmarks/aws_pci_v321_redshift.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "redshift"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_redshift_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_autoscaling",
+    "Title": "Auto Scaling",
+    "DocumentURI": "benchmarks/aws_pci_v321_autoscaling.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "autoscaling"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_autoscaling_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_codebuild",
+    "Title": "CodeBuild",
+    "DocumentURI": "benchmarks/aws_pci_v321_codebuild.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "codebuild"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_codebuild_1",
+      "aws_pci_v321_codebuild_2"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_cloudtrail",
+    "Title": "CloudTrail",
+    "DocumentURI": "benchmarks/aws_pci_v321_cloudtrail.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudtrail"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_cloudtrail_1",
+      "aws_pci_v321_cloudtrail_2",
+      "aws_pci_v321_cloudtrail_3",
+      "aws_pci_v321_cloudtrail_4"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_sagemaker",
+    "Title": "SageMaker",
+    "DocumentURI": "benchmarks/aws_pci_v321_sagemaker.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "sagemaker"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_sagemaker_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_guardduty",
+    "Title": "GuardDuty",
+    "DocumentURI": "benchmarks/aws_pci_v321_guardduty.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "guardduty"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_guardduty_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_config",
+    "Title": "Config",
+    "DocumentURI": "benchmarks/aws_pci_v321_config.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "config"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_config_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_elbv2",
+    "Title": "ELBV2",
+    "DocumentURI": "benchmarks/aws_pci_v321_elbv2.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "elbv2"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_elbv2_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_ec2",
+    "Title": "EC2",
+    "DocumentURI": "benchmarks/aws_pci_v321_ec2.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_ec2_1",
+      "aws_pci_v321_ec2_2",
+      "aws_pci_v321_ec2_3",
+      "aws_pci_v321_ec2_4",
+      "aws_pci_v321_ec2_5",
+      "aws_pci_v321_ec2_6"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_cw",
+    "Title": "CloudWatch",
+    "DocumentURI": "benchmarks/aws_pci_v321_cw.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudwatch"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_cw_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_kms",
+    "Title": "KMS",
+    "DocumentURI": "benchmarks/aws_pci_v321_kms.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "kms"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_kms_1"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_s3",
+    "Title": "S3",
+    "DocumentURI": "benchmarks/aws_pci_v321_s3.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_s3_1",
+      "aws_pci_v321_s3_2",
+      "aws_pci_v321_s3_3",
+      "aws_pci_v321_s3_4",
+      "aws_pci_v321_s3_5",
+      "aws_pci_v321_s3_6"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_lambda",
+    "Title": "Lambda",
+    "DocumentURI": "benchmarks/aws_pci_v321_lambda.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "lambda"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_lambda_1",
+      "aws_pci_v321_lambda_2"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_es",
+    "Title": "Elasticsearch",
+    "DocumentURI": "benchmarks/aws_pci_v321_es.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "es"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_es_1",
+      "aws_pci_v321_es_2"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_iam",
+    "Title": "IAM",
+    "DocumentURI": "benchmarks/aws_pci_v321_iam.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_iam_1",
+      "aws_pci_v321_iam_2",
+      "aws_pci_v321_iam_3",
+      "aws_pci_v321_iam_4",
+      "aws_pci_v321_iam_5",
+      "aws_pci_v321_iam_6",
+      "aws_pci_v321_iam_7",
+      "aws_pci_v321_iam_8"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_rds",
+    "Title": "RDS",
+    "DocumentURI": "benchmarks/aws_pci_v321_rds.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "rds"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_pci_v321_rds_1",
+      "aws_pci_v321_rds_2"
+    ]
+  }
+]

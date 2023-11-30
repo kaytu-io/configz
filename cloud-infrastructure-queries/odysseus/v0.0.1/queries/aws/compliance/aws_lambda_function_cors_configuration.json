@@ -1,0 +1,10 @@
+{
+  "ID": "aws_lambda_function_cors_configuration",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when url_config is null then 'info'\n    when url_config -\u003e 'Cors' -\u003e\u003e 'AllowOrigins' = '[\"*\"]' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when url_config is null then title || ' does not has a URL config.'\n    when url_config -\u003e 'Cors' -\u003e\u003e 'AllowOrigins' = '[\"*\"]' then title || ' CORS configuration allows all origins.'\n    else title || ' CORS configuration does not allow all origins.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_lambda_function;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_lambda_function",
+  "ListOfTables": [
+    "aws_lambda_function"
+  ]
+}

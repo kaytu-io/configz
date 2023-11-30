@@ -1,0 +1,10 @@
+{
+  "ID": "aws_iam_group_not_empty",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when users is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when users is null then title || ' not associated with any IAM user.'\n    else title || ' associated with IAM user.'\n  end as reason\n  , account_id\nfrom\n  aws_iam_group;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_group",
+  "ListOfTables": [
+    "aws_iam_group"
+  ]
+}

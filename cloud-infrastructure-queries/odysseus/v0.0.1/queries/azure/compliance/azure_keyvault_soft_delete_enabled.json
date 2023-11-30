@@ -1,0 +1,11 @@
+{
+  "ID": "azure_keyvault_soft_delete_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when soft_delete_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when soft_delete_enabled then name || ' soft delete enabled.'\n    else name || ' soft delete disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_key_vault",
+  "ListOfTables": [
+    "azure_key_vault",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "azure_kubernetes_cluster_node_restrict_public_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with public_node as (\n  select\n    distinct id\n  from\n    azure_kubernetes_cluster,\n    jsonb_array_elements(agent_pool_profiles) as p\n  where\n    p -\u003e\u003e 'enableNodePublicIP' = 'true'\n  group by\n    id\n)\nselect\n  c.id as resource,\n  case\n    when n.id is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when n.id is null then c.name || ' has no public node.'\n    else c.name || ' has public node.'\n  end as reason\n  \n  , c.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster c\n  left join public_node as n on n.id = c.id,\n  azure_subscription sub\nwhere\n  sub.subscription_id = c.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_kubernetes_cluster",
+  "ListOfTables": [
+    "azure_kubernetes_cluster",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "ID": "aws_emr",
+  "Title": "EMR Checks",
+  "Connector": "AWS",
+  "DocumentURI": "benchmarks/aws_emr.md",
+  "Description": "Thrifty developers checks EMR clusters of previous generation instances and idle clusters.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/EMR"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_emr_cluster_instance_prev_gen",
+    "aws_emr_cluster_is_idle_30_minutes"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_low_iops_ebs_volumes",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "  select\n  arn as resource,\n  case\n    when volume_type not in ('io1', 'io2') then 'skip'\n    when iops \u003c= 3000 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when volume_type not in ('io1', 'io2') then volume_id || ' type is ' || volume_type || '.'\n    when iops \u003c= 3000 then volume_id || ' only has ' || iops || ' iops.'\n    else volume_id || ' has ' || iops || ' iops.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_volume;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ebs_volume",
+  "ListOfTables": [
+    "aws_ebs_volume"
+  ]
+}

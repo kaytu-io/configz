@@ -1,0 +1,11 @@
+{
+  "ID": "azure_apimanagement_service_with_virtual_network",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when virtual_network_type != 'None' then 'ok'\n    else 'alarm'\n  end as status,\n  a.name || ' Virtual network is set to '  ||  virtual_network_type as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_api_management a,\n  azure_subscription sub;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_api_management",
+  "ListOfTables": [
+    "azure_api_management",
+    "azure_subscription"
+  ]
+}

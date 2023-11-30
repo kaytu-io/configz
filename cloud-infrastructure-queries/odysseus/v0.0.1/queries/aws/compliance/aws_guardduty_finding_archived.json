@@ -1,0 +1,10 @@
+{
+  "ID": "aws_guardduty_finding_archived",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when service -\u003e\u003e 'Archived' = 'false' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when service -\u003e\u003e 'Archived' = 'false' then title || ' not archived.'\n    else title || ' archived.'\n  end as reason\n  , region, account_id\nfrom\n  aws_guardduty_finding;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_guardduty_finding",
+  "ListOfTables": [
+    "aws_guardduty_finding"
+  ]
+}

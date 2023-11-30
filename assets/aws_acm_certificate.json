@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "inactive",
+    "name": "ACM Public Certificate (SSL/TLS)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::certificatemanager::certificate' group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

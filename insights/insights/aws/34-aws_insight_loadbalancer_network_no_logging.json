@@ -1,0 +1,21 @@
+{
+  "ID": 34,
+  "QueryID": "aws_insight_loadbalancer_network_no_logging",
+  "Connector": "AWS",
+  "ShortTitle": "Network Load Balancers without logging",
+  "LongTitle": "List network Load Balancers without logging",
+  "Description": "List network Load Balancers without logging",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Security",
+      "DevOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,38 @@
+{
+  "ID": "azure_network",
+  "Title": "Network Checks",
+  "Connector": "Azure",
+  "DocumentURI": "benchmarks/azure_network.md",
+  "Description": "Thrifty developers eliminate unused IP addresses and virtual network gateways.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Network"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-azure-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "azure_network_public_ip_unattached",
+    "azure_virtual_network_gateway_unused"
+  ]
+}

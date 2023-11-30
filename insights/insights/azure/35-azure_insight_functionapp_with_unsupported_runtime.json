@@ -1,0 +1,17 @@
+{
+  "ID": 35,
+  "QueryID": "azure_insight_functionapp_with_unsupported_runtime",
+  "Connector": "Azure",
+  "ShortTitle": "Function Apps with unsupported runtime",
+  "LongTitle": "List Function Apps with unsupported runtime",
+  "Description": "List Function Apps with unsupported runtime",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

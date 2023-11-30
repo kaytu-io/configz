@@ -1,0 +1,11 @@
+{
+  "ID": "aws_vpc_security_group_not_uses_launch_wizard_sg",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with associated_sg as (\n  select\n    distinct (sg -\u003e\u003e 'GroupName') as sg_name\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n  where\n    (sg -\u003e\u003e 'GroupName') like 'launch-wizard%'\n)\nselect\n  arn as resource,\n  case\n    when a.sg_name is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.sg_name is null then title || ' not in use.'\n    else title || ' in use.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_vpc_security_group as s\n  left join associated_sg as a on a.sg_name = s.group_name\nwhere\n  group_name like 'launch-wizard%';\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc_security_group",
+  "ListOfTables": [
+    "aws_ec2_network_interface",
+    "aws_vpc_security_group"
+  ]
+}

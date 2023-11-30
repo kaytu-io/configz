@@ -1,0 +1,11 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_rds_db_low_utilization",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with rds_db_usage as (\n  select\n    db_instance_identifier,\n    round(cast(sum(maximum)/count(maximum) as numeric), 1) as avg_max,\n    count(maximum) days\n  from\n    aws_rds_db_instance_metric_cpu_utilization_daily\n  where\n    date_part('day', now() - timestamp) \u003c= 30\n  group by\n    db_instance_identifier\n)\nselect\n  arn as resource,\n  case\n    when avg_max is null then 'error'\n    when avg_max \u003c= $1 then 'alarm'\n    when avg_max \u003c= $2 then 'info'\n    else 'ok'\n  end as status,\n  case\n    when avg_max is null then 'CloudWatch metrics not available for ' || title || '.'\n    else title || ' is averaging ' || avg_max || '% max utilization over the last ' || days || ' days.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance i\n  left join rds_db_usage as u on u.db_instance_identifier = i.db_instance_identifier;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_rds_db_instance",
+  "ListOfTables": [
+    "aws_rds_db_instance",
+    "aws_rds_db_instance_metric_cpu_utilization_daily"
+  ]
+}

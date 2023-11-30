@@ -1,0 +1,10 @@
+{
+  "ID": "aws_iam_policy_all_attached_no_star_star",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with star_access_policies as (\n  select\n    arn,\n    is_aws_managed,\n    count(*) as num_bad_statements\n  from\n    aws_iam_policy,\n    jsonb_array_elements(policy_std -\u003e 'Statement') as s,\n    jsonb_array_elements_text(s -\u003e 'Resource') as resource,\n    jsonb_array_elements_text(s -\u003e 'Action') as action\n  where\n    s -\u003e\u003e 'Effect' = 'Allow'\n    and resource = '*'\n    and (\n      (action = '*'\n      or action = '*:*'\n      )\n    )\n    and is_attached\n  group by\n    arn,\n    is_aws_managed\n)\nselect\n  p.arn as resource,\n  case\n    when s.arn is not null and s.is_aws_managed then 'info'\n    when s.arn is null then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when s.arn is not null and s.is_aws_managed then p.name || ' is an AWS managed policy with ' || coalesce(s.num_bad_statements, 0) || ' statements that allow action \"*\" on resource \"*\".'\n    else p.name || ' contains ' || coalesce(s.num_bad_statements, 0) || ' statements that allow action \"*\" on resource \"*\".'\n  end as reason\n  \n  , p.account_id\nfrom\n  aws_iam_policy as p\n  left join star_access_policies as s on p.arn = s.arn\nwhere\n  p.is_attached;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_policy",
+  "ListOfTables": [
+    "aws_iam_policy"
+  ]
+}

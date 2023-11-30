@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "active",
+    "name": "Managed disk",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.compute/disks' group by 1,2;",
+    "tags": {
+        "category": ["Compute"]
+    }
+}

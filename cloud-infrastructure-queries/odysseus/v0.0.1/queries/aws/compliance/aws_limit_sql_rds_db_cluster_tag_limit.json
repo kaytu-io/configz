@@ -1,0 +1,10 @@
+{
+  "ID": "aws_limit_sql_rds_db_cluster_tag_limit",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with analysis as (\n  select\n    arn,\n    title,\n    cardinality(array(select jsonb_object_keys(tags))) as num_tag_keys,\n    region,\n    account_id,\n    tags,\n    _ctx\n  from\n    aws_rds_db_cluster\n)\nselect\n  arn as resource,\n  case\n    when num_tag_keys \u003e $1::integer then 'alarm'\n    else 'ok'\n  end as status,\n  title || ' has ' || num_tag_keys || ' tag(s).' as reason\n  \n  , region, account_id\nfrom\n  analysis;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_rds_db_cluster",
+  "ListOfTables": [
+    "aws_rds_db_cluster"
+  ]
+}

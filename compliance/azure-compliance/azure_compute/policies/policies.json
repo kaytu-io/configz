@@ -1,0 +1,218 @@
+[
+  {
+    "ID": "azure_compute_disk_large",
+    "Title": "Disks should be resized if too large",
+    "Description": "Large disks are unusual, expensive and should be reviewed.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_large",
+    "DocumentURI": "policies/azure_compute_disk_large.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_disk_high_iops",
+    "Title": "Disks with high IOPS should be resized if too large",
+    "Description": "High IOPS disks are costly and usage should be reviewed.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_high_iops",
+    "DocumentURI": "policies/azure_compute_disk_high_iops.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_disk_low_usage",
+    "Title": "Compute disks with low usage should be reviewed",
+    "Description": "Disks that are unused should be archived and deleted.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_low_usage",
+    "DocumentURI": "policies/azure_compute_disk_low_usage.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_disk_unattached",
+    "Title": "Unused disks should be removed",
+    "Description": "Unattached disks are charged by Azure, they should be removed unless there is a business need to retain them.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_unattached",
+    "DocumentURI": "policies/azure_compute_disk_unattached.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_snapshot_max_age",
+    "Title": "Old snapshots should be deleted if not required",
+    "Description": "Old snapshots are likely unneeded and costly to maintain.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_snapshot_max_age",
+    "DocumentURI": "policies/azure_compute_snapshot_max_age.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_virtual_machine_long_running",
+    "Title": "Long running virtual machines should be reviewed",
+    "Description": "Virtual machines should ideally be ephemeral and rehydrated frequently, check why these virtual machines have been running for so long.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_virtual_machine_long_running",
+    "DocumentURI": "policies/azure_compute_virtual_machine_long_running.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_disk_snapshot_storage_standard",
+    "Title": "Disks should use standard snapshots",
+    "Description": "Use standard storage instead of premium storage for managed disk snapshots to save 60% on costs.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_snapshot_storage_standard",
+    "DocumentURI": "policies/azure_compute_disk_snapshot_storage_standard.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_virtual_machine_low_utilization",
+    "Title": "Compute virtual machines with low CPU utilization should be reviewed",
+    "Description": "Resize or eliminate under utilized virtual machines.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_virtual_machine_low_utilization",
+    "DocumentURI": "policies/azure_compute_virtual_machine_low_utilization.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "azure_compute_disk_attached_stopped_virtual_machine",
+    "Title": "Disks attached to stopped virtual machines should be reviewed",
+    "Description": "Virtual machines that are stopped may no longer need any disks attached.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_attached_stopped_virtual_machine",
+    "DocumentURI": "policies/azure_compute_disk_attached_stopped_virtual_machine.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  }
+]

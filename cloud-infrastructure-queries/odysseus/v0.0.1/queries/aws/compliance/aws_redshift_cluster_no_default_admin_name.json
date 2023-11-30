@@ -1,0 +1,10 @@
+{
+  "ID": "aws_redshift_cluster_no_default_admin_name",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when master_username = 'awsuser' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when master_username = 'awsuser' then title || ' using default master user name.'\n    else title || ' not using default master user name.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_redshift_cluster;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_redshift_cluster",
+  "ListOfTables": [
+    "aws_redshift_cluster"
+  ]
+}

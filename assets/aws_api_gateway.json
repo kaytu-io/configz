@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "active",
+    "name": "API Gateways",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::apigateway::restapi' group by 1,2;",
+    "tags": {
+        "category": ["Network"]
+    }
+}

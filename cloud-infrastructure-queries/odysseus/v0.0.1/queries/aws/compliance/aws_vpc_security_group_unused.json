@@ -1,0 +1,12 @@
+{
+  "ID": "aws_vpc_security_group_unused",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with associated_sg as (\n  select\n    sg -\u003e\u003e 'GroupId' as secgrp_id\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n    group by sg -\u003e\u003e 'GroupId'\n  union\n    select\n    sg -\u003e\u003e 'GroupId' as secgrp_id\n  from\n    aws_ec2_instance,\n    jsonb_array_elements(security_groups) as sg\n    group by sg -\u003e\u003e 'GroupId'\n)\nselect\n  distinct s.arn as resource,\n  case\n    when a.secgrp_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.secgrp_id is not null then s.title || ' is in use.'\n    else s.title || ' not in use.'\n  end as reason\n  \n  , s.region, s.account_id\nfrom\n  aws_vpc_security_group as s\n  left join associated_sg as a on s.group_id = a.secgrp_id;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc_security_group",
+  "ListOfTables": [
+    "aws_ec2_instance",
+    "aws_ec2_network_interface",
+    "aws_vpc_security_group"
+  ]
+}

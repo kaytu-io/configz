@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "inactive",
+    "name": "ExpressRoute circuit",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/expressroutecircuits' group by 1,2;",
+    "tags": {
+        "category": ["Networking"]
+    }
+}

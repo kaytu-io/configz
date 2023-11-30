@@ -1,0 +1,10 @@
+{
+  "ID": "aws_elb_tls_listener_protocol_version",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  load_balancer_arn as resource,\n  case\n    when protocol \u003c\u003e 'HTTPS' then 'skip'\n    when protocol = 'HTTPS' and ssl_policy like any(array['Protocol-SSLv3', 'Protocol-TLSv1']) then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when protocol \u003c\u003e 'HTTPS' then title || ' uses protocol ' || protocol || '.'\n    when ssl_policy like any (array['Protocol-SSLv3', 'Protocol-TLSv1']) then title || ' uses insecure SSL or TLS cipher.'\n    else title || ' uses secure SSL or TLS cipher.'\n  end as reason\n  , region, account_id\nfrom\n  aws_ec2_load_balancer_listener;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ec2_load_balancer_listener",
+  "ListOfTables": [
+    "aws_ec2_load_balancer_listener"
+  ]
+}

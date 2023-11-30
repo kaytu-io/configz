@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Managed Workflows for Apache Airflow",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::mwaa::environment') group by 1,2;",
+    "tags": {
+        "category": ["Application Integration"]
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_rds_db_instance_with_graviton",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when class like 'db.%g%.%' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when class like 'db.%g%.%' then title || ' is using Graviton2 processor.'\n    else title || ' is not using Graviton2 processor.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_rds_db_instance",
+  "ListOfTables": [
+    "aws_rds_db_instance"
+  ]
+}

@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Elastic Beanstalk Environment",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::elasticbeanstalk::environment') group by 1,2;",
+    "tags": {
+        "category": ["App Platform"]
+    }
+}

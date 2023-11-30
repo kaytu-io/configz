@@ -1,0 +1,11 @@
+{
+  "ID": "azure_kusto_cluster_sku_with_sla",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when sku_name in ('Dev(No SLA)_Standard_E2a_v4' , 'Dev(No SLA)_Standard_D11_v2') then 'alarm'\n    else 'ok'\n  end as status,\n  name || ' using ' || sku_name || ' SKU tier.' as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kusto_cluster as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_kusto_cluster",
+  "ListOfTables": [
+    "azure_kusto_cluster",
+    "azure_subscription"
+  ]
+}

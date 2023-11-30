@@ -1,0 +1,10 @@
+{
+  "ID": "aws_dynamodb_table_encrypted_with_kms_cmk",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when sse_description is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sse_description is null then title || ' not encrypted with CMK.'\n    else title || ' encrypted with CMK.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_dynamodb_table;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_dynamodb_table",
+  "ListOfTables": [
+    "aws_dynamodb_table"
+  ]
+}

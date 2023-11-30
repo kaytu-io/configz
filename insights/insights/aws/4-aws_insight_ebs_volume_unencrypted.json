@@ -1,0 +1,23 @@
+{
+  "ID": 4,
+  "QueryID": "aws_insight_ebs_volume_unencrypted",
+  "Connector": "AWS",
+  "ShortTitle": "Unencrypted EBS Disks",
+  "LongTitle": "List of unencrypted EBS volumes",
+  "Description": "List of unencrypted EBS volumes",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt"
+    ],
+    "persona": [
+      "Security",
+      "DevOps",
+      "Product"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

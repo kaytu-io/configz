@@ -1,0 +1,11 @@
+{
+  "ID": "aws_elb_application_classic_network_lb_prohibit_public_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with all_lb_details as (\n  select\n    arn,\n    scheme,\n    title,\n    region,\n    account_id,\n    tags,\n    _ctx\n  from\n    aws_ec2_application_load_balancer\n  union\n  select\n    arn,\n    scheme,\n    title,\n    region,\n    account_id,\n    tags,\n    _ctx\n  from\n    aws_ec2_network_load_balancer\n  union\n  select\n    arn,\n    scheme,\n    title,\n    region,\n    account_id,\n    tags,\n    _ctx\n  from\n  aws_ec2_classic_load_balancer\n)\nselect\n  arn as resource,\n  case\n    when scheme = 'internet-facing' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when scheme = 'internet-facing' then title || ' publicly accessible.'\n    else title|| ' not publicly accessible.'\n  end as reason\n  \n  , region, account_id\nfrom\n  all_lb_details;\n",
+  "Connector": "AWS",
+  "ListOfTables": [
+    "aws_ec2_application_load_balancer",
+    "aws_ec2_classic_load_balancer",
+    "aws_ec2_network_load_balancer"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "azure_compute_vm_guest_configuration_with_no_managed_identity",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with gc_installed_vm as (\n  select\n    distinct a.vm_id,\n    title\n  from\n    azure_compute_virtual_machine as a,\n    jsonb_array_elements(extensions) as b\n  where\n    b -\u003e\u003e 'Publisher' = 'Microsoft.GuestConfiguration'\n)\nselect\n  a.vm_id as resource,\n  case\n    when b.vm_id is null then 'skip'\n    when b.vm_id is not null and identity -\u003e\u003e 'type' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.vm_id is null then a.title || ' guest configuration extension not installed.'\n    when b.vm_id is not null and identity -\u003e\u003e 'type' is not null then a.title || ' guest configuration extension installed with ' || (identity -\u003e\u003e 'type') || ' managed identity.'\n    else a.title || ' guest configuration extension not installed with managed identity.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as a\n  left join gc_installed_vm as b on a.vm_id = b.vm_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_virtual_machine",
+  "ListOfTables": [
+    "azure_compute_virtual_machine",
+    "azure_subscription"
+  ]
+}

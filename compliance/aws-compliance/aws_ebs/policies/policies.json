@@ -1,0 +1,218 @@
+[
+  {
+    "ID": "aws_io1_volumes",
+    "Title": "Still using io1 EBS volumes? Should use io2 instead.",
+    "Description": "io1 Volumes are less reliable than io2 for same cost.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_io1_volumes",
+    "DocumentURI": "policies/aws_io1_volumes.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_gp2_volumes",
+    "Title": "Still using gp2 EBS volumes? Should use gp3 instead.",
+    "Description": "EBS gp2 volumes are more costly and lower performance than gp3.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_gp2_volumes",
+    "DocumentURI": "policies/aws_gp2_volumes.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_large_ebs_volumes",
+    "Title": "EBS volumes should be resized if too large",
+    "Description": "Large EBS volumes are unusual, expensive and should be reviewed.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_large_ebs_volumes",
+    "DocumentURI": "policies/aws_large_ebs_volumes.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_with_low_usage",
+    "Title": "Are there any EBS volumes with low usage?",
+    "Description": "Volumes that are unused should be archived and deleted",
+    "QueryID": "aws_common_dimensions_sql_ebs_with_low_usage",
+    "DocumentURI": "policies/aws_ebs_with_low_usage.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_snapshot_max_age",
+    "Title": "Old EBS snapshots should be deleted if not required",
+    "Description": "Old EBS snapshots are likely unnecessary and costly to maintain.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_ebs_snapshot_max_age",
+    "DocumentURI": "policies/aws_ebs_snapshot_max_age.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_low_iops_ebs_volumes",
+    "Title": "What provisioned IOPS volumes would be better as GP3?",
+    "Description": "GP3 provides 3k base IOPS performance, don't use more costly io1 \u0026 io2 volumes.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_low_iops_ebs_volumes",
+    "DocumentURI": "policies/aws_low_iops_ebs_volumes.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "management"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_high_iops_ebs_volumes",
+    "Title": "EBS volumes with high IOPS should be resized if too large",
+    "Description": "High IOPS io1 and io2 volumes are costly and usage should be reviewed.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_high_iops_ebs_volumes",
+    "DocumentURI": "policies/aws_high_iops_ebs_volumes.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_unattached_ebs_volumes",
+    "Title": "Are there any unattached EBS volumes?",
+    "Description": "Unattached EBS volumes render little usage, are expensive to maintain and should be reviewed.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_unattached_ebs_volumes",
+    "DocumentURI": "policies/aws_unattached_ebs_volumes.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_volumes_on_stopped_instances",
+    "Title": "EBS volumes attached to stopped instances should be reviewed",
+    "Description": "Instances that are stopped may no longer need any attached EBS volumes",
+    "QueryID": "aws_common_dimensions_sql_ebs_volumes_on_stopped_instances",
+    "DocumentURI": "policies/aws_ebs_volumes_on_stopped_instances.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  }
+]

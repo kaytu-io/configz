@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "inactive",
+    "name": "Automation account",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.automation/automationaccounts' group by 1,2;",
+    "tags": {
+        "category": ["Management and governance"]
+    }
+}

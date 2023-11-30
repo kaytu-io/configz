@@ -1,0 +1,10 @@
+{
+  "ID": "aws_redshift_cluster_logging_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  -- Required Columns\n  'arn:aws:redshift:' || region || ':' || account_id || ':' || 'cluster' || ':' || cluster_identifier as resource,\n  case\n    when logging_status -\u003e\u003e 'LoggingEnabled' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when logging_status -\u003e\u003e 'LoggingEnabled' = 'true' then title || ' logging enabled.'\n    else title || ' logging disabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_redshift_cluster;",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_redshift_cluster",
+  "ListOfTables": [
+    "aws_redshift_cluster"
+  ]
+}

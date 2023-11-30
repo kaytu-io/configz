@@ -1,0 +1,22 @@
+{
+  "ID": 38,
+  "QueryID": "azure_insight_legacy_virtual_machine",
+  "Connector": "Azure",
+  "ShortTitle": "Legacy Virtual Machine",
+  "LongTitle": "Legacy Virtual Machine",
+  "Description": "This insight identifies virtual machines that are running on legacy hardware.",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Executive",
+      "Product",
+      "FinOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,23 @@
+{
+  "ID": 42,
+  "QueryID": "aws_insight_account_with_root_access_key",
+  "Connector": "AWS",
+  "ShortTitle": "AWS Account with Root Access Key Enabled",
+  "LongTitle": "AWS Account with Root Access Key Enabled",
+  "Description": "AWS Account whose root user has an access key enabled.",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ],
+    "persona": [
+      "DevOps",
+      "Security",
+      "Executive",
+      "Product"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

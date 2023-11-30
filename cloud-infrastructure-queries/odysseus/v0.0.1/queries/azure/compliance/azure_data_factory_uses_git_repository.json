@@ -1,0 +1,11 @@
+{
+  "ID": "azure_data_factory_uses_git_repository",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when repo_configuration -\u003e\u003e 'repositoryName' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when repo_configuration -\u003e\u003e 'repositoryName' is not null then a.name || ' uses git repository.'\n    else a.name || ' not uses git repository.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_data_factory as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_data_factory",
+  "ListOfTables": [
+    "azure_data_factory",
+    "azure_subscription"
+  ]
+}

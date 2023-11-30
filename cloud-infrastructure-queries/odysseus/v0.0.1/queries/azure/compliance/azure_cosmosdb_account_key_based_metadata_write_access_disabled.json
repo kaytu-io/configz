@@ -1,0 +1,11 @@
+{
+  "ID": "azure_cosmosdb_account_key_based_metadata_write_access_disabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when disable_key_based_metadata_write_access then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when disable_key_based_metadata_write_access then a.name || ' key based metadata write_access disabled.'\n    else a.name || ' key based metadata write_access enabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cosmosdb_account as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_cosmosdb_account",
+  "ListOfTables": [
+    "azure_cosmosdb_account",
+    "azure_subscription"
+  ]
+}

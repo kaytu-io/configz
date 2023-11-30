@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Kinesis",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::kinesisanalyticsv2::application','aws::firehose::deliverystream') group by 1,2;",
+    "tags": {
+        "category": ["Data & Analytics"]
+    }
+}

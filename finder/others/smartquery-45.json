@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all DynamoDB that have encryption enabled",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when sse_description is not null and sse_description -\u003e\u003e 'SSEType' = 'KMS' then 'ok'\n    when sse_description is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sse_description is not null and sse_description -\u003e\u003e 'SSEType' = 'KMS'\n      then title || ' encrypted with AWS KMS.'\n    when sse_description is null then title || ' encrypted with DynamoDB managed CMK.'\n    else title || ' not encrypted with CMK.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_dynamodb_table"
+}

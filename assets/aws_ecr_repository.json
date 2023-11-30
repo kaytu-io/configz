@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "inactive",
+    "name": "Container (ECR) Repository",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::ecr::repository' group by 1,2;",
+    "tags": {
+        "category": ["Containers"]
+    }
+}

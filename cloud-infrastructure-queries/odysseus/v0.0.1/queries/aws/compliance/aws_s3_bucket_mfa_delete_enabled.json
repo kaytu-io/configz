@@ -1,0 +1,10 @@
+{
+  "ID": "aws_s3_bucket_mfa_delete_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when versioning_mfa_delete then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when versioning_mfa_delete then name || ' MFA delete enabled.'\n    else name || ' MFA delete disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_s3_bucket",
+  "ListOfTables": [
+    "aws_s3_bucket"
+  ]
+}

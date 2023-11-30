@@ -1,0 +1,11 @@
+{
+  "ID": "azure_datalake_store_account_logging_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with logging_details as (\n  select\n    distinct account_id as account_id\n  from\n    azure_data_lake_store,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -\u003e 'properties' -\u003e 'logs') log\n  where\n    diagnostic_settings is not null\n    and (\n      (\n        (log -\u003e\u003e 'enabled') :: boolean\n        and (log -\u003e 'retentionPolicy' -\u003e\u003e 'enabled') :: boolean\n        and (log -\u003e 'retentionPolicy') :: JSONB ? 'days'\n      )\n      or\n      (\n        (log -\u003e\u003e 'enabled') :: boolean\n        and (\n          log -\u003e 'retentionPolicy' -\u003e\u003e 'enabled' \u003c\u003e 'true'\n          or setting -\u003e 'properties' -\u003e\u003e 'storageAccountId' = ''\n        )\n      )\n    )\n)\nselect\n  a.account_id as resource,\n  case\n    when a.diagnostic_settings is null then 'alarm'\n    when l.account_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.diagnostic_settings is null then a.name || ' logging disabled.'\n    when l.account_id is not null then a.name || ' logging enabled.'\n    else a.name || ' logging disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_data_lake_store as a\n  left join logging_details as l on a.account_id = l.account_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_data_lake_store",
+  "ListOfTables": [
+    "azure_data_lake_store",
+    "azure_subscription"
+  ]
+}

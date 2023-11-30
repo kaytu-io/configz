@@ -1,0 +1,10 @@
+{
+  "ID": "aws_networkfirewall_firewall_in_vpc",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when vpc_id is null or vpc_id = '' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when vpc_id is null or vpc_id = '' then title || ' is not in VPC.'\n    else title || ' is in VPC ' || vpc_id || '.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_networkfirewall_firewall;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_networkfirewall_firewall",
+  "ListOfTables": [
+    "aws_networkfirewall_firewall"
+  ]
+}

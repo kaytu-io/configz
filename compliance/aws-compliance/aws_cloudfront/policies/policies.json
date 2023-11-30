@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "aws_cloudfront_distribution_pricing_class",
+    "Title": "CloudFront distribution pricing class should be reviewed",
+    "Description": "CloudFront distribution pricing class should be reviewed. Price Classes let you reduce your delivery prices by excluding Amazon CloudFront’s more expensive edge locations from your Amazon CloudFront distribution.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_cloudfront_distribution_pricing_class",
+    "DocumentURI": "policies/aws_cloudfront_distribution_pricing_class.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFront"
+      ]
+    },
+    "Managed": true
+  }
+]

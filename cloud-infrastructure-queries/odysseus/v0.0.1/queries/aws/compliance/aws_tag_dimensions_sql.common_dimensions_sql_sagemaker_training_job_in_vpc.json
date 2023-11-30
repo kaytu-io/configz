@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_sagemaker_training_job_in_vpc",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when vpc_config is not null then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when vpc_config is not null then title || ' in VPC.'\n    else title || ' not in VPC.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_sagemaker_training_job;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_sagemaker_training_job",
+  "ListOfTables": [
+    "aws_sagemaker_training_job"
+  ]
+}

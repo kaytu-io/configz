@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_long_running_ec2_instances",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when date_part('day', now()-launch_time) \u003e $1 then 'alarm'\n    else 'ok'\n  end as status,\n  title || ' has been running ' || date_part('day', now()-launch_time) || ' days.' as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_instance\nwhere\n  -- Instance is running\n  instance_state in ('running', 'pending', 'rebooting');\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ec2_instance",
+  "ListOfTables": [
+    "aws_ec2_instance"
+  ]
+}

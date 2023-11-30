@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "azure_sql_database_long_running_reserved_capacity",
+    "Title": "Long running SQL databases should have reserved capacity purchased for them",
+    "Description": "Purchasing reserved capacity for long running SQL databases provides significant discounts.",
+    "QueryID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_sql_database_long_running_reserved_capacity",
+    "DocumentURI": "policies/azure_sql_database_long_running_reserved_capacity.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ]
+    },
+    "Managed": true
+  }
+]

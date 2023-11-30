@@ -1,0 +1,37 @@
+{
+  "ID": "aws_cost_explorer",
+  "Title": "Cost Explorer Checks",
+  "Connector": "AWS",
+  "DocumentURI": "benchmarks/aws_cost_explorer.md",
+  "Description": "Thrifty developers actively monitor their cloud usage and cost data.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/CostExplorer"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_full_month_cost_changes"
+  ]
+}

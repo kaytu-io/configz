@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "Network Watcher",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.network/networkwatchers','microsoft.network/networkwatchers/flowlogs') group by 1,2;",
+    "tags": {
+        "category": ["Monitoring"]
+    }
+}

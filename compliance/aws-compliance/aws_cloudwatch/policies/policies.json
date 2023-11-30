@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "aws_cw_log_stream_unused",
+    "Title": "Unused log streams should be removed if not required",
+    "Description": "Unnecessary log streams should be deleted for storage cost savings.",
+    "QueryID": "aws_common_dimensions_sql_cw_log_stream_unused",
+    "DocumentURI": "policies/aws_cw_log_stream_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudWatch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cw_log_group_retention",
+    "Title": "CloudWatch Log Groups retention should be enabled",
+    "Description": "All log groups should have a defined retention configuration.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_cw_log_group_retention",
+    "DocumentURI": "policies/aws_cw_log_group_retention.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudWatch"
+      ]
+    },
+    "Managed": true
+  }
+]

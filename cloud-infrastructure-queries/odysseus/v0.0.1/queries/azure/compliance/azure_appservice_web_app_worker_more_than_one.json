@@ -1,0 +1,11 @@
+{
+  "ID": "azure_appservice_web_app_worker_more_than_one",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  p -\u003e\u003e 'ID' as resource,\n  case\n    when (p -\u003e 'SiteProperties' -\u003e 'siteConfig' -\u003e\u003e 'numberOfWorkers')::int \u003e 1 then 'ok'\n    else 'alarm'\n  end as status,\n    a.name || ' has ' || (p -\u003e 'SiteProperties' -\u003e 'siteConfig' -\u003e\u003e 'numberOfWorkers') || ' no of worker(s).' as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_plan as a,\n  jsonb_array_elements(apps) as p,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_app_service_plan",
+  "ListOfTables": [
+    "azure_app_service_plan",
+    "azure_subscription"
+  ]
+}

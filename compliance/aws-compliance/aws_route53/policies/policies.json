@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "aws_route53_record_higher_ttl",
+    "Title": "Route 53 records should have higher TTL configured",
+    "Description": "If you configure a higher TTL for your records, the intermediate resolvers cache the records for longer time. As a result, there are fewer queries received by the name servers. This configuration reduces the charges corresponding to the DNS queries answered. A value between an hour (3600s) and a day (86,400s) is a common choice.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_route53_record_higher_ttl",
+    "DocumentURI": "policies/aws_route53_record_higher_ttl.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "Higher"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route 53"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_route53_health_check_unused",
+    "Title": "Unnecessary health checks should be deleted",
+    "Description": "When you associate health checks with an endpoint, health check requests are sent to the endpoint's IP address. These health check requests are sent to validate that the requests are operating as intended. Health check charges are incurred based on their associated endpoints. To avoid health check charges, delete any health checks that aren't used with an RRset record and are no longer required.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_route53_health_check_unused",
+    "DocumentURI": "policies/aws_route53_health_check_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Route 53"
+      ]
+    },
+    "Managed": true
+  }
+]

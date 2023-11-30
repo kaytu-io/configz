@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all CloudFront Distributions where logging is enabled",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when logging -\u003e\u003e 'Enabled' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when logging -\u003e\u003e 'Enabled' = 'true' then title || ' logging enabled.'\n    else title || ' logging disabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudfront_distribution"
+}

@@ -1,0 +1,17 @@
+{
+  "ID": 31,
+  "QueryID": "azure_compute_vm_remote_access_restricted_all_ports",
+  "Connector": "Azure",
+  "ShortTitle": "VMs with restricts remote access from internet",
+  "LongTitle": "VMs with restricts remote access from internet",
+  "Description": "VMs with restricts remote access from internet",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ]
+  },
+  "Links": null,
+  "Enabled": false,
+  "Internal": false
+}

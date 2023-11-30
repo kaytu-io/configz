@@ -1,0 +1,11 @@
+{
+  "ID": "aws_codedeploy_deployment_group_lambda_allatonce_traffic_shift_disabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  g.arn as resource,\n  case\n    when a.compute_platform \u003c\u003e 'Lambda' then 'skip'\n    when deployment_config_name = 'CodeDeployDefault.LambdaAllAtOnce' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when a.compute_platform \u003c\u003e 'Lambda' then g.title || ' using ' ||  a.compute_platform || ' compute platform.'\n    else g.title || ' using '|| deployment_config_name || ' deployment config.'\n  end as reason\n  \n  , g.region, g.account_id\nfrom\n  aws_codedeploy_deployment_group as g,\n  aws_codedeploy_app as a\nwhere\n  g.application_name = a.application_name;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_codedeploy_deployment_group",
+  "ListOfTables": [
+    "aws_codedeploy_app",
+    "aws_codedeploy_deployment_group"
+  ]
+}

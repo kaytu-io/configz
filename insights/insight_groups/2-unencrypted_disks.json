@@ -1,0 +1,8 @@
+{
+  "ID": 2,
+  "ShortTitle": "Unencrypted Disks",
+  "LongTitle": "List unencrypted disks",
+  "Description": "List unencrypted disks",
+  "LogoURL": null,
+  "InsightIDs": [4, 19]
+}

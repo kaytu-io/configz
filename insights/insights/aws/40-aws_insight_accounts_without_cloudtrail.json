@@ -1,0 +1,23 @@
+{
+  "ID": 40,
+  "QueryID": "aws_insight_accounts_without_cloudtrail",
+  "Connector": "AWS",
+  "ShortTitle": "AWS Accounts without CloudTrail",
+  "LongTitle": "AWS Accounts without CloudTrail",
+  "Description": "AWS Accounts with CloudTrail disabled",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ],
+    "persona": [
+      "DevOps",
+      "Security",
+      "Executive",
+      "Product"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

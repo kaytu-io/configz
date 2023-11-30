@@ -1,0 +1,25 @@
+{
+  "ID": "aws_hipaa",
+  "Title": "HIPAA for AWS",
+  "DocumentURI": "benchmarks/aws_hipaa.md",
+  "Description": "The AWS Health Insurance Portability and Accountability (HIPAA) is a set of controls to use the secure AWS environment to process, maintain, and store protected health information.",
+  "Children": [
+    "aws_hipaa_164_308",
+    "aws_hipaa_164_312"
+  ],
+  "Tags": {
+    "hipaa": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": null
+}

@@ -1,0 +1,17 @@
+{
+  "ID": 7,
+  "QueryID": "aws_insight_iam_user_with_admin_access",
+  "Connector": "AWS",
+  "ShortTitle": "Admin Users",
+  "LongTitle": "List all the users having Administrator access",
+  "Description": "List all the users having Administrator access",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_cloudfront_distribution_configured_with_origin_failover",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when origin_groups -\u003e\u003e 'Items' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when origin_groups -\u003e\u003e 'Items' is not null then title || ' origin group is configured.'\n    else title || ' origin group not configured.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_cloudfront_distribution",
+  "ListOfTables": [
+    "aws_cloudfront_distribution"
+  ]
+}

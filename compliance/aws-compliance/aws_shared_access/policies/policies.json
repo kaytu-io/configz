@@ -1,0 +1,254 @@
+[
+  {
+    "ID": "aws_ec2_ami_shared_with_trusted_accounts",
+    "Title": "EC2 AMIs should only be shared with trusted accounts",
+    "Description": "AWS AMIs can be shared with specific AWS accounts without making the AMI public. This control checks if AMIs are shared with untrusted accounts.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_ami_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_ec2_ami_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_ami_shared_with_trusted_organizations",
+    "Title": "EC2 AMIs should only be shared with trusted organizations",
+    "Description": "AWS AMIs can be shared with specific AWS organizations without making the AMI public. This control checks if AMIs are shared with untrusted organizations.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_ami_shared_with_trusted_organizations",
+    "DocumentURI": "policies/aws_ec2_ami_shared_with_trusted_organizations.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ram_resource_shared_with_trusted_accounts",
+    "Title": "Resources shared through RAM should only be shared with trusted accounts",
+    "Description": "AWS Resource Access Manager (RAM) helps you securely share your resources across AWS accounts, organizational units (OUs), and organizations for supported resource types. Check if you share resources with an account that is not part of the trusted list of accounts.",
+    "QueryID": "aws_common_dimensions_sql_ram_resource_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_ram_resource_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_snapshot_shared_with_trusted_accounts",
+    "Title": "EBS snapshots should only be shared with trusted accounts",
+    "Description": "This control checks whether EBS snapshots access is restricted to trusted accounts.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_ebs_snapshot_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_ebs_snapshot_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_snapshot_shared_with_trusted_accounts",
+    "Title": "RDS DB snapshots should only be shared with trusted accounts",
+    "Description": "This control checks whether RDS DB snapshots access is restricted to trusted accounts.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql.tag_dimensions_sql.common_dimensions_sql_rds_db_snapshot_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_rds_db_snapshot_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RDS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_ami_shared_with_trusted_organization_units",
+    "Title": "EC2 AMIs should only be shared with trusted OUs",
+    "Description": "AWS AMIs can be shared with specific AWS organizations units (OUs) without making the AMI public. This control checks if AMIs are shared with untrusted OUs.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_ami_shared_with_trusted_organization_units",
+    "DocumentURI": "policies/aws_ec2_ami_shared_with_trusted_organization_units.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_config_aggregator_shared_with_trusted_accounts",
+    "Title": "Config service aggregator should only collect data from trusted accounts",
+    "Description": "Config service aggregator helps in monitoring compliance data for rules and accounts in the aggregated view. An aggregator is an AWS Config resource type that collects AWS Config configuration and compliance data from (1) Multiple accounts and multiple regions, (2) Single account and multiple regions, (3) An organization in AWS Organizations and all the accounts in that organization which have AWS Config enabled.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_config_aggregator_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_config_aggregator_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Config"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_guarduty_findings_shared_with_trusted_accounts",
+    "Title": "GuardDuty findings should only be shared with trusted accounts",
+    "Description": "This control checks if GuardDuty findings are only shared with trusted administrator accounts.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_guarduty_findings_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_guarduty_findings_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ram_resource_shared_with_trusted_organizations",
+    "Title": "Resources shared through RAM should only be shared with trusted organizations",
+    "Description": "AWS Resource Access Manager (RAM) helps you securely share your resources across AWS accounts, organizational units (OUs), and organizations for supported resource types. Check if you share resources with an account that is not part of the trusted list of organizations.",
+    "QueryID": "aws_common_dimensions_sql_ram_resource_shared_with_trusted_organizations",
+    "DocumentURI": "policies/aws_ram_resource_shared_with_trusted_organizations.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ram_resource_shared_with_trusted_organization_units",
+    "Title": "Resources shared through RAM should only be shared with trusted OUs",
+    "Description": "AWS Resource Access Manager (RAM) helps you securely share your resources across AWS accounts, organizational units (OUs), and organizations for supported resource types. Check if you share resources with an account that is not part of the trusted list of OUs.",
+    "QueryID": "aws_common_dimensions_sql_ram_resource_shared_with_trusted_organization_units",
+    "DocumentURI": "policies/aws_ram_resource_shared_with_trusted_organization_units.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_dlm_ebs_snapshot_policy_shared_with_trusted_accounts",
+    "Title": "DLM policies should only share EBS snapshot copies with trusted accounts",
+    "Description": "Automating cross-account snapshot copies enables you to copy your EBS snapshots to specific regions in an isolated account and encrypt those snapshots with an encryption key. This enables you to protect yourself against data loss in the event of your account being compromised. This control checks if EBS snapshots are being copied to untrusted accounts.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_dlm_ebs_snapshot_policy_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_dlm_ebs_snapshot_policy_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_directory_service_directory_shared_with_trusted_accounts",
+    "Title": "Directory Service directories should only be shared with trusted accounts",
+    "Description": "This control checks whether Directory Service directories access are restricted to trusted accounts.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_directory_service_directory_shared_with_trusted_accounts",
+    "DocumentURI": "policies/aws_directory_service_directory_shared_with_trusted_accounts.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Perimeter"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/DirectoryService"
+      ]
+    },
+    "Managed": true
+  }
+]

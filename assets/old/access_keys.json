@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Access Keys",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::ec2::keypair') group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

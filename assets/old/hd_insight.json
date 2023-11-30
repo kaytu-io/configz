@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "HDInsight",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.hdinsight/clusters') group by 1,2;",
+    "tags": {
+        "category": ["Data & Analytics"]
+    }
+}

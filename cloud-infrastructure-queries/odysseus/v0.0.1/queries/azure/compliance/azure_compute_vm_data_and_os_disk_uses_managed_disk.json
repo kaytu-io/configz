@@ -1,0 +1,11 @@
+{
+  "ID": "azure_compute_vm_data_and_os_disk_uses_managed_disk",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with data_disk_with_no_managed_disk as (\n  select\n    id as vm_id,\n    count(*) as count\n  from\n    azure_compute_virtual_machine,\n    jsonb_array_elements(data_disks) as d\n  where\n    d -\u003e 'managedDisk' -\u003e\u003e 'id' is null\n  group by\n    id\n)\nselect\n  vm.id as resource,\n  case\n    when managed_disk_id is null and d.count \u003e 0 then 'alarm'\n    when managed_disk_id is null then 'alarm'\n    when d.count \u003e 0 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when managed_disk_id is null and d.count \u003e 0 then vm.name || ' not utilizing managed disks for both data and OS disk.'\n    when managed_disk_id is null then vm.name || ' not utilizing managed disks for OS disk.'\n    when d.count \u003e 0 then vm.name || ' not utilizing managed disks for data disk.'\n    else vm.name || ' utilizing managed disks for both data and OS disk.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm\n  left join data_disk_with_no_managed_disk as d on d.vm_id = vm.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = vm.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_virtual_machine",
+  "ListOfTables": [
+    "azure_compute_virtual_machine",
+    "azure_subscription"
+  ]
+}

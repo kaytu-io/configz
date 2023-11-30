@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_gp2_volumes",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when volume_type = 'gp2' then 'alarm'\n    when volume_type = 'gp3' then 'ok'\n    else 'skip'\n  end as status,\n  volume_id || ' type is ' || volume_type || '.' as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_volume;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ebs_volume",
+  "ListOfTables": [
+    "aws_ebs_volume"
+  ]
+}

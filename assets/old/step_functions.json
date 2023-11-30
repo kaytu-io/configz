@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Step Functions",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::stepfunctions::statemachine') group by 1,2;",
+    "tags": {
+        "category": ["Serverless"]
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_common_dimensions_sql_cw_log_stream_unused",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when last_ingestion_time is null then 'error'\n    when date_part('day', now() - last_ingestion_time) \u003e $1 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when last_ingestion_time is null then name || ' is not reporting a last ingestion time.'\n    else name || ' last log ingestion was ' || date_part('day', now() - last_ingestion_time) || ' days ago.'\n  end as reason\n  , region, account_id\nfrom\n  aws_cloudwatch_log_stream;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_cloudwatch_log_stream",
+  "ListOfTables": [
+    "aws_cloudwatch_log_stream"
+  ]
+}

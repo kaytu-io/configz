@@ -1,0 +1,11 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "active",
+    "name": "Application Load Balancer",
+    "query": "select kaytu_account_id, region, count(*) from aws_ec2_application_load_balancer group by 1,2;",
+    "tables": ["aws::elasticloadbalancing::loadbalancer"],
+    "tags": {
+        "category": ["Network"]
+    }
+}

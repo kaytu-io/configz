@@ -1,0 +1,10 @@
+{
+  "ID": "aws_untagged_sql_config_rule_untagged",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when tags = '{}' or tags is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when tags = '{}' or tags is null then title || ' has no tags.'\n    else title || ' has tags.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_config_rule;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_config_rule",
+  "ListOfTables": [
+    "aws_config_rule"
+  ]
+}

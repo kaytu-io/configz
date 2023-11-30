@@ -1,0 +1,22 @@
+{
+  "ID": 6,
+  "QueryID": "aws_insight_ec2_instance_of_undesired_type",
+  "Connector": "AWS",
+  "ShortTitle": "Legacy Instance Types",
+  "LongTitle": "List of Instances which are not of the desired type.",
+  "Description": "List of Instances which are not of the desired type.",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Executive",
+      "Product",
+      "FinOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,38 @@
+{
+  "ID": "aws_ecs",
+  "Title": "ECS Checks",
+  "Connector": "AWS",
+  "DocumentURI": "benchmarks/aws_ecs.md",
+  "Description": "Thrifty developers checks under-utilized ECS clusters and ECS service without autoscaling configuration.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/ECS"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_ecs_cluster_low_utilization",
+    "aws_ecs_service_without_autoscaling"
+  ]
+}

@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "inactive",
+    "name": "Network Route Table",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::ec2::routetable' group by 1,2;",
+    "tags": {
+        "category": ["Network"]
+    }
+}

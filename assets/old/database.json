@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "Database",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.dbformariadb/servers','microsoft.sql/servers/databases','microsoft.sql/managedinstances','microsoft.dbformysql/flexibleservers','microsoft.dbformysql/servers','microsoft.dbforpostgresql/flexibleservers','microsoft.dbforpostgresql/servers') group by 1,2;",
+    "tags": {
+        "category": ["Database"]
+    }
+}

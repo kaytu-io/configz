@@ -1,0 +1,11 @@
+{
+  "ID": "azure_appservice_web_app_always_on",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when configuration -\u003e 'properties' -\u003e\u003e 'alwaysOn' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when configuration -\u003e 'properties' -\u003e\u003e 'alwaysOn' = 'true' then a.name || ' alwaysOn is enabled.'\n    else a.name || ' alwaysOn is disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_app_service_web_app",
+  "ListOfTables": [
+    "azure_app_service_web_app",
+    "azure_subscription"
+  ]
+}

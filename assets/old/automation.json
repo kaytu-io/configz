@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "Automation",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.automation/automationaccounts') group by 1,2;",
+    "tags": {
+        "category": ["General"]
+    }
+}

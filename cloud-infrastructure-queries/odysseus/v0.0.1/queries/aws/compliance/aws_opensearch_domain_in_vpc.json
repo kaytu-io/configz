@@ -1,0 +1,11 @@
+{
+  "ID": "aws_opensearch_domain_in_vpc",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with public_subnets as (\n  select\n    distinct a -\u003e 'SubnetId' as SubnetId\n  from\n    aws_vpc_route_table as t,\n    jsonb_array_elements(associations) as a,\n    jsonb_array_elements(routes) as r\n  where\n    r -\u003e\u003e 'DestinationCidrBlock' = '0.0.0.0/0'\n    and  r -\u003e\u003e  'GatewayId' like 'igw-%'\n), opensearch_domain_with_public_subnet as (\n  select\n    arn\n  from\n    aws_opensearch_domain ,\n    jsonb_array_elements(vpc_options -\u003e 'SubnetIds') as s\n  where\n    s in (select SubnetId from public_subnets)\n)\nselect\n  d.arn as resource,\n  case\n    when d.vpc_options -\u003e\u003e 'VPCId' is null then 'alarm'\n    when d.vpc_options -\u003e\u003e 'VPCId' is not null and p.arn is not null then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when vpc_options -\u003e\u003e 'VPCId' is null then title || ' not in VPC.'\n    when d.vpc_options -\u003e\u003e 'VPCId' is not null and p.arn is not null then title || ' attached to public subnet.'\n    else title || ' in VPC ' || (vpc_options -\u003e\u003e 'VPCId') || '.'\n  end reason\n  \n  , d.region, d.account_id\nfrom\n  aws_opensearch_domain as d\n  left join opensearch_domain_with_public_subnet as p on d.arn = p.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_opensearch_domain",
+  "ListOfTables": [
+    "aws_opensearch_domain",
+    "aws_vpc_route_table"
+  ]
+}

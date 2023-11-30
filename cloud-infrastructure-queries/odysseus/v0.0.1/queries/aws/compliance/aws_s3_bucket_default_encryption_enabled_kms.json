@@ -1,0 +1,10 @@
+{
+  "ID": "aws_s3_bucket_default_encryption_enabled_kms",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with data as (\n  select\n    distinct name\n  from\n    aws_s3_bucket,\n    jsonb_array_elements(server_side_encryption_configuration -\u003e 'Rules') as rules\n  where\n    rules -\u003e 'ApplyServerSideEncryptionByDefault' -\u003e\u003e 'KMSMasterKeyID' is not null\n  )\nselect\n  b.arn as resource,\n  case\n    when d.name is not null then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when d.name is not null then b.name || ' default encryption with KMS enabled.'\n    else b.name || ' default encryption with KMS disabled.'\n  end reason\n  \n  , b.region, b.account_id\nfrom\n  aws_s3_bucket as b\n  left join data as d on b.name = d.name;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_s3_bucket",
+  "ListOfTables": [
+    "aws_s3_bucket"
+  ]
+}

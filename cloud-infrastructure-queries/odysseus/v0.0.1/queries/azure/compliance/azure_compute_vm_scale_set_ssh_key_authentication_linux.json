@@ -1,0 +1,11 @@
+{
+  "ID": "azure_compute_vm_scale_set_ssh_key_authentication_linux",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when virtual_machine_storage_profile -\u003e 'osDisk' -\u003e\u003e 'osType' = 'Windows' then 'skip'\n    when virtual_machine_os_profile -\u003e 'linuxConfiguration' -\u003e\u003e 'disablePasswordAuthentication' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when virtual_machine_storage_profile -\u003e 'osDisk' -\u003e\u003e 'osType' = 'Windows' then a.title || ' is using windows OS.'\n    when virtual_machine_os_profile -\u003e 'linuxConfiguration' -\u003e\u003e 'disablePasswordAuthentication' = 'true' then a.title || ' has SSK key authentication enabled.'\n    else a.title || ' has password authentication enabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine_scale_set as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_virtual_machine_scale_set",
+  "ListOfTables": [
+    "azure_compute_virtual_machine_scale_set",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_classic_lb_unused",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when jsonb_array_length(instances) \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when jsonb_array_length(instances) \u003e 0 then title || ' has registered instances.'\n    else title || ' has no instances registered.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_classic_load_balancer;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ec2_classic_load_balancer",
+  "ListOfTables": [
+    "aws_ec2_classic_load_balancer"
+  ]
+}

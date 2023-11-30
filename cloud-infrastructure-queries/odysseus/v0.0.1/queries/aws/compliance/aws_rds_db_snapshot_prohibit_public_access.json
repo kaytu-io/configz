@@ -1,0 +1,10 @@
+{
+  "ID": "aws_rds_db_snapshot_prohibit_public_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "(\nselect\n  arn as resource,\n  case\n    when cluster_snapshot -\u003e 'AttributeValues' = '[\"all\"]' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when cluster_snapshot -\u003e 'AttributeValues' = '[\"all\"]' then title || ' publicly restorable.'\n    else title || ' not publicly restorable.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_cluster_snapshot,\n  jsonb_array_elements(db_cluster_snapshot_attributes) as cluster_snapshot\n)\nunion\n(\nselect\n  arn as resource,\n  case\n    when database_snapshot -\u003e 'AttributeValues' = '[\"all\"]' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when database_snapshot -\u003e 'AttributeValues' = '[\"all\"]' then title || ' publicly restorable.'\n    else title || ' not publicly restorable.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_snapshot,\n  jsonb_array_elements(db_snapshot_attributes) as database_snapshot\n);\n",
+  "Connector": "AWS",
+  "ListOfTables": [
+    "aws_rds_db_cluster_snapshot",
+    "aws_rds_db_snapshot"
+  ]
+}

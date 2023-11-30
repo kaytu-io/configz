@@ -1,0 +1,23 @@
+{
+  "ID": 41,
+  "QueryID": "aws_insight_root_login_last_90_days",
+  "Connector": "AWS",
+  "ShortTitle": "AWS accounts with root login in the last 90 days",
+  "LongTitle": "AWS accounts with root login in the last 90 days",
+  "Description": "AWS accounts whose root user has logged in within the last 90 days",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ],
+    "persona": [
+      "DevOps",
+      "Security",
+      "Executive",
+      "Product"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

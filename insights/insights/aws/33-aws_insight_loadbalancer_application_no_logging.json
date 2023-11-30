@@ -1,0 +1,21 @@
+{
+  "ID": 33,
+  "QueryID": "aws_insight_loadbalancer_application_no_logging",
+  "Connector": "AWS",
+  "ShortTitle": "Application Load Balancers without logging",
+  "LongTitle": "List application Load Balancers without logging",
+  "Description": "List application Load Balancers without logging",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Security",
+      "DevOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,22 @@
+{
+  "ID": 48,
+  "QueryID": "aws_insight_iam_user_with_old_keys",
+  "Connector": "AWS",
+  "ShortTitle": "IAM Users with old access keys",
+  "LongTitle": "IAM Users with old access keys",
+  "Description": "IAM users with access keys older than 90 days",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ],
+    "persona": [
+      "DevOps",
+      "Security",
+      "Executive"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

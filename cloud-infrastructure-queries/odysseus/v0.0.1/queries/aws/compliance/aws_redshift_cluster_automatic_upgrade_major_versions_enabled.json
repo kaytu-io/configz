@@ -1,0 +1,10 @@
+{
+  "ID": "aws_redshift_cluster_automatic_upgrade_major_versions_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when allow_version_upgrade then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when allow_version_upgrade then title || ' automatic upgrades to major versions enabled.'\n    else title || ' automatic upgrades to major versions disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_redshift_cluster;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_redshift_cluster",
+  "ListOfTables": [
+    "aws_redshift_cluster"
+  ]
+}

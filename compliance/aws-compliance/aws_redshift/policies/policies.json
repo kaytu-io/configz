@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "aws_redshift_cluster_max_age",
+    "Title": "Long running Redshift clusters should have reserved nodes purchased for them",
+    "Description": "Long running clusters should be associated with reserved nodes, which provide a significant discount.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_redshift_cluster_max_age",
+    "DocumentURI": "policies/aws_redshift_cluster_max_age.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_redshift_cluster_low_utilization",
+    "Title": "Redshift cluster with low CPU utilization should be reviewed",
+    "Description": "Resize or eliminate under utilized clusters.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_redshift_cluster_low_utilization",
+    "DocumentURI": "policies/aws_redshift_cluster_low_utilization.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_redshift_cluster_schedule_pause_resume_enabled",
+    "Title": "Redshift cluster paused resume should be enabled",
+    "Description": "Redshift cluster paused resume should be enabled to easily suspend on-demand billing while the cluster is not being used.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_redshift_cluster_schedule_pause_resume_enabled",
+    "DocumentURI": "policies/aws_redshift_cluster_schedule_pause_resume_enabled.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ]
+    },
+    "Managed": true
+  }
+]

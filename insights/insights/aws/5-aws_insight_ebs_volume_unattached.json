@@ -1,0 +1,18 @@
+{
+  "ID": 5,
+  "QueryID": "aws_insight_ebs_volume_unattached",
+  "Connector": "AWS",
+  "ShortTitle": "Unused EBS Disks",
+  "LongTitle": "List of unattached EBS volumes",
+  "Description": "List of unattached EBS volumes",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt",
+      "Cost Management"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

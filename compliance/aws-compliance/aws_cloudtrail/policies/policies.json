@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "aws_multiple_global_trails",
+    "Title": "Are there redundant global CloudTrail trails?",
+    "Description": "Your first cloudtrail in each account is free, additional trails are expensive.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_multiple_global_trails",
+    "DocumentURI": "policies/aws_multiple_global_trails.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_multiple_regional_trails",
+    "Title": "Are there redundant regional CloudTrail trails?",
+    "Description": "Your first cloudtrail in each region is free, additional trails are expensive.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_multiple_regional_trails",
+    "DocumentURI": "policies/aws_multiple_regional_trails.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ]
+    },
+    "Managed": true
+  }
+]

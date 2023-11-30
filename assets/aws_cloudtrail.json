@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "inactive",
+    "name": "CloudTrail",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::cloudtrail::trail' group by 1,2;",
+    "tags": {
+        "category": ["Management and governance"]
+    }
+}

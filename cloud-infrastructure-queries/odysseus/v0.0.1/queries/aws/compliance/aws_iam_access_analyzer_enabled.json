@@ -1,0 +1,11 @@
+{
+  "ID": "aws_iam_access_analyzer_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  'arn:' || r.partition || '::' || r.region || ':' || r.account_id as resource,\n  case\n    -- Skip any regions that are disabled in the account.\n    when r.opt_in_status = 'not-opted-in' then 'skip'\n    when aa.arn is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when r.opt_in_status = 'not-opted-in' then r.region || ' region is disabled.'\n    when aa.arn is not null then aa.name ||  ' enabled in ' || r.region || '.'\n    else 'Access Analyzer not enabled in ' || r.region || '.'\n  end as reason\n  , r.region, r.account_id\nfrom\n  aws_region as r\n  left join aws_accessanalyzer_analyzer as aa on r.account_id = aa.account_id and r.region = aa.region;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_region",
+  "ListOfTables": [
+    "aws_accessanalyzer_analyzer",
+    "aws_region"
+  ]
+}

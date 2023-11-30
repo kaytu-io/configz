@@ -1,0 +1,11 @@
+{
+  "ID": "azure_databox_edge_device_double_encryption_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when sku_name = any (ARRAY ['TEA_1Node', 'TEA_1Node_UPS', 'TEA_1Node_Heater', 'TEA_1Node_UPS_Heater', 'TEA_4Node_Heater', 'TEA_4Node_UPS_Heater', 'TMA', 'EdgePR_Base', 'EdgePR_Base_UPS', 'EdgeMR_Mini']) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sku_name = any (ARRAY ['TEA_1Node', 'TEA_1Node_UPS', 'TEA_1Node_Heater', 'TEA_1Node_UPS_Heater', 'TEA_4Node_Heater', 'TEA_4Node_UPS_Heater', 'TMA', 'EdgePR_Base', 'EdgePR_Base_UPS', 'EdgeMR_Mini']) then a.name || ' double encryption enabled.'\n    else a.name || ' double encryption disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_databox_edge_device as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_databox_edge_device",
+  "ListOfTables": [
+    "azure_databox_edge_device",
+    "azure_subscription"
+  ]
+}

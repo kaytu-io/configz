@@ -1,0 +1,39 @@
+{
+  "ID": "aws_redshift",
+  "Title": "Redshift Checks",
+  "Connector": "AWS",
+  "DocumentURI": "benchmarks/aws_redshift.md",
+  "Description": "Thrifty developers check their long running Redshift clusters are associated with reserved nodes.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/Redshift"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_redshift_cluster_low_utilization",
+    "aws_redshift_cluster_max_age",
+    "aws_redshift_cluster_schedule_pause_resume_enabled"
+  ]
+}

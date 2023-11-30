@@ -1,0 +1,11 @@
+{
+  "ID": "aws_glue_dev_endpoint_cloudwatch_logs_encryption_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  e.arn as resource,\n  case\n    when cloud_watch_encryption is not null and cloud_watch_encryption -\u003e\u003e 'CloudWatchEncryptionMode' != 'DISABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when cloud_watch_encryption is not null and cloud_watch_encryption -\u003e\u003e 'CloudWatchEncryptionMode' != 'DISABLED' then e.title || ' CloudWatch logs encryption enabled.'\n    else e.title || ' CloudWatch logs encryption disabled.'\n  end as reason\n  , e.region, e.account_id\nfrom\n  aws_glue_dev_endpoint as e\n  left join aws_glue_security_configuration as c on e.security_configuration = c.name;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_glue_dev_endpoint",
+  "ListOfTables": [
+    "aws_glue_dev_endpoint",
+    "aws_glue_security_configuration"
+  ]
+}

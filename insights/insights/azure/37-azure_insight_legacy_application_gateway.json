@@ -1,0 +1,22 @@
+{
+  "ID": 37,
+  "QueryID": "azure_insight_legacy_application_gateway",
+  "Connector": "Azure",
+  "ShortTitle": "Legacy Application Gateways",
+  "LongTitle": "Legacy Application Gateways",
+  "Description": "This insight returns all legacy application gateways.",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Executive",
+      "Product",
+      "FinOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,23 @@
+{
+  "ID": 44,
+  "QueryID": "aws_insight_account_with_many_saml_providers",
+  "Connector": "AWS",
+  "ShortTitle": "AWS Account with many SAML providers",
+  "LongTitle": "AWS Account with many SAML providers",
+  "Description": "AWS Account with more than 1 SAML provider",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ],
+    "persona": [
+      "DevOps",
+      "Security",
+      "Executive",
+      "Product"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

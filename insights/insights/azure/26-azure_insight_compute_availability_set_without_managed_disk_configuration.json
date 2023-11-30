@@ -1,0 +1,20 @@
+{
+  "ID": 26,
+  "QueryID": "azure_insight_compute_availability_set_without_managed_disk_configuration",
+  "Connector": "Azure",
+  "ShortTitle": "AV Sets with Legacy Disks",
+  "LongTitle": "List of availability sets which does not use managed disks configuration",
+  "Description": "List of availability sets which does not use managed disks configuration",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt",
+      "Resiliency",
+      "Cost Management"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

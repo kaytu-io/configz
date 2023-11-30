@@ -1,0 +1,22 @@
+{
+  "ID": 45,
+  "QueryID": "aws_insight_account_without_mfa",
+  "Connector": "AWS",
+  "ShortTitle": "AWS Account without MFA",
+  "LongTitle": "AWS Account without MFA",
+  "Description": "AWS accounts without MFA enabled",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ],
+    "persona": [
+      "DevOps",
+      "Security",
+      "Executive"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

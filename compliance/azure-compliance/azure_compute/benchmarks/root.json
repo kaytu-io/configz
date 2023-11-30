@@ -1,0 +1,45 @@
+{
+  "ID": "azure_compute",
+  "Title": "Compute Checks",
+  "Connector": "Azure",
+  "DocumentURI": "benchmarks/azure_compute.md",
+  "Description": "Thrifty developers eliminate unused and under-utilized Compute resources.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Compute"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-azure-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "azure_compute_disk_attached_stopped_virtual_machine",
+    "azure_compute_disk_high_iops",
+    "azure_compute_disk_large",
+    "azure_compute_disk_low_usage",
+    "azure_compute_disk_snapshot_storage_standard",
+    "azure_compute_disk_unattached",
+    "azure_compute_snapshot_max_age",
+    "azure_compute_virtual_machine_long_running",
+    "azure_compute_virtual_machine_low_utilization"
+  ]
+}

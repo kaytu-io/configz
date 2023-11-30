@@ -1,0 +1,11 @@
+{
+  "ID": "azure_healthcare_fhir_uses_private_link",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when private_endpoint_connections is null then 'info'\n    when private_endpoint_connections @\u003e '[{\"privateLinkServiceConnectionState\": \"Approved\"}]'::jsonb then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when private_endpoint_connections is null then a.name || ' no private link exists.'\n    when private_endpoint_connections @\u003e '[{\"privateLinkServiceConnectionState\": \"Approved\"}]'::jsonb then a.name || ' using private link.'\n    else a.name || ' not using private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_healthcare_service a,\n  azure_subscription sub;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_healthcare_service",
+  "ListOfTables": [
+    "azure_healthcare_service",
+    "azure_subscription"
+  ]
+}

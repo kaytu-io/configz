@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all EBS Volumes that are attached to be deleted on VM Termination",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when state != 'in-use' then 'skip'\n    when attachment -\u003e\u003e 'DeleteOnTermination' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when state != 'in-use' then title || ' not attached to EC2 instance.'\n    when attachment -\u003e\u003e 'DeleteOnTermination' = 'true' then title || ' attached to ' || (attachment -\u003e\u003e 'InstanceId') || ', delete on termination enabled.'\n    else title || ' attached to ' || (attachment -\u003e\u003e 'InstanceId') || ', delete on termination disabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_ebs_volume\n  left join jsonb_array_elements(attachments) as attachment on true"
+}

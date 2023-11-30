@@ -1,0 +1,14 @@
+{
+  "ID": "aws_log_metric_filter_network_acl",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se -\u003e\u003e 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventName\\s*=\\s*CreateNetworkAcl.+\\$\\.eventName\\s*=\\s*CreateNetworkAclEntry.+\\$\\.eventName\\s*=\\s*DeleteNetworkAcl.+\\$\\.eventName\\s*=\\s*DeleteNetworkAclEntry.+\\$\\.eventName\\s*=\\s*ReplaceNetworkAclEntry.+\\$\\.eventName\\s*=\\s*ReplaceNetworkAclAssociation'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for changes to NACLs.'\n    else filter_name || ' forwards events for changes to NACLs.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_account",
+  "ListOfTables": [
+    "aws_account",
+    "aws_cloudtrail_trail",
+    "aws_cloudwatch_alarm",
+    "aws_cloudwatch_log_metric_filter",
+    "aws_sns_topic_subscription"
+  ]
+}

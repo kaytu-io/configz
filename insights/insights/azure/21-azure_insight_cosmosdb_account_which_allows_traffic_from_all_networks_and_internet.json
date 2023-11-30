@@ -1,0 +1,18 @@
+{
+  "ID": 21,
+  "QueryID": "azure_insight_cosmosdb_account_which_allows_traffic_from_all_networks_and_internet",
+  "Connector": "Azure",
+  "ShortTitle": "Database Accounts with Public access",
+  "LongTitle": "List of database accounts which allows traffic from all networks, including the public Internet.",
+  "Description": "List of database accounts which allows traffic from all networks, including the public Internet.",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

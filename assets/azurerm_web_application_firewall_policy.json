@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "inactive",
+    "name": "Web Application Firewall (WAF) policy",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/firewallpolicies' group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

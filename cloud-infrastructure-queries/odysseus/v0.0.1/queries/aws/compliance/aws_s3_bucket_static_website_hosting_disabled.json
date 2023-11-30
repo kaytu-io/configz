@@ -1,0 +1,10 @@
+{
+  "ID": "aws_s3_bucket_static_website_hosting_disabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when website_configuration -\u003e 'IndexDocument' -\u003e\u003e 'Suffix' is not null then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when website_configuration -\u003e 'IndexDocument' -\u003e\u003e 'Suffix' is not null then name || ' static website hosting enabled.'\n    else name || ' static website hosting disabled.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_s3_bucket",
+  "ListOfTables": [
+    "aws_s3_bucket"
+  ]
+}

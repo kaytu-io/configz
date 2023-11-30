@@ -1,0 +1,1576 @@
+[
+  {
+    "ID": "aws_foundational_security_waf",
+    "Title": "WAF",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_waf.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/WAF"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_waf_1",
+      "aws_foundational_security_waf_2",
+      "aws_foundational_security_waf_3",
+      "aws_foundational_security_waf_4",
+      "aws_foundational_security_waf_6",
+      "aws_foundational_security_waf_7",
+      "aws_foundational_security_waf_8",
+      "aws_foundational_security_waf_10"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_efs",
+    "Title": "EFS",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_efs.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EFS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_efs_1",
+      "aws_foundational_security_efs_2",
+      "aws_foundational_security_efs_3",
+      "aws_foundational_security_efs_4"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_cloudfront",
+    "Title": "CloudFront",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_cloudfront.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFront"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_cloudfront_1",
+      "aws_foundational_security_cloudfront_2",
+      "aws_foundational_security_cloudfront_3",
+      "aws_foundational_security_cloudfront_4",
+      "aws_foundational_security_cloudfront_5",
+      "aws_foundational_security_cloudfront_6",
+      "aws_foundational_security_cloudfront_7",
+      "aws_foundational_security_cloudfront_8",
+      "aws_foundational_security_cloudfront_9",
+      "aws_foundational_security_cloudfront_10",
+      "aws_foundational_security_cloudfront_12"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_account",
+    "Title": "Account",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_account.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Account"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_account_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_redshift",
+    "Title": "Redshift",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_redshift.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_redshift_1",
+      "aws_foundational_security_redshift_2",
+      "aws_foundational_security_redshift_3",
+      "aws_foundational_security_redshift_4",
+      "aws_foundational_security_redshift_6",
+      "aws_foundational_security_redshift_7",
+      "aws_foundational_security_redshift_8",
+      "aws_foundational_security_redshift_9",
+      "aws_foundational_security_redshift_10"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_ec2",
+    "Title": "EC2",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_ec2.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_ec2_1",
+      "aws_foundational_security_ec2_2",
+      "aws_foundational_security_ec2_3",
+      "aws_foundational_security_ec2_4",
+      "aws_foundational_security_ec2_6",
+      "aws_foundational_security_ec2_7",
+      "aws_foundational_security_ec2_8",
+      "aws_foundational_security_ec2_9",
+      "aws_foundational_security_ec2_10",
+      "aws_foundational_security_ec2_15",
+      "aws_foundational_security_ec2_16",
+      "aws_foundational_security_ec2_17",
+      "aws_foundational_security_ec2_18",
+      "aws_foundational_security_ec2_19",
+      "aws_foundational_security_ec2_20",
+      "aws_foundational_security_ec2_21",
+      "aws_foundational_security_ec2_22",
+      "aws_foundational_security_ec2_23",
+      "aws_foundational_security_ec2_24",
+      "aws_foundational_security_ec2_25"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_codebuild",
+    "Title": "CodeBuild",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_codebuild.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_codebuild_1",
+      "aws_foundational_security_codebuild_2",
+      "aws_foundational_security_codebuild_3",
+      "aws_foundational_security_codebuild_4",
+      "aws_foundational_security_codebuild_5"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_kinesis",
+    "Title": "Kinesis",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_kinesis.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Kinesis"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_kinesis_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_elasticbeanstalk",
+    "Title": "Elastic Beanstalk",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_elasticbeanstalk.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ElasticBeanstalk"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_elasticbeanstalk_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_ecs",
+    "Title": "Elastic Container Service",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_ecs.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_ecs_1",
+      "aws_foundational_security_ecs_2",
+      "aws_foundational_security_ecs_3",
+      "aws_foundational_security_ecs_4",
+      "aws_foundational_security_ecs_5",
+      "aws_foundational_security_ecs_8",
+      "aws_foundational_security_ecs_10",
+      "aws_foundational_security_ecs_12"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_cloudtrail",
+    "Title": "CloudTrail",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_cloudtrail.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_cloudtrail_1",
+      "aws_foundational_security_cloudtrail_2",
+      "aws_foundational_security_cloudtrail_4",
+      "aws_foundational_security_cloudtrail_5"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_es",
+    "Title": "Elasticsearch",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_es.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ES"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_es_1",
+      "aws_foundational_security_es_2",
+      "aws_foundational_security_es_3",
+      "aws_foundational_security_es_4",
+      "aws_foundational_security_es_5",
+      "aws_foundational_security_es_6",
+      "aws_foundational_security_es_7",
+      "aws_foundational_security_es_8"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_cloudformation",
+    "Title": "CloudFormation",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_cloudformation.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFormation"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_cloudformation_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_autoscaling",
+    "Title": "Auto Scaling",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_autoscaling.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/AutoScaling"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_autoscaling_1",
+      "aws_foundational_security_autoscaling_2",
+      "aws_foundational_security_autoscaling_3",
+      "aws_foundational_security_autoscaling_4",
+      "aws_foundational_security_autoscaling_5",
+      "aws_foundational_security_autoscaling_6",
+      "aws_foundational_security_autoscaling_9"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_emr",
+    "Title": "EMR",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_emr.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EMR"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_emr_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_iam",
+    "Title": "IAM",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_iam.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_iam_1",
+      "aws_foundational_security_iam_2",
+      "aws_foundational_security_iam_3",
+      "aws_foundational_security_iam_4",
+      "aws_foundational_security_iam_5",
+      "aws_foundational_security_iam_6",
+      "aws_foundational_security_iam_7",
+      "aws_foundational_security_iam_8",
+      "aws_foundational_security_iam_21"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_elb",
+    "Title": "ELB",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_elb.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_elb_1",
+      "aws_foundational_security_elb_2",
+      "aws_foundational_security_elb_3",
+      "aws_foundational_security_elb_4",
+      "aws_foundational_security_elb_5",
+      "aws_foundational_security_elb_6",
+      "aws_foundational_security_elb_7",
+      "aws_foundational_security_elb_9",
+      "aws_foundational_security_elb_10",
+      "aws_foundational_security_elb_12",
+      "aws_foundational_security_elb_13",
+      "aws_foundational_security_elb_14"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_rds",
+    "Title": "RDS",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_rds.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_rds_1",
+      "aws_foundational_security_rds_2",
+      "aws_foundational_security_rds_3",
+      "aws_foundational_security_rds_4",
+      "aws_foundational_security_rds_5",
+      "aws_foundational_security_rds_6",
+      "aws_foundational_security_rds_7",
+      "aws_foundational_security_rds_8",
+      "aws_foundational_security_rds_9",
+      "aws_foundational_security_rds_10",
+      "aws_foundational_security_rds_11",
+      "aws_foundational_security_rds_12",
+      "aws_foundational_security_rds_13",
+      "aws_foundational_security_rds_14",
+      "aws_foundational_security_rds_15",
+      "aws_foundational_security_rds_16",
+      "aws_foundational_security_rds_17",
+      "aws_foundational_security_rds_18",
+      "aws_foundational_security_rds_19",
+      "aws_foundational_security_rds_20",
+      "aws_foundational_security_rds_21",
+      "aws_foundational_security_rds_22",
+      "aws_foundational_security_rds_23",
+      "aws_foundational_security_rds_24",
+      "aws_foundational_security_rds_25"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_elbv2",
+    "Title": "ELBv2",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_elbv2.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELBv2"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_elbv2_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_networkfirewall",
+    "Title": "Network Firewall",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_networkfirewall.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/NetworkFirewall"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_networkfirewall_3",
+      "aws_foundational_security_networkfirewall_4",
+      "aws_foundational_security_networkfirewall_5",
+      "aws_foundational_security_networkfirewall_6"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_sagemaker",
+    "Title": "SageMaker",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_sagemaker.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_sagemaker_1",
+      "aws_foundational_security_sagemaker_2",
+      "aws_foundational_security_sagemaker_3"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_s3",
+    "Title": "S3",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_s3.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_s3_1",
+      "aws_foundational_security_s3_2",
+      "aws_foundational_security_s3_3",
+      "aws_foundational_security_s3_4",
+      "aws_foundational_security_s3_5",
+      "aws_foundational_security_s3_6",
+      "aws_foundational_security_s3_8",
+      "aws_foundational_security_s3_9",
+      "aws_foundational_security_s3_10",
+      "aws_foundational_security_s3_11",
+      "aws_foundational_security_s3_12",
+      "aws_foundational_security_s3_13"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_guardduty",
+    "Title": "GuardDuty",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_guardduty.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_guardduty_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_config",
+    "Title": "Config",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_config.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Config"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_config_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_ssm",
+    "Title": "SSM",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_ssm.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SSM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_ssm_1",
+      "aws_foundational_security_ssm_2",
+      "aws_foundational_security_ssm_3",
+      "aws_foundational_security_ssm_4"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_sqs",
+    "Title": "SQS",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_sqs.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SQS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_sqs_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_ecr",
+    "Title": "Elastic Container Registry",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_ecr.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECR"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_ecr_1",
+      "aws_foundational_security_ecr_2",
+      "aws_foundational_security_ecr_3"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_kms",
+    "Title": "KMS",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_kms.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/KMS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_kms_1",
+      "aws_foundational_security_kms_2",
+      "aws_foundational_security_kms_3"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_opensearch",
+    "Title": "Opensearch",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_opensearch.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/OpenSearch"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_opensearch_1",
+      "aws_foundational_security_opensearch_2",
+      "aws_foundational_security_opensearch_3",
+      "aws_foundational_security_opensearch_4",
+      "aws_foundational_security_opensearch_5",
+      "aws_foundational_security_opensearch_6",
+      "aws_foundational_security_opensearch_7",
+      "aws_foundational_security_opensearch_8"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_dms",
+    "Title": "DMS",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_dms.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/DMS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_dms_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_sns",
+    "Title": "SNS",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_sns.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SNS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_sns_1",
+      "aws_foundational_security_sns_2"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_lambda",
+    "Title": "Lambda",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_lambda.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/Lambda"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_lambda_1",
+      "aws_foundational_security_lambda_2",
+      "aws_foundational_security_lambda_5"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_apigateway",
+    "Title": "API Gateway",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_apigateway.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/APIGateway"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_apigateway_1",
+      "aws_foundational_security_apigateway_2",
+      "aws_foundational_security_apigateway_3",
+      "aws_foundational_security_apigateway_4",
+      "aws_foundational_security_apigateway_5",
+      "aws_foundational_security_apigateway_8",
+      "aws_foundational_security_apigateway_9"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_acm",
+    "Title": "ACM",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_acm.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ACM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_acm_1"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_secretsmanager",
+    "Title": "Secrets Manager",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_secretsmanager.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/SecretsManager"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_secretsmanager_1",
+      "aws_foundational_security_secretsmanager_2",
+      "aws_foundational_security_secretsmanager_3",
+      "aws_foundational_security_secretsmanager_4"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_dynamodb",
+    "Title": "DynamoDB",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_dynamodb.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/DynamoDB"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_dynamodb_1",
+      "aws_foundational_security_dynamodb_2",
+      "aws_foundational_security_dynamodb_3"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_eks",
+    "Title": "EKS",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_eks.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EKS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_eks_1",
+      "aws_foundational_security_eks_2"
+    ]
+  },
+  {
+    "ID": "aws_foundational_security_elasticache",
+    "Title": "ElasticCache",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_foundational_security_elasticache.md",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "aws_foundational_security": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ElastiCache"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_foundational_security_elasticache_1",
+      "aws_foundational_security_elasticache_2",
+      "aws_foundational_security_elasticache_3",
+      "aws_foundational_security_elasticache_4",
+      "aws_foundational_security_elasticache_5",
+      "aws_foundational_security_elasticache_6",
+      "aws_foundational_security_elasticache_7"
+    ]
+  }
+]

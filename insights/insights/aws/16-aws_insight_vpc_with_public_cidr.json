@@ -1,0 +1,20 @@
+{
+  "ID": 16,
+  "QueryID": "aws_insight_vpc_with_public_cidr",
+  "Connector": "AWS",
+  "ShortTitle": "VPCs with Public IP Range",
+  "LongTitle": "List VPCs with public CIDR blocks",
+  "Description": "List VPCs with public CIDR blocks",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt",
+      "Resiliency",
+      "Cost Management"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

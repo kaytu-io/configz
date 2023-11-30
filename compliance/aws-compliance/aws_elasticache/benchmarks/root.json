@@ -1,0 +1,37 @@
+{
+  "ID": "aws_elasticache",
+  "Title": "ElastiCache Checks",
+  "Connector": "AWS",
+  "DocumentURI": "benchmarks/aws_elasticache.md",
+  "Description": "Thrifty developers check their long running ElastiCache clusters are associated with reserved nodes.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/ElastiCache"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_elasticache_cluster_long_running"
+  ]
+}

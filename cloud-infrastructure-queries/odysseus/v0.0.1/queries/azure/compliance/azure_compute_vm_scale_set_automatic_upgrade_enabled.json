@@ -1,0 +1,11 @@
+{
+  "ID": "azure_compute_vm_scale_set_automatic_upgrade_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when upgrade_policy is null then 'skip'\n    when upgrade_policy -\u003e\u003e 'mode' = 'Automatic' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when upgrade_policy is null then a.title || ' upgrade policy not applicable.'\n    when upgrade_policy -\u003e\u003e 'mode' = 'Automatic' then a.title || ' automatic update enabled.'\n    else a.title || ' automatic update disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine_scale_set as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_virtual_machine_scale_set",
+  "ListOfTables": [
+    "azure_compute_virtual_machine_scale_set",
+    "azure_subscription"
+  ]
+}

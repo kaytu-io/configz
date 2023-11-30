@@ -1,0 +1,11 @@
+{
+  "ID": "azure_cognitive_account_restrict_public_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with account_with_public_access_restricted as (\n  select\n    a.id\n  from\n    azure_cognitive_account as a,\n    jsonb_array_elements(capabilities) as c\n  where\n    c -\u003e\u003e 'name' = 'VirtualNetworks' and network_acls -\u003e\u003e 'defaultAction' \u003c\u003e 'Deny'\n)\nselect\n  distinct a.name as resource,\n  case\n    when b.id is not null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when b.id is not null then a.name || ' publicly accessible.'\n    else a.name || ' publicly not accessible.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cognitive_account as a\n  left join account_with_public_access_restricted as b on a.id = b.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_cognitive_account",
+  "ListOfTables": [
+    "azure_cognitive_account",
+    "azure_subscription"
+  ]
+}

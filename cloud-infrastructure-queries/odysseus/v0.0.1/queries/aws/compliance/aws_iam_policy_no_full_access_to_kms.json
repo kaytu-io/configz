@@ -1,0 +1,10 @@
+{
+  "ID": "aws_iam_policy_no_full_access_to_kms",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": " with kms_full_access_policies as (\n  select\n    arn,\n    count(*) as statements_num\n  from\n    aws_iam_policy,\n    jsonb_array_elements(policy_std -\u003e 'Statement') as s,\n    jsonb_array_elements_text(s -\u003e 'Resource') as resource,\n    jsonb_array_elements_text(s -\u003e 'Action') as action\n  where\n    not is_aws_managed\n    and s -\u003e\u003e 'Effect' = 'Allow'\n    and resource = '*'\n    and action = 'kms:*'\n  group by\n    arn\n)\nselect\n  p.arn as resource,\n  case\n    when w.arn is null then 'ok'\n    else 'alarm'\n  end status,\n  p.name || ' contains ' || coalesce(w.statements_num,0) ||\n    ' statements that allow action \"*\" on at cloudtrail service on resource \"*\".' as reason\n  \n  , p.account_id\nfrom\n  aws_iam_policy as p\n  left join kms_full_access_policies as w on p.arn = w.arn\nwhere\n  not p.is_aws_managed;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_policy",
+  "ListOfTables": [
+    "aws_iam_policy"
+  ]
+}

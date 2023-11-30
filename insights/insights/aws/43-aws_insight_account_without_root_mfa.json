@@ -1,0 +1,23 @@
+{
+  "ID": 43,
+  "QueryID": "aws_insight_account_without_root_mfa",
+  "Connector": "AWS",
+  "ShortTitle": "AWS Account without Root MFA",
+  "LongTitle": "AWS Account without Root MFA",
+  "Description": "AWS account whose root user does not have MFA enabled.",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security"
+    ],
+    "persona": [
+      "DevOps",
+      "Security",
+      "Executive",
+      "Product"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

@@ -1,0 +1,20 @@
+{
+  "ID": 28,
+  "QueryID": "azure_insight_virtual_network_with_public_cidr",
+  "Connector": "Azure",
+  "ShortTitle": "vNets with Public IP Range",
+  "LongTitle": "List Virtual Networks with public CIDR blocks",
+  "Description": "List Virtual Networks with public CIDR blocks",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt",
+      "Resiliency",
+      "Resiliency"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

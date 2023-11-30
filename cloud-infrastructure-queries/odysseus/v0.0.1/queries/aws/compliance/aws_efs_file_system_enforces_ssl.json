@@ -1,0 +1,10 @@
+{
+  "ID": "aws_efs_file_system_enforces_ssl",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with ssl_ok as (\n  select\n    distinct name,\n    arn,\n    'ok' as status\n  from\n    aws_efs_file_system,\n    jsonb_array_elements(policy_std -\u003e 'Statement') as s,\n    jsonb_array_elements_text(s -\u003e 'Principal' -\u003e 'AWS') as p,\n    jsonb_array_elements_text(s -\u003e 'Action') as a,\n    jsonb_array_elements_text(\n      s -\u003e 'Condition' -\u003e 'Bool' -\u003e 'aws:securetransport'\n    ) as ssl\n  where\n    p = '*'\n    and s -\u003e\u003e 'Effect' = 'Deny'\n    and ssl :: bool = false\n)\nselect\n  f.arn as resource,\n  case\n    when ok.status = 'ok' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when ok.status = 'ok' then f.title || ' policy enforces HTTPS.'\n    else f.title || ' policy does not enforce HTTPS.'\n  end as reason\n  \n  , f.region, f.account_id\nfrom\n  aws_efs_file_system as f\n  left join ssl_ok as ok on ok.name = f.name;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_efs_file_system",
+  "ListOfTables": [
+    "aws_efs_file_system"
+  ]
+}

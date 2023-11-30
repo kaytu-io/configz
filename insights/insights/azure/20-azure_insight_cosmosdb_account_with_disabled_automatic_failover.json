@@ -1,0 +1,17 @@
+{
+  "ID": 20,
+  "QueryID": "azure_insight_cosmosdb_account_with_disabled_automatic_failover",
+  "Connector": "Azure",
+  "ShortTitle": "Database with no Auto Failover",
+  "LongTitle": "List of database accounts where automatic failover is not enabled",
+  "Description": "List of database accounts where automatic failover is not enabled",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Resiliency"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

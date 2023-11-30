@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "inactive",
+    "name": "Web Firewall (WAF v2)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::wafv2::webacl' group by 1,2;",
+    "tags": {
+        "category": ["Network Security"]
+    }
+}

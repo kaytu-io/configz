@@ -1,0 +1,11 @@
+{
+  "ID": "aws_cloudtrail_trail_bucket_mfa_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  t.arn as resource,\n  case\n    when t.s3_bucket_name is null then 'alarm'\n    when b.versioning_mfa_delete then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when t.s3_bucket_name is null then t.title || ' logging disabled.'\n    when b.versioning_mfa_delete then t.title || t.s3_bucket_name || ' MFA enabled.'\n    else t.title || t.s3_bucket_name || ' MFA disabled.'\n  end as reason\n  \n  , t.region, t.account_id\nfrom\n  aws_cloudtrail_trail t\n  left join aws_s3_bucket b on t.s3_bucket_name = b.name\nwhere\n  t.region = t.home_region;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_cloudtrail_trail",
+  "ListOfTables": [
+    "aws_cloudtrail_trail",
+    "aws_s3_bucket"
+  ]
+}

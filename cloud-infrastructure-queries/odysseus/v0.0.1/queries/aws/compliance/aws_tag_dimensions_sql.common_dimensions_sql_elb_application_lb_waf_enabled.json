@@ -1,0 +1,11 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_elb_application_lb_waf_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with associated_resource as (\n  select \n    arns\n  from\n    aws_wafv2_web_acl,\n    jsonb_array_elements_text(associated_resources) as arns  \n)\nselect\n  arn as resource,\n  case\n    when ar.arns is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when ar.arns is not null then title || ' WAF enabled.'\n    else title || ' WAF disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_application_load_balancer as lb\n  left join associated_resource as ar on lb.arn = ar.arns;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ec2_application_load_balancer",
+  "ListOfTables": [
+    "aws_ec2_application_load_balancer",
+    "aws_wafv2_web_acl"
+  ]
+}

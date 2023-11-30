@@ -1,0 +1,10 @@
+{
+  "ID": "aws_route53_domain_transfer_lock_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when transfer_lock then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when transfer_lock then title || ' transfer lock enabled.'\n    else title || ' transfer lock disabled.'\n    end reason\n\n  \n  , region, account_id\nfrom\n  aws_route53_domain;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_route53_domain",
+  "ListOfTables": [
+    "aws_route53_domain"
+  ]
+}

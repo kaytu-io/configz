@@ -1,0 +1,3479 @@
+[
+  {
+    "ID": "aws_nist_800_53_rev_4_si",
+    "Title": "System and Information Integrity (SI)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si.md",
+    "Description": "The SI control family correlates to controls that protect system and information integrity. These include flaw remediation, malicious code protection, information system monitoring, security alerts, software and firmware integrity, and spam protection.",
+    "Children": [
+      "aws_nist_800_53_rev_4_si_2",
+      "aws_nist_800_53_rev_4_si_4",
+      "aws_nist_800_53_rev_4_si_7",
+      "aws_nist_800_53_rev_4_si_12"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_8",
+    "Title": "Transmission Confidentiality And Integrity (SC-8)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_8.md",
+    "Description": "The information system protects the [Selection (one or more): confidentiality; integrity] of transmitted information.",
+    "Children": [
+      "aws_nist_800_53_rev_4_sc_8_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_elb_application_lb_drop_http_headers",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_classic_lb_use_ssl_certificate",
+      "aws_elb_classic_lb_use_tls_https_listeners",
+      "aws_es_domain_node_to_node_encryption_enabled",
+      "aws_redshift_cluster_encryption_in_transit_enabled",
+      "aws_s3_bucket_enforces_ssl"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_12",
+    "Title": "Cryptographic Key Establishment And Management (SC-12)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_12.md",
+    "Description": "The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with [Assignment: organization-defined requirements for key generation, distribution, storage, access, and destruction].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_acm_certificate_expires_30_days",
+      "aws_kms_cmk_rotation_enabled",
+      "aws_kms_key_not_pending_deletion"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_5_1",
+    "Title": "IA-5(1) Password-Based Authentication",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_5_1.md",
+    "Description": "The information system, for password-based authentication that enforces  minimum password complexity, stores and transmits only cryptographically-protected passwords, enforces password minimum and maximum lifetime restrictions, prohibits password reuse, allows the use of a temporary password for system logons with an immediate change to a permanent password etc.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_account_password_policy_strong_min_reuse_24"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ra",
+    "Title": "Risk Assessment (RA)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ra.md",
+    "Description": "The RA control family relates to an organization’s risk assessment policies and vulnerability scanning capabilities. Using an integrated risk management solution like CyberStrong can help streamline and automate your NIST 800 53 compliance efforts.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ra_5"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cm_8_1",
+    "Title": "CM-8(1) Updates During Installation / Removals",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cm_8_1.md",
+    "Description": "The organization updates the inventory of information system components as an integral part of component installations, removals, and information system updates.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_ec2_instance_ssm_managed"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_5_7",
+    "Title": "IA-5(7) No Embedded Unencrypted Static Authenticators",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_5_7.md",
+    "Description": "The organization ensures that unencrypted static authenticators are not embedded in applications or access scripts or stored on function keys.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cm_8",
+    "Title": "Information System Component Inventory (CM-8)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cm_8.md",
+    "Description": "The organization develops and documents an inventory of information system components that accurately reflects the current information system, includes all components within the authorization boundary of the information system, is at the level of granularity deemed necessary for tracking and reporting and reviews and updates the information system component inventory.",
+    "Children": [
+      "aws_nist_800_53_rev_4_cm_8_1",
+      "aws_nist_800_53_rev_4_cm_8_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ra_5",
+    "Title": "Vulnerability Scanning (RA-5)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ra_5.md",
+    "Description": "Scan for system vulnerabilities. Share vulnerability information and security controls that eliminate vulnerabilities.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_enabled",
+      "aws_guardduty_finding_archived"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cm_8_3",
+    "Title": "CM-8(3) Automated Unauthorized Component Detection",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cm_8_3.md",
+    "Description": "The organization employs automated mechanisms to detect the presence of unauthorized hardware, software, and firmware components within the information system and takes actions (disables network access by such components, isolates the components etc) when unauthorized components are detected.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_ec2_instance_ssm_managed",
+      "aws_ssm_managed_instance_compliance_association_compliant",
+      "aws_ssm_managed_instance_compliance_patch_compliant"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ir_4",
+    "Title": "Incident Handling (IR-4)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ir_4.md",
+    "Description": "The organization implements an incident handling capability for security incidents that includes preparation, detection and analysis, containment, eradication, and recovery, coordinates incident handling activities with contingency planning activities and incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implements the resulting changes accordingly.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ir_4_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_9_2",
+    "Title": "AU-9(2) Audit Backup On Separate Physical Systems / Components",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_9_2.md",
+    "Description": "The information system backs up audit records [Assignment: organization-defined frequency] onto a physically different system or system component than the system or component being audited.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_s3_bucket_cross_region_replication_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ir_6_1",
+    "Title": "IR-6(1) Automated Reporting",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ir_6_1.md",
+    "Description": "The organization employs automated mechanisms to assist in the reporting of security incidents.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_finding_archived"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_13",
+    "Title": "Cryptographic Protection (SC-13)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_13.md",
+    "Description": "The information system implements [Assignment: organization-defined cryptographic uses and type of cryptography required for each use] in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/DynamoDB"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_dynamodb_table_encrypted_with_kms"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_2",
+    "Title": "Identification and Authentication (Organizational users) (IA-2)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_2.md",
+    "Description": "The information system uniquely identifies and authenticates organizational users (or processes acting on behalf of organizational users).",
+    "Children": [
+      "aws_nist_800_53_rev_4_ia_2_1",
+      "aws_nist_800_53_rev_4_ia_2_2",
+      "aws_nist_800_53_rev_4_ia_2_11"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_account_password_policy_strong_min_reuse_24"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_5",
+    "Title": "Authenticator Management (IA-5)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_5.md",
+    "Description": "Authenticate users and devices. Automate administrative control. Enforce restrictions. Protect against unauthorized use.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ia_5_1",
+      "aws_nist_800_53_rev_4_ia_5_4",
+      "aws_nist_800_53_rev_4_ia_5_7"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_6_3",
+    "Title": "AU-6(3) Correlate Audit Repositories",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_6_3.md",
+    "Description": "The organization analyzes and correlates audit records across different repositories to gain organization-wide situational awareness.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_2_11",
+    "Title": "IA-2(11) Remote Access - Separate Device",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_2_11.md",
+    "Description": "The information system implements multifactor authentication for remote access to privileged and non-privileged accounts such that one of the factors is provided by a device separate from the system gaining access and the device meets [Assignment: organization-defined strength of mechanism requirements].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_root_user_hardware_mfa_enabled",
+      "aws_iam_root_user_mfa_enabled",
+      "aws_iam_user_console_access_mfa_enabled",
+      "aws_iam_user_mfa_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cp",
+    "Title": "Contingency Planning (CP)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cp.md",
+    "Description": "The CP control family includes controls specific to an organization's contingency plan if a cybersecurity event should occur. This includes controls like contingency plan testing, updating, training, and backups, and system reconstitution.",
+    "Children": [
+      "aws_nist_800_53_rev_4_cp_9",
+      "aws_nist_800_53_rev_4_cp_10"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_6",
+    "Title": "Audit Review, Analysis And Reporting (AU-6)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_6.md",
+    "Description": "Integrate audit review, analysis, and reporting with processes for investigation and response to suspicious activities.",
+    "Children": [
+      "aws_nist_800_53_rev_4_au_6_1",
+      "aws_nist_800_53_rev_4_au_6_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au",
+    "Title": "Audit and Accountability (AU)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au.md",
+    "Description": "The AU control family consists of security controls related to an organization’s audit capabilities. This includes audit policies and procedures, audit logging, audit report generation, and protection of audit information.",
+    "Children": [
+      "aws_nist_800_53_rev_4_au_2",
+      "aws_nist_800_53_rev_4_au_3",
+      "aws_nist_800_53_rev_4_au_6",
+      "aws_nist_800_53_rev_4_au_7",
+      "aws_nist_800_53_rev_4_au_9",
+      "aws_nist_800_53_rev_4_au_11",
+      "aws_nist_800_53_rev_4_au_12"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_2_4",
+    "Title": "AC-2(4) Automated Audit Actions",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_2_4.md",
+    "Description": "The information system automatically audits account creation, modification, enabling, disabling, and removal actions, and notifies [Assignment: organization-defined personnel or roles].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_guardduty_enabled",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_7_1",
+    "Title": "AU-7(1) Automatic Processing",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_7_1.md",
+    "Description": "The information system provides the capability to process audit records for events of interest based on [Assignment: organization-defined audit fields within audit records].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_4_5",
+    "Title": "SI-4(5) System-Generated Alerts",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_4_5.md",
+    "Description": "The information system alerts organization-defined personnel or roles when the following indications of compromise or potential compromise occur: [Assignment: organization-defined compromise indicators].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_4",
+    "Title": "Information In Shared Resources (SC-4)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_4.md",
+    "Description": "The information system prevents unauthorized and unintended information transfer via shared system resources.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_ebs_attached_volume_delete_on_termination_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_11",
+    "Title": "Audit Record Retention (AU-11)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_11.md",
+    "Description": "The organization retains audit records for [Assignment: organization-defined time period consistent with records retention policy] to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudWatch"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudwatch_log_group_retention_period_365"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ir_7_1",
+    "Title": "IR-7(1) Automation Support For Availability Of Information / Support",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ir_7_1.md",
+    "Description": "The organization employs automated mechanisms to increase the availability of incident response-related information and support.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_finding_archived"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_2",
+    "Title": "Account Management (AC-2)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_2.md",
+    "Description": "Manage system accounts, group memberships, privileges, workflow, notifications, deactivations, and authorizations.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ac_2_1",
+      "aws_nist_800_53_rev_4_ac_2_3",
+      "aws_nist_800_53_rev_4_ac_2_4",
+      "aws_nist_800_53_rev_4_ac_2_12"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_emr_cluster_kerberos_enabled",
+      "aws_guardduty_enabled",
+      "aws_iam_account_password_policy_strong_min_reuse_24",
+      "aws_iam_group_not_empty",
+      "aws_iam_policy_no_star_star",
+      "aws_iam_root_user_mfa_enabled",
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_user_access_key_age_90",
+      "aws_iam_user_in_group",
+      "aws_iam_user_no_inline_attached_policies",
+      "aws_iam_user_unused_credentials_90",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_logging_enabled",
+      "aws_secretsmanager_secret_rotated_as_scheduled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_12",
+    "Title": "Information Handling and Retention (SI-12)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_12.md",
+    "Description": "The organization handles and retains information within the information system and information output from the system in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and operational requirements.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudwatch_log_group_retention_period_365",
+      "aws_dynamodb_table_in_backup_plan",
+      "aws_dynamodb_table_point_in_time_recovery_enabled",
+      "aws_ebs_volume_in_backup_plan",
+      "aws_efs_file_system_in_backup_plan",
+      "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+      "aws_rds_db_instance_backup_enabled",
+      "aws_rds_db_instance_in_backup_plan",
+      "aws_s3_bucket_versioning_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_17_2",
+    "Title": "AC-17(2) Protection Of Confidentiality/Integrity Using Encryption",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_17_2.md",
+    "Description": "The information system implements cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_acm_certificate_expires_30_days",
+      "aws_elb_application_lb_drop_http_headers",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_classic_lb_use_ssl_certificate",
+      "aws_elb_classic_lb_use_tls_https_listeners",
+      "aws_redshift_cluster_encryption_in_transit_enabled",
+      "aws_s3_bucket_enforces_ssl"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_4",
+    "Title": "Information System Monitoring (SI-4)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_4.md",
+    "Description": "The organization: a.Monitors the information system to detect: 1. Attacks and indicators of potential attacks in accordance with [Assignment: organization-defined monitoring objectives]; and 2.Unauthorized local, network, and remote connections; b. Identifies unauthorized use of the information system through [Assignment: organization-defined techniques and methods]; c. Deploys monitoring devices: 1. Strategically within the information system to collect organization-determined essential information; and 2. At ad hoc locations within the system to track specific types of transactions of interest to the organization; d. Protects information obtained from intrusion-monitoring tools from unauthorized access, modification, and deletion; e. Heightens the level of information system monitoring activity whenever there is an indication of increased risk to organizational operations and assets, individuals, other organizations, or the Nation based on law enforcement information, intelligence information, or other credible sources of information; f. Obtains legal opinion with regard to information system monitoring activities in accordance with applicable federal laws, Executive Orders, directives, policies, or regulations; and g. Provides [Assignment: organization-defined information system monitoring information] to [Assignment: organization-defined personnel or roles] [Selection (one or more): as needed; [Assignment: organization-defined frequency]].",
+    "Children": [
+      "aws_nist_800_53_rev_4_si_4_1",
+      "aws_nist_800_53_rev_4_si_4_2",
+      "aws_nist_800_53_rev_4_si_4_4",
+      "aws_nist_800_53_rev_4_si_4_5",
+      "aws_nist_800_53_rev_4_si_4_16"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_ec2_instance_detailed_monitoring_enabled",
+      "aws_elb_application_lb_waf_enabled",
+      "aws_guardduty_enabled",
+      "aws_guardduty_finding_archived",
+      "aws_securityhub_enabled",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_7",
+    "Title": "Boundary Protection (SC-7)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_7.md",
+    "Description": "The information system: a. Monitors and controls communications at the external boundary of the system and at key internal boundaries within the system; b. Implements subnetworks for publicly accessible system components that are [Selection: physically; logically] separated from internal organizational networks; and c. Connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.",
+    "Children": [
+      "aws_nist_800_53_rev_4_sc_7_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_in_vpc",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_elb_application_lb_drop_http_headers",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_application_lb_waf_enabled",
+      "aws_elb_classic_lb_use_ssl_certificate",
+      "aws_elb_classic_lb_use_tls_https_listeners",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_es_domain_in_vpc",
+      "aws_es_domain_node_to_node_encryption_enabled",
+      "aws_lambda_function_in_vpc",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_encryption_in_transit_enabled",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_enforces_ssl",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_account",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_vpc_default_security_group_restricts_all_traffic",
+      "aws_vpc_igw_attached_to_authorized_vpc",
+      "aws_vpc_security_group_restrict_ingress_common_ports_all",
+      "aws_vpc_security_group_restrict_ingress_ssh_all",
+      "aws_vpc_security_group_restrict_ingress_tcp_udp_all",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_2",
+    "Title": "Flaw Remediation (SI-2)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_2.md",
+    "Description": "The organization: a.Identifies, reports, and corrects information system flaws; b.Tests software and firmware updates related to flaw remediation for effectiveness and potential side effects before installation; c.Installs security-relevant software and firmware updates within [Assignment: organization-defined time period] of the release of the updates; and d.Incorporates flaw remediation into the organizational configuration management process.",
+    "Children": [
+      "aws_nist_800_53_rev_4_si_2_2"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_2_2",
+    "Title": "IA-2(2) Network Access To Non-Privileged Accounts",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_2_2.md",
+    "Description": "The information system implements multifactor authentication for network access to non-privileged accounts.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_user_console_access_mfa_enabled",
+      "aws_iam_user_mfa_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_7_3",
+    "Title": "SC-7(3) Access Points",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_7_3.md",
+    "Description": "The organization limits the number of external network connections to the information system.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_in_vpc",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_es_domain_in_vpc",
+      "aws_lambda_function_in_vpc",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_account",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_vpc_default_security_group_restricts_all_traffic",
+      "aws_vpc_igw_attached_to_authorized_vpc",
+      "aws_vpc_security_group_restrict_ingress_common_ports_all",
+      "aws_vpc_security_group_restrict_ingress_ssh_all",
+      "aws_vpc_security_group_restrict_ingress_tcp_udp_all"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sa",
+    "Title": "System and Services Acquisition (SA)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sa.md",
+    "Description": "The SA control family correlates with controls that protect allocated resources and an organization’s system development life cycle. This includes information system documentation controls, development configuration management controls, and developer security testing and evaluation controls.",
+    "Children": [
+      "aws_nist_800_53_rev_4_sa_3",
+      "aws_nist_800_53_rev_4_sa_10"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_4_1",
+    "Title": "SI-4(1) System-Wide Intrusion Detection System",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_4_1.md",
+    "Description": "The organization connects and configures individual intrusion detection tools into an information system-wide intrusion detection system.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_2",
+    "Title": "Application Partitioning (SC-2)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_2.md",
+    "Description": "The information system separates user functionality (including user interface services) from information system management functionality.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_group_not_empty",
+      "aws_iam_policy_no_star_star"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_6",
+    "Title": "Least Privilege (AC-6)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_6.md",
+    "Description": "The organization employs the principle of least privilege, allowing only authorized accesses for users (or processes acting on behalf of users) which are necessary to accomplish assigned tasks in accordance with organizational missions and business functions.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ac_6_10"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values",
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_ec2_instance_uses_imdsv2",
+      "aws_emr_cluster_kerberos_enabled",
+      "aws_iam_group_not_empty",
+      "aws_iam_group_user_role_no_inline_policies",
+      "aws_iam_policy_no_star_star",
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_user_in_group",
+      "aws_iam_user_no_inline_attached_policies",
+      "aws_iam_user_unused_credentials_90",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_bucket_account",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_2_12",
+    "Title": "AC-2(12) Account Monitoring",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_2_12.md",
+    "Description": "Monitors and reports atypical usage of information system accounts to organization-defined personnel or roles.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_7",
+    "Title": "Software, Firmware, and Information Integrity (SI-7)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_7.md",
+    "Description": "The organization employs integrity verification tools to detect unauthorized changes to [Assignment: organization-defined software, firmware, and information].",
+    "Children": [
+      "aws_nist_800_53_rev_4_si_7_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_validation_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cm_2",
+    "Title": "Baseline Configuration (CM-2)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cm_2.md",
+    "Description": "The organization develops, documents, and maintains under configuration control, a current baseline configuration of the information system.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_security_trail_enabled",
+      "aws_ebs_attached_volume_delete_on_termination_enabled",
+      "aws_ec2_instance_ssm_managed",
+      "aws_ec2_stopped_instance_30_days",
+      "aws_elb_application_lb_deletion_protection_enabled",
+      "aws_ssm_managed_instance_compliance_association_compliant",
+      "aws_vpc_security_group_restrict_ingress_common_ports_all"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_17_3",
+    "Title": "AC-17(3) Managed Access Control Points",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_17_3.md",
+    "Description": "The information system routes all remote accesses through organization-defined managed network access control points.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_vpc_igw_attached_to_authorized_vpc"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac",
+    "Title": "Access Control (AC)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac.md",
+    "Description": "The access control family consists of security requirements detailing system logging. This includes who has access to what assets and reporting capabilities like account management, system privileges, and remote access logging to determine when users have access to the system and their level of access.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ac_2",
+      "aws_nist_800_53_rev_4_ac_3",
+      "aws_nist_800_53_rev_4_ac_4",
+      "aws_nist_800_53_rev_4_ac_5",
+      "aws_nist_800_53_rev_4_ac_6",
+      "aws_nist_800_53_rev_4_ac_17",
+      "aws_nist_800_53_rev_4_ac_21"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_2_1",
+    "Title": "AC-2(1) Automated System Account Management",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_2_1.md",
+    "Description": "The organization employs automated mechanisms to support the management of information system accounts.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_enabled",
+      "aws_iam_account_password_policy_strong_min_reuse_24",
+      "aws_iam_user_access_key_age_90",
+      "aws_iam_user_in_group",
+      "aws_iam_user_unused_credentials_90",
+      "aws_secretsmanager_secret_rotated_as_scheduled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_3",
+    "Title": "Content of Audit Records (AU-3)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_3.md",
+    "Description": "The information system generates audit records containing information that establishes what type of event occurred, when the event occurred, where the event occurred, the source of the event, the outcome of the event, and the identity of any individuals or subjects associated with the event.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_apigateway_stage_logging_enabled",
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_elb_application_classic_lb_logging_enabled",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_logging_enabled",
+      "aws_vpc_flow_logs_enabled",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_6_1",
+    "Title": "AU-6(1) Process Integration",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_6_1.md",
+    "Description": "The organization employs automated mechanisms to integrate audit review, analysis,and reporting processes to support organizational processes for investigation and response to suspicious activities.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ca",
+    "Title": "Security Assessment And Authorization (CA)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ca.md",
+    "Description": "The Security Assessment and Authorization control family includes controls that supplement the execution of security assessments, authorizations, continuous monitoring, plan of actions and milestones, and system interconnections.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ca_7"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_9",
+    "Title": "Protection of Audit Information (AU-9)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_9.md",
+    "Description": "The information system protects audit information and audit tools from unauthorized access, modification, and deletion.",
+    "Children": [
+      "aws_nist_800_53_rev_4_au_9_2"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+      "aws_log_group_encryption_at_rest_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_5",
+    "Title": "Denial Of Service Protection (SC-5)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_5.md",
+    "Description": "The information system protects against or limits the effects of the following types of denial of service attacks: [Assignment: organization-defined types of denial of service attacks or references to sources for such information] by employing [Assignment: organization-defined security safeguards].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_autoscaling_group_with_lb_use_health_check",
+      "aws_dynamodb_table_auto_scaling_enabled",
+      "aws_elb_classic_lb_cross_zone_load_balancing_enabled",
+      "aws_rds_db_instance_deletion_protection_enabled",
+      "aws_rds_db_instance_multiple_az_enabled",
+      "aws_s3_bucket_cross_region_replication_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_21",
+    "Title": "Information Sharing (AC-21)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_21.md",
+    "Description": "Facilitate information sharing. Enable authorized users to grant access to partners.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_bucket_account",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_2_2",
+    "Title": "SI-2(2) Automates Flaw Remediation Status",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_2_2.md",
+    "Description": "The organization employs automated mechanisms to determine the state of information system components with regard to flaw remediation.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_ec2_instance_ssm_managed",
+      "aws_ssm_managed_instance_compliance_association_compliant",
+      "aws_ssm_managed_instance_compliance_patch_compliant"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cm",
+    "Title": "Configuration Management (CM)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cm.md",
+    "Description": "CM controls are specific to an organization’s configuration management policies. This includes a baseline configuration to operate as the basis for future builds or changes to information systems. Additionally, this includes information system component inventories and a security impact analysis control.",
+    "Children": [
+      "aws_nist_800_53_rev_4_cm_2",
+      "aws_nist_800_53_rev_4_cm_7",
+      "aws_nist_800_53_rev_4_cm_8"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc",
+    "Title": "System and Communications Protection (SC)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc.md",
+    "Description": "The SC control family is responsible for systems and communications protection procedures. This includes boundary protection, protection of information at rest, collaborative computing devices, cryptographic protection, denial of service protection, and many others.",
+    "Children": [
+      "aws_nist_800_53_rev_4_sc_2",
+      "aws_nist_800_53_rev_4_sc_4",
+      "aws_nist_800_53_rev_4_sc_5",
+      "aws_nist_800_53_rev_4_sc_7",
+      "aws_nist_800_53_rev_4_sc_8",
+      "aws_nist_800_53_rev_4_sc_12",
+      "aws_nist_800_53_rev_4_sc_13",
+      "aws_nist_800_53_rev_4_sc_23",
+      "aws_nist_800_53_rev_4_sc_28"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_7_1",
+    "Title": "SI-7(1) Integrity Checks",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_7_1.md",
+    "Description": "The information system performs an integrity check of security relevant events at least monthly.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_validation_enabled",
+      "aws_ec2_instance_ssm_managed",
+      "aws_ssm_managed_instance_compliance_patch_compliant"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_6_10",
+    "Title": "AC-6(10) Prohibit Non-Privileged Users From Executing Privileged Functions",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_6_10.md",
+    "Description": "The information system prevents non-privileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_root_user_no_access_keys"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_5_4",
+    "Title": "IA-5(4) Automated Support For Password Strength Determination",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_5_4.md",
+    "Description": "The organization employs automated tools to determine if password authenticators are sufficiently strong to satisfy [Assignment: organization-defined requirements].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_account_password_policy_strong_min_reuse_24"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sa_10",
+    "Title": "Developer Configuration Management (SA-10)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sa_10.md",
+    "Description": "The organization requires the developer of the information system, system component, or information system service to: a. Perform configuration management during system, component, or service [Selection (one or more): design; development; implementation; operation]; b. Document, manage, and control the integrity of changes to [Assignment: organization-defined configuration items under configuration management]; c. Implement only organization-approved changes to the system, component, or service; d. Document approved changes to the system, component, or service and the potential security impacts of such changes; and e. Track security flaws and flaw resolution within the system, component, or service and report findings to [Assignment: organization-defined personnel].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_ec2_instance_ssm_managed",
+      "aws_guardduty_enabled",
+      "aws_guardduty_finding_archived",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ir_4_1",
+    "Title": "IR-4(1) Automated Incident Handling Processes",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ir_4_1.md",
+    "Description": "The organization employs automated mechanisms to support the incident handling process.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_guardduty_finding_archived"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_2",
+    "Title": "Event Logging (AU-2)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_2.md",
+    "Description": "Automate security audit function with other organizational entities. Enable mutual support of audit of auditable events.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_apigateway_stage_logging_enabled",
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_elb_application_classic_lb_logging_enabled",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_logging_enabled",
+      "aws_vpc_flow_logs_enabled",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ir",
+    "Title": "Incident Response (IR)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ir.md",
+    "Description": "IR controls are specific to an organization’s incident response policies and procedures. This includes incident response training, testing, monitoring, reporting, and response plan.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ir_4",
+      "aws_nist_800_53_rev_4_ir_6",
+      "aws_nist_800_53_rev_4_ir_7"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cp_10",
+    "Title": "Information System Recovery And Reconstitution (CP-10)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cp_10.md",
+    "Description": "The organization provides for the recovery and reconstitution of the information system to a known state after a disruption, compromise, or failure.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_dynamodb_table_auto_scaling_enabled",
+      "aws_dynamodb_table_in_backup_plan",
+      "aws_dynamodb_table_point_in_time_recovery_enabled",
+      "aws_ebs_volume_in_backup_plan",
+      "aws_efs_file_system_in_backup_plan",
+      "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+      "aws_elb_application_lb_deletion_protection_enabled",
+      "aws_elb_classic_lb_cross_zone_load_balancing_enabled",
+      "aws_rds_db_instance_backup_enabled",
+      "aws_rds_db_instance_in_backup_plan",
+      "aws_rds_db_instance_multiple_az_enabled",
+      "aws_s3_bucket_cross_region_replication_enabled",
+      "aws_s3_bucket_versioning_enabled",
+      "aws_vpc_vpn_tunnel_up"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cm_7",
+    "Title": "Least Functionality (CM-7)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cm_7.md",
+    "Description": "The organization configures the information system to provide only essential capabilities and prohibits or restricts the use of the functions, ports, protocols, and/or services.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_ec2_instance_ssm_managed",
+      "aws_ssm_managed_instance_compliance_association_compliant"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_5",
+    "Title": "Separation Of Duties (AC-5)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_5.md",
+    "Description": "Separate duties of individuals to prevent malevolent activity. automate separation of duties and access authorizations.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_emr_cluster_kerberos_enabled",
+      "aws_iam_group_not_empty",
+      "aws_iam_policy_no_star_star",
+      "aws_iam_user_no_inline_attached_policies"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sa_3",
+    "Title": "System Development Life Cycle (SA-3)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sa_3.md",
+    "Description": "The organization manages the information system using organization-defined system development life cycle, defines and documents information security roles and responsibilities throughout the system development life cycle, identifies individuals having information security roles and responsibilities and integrates the organizational information security risk management process into system development life cycle activities.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values",
+      "aws_codebuild_project_source_repo_oauth_configured",
+      "aws_ec2_instance_ssm_managed"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_4",
+    "Title": "Information Flow Enforcement (AC-4)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_4.md",
+    "Description": "The information system enforces approved authorizations for controlling the flow of information within the system and between interconnected systems based on organization-defined information flow control policies.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_acm_certificate_expires_30_days",
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_in_vpc",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_es_domain_in_vpc",
+      "aws_lambda_function_in_vpc",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_bucket_account",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_vpc_default_security_group_restricts_all_traffic",
+      "aws_vpc_igw_attached_to_authorized_vpc",
+      "aws_vpc_security_group_restrict_ingress_common_ports_all",
+      "aws_vpc_security_group_restrict_ingress_ssh_all",
+      "aws_vpc_security_group_restrict_ingress_tcp_udp_all"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_8_1",
+    "Title": "SC-8(1) Cryptographic Or Alternate Physical Protection",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_8_1.md",
+    "Description": "The information system implements cryptographic mechanisms to [Selection (one or more): prevent unauthorized disclosure of information; detect changes to information] during transmission unless otherwise protected by [Assignment: organization-defined alternative physical safeguards].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_elb_application_lb_drop_http_headers",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_classic_lb_use_ssl_certificate",
+      "aws_elb_classic_lb_use_tls_https_listeners",
+      "aws_es_domain_node_to_node_encryption_enabled",
+      "aws_redshift_cluster_encryption_in_transit_enabled",
+      "aws_s3_bucket_enforces_ssl"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia_2_1",
+    "Title": "IA-2(1) Network Access To Privileged Accounts",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia_2_1.md",
+    "Description": "The information system implements multi-factor authentication for network access to privileged accounts.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_root_user_hardware_mfa_enabled",
+      "aws_iam_root_user_mfa_enabled",
+      "aws_iam_user_console_access_mfa_enabled",
+      "aws_iam_user_mfa_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_17_1",
+    "Title": "AC-17(1) Automated Monitoring/Control",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_17_1.md",
+    "Description": "The information system monitors and controls remote access methods.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ir_7",
+    "Title": "Incident Response Assistance (IR-7)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ir_7.md",
+    "Description": "The organization provides an incident response support resource, integral to the organizational incident response capability that offers advice and assistance to users of the information system for the handling and reporting of security incidents.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ir_7_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ir_6",
+    "Title": "Incident Reporting (IR-6)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ir_6.md",
+    "Description": "The organization report suspected security incidents to the organizational incident response capability within organization-defined time period.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ir_6_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_4_2",
+    "Title": "SI-4(2) Automated Tools For Real-Time Analysis",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_4_2.md",
+    "Description": "The organization employs automated tools to support near real-time analysis of events.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_ec2_instance_detailed_monitoring_enabled",
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ca_7",
+    "Title": "Continuous Monitoring (CA-7)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ca_7.md",
+    "Description": "Continuously monitor configuration management processes. Determine security impact, environment and operational risks.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_ec2_instance_detailed_monitoring_enabled",
+      "aws_guardduty_enabled",
+      "aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_28",
+    "Title": "Protection Of Information At Rest (SC-28)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_28.md",
+    "Description": "The information system protects the [Selection (one or more): confidentiality; integrity] of [Assignment: organization-defined information at rest].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_apigateway_stage_cache_encryption_at_rest_enabled",
+      "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+      "aws_ebs_attached_volume_encryption_enabled",
+      "aws_ec2_ebs_default_encryption_enabled",
+      "aws_efs_file_system_encrypt_data_at_rest",
+      "aws_es_domain_encryption_at_rest_enabled",
+      "aws_kms_key_not_pending_deletion",
+      "aws_log_group_encryption_at_rest_enabled",
+      "aws_rds_db_instance_encryption_at_rest_enabled",
+      "aws_rds_db_snapshot_encrypted_at_rest",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_default_encryption_enabled",
+      "aws_s3_bucket_object_lock_enabled",
+      "aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled",
+      "aws_sagemaker_notebook_instance_encryption_at_rest_enabled",
+      "aws_sns_topic_encrypted_at_rest"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_3",
+    "Title": "Access Enforcement (AC-3)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_3.md",
+    "Description": "The information system enforces approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_emr_cluster_kerberos_enabled",
+      "aws_iam_group_not_empty",
+      "aws_iam_policy_no_star_star",
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_user_in_group",
+      "aws_iam_user_no_inline_attached_policies",
+      "aws_iam_user_unused_credentials_90",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_bucket_account"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ia",
+    "Title": "Identification and Authentication (IA)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ia.md",
+    "Description": "IA controls are specific to the identification and authentication policies in an organization. This includes the identification and authentication of organizational and non-organizational users and how the management of those systems.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ia_2",
+      "aws_nist_800_53_rev_4_ia_5"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_cp_9",
+    "Title": "Information System Backup (CP-9)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_cp_9.md",
+    "Description": "The organization conducts backups of user-level information, system-level information  and information system documentation including security-related documentation contained in the information system and protects the confidentiality, integrity, and availability of backup information at storage locations.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_dynamodb_table_in_backup_plan",
+      "aws_dynamodb_table_point_in_time_recovery_enabled",
+      "aws_ebs_volume_in_backup_plan",
+      "aws_efs_file_system_in_backup_plan",
+      "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+      "aws_rds_db_instance_backup_enabled",
+      "aws_rds_db_instance_in_backup_plan",
+      "aws_s3_bucket_cross_region_replication_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_12",
+    "Title": "Audit Generation (AU-12)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_12.md",
+    "Description": "Audit events defined in AU-2. Allow trusted personnel to select which events to audit. Generate audit records for events.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_apigateway_stage_logging_enabled",
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_elb_application_classic_lb_logging_enabled",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_logging_enabled",
+      "aws_vpc_flow_logs_enabled",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_4_4",
+    "Title": "SI-4(4) Inbound and Outbound Communications Traffic",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_4_4.md",
+    "Description": "The information system monitors inbound and outbound communications traffic continuously for unusual or unauthorized activities or conditions.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_sc_23",
+    "Title": "Session Authenticity (SC-23)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_sc_23.md",
+    "Description": "TThe information system protects the authenticity of communications sessions.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ELB"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_elb_application_lb_drop_http_headers",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_classic_lb_use_tls_https_listeners"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_si_4_16",
+    "Title": "SI-4(16) Correlate Monitoring Information",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_si_4_16.md",
+    "Description": "The organization correlates information from monitoring tools employed throughout the information system.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_guardduty_enabled",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_17",
+    "Title": "Remote Access (AC-17)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_17.md",
+    "Description": "Authorize remote access systems prior to connection. Enforce remote connection requirements to information systems.",
+    "Children": [
+      "aws_nist_800_53_rev_4_ac_17_1",
+      "aws_nist_800_53_rev_4_ac_17_2",
+      "aws_nist_800_53_rev_4_ac_17_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_au_7",
+    "Title": "Audit Reduction And Report Generation (AU-7)",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_au_7.md",
+    "Description": "Support for real-time audit review, analysis, and reporting requirements without altering original audit records.",
+    "Children": [
+      "aws_nist_800_53_rev_4_au_7_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": null
+  },
+  {
+    "ID": "aws_nist_800_53_rev_4_ac_2_3",
+    "Title": "AC-2(3) Disable Inactive Accounts",
+    "Connector": "AWS",
+    "DocumentURI": "benchmarks/aws_nist_800_53_rev_4_ac_2_3.md",
+    "Description": "The information system automatically disables inactive accounts after 90 days for user accounts.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "LogoURI": "",
+    "Category": "",
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Policies": [
+      "aws_iam_user_unused_credentials_90"
+    ]
+  }
+]

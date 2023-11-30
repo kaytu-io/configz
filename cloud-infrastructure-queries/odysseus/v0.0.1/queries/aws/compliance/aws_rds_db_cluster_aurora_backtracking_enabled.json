@@ -1,0 +1,10 @@
+{
+  "ID": "aws_rds_db_cluster_aurora_backtracking_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when engine not ilike '%aurora-mysql%' then 'skip'\n    when backtrack_window is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when engine not ilike '%aurora-mysql%' then title || ' not Aurora MySQL-compatible edition.'\n    when backtrack_window is not null then title || ' backtracking enabled.'\n    else title || ' backtracking not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_cluster;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_rds_db_cluster",
+  "ListOfTables": [
+    "aws_rds_db_cluster"
+  ]
+}

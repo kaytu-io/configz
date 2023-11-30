@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "Kubernetes Service (AKS)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.containerservice/managedclusters') group by 1,2;",
+    "tags": {
+        "category": ["Containers"]
+    }
+}

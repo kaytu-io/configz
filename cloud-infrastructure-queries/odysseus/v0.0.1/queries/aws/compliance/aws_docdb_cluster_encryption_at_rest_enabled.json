@@ -1,0 +1,10 @@
+{
+  "ID": "aws_docdb_cluster_encryption_at_rest_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when storage_encrypted then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when storage_encrypted then title || ' encrypted at rest.'\n    else title || ' not encrypted at rest.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_docdb_cluster;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_docdb_cluster",
+  "ListOfTables": [
+    "aws_docdb_cluster"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "aws_cloudtrail_s3_data_events_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "  with s3_selectors as (\n  select\n    name as trail_name,\n    is_multi_region_trail,\n    bucket_selector\n  from\n    aws_cloudtrail_trail,\n    jsonb_array_elements(event_selectors) as event_selector,\n    jsonb_array_elements(event_selector -\u003e 'DataResources') as data_resource,\n    jsonb_array_elements_text(data_resource -\u003e 'Values') as bucket_selector\n  where\n    is_multi_region_trail\n    and data_resource -\u003e\u003e 'Type' = 'AWS::S3::Object'\n    and event_selector -\u003e\u003e 'ReadWriteType' = 'All'\n)\nselect\n  b.arn as resource,\n  case\n    when count(bucket_selector) \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when count(bucket_selector) \u003e 0 then b.name || ' object-level data events logging enabled.'\n    else b.name || ' object-level data events logging disabled.'\n  end as reason\n  \n  , b.region, b.account_id\nfrom\n  aws_s3_bucket as b\n  left join s3_selectors on bucket_selector like (b.arn || '%') or bucket_selector = 'arn:aws:s3'\ngroup by\n  b.account_id, b.region, b.arn, b.name, b.tags, b._ctx;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_s3_bucket",
+  "ListOfTables": [
+    "aws_cloudtrail_trail",
+    "aws_s3_bucket"
+  ]
+}

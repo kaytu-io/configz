@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all EBS Volumes that are attached that do not have encryption ebabled",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when encrypted then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encrypted then volume_id || ' encrypted.'\n    else volume_id || ' not encrypted.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_ebs_volume\nwhere\n  state = 'in-use'"
+}

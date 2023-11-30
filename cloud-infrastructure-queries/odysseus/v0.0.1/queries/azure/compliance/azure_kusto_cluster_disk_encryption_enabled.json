@@ -1,0 +1,11 @@
+{
+  "ID": "azure_kusto_cluster_disk_encryption_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when enable_disk_encryption then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_disk_encryption then name || ' disk encryption enabled.'\n    else name || ' disk encryption disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kusto_cluster as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_kusto_cluster",
+  "ListOfTables": [
+    "azure_kusto_cluster",
+    "azure_subscription"
+  ]
+}

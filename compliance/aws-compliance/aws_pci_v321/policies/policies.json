@@ -1,0 +1,1322 @@
+[
+  {
+    "ID": "aws_pci_v321_s3_1",
+    "Title": "1 S3 buckets should prohibit public write access",
+    "Description": "This control checks whether your S3 buckets allow public write access by evaluating the Block Public Access settings, the bucket policy, and the bucket access control list (ACL). It does not check for write access to the bucket by internal principals, such as IAM roles. You should ensure that access to the bucket is restricted to authorized principals only.",
+    "QueryID": "aws_s3_bucket_restrict_public_write_access",
+    "DocumentURI": "policies/aws_pci_v321_s3_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "s3_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,1.3.6,7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_s3_2",
+    "Title": "2 S3 buckets should prohibit public read access",
+    "Description": "This control checks whether your S3 buckets allow public read access by evaluating the Block Public Access settings, the bucket policy, and the bucket access control list (ACL). Unless you explicitly require everyone on the internet to be able to write to your S3 bucket, you should ensure that your S3 bucket is not publicly writable. It does not check for read access to the bucket by internal principals, such as IAM roles. You should ensure that access to the bucket is restricted to authorized principals only.",
+    "QueryID": "aws_s3_bucket_restrict_public_read_access",
+    "DocumentURI": "policies/aws_pci_v321_s3_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "s3_2"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.6,7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_s3_3",
+    "Title": "3 S3 buckets should have cross-region replication enabled",
+    "Description": "This control checks whether S3 buckets have cross-region replication enabled. PCI DSS does not require data replication or highly available configurations. However, this check aligns with AWS best practices for this control.",
+    "QueryID": "aws_s3_bucket_cross_region_replication_enabled",
+    "DocumentURI": "policies/aws_pci_v321_s3_3.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "s3_3"
+      ],
+      "pci_requirements": [
+        "2.2"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_s3_4",
+    "Title": "4 S3 buckets should have server-side encryption enabled",
+    "Description": "This control checks that your Amazon S3 bucket either has Amazon S3 default encryption enabled or that the S3 bucket policy explicitly denies put-object requests without server-side encryption. When you set default encryption on a bucket, all new objects stored in the bucket are encrypted when they are stored, including clear text PAN data. Server-side encryption for all of the objects stored in a bucket can also be enforced using a bucket policy.",
+    "QueryID": "aws_s3_bucket_default_encryption_enabled",
+    "DocumentURI": "policies/aws_pci_v321_s3_4.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "s3_4"
+      ],
+      "pci_requirements": [
+        "3.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_s3_5",
+    "Title": "5 S3 buckets should require requests to use Secure Socket Layer",
+    "Description": "This control checks whether Amazon S3 buckets have policies that require requests to use Secure Socket Layer (SSL). S3 buckets should have policies that require all requests (Action: S3:*)to only accept transmission of data over HTTPS in the S3 resource policy, indicated by the condition key aws:SecureTransport.",
+    "QueryID": "aws_s3_bucket_enforces_ssl",
+    "DocumentURI": "policies/aws_pci_v321_s3_5.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "s3_5"
+      ],
+      "pci_requirements": [
+        "4.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_s3_6",
+    "Title": "6 S3 Block Public Access setting should be enabled",
+    "Description": "This control checks whether the following public access block settings are configured at the account level. The control passes if all of the public access block settings are set to true. The control fails if any of the settings are set to false, or if any of the settings are not configured. When the settings do not have a value, the AWS Config rule cannot complete its evaluation.",
+    "QueryID": "aws_s3_public_access_block_bucket_account",
+    "DocumentURI": "policies/aws_pci_v321_s3_6.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "s3_6"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,1.3.6"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_es_1",
+    "Title": "1 Amazon Elasticsearch Service domains should be in a VPC",
+    "Description": "This control checks whether Amazon Elasticsearch Service domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public reachability.",
+    "QueryID": "aws_es_domain_in_vpc",
+    "DocumentURI": "policies/aws_pci_v321_es_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "es_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,1.3.6"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "es"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_es_2",
+    "Title": "2 Amazon Elasticsearch Service domains should have encryption at rest enabled",
+    "Description": "This control checks whether Amazon ES domains have encryption at rest configuration enabled.",
+    "QueryID": "aws_es_domain_encryption_at_rest_enabled",
+    "DocumentURI": "policies/aws_pci_v321_es_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "es_2"
+      ],
+      "pci_requirements": [
+        "3.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "es"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_cw_1",
+    "Title": "1 A log metric filter and alarm should exist for usage of the 'root' user",
+    "Description": "This control checks for the CloudWatch metric filters using the following pattern: { $.userIdentity.type = 'Root' \u0026\u0026 $.userIdentity.invokedBy NOT EXISTS \u0026\u0026 $.eventType != AwsServiceEvent }.",
+    "QueryID": "aws_log_metric_filter_root_login",
+    "DocumentURI": "policies/aws_pci_v321_cw_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "cw_1"
+      ],
+      "pci_requirements": [
+        "7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudwatch"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ec2_1",
+    "Title": "1 Amazon EBS snapshots should not be publicly restorable",
+    "Description": "This control checks whether Amazon Elastic Block Store snapshots are not publicly restorable by everyone, which makes them public. Amazon EBS snapshots should not be publicly restorable by everyone unless you explicitly allow it, to avoid accidental exposure of your company’s sensitive data.",
+    "QueryID": "aws_ebs_snapshot_not_publicly_restorable",
+    "DocumentURI": "policies/aws_pci_v321_ec2_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ec2_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.4,1.3.4,7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ec2_2",
+    "Title": "2 VPC default security group should prohibit inbound and outbound traffic",
+    "Description": "This control checks that the default security group of a VPC does not allow inbound or outbound traffic. It does not check for access restrictions for other security groups that are not default, and other VPC configurations.",
+    "QueryID": "aws_vpc_default_security_group_restricts_all_traffic",
+    "DocumentURI": "policies/aws_pci_v321_ec2_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ec2_2"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.4,2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ec2_3",
+    "Title": "3 Unused EC2 security groups should be removed",
+    "Description": "This control helps you maintain an accurate asset inventory of needed security groups in your cardholder data environment (CDE). It does so by checking that security groups are attached to Amazon EC2 instances or to an ENI. A failed finding indicates you may have unused Amazon EC2 security groups.",
+    "QueryID": "aws_vpc_security_group_associated",
+    "DocumentURI": "policies/aws_pci_v321_ec2_3.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ec2_3"
+      ],
+      "pci_requirements": [
+        "2.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ec2_4",
+    "Title": "4 Unused EC2 EIPs should be removed",
+    "Description": "This control checks whether Elastic IP addresses that are allocated to a VPC are attached to Amazon EC2 instances or in-use elastic network interfaces (ENIs). A failed finding indicates you may have unused Amazon EC2 EIPs. This will help you maintain an accurate asset inventory of EIPs in your cardholder data environment (CDE).",
+    "QueryID": "aws_vpc_eip_associated",
+    "DocumentURI": "policies/aws_pci_v321_ec2_4.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ec2_4"
+      ],
+      "pci_requirements": [
+        "2.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ec2_5",
+    "Title": "5 Security groups should not allow ingress from 0.0.0.0/0 to port 22",
+    "Description": "This control checks whether security groups in use disallow unrestricted incoming SSH traffic. It does not evaluate outbound traffic. Note that security groups are stateful. If you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules. Responses to allowed inbound traffic are allowed to flow out regardless of outbound rules.",
+    "QueryID": "aws_vpc_security_group_remote_administration",
+    "DocumentURI": "policies/aws_pci_v321_ec2_5.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ec2_5"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,2.2.2"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ec2_6",
+    "Title": "6 VPC flow logging should be enabled in all VPCs",
+    "Description": "This control checks whether VPC flow logs are found and enabled for VPCs. The traffic type is set to REJECT. With VPC Flow Logs, you can capture information about the IP address traffic to and from network interfaces in your VPC. After you create a flow log, you can use CloudWatch Logs to view and retrieve the log data. Security Hub recommends that you enable flow logging for packet rejects for VPCs. Flow logs provide visibility into network traffic that traverses the VPC. They can detect anomalous traffic and provide insight into security workflows. By default, the record includes values for the different components of the IP address flow, including the source, destination, and protocol.",
+    "QueryID": "aws_vpc_flow_logs_enabled",
+    "DocumentURI": "policies/aws_pci_v321_ec2_6.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ec2_6"
+      ],
+      "pci_requirements": [
+        "10.3.3,10.3.4,10.3.5,10.3.6"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_1",
+    "Title": "1 IAM root user access key should not exist",
+    "Description": "This control checks whether user access keys exist for the root user.",
+    "QueryID": "aws_iam_root_user_no_access_keys",
+    "DocumentURI": "policies/aws_pci_v321_iam_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_1"
+      ],
+      "pci_requirements": [
+        "2.1,2.2,7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_2",
+    "Title": "2 IAM users should not have IAM policies attached",
+    "Description": "This control checks that none of your IAM users have policies attached. IAM users must inherit permissions from IAM groups or roles. It does not check whether least privileged policies are applied to IAM roles and groups.",
+    "QueryID": "aws_iam_user_no_inline_attached_policies",
+    "DocumentURI": "policies/aws_pci_v321_iam_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_2"
+      ],
+      "pci_requirements": [
+        "7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_3",
+    "Title": "3 IAM policies should not allow full '*' administrative privileges",
+    "Description": "This control checks whether the default version of AWS Identity and Access Management policies (also known as customer managed policies) do not have administrator access with a statement that has 'Effect': 'Allow' with 'Action': '*' over 'Resource': '*'.",
+    "QueryID": "aws_iam_policy_no_star_star",
+    "DocumentURI": "policies/aws_pci_v321_iam_3.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_3"
+      ],
+      "pci_requirements": [
+        "7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_4",
+    "Title": "4 Hardware MFA should be enabled for the root user",
+    "Description": "This control checks whether your AWS account is enabled to use multi-factor authentication (MFA) hardware device to sign in with root user credentials. It does not check whether you are using virtual MFA.",
+    "QueryID": "aws_iam_root_user_hardware_mfa_enabled",
+    "DocumentURI": "policies/aws_pci_v321_iam_4.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_4"
+      ],
+      "pci_requirements": [
+        "8.3.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_5",
+    "Title": "5 Virtual MFA should be enabled for the root user",
+    "Description": "This control checks whether users of your AWS account require a multi-factor authentication (MFA) device to sign in with root user credentials. It does not check whether you are using hardware MFA.",
+    "QueryID": "aws_iam_root_user_virtual_mfa",
+    "DocumentURI": "policies/aws_pci_v321_iam_5.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_5"
+      ],
+      "pci_requirements": [
+        "8.3.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_6",
+    "Title": "6 MFA should be enabled for all IAM users",
+    "Description": "This control checks whether the IAM users have multi-factor authentication (MFA) enabled.",
+    "QueryID": "aws_iam_user_mfa_enabled",
+    "DocumentURI": "policies/aws_pci_v321_iam_6.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_6"
+      ],
+      "pci_requirements": [
+        "8.3.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_7",
+    "Title": "7 IAM user credentials should be disabled if not used within a predefined number of days",
+    "Description": "This control checks whether your IAM users have passwords or active access keys that have not been used within a specified number of days. The default is 90 days.",
+    "QueryID": "aws_iam_user_unused_credentials_90",
+    "DocumentURI": "policies/aws_pci_v321_iam_7.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_7"
+      ],
+      "pci_requirements": [
+        "8.1.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_iam_8",
+    "Title": "8 Password policies for IAM users should have strong configurations",
+    "Description": "This control checks whether the account password policy for IAM users uses the following minimum PCI DSS configurations.",
+    "QueryID": "aws_iam_account_password_policy_strong",
+    "DocumentURI": "policies/aws_pci_v321_iam_8.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "iam_8"
+      ],
+      "pci_requirements": [
+        "8.1.4,8.2.3,8.2.4,8.2.5"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_dms_1",
+    "Title": "1 AWS Database Migration Service replication instances should not be public",
+    "Description": "This control checks whether AWS DMS replication instances are public. To do this, it examines the value of the PubliclyAccessible field. A private replication instance has a private IP address that you cannot access outside of the replication network. A replication instance should have a private IP address when the source and target databases are in the same network, and the network is connected to the replication instance's VPC using a VPN, AWS Direct Connect, or VPC peering.",
+    "QueryID": "aws_dms_replication_instance_not_publicly_accessible",
+    "DocumentURI": "policies/aws_pci_v321_dms_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "dms_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,1.3.6"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "dms"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_rds_1",
+    "Title": "1 RDS snapshots should prohibit public access",
+    "Description": "This control checks whether Amazon RDS DB snapshots prohibit access by other accounts. You should also ensure that access to the snapshot and permission to change Amazon RDS configuration is restricted to authorized principals only.",
+    "QueryID": "aws_rds_db_snapshot_prohibit_public_access",
+    "DocumentURI": "policies/aws_pci_v321_rds_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "rds_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.4,1.3.6,7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "rds"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_rds_2",
+    "Title": "2 RDS DB Instances should prohibit public access",
+    "Description": "This control checks whether RDS instances are publicly accessible by evaluating the publiclyAccessible field in the instance configuration item. The value of publiclyAccessible indicates whether the DB instance is publicly accessible. When the DB instance is publicly accessible,it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves to a private IP address.",
+    "QueryID": "aws_rds_db_instance_prohibit_public_access",
+    "DocumentURI": "policies/aws_pci_v321_rds_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "rds_2"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,1.3.6,7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "rds"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_kms_1",
+    "Title": "1 Customer master key (CMK) rotation should be enabled",
+    "Description": "This control checks that key rotation is enabled for each customer master key (CMK). It does not check CMKs that have imported key material. You should ensure keys that have imported material and those that are not stored in AWS KMS are rotated. AWS managed customer master keys are rotated once every 3 years.",
+    "QueryID": "aws_kms_cmk_rotation_enabled",
+    "DocumentURI": "policies/aws_pci_v321_kms_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "kms_1"
+      ],
+      "pci_requirements": [
+        "3.6.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "kms"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ssm_1",
+    "Title": "1 Amazon EC2 instances managed by Systems Manager should have a patch compliance status of COMPLIANT after a patch installation",
+    "Description": "This control checks whether the compliance status of the Amazon EC2 Systems Manager patch compliance is COMPLIANT or NON_COMPLIANT after the patch installation on the instance.",
+    "QueryID": "aws_ssm_managed_instance_compliance_patch_compliant",
+    "DocumentURI": "policies/aws_pci_v321_ssm_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ssm_1"
+      ],
+      "pci_requirements": [
+        "6.2"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ssm"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ssm_2",
+    "Title": "2 Instances managed by Systems Manager should have an association compliance status of COMPLIANT",
+    "Description": "This control checks whether the status of the AWS Systems Manager association compliance is COMPLIANT or NON_COMPLIANT after the association is run on an instance. The control passes if the association compliance status is COMPLIANT.",
+    "QueryID": "aws_ssm_managed_instance_compliance_association_compliant",
+    "DocumentURI": "policies/aws_pci_v321_ssm_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ssm_2"
+      ],
+      "pci_requirements": [
+        "2.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ssm"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_ssm_3",
+    "Title": "3 EC2 instances should be managed by AWS Systems Manager",
+    "Description": "This control checks whether the EC2 instances in your account are managed by Systems Manager.",
+    "QueryID": "aws_ec2_instance_ssm_managed",
+    "DocumentURI": "policies/aws_pci_v321_ssm_3.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "ssm_3"
+      ],
+      "pci_requirements": [
+        "2.4,6.2"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ssm"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_elbv2_1",
+    "Title": "1 Application Load Balancer should be configured to redirect all HTTP requests to HTTPS",
+    "Description": "This control checks whether HTTP to HTTPS redirection is configured on all HTTP listeners of Application Load Balancers. The control fails if any of the HTTP listeners of Application Load Balancers do not have HTTP to HTTPS redirection configured.",
+    "QueryID": "aws_elb_application_lb_redirect_http_request_to_https",
+    "DocumentURI": "policies/aws_pci_v321_elbv2_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "elbv2_1"
+      ],
+      "pci_requirements": [
+        "2.3,4.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "elbv2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_lambda_1",
+    "Title": "1 Lambda functions should prohibit public access",
+    "Description": "This control checks whether the Lambda function resource-based policy prohibits public access. It does not check for access to the Lambda function by internal principals, such as IAM roles. You should ensure that access to the Lambda function is restricted to authorized principals only by using least privilege Lambda resource-based policies.",
+    "QueryID": "aws_lambda_function_restrict_public_access",
+    "DocumentURI": "policies/aws_pci_v321_lambda_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "lambda_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,7.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "lambda"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_lambda_2",
+    "Title": "2 Lambda functions should be in a VPC",
+    "Description": "This control checks whether a Lambda function is in a VPC. It does not evaluate the VPC subnet routing configuration to determine public reachability.",
+    "QueryID": "aws_lambda_function_in_vpc",
+    "DocumentURI": "policies/aws_pci_v321_lambda_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "lambda_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "lambda"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_config_1",
+    "Title": "1 AWS Config should be enabled",
+    "Description": "This control checks whether AWS Config is enabled in the account for the local Region and is recording all resources. It does not check for change detection for all critical system files and content files, as AWS Config supports only a subset of resource types. The AWS Config service performs configuration management of supported AWS resources in your account and delivers log files to you. The recorded information includes the configuration item (AWS resource), relationships between configuration items, and any configuration changes between resources.",
+    "QueryID": "aws_config_enabled_all_regions",
+    "DocumentURI": "policies/aws_pci_v321_config_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "config_1"
+      ],
+      "pci_requirements": [
+        "10.5.2,11.5"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "config"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_redshift_1",
+    "Title": "1 Amazon Redshift clusters should prohibit public access",
+    "Description": "This control checks whether Amazon Redshift clusters are publicly accessible by evaluating the publiclyAccessible field in the cluster configuration item.",
+    "QueryID": "aws_redshift_cluster_prohibit_public_access",
+    "DocumentURI": "policies/aws_pci_v321_redshift_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "redshift_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,1.3.6"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "redshift"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_codebuild_1",
+    "Title": "1 CodeBuild GitHub or Bitbucket source repository URLs should use OAuth",
+    "Description": "This control checks whether the GitHub or Bitbucket source repository URL contains either personal access tokens or a user name and password.",
+    "QueryID": "aws_codebuild_project_source_repo_oauth_configured",
+    "DocumentURI": "policies/aws_pci_v321_codebuild_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "codebuild_1"
+      ],
+      "pci_requirements": [
+        "8.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "codebuild"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_codebuild_2",
+    "Title": "2 CodeBuild project environment variables should not contain clear text credentials",
+    "Description": "This control checks whether the project contains environment variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.",
+    "QueryID": "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values",
+    "DocumentURI": "policies/aws_pci_v321_codebuild_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "codebuild_2"
+      ],
+      "pci_requirements": [
+        "8.2.1"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "codebuild"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_sagemaker_1",
+    "Title": "1 Amazon SageMaker notebook instances should not have direct internet access",
+    "Description": "This control checks whether direct internet access is disabled for an SageMaker notebook instance. To do this, it checks whether the DirectInternetAccess field is disabled for the notebook instance.",
+    "QueryID": "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+    "DocumentURI": "policies/aws_pci_v321_sagemaker_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "sagemaker_1"
+      ],
+      "pci_requirements": [
+        "1.2.1,1.3.1,1.3.2,1.3.4,1.3.6"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "sagemaker"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_guardduty_1",
+    "Title": "1 GuardDuty should be enabled",
+    "Description": "This control checks whether Amazon GuardDuty is enabled in your AWS account and Region.",
+    "QueryID": "aws_guardduty_enabled",
+    "DocumentURI": "policies/aws_pci_v321_guardduty_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "guardduty_1"
+      ],
+      "pci_requirements": [
+        "11.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "guardduty"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_cloudtrail_1",
+    "Title": "1 CloudTrail logs should be encrypted at rest using AWS KMS CMKs",
+    "Description": "This control checks whether AWS CloudTrail is configured to use the server-side encryption (SSE) AWS KMS customer master key (CMK) encryption. If you are only using the default encryption option, you can choose to disable this check.",
+    "QueryID": "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+    "DocumentURI": "policies/aws_pci_v321_cloudtrail_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "cloudtrail_1"
+      ],
+      "pci_requirements": [
+        "3.4"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudtrail"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_cloudtrail_2",
+    "Title": "2 CloudTrail should be enabled",
+    "Description": "This control checks whether CloudTrail is enabled in your AWS account. However, some AWS services do not enable logging of all APIs and events. You should implement any additional audit trails other than CloudTrail and review the documentation for each service.",
+    "QueryID": "aws_cloudtrail_enabled_all_regions",
+    "DocumentURI": "policies/aws_pci_v321_cloudtrail_2.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "cloudtrail_2"
+      ],
+      "pci_requirements": [
+        "10.1,10.2.1,10.2.2,10.2.3,10.2.4,10.2.5,10.2.6,10.2.7,10.3.1,10.3.2,10.3.3,10.3.4,10.3.5,10.3.6"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudtrail"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_cloudtrail_3",
+    "Title": "3 CloudTrail log file validation should be enabled",
+    "Description": "This control checks whether CloudTrail log file validation is enabled.",
+    "QueryID": "aws_cloudtrail_trail_validation_enabled",
+    "DocumentURI": "policies/aws_pci_v321_cloudtrail_3.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "cloudtrail_3"
+      ],
+      "pci_requirements": [
+        "10.5.2,10.5.5"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudtrail"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_cloudtrail_4",
+    "Title": "4 CloudTrail trails should be integrated with CloudWatch Logs",
+    "Description": "This control checks whether CloudTrail trails are configured to send logs to CloudWatch Logs.",
+    "QueryID": "aws_cloudtrail_trail_integrated_with_logs",
+    "DocumentURI": "policies/aws_pci_v321_cloudtrail_4.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "cloudtrail_4"
+      ],
+      "pci_requirements": [
+        "10.5.3"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudtrail"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_pci_v321_autoscaling_1",
+    "Title": "1 Auto Scaling groups associated with a load balancer should use health checks",
+    "Description": "This control checks whether your Auto Scaling groups that are associated with a load balancer are using Elastic Load Balancing health checks. PCI DSS does not require load balancing or highly available configurations. However, this check aligns with AWS best practices.",
+    "QueryID": "aws_autoscaling_group_with_lb_use_health_check",
+    "DocumentURI": "policies/aws_pci_v321_autoscaling_1.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_item_id": [
+        "autoscaling_1"
+      ],
+      "pci_requirements": [
+        "2.2"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "autoscaling"
+      ]
+    },
+    "Managed": true
+  }
+]

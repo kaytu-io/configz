@@ -1,0 +1,5 @@
+{
+  "connectors": ["Azure"],
+  "title": "List application gateways where HTTPS is not enabled",
+  "query": "select\n  -- Required Columns\n  ag.id resource,\n  case\n    when web_application_firewall_configuration is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when web_application_firewall_configuration is not null then ag.name || ' WAF enabled.'\n    else ag.name || ' WAF disabled.'\n  end as reason,\n  -- Additional Dimensions\n  ag.resource_group,\n  sub.display_name as subscription\nfrom\n  azure_application_gateway as ag\n  join azure_subscription as sub on sub.subscription_id = ag.subscription_id"
+}

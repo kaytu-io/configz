@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all EBS Volumes that are not part of a backup plan",
+  "query": "with backup_protected_volume as (\n  select\n    resource_arn as arn\n  from\n    aws_backup_protected_resource as b\n  where\n    resource_type = 'EBS'\n)\nselect\n  -- Required Columns\n  v.arn as resource,\n  case\n    when b.arn is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.arn is not null then v.title || ' is protected by backup plan.'\n    else v.title || ' is not protected by backup plan.'\n  end as reason,\n  -- Additional Dimensions\n  v.region,\n  v.account_id\nfrom\n  aws_ebs_volume as v\n  left join backup_protected_volume as b on v.arn = b.arn"
+}

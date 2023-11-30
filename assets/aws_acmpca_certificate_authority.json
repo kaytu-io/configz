@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "inactive",
+    "name": "Private Certificate Authority",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::acmpca::certificateauthority' group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

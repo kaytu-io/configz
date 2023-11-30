@@ -1,0 +1,11 @@
+{
+  "ID": "azure_azure_redis_cache_ssl_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  redis.id as resource,\n  case\n    when enable_non_ssl_port then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when enable_non_ssl_port then redis.name || ' secure connections disabled.'\n    else redis.name || ' secure connections enabled.'\n  end as reason\n  \n  , redis.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_redis_cache as redis,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = redis.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_redis_cache",
+  "ListOfTables": [
+    "azure_redis_cache",
+    "azure_subscription"
+  ]
+}

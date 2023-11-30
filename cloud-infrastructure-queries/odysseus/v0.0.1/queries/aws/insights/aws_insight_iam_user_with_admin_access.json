@@ -1,0 +1,10 @@
+{
+  "ID": "aws_insight_iam_user_with_admin_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select name as user_name, split_part(attachments, '/', 2) as attached_policies, aws_iam_user.account_id, aws_iam_user.kaytu_account_id, aws_iam_user.kaytu_resource_id\nfrom\n  aws_iam_user\n  cross join jsonb_array_elements_text(attached_policy_arns) as attachments\nwhere\n  split_part(attachments, '/', 2) = 'AdministratorAccess';",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_user",
+  "ListOfTables": [
+    "aws_iam_user"
+  ]
+}

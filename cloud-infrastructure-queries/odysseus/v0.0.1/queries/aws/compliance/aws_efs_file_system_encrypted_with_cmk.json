@@ -1,0 +1,11 @@
+{
+  "ID": "aws_efs_file_system_encrypted_with_cmk",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with encrypted_fs as (\n  select\n    fs.arn as arn,\n    key_manager\n  from\n    aws_efs_file_system as fs\n    left join aws_kms_key as k on fs.kms_key_id = k.arn\n  where\n    enabled\n)\nselect\n  f.arn as resource,\n  case\n    when not encrypted then 'alarm'\n    when encrypted and e.key_manager = 'CUSTOMER' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when not encrypted then title || ' not encrypted.'\n    when encrypted and e.key_manager = 'CUSTOMER' then title || ' encrypted with CMK.'\n    else title || ' not encrypted with CMK.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_efs_file_system as f\n  left join encrypted_fs as e on f.arn = e.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_efs_file_system",
+  "ListOfTables": [
+    "aws_efs_file_system",
+    "aws_kms_key"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "ID": "azure_ad_manual_control",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  'active_directory' as resource,\n  'info' as status,\n  'Manual verification required.' as reason;\n",
+  "Connector": "Azure",
+  "ListOfTables": null
+}

@@ -1,0 +1,19 @@
+{
+  "ID": 29,
+  "QueryID": "azure_insight_storage_account_with_public_blob_access",
+  "Connector": "Azure",
+  "ShortTitle": "Storage Accounts with Public Internet",
+  "LongTitle": "List storage accounts that allow blob public access",
+  "Description": "List storage accounts that allow blob public access",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt",
+      "Resiliency"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

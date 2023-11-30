@@ -1,0 +1,11 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_vpc_nat_gateway_unused",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with instance_data as (\n  select\n    instance_id,\n    subnet_id,\n    instance_state\n  from\n    aws_ec2_instance\n)\nselect\n  nat.arn as resource,\n  case\n    when nat.state \u003c\u003e 'available' then 'alarm'\n    when i.subnet_id is null then 'alarm'\n    when i.instance_state \u003c\u003e 'running' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when nat.state \u003c\u003e 'available' then nat.title || ' in ' || nat.state || ' state.'\n    when i.subnet_id is null then nat.title || ' not in-use.'\n    when i.instance_state \u003c\u003e 'running' then nat.title || ' associated with ' || i.instance_id || ', which is in ' || i.instance_state || ' state.'\n    else nat.title || ' in-use.'\n  end as reason\n  \n  , nat.region, nat.account_id\nfrom\n  aws_vpc_nat_gateway as nat\n  left join instance_data as i on nat.subnet_id = i.subnet_id;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc_nat_gateway",
+  "ListOfTables": [
+    "aws_vpc_nat_gateway",
+    "aws_vpc_nat_gateway_metric_bytes_out_to_destination"
+  ]
+}

@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "Virtual Network / PrivateLink",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.network/privateendpoints','microsoft.network/natgateways','microsoft.network/virtualnetworks','microsoft.network/virtualwans') group by 1,2;",
+    "tags": {
+        "category": ["Network"]
+    }
+}

@@ -1,0 +1,218 @@
+[
+  {
+    "ID": "aws_large_ec2_instances",
+    "Title": "Large EC2 instances should be reviewed",
+    "Description": "Large EC2 instances are unusual, expensive and should be reviewed.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_large_ec2_instances",
+    "DocumentURI": "policies/aws_large_ec2_instances.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_classic_lb_unused",
+    "Title": "Classic load balancers having no instances attached should be deleted",
+    "Description": "Classic load balancers with no instances attached still cost money should be deleted.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_classic_lb_unused",
+    "DocumentURI": "policies/aws_ec2_classic_lb_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_gateway_lb_unused",
+    "Title": "Gateway load balancers having no targets attached should be deleted",
+    "Description": "Gateway load balancers with no targets attached still cost money and should be deleted.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_ec2_gateway_lb_unused",
+    "DocumentURI": "policies/aws_ec2_gateway_lb_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_network_lb_unused",
+    "Title": "Network load balancers having no targets attached should be deleted",
+    "Description": "Network load balancers with no targets attached still cost money and should be deleted.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_ec2_network_lb_unused",
+    "DocumentURI": "policies/aws_ec2_network_lb_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_application_lb_unused",
+    "Title": "Application load balancers having no targets attached should be deleted",
+    "Description": "Application load balancers with no targets attached still cost money and should be deleted.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_ec2_application_lb_unused",
+    "DocumentURI": "policies/aws_ec2_application_lb_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_long_running_ec2_instances",
+    "Title": "Long running EC2 instances should be reviewed",
+    "Description": "Instances should ideally be ephemeral and rehydrated frequently, check why these instances have been running for so long.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_long_running_ec2_instances",
+    "DocumentURI": "policies/aws_long_running_ec2_instances.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "deprecated"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_older_generation",
+    "Title": "EC2 instances should not use older generation t2, m3, and m4 instance types",
+    "Description": "EC2 instances should not use older generation t2, m3, and m4 instance types as t3 and m5 are more cost effective.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_instance_older_generation",
+    "DocumentURI": "policies/aws_ec2_instance_older_generation.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_instances_with_low_utilization",
+    "Title": "Which EC2 instances have very low CPU utilization?",
+    "Description": "Resize or eliminate under utilized instances.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_instances_with_low_utilization",
+    "DocumentURI": "policies/aws_instances_with_low_utilization.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_reserved_instance_lease_expiration_days",
+    "Title": "EC2 reserved instances scheduled for expiration should be reviewed",
+    "Description": "EC2 reserved instances that are scheduled for expiration or have expired in the preceding 30 days should be reviewed.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_reserved_instance_lease_expiration_days",
+    "DocumentURI": "policies/aws_ec2_reserved_instance_lease_expiration_days.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "aws_buckets_with_no_lifecycle",
+    "Title": "Buckets should have lifecycle policies",
+    "Description": "S3 Buckets should have a lifecycle policy associated for data retention.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_sql_buckets_with_no_lifecycle",
+    "DocumentURI": "policies/aws_buckets_with_no_lifecycle.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "managed"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ]
+    },
+    "Managed": true
+  }
+]

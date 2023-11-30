@@ -1,0 +1,37 @@
+{
+  "ID": "azure_storage",
+  "Title": "Storage Checks",
+  "Connector": "Azure",
+  "DocumentURI": "benchmarks/azure_storage.md",
+  "Description": "Thrifty developers ensure their storage accounts have managed lifecycle policies.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "kaytu_benchmark_type": [
+      "service_advisor"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Storage"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-azure-thrifty.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "azure_storage_account_without_lifecycle_policy"
+  ]
+}

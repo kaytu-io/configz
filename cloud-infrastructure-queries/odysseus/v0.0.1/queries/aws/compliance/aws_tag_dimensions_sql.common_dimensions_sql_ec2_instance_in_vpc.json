@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_ec2_instance_in_vpc",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when vpc_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when vpc_id is null then title || ' not in VPC.'\n    else title || ' in VPC.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_instance;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ec2_instance",
+  "ListOfTables": [
+    "aws_ec2_instance"
+  ]
+}

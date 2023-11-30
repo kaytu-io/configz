@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "invisible",
+    "name": "Key Vault",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.keyvault/vaults') group by 1,2;",
+    "tags": {
+        "category": ["Security"]
+    }
+}

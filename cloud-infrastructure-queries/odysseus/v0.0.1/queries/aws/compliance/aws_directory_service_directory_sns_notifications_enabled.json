@@ -1,0 +1,10 @@
+{
+  "ID": "aws_directory_service_directory_sns_notifications_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when jsonb_array_length(event_topics) \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when jsonb_array_length(event_topics) \u003e 0 then title || ' SNS notifications enabled.'\n    else title || ' SNS notifications disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_directory_service_directory;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_directory_service_directory",
+  "ListOfTables": [
+    "aws_directory_service_directory"
+  ]
+}

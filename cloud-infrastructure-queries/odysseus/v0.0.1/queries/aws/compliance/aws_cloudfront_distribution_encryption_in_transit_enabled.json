@@ -1,0 +1,10 @@
+{
+  "ID": "aws_cloudfront_distribution_encryption_in_transit_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with data as (\n  select\n    distinct arn\n  from\n    aws_cloudfront_distribution,\n      jsonb_array_elements(\n    case jsonb_typeof(cache_behaviors -\u003e 'Items')\n        when 'array' then (cache_behaviors -\u003e 'Items')\n        else null end\n    ) as cb\n  where\n    cb -\u003e\u003e 'ViewerProtocolPolicy' = 'allow-all'\n)\nselect\n  b.arn as resource,\n  case\n    when d.arn is not null or (default_cache_behavior -\u003e\u003e 'ViewerProtocolPolicy' = 'allow-all') then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when d.arn is not null or (default_cache_behavior -\u003e\u003e 'ViewerProtocolPolicy' = 'allow-all') then title || ' data not encrypted in transit.'\n    else title || ' data encrypted in transit.'\n  end as reason\n  \n  , b.region, b.account_id\nfrom\n  aws_cloudfront_distribution as b\n  left join data as d on b.arn = d.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_cloudfront_distribution",
+  "ListOfTables": [
+    "aws_cloudfront_distribution"
+  ]
+}

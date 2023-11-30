@@ -1,0 +1,10 @@
+{
+  "ID": "aws_insight_account_with_many_saml_providers",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "SELECT account_id, kaytu_account_id, CAST(SUM(saml_provider_count) AS INTEGER) AS saml_provider_count FROM (\n  SELECT account_id, kaytu_account_id, COUNT(*) as saml_provider_count FROM aws_iam_saml_provider GROUP BY account_id, kaytu_account_id\n  UNION\n  SELECT account_id, kaytu_account_id, COUNT(*) as saml_provider_count FROM aws_iam_open_id_connect_provider GROUP BY account_id, kaytu_account_id\n) AS final WHERE saml_provider_count \u003e 1 GROUP BY account_id, kaytu_account_id",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_iam_credential_report",
+  "ListOfTables": [
+    "aws_iam_credential_report"
+  ]
+}

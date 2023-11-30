@@ -1,0 +1,10 @@
+{
+  "ID": "aws_ecs_task_definition_no_host_pid_mode",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  task_definition_arn as resource,\n  case\n    when pid_mode = 'host' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when pid_mode = 'host' then title || ' shares the host process namespace.'\n    else title || ' does not share the host process namespace.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_task_definition;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ecs_task_definition",
+  "ListOfTables": [
+    "aws_ecs_task_definition"
+  ]
+}

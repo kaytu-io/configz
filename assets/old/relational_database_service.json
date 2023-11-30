@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["AWS"],
+    "status": "invisible",
+    "name": "Relational Database Service (RDS)",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::rds::dbcluster','aws::rds::dbinstance') group by 1,2;",
+    "tags": {
+        "category": ["Database"]
+    }
+}

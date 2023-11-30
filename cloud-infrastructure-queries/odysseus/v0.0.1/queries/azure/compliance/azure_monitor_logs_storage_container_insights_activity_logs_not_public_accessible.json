@@ -1,0 +1,11 @@
+{
+  "ID": "azure_monitor_logs_storage_container_insights_activity_logs_not_public_accessible",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  sc.id as resource,\n  case\n    when public_access != 'None' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_access != 'None'\n      then account_name || ' container insights-activity-logs storing activity logs publicly accessible.'\n    else account_name || ' container insights-activity-logs storing activity logs not publicly accessible.'\n  end as reason\n  , sc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container sc,\n  azure_subscription sub\nwhere\n  name = 'insights-activity-logs'\n  and sub.subscription_id = sc.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_container",
+  "ListOfTables": [
+    "azure_storage_container",
+    "azure_subscription"
+  ]
+}

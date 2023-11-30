@@ -1,0 +1,10 @@
+{
+  "ID": "aws_insight_lambda_function_not_cmk_encrypted",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  name,\n  kms_key_arn, account_id, kaytu_account_id, kaytu_resource_id\nfrom\n  aws_lambda_function\nwhere\n  kms_key_arn is null;",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_lambda_function",
+  "ListOfTables": [
+    "aws_lambda_function"
+  ]
+}

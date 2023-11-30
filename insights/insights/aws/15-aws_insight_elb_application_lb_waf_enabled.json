@@ -1,0 +1,18 @@
+{
+  "ID": 15,
+  "QueryID": "aws_insight_elb_application_lb_waf_enabled",
+  "Connector": "AWS",
+  "ShortTitle": "Load Balancers with no WAF",
+  "LongTitle": "List all ELB with no WAF.",
+  "Description": "List all ELB with no WAF.",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Security",
+      "Technical Debt"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

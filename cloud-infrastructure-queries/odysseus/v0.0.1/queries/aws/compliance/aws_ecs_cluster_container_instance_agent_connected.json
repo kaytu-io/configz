@@ -1,0 +1,11 @@
+{
+  "ID": "aws_ecs_cluster_container_instance_agent_connected",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with unconnected_agent_instance as (\n  select\n    distinct cluster_arn\n  from\n    aws_ecs_container_instance\n  where\n    agent_connected = false and status = 'ACTIVE'\n)\nselect\n  c.cluster_arn as resource,\n  case\n    when c.registered_container_instances_count = 0 then 'skip'\n    when i.cluster_arn is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when c.registered_container_instances_count = 0 then title || ' has no container instance registered.'\n    when i.cluster_arn is null then title || ' container instance has connected agent.'\n    else title || ' container instance is either draining or has unconnected agents.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_cluster as c\n  left join unconnected_agent_instance as i on c.cluster_arn = i.cluster_arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ecs_cluster",
+  "ListOfTables": [
+    "aws_ecs_cluster",
+    "aws_ecs_container_instance"
+  ]
+}

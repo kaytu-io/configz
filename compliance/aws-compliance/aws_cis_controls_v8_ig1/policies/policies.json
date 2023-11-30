@@ -1,0 +1,5504 @@
+[
+  {
+    "ID": "aws_es_domain_in_vpc",
+    "Title": "ES domains should be in a VPC",
+    "Description": "Manage access to the AWS Cloud by ensuring Amazon Elasticsearch Service (Amazon ES) Domains are within an Amazon Virtual Private Cloud (Amazon VPC).",
+    "QueryID": "aws_es_domain_in_vpc",
+    "DocumentURI": "policies/aws_es_domain_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/ES"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_guardduty_enabled",
+    "Title": "GuardDuty should be enabled",
+    "Description": "Amazon GuardDuty can help to monitor and detect potential cybersecurity events by using threat intelligence feeds.",
+    "QueryID": "aws_guardduty_enabled",
+    "DocumentURI": "policies/aws_guardduty_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/GuardDuty"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_user_in_group",
+    "Title": "IAM users should be in at least one group",
+    "Description": "AWS Identity and Access Management (IAM) can help you restrict access permissions and authorizations, by ensuring IAM users are members of at least one group.",
+    "QueryID": "aws_iam_user_in_group",
+    "DocumentURI": "policies/aws_iam_user_in_group.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_policy_unused",
+    "Title": "IAM policy should be in use",
+    "Description": "This control checks whether the IAM policy ARN is attached to an IAM user, or a group with one or more IAM users, or an IAM role with one or more trusted entity.",
+    "QueryID": "aws_iam_policy_unused",
+    "DocumentURI": "policies/aws_iam_policy_unused.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_volume_unused",
+    "Title": "EBS volumes should be attached to EC2 instances",
+    "Description": "Checks if EBS volumes are attached to EC2 instances.",
+    "QueryID": "aws_ebs_volume_unused",
+    "DocumentURI": "policies/aws_ebs_volume_unused.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_eip_associated",
+    "Title": "VPC EIPs should be associated with an EC2 instance or ENI",
+    "Description": "This rule ensures Elastic IPs allocated to a Amazon Virtual Private Cloud (Amazon VPC) are attached to Amazon Elastic Compute Cloud (Amazon EC2) instances or in-use Elastic Network Interfaces.",
+    "QueryID": "aws_vpc_eip_associated",
+    "DocumentURI": "policies/aws_vpc_eip_associated.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_in_vpc",
+    "Title": "EC2 instances should be in a VPC",
+    "Description": "Deploy Amazon Elastic Compute Cloud (Amazon EC2) instances within an Amazon Virtual Private Cloud (Amazon VPC) to enable secure communication between an instance and other services within the amazon VPC, without requiring an internet gateway, NAT device, or VPN connection.",
+    "QueryID": "aws_ec2_instance_in_vpc",
+    "DocumentURI": "policies/aws_ec2_instance_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/EC2"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_securityhub_enabled",
+    "Title": "AWS Security Hub should be enabled for an AWS Account",
+    "Description": "AWS Security Hub helps to monitor unauthorized personnel, connections, devices, and software. AWS Security Hub aggregates, organizes, and prioritizes the security alerts, or findings, from multiple AWS services.",
+    "QueryID": "aws_securityhub_enabled",
+    "DocumentURI": "policies/aws_securityhub_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/SecurityHub"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_group_not_empty",
+    "Title": "IAM groups should have at least one user",
+    "Description": "AWS Identity and Access Management (IAM) can help you incorporate the principles of least privilege and separation of duties with access permissions and authorizations, by ensuring that IAM groups have at least one IAM user.",
+    "QueryID": "aws_iam_group_not_empty",
+    "DocumentURI": "policies/aws_iam_group_not_empty.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_user_mfa_enabled",
+    "Title": "IAM user MFA should be enabled",
+    "Description": "Enable this rule to restrict access to resources in the AWS Cloud.",
+    "QueryID": "aws_iam_user_mfa_enabled",
+    "DocumentURI": "policies/aws_iam_user_mfa_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_flow_logs_enabled",
+    "Title": "VPC flow logs should be enabled",
+    "Description": "The VPC flow logs provide detailed records for information about the IP traffic going to and from network interfaces in your Amazon Virtual Private Cloud (Amazon VPC.",
+    "QueryID": "aws_vpc_flow_logs_enabled",
+    "DocumentURI": "policies/aws_vpc_flow_logs_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/VPC"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_enforces_ssl",
+    "Title": "S3 buckets should enforce SSL",
+    "Description": "To help protect data in transit, ensure that your Amazon Simple Storage Service (Amazon S3) buckets require requests to use Secure Socket Layer (SSL).",
+    "QueryID": "aws_s3_bucket_enforces_ssl",
+    "DocumentURI": "policies/aws_s3_bucket_enforces_ssl.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_lambda_function_in_vpc",
+    "Title": "Lambda functions should be in a VPC",
+    "Description": "Deploy AWS Lambda functions within an Amazon Virtual Private Cloud (Amazon VPC) for a secure communication between a function and other services within the Amazon VPC.",
+    "QueryID": "aws_lambda_function_in_vpc",
+    "DocumentURI": "policies/aws_lambda_function_in_vpc.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/Lambda"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_network_acl_unused",
+    "Title": "VPC network access control lists (network ACLs) should be associated with a subnet.",
+    "Description": "Ensure there are no unused network access control lists (network ACLs). The rule is compliant if each network ACL is associated with a subnet. The rule is non-compliant if a network ACL is not associated with a subnet.",
+    "QueryID": "aws_vpc_network_acl_unused",
+    "DocumentURI": "policies/aws_vpc_network_acl_unused.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_uses_imdsv2",
+    "Title": "EC2 instances should use IMDSv2",
+    "Description": "Ensure the Instance Metadata Service Version 2 (IMDSv2) method is enabled to help protect access and control of Amazon Elastic Compute Cloud (Amazon EC2) instance metadata.",
+    "QueryID": "aws_ec2_instance_uses_imdsv2",
+    "DocumentURI": "policies/aws_ec2_instance_uses_imdsv2.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_ssm_managed",
+    "Title": "EC2 instances should be managed by AWS Systems Manager",
+    "Description": "An inventory of the software platforms and applications within the organization is possible by managing Amazon Elastic Compute Cloud (Amazon EC2) instances with AWS Systems Manager.",
+    "QueryID": "aws_ec2_instance_ssm_managed",
+    "DocumentURI": "policies/aws_ec2_instance_ssm_managed.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/SSM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_policy_no_star_star",
+    "Title": "IAM policy should not have statements with admin access",
+    "Description": "AWS Identity and Access Management (IAM) can help you incorporate the principles of least privilege and separation of duties with access permissions and authorizations, restricting policies from containing 'Effect': 'Allow' with 'Action': '*' over 'Resource': '*'.",
+    "QueryID": "aws_iam_policy_custom_no_star_star",
+    "DocumentURI": "policies/aws_iam_policy_no_star_star.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_trail_enabled",
+    "Title": "At least one enabled trail should be present in a region",
+    "Description": "AWS CloudTrail can help in non-repudiation by recording AWS Management Console actions and API calls. You can identify the users and AWS accounts that called an AWS service, the source IP address where the calls generated, and the timings of the calls. Details of captured data are seen within AWS CloudTrail Record Contents.",
+    "QueryID": "aws_cloudtrail_trail_enabled",
+    "DocumentURI": "policies/aws_cloudtrail_trail_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_kms_cmk_rotation_enabled",
+    "Title": "KMS CMK rotation should be enabled",
+    "Description": "Enable key rotation to ensure that keys are rotated once they have reached the end of their crypto period.",
+    "QueryID": "aws_kms_cmk_rotation_enabled",
+    "DocumentURI": "policies/aws_kms_cmk_rotation_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/KMS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_logging_enabled",
+    "Title": "S3 bucket logging should be enabled",
+    "Description": "Amazon Simple Storage Service (Amazon S3) server access logging provides a method to monitor the network for potential cybersecurity events.",
+    "QueryID": "aws_s3_bucket_logging_enabled",
+    "DocumentURI": "policies/aws_s3_bucket_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_root_user_mfa_enabled",
+    "Title": "IAM root user MFA should be enabled",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring MFA is enabled for the root user.",
+    "QueryID": "aws_iam_root_user_mfa_enabled",
+    "DocumentURI": "policies/aws_iam_root_user_mfa_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_volume_in_backup_plan",
+    "Title": "EBS volumes should be in a backup plan",
+    "Description": "To help with data back-up processes, ensure your Amazon Elastic Block Store (Amazon EBS) volumes are a part of an AWS Backup plan.",
+    "QueryID": "aws_ebs_volume_in_backup_plan",
+    "DocumentURI": "policies/aws_ebs_volume_in_backup_plan.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/EBS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_ebs_optimized",
+    "Title": "EC2 instance should have EBS optimization enabled",
+    "Description": "An optimized instance in Amazon Elastic Block Store (Amazon EBS) provides additional, dedicated capacity for Amazon EBS I/O operations.",
+    "QueryID": "aws_ec2_instance_ebs_optimized",
+    "DocumentURI": "policies/aws_ec2_instance_ebs_optimized.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_stopped_instance_30_days",
+    "Title": "EC2 stopped instances should be removed in 30 days",
+    "Description": "Enable this rule to help with the baseline configuration of Amazon Elastic Compute Cloud (Amazon EC2) instances by checking whether Amazon EC2 instances have been stopped for more than the allowed number of days, according to your organization's standards.",
+    "QueryID": "aws_ec2_stopped_instance_30_days",
+    "DocumentURI": "policies/aws_ec2_stopped_instance_30_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_versioning_enabled",
+    "Title": "S3 bucket versioning should be enabled",
+    "Description": "Amazon Simple Storage Service (Amazon S3) bucket versioning helps keep multiple variants of an object in the same Amazon S3 bucket.",
+    "QueryID": "aws_s3_bucket_versioning_enabled",
+    "DocumentURI": "policies/aws_s3_bucket_versioning_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_wafv2_web_acl_logging_enabled",
+    "Title": "Logging should be enabled on AWS WAFv2 regional and global web access control list (ACLs)",
+    "Description": "To help with logging and monitoring within your environment, enable AWS WAF (V2) logging on regional and global web ACLs.",
+    "QueryID": "aws_wafv2_web_acl_logging_enabled",
+    "DocumentURI": "policies/aws_wafv2_web_acl_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/WAFv2"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_emr_cluster_kerberos_enabled",
+    "Title": "EMR cluster Kerberos should be enabled",
+    "Description": "The access permissions and authorizations can be managed and incorporated with the principles of least privilege and separation of duties, by enabling Kerberos for Amazon EMR clusters.",
+    "QueryID": "aws_emr_cluster_kerberos_enabled",
+    "DocumentURI": "policies/aws_emr_cluster_kerberos_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EMR"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_es_domain_logs_to_cloudwatch",
+    "Title": "Elasticsearch domain should send logs to CloudWatch",
+    "Description": "Ensure if Amazon OpenSearch Service (OpenSearch Service) domains are configured to send logs to Amazon CloudWatch Logs. The rule is compliant if a log is enabled for an OpenSearch Service domain. This rule is non compliant if logging is not configured.",
+    "QueryID": "aws_es_domain_logs_to_cloudwatch",
+    "DocumentURI": "policies/aws_es_domain_logs_to_cloudwatch.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/ES"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_public_access_block_bucket",
+    "Title": "S3 public access should be blocked at bucket levels",
+    "Description": "Ensure if Amazon Simple Storage Service (Amazon S3) buckets are publicly accessible. This rule is non compliant if an Amazon S3 bucket is not listed in the excludedPublicBuckets parameter and bucket level settings are public.",
+    "QueryID": "aws_s3_public_access_block_bucket",
+    "DocumentURI": "policies/aws_s3_public_access_block_bucket.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_root_user_no_access_keys",
+    "Title": "IAM root user should not have access keys",
+    "Description": "Access to systems and assets can be controlled by checking that the root user does not have access keys attached to their AWS Identity and Access Management (IAM) role.",
+    "QueryID": "aws_iam_root_user_no_access_keys",
+    "DocumentURI": "policies/aws_iam_root_user_no_access_keys.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_dynamodb_table_in_backup_plan",
+    "Title": "DynamoDB tables should be in a backup plan",
+    "Description": "To help with data back-up processes, ensure your Amazon DynamoDB tables are a part of an AWS Backup plan.",
+    "QueryID": "aws_dynamodb_table_in_backup_plan",
+    "DocumentURI": "policies/aws_dynamodb_table_in_backup_plan.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/DynamoDB"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_user_unused_credentials_90",
+    "Title": "IAM user credentials that have not been used in 90 days should be disabled",
+    "Description": "AWS Identity and Access Management (IAM) can help you with access permissions and authorizations by checking for IAM passwords and access keys that are not used for a specified time period.",
+    "QueryID": "aws_iam_user_unused_credentials_90",
+    "DocumentURI": "policies/aws_iam_user_unused_credentials_90.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_public_access_block_account",
+    "Title": "S3 public access should be blocked at account level",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring that Amazon Simple Storage Service (Amazon S3) buckets cannot be publicly accessed.",
+    "QueryID": "aws_s3_public_access_block_account",
+    "DocumentURI": "policies/aws_s3_public_access_block_account.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_account_part_of_organizations",
+    "Title": "AWS account should be part of AWS Organizations",
+    "Description": "Ensure if an AWS account is part of AWS Organizations. The rule is non compliant if an AWS account is not part of AWS Organizations or AWS Organizations master account ID does not match rule parameter MasterAccountId.",
+    "QueryID": "aws_account_part_of_organizations",
+    "DocumentURI": "policies/aws_account_part_of_organizations.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_backup_enabled",
+    "Title": "RDS DB instance backup should be enabled",
+    "Description": "The backup feature of Amazon RDS creates backups of your databases and transaction logs.",
+    "QueryID": "aws_rds_db_instance_backup_enabled",
+    "DocumentURI": "policies/aws_rds_db_instance_backup_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_in_backup_plan",
+    "Title": "RDS DB instances should be in a backup plan",
+    "Description": "To help with data back-up processes, ensure your Amazon Relational Database Service (Amazon RDS) instances are a part of an AWS Backup plan.",
+    "QueryID": "aws_rds_db_instance_in_backup_plan",
+    "DocumentURI": "policies/aws_rds_db_instance_in_backup_plan.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_efs_file_system_in_backup_plan",
+    "Title": "EFS file systems should be in a backup plan",
+    "Description": "To help with data back-up processes, ensure your Amazon Elastic File System (Amazon EFS) file systems are a part of an AWS Backup plan.",
+    "QueryID": "aws_efs_file_system_automatic_backups_enabled",
+    "DocumentURI": "policies/aws_efs_file_system_in_backup_plan.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/EFS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_logging_enabled",
+    "Title": "Database logging should be enabled",
+    "Description": "To help with logging and monitoring within your environment, ensure Amazon Relational Database Service (Amazon RDS) logging is enabled.",
+    "QueryID": "aws_rds_db_instance_logging_enabled",
+    "DocumentURI": "policies/aws_rds_db_instance_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_apigateway_stage_logging_enabled",
+    "Title": "API Gateway stage logging should be enabled",
+    "Description": "API Gateway logging displays detailed views of users who accessed the API and the way they accessed the API.",
+    "QueryID": "aws_apigateway_stage_logging_enabled",
+    "DocumentURI": "policies/aws_apigateway_stage_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/APIGateway"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_apigateway_stage_use_waf_web_acl",
+    "Title": "API Gateway stage should be associated with waf",
+    "Description": "Ensure if an Amazon API Gateway API stage is using a WAF Web ACL. This rule is non compliant if an AWS WAF Web ACL is not used.",
+    "QueryID": "aws_apigateway_stage_use_waf_web_acl",
+    "DocumentURI": "policies/aws_apigateway_stage_use_waf_web_acl.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/APIGateway"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_iam_profile_attached",
+    "Title": "EC2 instances should have IAM profile attached",
+    "Description": "Ensure if an Amazon Elastic Compute Cloud (Amazon EC2) instance has an Identity and Access Management (IAM) profile attached to it. This rule is non compliant if no IAM profile is attached to the Amazon EC2 instance.",
+    "QueryID": "aws_ec2_instance_iam_profile_attached",
+    "DocumentURI": "policies/aws_ec2_instance_iam_profile_attached.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_s3_data_events_enabled",
+    "Title": "All S3 buckets should log S3 data events in CloudTrail",
+    "Description": "The collection of Simple Storage Service (Amazon S3) data events helps in detecting any anomalous activity. The details include AWS account information that accessed an Amazon S3 bucket, IP address, and time of event.",
+    "QueryID": "aws_cloudtrail_s3_data_events_enabled",
+    "DocumentURI": "policies/aws_cloudtrail_s3_data_events_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_codebuild_project_logging_enabled",
+    "Title": "CodeBuild projects should have logging enabled",
+    "Description": "This control checks if an AWS CodeBuild project environment has at least one log option enabled. The rule is non compliant if the status of all present log configurations is set to 'DISABLED'.",
+    "QueryID": "aws_codebuild_project_logging_enabled",
+    "DocumentURI": "policies/aws_codebuild_project_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_ebs_default_encryption_enabled",
+    "Title": "EBS default encryption should be enabled",
+    "Description": "To help protect data at rest, ensure that encryption is enabled for your Amazon Elastic Block Store (Amazon EBS) volumes.",
+    "QueryID": "aws_ec2_ebs_default_encryption_enabled",
+    "DocumentURI": "policies/aws_ec2_ebs_default_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EC2"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_security_trail_enabled",
+    "Title": "At least one trail should be enabled with security best practices",
+    "Description": "This rule helps ensure the use of AWS recommended security best practices for AWS CloudTrail, by checking for the enablement of multiple settings. These include the use of log encryption, log validation, and enabling AWS CloudTrail in multiple regions.",
+    "QueryID": "aws_cloudtrail_security_trail_enabled",
+    "DocumentURI": "policies/aws_cloudtrail_security_trail_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_root_user_hardware_mfa_enabled",
+    "Title": "IAM root user hardware MFA should be enabled",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring hardware MFA is enabled for the root user.",
+    "QueryID": "aws_iam_root_user_hardware_mfa_enabled",
+    "DocumentURI": "policies/aws_iam_root_user_hardware_mfa_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_user_console_access_mfa_enabled",
+    "Title": "IAM users with console access should have MFA enabled",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring that MFA is enabled for all AWS Identity and Access Management (IAM) users that have a console password.",
+    "QueryID": "aws_iam_user_console_access_mfa_enabled",
+    "DocumentURI": "policies/aws_iam_user_console_access_mfa_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_managed_policy_attached_to_role",
+    "Title": "IAM AWS managed policies should be attached to IAM role",
+    "Description": "This control checks if all AWS managed policies specified in the list of managed policies are attached to the AWS Identity and Access Management (IAM) role. The rule is non compliant if an AWS managed policy is not attached to the IAM role.",
+    "QueryID": "aws_iam_managed_policy_attached_to_role",
+    "DocumentURI": "policies/aws_iam_managed_policy_attached_to_role.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_all_policy_no_service_wild_card",
+    "Title": "Ensure IAM policy should not grant full access to service",
+    "Description": "Checks if AWS Identity and Access Management (IAM) policies grant permissions to all actions on individual AWS resources. The rule is non compliant if the managed IAM policy allows full access to at least 1 AWS service.",
+    "QueryID": "aws_iam_policy_custom_no_service_wildcard",
+    "DocumentURI": "policies/aws_iam_all_policy_no_service_wild_card.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_trail_validation_enabled",
+    "Title": "CloudTrail trail log file validation should be enabled",
+    "Description": "Utilize AWS CloudTrail log file validation to check the integrity of CloudTrail logs. Log file validation helps determine if a log file was modified or deleted or unchanged after CloudTrail delivered it. This feature is built using industry standard algorithms: SHA-256 for hashing and SHA-256 with RSA for digital signing. This makes it computationally infeasible to modify, delete or forge CloudTrail log files without detection.",
+    "QueryID": "aws_cloudtrail_trail_validation_enabled",
+    "DocumentURI": "policies/aws_cloudtrail_trail_validation_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ec2_instance_not_publicly_accessible",
+    "Title": "EC2 instances should not have a public IP address",
+    "Description": "Manage access to the AWS Cloud by ensuring Amazon Elastic Compute Cloud (Amazon EC2) instances cannot be publicly accessed.",
+    "QueryID": "aws_ec2_instance_not_publicly_accessible",
+    "DocumentURI": "policies/aws_ec2_instance_not_publicly_accessible.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/EC2"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_default_encryption_enabled",
+    "Title": "S3 bucket default encryption should be enabled",
+    "Description": "To help protect data at rest, ensure encryption is enabled for your Amazon Simple Storage Service (Amazon S3) buckets.",
+    "QueryID": "aws_s3_bucket_default_encryption_enabled",
+    "DocumentURI": "policies/aws_s3_bucket_default_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_user_no_inline_attached_policies",
+    "Title": "IAM user should not have any inline or attached policies",
+    "Description": "This rule ensures AWS Identity and Access Management (IAM) policies are attached only to groups or roles to control access to systems and assets.",
+    "QueryID": "aws_iam_user_no_inline_attached_policies",
+    "DocumentURI": "policies/aws_iam_user_no_inline_attached_policies.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_restrict_public_read_access",
+    "Title": "S3 buckets should prohibit public read access",
+    "Description": "Manage access to resources in the AWS Cloud by only allowing authorized users, processes, and devices access to Amazon Simple Storage Service (Amazon S3) buckets.",
+    "QueryID": "aws_s3_bucket_restrict_public_read_access",
+    "DocumentURI": "policies/aws_s3_bucket_restrict_public_read_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_associated_to_eni",
+    "Title": "VPC security groups should be associated with at least one ENI",
+    "Description": "This rule ensures the security groups are attached to an Amazon Elastic Compute Cloud (Amazon EC2) instance or to an ENI. This rule helps monitoring unused security groups in the inventory and the management of your environment.",
+    "QueryID": "aws_vpc_security_group_associated_to_eni",
+    "DocumentURI": "policies/aws_vpc_security_group_associated_to_eni.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_snapshot_not_publicly_restorable",
+    "Title": "EBS snapshots should not be publicly restorable",
+    "Description": "Manage access to the AWS Cloud by ensuring EBS snapshots are not publicly restorable.",
+    "QueryID": "aws_ebs_snapshot_not_publicly_restorable",
+    "DocumentURI": "policies/aws_ebs_snapshot_not_publicly_restorable.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/EBS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_multi_region_trail_enabled",
+    "Title": "At least one multi-region AWS CloudTrail should be present in an account",
+    "Description": "AWS CloudTrail records AWS Management Console actions and API calls. You can identify which users and accounts called AWS, the source IP address from where the calls were made, and when the calls occurred. CloudTrail will deliver log files from all AWS Regions to your S3 bucket if MULTI_REGION_CLOUD_TRAIL_ENABLED is enabled.",
+    "QueryID": "aws_cloudtrail_multi_region_trail_enabled",
+    "DocumentURI": "policies/aws_cloudtrail_multi_region_trail_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ebs_volume_encryption_at_rest_enabled",
+    "Title": "EBS volume encryption at rest should be enabled",
+    "Description": "Because sensitive data can exist and to help protect data at rest, ensure encryption is enabled for your Amazon Elastic Block Store (Amazon EBS) volumes.",
+    "QueryID": "aws_ebs_volume_encryption_at_rest_enabled",
+    "DocumentURI": "policies/aws_ebs_volume_encryption_at_rest_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/EBS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_emr_cluster_master_nodes_no_public_ip",
+    "Title": "EMR cluster master nodes should not have public IP addresses",
+    "Description": "Manage access to the AWS Cloud by ensuring Amazon EMR cluster master nodes cannot be publicly accessed.",
+    "QueryID": "aws_emr_cluster_master_nodes_no_public_ip",
+    "DocumentURI": "policies/aws_emr_cluster_master_nodes_no_public_ip.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/EMR"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_trail_integrated_with_logs",
+    "Title": "CloudTrail trails should be integrated with CloudWatch logs",
+    "Description": "Use Amazon CloudWatch to centrally collect and manage log event activity. Inclusion of AWS CloudTrail data provides details of API call activity within your AWS account.",
+    "QueryID": "aws_cloudtrail_trail_integrated_with_logs",
+    "DocumentURI": "policies/aws_cloudtrail_trail_integrated_with_logs.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_restrict_public_write_access",
+    "Title": "S3 buckets should prohibit public write access",
+    "Description": "Manage access to resources in the AWS Cloud by only allowing authorized users, processes, and devices access to Amazon Simple Storage Service (Amazon S3) buckets.",
+    "QueryID": "aws_s3_bucket_restrict_public_write_access",
+    "DocumentURI": "policies/aws_s3_bucket_restrict_public_write_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_prohibit_public_access",
+    "Title": "RDS DB instances should prohibit public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring that Amazon Relational Database Service (Amazon RDS) instances are not public.",
+    "QueryID": "aws_rds_db_instance_prohibit_public_access",
+    "DocumentURI": "policies/aws_rds_db_instance_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_lambda_function_restrict_public_access",
+    "Title": "Lambda functions should restrict public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring AWS Lambda functions cannot be publicly accessed.",
+    "QueryID": "aws_lambda_function_restrict_public_access",
+    "DocumentURI": "policies/aws_lambda_function_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/Lambda"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_snapshot_prohibit_public_access",
+    "Title": "RDS snapshots should prohibit public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring that Amazon Relational Database Service (Amazon RDS) instances are not public.",
+    "QueryID": "aws_rds_db_snapshot_prohibit_public_access",
+    "DocumentURI": "policies/aws_rds_db_snapshot_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_group_user_role_no_inline_policies",
+    "Title": "IAM groups, users, and roles should not have any inline policies",
+    "Description": "Ensure an AWS Identity and Access Management (IAM) user, IAM role or IAM group does not have an inline policy to control access to systems and assets.",
+    "QueryID": "aws_iam_group_user_role_no_inline_policies",
+    "DocumentURI": "policies/aws_iam_group_user_role_no_inline_policies.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_redshift_cluster_prohibit_public_access",
+    "Title": "Redshift clusters should prohibit public access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring that Amazon Redshift clusters are not public.",
+    "QueryID": "aws_redshift_cluster_prohibit_public_access",
+    "DocumentURI": "policies/aws_redshift_cluster_prohibit_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudfront_distribution_logging_enabled",
+    "Title": "CloudFront distributions access logs should be enabled",
+    "Description": "This control checks if Amazon CloudFront distributions are configured to capture information from Amazon Simple Storage Service (Amazon S3) server access logs. This rule is non compliant if a CloudFront distribution does not have logging configured.",
+    "QueryID": "aws_cloudfront_distribution_logging_enabled",
+    "DocumentURI": "policies/aws_cloudfront_distribution_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudFront"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudwatch_log_group_retention_period_365",
+    "Title": "Log group retention period should be at least 365 days",
+    "Description": "Ensure a minimum duration of event log data is retained for your log groups to help with troubleshooting and forensics investigations.",
+    "QueryID": "aws_cloudwatch_log_group_retention_period_365",
+    "DocumentURI": "policies/aws_cloudwatch_log_group_retention_period_365.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/CloudWatch"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_iam_account_password_policy_min_length_14",
+    "Title": "Ensure IAM password policy requires a minimum length of 14 or greater",
+    "Description": "Password policies, in part, enforce password complexity requirements. Use IAM password policies to ensure that passwords are at least a given length. Security Hub recommends that the password policy require a minimum password length of 14 characters.",
+    "QueryID": "aws_iam_account_password_policy_min_length_14",
+    "DocumentURI": "policies/aws_iam_account_password_policy_min_length_14.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_subnet_auto_assign_public_ip_disabled",
+    "Title": "VPC subnet auto assign public IP should be disabled",
+    "Description": "Ensure if Amazon Virtual Private Cloud (Amazon VPC) subnets are assigned a public IP address. The control is compliant if Amazon VPC does not have subnets that are assigned a public IP address. The control is non compliant if Amazon VPC has subnets that are assigned a public IP address.",
+    "QueryID": "aws_vpc_subnet_auto_assign_public_ip_disabled",
+    "DocumentURI": "policies/aws_vpc_subnet_auto_assign_public_ip_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elb_application_classic_lb_logging_enabled",
+    "Title": "ELB application and classic load balancer logging should be enabled",
+    "Description": "Elastic Load Balancing activity is a central point of communication within an environment.",
+    "QueryID": "aws_elb_application_classic_lb_logging_enabled",
+    "DocumentURI": "policies/aws_elb_application_classic_lb_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/ELB"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_cross_region_replication_enabled",
+    "Title": "S3 bucket cross-region replication should be enabled",
+    "Description": "Amazon Simple Storage Service (Amazon S3) Cross-Region Replication (CRR) supports maintaining adequate capacity and availability.",
+    "QueryID": "aws_s3_bucket_cross_region_replication_enabled",
+    "DocumentURI": "policies/aws_s3_bucket_cross_region_replication_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/S3"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_rds_db_instance_encryption_at_rest_enabled",
+    "Title": "RDS DB instance encryption at rest should be enabled",
+    "Description": "To help protect data at rest, ensure that encryption is enabled for your Amazon Relational Database Service (Amazon RDS) instances.",
+    "QueryID": "aws_rds_db_instance_encryption_at_rest_enabled",
+    "DocumentURI": "policies/aws_rds_db_instance_encryption_at_rest_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/RDS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_autoscaling_group_with_lb_use_health_check",
+    "Title": "Auto Scaling groups with a load balancer should use health checks",
+    "Description": "The Elastic Load Balancer (ELB) health checks for Amazon Elastic Compute Cloud (Amazon EC2) Auto Scaling groups support maintenance of adequate capacity and availability.",
+    "QueryID": "aws_autoscaling_group_with_lb_use_health_check",
+    "DocumentURI": "policies/aws_autoscaling_group_with_lb_use_health_check.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/AutoScaling"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_redshift_cluster_maintenance_settings_check",
+    "Title": "Amazon Redshift should have required maintenance settings",
+    "Description": "Ensure whether Amazon Redshift clusters have the specified maintenance settings. Redshift clusters `allowVersionUpgrade` should be set to `true` and `automatedSnapshotRetentionPeriod` should be greater than 7.",
+    "QueryID": "aws_redshift_cluster_maintenance_settings_check",
+    "DocumentURI": "policies/aws_redshift_cluster_maintenance_settings_check.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_redshift_cluster_encryption_logging_enabled",
+    "Title": "Redshift cluster audit logging and encryption should be enabled",
+    "Description": "To protect data at rest, ensure that encryption is enabled for your Amazon Redshift clusters. You must also ensure that required configurations are deployed on Amazon Redshift clusters. The audit logging should be enabled to provide information about connections and user activities in the database.",
+    "QueryID": "aws_redshift_cluster_encryption_logging_enabled",
+    "DocumentURI": "policies/aws_redshift_cluster_encryption_logging_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_eks_cluster_endpoint_restrict_public_access",
+    "Title": "EKS clusters endpoint should restrict public access",
+    "Description": "Ensure whether Amazon Elastic Kubernetes Service (Amazon EKS) endpoint is not publicly accessible. The rule is compliant if the endpoint is publicly accessible.",
+    "QueryID": "aws_eks_cluster_endpoint_restrict_public_access",
+    "DocumentURI": "policies/aws_eks_cluster_endpoint_restrict_public_access.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/EKS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_autoscaling_launch_config_public_ip_disabled",
+    "Title": "Auto Scaling launch config public IP should be disabled",
+    "Description": "Ensure if Amazon EC2 Auto Scaling groups have public IP addresses enabled through Launch Configurations. This rule is non compliant if the Launch Configuration for an Auto Scaling group has AssociatePublicIpAddress set to 'true'.",
+    "QueryID": "aws_autoscaling_launch_config_public_ip_disabled",
+    "DocumentURI": "policies/aws_autoscaling_launch_config_public_ip_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/AutoScaling"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ecs_task_definition_user_for_host_mode_check",
+    "Title": "ECS task definition container definitions should be checked for host mode",
+    "Description": "Check if Amazon Elastic Container Service (Amazon ECS) task definition with host networking mode has 'privileged' or 'user' container definitions.The rule is non compliant for task definitions with host network mode and container definitions of privileged=false or empty and user=root or empty.",
+    "QueryID": "aws_ecs_task_definition_user_for_host_mode_check",
+    "DocumentURI": "policies/aws_ecs_task_definition_user_for_host_mode_check.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/ECS"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_security_group_restrict_ingress_ssh_all",
+    "Title": "VPC security groups should restrict ingress SSH access from 0.0.0.0/0",
+    "Description": "Amazon Elastic Compute Cloud (Amazon EC2) Security Groups can help manage network access by providing stateful filtering of ingress and egress network traffic to AWS resources.",
+    "QueryID": "aws_vpc_security_group_restrict_ingress_ssh_all",
+    "DocumentURI": "policies/aws_vpc_security_group_restrict_ingress_ssh_all.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "audit_manager_control_tower": [
+        "true"
+      ],
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/VPC"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+    "Title": "CloudTrail trail logs should be encrypted with KMS CMK",
+    "Description": "To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Groups.",
+    "QueryID": "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+    "DocumentURI": "policies/aws_cloudtrail_trail_logs_encrypted_with_kms_cmk.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/CloudTrail"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_dynamodb_table_point_in_time_recovery_enabled",
+    "Title": "DynamoDB table point-in-time recovery should be enabled",
+    "Description": "Enable this rule to check that information has been backed up. It also maintains the backups by ensuring that point-in-time recovery is enabled in Amazon DynamoDB.",
+    "QueryID": "aws_dynamodb_table_point_in_time_recovery_enabled",
+    "DocumentURI": "policies/aws_dynamodb_table_point_in_time_recovery_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/DynamoDB"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_codebuild_project_artifact_encryption_enabled",
+    "Title": "CodeBuild project artifact encryption should be enabled",
+    "Description": "This control checks if a CodeBuild project has encryption enabled for all of its artifacts. The rule is non compliant if 'encryptionDisabled' is set to 'true' for any primary or secondary (if present) artifact configurations.",
+    "QueryID": "aws_codebuild_project_artifact_encryption_enabled",
+    "DocumentURI": "policies/aws_codebuild_project_artifact_encryption_enabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_codebuild_project_source_repo_oauth_configured",
+    "Title": "CodeBuild GitHub or Bitbucket source repository URLs should use OAuth",
+    "Description": "Ensure the GitHub or Bitbucket source repository URL does not contain personal access tokens, user name and password within AWS Codebuild project environments.",
+    "QueryID": "aws_codebuild_project_source_repo_oauth_configured",
+    "DocumentURI": "policies/aws_codebuild_project_source_repo_oauth_configured.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ssm_managed_instance_compliance_patch_compliant",
+    "Title": "SSM managed instance patching should be compliant",
+    "Description": "Enable this rule to help with identification and documentation of Amazon Elastic Compute Cloud (Amazon EC2) vulnerabilities.",
+    "QueryID": "aws_ssm_managed_instance_compliance_patch_compliant",
+    "DocumentURI": "policies/aws_ssm_managed_instance_compliance_patch_compliant.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/SSM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_redshift_cluster_automatic_snapshots_min_7_days",
+    "Title": "Amazon Redshift clusters should have automatic snapshots enabled",
+    "Description": "This control checks whether Amazon Redshift clusters have automated snapshots enabled. It also checks whether the snapshot retention period is greater than or equal to seven.",
+    "QueryID": "aws_redshift_cluster_automatic_snapshots_min_7_days",
+    "DocumentURI": "policies/aws_redshift_cluster_automatic_snapshots_min_7_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gdpr": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/Redshift"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_dms_replication_instance_not_publicly_accessible",
+    "Title": "DMS replication instances should not be publicly accessible",
+    "Description": "Manage access to the AWS Cloud by ensuring DMS replication instances cannot be publicly accessed.",
+    "QueryID": "aws_dms_replication_instance_not_publicly_accessible",
+    "DocumentURI": "policies/aws_dms_replication_instance_not_publicly_accessible.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/DMS"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_default_security_group_restricts_all_traffic",
+    "Title": "VPC default security group should not allow inbound and outbound traffic",
+    "Description": "Amazon Elastic Compute Cloud (Amazon EC2) security groups can help in the management of network access by providing stateful filtering of ingress and egress network traffic to AWS resources.",
+    "QueryID": "aws_vpc_default_security_group_restricts_all_traffic",
+    "DocumentURI": "policies/aws_vpc_default_security_group_restricts_all_traffic.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/VPC"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_ssm_managed_instance_compliance_association_compliant",
+    "Title": "SSM managed instance associations should be compliant",
+    "Description": "Use AWS Systems Manager Associations to help with inventory of software platforms and applications within an organization.",
+    "QueryID": "aws_ssm_managed_instance_compliance_association_compliant",
+    "DocumentURI": "policies/aws_ssm_managed_instance_compliance_association_compliant.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/SSM"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_codebuild_project_environment_privileged_mode_disabled",
+    "Title": "CodeBuild project environments should not have privileged mode enabled",
+    "Description": "This control checks if an AWS CodeBuild project environment has privileged mode enabled. This control fails when an AWS CodeBuild project environment has privileged mode enabled.",
+    "QueryID": "aws_codebuild_project_environment_privileged_mode_disabled",
+    "DocumentURI": "policies/aws_codebuild_project_environment_privileged_mode_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+    "Title": "SageMaker notebook instances should not have direct internet access",
+    "Description": "Manage access to resources in the AWS Cloud by ensuring that Amazon SageMaker notebooks do not allow direct internet access.",
+    "QueryID": "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+    "DocumentURI": "policies/aws_sagemaker_notebook_instance_direct_internet_access_disabled.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/SageMaker"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+    "Title": "ElastiCache Redis cluster automatic backup should be enabled with retention period of 15 days or greater",
+    "Description": "When automatic backups are enabled, Amazon ElastiCache creates a backup of the cluster on a daily basis. The backup can be retained for a number of days as specified by your organization. Automatic backups can help guard against data loss.",
+    "QueryID": "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+    "DocumentURI": "policies/aws_elasticache_redis_cluster_automatic_backup_retention_15_days.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "gxp_21_cfr_part_11": [
+        "true"
+      ],
+      "gxp_eu_annex_11": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_171_rev_2": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_800_53_rev_5": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "rbi_cyber_security": [
+        "true"
+      ],
+      "service": [
+        "AWS/ElastiCache"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_s3_bucket_policy_restricts_cross_account_permission_changes",
+    "Title": "Amazon S3 permissions granted to other AWS accounts in bucket policies should be restricted",
+    "Description": "This control checks whether the S3 bucket policy prevents principals from other AWS accounts from performing denied actions on resources in the S3 bucket.",
+    "QueryID": "aws_s3_bucket_policy_restricts_cross_account_permission_changes",
+    "DocumentURI": "policies/aws_s3_bucket_policy_restricts_cross_account_permission_changes.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/S3"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values",
+    "Title": "CodeBuild project plaintext environment variables should not contain sensitive AWS values",
+    "Description": "Ensure authentication credentials AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY do not exist within AWS CodeBuild project environments. Do not store these variables in clear text. Storing these variables in clear text leads to unintended data exposure and unauthorized access.",
+    "QueryID": "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values",
+    "DocumentURI": "policies/aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values.md",
+    "ManualVerification": false,
+    "Severity": "",
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "cis_controls_v8_ig1": [
+        "true"
+      ],
+      "cisa_cyber_essentials": [
+        "true"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "fedramp_moderate_rev_4": [
+        "true"
+      ],
+      "ffiec": [
+        "true"
+      ],
+      "hipaa_final_omnibus_security_rule_2013": [
+        "true"
+      ],
+      "hipaa_security_rule_2003": [
+        "true"
+      ],
+      "nist_800_53_rev_4": [
+        "true"
+      ],
+      "nist_csf": [
+        "true"
+      ],
+      "pci_dss_v321": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CodeBuild"
+      ],
+      "soc_2": [
+        "true"
+      ]
+    },
+    "Managed": true
+  }
+]

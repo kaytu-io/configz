@@ -1,0 +1,10 @@
+{
+  "ID": "aws_ecs_task_definition_user_for_host_mode_check",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with host_network_task_definition as (\n  select\n    distinct task_definition_arn as arn\n  from\n    aws_ecs_task_definition,\n    jsonb_array_elements(container_definitions) as c\n  where\n    network_mode = 'host'\n    and\n      (c -\u003e\u003e 'Privileged' is not null\n        and c -\u003e\u003e 'Privileged' \u003c\u003e 'false'\n      )\n    and\n      ( c -\u003e\u003e 'User' is not null\n      and c -\u003e\u003e 'User' \u003c\u003e 'root'\n      )\n)\nselect\n  a.task_definition_arn as resource,\n  case\n    when a.network_mode is null or a.network_mode \u003c\u003e 'host' then 'skip'\n    when b.arn is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.network_mode is null or a.network_mode \u003c\u003e 'host' then a.title || ' not host network mode.'\n    when b.arn is not null then a.title || ' have secure host network mode.'\n    else a.title || ' not have secure host network mode.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_task_definition as a\n  left join host_network_task_definition as b on a.task_definition_arn = b.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ecs_task_definition",
+  "ListOfTables": [
+    "aws_ecs_task_definition"
+  ]
+}

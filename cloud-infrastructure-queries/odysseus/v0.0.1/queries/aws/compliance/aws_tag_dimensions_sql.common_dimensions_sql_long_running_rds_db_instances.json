@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_long_running_rds_db_instances",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when date_part('day', now()-create_time) \u003e $1 then 'alarm'\n    when date_part('day', now()-create_time) \u003e $2 then 'info'\n    else 'ok'\n  end as status,\n  title || ' has been in use for ' || date_part('day', now()-create_time) || ' days.' as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_rds_db_instance",
+  "ListOfTables": [
+    "aws_rds_db_instance"
+  ]
+}

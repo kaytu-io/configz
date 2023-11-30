@@ -1,0 +1,11 @@
+{
+  "ID": "azure_hpc_cache_encrypted_with_cmk",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  a.id as resource,\n  case\n    when\n      a.encryption_settings -\u003e 'keyEncryptionKey' -\u003e 'keyUrl' is not null\n      and a.encryption_settings -\u003e 'keyEncryptionKey' -\u003e 'sourceVault' -\u003e\u003e 'id' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when\n      a.encryption_settings -\u003e 'keyEncryptionKey' -\u003e 'keyUrl' is not null\n      and a.encryption_settings -\u003e 'keyEncryptionKey' -\u003e 'sourceVault' -\u003e\u003e 'id' is not null then a.name || ' encrypted with CMK.'\n    else a.name || ' not encrypted with CMK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_hpc_cache as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_hpc_cache",
+  "ListOfTables": [
+    "azure_hpc_cache",
+    "azure_subscription"
+  ]
+}

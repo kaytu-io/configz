@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all security groups that are not associated with an ENI",
+  "query": "with associated_sg as (\n  select\n    count(sg -\u003e\u003e 'GroupId'),\n    sg -\u003e\u003e 'GroupId' as secgrp_id\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n    group by sg -\u003e\u003e 'GroupId'\n)\nselect\n  -- Required Columns\n  distinct s.arn as resource,\n  case\n    when a.secgrp_id = s.group_id then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.secgrp_id = s.group_id then s.title || ' is associated with ' || a.count || ' ENI(s).'\n    else s.title || ' not associated to any ENI.'\n  end as reason,\n  -- Additional Dimensions\n  s.region,\n  s.account_id\nfrom\n  aws_vpc_security_group as s\n  left join associated_sg as a on s.group_id = a.secgrp_id"
+}

@@ -1,0 +1,30 @@
+{
+  "ID": "aws_eks",
+  "Title": "EKS Checks",
+  "DocumentURI": "benchmarks/aws_eks.md",
+  "Description": "Thrifty developers ensure their EKS resources are optimized.",
+  "Children": null,
+  "Tags": {
+    "category": [
+      "Cost"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/EKS"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "LogoURI": "",
+  "Category": "",
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Policies": [
+    "aws_eks_node_group_with_graviton"
+  ]
+}

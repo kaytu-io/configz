@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find CloudTrail logs that are not encrypted at rest using KMS CMKs",
+  "query": "select\n  -- Required columns\n  arn as resource,\n  case\n    when kms_key_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kms_key_id is null then title || ' logs are not encrypted at rest.'\n    else title || ' logs are encrypted at rest.'\n  end as reason,\n  -- Additional columns\n  region,\n  account_id\nfrom\n  aws_cloudtrail_trail\nwhere \n  region = home_region"
+}

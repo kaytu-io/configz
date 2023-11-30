@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all VPCs missing flow logs",
+  "query": "with vpc_with_active_flow_logs as (\n  select\n    v.akas -\u003e\u003e 0 as resource,\n    count(f.resource_id),\n    v.vpc_id,\n    f.flow_log_status,\n    v.region,\n    v.account_id,\n    f.resource_id\n  from\n    aws_vpc as v\n    left join aws_vpc_flow_log as f on v.vpc_id = f.resource_id\n  group by\n    resource,\n    v.vpc_id,\n    f.flow_log_status,\n    v.region,\n    v.account_id,\n    f.resource_id\n)\nselect\n  -- Required columns\n  resource,\n  case\n    when count \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when count \u003e 0 then vpc_id || ' flow logging enabled.'\n    else vpc_id || ' flow logging disabled.'\n  end as reason,\n  -- Additional columns\n  region,\n  account_id\nfrom\n  vpc_with_active_flow_logs\ngroup by\n  vpc_id,\n  count,\n  flow_log_status,\n  resource,\n  region,\n  account_id"
+}

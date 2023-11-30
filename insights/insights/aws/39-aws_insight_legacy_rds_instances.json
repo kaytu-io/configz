@@ -1,0 +1,22 @@
+{
+  "ID": 39,
+  "QueryID": "aws_insight_legacy_rds_instances",
+  "Connector": "AWS",
+  "ShortTitle": "Legacy RDS Instances",
+  "LongTitle": "Legacy RDS Instances",
+  "Description": "RDS instances that are not using the supported instance types",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Executive",
+      "Product",
+      "FinOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

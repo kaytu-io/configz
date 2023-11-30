@@ -1,0 +1,10 @@
+{
+  "ID": "aws_cloudfront_distribution_origin_access_identity_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when o -\u003e\u003e 'DomainName' not like '%s3.amazonaws.com' then 'skip'\n    when o -\u003e\u003e 'DomainName' like '%s3.amazonaws.com'\n    and o -\u003e 'S3OriginConfig' -\u003e\u003e 'OriginAccessIdentity' = '' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when o -\u003e\u003e 'DomainName' not like '%s3.amazonaws.com' then title || ' origin type is not s3.'\n    when o -\u003e\u003e 'DomainName' like '%s3.amazonaws.com'\n    and o -\u003e 'S3OriginConfig' -\u003e\u003e 'OriginAccessIdentity' = '' then title || ' origin access identity not configured.'\n    else title || ' origin access identity configured.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution,\n  jsonb_array_elements(origins) as o;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_cloudfront_distribution",
+  "ListOfTables": [
+    "aws_cloudfront_distribution"
+  ]
+}

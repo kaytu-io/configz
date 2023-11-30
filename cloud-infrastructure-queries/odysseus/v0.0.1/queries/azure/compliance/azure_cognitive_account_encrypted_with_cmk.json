@@ -1,0 +1,11 @@
+{
+  "ID": "azure_cognitive_account_encrypted_with_cmk",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with cognitive_account_cmk as (\n  select\n    distinct a.id\n  from\n    azure_cognitive_account as a,\n    jsonb_array_elements(capabilities ) as c\n  where\n    c -\u003e\u003e 'name' = 'CustomerManagedKey'\n)\nselect\n  s.id as resource,\n  case\n    when c.id is null then 'ok'\n    when c.id is not null and encryption -\u003e\u003e 'keySource' = 'Microsoft.KeyVault' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when c.id is null then name || ' encryption not supported.'\n    when c.id is not null and encryption -\u003e\u003e 'keySource' = 'Microsoft.KeyVault' then name || ' encrypted with CMK.'\n    else name || ' not encrypted with CMK.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cognitive_account as s\n  left join cognitive_account_cmk as c on c.id = s.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_cognitive_account",
+  "ListOfTables": [
+    "azure_cognitive_account",
+    "azure_subscription"
+  ]
+}

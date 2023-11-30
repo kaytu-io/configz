@@ -1,0 +1,11 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_ecs_service_without_autoscaling",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with service_with_autoscaling as (\n  select\n    distinct split_part(t.resource_id, '/', 2) as cluster_name,\n    split_part(t.resource_id, '/', 3) as service_name\n  from\n    aws_appautoscaling_target as t\n  where\n    t.service_namespace = 'ecs'\n)\nselect\n  s.arn as resource,\n  case\n    when s.launch_type != 'FARGATE' then 'skip'\n    when a.service_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when s.launch_type != 'FARGATE' then s.title || ' task not running on FARGATE.'\n    when a.service_name is null then s.title || ' autoscaling disabled.'\n    else s.title || ' autoscaling enabled.'\n  end as reason\n  \n  , s.region, s.account_id\nfrom\n  aws_ecs_service as s\n  left join service_with_autoscaling as a on s.service_name = a.service_name and a.cluster_name = split_part(s.cluster_arn, '/', 2);\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ecs_service",
+  "ListOfTables": [
+    "aws_appautoscaling_target",
+    "aws_ecs_service"
+  ]
+}

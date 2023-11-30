@@ -1,0 +1,21 @@
+{
+  "ID": 32,
+  "QueryID": "aws_insight_loadbalancer_classic_no_logging",
+  "Connector": "AWS",
+  "ShortTitle": "Classic Load Balancers without logging",
+  "LongTitle": "List classic Load Balancers without logging",
+  "Description": "List classic Load Balancers without logging",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Security",
+      "DevOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

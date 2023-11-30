@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "inactive",
+    "name": "DNS Zone",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/dnszones' group by 1,2;",
+    "tags": {
+        "category": ["Networking"]
+    }
+}

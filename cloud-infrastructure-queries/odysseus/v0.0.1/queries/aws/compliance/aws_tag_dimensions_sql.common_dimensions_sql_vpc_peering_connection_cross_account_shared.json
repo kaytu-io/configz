@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_vpc_peering_connection_cross_account_shared",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  id as resource,\n  case\n    when accepter_owner_id = requester_owner_id or accepter_owner_id = any (($1)::text[]) then 'ok'\n    else 'info'\n  end status,\n  case\n    when accepter_owner_id = requester_owner_id or accepter_owner_id = any (($1)::text[]) then title || ' is peered with a trust account.'\n    else title || ' is peered with untrusted account ' || accepter_owner_id || '.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_vpc_peering_connection;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_vpc_peering_connection",
+  "ListOfTables": [
+    "aws_vpc_peering_connection"
+  ]
+}

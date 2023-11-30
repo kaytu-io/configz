@@ -1,0 +1,10 @@
+
+{
+    "connectors": ["Azure"],
+    "status": "active",
+    "name": "Service Fabric cluster",
+    "query": "select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.servicefabric/clusters' group by 1,2;",
+    "tags": {
+        "category": ["Containers"]
+    }
+}

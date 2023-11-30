@@ -1,0 +1,5 @@
+{
+  "connectors": ["AWS"],
+  "title": "Find all CloudWatch where alarm action is not enabled",
+  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when alarm_actions is null\n    and insufficient_data_actions is null\n    and ok_actions is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when alarm_actions is null\n    and insufficient_data_actions is null\n    and ok_actions is null then title || ' no action enabled.'\n    when alarm_actions is not null then title || ' alarm action enabled.'\n    when insufficient_data_actions is not null then title || ' insufficient data action enabled.'\n    when ok_actions is not null then title || ' ok action enabled.'\n    else 'ok'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudwatch_alarm"
+}

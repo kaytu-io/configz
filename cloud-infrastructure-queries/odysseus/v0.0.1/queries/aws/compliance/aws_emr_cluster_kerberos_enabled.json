@@ -1,0 +1,10 @@
+{
+  "ID": "aws_emr_cluster_kerberos_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  cluster_arn as resource,\n  case\n    when kerberos_attributes is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kerberos_attributes is null then title || ' Kerberos not enabled.'\n    else title || ' Kerberos enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_emr_cluster;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_emr_cluster",
+  "ListOfTables": [
+    "aws_emr_cluster"
+  ]
+}

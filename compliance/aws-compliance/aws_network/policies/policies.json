@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "aws_unattached_eips",
+    "Title": "Unattached elastic IP addresses (EIPs) should be released",
+    "Description": "Unattached Elastic IPs are charged by AWS, they should be released.",
+    "QueryID": "aws_common_dimensions_sql_unattached_eips",
+    "DocumentURI": "policies/aws_unattached_eips.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  },
+  {
+    "ID": "aws_vpc_nat_gateway_unused",
+    "Title": "Unused NAT gateways should be deleted",
+    "Description": "NAT gateway are charged on an hourly basis once they are provisioned and available, so unused gateways should be deleted.",
+    "QueryID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_vpc_nat_gateway_unused",
+    "DocumentURI": "policies/aws_vpc_nat_gateway_unused.md",
+    "ManualVerification": false,
+    "Severity": "low",
+    "Tags": {
+      "category": [
+        "Cost"
+      ],
+      "class": [
+        "unused"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/VPC"
+      ]
+    },
+    "Managed": true
+  }
+]

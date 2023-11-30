@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_api_gateway_rest_api_prohibit_public_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  title as resource,\n  case\n    when endpoint_configuration_types != '[\"PRIVATE\"]' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when endpoint_configuration_types != '[\"PRIVATE\"]' then title || ' endpoint publicly accessible.'\n    else title || ' endpoint not publicly accessible.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_api_gateway_rest_api;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_api_gateway_rest_api",
+  "ListOfTables": [
+    "aws_api_gateway_rest_api"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ID": "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when kms_key_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kms_key_id is null then title || ' logs are not encrypted at rest.'\n    else title || ' logs are encrypted at rest.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudtrail_trail\nwhere\n  region = home_region;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_cloudtrail_trail",
+  "ListOfTables": [
+    "aws_cloudtrail_trail"
+  ]
+}

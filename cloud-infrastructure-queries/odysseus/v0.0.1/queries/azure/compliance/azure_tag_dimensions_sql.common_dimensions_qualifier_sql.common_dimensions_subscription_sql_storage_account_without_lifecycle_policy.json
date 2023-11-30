@@ -1,0 +1,11 @@
+{
+  "ID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_storage_account_without_lifecycle_policy",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  ac.id as resource,\n  case\n    when lifecycle_management_policy -\u003e 'properties' -\u003e 'policy' -\u003e 'rules' is null then 'alarm'\n    when lifecycle_management_policy -\u003e 'properties' -\u003e 'policy' -\u003e 'rules' @\u003e '[{\"enabled\":true}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when lifecycle_management_policy -\u003e 'properties' -\u003e 'policy' -\u003e 'rules' is null then ac.title || ' has no lifecycle policy.'\n    when lifecycle_management_policy -\u003e 'properties' -\u003e 'policy' -\u003e 'rules' @\u003e '[{\"enabled\":true}]' then ac.title || ' has active lifecycle policy.'\n    else ac.title || ' has no active lifecycle policy.'\n  end as reason\n  \n  , ac.resource_group\n  , display_name as subscription\nfrom\n  azure_storage_account as ac\n  left join azure_subscription as sub on ac.subscription_id = sub.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subscription"
+  ]
+}

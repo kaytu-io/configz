@@ -1,0 +1,13 @@
+{
+  "ID": "azure_iam_deprecated_account",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with disabled_users as (\n  select\n  distinct\n    u.display_name,\n    u.account_enabled,\n    u.user_principal_name,\n    u.id,\n    d.subscription_id\n  from\n    azuread_user as u\n    left join azure_role_assignment as a on a.principal_id = u.id\n    left join azure_role_definition as d on d.id = a.role_definition_id\n    where not u.account_enabled\n)\nselect\n  u.user_principal_name as resource,\n  case\n    when d.id is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when d.id is null then u.display_name || ' sign-in enabled.'\n    else u.display_name || ' sign-in disabled.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_user as u\n  left join disabled_users as d on d.id = u.id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azuread_user",
+  "ListOfTables": [
+    "azure_role_assignment",
+    "azure_role_definition",
+    "azure_tenant",
+    "azuread_user"
+  ]
+}

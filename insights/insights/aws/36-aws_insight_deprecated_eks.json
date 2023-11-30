@@ -1,0 +1,22 @@
+{
+  "ID": 36,
+  "QueryID": "aws_insight_deprecated_eks",
+  "Connector": "AWS",
+  "ShortTitle": "Deprecated EKS clusters",
+  "LongTitle": "EKS clusters with old Kubernetes version",
+  "Description": "EKS clusters running anything other than 1.27, 1.26, 1.25, 1.24, 1.23",
+  "LogoURL": "",
+  "Tags": {
+    "category": [
+      "Technical Debt"
+    ],
+    "persona": [
+      "Executive",
+      "Product",
+      "FinOps"
+    ]
+  },
+  "Links": null,
+  "Enabled": true,
+  "Internal": false
+}

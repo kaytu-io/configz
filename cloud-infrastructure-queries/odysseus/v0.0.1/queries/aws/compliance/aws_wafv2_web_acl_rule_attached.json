@@ -1,0 +1,10 @@
+{
+  "ID": "aws_wafv2_web_acl_rule_attached",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with rule_group_count as (\n  select\n    arn,\n    count(*) as rule_group_count\n  from\n    aws_wafv2_web_acl,\n    jsonb_array_elements(rules) as r\n  where\n    r -\u003e 'Statement' -\u003e 'RuleGroupReferenceStatement' -\u003e\u003e 'ARN' is not null\n  group by\n    arn\n)\nselect\n  a.arn as resource,\n  case\n    when rules is null or jsonb_array_length(rules) = 0 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when rules is null or jsonb_array_length(rules) = 0 then title || ' has no attached rules.'\n    else title || ' has ' || c.rule_group_count || ' rule group(s) and ' || (jsonb_array_length(rules) - c.rule_group_count) || ' rule(s) attached.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_wafv2_web_acl as a\n  left join rule_group_count as c on c.arn = a.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_wafv2_web_acl",
+  "ListOfTables": [
+    "aws_wafv2_web_acl"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "connectors": [
+    "Azure"
+  ],
+  "status": "active",
+  "name": "Microsoft Dev Box",
+  "query": "SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Microsoft Dev Box' group by 1,2;",
+  "tables": [
+    "Microsoft Dev Box"
+  ],
+  "tags": {
+    "category": [
+      "DevOps"
+    ]
+  }
+}
