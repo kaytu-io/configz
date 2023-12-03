@@ -1,0 +1,11 @@
+{
+  "ID": "azure_mariadb_server_ssl_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  s.id as resource,\n  case\n    when ssl_enforcement = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when ssl_enforcement = 'Enabled' then name || ' SSL connection enabled.'\n    else name || ' SSL connection disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mariadb_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_mariadb_server",
+  "ListOfTables": [
+    "azure_mariadb_server",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "ID": "azure_storage_account_use_virtual_service_endpoint",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with storage_account_subnet as (\n  select\n    distinct a.id as storage_account_id,\n    rule -\u003e\u003e 'id' as id\n  from\n    azure_storage_account as a,\n    jsonb_array_elements(virtual_network_rules) as rule,\n    azure_subnet as subnet,\n    jsonb_array_elements(service_endpoints) as endpoints\n  where\n    endpoints -\u003e\u003e 'service' like '%Microsoft.Storage%'\n)\nselect\n  distinct a.id as resource,\n  case\n    when network_rule_default_action \u003c\u003e 'Deny' then 'alarm'\n    when s.storage_account_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when network_rule_default_action \u003c\u003e 'Deny' then a.name || ' not configured with virtual service endpoint.'\n    when s.storage_account_id is null then a.name || ' not configured with virtual service endpoint.'\n    else a.name || ' configured with virtual service endpoint.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as a\n  left join storage_account_subnet as s on a.id = s.storage_account_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subnet",
+    "azure_subscription"
+  ]
+}

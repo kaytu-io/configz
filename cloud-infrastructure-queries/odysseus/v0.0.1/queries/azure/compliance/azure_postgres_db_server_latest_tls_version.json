@@ -1,0 +1,11 @@
+{
+  "ID": "azure_postgres_db_server_latest_tls_version",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  s.id as resource,\n  case\n    when minimal_tls_version = 'TLS1_2' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when minimal_tls_version = 'TLS1_2' then name || ' uses the latest version of TLS encryption.'\n    else name || ' does not use the latest version of TLS encryption.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_postgresql_server",
+  "ListOfTables": [
+    "azure_postgresql_server",
+    "azure_subscription"
+  ]
+}

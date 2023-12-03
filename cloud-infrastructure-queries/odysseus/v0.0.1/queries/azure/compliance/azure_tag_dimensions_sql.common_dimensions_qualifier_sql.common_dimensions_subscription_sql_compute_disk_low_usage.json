@@ -1,0 +1,13 @@
+{
+  "ID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_low_usage",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with disk_usage as (\n  select\n    name,\n    resource_group\n    subscription_id,\n    round(avg(max)) as avg_max,\n    count(max) as days\n  from\n    (\n      select\n        name,\n        resource_group,\n        subscription_id,\n        cast(maximum as numeric) as max\n      from\n        azure_compute_disk_metric_read_ops_daily\n      where\n        date_part('day', now() - timestamp) \u003c= 30\n      union all\n      select\n        name,\n        resource_group,\n        subscription_id,\n        cast(maximum as numeric) as max\n      from\n        azure_compute_disk_metric_write_ops_daily\n      where\n        date_part('day', now() - timestamp) \u003c= 30\n    ) as read_and_write_ops\n  group by\n    name,\n    resource_group,\n    subscription_id\n)\nselect\n  d.id as resource,\n  case\n    when avg_max \u003c= $1 then 'alarm'\n    when avg_max \u003c= $2 then 'info'\n    else 'ok'\n  end as status,\n  d.name || ' averaging ' || avg_max || ' read and write ops over the last ' || days / 2 || ' days.' as reason\n  \n  , d.resource_group\n  , display_name as subscription\nfrom\n  disk_usage as u left join azure_compute_disk as d on u.name = d.name\n  left join azure_subscription as sub on sub.subscription_id = d.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_disk",
+  "ListOfTables": [
+    "azure_compute_disk",
+    "azure_compute_disk_metric_read_ops_daily",
+    "azure_compute_disk_metric_write_ops_daily",
+    "azure_subscription"
+  ]
+}

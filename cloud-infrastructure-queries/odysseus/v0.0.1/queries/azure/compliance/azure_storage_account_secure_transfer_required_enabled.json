@@ -1,0 +1,11 @@
+{
+  "ID": "azure_storage_account_secure_transfer_required_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  sa.id as resource,\n  case\n    when not enable_https_traffic_only then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not enable_https_traffic_only then sa.name || ' encryption in transit not enabled.'\n    else sa.name || ' encryption in transit enabled.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subscription"
+  ]
+}

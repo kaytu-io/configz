@@ -1,0 +1,11 @@
+{
+  "ID": "azure_storage_account_geo_redundant_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  s.id as resource,\n  case\n    when sku_name = any(ARRAY ['Standard_GRS', 'Standard_RAGRS', 'Standard_GZRS', 'Standard_RAGZRS']) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sku_name = any(ARRAY ['Standard_GRS', 'Standard_RAGRS', 'Standard_GZRS', 'Standard_RAGZRS']) then name || ' geo-redundant enabled.'\n    else name || ' geo-redundant disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subscription"
+  ]
+}

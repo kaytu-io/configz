@@ -1,0 +1,11 @@
+{
+  "ID": "azure_storage_account_block_public_access",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  sa.id as resource,\n  case\n    when sa.id not like '%/resourceGroups/aro-%'\n      and (sa.name not like 'cluster%' or sa.name not like 'imageregistry%')\n      and sa.allow_blob_public_access = 'false'\n      then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sa.id not like '%/resourceGroups/aro-%'\n      and (sa.name not like 'cluster%' or sa.name not like 'imageregistry%')\n      and sa.allow_blob_public_access = 'false'\n      then sa.name || ' not publicy accessible.'\n    else sa.name || ' publicy accessible.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "azure_network_security_group_diagnostic_setting_deployed",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with logging_details as (\n  select\n    distinct name as nsg_name\n  from\n    azure_network_security_group,\n    jsonb_array_elements(diagnostic_settings) setting\n  where\n    diagnostic_settings is not null\n    and setting -\u003e\u003e 'name' = 'setbypolicy'\n)\nselect\n  a.resource_guid as resource,\n  case\n    when a.diagnostic_settings is null then 'alarm'\n    when l.nsg_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when a.diagnostic_settings is null then a.name || ' logging not enabled.'\n    when l.nsg_name is null then a.name || ' logging not enabled.'\n    else a.name || ' logging enabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_network_security_group as a\n  left join logging_details as l on a.name = l.nsg_name,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_network_security_group",
+  "ListOfTables": [
+    "azure_network_security_group",
+    "azure_subscription"
+  ]
+}

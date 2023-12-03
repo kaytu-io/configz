@@ -1,0 +1,11 @@
+{
+  "ID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_snapshot_storage_standard",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  ss.id as resource,\n  case\n    when ss.sku_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when ss.sku_tier = 'Standard' then ss.title || ' has storage type ' || ss.sku_tier || '.'\n    else ss.title || ' has storage type ' || ss.sku_tier || '.'\n  end as reason\n  \n  , ss.resource_group\n  , display_name as subscription\nfrom\n  azure_compute_snapshot as ss,\n  azure_subscription as sub\nwhere\n  ss.subscription_id = sub.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_snapshot",
+  "ListOfTables": [
+    "azure_compute_snapshot",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_qualifier_sql_emr_cluster_instance_prev_gen",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  ig.id as resource,\n  case\n    when ig.state = 'TERMINATED' then 'skip'\n    when ig.instance_type like 'c1.%' then 'alarm'\n    when ig.instance_type like 'cc2.%' then 'alarm'\n    when ig.instance_type like 'cr1.%' then 'alarm'\n    when ig.instance_type like 'm2.%' then 'alarm'\n    when ig.instance_type like 'g2.%' then 'alarm'\n    when ig.instance_type like 'i2,m1.%' then 'alarm'\n    when ig.instance_type like 'c1.%' then 'alarm'\n    else 'info'\n  end as status,\n  case\n  when ig.state = 'TERMINATED' then ig.cluster_id || ' is ' || ig.state || '.'\n  else ig.cluster_id || ' has ' || ig.instance_type || ' instance type.'\n  end as reason\n  \n  , c.region, c.account_id\nfrom\n  aws_emr_instance_group as ig,\n  aws_emr_cluster as c\nwhere\n  ig.cluster_id = c.id\nand ig.instance_group_type = 'MASTER';\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_emr_instance_group",
+  "ListOfTables": [
+    "aws_emr_cluster",
+    "aws_emr_instance_group"
+  ]
+}

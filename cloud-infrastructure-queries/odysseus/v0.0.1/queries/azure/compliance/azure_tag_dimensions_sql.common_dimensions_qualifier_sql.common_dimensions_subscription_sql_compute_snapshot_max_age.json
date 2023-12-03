@@ -1,0 +1,11 @@
+{
+  "ID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_snapshot_max_age",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  s.unique_id as resource,\n  case\n    when date_part('day', now()-time_created) \u003c $1 then 'ok'\n    else 'alarm'\n  end as status,\n  s.title || ' created at ' || time_created || ' (' || date_part('day', now() - time_created) || ' days).'\n  as reason\n  \n  , s.resource_group\n  , display_name as subscription\nfrom\n  azure_compute_snapshot as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_snapshot",
+  "ListOfTables": [
+    "azure_compute_snapshot",
+    "azure_subscription"
+  ]
+}

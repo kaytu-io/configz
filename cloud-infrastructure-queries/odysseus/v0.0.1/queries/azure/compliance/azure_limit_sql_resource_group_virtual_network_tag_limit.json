@@ -1,0 +1,10 @@
+{
+  "ID": "azure_limit_sql_resource_group_virtual_network_tag_limit",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with analysis as (\n  select\n    id,\n    title,\n    cardinality(array(select jsonb_object_keys(tags))) as num_tag_keys,\n    resource_group, subscription_id\n  from\n    azure_virtual_network\n)\nselect\n  id as resource,\n  case\n    when num_tag_keys \u003e $1::integer then 'alarm'\n    else 'ok'\n  end as status,\n  title || ' has ' || num_tag_keys || ' tag(s).' as reason,\n  resource_group, subscription_id\nfrom\n  analysis\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_virtual_network",
+  "ListOfTables": [
+    "azure_virtual_network"
+  ]
+}

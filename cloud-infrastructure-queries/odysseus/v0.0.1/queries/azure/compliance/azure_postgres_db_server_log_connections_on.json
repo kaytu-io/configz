@@ -1,0 +1,11 @@
+{
+  "ID": "azure_postgres_db_server_log_connections_on",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  s.id as resource,\n  case\n    when lower(config -\u003e 'ConfigurationProperties' -\u003e\u003e 'value') != 'on' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when lower(config -\u003e 'ConfigurationProperties' -\u003e\u003e 'value') != 'on' then s.name || ' server parameter log_connections off.'\n    else s.name || ' server parameter log_connections on.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server s,\n  jsonb_array_elements(server_configurations) config,\n  azure_subscription sub\nwhere\n  config -\u003e\u003e 'Name' = 'log_connections'\n  and sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_postgresql_server",
+  "ListOfTables": [
+    "azure_postgresql_server",
+    "azure_subscription"
+  ]
+}

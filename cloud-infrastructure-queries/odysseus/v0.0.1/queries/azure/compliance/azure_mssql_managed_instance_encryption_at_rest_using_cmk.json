@@ -1,0 +1,11 @@
+{
+  "ID": "azure_mssql_managed_instance_encryption_at_rest_using_cmk",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with encryption_protector as (\n  select\n    distinct i.id as id\n  from\n    azure_mssql_managed_instance as i,\n    jsonb_array_elements(encryption_protectors) a\n    where\n      a -\u003e\u003e 'serverKeyType' = 'AzureKeyVault'\n      and a -\u003e\u003e 'uri' is not null\n)\nselect\n  s.id as resource,\n  case\n    when a.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.id is not null then s.title || ' encrypted with CMK.'\n    else s.title || ' not encrypted with CMK.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mssql_managed_instance as s\n  left join encryption_protector as a on s.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_mssql_managed_instance",
+  "ListOfTables": [
+    "azure_mssql_managed_instance",
+    "azure_subscription"
+  ]
+}

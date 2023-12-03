@@ -1,0 +1,10 @@
+{
+  "ID": "azure_untagged_sql_resource_group_lb_untagged",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "    select\n      id as resource,\n      case\n        when tags is not null then 'ok'\n        else 'alarm'\n      end as status,\n      case\n        when tags is not null then title || ' has tags.'\n        else title || ' has no tags.'\n      end as reason,\n      resource_group, subscription_id\n    from\n      azure_lb\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_lb",
+  "ListOfTables": [
+    "azure_lb"
+  ]
+}

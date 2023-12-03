@@ -1,0 +1,12 @@
+{
+  "ID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_attached_stopped_virtual_machine",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with attached_disk_with_vm as (\n  select\n    power_state as virtual_machine_state,\n    os_disk_name,\n    jsonb_agg(data_disk -\u003e\u003e 'name') as data_disk_names\n  from\n    azure_compute_virtual_machine\n    left join jsonb_array_elements(data_disks) as data_disk on true\n  group by name, os_disk_name, power_state\n)\nselect\n  d.id as resource,\n  case\n    when d.disk_state = 'Unattached' then 'skip'\n    when m.virtual_machine_state = 'running' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when d.disk_state = 'Unattached' then d.name || ' not attached to virtual machine.'\n    when m.virtual_machine_state = 'running' then d.name || ' attached to running virtual machine.'\n    else d.name || ' not attached to running virtual machine.'\n  end as reason\n  \n  , d.resource_group\n  , display_name as subscription\nfrom\n  azure_compute_disk as d\n  left join attached_disk_with_vm as m on (d.name = m.os_disk_name or m.data_disk_names ?| array[d.name])\n  left join azure_subscription as sub on sub.subscription_id = d.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_disk",
+  "ListOfTables": [
+    "azure_compute_disk",
+    "azure_compute_virtual_machine",
+    "azure_subscription"
+  ]
+}

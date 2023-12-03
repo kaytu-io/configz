@@ -1,0 +1,11 @@
+{
+  "ID": "azure_network_public_ip_no_basic_sku",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  i.id as resource,\n  case\n    when i.sku_name = 'Basic' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when i.sku_name = 'Basic' then i.title || ' using basic SKU.'\n    else i.title || ' using ' || sku_name || ' SKU.'\n  end as reason\n  \n  , i.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_public_ip as i,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = i.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_public_ip",
+  "ListOfTables": [
+    "azure_public_ip",
+    "azure_subscription"
+  ]
+}

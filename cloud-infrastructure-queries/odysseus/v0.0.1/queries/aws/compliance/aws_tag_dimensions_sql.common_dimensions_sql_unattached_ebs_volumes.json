@@ -1,0 +1,10 @@
+{
+  "ID": "aws_tag_dimensions_sql.common_dimensions_sql_unattached_ebs_volumes",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when jsonb_array_length(attachments) \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when jsonb_array_length(attachments) \u003e 0 then volume_id || ' has attachments.'\n    else volume_id || ' has no attachments.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_volume;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ebs_volume",
+  "ListOfTables": [
+    "aws_ebs_volume"
+  ]
+}
