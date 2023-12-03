@@ -1,0 +1,10 @@
+{
+  "ID": "aws_autoscaling_launch_config_public_ip_disabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  launch_configuration_arn as resource,\n  case\n    when associate_public_ip_address then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when associate_public_ip_address then title || ' public IP enabled.'\n    else title || ' public IP disabled.'\n  end as reason\n  , region, account_id\nfrom\n  aws_ec2_launch_configuration;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ec2_launch_configuration",
+  "ListOfTables": [
+    "aws_ec2_launch_configuration"
+  ]
+}

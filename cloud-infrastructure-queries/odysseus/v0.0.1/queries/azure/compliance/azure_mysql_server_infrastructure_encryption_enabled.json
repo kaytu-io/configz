@@ -1,0 +1,11 @@
+{
+  "ID": "azure_mysql_server_infrastructure_encryption_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  s.id as resource,\n  case\n    when infrastructure_encryption = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when infrastructure_encryption = 'Enabled' then s.name || ' infrastructure encryption enabled.'\n    else s.name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mysql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_mysql_server",
+  "ListOfTables": [
+    "azure_mysql_server",
+    "azure_subscription"
+  ]
+}

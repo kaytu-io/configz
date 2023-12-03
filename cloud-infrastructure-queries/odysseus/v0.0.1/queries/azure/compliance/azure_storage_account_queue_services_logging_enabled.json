@@ -1,0 +1,11 @@
+{
+  "ID": "azure_storage_account_queue_services_logging_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  sa.id as resource,\n  case\n    when queue_logging_read and queue_logging_write and queue_logging_delete then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when queue_logging_read and queue_logging_write and queue_logging_delete\n      then sa.name || ' queue service logging enabled for read, write, delete requests.'\n    else sa.name || ' queue service logging not enabled for: ' ||\n      concat_ws(', ',\n        case when not queue_logging_write then 'write' end,\n        case when not queue_logging_read then 'read' end,\n        case when not queue_logging_delete then 'delete' end\n      ) || ' requests.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subscription"
+  ]
+}

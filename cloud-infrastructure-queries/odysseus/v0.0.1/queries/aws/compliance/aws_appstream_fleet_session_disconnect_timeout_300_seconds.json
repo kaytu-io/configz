@@ -1,0 +1,10 @@
+{
+  "ID": "aws_appstream_fleet_session_disconnect_timeout_300_seconds",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  arn as resource,\n  case\n    when disconnect_timeout_in_seconds \u003c= 300 then 'ok'\n    else 'alarm'\n  end as status,\n  title || ' disconnect timeout in seconds is set to ' || disconnect_timeout_in_seconds || ' seconds.' as reason\n  \n  , region, account_id\nfrom\n  aws_appstream_fleet;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_appstream_fleet",
+  "ListOfTables": [
+    "aws_appstream_fleet"
+  ]
+}

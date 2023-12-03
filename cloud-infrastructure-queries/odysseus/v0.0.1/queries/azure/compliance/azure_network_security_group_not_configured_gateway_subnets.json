@@ -1,0 +1,11 @@
+{
+  "ID": "azure_network_security_group_not_configured_gateway_subnets",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  subnet.id resource,\n  case\n    when subnet.name = 'GatewaySubnet' and network_security_group_id is not null then 'alarm'\n    when subnet.name = 'GatewaySubnet' and network_security_group_id is null then 'ok'\n    else 'skip'\n  end as status,\n  case\n    when subnet.name = 'GatewaySubnet' and network_security_group_id is not null then 'Gateway subnet configured with network security group.'\n    when subnet.name = 'GatewaySubnet' and network_security_group_id is null then 'Gateway subnet not configured with network security group.'\n    else subnet.name || ' not of gateway subnet type.'\n  end as reason\n  , subnet.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_subnet as subnet\n  join azure_subscription as sub on sub.subscription_id = subnet.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_subnet",
+  "ListOfTables": [
+    "azure_subnet",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "azure_search_service_uses_managed_identity",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  s.id as resource,\n  case\n    when identity -\u003e\u003e 'type' = 'SystemAssigned' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when identity -\u003e\u003e 'type' = 'SystemAssigned' then name || ' use managed identity.'\n    else name || ' not use managed identity.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_search_service as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_search_service",
+  "ListOfTables": [
+    "azure_search_service",
+    "azure_subscription"
+  ]
+}

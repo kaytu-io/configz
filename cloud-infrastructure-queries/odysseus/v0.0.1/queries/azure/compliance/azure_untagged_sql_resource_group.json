@@ -1,0 +1,10 @@
+{
+  "ID": "azure_untagged_sql_resource_group",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "    select\n      id as resource,\n      case\n        when tags is not null or tags::text \u003c\u003e '{}' then 'ok'\n        else 'alarm'\n      end as status,\n      case\n        when tags is not null or tags::text \u003c\u003e '{}' then title || ' has tags.'\n        else title || ' has no tags.'\n      end as reason,\n      resource_group, subscription_id\n    from\n      azure_stream_analytics_job;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_stream_analytics_job",
+  "ListOfTables": [
+    "azure_stream_analytics_job"
+  ]
+}

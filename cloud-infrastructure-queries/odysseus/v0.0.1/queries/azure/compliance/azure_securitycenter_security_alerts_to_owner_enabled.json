@@ -1,0 +1,11 @@
+{
+  "ID": "azure_securitycenter_security_alerts_to_owner_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with contact_info as (\n  select\n    count(*) filter (where alerts_to_admins = 'On') as admin_alert_count,\n    subscription_id\n  from\n    azure_security_center_contact\n  group by\n    subscription_id\n  limit 1\n)\nselect\n  sub.subscription_id as resource,\n  case\n    when admin_alert_count \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when admin_alert_count \u003e 0 then '\"All users with the following roles\" set to Owner'\n    else '\"All users with the following roles\" not set to Owner.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_subscription sub\n  left join contact_info ci on sub.subscription_id = ci.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_security_center_contact",
+  "ListOfTables": [
+    "azure_security_center_contact",
+    "azure_subscription"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ID": "azure_storage_account_blob_service_logging_enabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  sa.id as resource,\n  case\n    when not (sa.blob_service_logging -\u003e\u003e 'Read') :: boolean\n    or not (sa.blob_service_logging -\u003e\u003e 'Write') :: boolean\n    or not (sa.blob_service_logging -\u003e\u003e 'Delete') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (sa.blob_service_logging -\u003e\u003e 'Read') :: boolean\n    or not (sa.blob_service_logging -\u003e\u003e 'Write') :: boolean\n    or not (sa.blob_service_logging -\u003e\u003e 'Delete') :: boolean then name || ' blob service logging not enabled for ' ||\n      concat_ws(', ',\n        case when not (sa.blob_service_logging -\u003e\u003e 'Write') :: boolean then 'write' end,\n        case when not (sa.blob_service_logging -\u003e\u003e 'Read') :: boolean then 'read' end,\n        case when not (sa.blob_service_logging -\u003e\u003e 'Delete') :: boolean then 'delete' end\n      ) || ' requests.'\n    else name || ' blob service logging enabled for read, write, delete requests.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subscription"
+  ]
+}

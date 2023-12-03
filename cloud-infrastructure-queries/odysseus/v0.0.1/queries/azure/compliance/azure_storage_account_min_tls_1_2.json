@@ -1,0 +1,11 @@
+{
+  "ID": "azure_storage_account_min_tls_1_2",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  sa.id as resource,\n  case\n    when minimum_tls_version = 'TLSEnforcementDisabled' then 'alarm'\n    when minimum_tls_version = 'TLS1_2' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when minimum_tls_version = 'TLSEnforcementDisabled' then sa.name || ' TLS enforcement is disabled.'\n    when minimum_tls_version = 'TLS1_2' then sa.name || ' minimum TLS version set to ' || minimum_tls_version || '.'\n    else sa.name || ' minimum TLS version set to ' || minimum_tls_version || '.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_storage_account",
+  "ListOfTables": [
+    "azure_storage_account",
+    "azure_subscription"
+  ]
+}

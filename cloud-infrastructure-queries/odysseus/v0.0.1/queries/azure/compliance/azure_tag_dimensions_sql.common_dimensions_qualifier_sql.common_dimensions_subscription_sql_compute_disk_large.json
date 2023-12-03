@@ -1,0 +1,11 @@
+{
+  "ID": "azure_tag_dimensions_sql.common_dimensions_qualifier_sql.common_dimensions_subscription_sql_compute_disk_large",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  disk.unique_id as resource,\n  case\n    when disk_size_gb \u003c= $1 then 'ok'\n    else 'alarm'\n  end as status,\n  disk.title || ' is ' || disk_size_gb || ' GB.' as reason\n  \n  , disk.resource_group\n  , display_name as subscription\nfrom\n  azure_compute_disk as disk,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = disk.subscription_id;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_compute_disk",
+  "ListOfTables": [
+    "azure_compute_disk",
+    "azure_subscription"
+  ]
+}

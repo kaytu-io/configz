@@ -1,0 +1,10 @@
+{
+  "ID": "azure_manual_control_hipaa",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  id as resource,\n  'info' as status,\n  'Manual verification required. Check control description for more details.' as reason,\n  display_name as subscription\nfrom\n  azure_subscription;\n",
+  "Connector": "Azure",
+  "PrimaryTable": "azure_subscription",
+  "ListOfTables": [
+    "azure_subscription"
+  ]
+}

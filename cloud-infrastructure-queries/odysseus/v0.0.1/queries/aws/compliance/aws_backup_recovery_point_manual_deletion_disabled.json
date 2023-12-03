@@ -1,0 +1,10 @@
+{
+  "ID": "aws_backup_recovery_point_manual_deletion_disabled",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "with recovery_point_manual_deletion_disabled as (\n  select\n    arn\n  from\n    aws_backup_vault,\n    jsonb_array_elements(policy -\u003e 'Statement') as s\n  where\n    s -\u003e\u003e 'Effect' = 'Deny' and\n    s -\u003e 'Action' @\u003e '[\"backup:DeleteRecoveryPoint\",\"backup:UpdateRecoveryPointLifecycle\",\"backup:PutBackupVaultAccessPolicy\"]'\n    and s -\u003e\u003e 'Resource' = '*'\n  group by\n    arn\n)\nselect\n  v.arn as resource,\n  case\n    when d.arn is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when d.arn is not null then v.title || ' recovery point manual deletion disabled.'\n    else v.title || ' recovery point manual deletion not disabled.'\n  end as reason\n  , v.region, v.account_id\nfrom\n  aws_backup_vault as v\n  left join recovery_point_manual_deletion_disabled as d on v.arn = d.arn;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_backup_vault",
+  "ListOfTables": [
+    "aws_backup_vault"
+  ]
+}

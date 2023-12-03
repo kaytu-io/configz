@@ -1,0 +1,11 @@
+{
+  "ID": "aws_tag_dimensions_qualifier_sql.common_dimensions_qualifier_sql_ecs_cluster_container_instance_with_graviton",
+  "Engine": "odysseus-v0.0.1",
+  "QueryToExecute": "select\n  c.arn as resource,\n  case\n    when i.platform = 'windows' then 'skip'\n    when i.architecture = 'arm64' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when i.platform = 'windows' then i.title || ' is windows type machine.'\n    when i.architecture = 'arm64' then i.title || ' is using Graviton2 processor.'\n    else i.title || ' is not using Graviton2 processor.'\n  end as reason\n  \n  , c.region, c.account_id\nfrom\n  aws_ecs_container_instance as c\n  left join aws_ec2_instance as i on c.ec2_instance_id = i.instance_id;\n",
+  "Connector": "AWS",
+  "PrimaryTable": "aws_ecs_container_instance",
+  "ListOfTables": [
+    "aws_ec2_instance",
+    "aws_ecs_container_instance"
+  ]
+}
