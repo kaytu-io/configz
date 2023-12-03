@@ -6,7 +6,7 @@
     "QueryID": "aws_iam_user_mfa_enabled",
     "DocumentURI": "policies/aws_iam_user_mfa_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -81,7 +81,7 @@
     "QueryID": "aws_iam_root_user_mfa_enabled",
     "DocumentURI": "policies/aws_iam_root_user_mfa_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -156,7 +156,7 @@
     "QueryID": "aws_ec2_instance_ebs_optimized",
     "DocumentURI": "policies/aws_ec2_instance_ebs_optimized.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -228,7 +228,7 @@
     "QueryID": "aws_s3_bucket_versioning_enabled",
     "DocumentURI": "policies/aws_s3_bucket_versioning_enabled.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -309,7 +309,7 @@
     "QueryID": "aws_rds_db_snapshot_encrypted_at_rest",
     "DocumentURI": "policies/aws_rds_db_snapshot_encrypted_at_rest.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -384,7 +384,7 @@
     "QueryID": "aws_iam_user_console_access_mfa_enabled",
     "DocumentURI": "policies/aws_iam_user_console_access_mfa_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -462,7 +462,7 @@
     "QueryID": "aws_s3_bucket_restrict_public_read_access",
     "DocumentURI": "policies/aws_s3_bucket_restrict_public_read_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -540,7 +540,7 @@
     "QueryID": "aws_s3_bucket_restrict_public_write_access",
     "DocumentURI": "policies/aws_s3_bucket_restrict_public_write_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -618,7 +618,7 @@
     "QueryID": "aws_rds_db_instance_prohibit_public_access",
     "DocumentURI": "policies/aws_rds_db_instance_prohibit_public_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -696,7 +696,7 @@
     "QueryID": "aws_ebs_attached_volume_encryption_enabled",
     "DocumentURI": "policies/aws_ebs_attached_volume_encryption_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -774,7 +774,7 @@
     "QueryID": "aws_rds_db_snapshot_prohibit_public_access",
     "DocumentURI": "policies/aws_rds_db_snapshot_prohibit_public_access.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -852,7 +852,7 @@
     "QueryID": "aws_vpc_security_group_restrict_ingress_ssh_all",
     "DocumentURI": "policies/aws_vpc_security_group_restrict_ingress_ssh_all.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -930,7 +930,7 @@
     "QueryID": "aws_ebs_attached_volume_delete_on_termination_enabled",
     "DocumentURI": "policies/aws_ebs_attached_volume_delete_on_termination_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -972,7 +972,7 @@
     "QueryID": "aws_vpc_security_group_restrict_ingress_common_ports_all",
     "DocumentURI": "policies/aws_vpc_security_group_restrict_ingress_common_ports_all.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"

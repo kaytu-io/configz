@@ -6,7 +6,7 @@
     "QueryID": null,
     "DocumentURI": "policies/aws_cis_v150_1_1.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -54,7 +54,7 @@
     "QueryID": "aws_account_alternate_contact_security_registered",
     "DocumentURI": "policies/aws_cis_v150_1_2.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -102,7 +102,7 @@
     "QueryID": "aws_cloudtrail_multi_region_read_write_enabled",
     "DocumentURI": "policies/aws_cis_v150_3_1.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -150,7 +150,7 @@
     "QueryID": null,
     "DocumentURI": "policies/aws_cis_v150_1_3.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -198,7 +198,7 @@
     "QueryID": "aws_cloudtrail_trail_validation_enabled",
     "DocumentURI": "policies/aws_cis_v150_3_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -246,7 +246,7 @@
     "QueryID": "aws_iam_root_user_no_access_keys",
     "DocumentURI": "policies/aws_cis_v150_1_4.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -294,7 +294,7 @@
     "QueryID": "aws_log_metric_filter_unauthorized_api",
     "DocumentURI": "policies/aws_cis_v150_4_1.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -342,7 +342,7 @@
     "QueryID": "aws_vpc_network_acl_remote_administration",
     "DocumentURI": "policies/aws_cis_v150_5_1.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -390,7 +390,7 @@
     "QueryID": "aws_iam_root_user_mfa_enabled",
     "DocumentURI": "policies/aws_cis_v150_1_5.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -438,7 +438,7 @@
     "QueryID": "aws_cloudtrail_bucket_not_public",
     "DocumentURI": "policies/aws_cis_v150_3_3.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -486,7 +486,7 @@
     "QueryID": "aws_log_metric_filter_console_login_mfa",
     "DocumentURI": "policies/aws_cis_v150_4_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -534,7 +534,7 @@
     "QueryID": "aws_iam_root_user_hardware_mfa_enabled",
     "DocumentURI": "policies/aws_cis_v150_1_6.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -582,7 +582,7 @@
     "QueryID": "aws_cloudtrail_trail_integrated_with_logs",
     "DocumentURI": "policies/aws_cis_v150_3_4.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -630,7 +630,7 @@
     "QueryID": "aws_vpc_security_group_remote_administration_ipv4",
     "DocumentURI": "policies/aws_cis_v150_5_2.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -678,7 +678,7 @@
     "QueryID": "aws_log_metric_filter_root_login",
     "DocumentURI": "policies/aws_cis_v150_4_3.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -726,7 +726,7 @@
     "QueryID": "aws_log_metric_filter_iam_policy",
     "DocumentURI": "policies/aws_cis_v150_4_4.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -774,7 +774,7 @@
     "QueryID": "aws_iam_root_last_used",
     "DocumentURI": "policies/aws_cis_v150_1_7.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -822,7 +822,7 @@
     "QueryID": "aws_config_enabled_all_regions",
     "DocumentURI": "policies/aws_cis_v150_3_5.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -870,7 +870,7 @@
     "QueryID": "aws_vpc_security_group_remote_administration_ipv6",
     "DocumentURI": "policies/aws_cis_v150_5_3.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -918,7 +918,7 @@
     "QueryID": "aws_iam_account_password_policy_min_length_14",
     "DocumentURI": "policies/aws_cis_v150_1_8.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -966,7 +966,7 @@
     "QueryID": "aws_vpc_default_security_group_restricts_all_traffic",
     "DocumentURI": "policies/aws_cis_v150_5_4.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -1014,7 +1014,7 @@
     "QueryID": "aws_log_metric_filter_cloudtrail_configuration",
     "DocumentURI": "policies/aws_cis_v150_4_5.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1062,7 +1062,7 @@
     "QueryID": "aws_cloudtrail_s3_logging_enabled",
     "DocumentURI": "policies/aws_cis_v150_3_6.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1110,7 +1110,7 @@
     "QueryID": null,
     "DocumentURI": "policies/aws_cis_v150_5_5.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1158,7 +1158,7 @@
     "QueryID": "aws_log_metric_filter_console_authentication_failure",
     "DocumentURI": "policies/aws_cis_v150_4_6.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1206,7 +1206,7 @@
     "QueryID": "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
     "DocumentURI": "policies/aws_cis_v150_3_7.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1254,7 +1254,7 @@
     "QueryID": "aws_iam_account_password_policy_reuse_24",
     "DocumentURI": "policies/aws_cis_v150_1_9.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1302,7 +1302,7 @@
     "QueryID": "aws_log_metric_filter_disable_or_delete_cmk",
     "DocumentURI": "policies/aws_cis_v150_4_7.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1350,7 +1350,7 @@
     "QueryID": "aws_kms_cmk_rotation_enabled",
     "DocumentURI": "policies/aws_cis_v150_3_8.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1398,7 +1398,7 @@
     "QueryID": "aws_vpc_flow_logs_enabled",
     "DocumentURI": "policies/aws_cis_v150_3_9.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1446,7 +1446,7 @@
     "QueryID": "aws_log_metric_filter_bucket_policy",
     "DocumentURI": "policies/aws_cis_v150_4_8.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1494,7 +1494,7 @@
     "QueryID": "aws_log_metric_filter_config_configuration",
     "DocumentURI": "policies/aws_cis_v150_4_9.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1542,7 +1542,7 @@
     "QueryID": "aws_iam_user_console_access_mfa_enabled",
     "DocumentURI": "policies/aws_cis_v150_1_10.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -1590,7 +1590,7 @@
     "QueryID": "aws_iam_user_access_keys_and_password_at_setup",
     "DocumentURI": "policies/aws_cis_v150_1_11.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -1638,7 +1638,7 @@
     "QueryID": "aws_iam_access_analyzer_enabled",
     "DocumentURI": "policies/aws_cis_v150_1_20.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1686,7 +1686,7 @@
     "QueryID": "aws_iam_user_unused_credentials_45",
     "DocumentURI": "policies/aws_cis_v150_1_12.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1734,7 +1734,7 @@
     "QueryID": null,
     "DocumentURI": "policies/aws_cis_v150_1_21.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1782,7 +1782,7 @@
     "QueryID": "aws_cloudtrail_s3_object_write_events_audit_enabled",
     "DocumentURI": "policies/aws_cis_v150_3_10.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1830,7 +1830,7 @@
     "QueryID": "aws_iam_user_one_active_key",
     "DocumentURI": "policies/aws_cis_v150_1_13.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1878,7 +1878,7 @@
     "QueryID": "aws_cloudtrail_s3_object_read_events_audit_enabled",
     "DocumentURI": "policies/aws_cis_v150_3_11.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1926,7 +1926,7 @@
     "QueryID": "aws_log_metric_filter_security_group",
     "DocumentURI": "policies/aws_cis_v150_4_10.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1974,7 +1974,7 @@
     "QueryID": "aws_iam_user_access_key_age_90",
     "DocumentURI": "policies/aws_cis_v150_1_14.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2022,7 +2022,7 @@
     "QueryID": "aws_log_metric_filter_network_acl",
     "DocumentURI": "policies/aws_cis_v150_4_11.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2070,7 +2070,7 @@
     "QueryID": "aws_iam_user_no_inline_attached_policies",
     "DocumentURI": "policies/aws_cis_v150_1_15.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2118,7 +2118,7 @@
     "QueryID": "aws_log_metric_filter_network_gateway",
     "DocumentURI": "policies/aws_cis_v150_4_12.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2166,7 +2166,7 @@
     "QueryID": "aws_log_metric_filter_route_table",
     "DocumentURI": "policies/aws_cis_v150_4_13.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2214,7 +2214,7 @@
     "QueryID": "aws_iam_policy_all_attached_no_star_star",
     "DocumentURI": "policies/aws_cis_v150_1_16.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2262,7 +2262,7 @@
     "QueryID": "aws_iam_support_role",
     "DocumentURI": "policies/aws_cis_v150_1_17.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2310,7 +2310,7 @@
     "QueryID": "aws_log_metric_filter_vpc",
     "DocumentURI": "policies/aws_cis_v150_4_14.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2358,7 +2358,7 @@
     "QueryID": "aws_log_metric_filter_organization",
     "DocumentURI": "policies/aws_cis_v150_4_15.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2406,7 +2406,7 @@
     "QueryID": null,
     "DocumentURI": "policies/aws_cis_v150_1_18.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2454,7 +2454,7 @@
     "QueryID": "aws_iam_server_certificate_not_expired",
     "DocumentURI": "policies/aws_cis_v150_1_19.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2502,7 +2502,7 @@
     "QueryID": "aws_securityhub_enabled",
     "DocumentURI": "policies/aws_cis_v150_4_16.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2550,7 +2550,7 @@
     "QueryID": "aws_s3_bucket_default_encryption_enabled",
     "DocumentURI": "policies/aws_cis_v150_2_1_1.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -2598,7 +2598,7 @@
     "QueryID": "aws_ebs_volume_encryption_at_rest_enabled",
     "DocumentURI": "policies/aws_cis_v150_2_2_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2646,7 +2646,7 @@
     "QueryID": "aws_s3_bucket_enforces_ssl",
     "DocumentURI": "policies/aws_cis_v150_2_1_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2694,7 +2694,7 @@
     "QueryID": "aws_s3_bucket_mfa_delete_enabled",
     "DocumentURI": "policies/aws_cis_v150_2_1_3.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2742,7 +2742,7 @@
     "QueryID": "aws_rds_db_instance_encryption_at_rest_enabled",
     "DocumentURI": "policies/aws_cis_v150_2_3_1.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -2790,7 +2790,7 @@
     "QueryID": "aws_rds_db_instance_automatic_minor_version_upgrade_enabled",
     "DocumentURI": "policies/aws_cis_v150_2_3_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2838,7 +2838,7 @@
     "QueryID": "aws_efs_file_system_encrypt_data_at_rest",
     "DocumentURI": "policies/aws_cis_v150_2_4_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2886,7 +2886,7 @@
     "QueryID": "aws_s3_bucket_protected_by_macie",
     "DocumentURI": "policies/aws_cis_v150_2_1_4.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2934,7 +2934,7 @@
     "QueryID": "aws_s3_public_access_block_bucket_account",
     "DocumentURI": "policies/aws_cis_v150_2_1_5.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2982,7 +2982,7 @@
     "QueryID": "aws_rds_db_instance_prohibit_public_access",
     "DocumentURI": "policies/aws_cis_v150_2_3_3.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"

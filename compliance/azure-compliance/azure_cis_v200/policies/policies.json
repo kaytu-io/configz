@@ -6,7 +6,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_3.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -45,7 +45,7 @@
     "QueryID": "azure_storage_account_secure_transfer_required_enabled",
     "DocumentURI": "policies/azure_cis_v200_3_1.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -84,7 +84,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_4.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -123,7 +123,7 @@
     "QueryID": "azure_storage_account_infrastructure_encryption_enabled",
     "DocumentURI": "policies/azure_cis_v200_3_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -162,7 +162,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_3_3.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -201,7 +201,7 @@
     "QueryID": "azure_ad_guest_user_reviewed_monthly",
     "DocumentURI": "policies/azure_cis_v200_1_5.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -240,7 +240,7 @@
     "QueryID": "azure_network_security_group_rdp_access_restricted",
     "DocumentURI": "policies/azure_cis_v200_6_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -279,7 +279,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_6.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -318,7 +318,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_3_4.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -357,7 +357,7 @@
     "QueryID": "azure_storage_account_queue_services_logging_enabled",
     "DocumentURI": "policies/azure_cis_v200_3_5.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -396,7 +396,7 @@
     "QueryID": "azure_network_security_group_ssh_access_restricted",
     "DocumentURI": "policies/azure_cis_v200_6_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -435,7 +435,7 @@
     "QueryID": "azure_network_bastion_host_min_1",
     "DocumentURI": "policies/azure_cis_v200_7_1.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -474,7 +474,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_7.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -513,7 +513,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_5_4.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -552,7 +552,7 @@
     "QueryID": "azure_keyvault_with_rbac_key_expiration_set",
     "DocumentURI": "policies/azure_cis_v200_8_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -591,7 +591,7 @@
     "QueryID": "azure_compute_vm_utilizing_managed_disk",
     "DocumentURI": "policies/azure_cis_v200_7_2.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -630,7 +630,7 @@
     "QueryID": "azure_network_security_group_udp_service_restricted",
     "DocumentURI": "policies/azure_cis_v200_6_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -669,7 +669,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_3_6.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -708,7 +708,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_8.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -747,7 +747,7 @@
     "QueryID": "azure_keyvault_with_non_rbac_key_expiration_set",
     "DocumentURI": "policies/azure_cis_v200_8_2.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -786,7 +786,7 @@
     "QueryID": "azure_storage_account_blob_containers_public_access_private",
     "DocumentURI": "policies/azure_cis_v200_3_7.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -825,7 +825,7 @@
     "QueryID": "azure_network_security_group_https_access_restricted",
     "DocumentURI": "policies/azure_cis_v200_6_4.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -864,7 +864,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_9.md",
     "ManualVerification": true,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -903,7 +903,7 @@
     "QueryID": "azure_compute_os_and_data_disk_encrypted_with_cmk",
     "DocumentURI": "policies/azure_cis_v200_7_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -942,7 +942,7 @@
     "QueryID": "azure_appservice_authentication_enabled",
     "DocumentURI": "policies/azure_cis_v200_9_1.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -981,7 +981,7 @@
     "QueryID": "azure_keyvault_with_rbac_secret_expiration_set",
     "DocumentURI": "policies/azure_cis_v200_8_3.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1020,7 +1020,7 @@
     "QueryID": "azure_storage_account_default_network_access_rule_denied",
     "DocumentURI": "policies/azure_cis_v200_3_8.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1059,7 +1059,7 @@
     "QueryID": "azure_network_sg_flowlog_retention_period_greater_than_90",
     "DocumentURI": "policies/azure_cis_v200_6_5.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -1098,7 +1098,7 @@
     "QueryID": "azure_compute_unattached_disk_encrypted_with_cmk",
     "DocumentURI": "policies/azure_cis_v200_7_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1137,7 +1137,7 @@
     "QueryID": "azure_appservice_web_app_use_https",
     "DocumentURI": "policies/azure_cis_v200_9_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1176,7 +1176,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_7_5.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1215,7 +1215,7 @@
     "QueryID": "azure_storage_account_trusted_microsoft_services_enabled",
     "DocumentURI": "policies/azure_cis_v200_3_9.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -1254,7 +1254,7 @@
     "QueryID": "azure_network_watcher_enabled",
     "DocumentURI": "policies/azure_cis_v200_6_6.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1293,7 +1293,7 @@
     "QueryID": "azure_appservice_web_app_latest_tls_version",
     "DocumentURI": "policies/azure_cis_v200_9_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1332,7 +1332,7 @@
     "QueryID": "azure_keyvault_with_non_rbac_secret_expiration_set",
     "DocumentURI": "policies/azure_cis_v200_8_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1371,7 +1371,7 @@
     "QueryID": "azure_keyvault_vault_recoverable",
     "DocumentURI": "policies/azure_cis_v200_8_5.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1410,7 +1410,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_7_6.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1449,7 +1449,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_6_7.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1488,7 +1488,7 @@
     "QueryID": "azure_appservice_web_app_incoming_client_cert_on",
     "DocumentURI": "policies/azure_cis_v200_9_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1527,7 +1527,7 @@
     "QueryID": "azure_appservice_web_app_register_with_active_directory_enabled",
     "DocumentURI": "policies/azure_cis_v200_9_5.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1566,7 +1566,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_7_7.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1605,7 +1605,7 @@
     "QueryID": "azure_keyvault_rbac_enabled",
     "DocumentURI": "policies/azure_cis_v200_8_6.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1644,7 +1644,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_9_6.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1683,7 +1683,7 @@
     "QueryID": "azure_keyvault_vault_private_link_used",
     "DocumentURI": "policies/azure_cis_v200_8_7.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1722,7 +1722,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_9_7.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1761,7 +1761,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_8_8.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1800,7 +1800,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_9_8.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1839,7 +1839,7 @@
     "QueryID": "azure_appservice_web_app_latest_http_version",
     "DocumentURI": "policies/azure_cis_v200_9_9.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -1878,7 +1878,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_10_1.md",
     "ManualVerification": true,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -1917,7 +1917,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_10.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1956,7 +1956,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_11.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1995,7 +1995,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_20.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2034,7 +2034,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_21.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2073,7 +2073,7 @@
     "QueryID": "azure_storage_account_uses_private_link",
     "DocumentURI": "policies/azure_cis_v200_3_10.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2112,7 +2112,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_12.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2151,7 +2151,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_13.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2190,7 +2190,7 @@
     "QueryID": "azure_storage_account_soft_delete_enabled",
     "DocumentURI": "policies/azure_cis_v200_3_11.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2229,7 +2229,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_22.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2268,7 +2268,7 @@
     "QueryID": "azure_iam_no_custom_subscription_owner_roles_created",
     "DocumentURI": "policies/azure_cis_v200_1_23.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2307,7 +2307,7 @@
     "QueryID": "azure_iam_user_not_allowed_to_register_application",
     "DocumentURI": "policies/azure_cis_v200_1_14.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2346,7 +2346,7 @@
     "QueryID": "azure_storage_account_encryption_at_rest_using_cmk",
     "DocumentURI": "policies/azure_cis_v200_3_12.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2385,7 +2385,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_15.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2424,7 +2424,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_24.md",
     "ManualVerification": true,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -2463,7 +2463,7 @@
     "QueryID": "azure_storage_account_blob_service_logging_enabled",
     "DocumentURI": "policies/azure_cis_v200_3_13.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2502,7 +2502,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_25.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2541,7 +2541,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_16.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2580,7 +2580,7 @@
     "QueryID": "azure_storage_account_table_service_logging_enabled",
     "DocumentURI": "policies/azure_cis_v200_3_14.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2619,7 +2619,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_17.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2658,7 +2658,7 @@
     "QueryID": "azure_storage_account_min_tls_1_2",
     "DocumentURI": "policies/azure_cis_v200_3_15.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2697,7 +2697,7 @@
     "QueryID": "azure_appservice_ftp_deployment_disabled",
     "DocumentURI": "policies/azure_cis_v200_9_10.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2736,7 +2736,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_18.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2775,7 +2775,7 @@
     "QueryID": "azure_iam_user_not_allowed_to_create_security_group",
     "DocumentURI": "policies/azure_cis_v200_1_19.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2814,7 +2814,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_9_11.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2853,7 +2853,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_1_1.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2892,7 +2892,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_2_1.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2931,7 +2931,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_server",
     "DocumentURI": "policies/azure_cis_v200_2_1_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2970,7 +2970,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_1_2.md",
     "ManualVerification": true,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3009,7 +3009,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_2_2_1.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3048,7 +3048,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_appservice",
     "DocumentURI": "policies/azure_cis_v200_2_1_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3087,7 +3087,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_2_2.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -3126,7 +3126,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_1_3.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3165,7 +3165,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_1_4.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -3204,7 +3204,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_2_3.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3243,7 +3243,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_database",
     "DocumentURI": "policies/azure_cis_v200_2_1_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3282,7 +3282,7 @@
     "QueryID": "azure_sql_server_auditing_on",
     "DocumentURI": "policies/azure_cis_v200_4_1_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3321,7 +3321,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_2_4.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3360,7 +3360,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_5_1_1.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -3399,7 +3399,7 @@
     "QueryID": "azure_sql_server_atp_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_2_1.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3438,7 +3438,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_sqldb",
     "DocumentURI": "policies/azure_cis_v200_2_1_4.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3477,7 +3477,7 @@
     "QueryID": "azure_sql_database_allow_internet_access",
     "DocumentURI": "policies/azure_cis_v200_4_1_2.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3516,7 +3516,7 @@
     "QueryID": "azure_monitor_diagnostic_settings_captures_proper_categories",
     "DocumentURI": "policies/azure_cis_v200_5_1_2.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -3555,7 +3555,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_1_2_5.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3594,7 +3594,7 @@
     "QueryID": "azure_sql_server_tde_protector_cmk_encrypted",
     "DocumentURI": "policies/azure_cis_v200_4_1_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3633,7 +3633,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_sqlservervm",
     "DocumentURI": "policies/azure_cis_v200_2_1_5.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3672,7 +3672,7 @@
     "QueryID": "azure_postgres_sql_ssl_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_3_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3711,7 +3711,7 @@
     "QueryID": "azure_monitor_log_alert_create_policy_assignment",
     "DocumentURI": "policies/azure_cis_v200_5_2_1.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -3750,7 +3750,7 @@
     "QueryID": "azure_sql_server_and_databases_va_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_2_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3789,7 +3789,7 @@
     "QueryID": "azure_iam_conditional_access_mfa_enabled",
     "DocumentURI": "policies/azure_cis_v200_1_2_6.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3828,7 +3828,7 @@
     "QueryID": "azure_monitor_application_insights_configured",
     "DocumentURI": "policies/azure_cis_v200_5_3_1.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -3867,7 +3867,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_opensource_relational_db",
     "DocumentURI": "policies/azure_cis_v200_2_1_6.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3906,7 +3906,7 @@
     "QueryID": "azure_sql_server_va_setting_periodic_scan_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_2_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3945,7 +3945,7 @@
     "QueryID": "azure_monitor_log_alert_delete_policy_assignment",
     "DocumentURI": "policies/azure_cis_v200_5_2_2.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -3984,7 +3984,7 @@
     "QueryID": "azure_postgres_db_server_log_checkpoints_on",
     "DocumentURI": "policies/azure_cis_v200_4_3_2.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4023,7 +4023,7 @@
     "QueryID": "azure_mysql_ssl_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_4_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4062,7 +4062,7 @@
     "QueryID": "azure_monitor_logs_storage_container_not_public_accessible",
     "DocumentURI": "policies/azure_cis_v200_5_1_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4101,7 +4101,7 @@
     "QueryID": "azure_sql_db_active_directory_admin_configured",
     "DocumentURI": "policies/azure_cis_v200_4_1_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4140,7 +4140,7 @@
     "QueryID": "azure_cosmosdb_account_virtual_network_filter_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_5_1.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4179,7 +4179,7 @@
     "QueryID": "azure_sql_database_transparent_data_encryption_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_1_5.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4218,7 +4218,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_storage",
     "DocumentURI": "policies/azure_cis_v200_2_1_7.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4257,7 +4257,7 @@
     "QueryID": "azure_sql_server_va_setting_scan_reports_configured",
     "DocumentURI": "policies/azure_cis_v200_4_2_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4296,7 +4296,7 @@
     "QueryID": "azure_monitor_log_alert_create_update_nsg",
     "DocumentURI": "policies/azure_cis_v200_5_2_3.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4335,7 +4335,7 @@
     "QueryID": "azure_monitor_logs_storage_container_encryptes_with_byok",
     "DocumentURI": "policies/azure_cis_v200_5_1_4.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4374,7 +4374,7 @@
     "QueryID": "azure_mysql_server_min_tls_1_2",
     "DocumentURI": "policies/azure_cis_v200_4_4_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4413,7 +4413,7 @@
     "QueryID": "azure_postgres_db_server_log_connections_on",
     "DocumentURI": "policies/azure_cis_v200_4_3_3.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4452,7 +4452,7 @@
     "QueryID": "azure_cosmosdb_account_uses_private_link",
     "DocumentURI": "policies/azure_cis_v200_4_5_2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4491,7 +4491,7 @@
     "QueryID": "azure_sql_server_auditing_retention_period_90",
     "DocumentURI": "policies/azure_cis_v200_4_1_6.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4530,7 +4530,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_containerregistry",
     "DocumentURI": "policies/azure_cis_v200_2_1_8.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4569,7 +4569,7 @@
     "QueryID": "azure_monitor_log_alert_delete_nsg",
     "DocumentURI": "policies/azure_cis_v200_5_2_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4608,7 +4608,7 @@
     "QueryID": "azure_sql_server_va_setting_reports_notify_admins",
     "DocumentURI": "policies/azure_cis_v200_4_2_5.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4647,7 +4647,7 @@
     "QueryID": "azure_postgres_db_server_log_disconnections_on",
     "DocumentURI": "policies/azure_cis_v200_4_3_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4686,7 +4686,7 @@
     "QueryID": "azure_mysql_server_audit_logging_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_4_3.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4725,7 +4725,7 @@
     "QueryID": "azure_keyvault_logging_enabled",
     "DocumentURI": "policies/azure_cis_v200_5_1_5.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4764,7 +4764,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_cosmosdb",
     "DocumentURI": "policies/azure_cis_v200_2_1_9.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4803,7 +4803,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_4_5_3.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4842,7 +4842,7 @@
     "QueryID": "azure_monitor_log_alert_create_update_security_solution",
     "DocumentURI": "policies/azure_cis_v200_5_2_5.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4881,7 +4881,7 @@
     "QueryID": "azure_mysql_server_audit_logging_events_connection_set",
     "DocumentURI": "policies/azure_cis_v200_4_4_4.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4920,7 +4920,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_5_1_6.md",
     "ManualVerification": true,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4959,7 +4959,7 @@
     "QueryID": "azure_postgres_db_server_connection_throttling_on",
     "DocumentURI": "policies/azure_cis_v200_4_3_5.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4998,7 +4998,7 @@
     "QueryID": "azure_monitor_log_alert_delete_security_solution",
     "DocumentURI": "policies/azure_cis_v200_5_2_6.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5037,7 +5037,7 @@
     "QueryID": "azure_postgres_db_server_log_retention_days_3",
     "DocumentURI": "policies/azure_cis_v200_4_3_6.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5076,7 +5076,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_5_1_7.md",
     "ManualVerification": true,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -5115,7 +5115,7 @@
     "QueryID": "azure_monitor_log_alert_create_update_sql_servers_firewall_rule",
     "DocumentURI": "policies/azure_cis_v200_5_2_7.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5154,7 +5154,7 @@
     "QueryID": "azure_postgres_db_server_allow_access_to_azure_services_disabled",
     "DocumentURI": "policies/azure_cis_v200_4_3_7.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5193,7 +5193,7 @@
     "QueryID": "azure_monitor_log_alert_delete_sql_servers_firewall_rule",
     "DocumentURI": "policies/azure_cis_v200_5_2_8.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5232,7 +5232,7 @@
     "QueryID": "azure_postgresql_server_infrastructure_encryption_enabled",
     "DocumentURI": "policies/azure_cis_v200_4_3_8.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5271,7 +5271,7 @@
     "QueryID": "azure_monitor_log_alert_create_update_public_ip_address",
     "DocumentURI": "policies/azure_cis_v200_5_2_9.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5310,7 +5310,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_keyvault",
     "DocumentURI": "policies/azure_cis_v200_2_1_10.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5349,7 +5349,7 @@
     "QueryID": "azure_securitycenter_notify_alerts_configured",
     "DocumentURI": "policies/azure_cis_v200_2_1_20.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5388,7 +5388,7 @@
     "QueryID": "azure_securitycenter_azure_defender_on_for_dns",
     "DocumentURI": "policies/azure_cis_v200_2_1_11.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5427,7 +5427,7 @@
     "QueryID": "azure_securitycenter_mcas_integration",
     "DocumentURI": "policies/azure_cis_v200_2_1_21.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5466,7 +5466,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_2_1_12.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5505,7 +5505,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_2_1_13.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5544,7 +5544,7 @@
     "QueryID": "azure_securitycenter_wdatp_integration",
     "DocumentURI": "policies/azure_cis_v200_2_1_22.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5583,7 +5583,7 @@
     "QueryID": "azure_securitycenter_asc_default_setting_not_disabled",
     "DocumentURI": "policies/azure_cis_v200_2_1_14.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5622,7 +5622,7 @@
     "QueryID": "azure_monitor_log_alert_delete_public_ip_address",
     "DocumentURI": "policies/azure_cis_v200_5_2_10.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5661,7 +5661,7 @@
     "QueryID": "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
     "DocumentURI": "policies/azure_cis_v200_2_1_15.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5700,7 +5700,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_2_1_16.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5739,7 +5739,7 @@
     "QueryID": null,
     "DocumentURI": "policies/azure_cis_v200_2_1_17.md",
     "ManualVerification": true,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5778,7 +5778,7 @@
     "QueryID": "azure_securitycenter_security_alerts_to_owner_enabled",
     "DocumentURI": "policies/azure_cis_v200_2_1_18.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -5817,7 +5817,7 @@
     "QueryID": "azure_securitycenter_additional_email_configured",
     "DocumentURI": "policies/azure_cis_v200_2_1_19.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -5856,7 +5856,7 @@
     "QueryID": "azure_network_lb_no_basic_sku",
     "DocumentURI": "policies/azure_network_lb_no_basic_sku.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "cis": [
         "true"
@@ -5874,7 +5874,7 @@
     "QueryID": "azure_redis_cache_no_basic_sku",
     "DocumentURI": "policies/azure_redis_cache_no_basic_sku.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "cis": [
         "true"
@@ -5892,7 +5892,7 @@
     "QueryID": "azure_network_public_ip_no_basic_sku",
     "DocumentURI": "policies/azure_network_public_ip_no_basic_sku.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "cis": [
         "true"
@@ -5910,7 +5910,7 @@
     "QueryID": "azure_network_virtual_network_gateway_no_basic_sku",
     "DocumentURI": "policies/azure_network_virtual_network_gateway_no_basic_sku.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "cis": [
         "true"

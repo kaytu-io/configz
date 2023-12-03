@@ -6,7 +6,7 @@
     "QueryID": "aws_es_domain_in_vpc",
     "DocumentURI": "policies/aws_es_domain_in_vpc.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -81,7 +81,7 @@
     "QueryID": "aws_guardduty_enabled",
     "DocumentURI": "policies/aws_guardduty_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -156,7 +156,7 @@
     "QueryID": "aws_iam_user_in_group",
     "DocumentURI": "policies/aws_iam_user_in_group.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -222,7 +222,7 @@
     "QueryID": "aws_iam_policy_unused",
     "DocumentURI": "policies/aws_iam_policy_unused.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -264,7 +264,7 @@
     "QueryID": "aws_ebs_volume_unused",
     "DocumentURI": "policies/aws_ebs_volume_unused.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -321,7 +321,7 @@
     "QueryID": "aws_vpc_eip_associated",
     "DocumentURI": "policies/aws_vpc_eip_associated.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -372,7 +372,7 @@
     "QueryID": "aws_ec2_instance_in_vpc",
     "DocumentURI": "policies/aws_ec2_instance_in_vpc.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -447,7 +447,7 @@
     "QueryID": "aws_securityhub_enabled",
     "DocumentURI": "policies/aws_securityhub_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -522,7 +522,7 @@
     "QueryID": "aws_iam_group_not_empty",
     "DocumentURI": "policies/aws_iam_group_not_empty.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -585,7 +585,7 @@
     "QueryID": "aws_iam_user_mfa_enabled",
     "DocumentURI": "policies/aws_iam_user_mfa_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -660,7 +660,7 @@
     "QueryID": "aws_vpc_flow_logs_enabled",
     "DocumentURI": "policies/aws_vpc_flow_logs_enabled.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -738,7 +738,7 @@
     "QueryID": "aws_s3_bucket_enforces_ssl",
     "DocumentURI": "policies/aws_s3_bucket_enforces_ssl.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -816,7 +816,7 @@
     "QueryID": "aws_lambda_function_in_vpc",
     "DocumentURI": "policies/aws_lambda_function_in_vpc.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -891,7 +891,7 @@
     "QueryID": "aws_vpc_network_acl_unused",
     "DocumentURI": "policies/aws_vpc_network_acl_unused.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -930,7 +930,7 @@
     "QueryID": "aws_ec2_instance_uses_imdsv2",
     "DocumentURI": "policies/aws_ec2_instance_uses_imdsv2.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -984,7 +984,7 @@
     "QueryID": "aws_ec2_instance_ssm_managed",
     "DocumentURI": "policies/aws_ec2_instance_ssm_managed.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -1059,7 +1059,7 @@
     "QueryID": "aws_iam_policy_custom_no_star_star",
     "DocumentURI": "policies/aws_iam_policy_no_star_star.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -1137,7 +1137,7 @@
     "QueryID": "aws_cloudtrail_trail_enabled",
     "DocumentURI": "policies/aws_cloudtrail_trail_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -1215,7 +1215,7 @@
     "QueryID": "aws_kms_cmk_rotation_enabled",
     "DocumentURI": "policies/aws_kms_cmk_rotation_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1278,7 +1278,7 @@
     "QueryID": "aws_s3_bucket_logging_enabled",
     "DocumentURI": "policies/aws_s3_bucket_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -1353,7 +1353,7 @@
     "QueryID": "aws_iam_root_user_mfa_enabled",
     "DocumentURI": "policies/aws_iam_root_user_mfa_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -1428,7 +1428,7 @@
     "QueryID": "aws_ebs_volume_in_backup_plan",
     "DocumentURI": "policies/aws_ebs_volume_in_backup_plan.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -1500,7 +1500,7 @@
     "QueryID": "aws_ec2_instance_ebs_optimized",
     "DocumentURI": "policies/aws_ec2_instance_ebs_optimized.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -1572,7 +1572,7 @@
     "QueryID": "aws_ec2_stopped_instance_30_days",
     "DocumentURI": "policies/aws_ec2_stopped_instance_30_days.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1638,7 +1638,7 @@
     "QueryID": "aws_s3_bucket_versioning_enabled",
     "DocumentURI": "policies/aws_s3_bucket_versioning_enabled.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -1719,7 +1719,7 @@
     "QueryID": "aws_wafv2_web_acl_logging_enabled",
     "DocumentURI": "policies/aws_wafv2_web_acl_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1797,7 +1797,7 @@
     "QueryID": "aws_emr_cluster_kerberos_enabled",
     "DocumentURI": "policies/aws_emr_cluster_kerberos_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -1854,7 +1854,7 @@
     "QueryID": "aws_es_domain_logs_to_cloudwatch",
     "DocumentURI": "policies/aws_es_domain_logs_to_cloudwatch.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -1923,7 +1923,7 @@
     "QueryID": "aws_s3_public_access_block_bucket",
     "DocumentURI": "policies/aws_s3_public_access_block_bucket.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -1977,7 +1977,7 @@
     "QueryID": "aws_iam_root_user_no_access_keys",
     "DocumentURI": "policies/aws_iam_root_user_no_access_keys.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2055,7 +2055,7 @@
     "QueryID": "aws_dynamodb_table_in_backup_plan",
     "DocumentURI": "policies/aws_dynamodb_table_in_backup_plan.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2127,7 +2127,7 @@
     "QueryID": "aws_iam_user_unused_credentials_90",
     "DocumentURI": "policies/aws_iam_user_unused_credentials_90.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2202,7 +2202,7 @@
     "QueryID": "aws_s3_public_access_block_account",
     "DocumentURI": "policies/aws_s3_public_access_block_account.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -2274,7 +2274,7 @@
     "QueryID": "aws_account_part_of_organizations",
     "DocumentURI": "policies/aws_account_part_of_organizations.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2316,7 +2316,7 @@
     "QueryID": "aws_rds_db_instance_backup_enabled",
     "DocumentURI": "policies/aws_rds_db_instance_backup_enabled.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2394,7 +2394,7 @@
     "QueryID": "aws_rds_db_instance_in_backup_plan",
     "DocumentURI": "policies/aws_rds_db_instance_in_backup_plan.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2469,7 +2469,7 @@
     "QueryID": "aws_efs_file_system_automatic_backups_enabled",
     "DocumentURI": "policies/aws_efs_file_system_in_backup_plan.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2538,7 +2538,7 @@
     "QueryID": "aws_rds_db_instance_logging_enabled",
     "DocumentURI": "policies/aws_rds_db_instance_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2616,7 +2616,7 @@
     "QueryID": "aws_apigateway_stage_logging_enabled",
     "DocumentURI": "policies/aws_apigateway_stage_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2691,7 +2691,7 @@
     "QueryID": "aws_apigateway_stage_use_waf_web_acl",
     "DocumentURI": "policies/aws_apigateway_stage_use_waf_web_acl.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2751,7 +2751,7 @@
     "QueryID": "aws_ec2_instance_iam_profile_attached",
     "DocumentURI": "policies/aws_ec2_instance_iam_profile_attached.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2802,7 +2802,7 @@
     "QueryID": "aws_cloudtrail_s3_data_events_enabled",
     "DocumentURI": "policies/aws_cloudtrail_s3_data_events_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2883,7 +2883,7 @@
     "QueryID": "aws_codebuild_project_logging_enabled",
     "DocumentURI": "policies/aws_codebuild_project_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -2925,7 +2925,7 @@
     "QueryID": "aws_ec2_ebs_default_encryption_enabled",
     "DocumentURI": "policies/aws_ec2_ebs_default_encryption_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -2994,7 +2994,7 @@
     "QueryID": "aws_cloudtrail_security_trail_enabled",
     "DocumentURI": "policies/aws_cloudtrail_security_trail_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3048,7 +3048,7 @@
     "QueryID": "aws_iam_root_user_hardware_mfa_enabled",
     "DocumentURI": "policies/aws_iam_root_user_hardware_mfa_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3123,7 +3123,7 @@
     "QueryID": "aws_iam_user_console_access_mfa_enabled",
     "DocumentURI": "policies/aws_iam_user_console_access_mfa_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -3201,7 +3201,7 @@
     "QueryID": "aws_iam_managed_policy_attached_to_role",
     "DocumentURI": "policies/aws_iam_managed_policy_attached_to_role.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3243,7 +3243,7 @@
     "QueryID": "aws_iam_policy_custom_no_service_wildcard",
     "DocumentURI": "policies/aws_iam_all_policy_no_service_wild_card.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3306,7 +3306,7 @@
     "QueryID": "aws_cloudtrail_trail_validation_enabled",
     "DocumentURI": "policies/aws_cloudtrail_trail_validation_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3378,7 +3378,7 @@
     "QueryID": "aws_ec2_instance_not_publicly_accessible",
     "DocumentURI": "policies/aws_ec2_instance_not_publicly_accessible.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3453,7 +3453,7 @@
     "QueryID": "aws_s3_bucket_default_encryption_enabled",
     "DocumentURI": "policies/aws_s3_bucket_default_encryption_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3528,7 +3528,7 @@
     "QueryID": "aws_iam_user_no_inline_attached_policies",
     "DocumentURI": "policies/aws_iam_user_no_inline_attached_policies.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3606,7 +3606,7 @@
     "QueryID": "aws_s3_bucket_restrict_public_read_access",
     "DocumentURI": "policies/aws_s3_bucket_restrict_public_read_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -3684,7 +3684,7 @@
     "QueryID": "aws_vpc_security_group_associated_to_eni",
     "DocumentURI": "policies/aws_vpc_security_group_associated_to_eni.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -3723,7 +3723,7 @@
     "QueryID": "aws_ebs_snapshot_not_publicly_restorable",
     "DocumentURI": "policies/aws_ebs_snapshot_not_publicly_restorable.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3798,7 +3798,7 @@
     "QueryID": "aws_cloudtrail_multi_region_trail_enabled",
     "DocumentURI": "policies/aws_cloudtrail_multi_region_trail_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3876,7 +3876,7 @@
     "QueryID": "aws_ebs_volume_encryption_at_rest_enabled",
     "DocumentURI": "policies/aws_ebs_volume_encryption_at_rest_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -3921,7 +3921,7 @@
     "QueryID": "aws_emr_cluster_master_nodes_no_public_ip",
     "DocumentURI": "policies/aws_emr_cluster_master_nodes_no_public_ip.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -3996,7 +3996,7 @@
     "QueryID": "aws_cloudtrail_trail_integrated_with_logs",
     "DocumentURI": "policies/aws_cloudtrail_trail_integrated_with_logs.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -4074,7 +4074,7 @@
     "QueryID": "aws_s3_bucket_restrict_public_write_access",
     "DocumentURI": "policies/aws_s3_bucket_restrict_public_write_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -4152,7 +4152,7 @@
     "QueryID": "aws_rds_db_instance_prohibit_public_access",
     "DocumentURI": "policies/aws_rds_db_instance_prohibit_public_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -4230,7 +4230,7 @@
     "QueryID": "aws_lambda_function_restrict_public_access",
     "DocumentURI": "policies/aws_lambda_function_restrict_public_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -4305,7 +4305,7 @@
     "QueryID": "aws_rds_db_snapshot_prohibit_public_access",
     "DocumentURI": "policies/aws_rds_db_snapshot_prohibit_public_access.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -4383,7 +4383,7 @@
     "QueryID": "aws_iam_group_user_role_no_inline_policies",
     "DocumentURI": "policies/aws_iam_group_user_role_no_inline_policies.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4452,7 +4452,7 @@
     "QueryID": "aws_redshift_cluster_prohibit_public_access",
     "DocumentURI": "policies/aws_redshift_cluster_prohibit_public_access.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4527,7 +4527,7 @@
     "QueryID": "aws_cloudfront_distribution_logging_enabled",
     "DocumentURI": "policies/aws_cloudfront_distribution_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4569,7 +4569,7 @@
     "QueryID": "aws_cloudwatch_log_group_retention_period_365",
     "DocumentURI": "policies/aws_cloudwatch_log_group_retention_period_365.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4641,7 +4641,7 @@
     "QueryID": "aws_iam_account_password_policy_min_length_14",
     "DocumentURI": "policies/aws_iam_account_password_policy_min_length_14.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4686,7 +4686,7 @@
     "QueryID": "aws_vpc_subnet_auto_assign_public_ip_disabled",
     "DocumentURI": "policies/aws_vpc_subnet_auto_assign_public_ip_disabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -4749,7 +4749,7 @@
     "QueryID": "aws_elb_application_classic_lb_logging_enabled",
     "DocumentURI": "policies/aws_elb_application_classic_lb_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -4827,7 +4827,7 @@
     "QueryID": "aws_s3_bucket_cross_region_replication_enabled",
     "DocumentURI": "policies/aws_s3_bucket_cross_region_replication_enabled.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -4905,7 +4905,7 @@
     "QueryID": "aws_rds_db_instance_encryption_at_rest_enabled",
     "DocumentURI": "policies/aws_rds_db_instance_encryption_at_rest_enabled.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -4983,7 +4983,7 @@
     "QueryID": "aws_autoscaling_group_with_lb_use_health_check",
     "DocumentURI": "policies/aws_autoscaling_group_with_lb_use_health_check.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -5046,7 +5046,7 @@
     "QueryID": "aws_redshift_cluster_maintenance_settings_check",
     "DocumentURI": "policies/aws_redshift_cluster_maintenance_settings_check.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5100,7 +5100,7 @@
     "QueryID": "aws_redshift_cluster_encryption_logging_enabled",
     "DocumentURI": "policies/aws_redshift_cluster_encryption_logging_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5181,7 +5181,7 @@
     "QueryID": "aws_eks_cluster_endpoint_restrict_public_access",
     "DocumentURI": "policies/aws_eks_cluster_endpoint_restrict_public_access.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -5223,7 +5223,7 @@
     "QueryID": "aws_autoscaling_launch_config_public_ip_disabled",
     "DocumentURI": "policies/aws_autoscaling_launch_config_public_ip_disabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5289,7 +5289,7 @@
     "QueryID": "aws_ecs_task_definition_user_for_host_mode_check",
     "DocumentURI": "policies/aws_ecs_task_definition_user_for_host_mode_check.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5349,7 +5349,7 @@
     "QueryID": "aws_vpc_security_group_restrict_ingress_ssh_all",
     "DocumentURI": "policies/aws_vpc_security_group_restrict_ingress_ssh_all.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "audit_manager_control_tower": [
         "true"
@@ -5427,7 +5427,7 @@
     "QueryID": "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
     "DocumentURI": "policies/aws_cloudtrail_trail_logs_encrypted_with_kms_cmk.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5505,7 +5505,7 @@
     "QueryID": "aws_dynamodb_table_point_in_time_recovery_enabled",
     "DocumentURI": "policies/aws_dynamodb_table_point_in_time_recovery_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5583,7 +5583,7 @@
     "QueryID": "aws_codebuild_project_artifact_encryption_enabled",
     "DocumentURI": "policies/aws_codebuild_project_artifact_encryption_enabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5625,7 +5625,7 @@
     "QueryID": "aws_codebuild_project_source_repo_oauth_configured",
     "DocumentURI": "policies/aws_codebuild_project_source_repo_oauth_configured.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5688,7 +5688,7 @@
     "QueryID": "aws_ssm_managed_instance_compliance_patch_compliant",
     "DocumentURI": "policies/aws_ssm_managed_instance_compliance_patch_compliant.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5763,7 +5763,7 @@
     "QueryID": "aws_redshift_cluster_automatic_snapshots_min_7_days",
     "DocumentURI": "policies/aws_redshift_cluster_automatic_snapshots_min_7_days.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5841,7 +5841,7 @@
     "QueryID": "aws_dms_replication_instance_not_publicly_accessible",
     "DocumentURI": "policies/aws_dms_replication_instance_not_publicly_accessible.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -5916,7 +5916,7 @@
     "QueryID": "aws_vpc_default_security_group_restricts_all_traffic",
     "DocumentURI": "policies/aws_vpc_default_security_group_restricts_all_traffic.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
@@ -5988,7 +5988,7 @@
     "QueryID": "aws_ssm_managed_instance_compliance_association_compliant",
     "DocumentURI": "policies/aws_ssm_managed_instance_compliance_association_compliant.md",
     "ManualVerification": false,
-    "Severity": "Medium",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -6063,7 +6063,7 @@
     "QueryID": "aws_codebuild_project_environment_privileged_mode_disabled",
     "DocumentURI": "policies/aws_codebuild_project_environment_privileged_mode_disabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -6102,7 +6102,7 @@
     "QueryID": "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
     "DocumentURI": "policies/aws_sagemaker_notebook_instance_direct_internet_access_disabled.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -6177,7 +6177,7 @@
     "QueryID": "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
     "DocumentURI": "policies/aws_elasticache_redis_cluster_automatic_backup_retention_15_days.md",
     "ManualVerification": false,
-    "Severity": "Low",
+    "Severity": "low",
     "Tags": {
       "category": [
         "Compliance"
@@ -6255,7 +6255,7 @@
     "QueryID": "aws_s3_bucket_policy_restricts_cross_account_permission_changes",
     "DocumentURI": "policies/aws_s3_bucket_policy_restricts_cross_account_permission_changes.md",
     "ManualVerification": false,
-    "Severity": "High",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
@@ -6291,7 +6291,7 @@
     "QueryID": "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values",
     "DocumentURI": "policies/aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values.md",
     "ManualVerification": false,
-    "Severity": "Critical",
+    "Severity": "critical",
     "Tags": {
       "category": [
         "Compliance"
