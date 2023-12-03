@@ -2,7 +2,6 @@
   {
     "ID": "aws_test_cloudtrail_1",
     "Title": "CloudTrail should be enabled and configured with at least one multi-Region trail that includes read and write management events",
-    "Description": "",
     "QueryID": "aws_cloudtrail_multi_region_trail_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -23,7 +22,6 @@
   {
     "ID": "aws_test_cloudtrail_2",
     "Title": "CloudTrail should have encryption at-rest enabled",
-    "Description": "",
     "QueryID": "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -44,7 +42,6 @@
   {
     "ID": "aws_test_cloudtrail_4",
     "Title": "CloudTrail log file validation should be enabled",
-    "Description": "",
     "QueryID": "aws_cloudtrail_trail_validation_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -65,7 +62,6 @@
   {
     "ID": "aws_test_cloudtrail_5",
     "Title": "CloudTrail trails should be integrated with Amazon CloudWatch Logs",
-    "Description": "",
     "QueryID": "aws_cloudtrail_trail_integrated_with_logs",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -86,7 +82,6 @@
   {
     "ID": "aws_test_cloudtrail_6",
     "Title": "Ensure the S3 bucket used to store CloudTrail logs is not publicly accessible",
-    "Description": "",
     "QueryID": "aws_cloudtrail_bucket_not_public",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -107,7 +102,6 @@
   {
     "ID": "aws_test_cloudtrail_7",
     "Title": "Ensure S3 bucket access logging is enabled on the CloudTrail S3 bucket",
-    "Description": "",
     "QueryID": "aws_cloudtrail_s3_logging_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -128,7 +122,6 @@
   {
     "ID": "aws_test_cloudwatch_1",
     "Title": "A log metric filter and alarm should exist for usage of the root\" user\"",
-    "Description": "",
     "QueryID": "aws_log_metric_filter_root_login",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -149,7 +142,6 @@
   {
     "ID": "aws_test_config_1",
     "Title": "AWS Config should be enabled",
-    "Description": "",
     "QueryID": "aws_config_enabled_all_regions",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -170,7 +162,6 @@
   {
     "ID": "aws_test_ec2_2",
     "Title": "VPC default security groups should not allow inbound or outbound traffic",
-    "Description": "",
     "QueryID": "aws_vpc_default_security_group_restricts_all_traffic",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -191,7 +182,6 @@
   {
     "ID": "aws_test_ec2_6",
     "Title": "VPC flow logging should be enabled in all VPCs",
-    "Description": "",
     "QueryID": "aws_vpc_flow_logs_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -212,7 +202,6 @@
   {
     "ID": "aws_test_ec2_13",
     "Title": "Security groups should not allow ingress from 0.0.0.0/0 to port 22",
-    "Description": "",
     "QueryID": "aws_vpc_security_group_restrict_ingress_ssh_all",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -233,7 +222,6 @@
   {
     "ID": "aws_test_kms_4",
     "Title": "AWS KMS key rotation should be enabled",
-    "Description": "",
     "QueryID": "aws_kms_cmk_rotation_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -254,7 +242,6 @@
   {
     "ID": "aws_test_iam_1",
     "Title": "IAM policies should not allow full *\" administrative privileges\"",
-    "Description": "",
     "QueryID": "aws_iam_policy_custom_attached_no_star_star",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -275,7 +262,6 @@
   {
     "ID": "aws_test_iam_2",
     "Title": "IAM users should not have IAM policies attached",
-    "Description": "",
     "QueryID": "aws_iam_user_no_inline_attached_policies",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -296,7 +282,6 @@
   {
     "ID": "aws_test_iam_4",
     "Title": "IAM root user access key should not exist",
-    "Description": "",
     "QueryID": "aws_iam_root_user_no_access_keys",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -317,7 +302,6 @@
   {
     "ID": "aws_test_iam_5",
     "Title": "MFA should be enabled for all IAM users that have a console password",
-    "Description": "",
     "QueryID": "aws_iam_user_console_access_mfa_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -338,7 +322,6 @@
   {
     "ID": "aws_test_iam_6",
     "Title": "Hardware MFA should be enabled for the root user",
-    "Description": "",
     "QueryID": "aws_iam_root_user_hardware_mfa_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -359,7 +342,6 @@
   {
     "ID": "aws_test_iam_8",
     "Title": "Unused IAM user credentials should be removed",
-    "Description": "",
     "QueryID": "aws_iam_user_unused_credentials_90",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -380,7 +362,6 @@
   {
     "ID": "aws_test_iam_9",
     "Title": "MFA should be enabled for the root user",
-    "Description": "",
     "QueryID": "aws_iam_root_user_hardware_mfa_enabled",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -401,7 +382,6 @@
   {
     "ID": "aws_test_iam_11",
     "Title": "Ensure IAM password policy requires at least one uppercase letter",
-    "Description": "",
     "QueryID": "aws_iam_account_password_policy_one_uppercase_letter",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -422,7 +402,6 @@
   {
     "ID": "aws_test_iam_12",
     "Title": "Ensure IAM password policy requires at least one lowercase letter",
-    "Description": "",
     "QueryID": "aws_iam_account_password_policy_one_lowercase_letter",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -443,7 +422,6 @@
   {
     "ID": "aws_test_iam_13",
     "Title": "Ensure IAM password policy requires at least one symbol",
-    "Description": "",
     "QueryID": "aws_iam_account_password_policy_one_symbol",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -464,7 +442,6 @@
   {
     "ID": "aws_test_iam_14",
     "Title": "Ensure IAM password policy requires at least one number",
-    "Description": "",
     "QueryID": "aws_iam_account_password_policy_one_number",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -485,7 +462,6 @@
   {
     "ID": "aws_test_iam_15",
     "Title": "Ensure IAM password policy requires minimum password length of 14 or greater",
-    "Description": "",
     "QueryID": "aws_iam_account_password_policy_min_length_14",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -506,7 +482,6 @@
   {
     "ID": "aws_test_iam_16",
     "Title": "Ensure IAM password policy prevents password reuse",
-    "Description": "",
     "QueryID": "aws_iam_account_password_policy_reuse_24",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
@@ -527,7 +502,6 @@
   {
     "ID": "aws_test_iam_18",
     "Title": "Ensure a support role has been created to manage incidents with AWS Support",
-    "Description": "",
     "QueryID": "aws_iam_support_role",
     "DocumentURI": "policies/aws_cis_v140_1_1.md",
     "ManualVerification": false,
