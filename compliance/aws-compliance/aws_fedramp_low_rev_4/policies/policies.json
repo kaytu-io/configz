@@ -3135,7 +3135,7 @@
     "QueryID": "aws_elb_application_lb_drop_http_headers",
     "DocumentURI": "policies/aws_elb_application_lb_drop_http_headers.md",
     "ManualVerification": false,
-    "Severity": "",
+    "Severity": "medium",
     "Tags": {
       "category": [
         "Compliance"
@@ -4050,7 +4050,7 @@
     "QueryID": "aws_elb_classic_lb_use_tls_https_listeners",
     "DocumentURI": "policies/aws_elb_classic_lb_use_tls_https_listeners.md",
     "ManualVerification": false,
-    "Severity": "",
+    "Severity": "high",
     "Tags": {
       "category": [
         "Compliance"
