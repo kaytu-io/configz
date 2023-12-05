@@ -1,6 +1,6 @@
 {
   "ID": 31,
-  "QueryID": "azure_compute_vm_remote_access_restricted_all_ports",
+  "QueryID": "azure_insight_compute_vm_remote_access_restricted_all_ports",
   "Connector": "Azure",
   "ShortTitle": "VMs with restricts remote access from internet",
   "LongTitle": "VMs with restricts remote access from internet",
