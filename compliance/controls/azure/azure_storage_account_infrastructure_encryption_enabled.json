@@ -1,0 +1,47 @@
+{
+  "ID": "azure_storage_account_infrastructure_encryption_enabled",
+  "Title": "Ensure that 'Enable Infrastructure Encryption' for Each Storage Account in Azure Storage is Set to ‘enabled’",
+  "Description": "Enabling double encryption at the hardware level on top of the default software encryption for Storage Accounts accessing Azure storage solutions.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when require_infrastructure_encryption then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when require_infrastructure_encryption then name || ' infrastructure encryption enabled.'\n    else name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_storage_account",
+    "ListOfTables": [
+      "azure_storage_account",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "3.2"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "3"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Storage"
+    ]
+  },
+  "Managed": true
+}

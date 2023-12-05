@@ -1,0 +1,37 @@
+{
+  "ID": "aws_ec2_classic_lb_connection_draining_enabled",
+  "Title": "Classic Load Balancers should have connection draining enabled",
+  "Description": "This control checks whether Classic Load Balancers have connection draining enabled.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when connection_draining_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when connection_draining_enabled then title || ' connection draining enabled.'\n    else title || ' connection draining disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_classic_load_balancer;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_classic_load_balancer",
+    "ListOfTables": [
+      "aws_ec2_classic_load_balancer"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "resilience"
+    ],
+    "foundational_security_item_id": [
+      "elb_7"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/ELB"
+    ]
+  },
+  "Managed": true
+}

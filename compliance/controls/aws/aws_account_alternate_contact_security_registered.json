@@ -1,0 +1,47 @@
+{
+  "ID": "aws_account_alternate_contact_security_registered",
+  "Title": "Ensure security contact information is registered",
+  "Description": "AWS provides customers with the option of specifying the contact information for account's security team. It is recommended that this information be provided.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with alternate_security_contact as (\n  select\n    name,\n    account_id\n  from\n    aws_account_alternate_contact\n  where\n    contact_type = 'SECURITY'\n)\nselect\n  arn as resource,\n  case\n    when a.partition = 'aws-us-gov' then 'info'\n    -- Name is a required field if setting a security contact\n    when c.name is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.partition = 'aws-us-gov' then a.title || ' in GovCloud, manual verification required.'\n    when c.name is not null then a.title || ' has security contact ' || c.name || ' registered.'\n    else a.title || ' security contact not registered.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join alternate_security_contact as c on c.account_id = a.account_id;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_account",
+    "ListOfTables": [
+      "aws_account",
+      "aws_account_alternate_contact"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.18"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "not_scored"
+    ],
+    "cis_version": [
+      "v1.2.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v200_1_11",
+  "Title": "Ensure 'User consent for applications' is set to 'Do not allow user consent'",
+  "Description": "Require administrators to provide consent for applications before use.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.11"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

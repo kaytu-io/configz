@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v150_1_22",
+  "Title": "Ensure that 'Require Multi-Factor Authentication to register or join devices with Azure AD' is set to 'Yes'",
+  "Description": "Joining or registering devices to the active directory should require Multi-factor authentication.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.22"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

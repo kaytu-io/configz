@@ -1,0 +1,29 @@
+{
+  "ID": "azure_postgres_db_server_geo_redundant_backup_enabled",
+  "Title": "Geo-redundant backup should be enabled for Azure Database for PostgreSQL",
+  "Description": "Azure Database for PostgreSQL allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data is not only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option in case of a region failure. Configuring geo-redundant storage for backup is only allowed during server create.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when geo_redundant_backup = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when geo_redundant_backup = 'Enabled' then name || ' Geo-redundant backup enabled.'\n    else name || ' Geo-redundant backup disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_postgresql_server",
+    "ListOfTables": [
+      "azure_postgresql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/PostgreSQL"
+    ]
+  },
+  "Managed": true
+}

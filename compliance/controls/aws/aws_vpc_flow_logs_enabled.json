@@ -1,0 +1,77 @@
+{
+  "ID": "aws_vpc_flow_logs_enabled",
+  "Title": "VPC flow logs should be enabled",
+  "Description": "The VPC flow logs provide detailed records for information about the IP traffic going to and from network interfaces in your Amazon Virtual Private Cloud (Amazon VPC.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  distinct arn as resource,\n  case\n    when v.account_id \u003c\u003e v.owner_id then 'skip'\n    when f.resource_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when v.account_id \u003c\u003e v.owner_id then vpc_id || ' is a shared VPC.'\n    when f.resource_id is not null then vpc_id || ' flow logging enabled.'\n    else vpc_id || ' flow logging disabled.'\n  end as reason\n  \n  , v.region, v.account_id\nfrom\n  aws_vpc as v\n  left join aws_vpc_flow_log as f on v.vpc_id = f.resource_id;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_vpc",
+    "ListOfTables": [
+      "aws_vpc",
+      "aws_vpc_flow_log"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gdpr": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/VPC"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

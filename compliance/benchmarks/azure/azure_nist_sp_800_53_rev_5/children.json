@@ -1,0 +1,2815 @@
+[
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cm_7_2",
+    "Title": "Prevent Program Execution CM-7(2) ",
+    "Connector": "Azure",
+    "Description": "The information system prevents program execution in accordance with organization-defined policies regarding software program usage and restrictions, rules authorizing the terms and conditions of software program usage.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_adaptive_application_controls_enabled",
+      "azure_compute_vm_allowlist_rules_in_adaptive_application_control_policy_updated"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_28",
+    "Title": "Protection of Information at Rest (SC-28)",
+    "Connector": "Azure",
+    "Description": "The information system protects the confidentiality and integrity of organization-defined information at rest.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_sc_28_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_app_service_environment_internal_encryption_enabled",
+      "azure_compute_vm_and_sacle_set_encryption_at_host_enabled",
+      "azure_compute_vm_temp_disks_cache_and_data_flows_encrypted",
+      "azure_databox_edge_device_double_encryption_enabled",
+      "azure_kubernetes_cluster_temp_disks_and_agent_node_pool_cache_encrypted_at_host",
+      "azure_kusto_cluster_disk_encryption_enabled",
+      "azure_kusto_cluster_double_encryption_enabled",
+      "azure_mysql_server_infrastructure_encryption_enabled",
+      "azure_postgresql_server_infrastructure_encryption_enabled",
+      "azure_servicefabric_cluster_protection_level_as_encrypt_and_sign",
+      "azure_sql_server_transparent_data_encryption_enabled",
+      "azure_storage_account_infrastructure_encryption_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cp_6_1",
+    "Title": "Separation from Primary Site CP-6(1)",
+    "Connector": "Azure",
+    "Description": "The organization identifies an alternate storage site that is separated from the primary storage site to reduce susceptibility to the same threats.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_mariadb_server_geo_redundant_backup_enabled",
+      "azure_mysql_db_server_geo_redundant_backup_enabled",
+      "azure_postgres_db_server_geo_redundant_backup_enabled",
+      "azure_sql_database_long_term_geo_redundant_backup_enabled",
+      "azure_storage_account_geo_redundant_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_si_2",
+    "Title": "Flaw Remediation (SI-2)",
+    "Connector": "Azure",
+    "Description": "The organization identifies, reports, and corrects information system flaws, tests software and firmware updates related to flaw remediation for effectiveness and potential side effects before installation, installs security-relevant software and firmware updates within the organization-defined time period of the release of the updates, and incorporates flaw remediation into the organizational configuration management process.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_si_2_6"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_appservice_function_app_latest_http_version",
+      "azure_appservice_function_app_latest_java_version",
+      "azure_appservice_function_app_latest_python_version",
+      "azure_appservice_web_app_latest_http_version",
+      "azure_appservice_web_app_latest_java_version",
+      "azure_appservice_web_app_latest_php_version",
+      "azure_appservice_web_app_latest_python_version",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_scale_set_security_configuration_vulnerabilities_remediated",
+      "azure_compute_vm_security_configuration_vulnerabilities_remediated",
+      "azure_compute_vm_system_updates_installed",
+      "azure_compute_vm_vulnerability_assessment_solution_enabled",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_kubernetes_cluster_upgraded_with_non_vulnerable_version",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_database_vulnerability_findings_resolved",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cp_6",
+    "Title": "Alternate Storage Site (CP-6)",
+    "Connector": "Azure",
+    "Description": "The organization establishes an alternate storage site including necessary agreements to permit the storage and retrieval of information system backup information and ensures that the alternate storage site provides information security safeguards equivalent to that of the primary site.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_cp_6_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_mariadb_server_geo_redundant_backup_enabled",
+      "azure_mysql_db_server_geo_redundant_backup_enabled",
+      "azure_postgres_db_server_geo_redundant_backup_enabled",
+      "azure_sql_database_long_term_geo_redundant_backup_enabled",
+      "azure_storage_account_geo_redundant_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_17",
+    "Title": "Remote Access (AC-17)",
+    "Connector": "Azure",
+    "Description": "Authorize remote access systems prior to connection. Enforce remote connection requirements to information systems.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ac_17_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_app_configuration_private_link_used",
+      "azure_appservice_api_app_remote_debugging_disabled",
+      "azure_appservice_function_app_remote_debugging_disabled",
+      "azure_appservice_web_app_remote_debugging_disabled",
+      "azure_azure_redis_cache_in_virtual_network",
+      "azure_azure_redis_cache_uses_private_link",
+      "azure_cognitive_account_private_link_used",
+      "azure_compute_disk_access_uses_private_link",
+      "azure_compute_vm_guest_configuration_installed_linux",
+      "azure_compute_vm_guest_configuration_installed_windows",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_guest_configuration_with_user_and_system_assigned_managed_identity",
+      "azure_compute_vm_restrict_remote_connection_from_accounts_without_password_linux",
+      "azure_container_registry_uses_private_link",
+      "azure_cosmosdb_account_uses_private_link",
+      "azure_data_factory_uses_private_link",
+      "azure_eventgrid_domain_private_link_used",
+      "azure_eventgrid_topic_private_link_used",
+      "azure_eventhub_namespace_private_link_used",
+      "azure_healthcare_fhir_uses_private_link",
+      "azure_keyvault_vault_private_link_used",
+      "azure_mysql_server_private_link_used",
+      "azure_postgres_server_private_link_used",
+      "azure_search_service_uses_private_link",
+      "azure_search_service_uses_sku_supporting_private_link",
+      "azure_servicebus_name_space_private_link_used",
+      "azure_signalr_service_private_link_used",
+      "azure_spring_cloud_service_network_injection_enabled",
+      "azure_sql_server_uses_private_link",
+      "azure_storage_account_default_network_access_rule_denied",
+      "azure_storage_account_uses_private_link",
+      "azure_storage_sync_private_link_used",
+      "azure_synapse_workspace_private_link_used"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_4_3",
+    "Title": "Dynamic Information Flow Control AC-4(3)",
+    "Connector": "Azure",
+    "Description": "The information system enforces dynamic information flow control based on organization-defined policies.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_adaptive_network_hardening_recommendation_applied",
+      "azure_compute_vm_jit_access_protected"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ia_4",
+    "Title": "Identifier Management (IA-4)",
+    "Connector": "Azure",
+    "Description": "Manage information system identifiers for users and devices. Automate authorizing and disabling users to prevent misuse.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_api_app_uses_managed_identity",
+      "azure_appservice_function_app_uses_managed_identity",
+      "azure_appservice_web_app_uses_managed_identity",
+      "azure_cognitive_service_local_auth_disabled",
+      "azure_servicefabric_cluster_active_directory_authentication_enabled",
+      "azure_sql_server_azure_ad_authentication_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_8",
+    "Title": "Transmission Confidentiality and Integrity (SC-8)",
+    "Connector": "Azure",
+    "Description": "The information system protects the confidentiality and integrity of transmitted information.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_sc_8_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_api_app_ftps_enabled",
+      "azure_appservice_api_app_latest_tls_version",
+      "azure_appservice_api_app_use_https",
+      "azure_appservice_function_app_ftps_enabled",
+      "azure_appservice_function_app_latest_tls_version",
+      "azure_appservice_function_app_only_https_accessible",
+      "azure_appservice_web_app_ftps_enabled",
+      "azure_appservice_web_app_latest_tls_version",
+      "azure_appservice_web_app_use_https",
+      "azure_azure_redis_cache_ssl_enabled",
+      "azure_compute_vm_secure_communication_protocols_configured",
+      "azure_hdinsight_cluster_encryption_in_transit_enabled",
+      "azure_mysql_ssl_enabled",
+      "azure_postgres_sql_ssl_enabled",
+      "azure_storage_account_secure_transfer_required_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cm_11",
+    "Title": "User-installed Software (CM-11)",
+    "Connector": "Azure",
+    "Description": "The organization establishes organization-defined policies governing the installation of software by users, enforces software installation policies through organization-defined methods, and monitors policy compliance at organization-defined frequency.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_adaptive_application_controls_enabled",
+      "azure_compute_vm_allowlist_rules_in_adaptive_application_control_policy_updated"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_au_11",
+    "Title": "Audit Record Retention (AU-11)",
+    "Connector": "Azure",
+    "Description": "Retain audit records for security investigations. Meet regulatory and organizational data retention requirements.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/SQL"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_sql_server_auditing_storage_account_destination_retention_90_days"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_2_12",
+    "Title": "Account Monitoring for Atypical Usage AC-2(12)",
+    "Connector": "Azure",
+    "Description": "The organization monitors information system accounts for organization-defined atypical use and reports atypical usage of information system accounts to organization-defined personnel or roles.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_jit_access_protected",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ia_2",
+    "Title": "Identification and Authentication (organizational Users) (IA-2)",
+    "Connector": "Azure",
+    "Description": "Identify and authenticate organization users and processes.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_api_app_uses_managed_identity",
+      "azure_appservice_function_app_uses_managed_identity",
+      "azure_appservice_web_app_uses_managed_identity",
+      "azure_cognitive_service_local_auth_disabled",
+      "azure_servicefabric_cluster_active_directory_authentication_enabled",
+      "azure_sql_server_azure_ad_authentication_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cm_7_5",
+    "Title": "Authorized Software ??? Allow-by-exception CM-7(5)",
+    "Connector": "Azure",
+    "Description": "The organization identifies organization-defined software programs authorized to execute on the information system, employs a deny-all, permit-by-exception policy to allow the execution of authorized software programs on the information system, and reviews and updates the list of authorized software programs.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_allowlist_rules_in_adaptive_application_control_policy_updated",
+      "azure_compute_vm_adaptive_application_controls_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ia_5",
+    "Title": "Authenticator Management (IA-5)",
+    "Connector": "Azure",
+    "Description": "Authenticate users and devices. Automate administrative control. Enforce restrictions. Protect against unauthorized use.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ia_5_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_guest_configuration_installed_linux",
+      "azure_compute_vm_guest_configuration_installed_windows",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_guest_configuration_with_user_and_system_assigned_managed_identity",
+      "azure_compute_vm_password_file_permissions_0644_linux",
+      "azure_compute_vm_passwords_stored_using_reversible_encryption_windows",
+      "azure_compute_vm_ssh_key_authentication_linux",
+      "azure_keyvault_key_expiration_set",
+      "azure_keyvault_secret_expiration_set"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ra",
+    "Title": "Risk Assessment (RA)",
+    "Connector": "Azure",
+    "Description": "The RA control family relates to an organization’s risk assessment policies and vulnerability scanning capabilities. Using an integrated risk management solution like CyberStrong can help streamline and automate your NIST 800 53 compliance efforts.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ra_5"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_si",
+    "Title": "System and Information Integrity (SI)",
+    "Connector": "Azure",
+    "Description": "The SI control family correlates to controls that protect system and information integrity. These include flaw remediation, malicious code protection, information system monitoring, security alerts, software and firmware integrity, and spam protection.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_si_2",
+      "azure_nist_sp_800_53_rev_5_si_3",
+      "azure_nist_sp_800_53_rev_5_si_4",
+      "azure_nist_sp_800_53_rev_5_si_16"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_7",
+    "Title": "Boundary Protection (SC-7)",
+    "Connector": "Azure",
+    "Description": "The information system monitors and controls communications at the external boundary of the system and at key internal boundaries within the system; implements subnetworks for publicly accessible system components that are physically or logically separated from internal organizational networks; and connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_sc_7_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_apimanagement_service_with_virtual_network",
+      "azure_app_configuration_private_link_used",
+      "azure_application_gateway_waf_enabled",
+      "azure_azure_redis_cache_uses_private_link",
+      "azure_cognitive_account_private_link_used",
+      "azure_cognitive_account_public_network_access_disabled",
+      "azure_cognitive_account_restrict_public_access",
+      "azure_compute_disk_access_uses_private_link",
+      "azure_compute_vm_adaptive_network_hardening_recommendation_applied",
+      "azure_compute_vm_jit_access_protected",
+      "azure_compute_vm_non_internet_facing_protected_with_nsg",
+      "azure_compute_vm_remote_access_restricted_all_ports",
+      "azure_compute_vm_tcp_udp_access_restricted_internet",
+      "azure_container_registry_restrict_public_access",
+      "azure_container_registry_uses_private_link",
+      "azure_cosmosdb_account_uses_private_link",
+      "azure_cosmosdb_account_with_firewall_rules",
+      "azure_data_factory_uses_private_link",
+      "azure_eventgrid_domain_private_link_used",
+      "azure_eventgrid_topic_private_link_used",
+      "azure_eventhub_namespace_private_link_used",
+      "azure_frontdoor_waf_enabled",
+      "azure_healthcare_fhir_uses_private_link",
+      "azure_keyvault_vault_private_link_used",
+      "azure_keyvault_vault_public_network_access_disabled",
+      "azure_kubernetes_cluster_authorized_ip_range_defined",
+      "azure_mariadb_server_public_network_access_disabled",
+      "azure_mysql_server_private_link_used",
+      "azure_mysql_server_public_network_access_disabled",
+      "azure_network_interface_ip_forwarding_disabled",
+      "azure_network_security_group_remote_access_restricted",
+      "azure_network_security_group_subnet_associated",
+      "azure_postgres_server_private_link_used",
+      "azure_postgresql_server_public_network_access_disabled",
+      "azure_search_service_public_network_access_disabled",
+      "azure_search_service_uses_private_link",
+      "azure_search_service_uses_sku_supporting_private_link",
+      "azure_servicebus_name_space_private_link_used",
+      "azure_signalr_service_private_link_used",
+      "azure_sql_db_public_network_access_disabled",
+      "azure_sql_server_uses_private_link",
+      "azure_storage_account_block_public_access",
+      "azure_storage_account_default_network_access_rule_denied",
+      "azure_storage_account_restrict_network_access",
+      "azure_storage_account_uses_private_link",
+      "azure_storage_sync_private_link_used",
+      "azure_synapse_workspace_private_link_used"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_si_2_6",
+    "Title": "Removal of Previous Versions of Software and Firmware SI-2(6)",
+    "Connector": "Azure",
+    "Description": "The organization removes organization-defined software and firmware components after updated versions have been installed.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_function_app_latest_http_version",
+      "azure_appservice_web_app_latest_http_version",
+      "azure_appservice_function_app_latest_java_version",
+      "azure_appservice_web_app_latest_java_version",
+      "azure_appservice_web_app_latest_php_version",
+      "azure_appservice_function_app_latest_python_version",
+      "azure_appservice_web_app_latest_python_version",
+      "azure_kubernetes_cluster_upgraded_with_non_vulnerable_version"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_2_1",
+    "Title": "Automated System Account Management AC-2(1)",
+    "Connector": "Azure",
+    "Description": "The organization employs automated mechanisms to support the management of information system accounts.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_cognitive_service_local_auth_disabled",
+      "azure_servicefabric_cluster_active_directory_authentication_enabled",
+      "azure_sql_server_azure_ad_authentication_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_28_1",
+    "Title": "Cryptographic Protection SC-28(1)",
+    "Connector": "Azure",
+    "Description": "The information system implements cryptographic mechanisms to prevent unauthorized disclosure and modification of organization-defined information on organization-defined information system components.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_app_service_environment_internal_encryption_enabled",
+      "azure_compute_vm_and_sacle_set_encryption_at_host_enabled",
+      "azure_compute_vm_temp_disks_cache_and_data_flows_encrypted",
+      "azure_databox_edge_device_double_encryption_enabled",
+      "azure_kubernetes_cluster_temp_disks_and_agent_node_pool_cache_encrypted_at_host",
+      "azure_kusto_cluster_disk_encryption_enabled",
+      "azure_kusto_cluster_double_encryption_enabled",
+      "azure_mysql_server_infrastructure_encryption_enabled",
+      "azure_postgresql_server_infrastructure_encryption_enabled",
+      "azure_servicefabric_cluster_protection_level_as_encrypt_and_sign",
+      "azure_sql_server_transparent_data_encryption_enabled",
+      "azure_storage_account_infrastructure_encryption_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_si_4",
+    "Title": "System Monitoring (SI-4)",
+    "Connector": "Azure",
+    "Description": "The organization monitors the information system to detect attacks and indicators of potential attacks in accordance with organization-defined monitoring objectives and unauthorized local, network, and remote connections; identifies unauthorized use of the information system through organization-defined techniques and methods; deploys monitoring devices strategically within the information system to collect organization-determined essential information and at ad hoc locations within the system to track specific types of transactions of interest to the organization; protects information obtained from intrusion-monitoring tools from unauthorized access, modification, and deletion; heightens the level of information system monitoring activity whenever there is an indication of increased risk to organizational operations and assets, individuals, other organizations, or the Nation based on law enforcement information, intelligence information, or other credible sources of information; obtains legal opinion with regard to information system monitoring activities in accordance with applicable federal laws, Executive Orders, directives, policies, or regulations; and provides organization-defined system monitoring information to organization-defined personnel or roles as needed.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_si_4_12"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_arc_compute_machine_linux_log_analytics_agent_installed",
+      "azure_arc_compute_machine_windows_log_analytics_agent_installed",
+      "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_guest_configuration_installed",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_log_analytics_agent_health_issues_resolved",
+      "azure_compute_vm_log_analytics_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+      "azure_compute_vm_scale_set_log_analytics_agent_installed",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_network_watcher_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ir_6_2",
+    "Title": "Vulnerabilities Related to Incidents IR-6(2) ",
+    "Connector": "Azure",
+    "Description": "The organization reports information system vulnerabilities associated with reported security incidents to organization-defined personnel or roles.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/SecurityCenter"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_securitycenter_email_configured",
+      "azure_securitycenter_notify_alerts_configured",
+      "azure_securitycenter_security_alerts_to_owner_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_au_12",
+    "Title": "Audit Record Generation (AU-12)",
+    "Connector": "Azure",
+    "Description": "Audit events defined in AU-2. Allow trusted personnel to select which events to audit. Generate audit records for events.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_au_12_1"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_appservice_web_app_diagnostic_logs_enabled",
+      "azure_arc_compute_machine_linux_log_analytics_agent_installed",
+      "azure_arc_compute_machine_windows_log_analytics_agent_installed",
+      "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
+      "azure_batch_account_logging_enabled",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_guest_configuration_installed",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_log_analytics_agent_health_issues_resolved",
+      "azure_compute_vm_log_analytics_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+      "azure_compute_vm_scale_set_log_analytics_agent_installed",
+      "azure_compute_vm_scale_set_logging_enabled",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_datalake_analytics_account_logging_enabled",
+      "azure_datalake_store_account_logging_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_eventhub_namespace_logging_enabled",
+      "azure_iot_hub_logging_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_keyvault_logging_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_logic_app_workflow_logging_enabled",
+      "azure_network_watcher_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_search_service_logging_enabled",
+      "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_servicebus_namespace_logging_enabled",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_auditing_on",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled",
+      "azure_stream_analytics_job_logging_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cm",
+    "Title": "Configuration Management (CM)",
+    "Connector": "Azure",
+    "Description": "CM controls are specific to an organization’s configuration management policies. This includes a baseline configuration to operate as the basis for future builds or changes to information systems. Additionally, this includes information system component inventories and a security impact analysis control.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_cm_6",
+      "azure_nist_sp_800_53_rev_5_cm_7",
+      "azure_nist_sp_800_53_rev_5_cm_10",
+      "azure_nist_sp_800_53_rev_5_cm_11"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_6_7",
+    "Title": "Review of User Privileges AC-6(7)",
+    "Connector": "Azure",
+    "Description": "The organization reviews organization-defined frequency the privileges assigned to organization-defined roles or classes of users to validate the need for such privileges and reassigns or removes privileges, if necessary, to correctly reflect organizational mission/business needs.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_iam_no_custom_role",
+      "azure_iam_subscription_owner_max_3"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_16",
+    "Title": "Security and Privacy Attributes (AC-16)",
+    "Connector": "Azure",
+    "Description": "Support and maintains the binding of security attributes to information in storage, in process, and in transition.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_sql_server_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_2",
+    "Title": "Account Management (AC-2)",
+    "Connector": "Azure",
+    "Description": "Manage system accounts, group memberships, privileges, workflow, notifications, deactivations, and authorizations.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ac_2_1",
+      "azure_nist_sp_800_53_rev_5_ac_2_12",
+      "azure_nist_sp_800_53_rev_5_ac_2_7"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_api_app_uses_managed_identity",
+      "azure_appservice_function_app_uses_managed_identity",
+      "azure_appservice_web_app_uses_managed_identity",
+      "azure_cognitive_service_local_auth_disabled",
+      "azure_iam_deprecated_account_with_owner_roles",
+      "azure_iam_deprecated_account",
+      "azure_iam_external_user_with_owner_role",
+      "azure_iam_external_user_with_read_permission",
+      "azure_iam_no_custom_role",
+      "azure_iam_subscription_owner_max_3",
+      "azure_servicefabric_cluster_active_directory_authentication_enabled",
+      "azure_sql_server_azure_ad_authentication_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc",
+    "Title": "System and Communications Protection (SC)",
+    "Connector": "Azure",
+    "Description": "The SC control family is responsible for systems and communications protection procedures. This includes boundary protection, protection of information at rest, collaborative computing devices, cryptographic protection, denial of service protection, and many others.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_sc_3",
+      "azure_nist_sp_800_53_rev_5_sc_5",
+      "azure_nist_sp_800_53_rev_5_sc_7",
+      "azure_nist_sp_800_53_rev_5_sc_8",
+      "azure_nist_sp_800_53_rev_5_sc_12",
+      "azure_nist_sp_800_53_rev_5_sc_28"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_12",
+    "Title": "Cryptographic Key Establishment and Management (SC-12)",
+    "Connector": "Azure",
+    "Description": "The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with organization-defined requirements for key generation, distribution, storage, access, and destruction.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_batch_account_encrypted_with_cmk",
+      "azure_cognitive_account_encrypted_with_cmk",
+      "azure_compute_os_and_data_disk_encrypted_with_cmk_and_platform_managed",
+      "azure_container_registry_encrypted_with_cmk",
+      "azure_cosmosdb_account_encryption_at_rest_using_cmk",
+      "azure_data_factory_encrypted_with_cmk",
+      "azure_hdinsight_cluster_encrypted_at_rest_with_cmk",
+      "azure_hdinsight_cluster_encryption_at_host_enabled",
+      "azure_healthcare_fhir_azure_api_encrypted_at_rest_with_cmk",
+      "azure_hpc_cache_encrypted_with_cmk",
+      "azure_kubernetes_cluster_os_and_data_disks_encrypted_with_cmk",
+      "azure_kusto_cluster_encrypted_at_rest_with_cmk",
+      "azure_machine_learning_workspace_encrypted_with_cmk",
+      "azure_mssql_managed_instance_encryption_at_rest_using_cmk",
+      "azure_mysql_server_encrypted_at_rest_using_cmk",
+      "azure_postgres_sql_server_encrypted_at_rest_using_cmk",
+      "azure_servicebus_premium_namespace_cmk_encrypted",
+      "azure_storage_account_encryption_at_rest_using_cmk",
+      "azure_storage_account_encryption_scopes_encrypted_at_rest_with_cmk",
+      "azure_synapse_workspace_encryption_at_rest_using_cmk"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_3_7",
+    "Title": "Role-based Access Control AC-3(7)",
+    "Connector": "Azure",
+    "Description": "The information system enforces a role-based access control policy over defined subjects and objects and controls access based upon organization-defined roles and users authorized to assume such roles.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/KubernetesService"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_kubernetes_instance_rbac_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cp",
+    "Title": "Contingency Planning (CP)",
+    "Connector": "Azure",
+    "Description": "The CP control family includes controls specific to an organization's contingency plan if a cybersecurity event should occur. This includes controls like contingency plan testing, updating, training, and backups, and system reconstitution.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_cp_6",
+      "azure_nist_sp_800_53_rev_5_cp_7",
+      "azure_nist_sp_800_53_rev_5_cp_9"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cm_6",
+    "Title": "Configuration Settings (CM-6)",
+    "Connector": "Azure",
+    "Description": "The organization establishes and documents configuration settings for information technology products employed within the information system using organization-defined security configuration checklists that reflect the most restrictive mode consistent with operational requirements; implements the configuration settings; identifies, documents, and approves any deviations from established configuration settings for organization-defined information system components based on organization-defined operational requirements; and monitors and controls changes to the configuration settings in accordance with organizational policies and procedures.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_api_app_client_certificates_on",
+      "azure_appservice_api_app_cors_no_star",
+      "azure_appservice_api_app_remote_debugging_disabled",
+      "azure_appservice_function_app_client_certificates_on",
+      "azure_appservice_function_app_cors_no_star",
+      "azure_appservice_function_app_remote_debugging_disabled",
+      "azure_appservice_web_app_client_certificates_on",
+      "azure_appservice_web_app_cors_no_star",
+      "azure_appservice_web_app_remote_debugging_disabled",
+      "azure_compute_vm_meet_security_baseline_requirements_linux",
+      "azure_compute_vm_meet_security_baseline_requirements_windows",
+      "azure_kubernetes_cluster_add_on_azure_policy_enabled",
+      "azure_kubernetes_cluster_pods_and_containers_uses_approved_user_and_group_id"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_8_1",
+    "Title": "Cryptographic Protection SC-8(1) ",
+    "Connector": "Azure",
+    "Description": "The information system implements cryptographic mechanisms to prevent unauthorized disclosure of information and detect changes to information during transmission unless otherwise protected by organization-defined alternative physical safeguards.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_api_app_ftps_enabled",
+      "azure_appservice_api_app_latest_tls_version",
+      "azure_appservice_api_app_use_https",
+      "azure_appservice_function_app_ftps_enabled",
+      "azure_appservice_function_app_latest_tls_version",
+      "azure_appservice_function_app_only_https_accessible",
+      "azure_appservice_web_app_ftps_enabled",
+      "azure_appservice_web_app_latest_tls_version",
+      "azure_appservice_web_app_use_https",
+      "azure_azure_redis_cache_ssl_enabled",
+      "azure_compute_vm_secure_communication_protocols_configured",
+      "azure_hdinsight_cluster_encryption_in_transit_enabled",
+      "azure_mysql_ssl_enabled",
+      "azure_postgres_sql_ssl_enabled",
+      "azure_storage_account_secure_transfer_required_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_au",
+    "Title": "Audit and Accountability Control (AU)",
+    "Connector": "Azure",
+    "Description": "The AU control family consists of security controls related to an organization’s audit capabilities. This includes audit policies and procedures, audit logging, audit report generation, and protection of audit information.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_au_6",
+      "azure_nist_sp_800_53_rev_5_au_11",
+      "azure_nist_sp_800_53_rev_5_au_12"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_7_3",
+    "Title": "Access Points SC-7(3)",
+    "Connector": "Azure",
+    "Description": "The organization limits the number of external network connections to the information system.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_apimanagement_service_with_virtual_network",
+      "azure_app_configuration_private_link_used",
+      "azure_application_gateway_waf_enabled",
+      "azure_azure_redis_cache_uses_private_link",
+      "azure_cognitive_account_private_link_used",
+      "azure_cognitive_account_public_network_access_disabled",
+      "azure_cognitive_account_restrict_public_access",
+      "azure_compute_disk_access_uses_private_link",
+      "azure_compute_vm_adaptive_network_hardening_recommendation_applied",
+      "azure_compute_vm_jit_access_protected",
+      "azure_compute_vm_non_internet_facing_protected_with_nsg",
+      "azure_compute_vm_remote_access_restricted_all_ports",
+      "azure_compute_vm_tcp_udp_access_restricted_internet",
+      "azure_container_registry_restrict_public_access",
+      "azure_container_registry_uses_private_link",
+      "azure_cosmosdb_account_uses_private_link",
+      "azure_cosmosdb_account_with_firewall_rules",
+      "azure_data_factory_uses_private_link",
+      "azure_eventgrid_domain_private_link_used",
+      "azure_eventgrid_topic_private_link_used",
+      "azure_eventhub_namespace_private_link_used",
+      "azure_frontdoor_waf_enabled",
+      "azure_healthcare_fhir_uses_private_link",
+      "azure_keyvault_vault_private_link_used",
+      "azure_keyvault_vault_public_network_access_disabled",
+      "azure_kubernetes_cluster_authorized_ip_range_defined",
+      "azure_mariadb_server_public_network_access_disabled",
+      "azure_mysql_server_private_link_used",
+      "azure_mysql_server_public_network_access_disabled",
+      "azure_network_interface_ip_forwarding_disabled",
+      "azure_network_security_group_remote_access_restricted",
+      "azure_network_security_group_subnet_associated",
+      "azure_postgres_server_private_link_used",
+      "azure_postgresql_server_public_network_access_disabled",
+      "azure_search_service_public_network_access_disabled",
+      "azure_search_service_uses_private_link",
+      "azure_search_service_uses_sku_supporting_private_link",
+      "azure_servicebus_name_space_private_link_used",
+      "azure_signalr_service_private_link_used",
+      "azure_sql_db_public_network_access_disabled",
+      "azure_sql_server_uses_private_link",
+      "azure_storage_account_block_public_access",
+      "azure_storage_account_default_network_access_rule_denied",
+      "azure_storage_account_restrict_network_access",
+      "azure_storage_account_uses_private_link",
+      "azure_storage_sync_private_link_used",
+      "azure_synapse_workspace_private_link_used"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_si_16",
+    "Title": "Memory Protection (SI-16)",
+    "Connector": "Azure",
+    "Description": "The information system implements organization-defined security safeguards to protect its memory from unauthorized code execution.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_windows_defender_exploit_guard_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_au_6_4",
+    "Title": "Central Review and Analysis AU-6(4)",
+    "Connector": "Azure",
+    "Description": "The information system provides the capability to centrally review and analyze audit records from multiple components within the system.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_appservice_web_app_diagnostic_logs_enabled",
+      "azure_arc_compute_machine_linux_log_analytics_agent_installed",
+      "azure_arc_compute_machine_windows_log_analytics_agent_installed",
+      "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
+      "azure_batch_account_logging_enabled",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_guest_configuration_installed",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_log_analytics_agent_health_issues_resolved",
+      "azure_compute_vm_log_analytics_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+      "azure_compute_vm_scale_set_log_analytics_agent_installed",
+      "azure_compute_vm_scale_set_logging_enabled",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_datalake_analytics_account_logging_enabled",
+      "azure_datalake_store_account_logging_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_eventhub_namespace_logging_enabled",
+      "azure_iot_hub_logging_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_keyvault_logging_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_logic_app_workflow_logging_enabled",
+      "azure_network_watcher_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_search_service_logging_enabled",
+      "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_servicebus_namespace_logging_enabled",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_auditing_on",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled",
+      "azure_stream_analytics_job_logging_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_2_7",
+    "Title": "Privileged User Accounts AC-2(7)",
+    "Connector": "Azure",
+    "Description": "The organization establishes and administers privileged user accounts in accordance with a role-based access scheme that organizes allowed information system access and privileges into roles, monitors privileged role assignments, and takes organization-defined actions when privileged role assignments are no longer appropriate.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_cognitive_service_local_auth_disabled",
+      "azure_iam_no_custom_role",
+      "azure_servicefabric_cluster_active_directory_authentication_enabled",
+      "azure_sql_server_azure_ad_authentication_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_3",
+    "Title": "Security Function Isolation (SC-3)",
+    "Connector": "Azure",
+    "Description": "The information system isolates security functions from nonsecurity functions.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_monitor_missing_endpoint_protection_in_asc",
+      "azure_compute_vm_scale_set_endpoint_protection_solution_installed",
+      "azure_compute_vm_windows_defender_exploit_guard_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ra_5",
+    "Title": "Vulnerability Monitoring and Scanning (RA-5)",
+    "Connector": "Azure",
+    "Description": "Scan for system vulnerabilities. Share vulnerability information and security controls that eliminate vulnerabilities.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_container_security_configurations_vulnerabilities_remediated",
+      "azure_compute_vm_scale_set_security_configuration_vulnerabilities_remediated",
+      "azure_compute_vm_security_configuration_vulnerabilities_remediated",
+      "azure_compute_vm_vulnerability_assessment_solution_enabled",
+      "azure_compute_vm_vulnerability_findings_resolved_for_sql_server",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_container_registry_vulnerabilities_remediated",
+      "azure_dns_azure_defender_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_mssql_managed_instance_vulnerability_assessment_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_database_vulnerability_findings_resolved",
+      "azure_sql_server_and_databases_va_enabled",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled",
+      "azure_synapse_workspace_vulnerability_assessment_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ir_4",
+    "Title": "Incident Handling (IR-4)",
+    "Connector": "Azure",
+    "Description": "The organization implements an incident handling capability for security incidents that includes preparation, detection and analysis, containment, eradication, and recovery; coordinates incident handling activities with contingency planning activities; and incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing/exercises, and implements the resulting changes accordingly.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_securitycenter_email_configured",
+      "azure_securitycenter_notify_alerts_configured",
+      "azure_securitycenter_security_alerts_to_owner_enabled",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_sc_5",
+    "Title": "Denial-of-service Protection (SC-5)",
+    "Connector": "Azure",
+    "Description": "The information system protects against or limits the effects of the organization-defined types of denial of service attacks or reference to a source for such information by employing organization-defined security safeguards.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_application_gateway_waf_enabled",
+      "azure_frontdoor_waf_enabled",
+      "azure_network_ddos_enabled",
+      "azure_network_interface_ip_forwarding_disabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_3",
+    "Title": "Access Enforcement (AC-3)",
+    "Connector": "Azure",
+    "Description": "Enforce approved authorizations for access to systems in accordance with policy.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ac_3_7"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_api_app_uses_managed_identity",
+      "azure_appservice_function_app_uses_managed_identity",
+      "azure_appservice_web_app_uses_managed_identity",
+      "azure_cognitive_service_local_auth_disabled",
+      "azure_compute_vm_account_with_password_linux",
+      "azure_compute_vm_guest_configuration_installed_linux",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_guest_configuration_with_user_and_system_assigned_managed_identity",
+      "azure_compute_vm_ssh_key_authentication_linux",
+      "azure_compute_vm_uses_azure_resource_manager",
+      "azure_servicefabric_cluster_active_directory_authentication_enabled",
+      "azure_sql_server_azure_ad_authentication_enabled",
+      "azure_storage_account_uses_azure_resource_manager"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ir",
+    "Title": "Incident Response (IR)",
+    "Connector": "Azure",
+    "Description": "IR controls are specific to an organization’s incident response policies and procedures. This includes incident response training, testing, monitoring, reporting, and response plan.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ir_4",
+      "azure_nist_sp_800_53_rev_5_ir_5",
+      "azure_nist_sp_800_53_rev_5_ir_6_2"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cm_10",
+    "Title": "Software Usage Restrictions (CM-10)",
+    "Connector": "Azure",
+    "Description": "The organization uses software and associated documentation in accordance with contract agreements and copyright laws, tracks the use of software and associated documentation protected by quantity licenses to control copying and distribution, and controls and documents the use of peer-to-peer file-sharing technology to ensure that this capability is not used for the unauthorized distribution, display, performance, or reproduction of copyrighted work.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_adaptive_application_controls_enabled",
+      "azure_compute_vm_allowlist_rules_in_adaptive_application_control_policy_updated"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_4",
+    "Title": "Information Flow Enforcement (AC-4)",
+    "Connector": "Azure",
+    "Description": "Enforce approved authorizations. Control information workflow between interconnected systems.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ac_4_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_apimanagement_service_with_virtual_network",
+      "azure_app_configuration_private_link_used",
+      "azure_appservice_web_app_cors_no_star",
+      "azure_azure_redis_cache_uses_private_link",
+      "azure_cognitive_account_private_link_used",
+      "azure_cognitive_account_public_network_access_disabled",
+      "azure_cognitive_account_restrict_public_access",
+      "azure_compute_disk_access_uses_private_link",
+      "azure_compute_vm_adaptive_network_hardening_recommendation_applied",
+      "azure_compute_vm_jit_access_protected",
+      "azure_compute_vm_non_internet_facing_protected_with_nsg",
+      "azure_compute_vm_remote_access_restricted_all_ports",
+      "azure_compute_vm_tcp_udp_access_restricted_internet",
+      "azure_container_registry_restrict_public_access",
+      "azure_container_registry_uses_private_link",
+      "azure_cosmosdb_account_uses_private_link",
+      "azure_cosmosdb_account_with_firewall_rules",
+      "azure_data_factory_uses_private_link",
+      "azure_eventgrid_domain_private_link_used",
+      "azure_eventgrid_topic_private_link_used",
+      "azure_eventhub_namespace_private_link_used",
+      "azure_healthcare_fhir_uses_private_link",
+      "azure_keyvault_vault_private_link_used",
+      "azure_keyvault_vault_public_network_access_disabled",
+      "azure_kubernetes_cluster_authorized_ip_range_defined",
+      "azure_mariadb_server_public_network_access_disabled",
+      "azure_mysql_server_private_link_used",
+      "azure_mysql_server_public_network_access_disabled",
+      "azure_network_interface_ip_forwarding_disabled",
+      "azure_network_security_group_remote_access_restricted",
+      "azure_network_security_group_subnet_associated",
+      "azure_postgres_server_private_link_used",
+      "azure_postgresql_server_public_network_access_disabled",
+      "azure_search_service_public_network_access_disabled",
+      "azure_search_service_uses_private_link",
+      "azure_search_service_uses_sku_supporting_private_link",
+      "azure_servicebus_name_space_private_link_used",
+      "azure_signalr_service_private_link_used",
+      "azure_sql_db_public_network_access_disabled",
+      "azure_sql_server_uses_private_link",
+      "azure_storage_account_block_public_access",
+      "azure_storage_account_default_network_access_rule_denied",
+      "azure_storage_account_restrict_network_access",
+      "azure_storage_account_uses_private_link",
+      "azure_storage_sync_private_link_used",
+      "azure_synapse_workspace_private_link_used"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_au_6",
+    "Title": "Audit Record Review, Analysis, and Reporting (AU-6)",
+    "Connector": "Azure",
+    "Description": "Integrate audit review, analysis, and reporting with processes for investigation and response to suspicious activities.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_au_6_4",
+      "azure_nist_sp_800_53_rev_5_au_6_5"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_network_watcher_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_si_4_12",
+    "Title": "Automated Organization-generated Alerts SI-4(12)",
+    "Connector": "Azure",
+    "Description": "The organization employs automated mechanisms to alert security personnel of the organization-defined activities that trigger alerts with security implications.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/SecurityCenter"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_securitycenter_email_configured",
+      "azure_securitycenter_notify_alerts_configured",
+      "azure_securitycenter_security_alerts_to_owner_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ia",
+    "Title": "Identification and Authentication (IA)",
+    "Connector": "Azure",
+    "Description": "IA controls are specific to the identification and authentication policies in an organization. This includes the identification and authentication of organizational and non-organizational users and how the management of those systems.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ia_2",
+      "azure_nist_sp_800_53_rev_5_ia_4",
+      "azure_nist_sp_800_53_rev_5_ia_5"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_si_3",
+    "Title": "Malicious Code Protection (SI-3)",
+    "Connector": "Azure",
+    "Description": "The organization employs malicious code protection mechanisms at information system entry and exit points to detect and eradicate malicious code; updates malicious code protection mechanisms whenever new releases are available in accordance with organizational configuration management policy and procedures; addresses the receipt of false positives during malicious code detection and eradication and the resulting potential impact on the availability of the information system; and configures malicious code protection mechanisms to perform periodic scans of the information system and real-time scans of files from external sources at an endpoint, network entry/exit points as the files are downloaded, opened, or executed in accordance with organizational security policy, and block and quarantine malicious code, send alert to the administrator and take organization-defined action in response to malicious code detection.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_monitor_missing_endpoint_protection_in_asc",
+      "azure_compute_vm_scale_set_endpoint_protection_solution_installed",
+      "azure_compute_vm_windows_defender_exploit_guard_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac",
+    "Title": "Access Control (AC)",
+    "Connector": "Azure",
+    "Description": "The AC Control Family consists of security requirements detailing system logging. This includes who has access to what assets and reporting capabilities like account management, system privileges, and remote access logging to determine when users have access to the system and their level of access.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ac_2",
+      "azure_nist_sp_800_53_rev_5_ac_3",
+      "azure_nist_sp_800_53_rev_5_ac_4",
+      "azure_nist_sp_800_53_rev_5_ac_5",
+      "azure_nist_sp_800_53_rev_5_ac_6",
+      "azure_nist_sp_800_53_rev_5_ac_16",
+      "azure_nist_sp_800_53_rev_5_ac_17"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_5",
+    "Title": "Separation of Duties (AC-5)",
+    "Connector": "Azure",
+    "Description": "Separate duties of individuals to prevent malevolent activity. automate separation of duties and access authorizations.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_iam_subscription_owner_more_than_1"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ia_5_1",
+    "Title": "Password-based Authentication IA-5(1) ",
+    "Connector": "Azure",
+    "Description": "The information system, for password-based authentication, enforces minimum password complexity of organization-defined requirements for case sensitivity, number of characters, mix of upper-case letters, lower-case letters, numbers, and special characters, including minimum requirements for each type; enforces at least the organization-defined number of changed characters when new passwords are created; stores and transmits only cryptographically-protected passwords; enforces password minimum and maximum lifetime restrictions of organization-defined numbers for lifetime minimum, lifetime maximum; prohibits password reuse for organization-defined number generations; and allows the use of a temporary password for system logons with an immediate change to a permanent password.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_guest_configuration_installed_linux",
+      "azure_compute_vm_guest_configuration_installed_windows",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_guest_configuration_with_user_and_system_assigned_managed_identity",
+      "azure_compute_vm_max_password_age_70_days_windows",
+      "azure_compute_vm_min_password_age_1_day_windows",
+      "azure_compute_vm_min_password_length_14_windows",
+      "azure_compute_vm_password_complexity_setting_enabled_windows",
+      "azure_compute_vm_password_file_permissions_0644_linux",
+      "azure_compute_vm_passwords_stored_using_reversible_encryption_windows",
+      "azure_compute_vm_restrict_previous_24_passwords_resuse_windows"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ir_5",
+    "Title": "Incident Monitoring (IR-5)",
+    "Connector": "Azure",
+    "Description": "The organization tracks and documents information system security incidents.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_securitycenter_email_configured",
+      "azure_securitycenter_notify_alerts_configured",
+      "azure_securitycenter_security_alerts_to_owner_enabled",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cp_7",
+    "Title": "Alternate Processing Site (CP-7)",
+    "Connector": "Azure",
+    "Description": "The organization establishes an alternate processing site including necessary agreements to permit the transfer and resumption of organization-defined information system operations for essential missions/business functions within an organization-defined time period consistent with recovery time and recovery point objectives when the primary processing capabilities are unavailable, ensures that equipment and supplies required to transfer and resume operations are available at the alternate processing site or contracts are in place to support delivery to the site within the organization-defined time period for transfer/resumption and ensure that the alternate processing site provides information security safeguards equivalent to that of the primary site.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_disaster_recovery_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_6",
+    "Title": "Least Privilege (AC-6)",
+    "Connector": "Azure",
+    "Description": "Automate least privilege. Allow only authorized accesses for users and processes which are necessary.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_ac_6_7"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/ActiveDirectory"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_iam_no_custom_role",
+      "azure_iam_subscription_owner_max_3"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cm_7",
+    "Title": "Least Functionality (CM-7)",
+    "Connector": "Azure",
+    "Description": "The organization configures the information system to provide only essential capabilities and prohibits or restricts the use of organization-defined prohibited or restricted functions, ports, protocols, and/or services.",
+    "Children": [
+      "azure_nist_sp_800_53_rev_5_cm_7_2",
+      "azure_nist_sp_800_53_rev_5_cm_7_5"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure/Compute"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_compute_vm_adaptive_application_controls_enabled",
+      "azure_compute_vm_allowlist_rules_in_adaptive_application_control_policy_updated",
+      "azure_compute_vm_azure_defender_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_au_12_1",
+    "Title": "System-wide and Time-correlated Audit Trail AU-12(1)",
+    "Connector": "Azure",
+    "Description": "The information system compiles audit records from organization-defined information system components into a system-wide (logical or physical) audit trail that is time-correlated to within organization-defined level of tolerance for the relationship between timestamps of individual records in the audit trail.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_appservice_web_app_diagnostic_logs_enabled",
+      "azure_arc_compute_machine_linux_log_analytics_agent_installed",
+      "azure_arc_compute_machine_windows_log_analytics_agent_installed",
+      "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
+      "azure_batch_account_logging_enabled",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_guest_configuration_installed",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_log_analytics_agent_health_issues_resolved",
+      "azure_compute_vm_log_analytics_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+      "azure_compute_vm_scale_set_log_analytics_agent_installed",
+      "azure_compute_vm_scale_set_logging_enabled",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_datalake_analytics_account_logging_enabled",
+      "azure_datalake_store_account_logging_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_eventhub_namespace_logging_enabled",
+      "azure_iot_hub_logging_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_keyvault_logging_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_logic_app_workflow_logging_enabled",
+      "azure_network_watcher_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_search_service_logging_enabled",
+      "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_servicebus_namespace_logging_enabled",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_auditing_on",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled",
+      "azure_stream_analytics_job_logging_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_au_6_5",
+    "Title": "Integrated Analysis of Audit Records AU-6(5)",
+    "Connector": "Azure",
+    "Description": "The organization integrates analysis of audit records with analysis of vulnerable scanning information, performance data, and information system monitoring information collected from other sources to further enhance the ability to identify inappropriate or unusual activity.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_appservice_azure_defender_enabled",
+      "azure_appservice_web_app_diagnostic_logs_enabled",
+      "azure_arc_compute_machine_linux_log_analytics_agent_installed",
+      "azure_arc_compute_machine_windows_log_analytics_agent_installed",
+      "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
+      "azure_batch_account_logging_enabled",
+      "azure_compute_vm_azure_defender_enabled",
+      "azure_compute_vm_guest_configuration_installed",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_log_analytics_agent_health_issues_resolved",
+      "azure_compute_vm_log_analytics_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_linux_agent_installed",
+      "azure_compute_vm_network_traffic_data_collection_windows_agent_installed",
+      "azure_compute_vm_scale_set_log_analytics_agent_installed",
+      "azure_compute_vm_scale_set_logging_enabled",
+      "azure_container_registry_azure_defender_enabled",
+      "azure_datalake_analytics_account_logging_enabled",
+      "azure_datalake_store_account_logging_enabled",
+      "azure_dns_azure_defender_enabled",
+      "azure_eventhub_namespace_logging_enabled",
+      "azure_iot_hub_logging_enabled",
+      "azure_keyvault_azure_defender_enabled",
+      "azure_keyvault_logging_enabled",
+      "azure_kubernetes_azure_defender_enabled",
+      "azure_logic_app_workflow_logging_enabled",
+      "azure_network_watcher_enabled",
+      "azure_resource_manager_azure_defender_enabled",
+      "azure_search_service_logging_enabled",
+      "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+      "azure_securitycenter_azure_defender_on_for_sqlservervm",
+      "azure_servicebus_namespace_logging_enabled",
+      "azure_sql_database_server_azure_defender_enabled",
+      "azure_sql_server_auditing_on",
+      "azure_sql_server_azure_defender_enabled",
+      "azure_sql_server_vm_azure_defender_enabled",
+      "azure_storage_azure_defender_enabled",
+      "azure_stream_analytics_job_logging_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_cp_9",
+    "Title": "System Backup (CP-9)",
+    "Connector": "Azure",
+    "Description": "The organization conducts backups of information system documentation including security-related documentation, user-level and system-level information contained in the information system with recovery time and recovery point objectives, and protects the confidentiality, integrity, and availability of backup information at storage locations.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_keyvault_purge_protection_enabled",
+      "azure_keyvault_soft_delete_enabled",
+      "azure_mariadb_server_geo_redundant_backup_enabled",
+      "azure_mysql_db_server_geo_redundant_backup_enabled",
+      "azure_postgres_db_server_geo_redundant_backup_enabled"
+    ]
+  },
+  {
+    "ID": "azure_nist_sp_800_53_rev_5_ac_17_1",
+    "Title": "Monitoring and Control AC-17(1)",
+    "Connector": "Azure",
+    "Description": "The information system monitors and controls remote access methods.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "nist_sp_800_53_rev_5": [
+        "true"
+      ],
+      "plugin": [
+        "azure"
+      ],
+      "service": [
+        "Azure"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-azure-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "azure_app_configuration_private_link_used",
+      "azure_appservice_api_app_remote_debugging_disabled",
+      "azure_appservice_function_app_remote_debugging_disabled",
+      "azure_appservice_web_app_remote_debugging_disabled",
+      "azure_azure_redis_cache_in_virtual_network",
+      "azure_azure_redis_cache_uses_private_link",
+      "azure_cognitive_account_private_link_used",
+      "azure_compute_disk_access_uses_private_link",
+      "azure_compute_vm_guest_configuration_installed_linux",
+      "azure_compute_vm_guest_configuration_installed_windows",
+      "azure_compute_vm_guest_configuration_with_system_assigned_managed_identity",
+      "azure_compute_vm_guest_configuration_with_user_and_system_assigned_managed_identity",
+      "azure_compute_vm_restrict_remote_connection_from_accounts_without_password_linux",
+      "azure_container_registry_uses_private_link",
+      "azure_cosmosdb_account_uses_private_link",
+      "azure_data_factory_uses_private_link",
+      "azure_eventgrid_domain_private_link_used",
+      "azure_eventgrid_topic_private_link_used",
+      "azure_eventhub_namespace_private_link_used",
+      "azure_healthcare_fhir_uses_private_link",
+      "azure_keyvault_vault_private_link_used",
+      "azure_mysql_server_private_link_used",
+      "azure_postgres_server_private_link_used",
+      "azure_search_service_uses_private_link",
+      "azure_search_service_uses_sku_supporting_private_link",
+      "azure_servicebus_name_space_private_link_used",
+      "azure_signalr_service_private_link_used",
+      "azure_spring_cloud_service_network_injection_enabled",
+      "azure_sql_server_uses_private_link",
+      "azure_storage_account_default_network_access_rule_denied",
+      "azure_storage_account_uses_private_link",
+      "azure_storage_sync_private_link_used",
+      "azure_synapse_workspace_private_link_used"
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "ID": "aws_redshift_cluster_maintenance_settings_check",
+  "Title": "Amazon Redshift should have required maintenance settings",
+  "Description": "Ensure whether Amazon Redshift clusters have the specified maintenance settings. Redshift clusters `allowVersionUpgrade` should be set to `true` and `automatedSnapshotRetentionPeriod` should be greater than 7.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when allow_version_upgrade and automated_snapshot_retention_period \u003e= 7 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when allow_version_upgrade and automated_snapshot_retention_period \u003e= 7 then title || ' has the required maintenance settings.'\n    else title || ' does not have required maintenance settings.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_redshift_cluster;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_redshift_cluster",
+    "ListOfTables": [
+      "aws_redshift_cluster"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/Redshift"
+    ]
+  },
+  "Managed": true
+}

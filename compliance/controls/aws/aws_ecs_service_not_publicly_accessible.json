@@ -1,0 +1,38 @@
+{
+  "ID": "aws_ecs_service_not_publicly_accessible",
+  "Title": "Amazon ECS services should not have public IP addresses assigned to them automatically",
+  "Description": "This control checks whether Amazon ECS services are configured to automatically assign public IP addresses. This control fails if AssignPublicIP is ENABLED. This control passes if AssignPublicIP is DISABLED.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with service_awsvpc_mode_task_definition as (\n  select\n    a.service_name as service_name,\n    b.task_definition_arn as task_definition\n  from\n    aws_ecs_service as a\n    left join aws_ecs_task_definition as b on a.task_definition = b.task_definition_arn\n  where\n    b.network_mode = 'awsvpc'\n)\nselect\n  a.arn as resource,\n  case\n    when b.service_name is null then 'skip'\n    when network_configuration -\u003e 'AwsvpcConfiguration' -\u003e\u003e 'AssignPublicIp' = 'DISABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.service_name is null then a.title || ' task definition not host network mode.'\n    when network_configuration -\u003e 'AwsvpcConfiguration' -\u003e\u003e 'AssignPublicIp' = 'DISABLED' then a.title || ' not publicly accessible.'\n    else a.title || ' publicly accessible.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_service as a\n  left join service_awsvpc_mode_task_definition as b on a.service_name = b.service_name;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ecs_service",
+    "ListOfTables": [
+      "aws_ecs_service",
+      "aws_ecs_task_definition"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "high",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "resources_not_publicly_accessible"
+    ],
+    "foundational_security_item_id": [
+      "ecs_2"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/ECS"
+    ]
+  },
+  "Managed": true
+}

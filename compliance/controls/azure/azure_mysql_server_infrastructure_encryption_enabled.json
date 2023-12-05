@@ -1,0 +1,26 @@
+{
+  "ID": "azure_mysql_server_infrastructure_encryption_enabled",
+  "Title": "Infrastructure encryption should be enabled for Azure Database for MySQL servers",
+  "Description": "Enable infrastructure encryption for Azure Database for MySQL servers to have higher level of assurance that the data is secure. When infrastructure encryption is enabled, the data at rest is encrypted twice using FIPS 140-2 compliant Microsoft managed keys.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when infrastructure_encryption = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when infrastructure_encryption = 'Enabled' then s.name || ' infrastructure encryption enabled.'\n    else s.name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mysql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_mysql_server",
+    "ListOfTables": [
+      "azure_mysql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/MySQL"
+    ]
+  },
+  "Managed": true
+}

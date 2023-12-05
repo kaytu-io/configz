@@ -1,0 +1,70 @@
+{
+  "ID": "aws_vpc_default_security_group_restricts_all_traffic",
+  "Title": "VPC default security group should not allow inbound and outbound traffic",
+  "Description": "Amazon Elastic Compute Cloud (Amazon EC2) security groups can help in the management of network access by providing stateful filtering of ingress and egress network traffic to AWS resources.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn resource,\n  case\n    when jsonb_array_length(ip_permissions) = 0 and jsonb_array_length(ip_permissions_egress) = 0 then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when jsonb_array_length(ip_permissions) \u003e 0 and jsonb_array_length(ip_permissions_egress) \u003e 0\n      then 'Default security group ' || group_id || ' has inbound and outbound rules.'\n    when jsonb_array_length(ip_permissions) \u003e 0 and jsonb_array_length(ip_permissions_egress) = 0\n      then 'Default security group ' || group_id || ' has inbound rules.'\n    when jsonb_array_length(ip_permissions) = 0 and jsonb_array_length(ip_permissions_egress) \u003e 0\n      then 'Default security group ' || group_id || ' has outbound rules.'\n    else 'Default security group ' || group_id || ' has no inbound or outbound rules.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_vpc_security_group\nwhere\n  group_name = 'default';\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_vpc_security_group",
+    "ListOfTables": [
+      "aws_vpc_security_group"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/VPC"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

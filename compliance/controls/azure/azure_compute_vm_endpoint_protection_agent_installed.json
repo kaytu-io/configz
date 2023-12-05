@@ -1,0 +1,20 @@
+{
+  "ID": "azure_compute_vm_endpoint_protection_agent_installed",
+  "Title": "Monitor missing Endpoint Protection in Azure Security Center",
+  "Description": "Servers without an installed Endpoint Protection agent will be monitored by Azure Security Center as recommendations.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

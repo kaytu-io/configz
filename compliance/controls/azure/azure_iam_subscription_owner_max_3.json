@@ -1,0 +1,33 @@
+{
+  "ID": "azure_iam_subscription_owner_max_3",
+  "Title": "A maximum of 3 owners should be designated for your subscription",
+  "Description": "It is recommended to designate up to 3 subscription owners in order to reduce the potential for breach by a compromised owner.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with owner_roles as (\n  select\n    d.role_name,\n    d.role_type,\n    d.name,\n    d.title,\n    d._ctx,\n    d.subscription_id\n  from\n    azure_role_definition as d\n    left join azure_role_assignment as a on d.id = a.role_definition_id\n  where\n    d.role_name = 'Owner'\n)\nselect\n  owner.subscription_id as resource,\n  case\n    when count(*) \u003c= 3 then 'ok'\n    else 'alarm'\n  end as status,\n  count(*) || ' owner(s) associated.' as reason\n  \n  , sub.display_name as subscription\nfrom\n  owner_roles as owner,\n  azure_subscription as sub\nwhere\n  sub.subscription_id =owner.subscription_id\ngroup by\n  owner.subscription_id,\n  owner._ctx,\n  sub.display_name;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_subscription",
+    "ListOfTables": [
+      "azure_role_assignment",
+      "azure_role_definition",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

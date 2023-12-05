@@ -1,0 +1,26 @@
+{
+  "ID": "azure_keyvault_managed_hms_purge_protection_enabled",
+  "Title": "Azure Key Vault Managed HSM should have purge protection enabled",
+  "Description": "Malicious deletion of an Azure Key Vault Managed HSM can lead to permanent data loss. A malicious insider in your organization can potentially delete and purge Azure Key Vault Managed HSM. Purge protection protects you from insider attacks by enforcing a mandatory retention period for soft deleted Azure Key Vault Managed HSM. No one inside your organization or Microsoft will be able to purge your Azure Key Vault Managed HSM during the soft delete retention period.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when enable_purge_protection then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_purge_protection then name || ' purge protection enabled.'\n    else name || ' purge protection disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_managed_hardware_security_module as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_key_vault_managed_hardware_security_module",
+    "ListOfTables": [
+      "azure_key_vault_managed_hardware_security_module",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "service": [
+      "Azure/KeyVault"
+    ]
+  },
+  "Managed": true
+}

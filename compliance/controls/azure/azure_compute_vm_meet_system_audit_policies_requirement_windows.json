@@ -1,0 +1,17 @@
+{
+  "ID": "azure_compute_vm_meet_system_audit_policies_requirement_windows",
+  "Title": "Windows machines should meet requirements for 'System Audit Policies - Detailed Tracking'",
+  "Description": "Windows machines should have the specified Group Policy settings in the category 'System Audit Policies - Detailed Tracking' for auditing DPAPI, process creation/termination, RPC events, and PNP activity. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

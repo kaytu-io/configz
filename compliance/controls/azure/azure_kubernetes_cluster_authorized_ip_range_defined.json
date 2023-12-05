@@ -1,0 +1,26 @@
+{
+  "ID": "azure_kubernetes_cluster_authorized_ip_range_defined",
+  "Title": "Authorized IP ranges should be defined on Kubernetes Services",
+  "Description": "ARestrict access to the Kubernetes Service Management API by granting API access only to IP addresses in specific ranges. It is recommended to limit access to authorized IP ranges to ensure that only applications from allowed networks can access the cluster.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  c.id as resource,\n  case\n    when api_server_access_profile -\u003e 'AuthorizedIPRanges' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when api_server_access_profile -\u003e 'AuthorizedIPRanges' is not null then c.title || ' authorized IP ranges defined.'\n    else c.title || ' authorized IP ranges not defined.'\n  end as reason\n  \n  , c.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster as c,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = c.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_kubernetes_cluster",
+    "ListOfTables": [
+      "azure_kubernetes_cluster",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/KubernetesService"
+    ]
+  },
+  "Managed": true
+}

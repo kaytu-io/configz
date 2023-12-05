@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v130_1_14",
+  "Title": "Ensure that 'Guests can invite' is set to 'No'",
+  "Description": "Restrict guest being able to invite other guests to collaborate with your organization.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.14"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

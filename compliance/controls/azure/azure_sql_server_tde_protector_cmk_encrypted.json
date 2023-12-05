@@ -1,0 +1,47 @@
+{
+  "ID": "azure_sql_server_tde_protector_cmk_encrypted",
+  "Title": "Ensure SQL server's TDE protector is encrypted with Customer-managed key",
+  "Description": "Based on business needs or criticality of data/databases hosted a SQL server, it is recommended that the TDE protector is encrypted by a key that is managed by the data owner (Customer-managed key)",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when encryption -\u003e\u003e 'kind' = 'servicemanaged' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when encryption -\u003e\u003e 'kind' = 'servicemanaged' then s.name || ' TDE protector not encrypted with CMK.'\n    else s.name || ' TDE protector encrypted with CMK.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  jsonb_array_elements(encryption_protector) encryption,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_sql_server",
+    "ListOfTables": [
+      "azure_sql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "4.5"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "4"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SQL"
+    ]
+  },
+  "Managed": true
+}

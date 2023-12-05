@@ -1,0 +1,34 @@
+{
+  "ID": "azure_iam_deprecated_account_with_owner_roles",
+  "Title": "Blocked accounts with owner permissions on Azure resources should be removed",
+  "Description": "Deprecated accounts with owner permissions should be removed from your subscription. Deprecated accounts are accounts that have been blocked from signing in.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  distinct u.user_principal_name as resource,\n  case\n    when not u.account_enabled then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not u.account_enabled then u.display_name || ' signing-in disabled state with ' || d.role_name || ' role.'\n    else u.display_name || ' signing-in enabled.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_user as u\n  left join azure_role_assignment as a on a.principal_id = u.id\n  left join azure_role_definition as d on d.id = a.role_definition_id\n  -- Query checks the users with only Owner role\n  where d.role_name = 'Owner';\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azuread_user",
+    "ListOfTables": [
+      "azure_role_assignment",
+      "azure_role_definition",
+      "azure_tenant",
+      "azuread_user"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

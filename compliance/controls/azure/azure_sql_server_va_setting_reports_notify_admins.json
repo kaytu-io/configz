@@ -1,0 +1,47 @@
+{
+  "ID": "azure_sql_server_va_setting_reports_notify_admins",
+  "Title": "Ensure that VA setting 'Also send email notifications to admins and subscription owners' is set for a SQL server",
+  "Description": "Enable Vulnerability Assessment (VA) setting 'Also send email notifications to admins and subscription owners'.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when\n      security -\u003e 'properties' -\u003e\u003e 'state' = 'Disabled'\n      or\n      (\n        security -\u003e 'properties' -\u003e\u003e 'state' = 'Enabled'\n        and assessment -\u003e 'properties' -\u003e\u003e 'storageContainerPath' is not null\n        and assessment -\u003e 'properties' -\u003e 'recurringScans' -\u003e\u003e 'emailSubscriptionAdmins' = 'false'\n      )\n      then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when\n      security -\u003e 'properties' -\u003e\u003e 'state' = 'Disabled'\n      or\n      (\n        security -\u003e 'properties' -\u003e\u003e 'state' = 'Enabled'\n        and assessment -\u003e 'properties' -\u003e\u003e 'storageContainerPath' is not null\n        and assessment -\u003e 'properties' -\u003e 'recurringScans' -\u003e\u003e 'emailSubscriptionAdmins' = 'false'\n      )\n      then s.name || ' VA setting not configured to send email notifications to subscription admins and owners.'\n    else s.name || ' VA setting configured to send email notifications to subscription admins and owners.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  jsonb_array_elements(server_security_alert_policy) security,\n  jsonb_array_elements(server_vulnerability_assessment) assessment,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_sql_server",
+    "ListOfTables": [
+      "azure_sql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "4.2.5"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "4.2"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SQL"
+    ]
+  },
+  "Managed": true
+}

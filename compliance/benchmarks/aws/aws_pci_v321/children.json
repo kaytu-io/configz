@@ -1,0 +1,532 @@
+[
+  {
+    "ID": "aws_pci_v321_ssm",
+    "Title": "SSM",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ssm"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_ssm_managed_instance_compliance_patch_compliant",
+      "aws_ssm_managed_instance_compliance_association_compliant",
+      "aws_ec2_instance_ssm_managed"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_dms",
+    "Title": "DMS",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "dms"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_dms_replication_instance_not_publicly_accessible"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_redshift",
+    "Title": "Redshift",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "redshift"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_redshift_cluster_prohibit_public_access"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_autoscaling",
+    "Title": "Auto Scaling",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "autoscaling"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_autoscaling_group_with_lb_use_health_check"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_codebuild",
+    "Title": "CodeBuild",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "codebuild"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_codebuild_project_source_repo_oauth_configured",
+      "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_cloudtrail",
+    "Title": "CloudTrail",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudtrail"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+      "aws_cloudtrail_enabled_all_regions",
+      "aws_cloudtrail_trail_validation_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_sagemaker",
+    "Title": "SageMaker",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "sagemaker"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_guardduty",
+    "Title": "GuardDuty",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "guardduty"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_guardduty_enabled"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_config",
+    "Title": "Config",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "config"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_config_enabled_all_regions"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_elbv2",
+    "Title": "ELBV2",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "elbv2"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_elb_application_lb_redirect_http_request_to_https"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_ec2",
+    "Title": "EC2",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "ec2"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_vpc_default_security_group_restricts_all_traffic",
+      "aws_vpc_security_group_associated",
+      "aws_vpc_eip_associated",
+      "aws_vpc_security_group_remote_administration",
+      "aws_vpc_flow_logs_enabled"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_cw",
+    "Title": "CloudWatch",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "cloudwatch"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_log_metric_filter_root_login"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_kms",
+    "Title": "KMS",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "kms"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_kms_cmk_rotation_enabled"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_s3",
+    "Title": "S3",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "s3"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_cross_region_replication_enabled",
+      "aws_s3_bucket_default_encryption_enabled",
+      "aws_s3_bucket_enforces_ssl",
+      "aws_s3_public_access_block_bucket_account"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_lambda",
+    "Title": "Lambda",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "lambda"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_lambda_function_restrict_public_access",
+      "aws_lambda_function_in_vpc"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_es",
+    "Title": "Elasticsearch",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "es"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_es_domain_in_vpc",
+      "aws_es_domain_encryption_at_rest_enabled"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_iam",
+    "Title": "IAM",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "iam"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_user_no_inline_attached_policies",
+      "aws_iam_policy_no_star_star",
+      "aws_iam_root_user_hardware_mfa_enabled",
+      "aws_iam_root_user_virtual_mfa",
+      "aws_iam_user_mfa_enabled",
+      "aws_iam_user_unused_credentials_90",
+      "aws_iam_account_password_policy_strong"
+    ]
+  },
+  {
+    "ID": "aws_pci_v321_rds",
+    "Title": "RDS",
+    "Connector": "",
+    "Description": "",
+    "Children": null,
+    "Tags": {
+      "pci": [
+        "true"
+      ],
+      "pci_version": [
+        "v3.2.1"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "rds"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_rds_db_instance_prohibit_public_access"
+    ]
+  }
+]

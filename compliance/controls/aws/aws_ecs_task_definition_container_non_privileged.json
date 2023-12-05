@@ -1,0 +1,37 @@
+{
+  "ID": "aws_ecs_task_definition_container_non_privileged",
+  "Title": "ECS containers should run as non-privileged",
+  "Description": "This control checks if the privileged parameter in the container definition of Amazon ECS Task Definitions is set to true. The control fails if this parameter is equal to true.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with privileged_container_definition as (\n  select\n    distinct task_definition_arn as arn\n  from\n    aws_ecs_task_definition,\n    jsonb_array_elements(container_definitions) as c\n  where\n    c -\u003e\u003e 'Privileged' = 'true'\n)\nselect\n  d.task_definition_arn as resource,\n  case\n    when c.arn is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when c.arn is null then d.title || ' does not have elevated privileges.'\n    else d.title || ' has elevated privileges.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_task_definition as d\n  left join privileged_container_definition as c on d.task_definition_arn = c.arn;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ecs_task_definition",
+    "ListOfTables": [
+      "aws_ecs_task_definition"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "high",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "root_user_access_restrictions"
+    ],
+    "foundational_security_item_id": [
+      "ecs_4"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/ECS"
+    ]
+  },
+  "Managed": true
+}

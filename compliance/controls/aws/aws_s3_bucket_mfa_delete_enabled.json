@@ -1,0 +1,46 @@
+{
+  "ID": "aws_s3_bucket_mfa_delete_enabled",
+  "Title": "Ensure MFA Delete is enabled on S3 buckets",
+  "Description": "Once MFA Delete is enabled on your sensitive and classified S3 bucket it requires the user to have two forms of authentication.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when versioning_mfa_delete then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when versioning_mfa_delete then name || ' MFA delete enabled.'\n    else name || ' MFA delete disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_s3_bucket",
+    "ListOfTables": [
+      "aws_s3_bucket"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "2.1.3"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "2.1"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/S3"
+    ]
+  },
+  "Managed": true
+}

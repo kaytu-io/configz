@@ -1,0 +1,37 @@
+{
+  "ID": "aws_cloudfront_distribution_configured_with_origin_failover",
+  "Title": "CloudFront distributions should have origin failover configured",
+  "Description": "This control checks whether an Amazon CloudFront distribution is configured with an origin group that has two or more origins. CloudFront origin failover can increase availability. Origin failover automatically redirects traffic to a secondary origin if the primary origin is unavailable or if it returns specific HTTP response status codes.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when origin_groups -\u003e\u003e 'Items' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when origin_groups -\u003e\u003e 'Items' is not null then title || ' origin group is configured.'\n    else title || ' origin group not configured.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_cloudfront_distribution",
+    "ListOfTables": [
+      "aws_cloudfront_distribution"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "low",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "high_availability"
+    ],
+    "foundational_security_item_id": [
+      "cloudfront_4"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/CloudFront"
+    ]
+  },
+  "Managed": true
+}

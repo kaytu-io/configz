@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v130_1_11",
+  "Title": "Ensure that 'Users can register applications' is set to 'No'",
+  "Description": "Require administrators to register third-party applications.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.11"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,48 @@
+{
+  "ID": "azure_network_watcher_enabled",
+  "Title": "Ensure that Network Watcher is 'Enabled'",
+  "Description": "Enable Network Watcher for Azure subscriptions.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  loc.id resource,\n  case\n    when watcher.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when watcher.id is null then 'Network watcher not enabled in ' || loc.name || '.'\n    else 'Network watcher enabled in ' || loc.name || '.'\n  end as reason,\n  loc.name\n  \n  \n  , sub.display_name as subscription\nfrom\n  azure_location loc\n  left join azure_network_watcher watcher on watcher.region = loc.name\n  join azure_subscription sub on sub.subscription_id = loc.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_location",
+    "ListOfTables": [
+      "azure_location",
+      "azure_network_watcher",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "6.5"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "6"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Network"
+    ]
+  },
+  "Managed": true
+}

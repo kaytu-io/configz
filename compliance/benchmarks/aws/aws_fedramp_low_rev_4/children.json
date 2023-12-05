@@ -1,0 +1,1162 @@
+[
+  {
+    "ID": "aws_fedramp_low_rev_4_cp_10",
+    "Title": "Information System Recovery And Reconstitution (CP-10)",
+    "Connector": "AWS",
+    "Description": "The organization provides for the recovery and reconstitution of the information system to a known state after a disruption, compromise, or failure.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_backup_plan_min_retention_35_days",
+      "aws_dynamodb_table_auto_scaling_enabled",
+      "aws_dynamodb_table_point_in_time_recovery_enabled",
+      "aws_dynamodb_table_protected_by_backup_plan",
+      "aws_ebs_volume_protected_by_backup_plan",
+      "aws_ec2_instance_ebs_optimized",
+      "aws_ec2_instance_protected_by_backup_plan",
+      "aws_efs_file_system_protected_by_backup_plan",
+      "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+      "aws_elb_application_lb_deletion_protection_enabled",
+      "aws_elb_classic_lb_cross_zone_load_balancing_enabled",
+      "aws_fsx_file_system_protected_by_backup_plan",
+      "aws_rds_db_cluster_aurora_protected_by_backup_plan",
+      "aws_rds_db_instance_backup_enabled",
+      "aws_rds_db_instance_multiple_az_enabled",
+      "aws_rds_db_instance_protected_by_backup_plan",
+      "aws_redshift_cluster_automatic_snapshots_min_7_days",
+      "aws_s3_bucket_cross_region_replication_enabled",
+      "aws_s3_bucket_versioning_enabled",
+      "aws_vpc_vpn_tunnel_up"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_au_11",
+    "Title": "Audit Record Retention (AU-11)",
+    "Connector": "AWS",
+    "Description": "The organization retains audit records for at least 90 days to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/CloudWatch"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_cloudwatch_log_group_retention_period_365"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ia_2",
+    "Title": "Identification and Authentication (Organizational users) (IA-2)",
+    "Connector": "AWS",
+    "Description": "The information system uniquely identifies and authenticates organizational users (or processes acting on behalf of organizational users).",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_iam_account_password_policy_min_length_14",
+      "aws_iam_root_user_hardware_mfa_enabled",
+      "aws_iam_root_user_mfa_enabled",
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_user_console_access_mfa_enabled",
+      "aws_iam_user_mfa_enabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_sc_7",
+    "Title": "Boundary Protection (SC-7)",
+    "Connector": "AWS",
+    "Description": "The information system: a. Monitors and controls communications at the external boundary of the system and at key internal boundaries within the system; b. Implements subnetworks for publicly accessible system components that are [Selection: physically; logically] separated from internal organizational networks; and c. Connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_in_vpc",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_application_lb_waf_enabled",
+      "aws_elb_classic_lb_use_ssl_certificate",
+      "aws_elb_classic_lb_use_tls_https_listeners",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_es_domain_in_vpc",
+      "aws_es_domain_node_to_node_encryption_enabled",
+      "aws_lambda_function_in_vpc",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_encryption_in_transit_enabled",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_enforces_ssl",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_account",
+      "aws_s3_public_access_block_bucket",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_vpc_default_security_group_restricts_all_traffic",
+      "aws_vpc_security_group_restrict_ingress_common_ports_all",
+      "aws_vpc_security_group_restrict_ingress_ssh_all",
+      "aws_vpc_security_group_restrict_ingress_tcp_udp_all",
+      "aws_vpc_subnet_auto_assign_public_ip_disabled",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_sc_12",
+    "Title": "Cryptographic Key Establishment And Management (SC-12)",
+    "Connector": "AWS",
+    "Description": "The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with [Assignment: organization-defined requirements for key generation, distribution, storage, access, and destruction].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_acm_certificate_expires_30_days",
+      "aws_kms_cmk_rotation_enabled",
+      "aws_kms_key_not_pending_deletion"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_cm_8",
+    "Title": "Information System Component Inventory (CM-8)",
+    "Connector": "AWS",
+    "Description": "The organization develops and documents an inventory of information system components that accurately reflects the current information system, includes all components within the authorization boundary of the information system, is at the level of granularity deemed necessary for tracking and reporting and reviews and updates the information system component inventory.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_ec2_instance_ssm_managed",
+      "aws_guardduty_enabled",
+      "aws_ssm_managed_instance_compliance_association_compliant",
+      "aws_ssm_managed_instance_compliance_patch_compliant"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_au_2",
+    "Title": "Audit Events (AU-2)",
+    "Connector": "AWS",
+    "Description": "The organization: a. Determines that the information system is capable of auditing the following events: [Assignment: organization-defined auditable events]; b. Coordinates the security audit function with other organizational entities requiring audit- related information to enhance mutual support and to help guide the selection of auditable events; c. Provides a rationale for why the auditable events are deemed to be adequate support after- the-fact investigations of security incidents.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_apigateway_stage_logging_enabled",
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_elb_application_classic_lb_logging_enabled",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_logging_enabled",
+      "aws_vpc_flow_logs_enabled",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_au",
+    "Title": "Audit and Accountability (AU)",
+    "Connector": "AWS",
+    "Description": "The AU control family consists of security controls related to an organization’s audit capabilities. This includes audit policies and procedures, audit logging, audit report generation, and protection of audit information.",
+    "Children": [
+      "aws_fedramp_low_rev_4_au_2",
+      "aws_fedramp_low_rev_4_au_9",
+      "aws_fedramp_low_rev_4_au_11"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_sa_3",
+    "Title": "System Development Life Cycle (SA-3)",
+    "Connector": "AWS",
+    "Description": "The organization manages the information system using organization-defined system development life cycle, defines and documents information security roles and responsibilities throughout the system development life cycle, identifies individuals having information security roles and responsibilities and integrates the organizational information security risk management process into system development life cycle activities.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values",
+      "aws_codebuild_project_source_repo_oauth_configured",
+      "aws_ec2_instance_ssm_managed"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_sa",
+    "Title": "System and Services Acquisition (SA)",
+    "Connector": "AWS",
+    "Description": "The SA control family correlates with controls that protect allocated resources and an organization’s system development life cycle. This includes information system documentation controls, development configuration management controls, and developer security testing and evaluation controls.",
+    "Children": [
+      "aws_fedramp_low_rev_4_sa_3"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ac_2",
+    "Title": "Account Management (AC-2)",
+    "Connector": "AWS",
+    "Description": "Manage system accounts, group memberships, privileges, workflow, notifications, deactivations, and authorizations.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_apigateway_stage_logging_enabled",
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudtrail_trail_integrated_with_logs",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_ecs_task_definition_user_for_host_mode_check",
+      "aws_es_domain_logs_to_cloudwatch",
+      "aws_guardduty_enabled",
+      "aws_iam_account_password_policy_min_length_14",
+      "aws_iam_policy_custom_no_service_wildcard",
+      "aws_iam_group_not_empty",
+      "aws_iam_group_user_role_no_inline_policies",
+      "aws_iam_policy_custom_no_blocked_kms_actions",
+      "aws_iam_policy_custom_no_star_star",
+      "aws_iam_root_user_hardware_mfa_enabled",
+      "aws_iam_root_user_mfa_enabled",
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_user_access_key_age_90",
+      "aws_iam_user_console_access_mfa_enabled",
+      "aws_iam_user_in_group",
+      "aws_iam_user_mfa_enabled",
+      "aws_iam_user_no_inline_attached_policies",
+      "aws_iam_user_unused_credentials_90",
+      "aws_rds_db_instance_logging_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_s3_bucket_logging_enabled",
+      "aws_securityhub_enabled",
+      "aws_wafv2_web_acl_logging_enabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ac_17",
+    "Title": "Remote Access (AC-17)",
+    "Connector": "AWS",
+    "Description": "Authorize remote access systems prior to connection. Enforce remote connection requirements to information systems.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_acm_certificate_expires_30_days",
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_in_vpc",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_elb_application_lb_drop_http_headers",
+      "aws_elb_application_lb_redirect_http_request_to_https",
+      "aws_elb_classic_lb_use_ssl_certificate",
+      "aws_elb_classic_lb_use_tls_https_listeners",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_es_domain_in_vpc",
+      "aws_guardduty_enabled",
+      "aws_lambda_function_in_vpc",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_encryption_in_transit_enabled",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_enforces_ssl",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_account",
+      "aws_s3_public_access_block_bucket",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_securityhub_enabled",
+      "aws_vpc_default_security_group_restricts_all_traffic",
+      "aws_vpc_security_group_restrict_ingress_common_ports_all",
+      "aws_vpc_security_group_restrict_ingress_ssh_all",
+      "aws_vpc_security_group_restrict_ingress_tcp_udp_all",
+      "aws_vpc_subnet_auto_assign_public_ip_disabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ca",
+    "Title": "Security Assessment And Authorization (CA)",
+    "Connector": "AWS",
+    "Description": "The Security Assessment and Authorization control family includes controls that supplement the execution of security assessments, authorizations, continuous monitoring, plan of actions and milestones, and system interconnections.",
+    "Children": [
+      "aws_fedramp_low_rev_4_ca_7"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_sc_13",
+    "Title": "Use of Cryptography (SC-13)",
+    "Connector": "AWS",
+    "Description": "The information system implements FIPS-validated or NSA-approved cryptography in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_kms_key_not_pending_deletion",
+      "aws_redshift_cluster_kms_enabled",
+      "aws_s3_bucket_default_encryption_enabled_kms",
+      "aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled",
+      "aws_sagemaker_notebook_instance_encryption_at_rest_enabled",
+      "aws_sns_topic_encrypted_at_rest"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_sc_5",
+    "Title": "Denial Of Service Protection (SC-5)",
+    "Connector": "AWS",
+    "Description": "The information system protects against or limits the effects of the following types of denial of service attacks: [Assignment: organization-defined types of denial of service attacks or references to sources for such information] by employing [Assignment: organization-defined security safeguards].",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_autoscaling_group_with_lb_use_health_check",
+      "aws_dynamodb_table_auto_scaling_enabled",
+      "aws_dynamodb_table_point_in_time_recovery_enabled",
+      "aws_ec2_instance_ebs_optimized",
+      "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+      "aws_elb_application_lb_deletion_protection_enabled",
+      "aws_elb_classic_lb_cross_zone_load_balancing_enabled",
+      "aws_guardduty_enabled",
+      "aws_rds_db_instance_backup_enabled",
+      "aws_rds_db_instance_deletion_protection_enabled",
+      "aws_rds_db_instance_multiple_az_enabled",
+      "aws_redshift_cluster_automatic_snapshots_min_7_days",
+      "aws_s3_bucket_cross_region_replication_enabled",
+      "aws_s3_bucket_versioning_enabled",
+      "aws_vpc_vpn_tunnel_up"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ir_4",
+    "Title": "Incident Handling (IR-4)",
+    "Connector": "AWS",
+    "Description": "The organization implements an incident handling capability for security incidents that includes preparation, detection and analysis, containment, eradication, and recovery, coordinates incident handling activities with contingency planning activities and incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implements the resulting changes accordingly.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_autoscaling_group_with_lb_use_health_check",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_guardduty_enabled",
+      "aws_guardduty_finding_archived",
+      "aws_securityhub_enabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ac_3",
+    "Title": "Access Enforcement (AC-3)",
+    "Connector": "AWS",
+    "Description": "The information system enforces approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_autoscaling_launch_config_public_ip_disabled",
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_ec2_instance_uses_imdsv2",
+      "aws_ecs_task_definition_user_for_host_mode_check",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_es_domain_in_vpc",
+      "aws_iam_policy_custom_no_service_wildcard",
+      "aws_iam_group_not_empty",
+      "aws_iam_group_user_role_no_inline_policies",
+      "aws_iam_policy_custom_no_star_star",
+      "aws_iam_root_user_no_access_keys",
+      "aws_iam_user_in_group",
+      "aws_iam_user_no_inline_attached_policies",
+      "aws_iam_user_unused_credentials_90",
+      "aws_lambda_function_in_vpc",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_account",
+      "aws_s3_public_access_block_bucket",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_vpc_subnet_auto_assign_public_ip_disabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_cp_9",
+    "Title": "Information System Backup (CP-9)",
+    "Connector": "AWS",
+    "Description": "The organization conducts backups of user-level information, system-level information  and information system documentation including security-related documentation contained in the information system and protects the confidentiality, integrity, and availability of backup information at storage locations.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_backup_plan_min_retention_35_days",
+      "aws_dynamodb_table_point_in_time_recovery_enabled",
+      "aws_dynamodb_table_protected_by_backup_plan",
+      "aws_ebs_volume_protected_by_backup_plan",
+      "aws_ec2_instance_protected_by_backup_plan",
+      "aws_efs_file_system_protected_by_backup_plan",
+      "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+      "aws_fsx_file_system_protected_by_backup_plan",
+      "aws_rds_db_cluster_aurora_protected_by_backup_plan",
+      "aws_rds_db_instance_backup_enabled",
+      "aws_rds_db_instance_protected_by_backup_plan",
+      "aws_redshift_cluster_automatic_snapshots_min_7_days",
+      "aws_s3_bucket_cross_region_replication_enabled",
+      "aws_s3_bucket_versioning_enabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_au_9",
+    "Title": "Protection of Audit Information (AU-9)",
+    "Connector": "AWS",
+    "Description": "The information system protects audit information and audit tools from unauthorized access, modification, and deletion.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_cloudtrail_trail_logs_encrypted_with_kms_cmk",
+      "aws_cloudtrail_trail_validation_enabled",
+      "aws_log_group_encryption_at_rest_enabled",
+      "aws_s3_bucket_cross_region_replication_enabled",
+      "aws_s3_bucket_versioning_enabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_cm",
+    "Title": "Configuration Management (CM)",
+    "Connector": "AWS",
+    "Description": "CM controls are specific to an organization’s configuration management policies. This includes a baseline configuration to operate as the basis for future builds or changes to information systems. Additionally, this includes information system component inventories and a security impact analysis control.",
+    "Children": [
+      "aws_fedramp_low_rev_4_cm_2",
+      "aws_fedramp_low_rev_4_cm_8"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_cp",
+    "Title": "Contingency Planning (CP)",
+    "Connector": "AWS",
+    "Description": "The CP control family includes controls specific to an organization's contingency plan if a cybersecurity event should occur. This includes controls like contingency plan testing, updating, training, and backups, and system reconstitution.",
+    "Children": [
+      "aws_fedramp_low_rev_4_cp_9",
+      "aws_fedramp_low_rev_4_cp_10"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_sc",
+    "Title": "System and Communications Protection (SC)",
+    "Connector": "AWS",
+    "Description": "The SC control family is responsible for systems and communications protection procedures. This includes boundary protection, protection of information at rest, collaborative computing devices, cryptographic protection, denial of service protection, and many others.",
+    "Children": [
+      "aws_fedramp_low_rev_4_sc_5",
+      "aws_fedramp_low_rev_4_sc_7",
+      "aws_fedramp_low_rev_4_sc_12",
+      "aws_fedramp_low_rev_4_sc_13"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ac",
+    "Title": "Access Control (AC)",
+    "Connector": "AWS",
+    "Description": "The access control family consists of security requirements detailing system logging. This includes who has access to what assets and reporting capabilities like account management, system privileges, and remote access logging to determine when users have access to the system and their level of access.",
+    "Children": [
+      "aws_fedramp_low_rev_4_ac_2",
+      "aws_fedramp_low_rev_4_ac_3",
+      "aws_fedramp_low_rev_4_ac_17"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ir",
+    "Title": "Incident Response (IR)",
+    "Connector": "AWS",
+    "Description": "IR controls are specific to an organization’s incident response policies and procedures. This includes incident response training, testing, monitoring, reporting, and response plan.",
+    "Children": [
+      "aws_fedramp_low_rev_4_ir_4"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_cm_2",
+    "Title": "Baseline Configuration (CM-2)",
+    "Connector": "AWS",
+    "Description": "The organization develops, documents, and maintains under configuration control, a current baseline configuration of the information system.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_apigateway_stage_use_waf_web_acl",
+      "aws_autoscaling_launch_config_public_ip_disabled",
+      "aws_dms_replication_instance_not_publicly_accessible",
+      "aws_ebs_snapshot_not_publicly_restorable",
+      "aws_ebs_volume_unused",
+      "aws_ec2_instance_in_vpc",
+      "aws_ec2_instance_not_publicly_accessible",
+      "aws_ec2_instance_ssm_managed",
+      "aws_ec2_stopped_instance_30_days",
+      "aws_elb_application_lb_deletion_protection_enabled",
+      "aws_emr_cluster_master_nodes_no_public_ip",
+      "aws_es_domain_in_vpc",
+      "aws_lambda_function_in_vpc",
+      "aws_lambda_function_restrict_public_access",
+      "aws_rds_db_instance_prohibit_public_access",
+      "aws_rds_db_snapshot_prohibit_public_access",
+      "aws_redshift_cluster_prohibit_public_access",
+      "aws_s3_bucket_restrict_public_read_access",
+      "aws_s3_bucket_restrict_public_write_access",
+      "aws_s3_public_access_block_account",
+      "aws_s3_public_access_block_bucket",
+      "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+      "aws_ssm_managed_instance_compliance_association_compliant",
+      "aws_vpc_default_security_group_restricts_all_traffic",
+      "aws_vpc_route_table_restrict_public_access_to_igw",
+      "aws_vpc_security_group_restrict_ingress_common_ports_all",
+      "aws_vpc_security_group_restrict_ingress_ssh_all",
+      "aws_vpc_security_group_restrict_ingress_tcp_udp_all",
+      "aws_vpc_subnet_auto_assign_public_ip_disabled"
+    ]
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ia",
+    "Title": "Identification and Authentication (IA)",
+    "Connector": "AWS",
+    "Description": "IA controls are specific to the identification and authentication policies in an organization. This includes the identification and authentication of organizational and non-organizational users and how the management of those systems.",
+    "Children": [
+      "aws_fedramp_low_rev_4_ia_2"
+    ],
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS/IAM"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": null
+  },
+  {
+    "ID": "aws_fedramp_low_rev_4_ca_7",
+    "Title": "Continuous Monitoring (CA-7)",
+    "Connector": "AWS",
+    "Description": "Continuously monitor configuration management processes. Determine security impact, environment and operational risks.",
+    "Children": null,
+    "Tags": {
+      "category": [
+        "Compliance"
+      ],
+      "fedramp_low_rev_4": [
+        "true"
+      ],
+      "plugin": [
+        "aws"
+      ],
+      "service": [
+        "AWS"
+      ],
+      "source_git": [
+        "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+      ],
+      "type": [
+        "Benchmark"
+      ]
+    },
+    "Managed": true,
+    "Enabled": true,
+    "AutoAssign": false,
+    "Baseline": true,
+    "Controls": [
+      "aws_autoscaling_group_with_lb_use_health_check",
+      "aws_cloudtrail_multi_region_trail_enabled",
+      "aws_cloudtrail_s3_data_events_enabled",
+      "aws_cloudtrail_trail_enabled",
+      "aws_cloudwatch_alarm_action_enabled",
+      "aws_ec2_instance_detailed_monitoring_enabled",
+      "aws_elastic_beanstalk_enhanced_health_reporting_enabled",
+      "aws_elb_application_lb_waf_enabled",
+      "aws_guardduty_enabled",
+      "aws_lambda_function_concurrent_execution_limit_configured",
+      "aws_lambda_function_dead_letter_queue_configured",
+      "aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled",
+      "aws_redshift_cluster_encryption_logging_enabled",
+      "aws_securityhub_enabled"
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "ID": "azure_keyvault_vault_recoverable",
+  "Title": "Ensure the key vault is recoverable",
+  "Description": "The key vault contains object keys, secrets and certificates. Accidental unavailability of a key vault can cause immediate data loss or loss of security functions (authentication, validation, verification, non-repudiation, etc.) supported by the key vault objects. It is recommended the key vault be made recoverable by enabling the \"Do Not Purge\" and \"Soft Delete\" functions.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when soft_delete_enabled and purge_protection_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when not soft_delete_enabled and not purge_protection_enabled then name || ' \"soft delete\" and \"do not purge\" not enabled.'\n    when not soft_delete_enabled then name || ' \"soft delete\" not enabled.'\n    when not purge_protection_enabled then name || ' \"do not purge\" not enabled.'\n    else name || ' \"soft delete\" and \"do not purge\" enabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault kv,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_key_vault",
+    "ListOfTables": [
+      "azure_key_vault",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "8.4"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "8"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/KeyVault"
+    ]
+  },
+  "Managed": true
+}

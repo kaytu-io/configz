@@ -1,0 +1,48 @@
+{
+  "ID": "aws_rbi_cyber_security",
+  "Title": "RBI Cyber Security Framework for AWS",
+  "Connector": "AWS",
+  "Description": "The Reserve Bank had prescribed a set of baseline cyber security controls for primary (Urban) cooperative banks (UCBs) in October 2018. On further examination, it has been decided to prescribe a comprehensive cyber security framework for the UCBs, as a graded approach, based on their digital depth and interconnectedness with the payment systems landscape, digital products offered by them and assessment of cyber security risk. The framework would mandate implementation of progressively stronger security measures based on the nature, variety and scale of digital product offerings of banks.",
+  "Children": [
+    "aws_rbi_cyber_security_annex_i_1_1",
+    "aws_rbi_cyber_security_annex_i_1_3",
+    "aws_rbi_cyber_security_annex_i_5_1",
+    "aws_rbi_cyber_security_annex_i_6",
+    "aws_rbi_cyber_security_annex_i_7_1",
+    "aws_rbi_cyber_security_annex_i_7_2",
+    "aws_rbi_cyber_security_annex_i_7_3",
+    "aws_rbi_cyber_security_annex_i_7_4",
+    "aws_rbi_cyber_security_annex_i_12"
+  ],
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "kaytu_benchmark_type": [
+      "compliance"
+    ],
+    "kaytu_category": [
+      "Laws \u0026 Regulations"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Controls": null
+}

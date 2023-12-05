@@ -1,0 +1,58 @@
+{
+  "ID": "aws_backup_recovery_point_min_retention_35_days",
+  "Title": "Backup recovery points should not expire before retention period",
+  "Description": "Ensure a recovery point expires no earlier than after the specified period. The rule is non-compliant if the recovery point has a retention point less than 35 days.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  recovery_point_arn as resource,\n  case\n    when (lifecycle -\u003e 'DeleteAfterDays') is null then 'ok'\n    when (lifecycle -\u003e 'DeleteAfterDays')::int \u003e= 35 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when (lifecycle -\u003e 'DeleteAfterDays') is null then split_part(recovery_point_arn, ':', -1) || ' retention period set to never expire.'\n    else split_part(recovery_point_arn, ':', -1) || ' recovery point has a retention period of ' || (lifecycle -\u003e 'DeleteAfterDays')::int || ' days.'\n  end as reason\n  , region, account_id\nfrom\n  aws_backup_recovery_point;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_backup_recovery_point",
+    "ListOfTables": [
+      "aws_backup_recovery_point"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/Backup"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

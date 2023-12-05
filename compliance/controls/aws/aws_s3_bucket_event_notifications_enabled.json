@@ -1,0 +1,37 @@
+{
+  "ID": "aws_s3_bucket_event_notifications_enabled",
+  "Title": "S3 buckets should have event notifications enabled",
+  "Description": "This control checks whether S3 Event Notifications are enabled on an Amazon S3 bucket. This control fails if S3 Event Notifications are not enabled on a bucket.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when\n      event_notification_configuration -\u003e\u003e 'EventBridgeConfiguration' is null\n      and event_notification_configuration -\u003e\u003e 'LambdaFunctionConfigurations' is null\n      and event_notification_configuration -\u003e\u003e 'QueueConfigurations' is null\n      and event_notification_configuration -\u003e\u003e 'TopicConfigurations' is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when\n      event_notification_configuration -\u003e\u003e 'EventBridgeConfiguration' is null\n      and event_notification_configuration -\u003e\u003e 'LambdaFunctionConfigurations' is null\n      and event_notification_configuration -\u003e\u003e 'QueueConfigurations' is null\n      and event_notification_configuration -\u003e\u003e 'TopicConfigurations' is null then title || ' event notifications disabled.'\n    else title || ' event notifications enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_s3_bucket",
+    "ListOfTables": [
+      "aws_s3_bucket"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "logging"
+    ],
+    "foundational_security_item_id": [
+      "s3_11"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/S3"
+    ]
+  },
+  "Managed": true
+}

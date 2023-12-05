@@ -1,0 +1,70 @@
+{
+  "ID": "aws_ec2_instance_ebs_optimized",
+  "Title": "EC2 instance should have EBS optimization enabled",
+  "Description": "An optimized instance in Amazon Elastic Block Store (Amazon EBS) provides additional, dedicated capacity for Amazon EBS I/O operations.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when ebs_optimized then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when ebs_optimized then title || ' EBS optimization enabled.'\n    else title || ' EBS optimization disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_instance;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_instance",
+    "ListOfTables": [
+      "aws_ec2_instance"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "audit_manager_control_tower": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/EC2"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

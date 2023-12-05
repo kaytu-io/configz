@@ -1,0 +1,37 @@
+{
+  "ID": "aws_autoscaling_group_multiple_az_configured",
+  "Title": "Amazon EC2 Auto Scaling group should cover multiple Availability Zones",
+  "Description": "This control checks whether an Auto Scaling group spans multiple Availability Zones. The control fails if an Auto Scaling group does not span multiple availability zones.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  autoscaling_group_arn as resource,\n  case\n    when jsonb_array_length(availability_zones) \u003e 1 then 'ok'\n    else 'alarm'\n  end as status,\n  title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_autoscaling_group;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_autoscaling_group",
+    "ListOfTables": [
+      "aws_ec2_autoscaling_group"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "high_availability"
+    ],
+    "foundational_security_item_id": [
+      "autoscaling_2"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/AutoScaling"
+    ]
+  },
+  "Managed": true
+}

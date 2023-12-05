@@ -1,0 +1,37 @@
+{
+  "ID": "aws_opensearch_domain_data_node_fault_tolerance",
+  "Title": "OpenSearch domains should have at least three data nodes",
+  "Description": "This control checks whether OpenSearch domains are configured with at least three data nodes and zoneAwarenessEnabled is true. This control fails for an OpenSearch domain if instanceCount is less than 3 or zoneAwarenessEnabled is false.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when cluster_config -\u003e\u003e 'ZoneAwarenessEnabled' = 'true' and cluster_config -\u003e\u003e 'InstanceCount' \u003e '2' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when cluster_config -\u003e\u003e 'ZoneAwarenessEnabled' = 'true' and cluster_config -\u003e\u003e 'InstanceCount' \u003e '2' then title || ' zone awareness is '\n    || case when cluster_config -\u003e\u003e 'ZoneAwarenessEnabled' = 'true' then 'enabled' else 'disabled' end || ' with ' || (cluster_config -\u003e\u003e 'InstanceCount') || ' data node(s) configued.'\n    else title || ' zone awareness is ' || case when cluster_config -\u003e\u003e 'ZoneAwarenessEnabled' = 'true' then 'enabled' else 'disabled' end || ' with ' || (cluster_config -\u003e\u003e 'InstanceCount') || ' data node(s) configued.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_opensearch_domain;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_opensearch_domain",
+    "ListOfTables": [
+      "aws_opensearch_domain"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "high_availability"
+    ],
+    "foundational_security_item_id": [
+      "opensearch_6"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/OpenSearch"
+    ]
+  },
+  "Managed": true
+}

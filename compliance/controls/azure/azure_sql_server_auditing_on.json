@@ -1,0 +1,47 @@
+{
+  "ID": "azure_sql_server_auditing_on",
+  "Title": "Ensure that 'Auditing' is set to 'On'",
+  "Description": "Enable auditing on SQL Servers.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when audit -\u003e 'properties' -\u003e\u003e 'state' = 'Disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when audit -\u003e 'properties' -\u003e\u003e 'state' = 'Disabled' then name || ' auditing disabled.'\n    else name || ' auditing enabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  jsonb_array_elements(server_audit_policy) audit,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_sql_server",
+    "ListOfTables": [
+      "azure_sql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "4.1.1"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "4.1"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SQL"
+    ]
+  },
+  "Managed": true
+}

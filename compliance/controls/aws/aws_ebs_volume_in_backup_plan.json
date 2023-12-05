@@ -1,0 +1,71 @@
+{
+  "ID": "aws_ebs_volume_in_backup_plan",
+  "Title": "EBS volumes should be in a backup plan",
+  "Description": "To help with data back-up processes, ensure your Amazon Elastic Block Store (Amazon EBS) volumes are a part of an AWS Backup plan.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with mapped_with_id as (\n  select\n    jsonb_agg(elems) as mapped_ids\n  from\n    aws_backup_selection,\n    jsonb_array_elements(resources) as elems\n  group by backup_plan_id\n),\nmapped_with_tags as (\n  select\n    jsonb_agg(elems -\u003e\u003e 'ConditionKey') as mapped_tags\n  from\n    aws_backup_selection,\n    jsonb_array_elements(list_of_tags) as elems\n  group by backup_plan_id\n),\nbacked_up_volume as (\n  select\n    v.volume_id\n  from\n    aws_ebs_volume as v\n    join mapped_with_id as t on t.mapped_ids ?| array[v.arn]\n  union\n  select\n    v.volume_id\n  from\n    aws_ebs_volume as v\n    join mapped_with_tags as t on t.mapped_tags ?| array(select jsonb_object_keys(tags))\n)\nselect\n  v.arn as resource,\n  case\n    when b.volume_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when b.volume_id is null then v.title || ' not in backup plan.'\n    else v.title || ' in backup plan.'\n  end as reason\n  \n  , v.region, v.account_id\nfrom\n  aws_ebs_volume as v\n  left join backed_up_volume as b on v.volume_id = b.volume_id;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ebs_volume",
+    "ListOfTables": [
+      "aws_backup_selection",
+      "aws_ebs_volume"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/EBS"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

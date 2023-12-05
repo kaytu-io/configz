@@ -1,0 +1,38 @@
+{
+  "ID": "aws_cis_v140_5_4",
+  "Title": "Ensure routing tables for VPC peering are \"least access\"",
+  "Description": "Once a VPC peering connection is established, routing tables must be updated to establish any connections between the peered VPCs. These routes can be as specific as desired - even peering a VPC to only a single host on the other side of the connection.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "5.4"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "5"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/VPC"
+    ]
+  },
+  "Managed": true
+}

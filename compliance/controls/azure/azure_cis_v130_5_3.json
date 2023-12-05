@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v130_5_3",
+  "Title": "Ensure that Diagnostic Logs are enabled for all services which support it",
+  "Description": "Diagnostic Logs capture activity to the data access plane while the Activity log is a subscription-level log for the control plane. Resource-level diagnostic logs provide insight into operations that were performed within that resource itself. It is crucial that logging systems are correctly configured to log all relevant activities and retain those logs for a sufficient length of time.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "5.3"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "5.2"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Monitor"
+    ]
+  },
+  "Managed": true
+}

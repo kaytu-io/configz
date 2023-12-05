@@ -1,0 +1,26 @@
+{
+  "ID": "azure_appservice_web_app_cors_no_star",
+  "Title": "CORS should not allow every resource to access your Web Applications",
+  "Description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your web application. Allow only required domains to interact with your web app.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when configuration -\u003e 'properties' -\u003e 'cors' -\u003e 'allowedOrigins' @\u003e '[\"*\"]' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when configuration -\u003e 'properties' -\u003e 'cors' -\u003e 'allowedOrigins' @\u003e '[\"*\"]'\n      then a.name || ' CORS allow all domains to access the application.'\n    else a.name || ' CORS does not all domains to access the application.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_app_service_web_app",
+    "ListOfTables": [
+      "azure_app_service_web_app",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/AppService"
+    ]
+  },
+  "Managed": true
+}

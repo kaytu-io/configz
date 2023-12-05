@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v200_1_18",
+  "Title": "Ensure IAM instance roles are used for AWS resource access from instances",
+  "Description": "AWS access from within AWS instances can be done by either encoding AWS keys into AWS API calls or by assigning the instance to a role which has an appropriate permissions policy for the required access. \"AWS Access\" means accessing the APIs of AWS in order to access AWS resources or manage AWS account resources.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.18"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "AWS offers two core methods for enabling programmatic access from within an AWS instance. These include directly embedding AWS keys into API calls and attaching an IAM role to the instance that includes the necessary permissions policy. \n\n**Encoding AWS Keys**\n\nAccess to AWS APIs can be facilitated by embedding AWS keys into the API requests moving back and forth within an instance. These keys consist of the AWS Access Key ID and Secret Access Key, which are linked with an IAM user. This approach allows for the execution and control over AWS services within that instance.\n\nHowever, it might pose security risks because if these keys are disclosed or compromised, an unauthorized user could potentially access and control AWS resources linked to those keys.\n\n```markdown\nNote: Embedding AWS keys directly in your code is not recommended as the best practice for securing AWS keys due to potential security risks.\n```\n\n**Assigning IAM Role to the Instance**\n\nA safer approach is to assign an IAM (Identity Access Management) role to the instance and set an appropriate permissions policy for that role. The permissions policy delineates which AWS services and resources the instance with that role can access.\n\nTo assign a role to an instance, you create the role and assign permissions to that role first. Then when launching the instance, you choose the IAM role to associate with the instance. The role then grants permissions that are necessary for applications running on the instance to interact with other AWS resources.\n\nIn the context of AWS, \"Access\" generally refers to the ability to interact with AWS APIs, which allows manipulation and management of AWS resources within an AWS account.\n\n```markdown\nKey Terms\n- **AWS API**: Enables interaction with AWS services.\n- **IAM Role**: An entity in AWS that defines a set of permissions for making AWS service requests.\n- **Permissions Policy**: A document that defines access permissions for AWS resources.\n```"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to this AWS control could potentially lead to a range of problems, such as:\n\n1. **Cost Implications**: Without proper controls, users might misuse the services leading to increased cost. Unexpectedly high usage from one or more resources could result in inflated charges that could have been avoided with appropriate access policies in place.\n\n2. **Security Threat**: If AWS keys are hard-coded into AWS API calls, then anyone who gains access to these scripts or code will effectively gain potentially unlimited access to your AWS account. This could lead to unauthorized access to sensitive information, attacks on your AWS resources, or unauthorized alterations.\n\n3. **Difficulty in Auditing and Tracking**: Lack of compliance to this control means it would be very difficult to track who did what within the AWS environment. This could cause significant issues when attempting to audit usage for compliance or investigate a security incident.\n\n4. **Data Breach**: Non-compliance could mean potential data breaches if an unauthorized person can gain access to your AWS account. This can lead to loss of sensitive data, harm to the company’s reputation and potential legal implications.\n\n5. **Inefficient Resource Management**: With unrestricted access, resources might not be optimally utilized, leading to wastage and further increased costs.\n\nTo avoid these problems, it’s best to assign an appropriate IAM role to the instance at launch time, which endows the instance with the permissions it needs to interact with other AWS services, adhering to the principle of least privilege. This way, access keys are automatically rotated, reducing the chance of credentials being compromised."
+    ],
+    "x-kaytu-usefulness-example": [
+      "AWS Access allows users to manage their cloud resources programmatically via API calls, which can range from launching new instances, storage services, database operations, network setups, and much more.\n\nHere's an example:\n\nA web application called `MyWebApp` is hosted on an EC2 instance in AWS. This application needs to access files from an S3 bucket named `MyBucket` to display certain contents on the web page. However, you want to ensure that your access keys are not exposed and security is maintained.\n\nYou can achieve this by assigning a role to the EC2 instance on which `MyWebApp` is running. This role should have a permissions policy that includes access to the necessary S3 services.\n\nSteps to achieve this:\n\n1. Create an IAM role and name it `MyWebAppRole`.\n2. Attach a policy to this role that allows access to S3. \n\n   In markup format, the policy would look something like this:\n    ```\n    {\n        \"Version\": \"2012-10-17\",\n        \"Statement\": [\n            {\n                \"Effect\": \"Allow\",\n                \"Action\": \n                    \"s3:GetObject\",\n                    \"s3:ListBucket\"\n                ],\n                \"Resource\": [\n                    \"arn:aws:s3:::MyBucket\",\n                    \"arn:aws:s3:::MyBucket/*\"\n                ]\n            }\n        ]\n    }\n    ```\n3. Assign this IAM role (`MyWebAppRole`) to the EC2 instance of `MyWebApp`.\n\nNow `MyWebApp` can access the necessary files from `MyBucket` securely without exposing AWS access keys. The application will retrieve temporary security credentials to the AWS services, which are automatically rotated. This leverages the power of AWS Access from within AWS instances. \n\nTherefore, AWS Access is incredibly useful for managing services securely and also grants access to AWS resources to perform the necessary functions of your applications hosted on EC2 instances."
+    ]
+  },
+  "Managed": true
+}

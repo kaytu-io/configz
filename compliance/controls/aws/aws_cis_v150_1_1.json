@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v150_1_1",
+  "Title": "Maintain current contact details",
+  "Description": "Ensure contact email and telephone details for AWS accounts are current and map to more than one individual in your organization.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "medium",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.1"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "# Control: Contact Email and Phone Details \n\nIn order to enhance the security and accessibility of your AWS accounts, it is crucial that the contact email and telephone details are up-to-date and link to more than one individual within your organization. \n\n## Purpose:\n\nThis control ensures that alerts or notifications sent by AWS, important account information or any incident response activities can be responded to promptly and efficiently, rather than being missed or delayed.\n\n## Steps for Compliance:\n\n1. **Check Account Information:** Log into your AWS account and go to the account settings to check the current contact email and phone numbers.\n\n2. **Update Contact Information:** If the contact details are outdated or not correct, update them as necessary. \n\n3. **Add Multiple Contacts:** To ensure reliability, it's recommended to map the contact information to more than one individual within your organization. This ensures that if the primary contact is unavailable, another responsible person can promptly respond to any alerts or notifications sent by AWS. Multiple contacts can be added in the AWS Management Console.\n\nHaving multiple points of contact increases redundancy, making sure that important notifications do not get overlooked.\n\n## Audit:\n\nPerform regular checks on the contact information of your AWS accounts, ensuring that they are correct and current. Make sure that the email addresses and telephone numbers listed are those of the appropriate contacts within your organization.\n\nConsider setting up a quarterly or semi-annual reminder to review and update the contact information. \n\n## Remediation:\n\nWhenever you find that the contact details are outdated or if a listed contact person is no longer appropriate (e.g., they left the company or changed positions), promptly update or change the relevant details in the AWS Management Console.\n\nRemember — communication is a key aspect of managing cloud resources efficiently and securely. By keeping your contact information current and having more than one contact person, you can improve both the security and performance of your AWS accounts."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance to the mentioned AWS control could lead to several consequences such as:\n\n1. **Communication Issue:** If an AWS account's contact details are not up-to-date or not associated with multiple individuals, important information may not reach the right people timely. This could include critical alerts, updates, security notifications, usage reports, billing information, and other key data.\n\n2. **Delayed Resolution:** In case of any technical issue or an emergency situation related to AWS services, the resolution process could be delayed as support from AWS will struggle to reach relevant personnel in the organization.\n\n3. **Security Risks:** It could pose a security risk if an AWS-related alert or issue cannot be promptly addressed because the email or phone number is not current or if the responsible person is not available. This delay can potentially allow a security issue to escalate, causing more damage.\n\n4. **Data Loss:** If the account is tied to only one individual who leaves the organization, it could potentially result in data loss, especially if no other person in the organization has access to that account.\n\n5. **Operational Disruption:** If the only account holder is absent or unavailable during a critical issue, it could disrupt ongoing operations using AWS services. \n\n6. **Regulatory Fines:** Depending on regulatory standards and guidelines in different jurisdictions, not having updated contact information and responsible individuals may lead to fines and penalties from regulatory bodies. \n\n```markdown\n- Communication Issue: Important information may not reach right people timely which includes critical alerts, updates, etc.\n- Delayed Resolution: Any technical or emergency situation related to AWS services might get delayed for resolution due to outdated contact info.\n- Security Risks: Increased risk of security threats if any AWS-related alert or issue is not addressed promptly. \n- Data Loss: Potential data loss if account is tied to only one individual who leaves the organization.\n- Operational Disruption: If the only account holder is absent during a critical issue, it can disrupt ongoing operations.\n- Regulatory Fines: Potential fines and penalties from regulatory bodies for not having updated contact information and responsible individuals.\n```\nRemember that non-compliance to this AWS control can result in higher monetary and operational costs than simply keeping the contact details current and mapped to more than one individual."
+    ],
+    "x-kaytu-usefulness-example": [
+      "This AWS control is particularly useful in case of emergencies related to your AWS account. For instance, if a breach is detected on your AWS account, AWS will try to contact the owners of the account immediately. If the contact details are outdated or only linked to one individual who is unavailable at the time, this could delay the response rate and lead to further damage. Updating the contact email and telephonic details and mapping them to multiple individuals ensures quicker response, better communication, and more effective handling of the incident."
+    ]
+  },
+  "Managed": true
+}

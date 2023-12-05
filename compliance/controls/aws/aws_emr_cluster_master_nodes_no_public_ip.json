@@ -1,0 +1,74 @@
+{
+  "ID": "aws_emr_cluster_master_nodes_no_public_ip",
+  "Title": "EMR cluster master nodes should not have public IP addresses",
+  "Description": "Manage access to the AWS Cloud by ensuring Amazon EMR cluster master nodes cannot be publicly accessed.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  c.cluster_arn as resource,\n  case\n    when c.status -\u003e\u003e 'State' not in ('RUNNING', 'WAITING') then 'skip'\n    when s.map_public_ip_on_launch then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when c.status -\u003e\u003e 'State' not in ('RUNNING', 'WAITING') then c.title || ' is in ' || (c.status -\u003e\u003e 'State') || ' state.'\n    when s.map_public_ip_on_launch then c.title || ' master nodes assigned with public IP.'\n    else c.title || ' master nodes not assigned with public IP.'\n  end as reason\n  \n  , c.region, c.account_id\nfrom\n  aws_emr_cluster as c\n  left join aws_vpc_subnet as s on c.ec2_instance_attributes -\u003e\u003e 'Ec2SubnetId' = s.subnet_id;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_emr_cluster",
+    "ListOfTables": [
+      "aws_emr_cluster",
+      "aws_vpc_subnet"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/EMR"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

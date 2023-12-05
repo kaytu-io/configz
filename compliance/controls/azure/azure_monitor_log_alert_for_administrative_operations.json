@@ -1,0 +1,26 @@
+{
+  "ID": "azure_monitor_log_alert_for_administrative_operations",
+  "Title": "An activity log alert should exist for specific Administrative operations",
+  "Description": "This policy audits specific Administrative operations with no activity log alerts configured.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with alert_rule as (\n  select\n    alert.id as alert_id,\n    alert.name as alert_name,\n    alert.enabled,\n    alert.location,\n    alert.subscription_id\n  from\n    azure_log_alert as alert,\n    jsonb_array_elements_text(scopes) as sc\n  where\n    alert.location = 'Global'\n    and alert.enabled\n    and sc = '/subscriptions/' || alert.subscription_id\n    and alert.condition -\u003e 'allOf' @\u003e '[{\"equals\":\"Administrative\",\"field\":\"category\"}]'\n    and (\n      alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.Sql/servers/firewallRules/write\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.Sql/servers/firewallRules/delete\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.Network/networkSecurityGroups/write\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.Network/networkSecurityGroups/delete\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.ClassicNetwork/networkSecurityGroups/write\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.ClassicNetwork/networkSecurityGroups/delete\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.Network/networkSecurityGroups/securityRules/write\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.Network/networkSecurityGroups/securityRules/delete\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/write\"}]'\n      or alert.condition -\u003e 'allOf' @\u003e '[{\"field\": \"operationName\", \"equals\": \"Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/delete\"}]'\n      )\n  limit 1\n)\nselect\n  sub.subscription_id as resource,\n  case\n    when count(a.subscription_id) \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when count(a.subscription_id) \u003e 0 then 'Activity log alert exists for administrative operations.'\n    else 'Activity log alert does not exists for administrative operations.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_subscription sub\n  left join alert_rule a on sub.subscription_id = a.subscription_id\ngroup by\n  sub._ctx,\n  sub.subscription_id,\n  sub.display_name;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_log_alert",
+    "ListOfTables": [
+      "azure_log_alert",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "service": [
+      "Azure/Monitor"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,30 @@
+{
+  "ID": "azure_compute_vm_jit_access_protected",
+  "Title": "Management ports of virtual machines should be protected with just-in-time network access control",
+  "Description": "Possible network Just In Time (JIT) access will be monitored by Azure Security Center as recommendations",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with compute as (\n  select\n    vm.id as resource,\n    'alarm' as status,\n    vm.name || ' not JIT protected.' as reason,\n    vm.resource_group,\n    sub.display_name as subscription\n  from\n    azure_compute_virtual_machine as vm,\n    azure_subscription sub\n  where\n    vm.subscription_id = sub.subscription_id\n)\nselect\n  distinct vm.vm_id as resource,\n  case\n    when lower(vm.id) = lower(vms -\u003e\u003e 'id') then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when lower(vms -\u003e\u003e 'id') = lower(vm.id) then vm.name || ' JIT protected.'\n    else vm.name || ' not JIT protected.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm,\n  azure_security_center_jit_network_access_policy as jit,\n  jsonb_array_elements(virtual_machines) as vms,\n  azure_subscription as sub\n  left join compute on true\nwhere\n  jit.subscription_id = sub.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_compute_virtual_machine",
+    "ListOfTables": [
+      "azure_compute_virtual_machine",
+      "azure_security_center_jit_network_access_policy",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

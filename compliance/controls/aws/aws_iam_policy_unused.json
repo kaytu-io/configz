@@ -1,0 +1,43 @@
+{
+  "ID": "aws_iam_policy_unused",
+  "Title": "IAM policy should be in use",
+  "Description": "This control checks whether the IAM policy ARN is attached to an IAM user, or a group with one or more IAM users, or an IAM role with one or more trusted entity.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with in_use_policies as (\n  select\n    attached_policy_arns\n  from\n    aws_iam_user\n  union\n  select\n    attached_policy_arns\n  from\n    aws_iam_group\n  where\n    jsonb_array_length(users) \u003e 0\n  union\n  select\n    attached_policy_arns\n  from\n    aws_iam_role\n)\nselect\n  arn as resource,\n  case\n    when arn in (select jsonb_array_elements_text(attached_policy_arns) from in_use_policies) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when arn in (select jsonb_array_elements_text(attached_policy_arns) from in_use_policies) then title || ' in use.'\n    else title || ' not in use.'\n  end as reason\n  \n  , account_id\nfrom\n  aws_iam_policy;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_iam_policy",
+    "ListOfTables": [
+      "aws_iam_group",
+      "aws_iam_policy",
+      "aws_iam_role",
+      "aws_iam_user"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

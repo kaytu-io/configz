@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v200_1_21",
+  "Title": "Ensure IAM users are managed centrally via identity federation or AWS Organizations for multi-account environments",
+  "Description": "In multi-account environments, IAM user centralization facilitates greater user control. User access beyond the initial account is then provide via role assumption. Centralization of users can be accomplished through federation with an external identity provider or through the use of AWS Organizations.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "medium",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.21"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "AWS Control is a system that provides centralized control across multiple AWS accounts. The IAM (Identity and Access Management) tool in AWS allows you to create and manage AWS users and groups, and use permissions to allow and deny their permissions to AWS resources. In multi-account environments, centralization of IAM users not only facilitates better user control but it is also convenient for user management. \n\nYou can grant access to users in one AWS account (the initial account) to access resources in another AWS account (beyond the initial one). This is done through the process of \"role assumption\". Role assumption in AWS Security Token Service is a way for a federated user to access resources that the owner of the account could access. A role is assumed by a user to take on permissions of the role temporarily to carry out permitted tasks.\n\nThis centralization of users can be accomplished through federation with an external identity provider (like Microsoft Active Directory) or through the use of AWS Organizations - a service that allows you to centralize the administration of multiple accounts. The federation process combines a user's identity and attributes, stored in the external identity provider, with AWS defined policies to grant access to AWS resources. On the other hand, AWS Organizations is an account management service that enables you to consolidate multiple AWS accounts into an organization that you create and centrally manage.\n\nHere's an example in markup format:\n\n```markdown\n# AWS Control in Multi-Account Environments\n\n- **IAM User Centralization**: AWS Identity and Access Management (IAM) allows you to centralize users for greater control. You can manage user access and permissions across multiple AWS accounts.\n\n- **Role Assumption**: Users can access resources beyond the initial account through role assumption. This is a process that allows a user to take on a role temporarily to access AWS resources.\n\n- **User Federation**: AWS allows federation with an external identity provider for user centralization. This combines a user's identity and attributes, with AWS defined policies to grant access to AWS resources.\n\n- **AWS Organizations**: Centralized administration of multiple AWS accounts can be achieved using AWS Organizations. This service allows you to consolidate multiple AWS accounts into an organization that you create and centrally manage. \n```\nThis explanation provides a summarized understanding of how AWS Control works in multi-account environments. It is a recommended practice for organizations with large number of AWS accounts and users for easier management and increased security."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance to this AWS (Amazon Web Services) control can lead to several consequences:\n\n1. **Lost Productivity**: It will be more challenging to manage individual user permissions across separate accounts. This can result in wasted time and lost productivity. \n\n2. **Increased Security Risks**: If IAM (Identity and Access Management) users are not centralized, it becomes more difficult to monitor and manage each user's permissions. This can increase the risk of unauthorized access to your AWS resources. \n\n3. **Higher Operational Costs**: The use of an external identity provider or AWS Organizations in the centralization of users can significantly reduce operational costs. Non-compliance will mean you'll have higher costs in managing multiple AWS accounts. \n\n4. **Audit Difficulties**: Centralizing IAM users makes it easier to audit user activities and ensure compliance with regulatory standards. If you're not centralized, you run into more complexities while conducting audits. \n\n5. **Lack of Visibility**: Without IAM user centralization, there would be decreased visibility and control over user accounts and roles, which could further lead to mismanagement and possible security breaches. \n\n6. **Non-Compliance Penalties**: If your industry is subject to regulations that require certain security controls, including centralized IAM, non-compliance with these controls could lead to hefty penalties. \n\nIn conclusion, centralized IAM users in a multi-account environment not only facilitates greater user control but also helps reduce risks and costs associated with non-compliance."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Let's say for example, a corporation named 'ABC Corporation' has various departments such as Finance, IT, Marketing, etc. These departments have their respective AWS accounts for handling their workloads. However, managing users and their access in each account can be a challenging task for the IT department.\n\nHere IAM user centralization shines. With the help of AWS Organizations, they can create a management account, and under that, they can create an account for each department. They can create users in this management account and grant them access to the departmental accounts. Now, instead of managing users for each department, they can manage all users from this central account.\n\nAdditionally, they can also use external identity providers to manage users, which not only provide user centralization, but also provide additional security features such as two-factor authentication, password policies etc.\n\nFor example, they might already have an Active Directory (AD) server which manages users for their on-premises systems. They can federate this AD with AWS, and users can assume IAM roles in AWS accounts depending on their user role in AD. This reduces the burden of user management by removing the need to create individual IAM users in AWS for each of their employees."
+    ]
+  },
+  "Managed": true
+}

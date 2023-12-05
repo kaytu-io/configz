@@ -1,0 +1,65 @@
+{
+  "ID": "aws_ec2_instance_protected_by_backup_plan",
+  "Title": "EC2 instances should be protected by backup plan",
+  "Description": "Ensure if Amazon Elastic Compute Cloud (Amazon EC2) instances are protected by a backup plan. The rule is non compliant if the Amazon EC2 instance is not covered by a backup plan.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with backup_protected_instance as (\n  select\n    resource_arn as arn\n  from\n    aws_backup_protected_resource as b\n  where\n    resource_type = 'EC2'\n)\nselect\n  i.arn as resource,\n  case\n    when b.arn is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.arn is not null then i.title || ' is protected by backup plan.'\n    else i.title || ' is not protected by backup plan.'\n  end as reason\n  \n  , i.region, i.account_id\nfrom\n  aws_ec2_instance as i\n  left join backup_protected_instance as b on i.arn = b.arn;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_instance",
+    "ListOfTables": [
+      "aws_backup_protected_resource",
+      "aws_ec2_instance"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/EC2"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

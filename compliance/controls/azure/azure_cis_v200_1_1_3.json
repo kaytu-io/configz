@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v200_1_1_3",
+  "Title": "Ensure that 'Multi-Factor Auth Status' is 'Enabled' for all Non-Privileged Users",
+  "Description": "Enable multi-factor authentication for all non-privileged users.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.1.3"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1.1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

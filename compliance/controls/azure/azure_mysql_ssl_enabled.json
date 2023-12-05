@@ -1,0 +1,47 @@
+{
+  "ID": "azure_mysql_ssl_enabled",
+  "Title": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for MySQL Database Server",
+  "Description": "Enable SSL connection on MYSQL Servers.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when ssl_enforcement = 'Disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when ssl_enforcement = 'Disabled' then s.name || ' SSL connection disabled.'\n    else s.name || ' SSL connection enabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mysql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_mysql_server",
+    "ListOfTables": [
+      "azure_mysql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "4.3.2"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "4.3"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/MySQL"
+    ]
+  },
+  "Managed": true
+}

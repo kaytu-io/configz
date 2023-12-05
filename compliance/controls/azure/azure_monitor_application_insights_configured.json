@@ -1,0 +1,47 @@
+{
+  "ID": "azure_monitor_application_insights_configured",
+  "Title": "Ensure Application Insights are Configured",
+  "Description": "Application Insights within Azure act as an Application Performance Monitoring solution providing valuable data into how well an application performs and additional information when performing incident response. The types of log data collected include application metrics, telemetry data, and application trace logging data providing organizations with detailed information about application activity and application transactions.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with application_insights as (\n  select\n    subscription_id,\n    count(*) as no_application_insight\n  from\n    azure_application_insight\n  group by\n    subscription_id\n)\nselect\n  sub.id as resource,\n  case\n    when i.subscription_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when i.subscription_id is null then sub.display_name || ' does not have application insights configured.'\n    else sub.display_name || ' has ' || no_application_insight || ' application insights configured.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_subscription as sub\n  left join application_insights as i on i.subscription_id = sub.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_application_insight",
+    "ListOfTables": [
+      "azure_application_insight",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "5.3.1"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "5"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Monitor"
+    ]
+  },
+  "Managed": true
+}

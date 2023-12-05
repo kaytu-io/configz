@@ -1,3 +1,0 @@
-## Description
-
-Configuring Application Insights

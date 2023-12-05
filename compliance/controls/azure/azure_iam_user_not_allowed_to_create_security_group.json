@@ -1,0 +1,47 @@
+{
+  "ID": "azure_iam_user_not_allowed_to_create_security_group",
+  "Title": "Ensure that 'Users can create security groups in Azure portals, API or PowerShell' is set to 'No'",
+  "Description": "Restrict security group creation to administrators only.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateSecurityGroups' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateSecurityGroups' = 'false' then a.display_name || ' does not allow user to create security groups.'\n    else a.display_name || ' allows user to create security groups.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azuread_authorization_policy",
+    "ListOfTables": [
+      "azure_tenant",
+      "azuread_authorization_policy"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.19"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v150_1_3",
+  "Title": "Ensure security questions are registered in the AWS account",
+  "Description": "The AWS support portal allows account owners to establish security questions that can be used to authenticate individuals calling AWS customer service for support. It is recommended that security questions be established.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.3"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "## AWS Control: Security Questions for Account Authentication\n\nAmazon Web Services (AWS) offers a series of controls to ensure the security and privacy of user accounts. One such control is the ability to set up security questions for account authentication. This feature is accessible via the AWS support portal and is recommended for all account owners.\n\n**Purpose of the Control:**\n\nThe purpose of this control is to add an extra layer of security to your AWS account. It is designed to verify the authenticity of individuals contacting AWS customer support with inquiries or issues related to your account.\n\n**How It Works:**\n\nWhen a call is made to AWS customer service, the caller is required to answer the security questions correctly to authenticate their identity. This is to ensure that only authorized individuals have access to information about the account or can issue instructions about its operation.\n\n**Recommendations:**\n\nIt is strongly recommended that account owners set up these security questions as a part of their security controls. These questions should be known only to the authorized individuals to prevent unauthorized access to the account information.\n\n**Benefits:**\n\n- Ensures that only authorized individuals can access your account information or make changes.\n- Provides an extra layer of security, reducing chances of a security breach.\n\n```markdown\n# AWS Control: Security Questions for Account Authentication \n\n## Purpose:\nThis control adds an added layer of security to your AWS account by requiring individuals contacting AWS customer support to authenticate their identity by correctly answering security questions.\n\n## How It Works:\nWhen a call is made to AWS customer service, authentication of the caller's identity is confirmed by correctly answering the security questions.\n\n## Recommendations:\nSet up security questions via the AWS support portal. These questions should be known only by authorized individuals for maintaining the security of account data.\n\n## Benefits:\n- Ensures authorized access to account information.\n- Prevents unauthorized changes to the account.\n- Enhances overall account security. \n```\nThis markdown document can be used as a template or guide for understanding this AWS control."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the above AWS control majorly leads to following potential costs:\n\n- **Security Cost:** If security questions are not established and someone impersonates as an account stakeholder to access sensitive account information, it may lead to serious security breaches. This could result in the loss of sensitive data or unauthorized manipulations of your AWS resources that could harm your business operations.\n\n- **Financial Cost:** Resulting from potential security breaches, there could be significant financial impact. This cost could be direct, such as financial loss from theft, or indirect, such as the costs involved in recovery, investigation, and setting up additional preventive measures post-breach.\n\n- **Reputational Cost:** In an era where data privacy is a major concern, a breach could lead to severe reputational damage. Trust is hard to gain in the digital world and easy to lose. Once your customers find out about a security breach, it could lead to a significant loss of clientele and hamper future business opportunities.\n\n- **Operational Cost:** In the absence of security questions, AWS customer service might take more time to verify the identity of the requesting person, leading to longer resolution times for the issues.\n\nTherefore, although it might seem inconsequential, NOT establishing security questions could lead to considerable costs in terms of financial losses, reputational damage and operational inefficiencies."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Example: \n\nJohn Smith is the IT in-charge of Alpha Company that uses AWS services for their cloud architecture. There are many instances when John encounters issues or needs assistance for managing these services. In such situations, he often needs to contact the AWS customer support for resolution. \n\nEarlier, there were instances when the customer support was unable to authenticate him, causing delays in resolving critical cases. To avoid such issues in future, he decides to establish security questions for the Alpha Company's AWS account through the AWS Support portal. \n\nNow, whenever he calls the AWS customer service for support, he’s asked to answer the security questions established by him for the purposes of authentication. With this, the authentication process is a lot smoother and also ensures stringent security standards as only authorized personnel knowing the answers to these security questions are able to obtain support assistance. \n\nTherefore, John has met the recommended guideline and found the AWS Support Portal's ability to establish security questions highly useful for a quick and secure customer service experience. \n\nThis instance displays the usefulness of having security questions in place, as it not only validates the authenticity of the account owner but also speeds up the process of customer service interaction.\n"
+    ]
+  },
+  "Managed": true
+}

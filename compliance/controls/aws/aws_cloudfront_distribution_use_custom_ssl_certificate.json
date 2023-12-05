@@ -1,0 +1,37 @@
+{
+  "ID": "aws_cloudfront_distribution_use_custom_ssl_certificate",
+  "Title": "CloudFront distributions should use custom SSL/TLS certificates",
+  "Description": "This control checks whether CloudFront distributions are using the default SSL/TLS certificate CloudFront provides. This control passes if the CloudFront distribution uses a custom SSL/TLS certificate. This control fails if the CloudFront distribution uses the default SSL/TLS certificate.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when viewer_certificate -\u003e\u003e 'ACMCertificateArn' is not null and viewer_certificate -\u003e\u003e 'Certificate' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when viewer_certificate -\u003e\u003e 'ACMCertificateArn' is not null and viewer_certificate -\u003e\u003e 'Certificate' is not null then title || ' uses custom SSL certificate.'\n    else title || ' does not use custom SSL certificate.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_cloudfront_distribution",
+    "ListOfTables": [
+      "aws_cloudfront_distribution"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "encryption_of_data_in_transi"
+    ],
+    "foundational_security_item_id": [
+      "cloudfront_7"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/CloudFront"
+    ]
+  },
+  "Managed": true
+}

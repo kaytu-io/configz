@@ -1,0 +1,47 @@
+{
+  "ID": "azure_compute_os_and_data_disk_encrypted_with_cmk",
+  "Title": "Ensure that 'OS and Data' disks are encrypted with CMK",
+  "Description": "Ensure that OS disks (boot volumes) and data disks (non-boot volumes) are encrypted with CMK.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  disk.id as resource,\n  case\n    when encryption_type = 'EncryptionAtRestWithCustomerKey' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encryption_type = 'EncryptionAtRestWithCustomerKey' then disk.name || ' encrypted with CMK.'\n    else disk.name || ' not encrypted with CMK.'\n  end as reason\n  \n  , disk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_disk disk,\n  azure_subscription sub\nwhere\n  disk_state = 'Attached'\n  and sub.subscription_id = disk.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_compute_disk",
+    "ListOfTables": [
+      "azure_compute_disk",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "7.2"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "7"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

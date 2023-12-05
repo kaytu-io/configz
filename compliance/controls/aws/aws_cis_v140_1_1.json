@@ -1,0 +1,38 @@
+{
+  "ID": "aws_cis_v140_1_1",
+  "Title": "Maintain current contact details",
+  "Description": "Ensure contact email and telephone details for AWS accounts are current and map to more than one individual in your organization.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.1"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ]
+  },
+  "Managed": true
+}

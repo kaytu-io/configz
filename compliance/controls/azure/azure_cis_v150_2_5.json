@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v150_2_5",
+  "Title": "Ensure that Microsoft Defender Recommendation for 'Apply system updates' status is 'Completed'",
+  "Description": "Ensure that the latest OS patches for all virtual machines are applied.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "2.5"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "2"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SecurityCenter"
+    ]
+  },
+  "Managed": true
+}

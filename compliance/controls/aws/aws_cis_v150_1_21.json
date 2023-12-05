@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v150_1_21",
+  "Title": "Ensure IAM users are managed centrally via identity federation or AWS Organizations for multi-account environments",
+  "Description": "In multi-account environments, IAM user centralization facilitates greater user control. User access beyond the initial account is then provide via role assumption. Centralization of users can be accomplished through federation with an external identity provider or through the use of AWS Organizations.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.21"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "# AWS Control in Multi-Account Environments\n\nIAM (Identity and Access Management) user centralization is a key concept in AWS which allows for superior control over users in multi-account environments. This is achieved through role assumption, whereby user access beyond the initial account is given.\n\n## User Centralization\nUser centralization can be accomplished in two ways:\n\n1. **Federation with an External Identity Provider:** This involves creating a secure connection between your directory and AWS (also known as federation). It involves integrating an external identity provider, like Microsoft Active Directory or other SAML 2.0 provider, with AWS. This allows you to manage access to AWS resources across all your accounts centrally.\n\n2. **Use of AWS Organizations:** AWS Organizations helps centralize management of multiple AWS accounts. You can fully manage all of your accounts from a master account, allowing you to define granular control over the AWS services that can be accessed.\n\nThis model provides many benefits including simplified billing, improved security via centralized controls, and more.\n\nIn both cases, the IAM user's roles can be assumed to grant them certain access permissions across different AWS accounts.\n\n## Role Assumption\nUnder this model, a single IAM user can have its role assumed by another, receiving permissions assigned to the assumed role. This is particularly useful in scenarios where central AWS account manages access to resources that reside in other accounts. \n\nBy creating IAM roles that can be assumed by users in your account, you can provide the necessary access to resources across accounts, while at the same time maintain control and visibility into their activities.\n\nOverall, in a multi-account environment, centralizing IAM users and using role assumption facilitates greater access control, visibility, and ultimately, enhanced security."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with AWS Control about IAM user centralization in multi-account environments can result in several significant costs and these can be summed in up in several categories:\n\n1. **Security Costs:** Non-centralization of IAM users may lead to users being able to access services and data they shouldn't. This increases the potential for data leaks, unauthorized access or changes to critical systems, and overall diminished security posture. The cost of a security breach can be immense, in terms of fines, damaged reputation, loss customer trust, and even potential legal action.\n\n2. **Operational Costs:** Without centralization, managing users and their access individually across multiple accounts can be time-consuming and creates additional operational overhead. This can lead to inefficiency and increased administrative cost due to the complexity of managing multiple access levels across various accounts.\n\n3. **Compliance Costs:** If your organization is subject to regulatory compliance rules (such as GDPR, HIPAA, etc.), discrepancies in IAM user control across accounts can result in non-compliance. Non-compliance could lead to investigations, audits, penalties, and fines.\n\n4. **Maintenance Costs:** Decentralization can make it harder to maintain and manage user access policies, which can mean higher costs for routine maintenance. It can also make it more complicated to troubleshoot access issues, leading to increased support costs.\n\n5. **Risk Management Costs:** Consistent access management across multiple accounts can make risk assessment, mitigation, and management more complicated. If unauthorized access occurs, it may be more difficult to investigate, resulting in potential increased costs for risk management. \n\nTherefore, sticking to AWS Control's recommendations about IAM user centralization is crucial to avoid these costly implications."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For instance, consider a companyXYZ that uses AWS across multiple departments - Marketing, HR, Sales, and Engineering. Each department has its own AWS account and services they use. Instead of creating IAM users in each of those accounts and managing them separately, companyXYZ decides to centralize IAM user management.\n\nThey decide to federate with an external identity provider (IdP), Google's G Suite. This means the IAM users are created and managed in Google's G Suite and are synced with AWS. This simplifies the user and access management for the company administrator - they no longer need to deal with user creation/deletion, password resets, and other related tasks in AWS.\n\nWhen a new employee joins companyXYZ, the admin simply creates a new user in G Suite. AWS will automatically recognize and authorize this new user, granting them the necessary permissions via role assumption. Role assumption allows the employees to have different roles when they shift between departments. For example, a Marketing employee has limited permissions compared to an Engineering employee.\n\nIn conclusion, by centralizing IAM users and using role assumption, companyXYZ can control user access more effectively and efficiently. It saves time and resources for managing IAM users across multiple AWS accounts while enhancing the security."
+    ]
+  },
+  "Managed": true
+}

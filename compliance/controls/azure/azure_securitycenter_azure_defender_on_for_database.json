@@ -1,0 +1,47 @@
+{
+  "ID": "azure_securitycenter_azure_defender_on_for_database",
+  "Title": "Ensure That Microsoft Defender for Databases Is Set To 'On'",
+  "Description": "Turning on Microsoft Defender for Databases enables threat detection for the instances running your database software. This provides threat intelligence, anomaly detection, and behavior analytics in the Azure Microsoft Defender for Cloud. Instead of being enabled on services like Platform as a Service (PaaS), this implementation will run within your instances as Infrastructure as a Service (IaaS) on the Operating Systems hosting your databases.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with defender_list as (\n  select\n    json_object_agg(name, pricing_tier) as data,\n    subscription_id\n  from\n    azure_security_center_subscription_pricing\n  where\n    name = any(ARRAY ['CosmosDbs', 'OpenSourceRelationalDatabases', 'SqlServerVirtualMachines', 'SqlServers'])\n  group by\n    subscription_id\n)\nselect\n  sub.id as resource,\n  case\n    when\n      data -\u003e\u003e 'CosmosDbs' = 'Standard'\n      and data -\u003e\u003e 'OpenSourceRelationalDatabases' = 'Standard'\n      and data -\u003e\u003e 'SqlServerVirtualMachines' = 'Standard'\n      and data -\u003e\u003e 'SqlServers' = 'Standard'\n      then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when\n      data -\u003e\u003e 'CosmosDbs' = 'Standard'\n      and data -\u003e\u003e 'OpenSourceRelationalDatabases' = 'Standard'\n      and data -\u003e\u003e 'SqlServerVirtualMachines' = 'Standard'\n      and data -\u003e\u003e 'SqlServers' = 'Standard'\n      then 'Azure Defender on for Databases.'\n    else 'Azure Defender off for Databases.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_subscription as sub\n  left join defender_list as l on l.subscription_id = sub.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "ListOfTables": [
+      "azure_security_center_subscription_pricing",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "2.1.3"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "2.1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SecurityCenter"
+    ]
+  },
+  "Managed": true
+}
