@@ -1,0 +1,76 @@
+{
+  "ID": "aws_iam_root_user_no_access_keys",
+  "Title": "IAM root user should not have access keys",
+  "Description": "Access to systems and assets can be controlled by checking that the root user does not have access keys attached to their AWS Identity and Access Management (IAM) role.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  'arn:' || partition || ':::' || account_id as resource,\n  case\n    when account_access_keys_present \u003e 0 then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when account_access_keys_present \u003e 0 then 'Root user access keys exist.'\n    else 'No root user access keys exist.'\n  end reason\n  , account_id\nfrom\n  aws_iam_account_summary;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_iam_account_summary",
+    "ListOfTables": [
+      "aws_iam_account_summary"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gdpr": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

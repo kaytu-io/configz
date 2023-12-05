@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v200_3_4",
+  "Title": "Ensure that Storage Account Access Keys are Periodically Regenerated",
+  "Description": "For increased security, regenerate storage account access keys periodically.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "3.4"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "3"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Storage"
+    ]
+  },
+  "Managed": true
+}

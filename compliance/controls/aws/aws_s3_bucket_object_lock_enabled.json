@@ -1,0 +1,55 @@
+{
+  "ID": "aws_s3_bucket_object_lock_enabled",
+  "Title": "S3 bucket object lock should be enabled",
+  "Description": "Ensure that your Amazon Simple Storage Service (Amazon S3) bucket has lock enabled, by default.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when object_lock_configuration is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when object_lock_configuration is null then title || ' object lock not enabled.'\n    else title || ' object lock enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_s3_bucket;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_s3_bucket",
+    "ListOfTables": [
+      "aws_s3_bucket"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/S3"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

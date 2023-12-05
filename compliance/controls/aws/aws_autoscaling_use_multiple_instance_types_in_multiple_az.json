@@ -1,0 +1,37 @@
+{
+  "ID": "aws_autoscaling_use_multiple_instance_types_in_multiple_az",
+  "Title": "Auto Scaling groups should use multiple instance types in multiple Availability Zones",
+  "Description": "This control checks whether an Amazon EC2 Auto Scaling group uses multiple instance types. The control fails if the Auto Scaling group has only one instance type defined.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with autoscaling_groups as (\n  select\n    autoscaling_group_arn,\n    title,\n    mixed_instances_policy_launch_template_overrides,\n    region,\n    tags,\n    _ctx,\n    account_id\nfrom\n    aws_ec2_autoscaling_group\n),\ndistinct_instance_types_count as (\n  select\n    autoscaling_group_arn,\n    count(distinct(e -\u003e 'InstanceType')) as distinct_instance_types\nfrom\n    autoscaling_groups,\n    jsonb_array_elements(mixed_instances_policy_launch_template_overrides) as e\ngroup by\n    autoscaling_group_arn,\n    title,\n    mixed_instances_policy_launch_template_overrides\n)\nselect\n  a.autoscaling_group_arn as resource,\n  case\n    when b.distinct_instance_types \u003e 1 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.distinct_instance_types \u003e 1 then title || ' uses ' || b.distinct_instance_types || ' instance types.'\n    else title || ' does not use multiple instance types.'\n  end as reason\n  \n  , a.region, a.account_id\nfrom\n  autoscaling_groups as a\n  left join distinct_instance_types_count as b on a.autoscaling_group_arn = b.autoscaling_group_arn;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_autoscaling_group",
+    "ListOfTables": [
+      "aws_ec2_autoscaling_group"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "high_availability"
+    ],
+    "foundational_security_item_id": [
+      "autoscaling_6"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/AutoScaling"
+    ]
+  },
+  "Managed": true
+}

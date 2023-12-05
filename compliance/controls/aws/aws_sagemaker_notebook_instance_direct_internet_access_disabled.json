@@ -1,0 +1,73 @@
+{
+  "ID": "aws_sagemaker_notebook_instance_direct_internet_access_disabled",
+  "Title": "SageMaker notebook instances should not have direct internet access",
+  "Description": "Manage access to resources in the AWS Cloud by ensuring that Amazon SageMaker notebooks do not allow direct internet access.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when direct_internet_access = 'Enabled' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when direct_internet_access = 'Enabled' then title || ' direct internet access enabled.'\n    else title || ' direct internet access disabled.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_sagemaker_notebook_instance;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_sagemaker_notebook_instance",
+    "ListOfTables": [
+      "aws_sagemaker_notebook_instance"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/SageMaker"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

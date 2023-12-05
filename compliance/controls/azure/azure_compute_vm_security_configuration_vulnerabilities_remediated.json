@@ -1,0 +1,23 @@
+{
+  "ID": "azure_compute_vm_security_configuration_vulnerabilities_remediated",
+  "Title": "Vulnerabilities in security configuration on your machines should be remediated",
+  "Description": "Servers which do not satisfy the configured baseline will be monitored by Azure Security Center as recommendations.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

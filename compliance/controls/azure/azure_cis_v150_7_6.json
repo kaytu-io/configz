@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v150_7_6",
+  "Title": "Ensure that VHD's are encrypted",
+  "Description": "VHD (Virtual Hard Disks) are stored in blob storage and are the old-style disks that were attached to Virtual Machines. The blob VHD was then leased to the VM. By default, storage accounts are not encrypted, and Microsoft Defender will then recommend that the OS disks should be encrypted. Storage accounts can be encrypted as a whole using PMK or CMK. This should be turned on for storage accounts containing VHDs.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "7.6"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "7"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

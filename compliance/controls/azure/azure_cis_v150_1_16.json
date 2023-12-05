@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v150_1_16",
+  "Title": "Ensure that 'Guest invite restrictions' is set to 'Only users assigned to specific admin roles can invite guest users'",
+  "Description": "Restrict invitations to users with specific administrative roles only.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.16"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

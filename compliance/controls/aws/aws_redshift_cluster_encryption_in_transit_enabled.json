@@ -1,0 +1,74 @@
+{
+  "ID": "aws_redshift_cluster_encryption_in_transit_enabled",
+  "Title": "Redshift cluster encryption in transit should be enabled",
+  "Description": "Ensure that your Amazon Redshift clusters require TLS/SSL encryption to connect to SQL clients.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with pg_with_ssl as (\nselect\n  name as pg_name,\n  p -\u003e\u003e 'ParameterName' as parameter_name,\n  p -\u003e\u003e 'ParameterValue' as parameter_value\nfrom\n  aws_redshift_parameter_group,\n  jsonb_array_elements(parameters) as p\nwhere\n  p -\u003e\u003e 'ParameterName' = 'require_ssl'\n  and p -\u003e\u003e 'ParameterValue' = 'true'\n)\nselect\n  arn as resource,\n  case\n    when cpg -\u003e\u003e 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when cpg -\u003e\u003e 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then title || ' encryption in transit enabled.'\n    else title || ' encryption in transit disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_redshift_cluster,\n  jsonb_array_elements(cluster_parameter_groups) as cpg;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_redshift_cluster",
+    "ListOfTables": [
+      "aws_redshift_cluster",
+      "aws_redshift_parameter_group"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gdpr": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/Redshift"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,47 @@
+{
+  "ID": "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
+  "Title": "Ensure that 'Automatic provisioning of monitoring agent' is set to 'On'",
+  "Description": "Enable automatic provisioning of the monitoring agent to collect security data.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  sc_prov.id as resource,\n  case\n    when auto_provision = 'On' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when auto_provision = 'On' then 'Automatic provisioning of monitoring agent is on.'\n    else 'Automatic provisioning of monitoring agent is off.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_auto_provisioning sc_prov\n  right join azure_subscription sub on sc_prov.subscription_id = sub.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_security_center_auto_provisioning",
+    "ListOfTables": [
+      "azure_security_center_auto_provisioning",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "2.11"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "2"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SecurityCenter"
+    ]
+  },
+  "Managed": true
+}

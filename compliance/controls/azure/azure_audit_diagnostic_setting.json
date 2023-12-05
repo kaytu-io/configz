@@ -1,0 +1,20 @@
+{
+  "ID": "azure_audit_diagnostic_setting",
+  "Title": "Audit diagnostic setting for selected resource types",
+  "Description": "Audit diagnostic setting for selected resource types. Be sure to select only resource types which support diagnostics settings.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "service": [
+      "Azure/Monitor"
+    ]
+  },
+  "Managed": true
+}

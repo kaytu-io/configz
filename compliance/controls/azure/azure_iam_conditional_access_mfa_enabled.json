@@ -1,0 +1,47 @@
+{
+  "ID": "azure_iam_conditional_access_mfa_enabled",
+  "Title": "Ensure Multi-factor Authentication is Required for Azure Management",
+  "Description": "For designated users, they will be prompted to use their multi-factor authentication(MFA) process on logins.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  p.id as resource,\n  case\n    when p.built_in_controls @\u003e '[\"mfa\"]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when p.built_in_controls @\u003e '[\"mfa\"]' then p.display_name || ' MFA enabled.'\n    else p.display_name || ' MFA disabled.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_conditional_access_policy as p;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azuread_conditional_access_policy",
+    "ListOfTables": [
+      "azure_tenant",
+      "azuread_conditional_access_policy"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.2.6"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1.2"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

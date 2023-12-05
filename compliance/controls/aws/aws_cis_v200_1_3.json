@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v200_1_3",
+  "Title": "Ensure security questions are registered in the AWS account",
+  "Description": "The AWS support portal allows account owners to establish security questions that can be used to authenticate individuals calling AWS customer service for support. It is recommended that security questions be established.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.3"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "# AWS Control: Security Questions\n\nThe AWS support portal has a feature wherein the account owners can set security questions to further validate the identity of the individual during customer service interactions and support. This provides another layer of security, ensuring that the person calling for support is authenticated and has authorized access to the account.\n\nWhen individuals call AWS customer service for support, they may be asked these security questions to confirm their identity before account information or assistance is provided. This is similar to security questions used by many other online services for password recovery or account verification.\n\nAWS highly recommends setting up these security questions for added security. \n\nWhen choosing the security questions and answers, consider the following:\n\n- Choose questions and answers that are hard for others to guess\n- Avoid using easily available or personal information\n- Make sure the answers are memorable to you\n- Keep your answers secure, don't share them\n\nImplementing this AWS control will help protect your AWS account from unauthorized access via customer support interactions, enhancing your overall cloud security.\n"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with this AWS Control could potentially lead to various costs and risks, including:\n\n1. **Security Risks:** The absence of security questions makes an AWS account more prone to unauthorized access and potential misuse. For example, if a malicious party tries to gain access to your AWS account through customer service, the absence of security questions makes it easier for them to succeed. This could then lead to data breaches or unauthorized changes to your AWS environment.\n\n2. **Financial Losses:** Unauthorized access or changes to your AWS environment can result in unintentional usage and consequently higher costs. In unfortunate instances, the attackers might even misuse the resources for illegal activities like crypto mining or organizing DDoS attacks, which could drive your AWS bills sky-high.\n\n3. **Reputational Damage:** If a security breach leads to a loss of customer data, it could tarnish your organization's reputation. Restoring brand reputation requires significant time and effort, and sometimes even that might not be enough to regain customer trust fully.\n\n4. **Operational Disruptions:** Unauthorized changes can impact system functionalities and cause business disruptions or system downtime. This may not only hamper business productivity but also result in financial losses.\n\n5. **Legal and Compliance Consequences:** Depending on the nature of your business and the data stored in AWS, you could potentially be in violation of data protection laws or industry regulations. This could lead to legal repercussions, such as fines and sanctions.\n\nTo summarize, not establishing security questions can make your AWS account less secure. The risks of unauthorized access, data breaches, and operational disruptions underline the importance of setting up appropriate security measures, such as security questions, for AWS customer service support."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For instance, a company called `XYZ Inc.` uses AWS for their cloud services; they have a designated technical team to manage these services. One day while working on their cloud environment, something unexpected happens and they are unable to resolve it themselves. This issue is causing disruptions in their workflow and needs immediate AWS customer support intervention.\n\nThey call AWS customer service, but AWS needs to authentically identify the caller to ensure that they are actually from `XYZ Inc.` and authorized to make changes or receive sensitive information. Here is where the security questions come into play. In advance, `XYZ Inc.` had established security questions via AWS support portal. \n\nThe AWS customer service representative now asks these security questions to the caller. Only if the responses match with what was set up by `XYZ Inc.`, AWS support proceeds with providing help to the technical team of `XYZ Inc.`. This maintains the security and privacy of the AWS account held by `XYZ Inc.`, by preventing unauthorized individuals from accessing proprietary information or making unauthorized changes to their AWS services."
+    ]
+  },
+  "Managed": true
+}

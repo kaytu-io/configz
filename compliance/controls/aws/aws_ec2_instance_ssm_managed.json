@@ -1,0 +1,74 @@
+{
+  "ID": "aws_ec2_instance_ssm_managed",
+  "Title": "EC2 instances should be managed by AWS Systems Manager",
+  "Description": "An inventory of the software platforms and applications within the organization is possible by managing Amazon Elastic Compute Cloud (Amazon EC2) instances with AWS Systems Manager.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  i.arn as resource,\n  case\n    when i.instance_state = 'stopped' then 'info'\n    when m.instance_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when i.instance_state = 'stopped' then i.title || ' is in stopped state.'\n    when m.instance_id is null then i.title || ' not managed by AWS SSM.'\n    else i.title || ' managed by AWS SSM.'\n  end as reason\n  \n  , i.region, i.account_id\nfrom\n  aws_ec2_instance i\n  left join aws_ssm_managed_instance m on m.instance_id = i.instance_id;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_instance",
+    "ListOfTables": [
+      "aws_ec2_instance",
+      "aws_ssm_managed_instance"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/SSM"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

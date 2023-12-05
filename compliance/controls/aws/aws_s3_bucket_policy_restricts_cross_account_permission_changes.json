@@ -1,0 +1,34 @@
+{
+  "ID": "aws_s3_bucket_policy_restricts_cross_account_permission_changes",
+  "Title": "Amazon S3 permissions granted to other AWS accounts in bucket policies should be restricted",
+  "Description": "This control checks whether the S3 bucket policy prevents principals from other AWS accounts from performing denied actions on resources in the S3 bucket.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with cross_account_buckets as (\n  select\n    distinct arn\n  from\n    aws_s3_bucket,\n    jsonb_array_elements(policy_std -\u003e 'Statement') as s,\n    jsonb_array_elements_text(s -\u003e 'Principal' -\u003e 'AWS') as p,\n    string_to_array(p, ':') as pa,\n    jsonb_array_elements_text(s -\u003e 'Action') as a\n  where\n    s -\u003e\u003e 'Effect' = 'Allow'\n    and (\n      pa [5] != account_id\n      or p = '*'\n    )\n    and a in (\n      's3:deletebucketpolicy',\n      's3:putbucketacl',\n      's3:putbucketpolicy',\n      's3:putencryptionconfiguration',\n      's3:putobjectacl'\n    )\n)\nselect\n  a.arn as resource,\n  case\n    when b.arn is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.arn is null then title || ' restricts cross-account bucket access.'\n    else title || ' allows cross-account bucket access.'\n  end as reason\n  \n  , a.region, a.account_id\nfrom\n  aws_s3_bucket a\n  left join cross_account_buckets b on a.arn = b.arn;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_s3_bucket",
+    "ListOfTables": [
+      "aws_s3_bucket"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/S3"
+    ]
+  },
+  "Managed": true
+}

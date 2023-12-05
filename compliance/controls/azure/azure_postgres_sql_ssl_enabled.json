@@ -1,0 +1,47 @@
+{
+  "ID": "azure_postgres_sql_ssl_enabled",
+  "Title": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for PostgreSQL Database Server",
+  "Description": "Enable SSL connection on PostgreSQL Servers.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when ssl_enforcement = 'Disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when ssl_enforcement = 'Disabled' then name || ' SSL connection disabled.'\n    else name || ' SSL connection enabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server s,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_postgresql_server",
+    "ListOfTables": [
+      "azure_postgresql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "4.3.1"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "4.3"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/PostgreSQL"
+    ]
+  },
+  "Managed": true
+}

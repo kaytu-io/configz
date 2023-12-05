@@ -1,0 +1,29 @@
+{
+  "ID": "azure_appservice_function_app_uses_managed_identity",
+  "Title": "Managed identity should be used in your Function App",
+  "Description": "Use a managed identity for enhanced authentication security.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with all_function_app as (\n  select\n    id\n  from\n    azure_app_service_function_app\n  where\n    exists (\n      select\n      from\n        unnest(regexp_split_to_array(kind, ',')) elem\n      where\n        elem like 'functionapp%'\n  )\n)\nselect\n  a.id as resource,\n  case\n    when b.id is null then 'skip'\n    when\n      configuration -\u003e 'properties' -\u003e\u003e 'xManagedServiceIdentityId' is not null\n      or configuration -\u003e 'properties' -\u003e\u003e 'managedServiceIdentityId' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.id is null then a.title || ' is ' || a.kind || ' kind.'\n    when\n      configuration -\u003e 'properties' -\u003e\u003e 'xManagedServiceIdentityId' is not null\n      or configuration -\u003e 'properties' -\u003e\u003e 'managedServiceIdentityId' is not null\n      then a.name || ' uses managed identity.'\n    else a.name || ' not uses managed identity'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_function_app as a\n  left join all_function_app as b on a.id = b.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_app_service_function_app",
+    "ListOfTables": [
+      "azure_app_service_function_app",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/AppService"
+    ]
+  },
+  "Managed": true
+}

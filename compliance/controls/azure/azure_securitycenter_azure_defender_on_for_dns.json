@@ -1,0 +1,47 @@
+{
+  "ID": "azure_securitycenter_azure_defender_on_for_dns",
+  "Title": "Ensure That Microsoft Defender for DNS Is Set To 'On'",
+  "Description": "Microsoft Defender for DNS scans all network traffic exiting from within a subscription.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for DNS.'\n    else 'Azure Defender off for DNS.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'Dns';\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "ListOfTables": [
+      "azure_security_center_subscription_pricing",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "2.1.11"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "2.1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/SecurityCenter"
+    ]
+  },
+  "Managed": true
+}

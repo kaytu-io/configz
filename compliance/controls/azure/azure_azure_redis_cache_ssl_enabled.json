@@ -1,0 +1,32 @@
+{
+  "ID": "azure_azure_redis_cache_ssl_enabled",
+  "Title": "Only secure connections to your Azure Cache for Redis should be enabled",
+  "Description": "Audit enabling of only connections via SSL to Azure Cache for Redis. Use of secure connections ensures authentication between the server and the service and protects data in transit from network layer attacks such as man-in-the-middle, eavesdropping, and session-hijacking.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  redis.id as resource,\n  case\n    when enable_non_ssl_port then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when enable_non_ssl_port then redis.name || ' secure connections disabled.'\n    else redis.name || ' secure connections enabled.'\n  end as reason\n  \n  , redis.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_redis_cache as redis,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = redis.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_redis_cache",
+    "ListOfTables": [
+      "azure_redis_cache",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "service": [
+      "Azure/Redis"
+    ]
+  },
+  "Managed": true
+}

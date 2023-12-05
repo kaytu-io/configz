@@ -1,0 +1,76 @@
+{
+  "ID": "aws_elasticache_redis_cluster_automatic_backup_retention_15_days",
+  "Title": "ElastiCache Redis cluster automatic backup should be enabled with retention period of 15 days or greater",
+  "Description": "When automatic backups are enabled, Amazon ElastiCache creates a backup of the cluster on a daily basis. The backup can be retained for a number of days as specified by your organization. Automatic backups can help guard against data loss.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when snapshot_retention_limit \u003c 15 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when snapshot_retention_limit = 0 then title || ' automatic backups not enabled.'\n    when snapshot_retention_limit \u003c 15 then title || ' automatic backup retention period is less than 15 days.'\n    else title || ' automatic backup retention period is more than 15 days.'\n  end as reason\n  , region, account_id\nfrom\n  aws_elasticache_replication_group;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_elasticache_replication_group",
+    "ListOfTables": [
+      "aws_elasticache_replication_group"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/ElastiCache"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

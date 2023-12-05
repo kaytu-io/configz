@@ -1,0 +1,37 @@
+{
+  "ID": "aws_cloudfront_distribution_waf_enabled",
+  "Title": "CloudFront distributions should have AWS WAF enabled",
+  "Description": "This control checks whether CloudFront distributions are associated with either AWS WAF or AWS WAFv2 web ACLs. The control fails if the distribution is not associated with a web ACL.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when web_acl_id \u003c\u003e '' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when web_acl_id \u003c\u003e '' then title || ' associated with WAF.'\n    else title || ' not associated with WAF.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_cloudfront_distribution",
+    "ListOfTables": [
+      "aws_cloudfront_distribution"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "protective_services"
+    ],
+    "foundational_security_item_id": [
+      "cloudfront_6"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/CloudFront"
+    ]
+  },
+  "Managed": true
+}

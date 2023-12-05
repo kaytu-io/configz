@@ -1,0 +1,74 @@
+{
+  "ID": "aws_guardduty_enabled",
+  "Title": "GuardDuty should be enabled",
+  "Description": "Amazon GuardDuty can help to monitor and detect potential cybersecurity events by using threat intelligence feeds.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  'arn:' || r.partition || '::' || r.region || ':' || r.account_id as resource,\n  case\n    when r.region = any(array['af-south-1', 'ap-northeast-3', 'ap-southeast-3', 'eu-south-1', 'cn-north-1', 'cn-northwest-1', 'me-south-1', 'us-gov-east-1']) then 'skip'\n    -- Skip any regions that are disabled in the account.\n    when r.opt_in_status = 'not-opted-in' then 'skip'\n    when status = 'ENABLED' and master_account -\u003e\u003e 'AccountId' is null then 'ok'\n    when status = 'ENABLED' and master_account -\u003e\u003e 'AccountId' is not null then 'info'\n    else 'alarm'\n  end as status,\n  case\n    when r.region = any(array['af-south-1', 'ap-northeast-3', 'ap-southeast-3', 'eu-south-1', 'cn-north-1', 'cn-northwest-1', 'me-south-1', 'us-gov-east-1']) then r.region || ' region not supported.'\n    when r.opt_in_status = 'not-opted-in' then r.region || ' region is disabled.'\n    when status is null then 'No GuardDuty detector found in ' || r.region || '.'\n    when status = 'ENABLED' and master_account -\u003e\u003e 'AccountId' is null then r.region || ' detector ' || d.title || ' enabled.'\n    when status = 'ENABLED' and master_account -\u003e\u003e 'AccountId' is not null then r.region || ' detector ' || d.title || ' is managed by account ' || (master_account -\u003e\u003e 'AccountId') ||  ' via delegated admin.'\n    else r.region || ' detector ' || d.title || ' disabled.'\n  end as reason\n  , r.region, r.account_id\nfrom\n  aws_region as r\n  left join aws_guardduty_detector d on r.account_id = d.account_id and r.name = d.region;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_region",
+    "ListOfTables": [
+      "aws_guardduty_detector",
+      "aws_region"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/GuardDuty"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

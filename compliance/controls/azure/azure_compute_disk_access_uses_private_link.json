@@ -1,0 +1,26 @@
+{
+  "ID": "azure_compute_disk_access_uses_private_link",
+  "Title": "Disk access resources should use private link",
+  "Description": "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to diskAccesses, data leakage risks are reduced.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with compute_disk_connection as (\n  select\n    distinct a.id\n  from\n    azure_compute_disk_access as a,\n    jsonb_array_elements(private_endpoint_connections) as connection\n  where\n    connection -\u003e\u003e 'PrivateLinkServiceConnectionStateStatus' = 'Approved'\n)\nselect\n  b.id as resource,\n  case\n    when c.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when c.id is null then b.name || ' not uses private link.'\n    else b.name || ' uses private link.'\n  end as reason\n  \n  , b.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_disk_access as b\n  left join compute_disk_connection as c on b.id = c.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = b.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_compute_disk_access",
+    "ListOfTables": [
+      "azure_compute_disk_access",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,26 @@
+{
+  "ID": "azure_keyvault_azure_defender_enabled",
+  "Title": "Azure Defender for Key Vault should be enabled",
+  "Description": "Azure Defender for Key Vault provides an additional layer of protection and security intelligence by detecting unusual and potentially harmful attempts to access or exploit key vault accounts.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  pricing.id as resource,\n  case\n    when name = 'KeyVaults' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'KeyVaults' and pricing_tier = 'Standard' then 'KeyVaults azure defender enabled.'\n    else name || 'KeyVaults azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'KeyVaults';\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "ListOfTables": [
+      "azure_security_center_subscription_pricing",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/KeyVault"
+    ]
+  },
+  "Managed": true
+}

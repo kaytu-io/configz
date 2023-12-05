@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v150_1_13",
+  "Title": "Ensure that 'Users can add gallery apps to My Apps' is set to 'No'",
+  "Description": "Require administrators to provide consent for the apps before use.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.13"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

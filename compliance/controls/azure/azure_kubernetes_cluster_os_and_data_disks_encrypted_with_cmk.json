@@ -1,0 +1,26 @@
+{
+  "ID": "azure_kubernetes_cluster_os_and_data_disks_encrypted_with_cmk",
+  "Title": "Both operating systems and data disks in Azure Kubernetes Service clusters should be encrypted by customer-managed keys",
+  "Description": "Encrypting OS and data disks using customer-managed keys provides more control and greater flexibility in key management. This is a common requirement in many regulatory and industry compliance standards.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  c.id as resource,\n  case\n    when disk_encryption_set_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when disk_encryption_set_id is not null then c.name || ' os and data diska encrypted with CMK.'\n    else c.name || ' os and data diska not encrypted with CMK.'\n  end as reason\n  \n  , c.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster c,\n  azure_subscription sub\nwhere\n  sub.subscription_id = c.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_kubernetes_cluster",
+    "ListOfTables": [
+      "azure_kubernetes_cluster",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/KubernetesService"
+    ]
+  },
+  "Managed": true
+}

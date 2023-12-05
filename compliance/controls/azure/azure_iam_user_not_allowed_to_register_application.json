@@ -1,0 +1,47 @@
+{
+  "ID": "azure_iam_user_not_allowed_to_register_application",
+  "Title": "Ensure That ‘Users Can Register Applications’ Is Set to ‘No’ ",
+  "Description": "Require administrators or appropriately delegated users to register third-party applications.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then a.display_name || ' does not allow user to register applications.'\n    else a.display_name || ' allows user to register applications.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azuread_authorization_policy",
+    "ListOfTables": [
+      "azure_tenant",
+      "azuread_authorization_policy"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.14"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

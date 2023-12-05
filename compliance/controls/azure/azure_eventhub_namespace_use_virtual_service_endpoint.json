@@ -1,0 +1,26 @@
+{
+  "ID": "azure_eventhub_namespace_use_virtual_service_endpoint",
+  "Title": "Event Hub should use a virtual network service endpoint",
+  "Description": "This policy audits any Event Hub not configured to use a virtual network service endpoint.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with eventhub_namesapce_with_virtual_network as (\n  select\n    distinct a.id\n  from\n    azure_eventhub_namespace as a,\n    jsonb_array_elements(network_rule_set -\u003e 'properties' -\u003e 'virtualNetworkRules') as rule\n  where\n    rule -\u003e 'subnet' -\u003e\u003e 'id' is not null\n)\nselect\n  a.id as resource,\n  case\n    when c.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when c.id is null then a.name || ' not configured with virtual network service endpoint.'\n    else a.name || ' configured with virtual network service endpoint.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_eventhub_namespace as a\n  left join eventhub_namesapce_with_virtual_network as c on c.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_eventhub_namespace",
+    "ListOfTables": [
+      "azure_eventhub_namespace",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "service": [
+      "Azure/EventHub"
+    ]
+  },
+  "Managed": true
+}

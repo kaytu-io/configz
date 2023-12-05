@@ -1,0 +1,47 @@
+{
+  "ID": "azure_postgres_db_server_allow_access_to_azure_services_disabled",
+  "Title": "Ensure 'Allow access to Azure services' for PostgreSQL Database Server is disabled",
+  "Description": "Disable access from Azure services to PostgreSQL Database Server.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with postgres_db_with_allow_access_to_azure_services as (\n  select\n    id\n  from\n    azure_postgresql_server,\n    jsonb_array_elements(firewall_rules) as r\n  where\n    r -\u003e 'FirewallRuleProperties' -\u003e\u003e 'endIpAddress' = '255.255.255.255'\n    and r -\u003e 'FirewallRuleProperties' -\u003e\u003e 'startIpAddress' = '0.0.0.0'\n)\nselect\n  s.id as resource,\n  case\n    when a.id is not null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when a.id is not null then s.title || ' does not restrict access to azure services.'\n    else s.title || ' restricts access to azure services.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server as s\n  left join postgres_db_with_allow_access_to_azure_services as a on a.id = s.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_postgresql_server",
+    "ListOfTables": [
+      "azure_postgresql_server",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "4.3.7"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "4.3"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/PostgreSQL"
+    ]
+  },
+  "Managed": true
+}

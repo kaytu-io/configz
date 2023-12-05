@@ -1,0 +1,55 @@
+{
+  "ID": "aws_rds_db_instance_automatic_minor_version_upgrade_enabled",
+  "Title": "Ensure Auto Minor Version Upgrade feature is Enabled for RDS Instances",
+  "Description": "Ensure that RDS database instances have the Auto Minor Version Upgrade flag enabled in order to receive automatically minor engine upgrades during the specified maintenance window. So, RDS instances can get the new features, bug fixes, and security patches for their database engines.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when auto_minor_version_upgrade then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when auto_minor_version_upgrade then title || ' automatic minor version upgrades enabled.'\n    else title || ' automatic minor version upgrades not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_rds_db_instance",
+    "ListOfTables": [
+      "aws_rds_db_instance"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "2.3.2"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "2.3"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/RDS"
+    ],
+    "x-kaytu-explanation": [
+      "# AWS Control - Auto Minor Version Upgrade for RDS Instances\n\nThe **Auto Minor Version Upgrade** is a flag feature provided by Amazon Web Services (AWS) for RDS database instances. When this flag is enabled, your RDS instances will automatically receive minor engine upgrades during the specified maintenance window. \n\n```markdown\n## Benefits\n- **New Features:** Your RDS instances can benefit from new features rolled out in minor updates.\n- **Bug Fixes:** Minor upgrades also often fix bugs, ensuring smooth operation of your services.\n- **Security Patches:** Keeping your database engine updated with the latest security patches is vital to prevent potential security vulnerabilities.\n\n## How to Enable Auto Minor Version Upgrade\n1. Open the Amazon RDS console.\n2. In the navigation pane, choose **Databases**, and then choose the database instance that you want to modify.\n3. For **Maintenance**, choose **Edit**.\n4. For **Auto minor version upgrade**, choose **Yes**.\n5. Choose **Save changes**.\n\nBy enabling the Auto Minor Version Upgrade feature, you are ensuring that your database engines are always up-to-date, eliminating the need for manual intervention to apply these minor upgrades.\n```\n\nRemember, **Minor Version Upgrades** are usually safe. They are meant to rectify bugs and enhance features rather than changing the fundamental workings of the database engine. However, for critical systems, it is usually recommended to conduct proper testing in a separate environment before upgrading the production environments."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to this AWS control can result in several potential costs:\n\n1. **Security Vulnerabilities:** If the Auto Minor Version Upgrade flag is not enabled, your RDS instances may not receive prompt updates, exposing them to various types of security risks. This could potentially lead to breaches, data loss, and reputational harm, all of which have their own significant costs.\n\n2. **Outdated Features and Bug Fixes:** Newer versions of RDS not only have improved security features, but also improvements in functionality, performance, and bug fixes. Not upgrading could lead to missed opportunities for better performance and stability. This can lead to productivity loss in terms of troubleshooting and latency.\n\n3. **Increased Operational Costs:** Running outdated software versions could necessitate added efforts in terms of backward compatibility and maintaining older systems. These could lead to a rise in operational costs in terms of both time and resources.\n\n4. **Compliance Violations:** If you’re operating in an industry where regulations mandate running up-to-date software, non-compliance with this AWS control could lead to significant penalties and fines. For instance, industries such as healthcare, finance, and government often have strict compliance requirements about system and software updates.\n\n5. **Potential Downtime:** Occasionally, AWS may forcefully update a severely outdated RDS instance, which may result in unexpected downtime if not properly planned.\n\nTo avoid these costs, it's important to enable the Auto Minor Version Upgrade feature. This feature ensures that your RDS instances are updated, reducing security risks, improving functionality, and reducing maintenance efforts."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For instance, consider a company called ABC Corp. which uses Amazon RDS database instances for storing their production data. They have a dedicated team of database administrators for managing these instances. However, manually keeping up with the latest minor engine upgrades and implementing them can be a time-consuming process.\n\nBy enabling the Auto Minor Version Upgrade flag, their RDS database instances would automatically receive the updates during the specified maintenance window. This way, ABC Corp. can be assured of getting the latest features, bug fixes, and most importantly, security patches without requiring manual intervention.\n\nHence, they can focus more on their core business operations while AWS takes care of maintaining the engine versions of their RDS instances up-to-date. This results in minimizing potential vulnerabilities, improving database performance, and saving time for the ABC Corp. team."
+    ]
+  },
+  "Managed": true
+}

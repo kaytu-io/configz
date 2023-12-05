@@ -1,0 +1,73 @@
+{
+  "ID": "aws_lambda_function_in_vpc",
+  "Title": "Lambda functions should be in a VPC",
+  "Description": "Deploy AWS Lambda functions within an Amazon Virtual Private Cloud (Amazon VPC) for a secure communication between a function and other services within the Amazon VPC.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when vpc_id is null or vpc_id = '' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when vpc_id is null or vpc_id = '' then title || ' is not in VPC.'\n    else title || ' is in VPC ' || vpc_id || '.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_lambda_function;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_lambda_function",
+    "ListOfTables": [
+      "aws_lambda_function"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/Lambda"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

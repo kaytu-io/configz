@@ -1,0 +1,64 @@
+{
+  "ID": "aws_dynamodb_table_encrypted_with_kms",
+  "Title": "DynamoDB table should be encrypted with AWS KMS",
+  "Description": "Ensure that encryption is enabled for your Amazon DynamoDB tables. Because sensitive data can exist at rest in these tables, enable encryption at rest to help protect that data.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when sse_description is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sse_description is null then title || ' not encrypted with KMS.'\n    else title || ' encrypted with KMS.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_dynamodb_table;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_dynamodb_table",
+    "ListOfTables": [
+      "aws_dynamodb_table"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "gdpr": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/DynamoDB"
+    ]
+  },
+  "Managed": true
+}

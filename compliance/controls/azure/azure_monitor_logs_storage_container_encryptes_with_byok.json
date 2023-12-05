@@ -1,0 +1,48 @@
+{
+  "ID": "azure_monitor_logs_storage_container_encryptes_with_byok",
+  "Title": "Ensure the storage account containing the container with activity logs is encrypted with BYOK (Use Your Own Key)",
+  "Description": "The storage account with the activity log export container is configured to use BYOK (Use Your Own Key).",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault'\n      then a.name || ' container insights-operational-logs encrypted with BYOK.'\n    else a.name || ' container insights-operational-logs not encrypted with BYOK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container c,\n  azure_storage_account a,\n  azure_subscription sub\nwhere\n  c.name = 'insights-operational-logs'\n  and c.account_name = a.name\n  and sub.subscription_id = a.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_storage_account",
+    "ListOfTables": [
+      "azure_storage_container",
+      "azure_storage_account",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "5.1.4"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "5.1"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Monitor"
+    ]
+  },
+  "Managed": true
+}

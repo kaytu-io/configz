@@ -1,0 +1,17 @@
+{
+  "ID": "azure_compute_vm_non_internet_facing_protected_with_nsg",
+  "Title": "Non-internet-facing virtual machines should be protected with network security groups",
+  "Description": "Protect your non-internet-facing virtual machines from potential threats by restricting access with network security groups (NSG).",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/Compute"
+    ]
+  },
+  "Managed": true
+}

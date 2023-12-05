@@ -1,0 +1,37 @@
+{
+  "ID": "aws_opensearch_domain_audit_logging_enabled",
+  "Title": "OpenSearch domains should have audit logging enabled",
+  "Description": "This control checks whether OpenSearch domains have audit logging enabled. This control fails if an OpenSearch domain does not have audit logging enabled.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when log_publishing_options -\u003e 'AUDIT_LOGS' -\u003e\u003e 'Enabled' = 'true' then 'ok'\n    else 'ok'\n  end as status,\n  case\n    when log_publishing_options -\u003e 'AUDIT_LOGS' -\u003e\u003e 'Enabled' = 'true' then title || ' audit logging enabled.'\n    else title || ' audit logging disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_opensearch_domain;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_opensearch_domain",
+    "ListOfTables": [
+      "aws_opensearch_domain"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "logging"
+    ],
+    "foundational_security_item_id": [
+      "opensearch_5"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/OpenSearch"
+    ]
+  },
+  "Managed": true
+}

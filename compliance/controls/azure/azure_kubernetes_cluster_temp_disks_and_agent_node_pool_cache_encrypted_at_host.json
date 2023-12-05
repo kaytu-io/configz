@@ -1,0 +1,26 @@
+{
+  "ID": "azure_kubernetes_cluster_temp_disks_and_agent_node_pool_cache_encrypted_at_host",
+  "Title": "Temp disks and cache for agent node pools in Azure Kubernetes Service clusters should be encrypted at host",
+  "Description": "To enhance data security, the data stored on the virtual machine (VM) host of your Azure Kubernetes Service nodes VMs should be encrypted at rest. This is a common requirement in many regulatory and industry compliance standards.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "with kubernetes_cluster as(\n  select\n    id,\n    name,\n    subscription_id,\n    resource_group\n  from\n    azure_kubernetes_cluster,\n    jsonb_array_elements(agent_pool_profiles) as p\n  where\n    p -\u003e 'enableEncryptionAtHost' = 'true'\n)\nselect\n  a.id as resource,\n  case\n    when s.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when s.id is not null then a.name || ' encrypted at host.'\n    else a.name || ' not encrypted at host.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster as a\n  left join kubernetes_cluster as s on s.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_kubernetes_cluster",
+    "ListOfTables": [
+      "azure_kubernetes_cluster",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/KubernetesService"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,37 @@
+{
+  "ID": "aws_opensearch_domain_node_to_node_encryption_enabled",
+  "Title": "OpenSearch domains should encrypt data sent between nodes",
+  "Description": "This control checks whether OpenSearch domains have node-to-node encryption enabled. This control fails if node-to-node encryption is disabled on the domain.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when region = any(array['af-south-1', 'eu-south-1', 'cn-north-1', 'cn-northwest-1']) then 'skip'\n    when node_to_node_encryption_options_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when region = any(array['af-south-1', 'eu-south-1', 'cn-north-1', 'cn-northwest-1']) then title || ' node-to-node encryption not supported in ' || region || '.'\n    when node_to_node_encryption_options_enabled then title || ' node-to-node encryption enabled.'\n    else title || ' node-to-node encryption disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_opensearch_domain;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_opensearch_domain",
+    "ListOfTables": [
+      "aws_opensearch_domain"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "encryption_of_data_in_transit"
+    ],
+    "foundational_security_item_id": [
+      "opensearch_3"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/OpenSearch"
+    ]
+  },
+  "Managed": true
+}

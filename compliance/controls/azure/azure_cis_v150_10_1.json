@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v150_10_1",
+  "Title": "Ensure that Resource Locks are set for Mission-Critical Azure Resources ",
+  "Description": "Resource Manager Locks provide a way for administrators to lock down Azure resources to prevent deletion of, or modifications to, a resource. These locks sit outside of the Role Based Access Controls (RBAC) hierarchy and, when applied, will place restrictions on the resource for all users. These locks are very useful when there is an important resource in a subscription that users should not be able to delete or change. Locks can help prevent accidental and malicious changes or deletion.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "10.1"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "8"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure"
+    ]
+  },
+  "Managed": true
+}

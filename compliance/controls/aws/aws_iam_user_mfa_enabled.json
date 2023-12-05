@@ -1,0 +1,73 @@
+{
+  "ID": "aws_iam_user_mfa_enabled",
+  "Title": "IAM user MFA should be enabled",
+  "Description": "Enable this rule to restrict access to resources in the AWS Cloud.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  user_arn as resource,\n  case\n    when not mfa_active then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not mfa_active then user_name || ' MFA device not configured.'\n    else user_name || ' MFA device configured.'\n  end as reason\n  , account_id\nfrom\n  aws_iam_credential_report;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_iam_credential_report",
+    "ListOfTables": [
+      "aws_iam_credential_report"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "audit_manager_control_tower": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "cis_controls_v8_ig1": [
+      "true"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_21_cfr_part_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

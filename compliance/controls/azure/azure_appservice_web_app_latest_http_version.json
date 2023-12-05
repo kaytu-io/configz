@@ -1,0 +1,47 @@
+{
+  "ID": "azure_appservice_web_app_latest_http_version",
+  "Title": "Ensure that 'HTTP Version' is the latest, if used to run the web app",
+  "Description": "Periodically, newer versions are released for HTTP either due to security flaws or to include additional functionality. Using the latest HTTP version for web apps to take advantage of security fixes, if any, and/or new functionalities of the newer version.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  app.id as resource,\n  case\n    when not (configuration -\u003e 'properties' -\u003e\u003e 'http20Enabled') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (configuration -\u003e 'properties' -\u003e\u003e 'http20Enabled') :: boolean then name || ' HTTP version not latest.'\n    else name || ' HTTP version is latest.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_app_service_web_app",
+    "ListOfTables": [
+      "azure_app_service_web_app",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "9.9"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "9"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/AppService"
+    ]
+  },
+  "Managed": true
+}

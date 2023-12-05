@@ -1,0 +1,26 @@
+{
+  "ID": "azure_sql_server_transparent_data_encryption_enabled",
+  "Title": "Transparent Data Encryption on SQL databases should be enabled",
+  "Description": "Transparent data encryption should be enabled to protect data-at-rest and meet compliance requirements.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  db.id as resource,\n  case\n    when transparent_data_encryption -\u003e\u003e 'status' = 'Disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when transparent_data_encryption -\u003e\u003e 'status' = 'Disabled' then db.name || ' transparent data encryption off.'\n    else db.name || ' transparent data encryption on.'\n  end as reason\n  \n  , db.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_database db,\n  azure_subscription sub\nwhere\n  sub.subscription_id = db.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_sql_database",
+    "ListOfTables": [
+      "azure_sql_database",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/SQL"
+    ]
+  },
+  "Managed": true
+}

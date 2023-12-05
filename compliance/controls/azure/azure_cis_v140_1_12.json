@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v140_1_12",
+  "Title": "Ensure That 'Guest users access restrictions' is set to 'Guest user access is restricted to properties and memberships of their own directory objects'",
+  "Description": "Limit guest user permissions.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.12"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

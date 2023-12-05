@@ -1,0 +1,47 @@
+{
+  "ID": "azure_appservice_web_app_latest_tls_version",
+  "Title": "Ensure web app is using the latest version of TLS encryption",
+  "Description": "The TLS(Transport Layer Security) protocol secures transmission of data over the internet using standard encryption technology. Encryption should be set with the latest version of TLS. App service allows TLS 1.2 by default, which is the recommended TLS level by industry standards, such as PCI DSS.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  app.id as resource,\n  case\n    when configuration -\u003e 'properties' -\u003e\u003e 'minTlsVersion' \u003c '1.2' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when configuration -\u003e 'properties' -\u003e\u003e 'minTlsVersion' \u003c '1.2' then name || ' not using the latest version of TLS encryption.'\n    else name || ' using the latest version of TLS encryption.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_app_service_web_app",
+    "ListOfTables": [
+      "azure_app_service_web_app",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "9.3"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "9"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/AppService"
+    ]
+  },
+  "Managed": true
+}

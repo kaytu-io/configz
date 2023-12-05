@@ -1,0 +1,77 @@
+{
+  "ID": "aws_foundational_security",
+  "Title": "AWS Foundational Security Best Practices",
+  "Connector": "AWS",
+  "Description": "The AWS Foundational Security Best Practices standard is a set of controls that detect when your deployed accounts and resources deviate from security best practices.",
+  "Children": [
+    "aws_foundational_security_account",
+    "aws_foundational_security_acm",
+    "aws_foundational_security_apigateway",
+    "aws_foundational_security_autoscaling",
+    "aws_foundational_security_cloudformation",
+    "aws_foundational_security_cloudfront",
+    "aws_foundational_security_cloudtrail",
+    "aws_foundational_security_codebuild",
+    "aws_foundational_security_config",
+    "aws_foundational_security_dms",
+    "aws_foundational_security_dynamodb",
+    "aws_foundational_security_ec2",
+    "aws_foundational_security_ecr",
+    "aws_foundational_security_ecs",
+    "aws_foundational_security_efs",
+    "aws_foundational_security_eks",
+    "aws_foundational_security_elasticache",
+    "aws_foundational_security_elasticbeanstalk",
+    "aws_foundational_security_elb",
+    "aws_foundational_security_elbv2",
+    "aws_foundational_security_emr",
+    "aws_foundational_security_es",
+    "aws_foundational_security_guardduty",
+    "aws_foundational_security_iam",
+    "aws_foundational_security_kinesis",
+    "aws_foundational_security_kms",
+    "aws_foundational_security_lambda",
+    "aws_foundational_security_networkfirewall",
+    "aws_foundational_security_opensearch",
+    "aws_foundational_security_rds",
+    "aws_foundational_security_redshift",
+    "aws_foundational_security_s3",
+    "aws_foundational_security_sagemaker",
+    "aws_foundational_security_secretsmanager",
+    "aws_foundational_security_sns",
+    "aws_foundational_security_sqs",
+    "aws_foundational_security_ssm",
+    "aws_foundational_security_waf"
+  ],
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "kaytu_benchmark_type": [
+      "compliance"
+    ],
+    "kaytu_category": [
+      "Best Practices"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS"
+    ],
+    "source_git": [
+      "https://github.com/turbot/steampipe-mod-aws-compliance.git"
+    ],
+    "type": [
+      "Benchmark"
+    ]
+  },
+  "Managed": true,
+  "Enabled": true,
+  "AutoAssign": false,
+  "Baseline": true,
+  "Controls": null
+}

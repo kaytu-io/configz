@@ -1,0 +1,37 @@
+{
+  "ID": "aws_elb_classic_lb_multiple_az_configured",
+  "Title": "Classic Load Balancers should span multiple Availability Zones",
+  "Description": "This control checks whether a Classic Load Balancer has been configured to span multiple Availability Zones. The control fails if the Classic Load Balancer does not span multiple Availability Zones.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when jsonb_array_length(availability_zones) \u003c 2 then 'alarm'\n    else 'ok'\n  end as status,\n  title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_classic_load_balancer;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_classic_load_balancer",
+    "ListOfTables": [
+      "aws_ec2_classic_load_balancer"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "high_availability"
+    ],
+    "foundational_security_item_id": [
+      "elb_10"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/ELB"
+    ]
+  },
+  "Managed": true
+}

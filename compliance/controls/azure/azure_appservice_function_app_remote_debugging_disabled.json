@@ -1,0 +1,29 @@
+{
+  "ID": "azure_appservice_function_app_remote_debugging_disabled",
+  "Title": "Function apps should have remote debugging turned off",
+  "Description": "Remote debugging requires inbound ports to be opened on function apps. Remote debugging should be turned off.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  app.id as resource,\n  case\n    when configuration -\u003e 'properties' -\u003e\u003e 'remoteDebuggingEnabled' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when configuration -\u003e 'properties' -\u003e\u003e 'remoteDebuggingEnabled' = 'false' then name || ' remote debugging disabled.'\n    else name || ' remote debugging enabled.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_function_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_app_service_function_app",
+    "ListOfTables": [
+      "azure_app_service_function_app",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "hipaa_hitrust_v92": [
+      "true"
+    ],
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/AppService"
+    ]
+  },
+  "Managed": true
+}

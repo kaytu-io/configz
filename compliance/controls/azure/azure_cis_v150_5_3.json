@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v150_5_3",
+  "Title": "Ensure that Azure Monitor Resource Logging is Enabled for All Services that Support it",
+  "Description": "Resource Logs capture activity to the data access plane while the Activity log is a subscription-level log for the control plane. Resource-level diagnostic logs provide insight into operations that were performed within that resource itself; for example, reading or updating a secret from a Key Vault.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "5.3"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "5"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Monitor"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,48 @@
+{
+  "ID": "azure_network_sg_flowlog_retention_period_greater_than_90",
+  "Title": "Ensure that Network Security Group Flow Log retention period is 'greater than 90 days'",
+  "Description": "Network Security Group Flow Logs should be enabled and the retention period is set to greater than or equal to 90 days.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  sg.id resource,\n  case\n    when fl.id is null or not fl.enabled or fl.retention_policy_days \u003c 90 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when fl.id is null or not fl.enabled\n      then sg.name || ' flowlog not enabled.'\n    when fl.retention_policy_days \u003c 90\n      then sg.name || ' flowlog ' || fl.title || ' retention period is less than 90 days.'\n    else sg.name || ' flowlog ' || fl.title || ' retention period is ' || fl.retention_policy_days || ' days.'\n  end as reason\n  \n  , sg.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_network_security_group sg\n  left join azure_network_watcher_flow_log fl on sg.id = fl.target_resource_id\n  join azure_subscription sub on sub.subscription_id = sg.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_network_security_group",
+    "ListOfTables": [
+      "azure_network_security_group",
+      "azure_network_watcher_flow_log",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "6.4"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "6"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Network"
+    ]
+  },
+  "Managed": true
+}

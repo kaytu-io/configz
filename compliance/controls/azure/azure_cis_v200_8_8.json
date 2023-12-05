@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v200_8_8",
+  "Title": "Ensure Automatic Key Rotation is Enabled Within Azure Key Vault for the Supported Services",
+  "Description": "Automatic Key Rotation is available in Public Preview. The currently supported applications are Key Vault, Managed Disks, and Storage accounts accessing keys within Key Vault. The number of supported applications will incrementally increased.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "high",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "8.8"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "8"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/KeyVault"
+    ]
+  },
+  "Managed": true
+}

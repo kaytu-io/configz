@@ -1,0 +1,47 @@
+{
+  "ID": "aws_iam_user_one_active_key",
+  "Title": "Ensure there is only one active access key available for any single IAM user",
+  "Description": "Access keys are long-term credentials for an IAM user or the AWS account root user. You can use access keys to sign programmatic requests to the AWS CLI or AWS API. One of the best ways to protect your account is to not allow users to have multiple access keys.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  u.arn as resource,\n  case\n    when count(k.*) \u003e 1 then 'alarm'\n    else 'ok'\n  end as status,\n  u.name || ' has ' || count(k.*) || ' active access key(s).' as reason\n  \n  , u.account_id\nfrom\n  aws_iam_user as u\n  left join aws_iam_access_key as k on u.name = k.user_name and u.account_id = k.account_id\nwhere\n  k.status = 'Active' or k.status is null\ngroup by\n  u.arn,\n  u.name,\n  u.account_id,\n  u.tags,\n  u._ctx;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_iam_user",
+    "ListOfTables": [
+      "aws_iam_access_key",
+      "aws_iam_user"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.13"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.3.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ]
+  },
+  "Managed": true
+}

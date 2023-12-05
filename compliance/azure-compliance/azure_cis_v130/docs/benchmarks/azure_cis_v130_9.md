@@ -1,3 +1,0 @@
-## Overview
-
-This section covers security recommendations for Azure AppService.

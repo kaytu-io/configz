@@ -1,0 +1,67 @@
+{
+  "ID": "aws_guardduty_finding_archived",
+  "Title": "GuardDuty findings should be archived",
+  "Description": "Amazon GuardDuty helps you understand the impact of an incident by classifying findings by severity: low, medium, and high.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  arn as resource,\n  case\n    when service -\u003e\u003e 'Archived' = 'false' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when service -\u003e\u003e 'Archived' = 'false' then title || ' not archived.'\n    else title || ' archived.'\n  end as reason\n  , region, account_id\nfrom\n  aws_guardduty_finding;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_guardduty_finding",
+    "ListOfTables": [
+      "aws_guardduty_finding"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gxp_eu_annex_11": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/GuardDuty"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

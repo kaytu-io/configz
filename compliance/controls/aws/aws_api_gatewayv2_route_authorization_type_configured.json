@@ -1,0 +1,37 @@
+{
+  "ID": "aws_api_gatewayv2_route_authorization_type_configured",
+  "Title": "API Gateway routes should specify an authorization type",
+  "Description": "This control checks if Amazon API Gateway routes have an authorization type. The control fails if the API Gateway route does not specify an authorization type.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  'arn:' || partition || ':apigateway:' || region || '::/apis/' || api_id || '/routes/' || route_id as resource,\n  case\n    when authorization_type is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when authorization_type is null then route_id || ' authorization type not configured.'\n    else route_id || ' authorization type ' || authorization_type || ' configured.'\n  end as reason\n  , region, account_id\nfrom\n  aws_api_gatewayv2_route;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_api_gatewayv2_route",
+    "ListOfTables": [
+      "aws_api_gatewayv2_route"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "secure_access_management"
+    ],
+    "foundational_security_item_id": [
+      "apigateway_8"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/APIGateway"
+    ]
+  },
+  "Managed": true
+}

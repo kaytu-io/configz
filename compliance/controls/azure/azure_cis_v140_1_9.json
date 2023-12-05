@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v140_1_9",
+  "Title": "Ensure that 'Users can consent to apps accessing company data on their behalf' is set to 'No'",
+  "Description": "Require administrators to provide consent for the apps before use.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.9"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/ActiveDirectory"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,70 @@
+{
+  "ID": "aws_acm_certificate_expires_30_days",
+  "Title": "ACM certificates should be set to expire within 30 days",
+  "Description": "Ensure network integrity is protected by ensuring X509 certificates are issued by AWS ACM.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  certificate_arn as resource,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then 'skip'\n    when date(not_after) - date(current_date) \u003e= 30 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then title || ' not eligible for renewal.'\n    else title || ' expires ' || to_char(not_after, 'DD-Mon-YYYY') ||\n    ' (' || extract(day from not_after - current_date) || ' days).'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_acm_certificate;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_acm_certificate",
+    "ListOfTables": [
+      "aws_acm_certificate"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "gdpr": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "hipaa_security_rule_2003": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "pci_dss_v321": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "rbi_cyber_security": [
+      "true"
+    ],
+    "service": [
+      "AWS/ACM"
+    ],
+    "soc_2": [
+      "true"
+    ]
+  },
+  "Managed": true
+}

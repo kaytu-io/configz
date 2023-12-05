@@ -1,0 +1,37 @@
+{
+  "ID": "aws_rds_db_cluster_deletion_protection_enabled",
+  "Title": "RDS clusters should have deletion protection enabled",
+  "Description": "This control checks whether RDS clusters have deletion protection enabled. This control is intended for RDS DB instances. However, it can also generate findings for Aurora DB instances, Neptune DB instances, and Amazon DocumentDB clusters. If these findings are not useful,then you can suppress them.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  db_cluster_identifier as resource,\n  case\n    when deletion_protection then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when deletion_protection then title || ' deletion protection enabled.'\n    else title || ' deletion protection not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_cluster;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_rds_db_cluster",
+    "ListOfTables": [
+      "aws_rds_db_cluster"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "low",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "data_deletion_protection"
+    ],
+    "foundational_security_item_id": [
+      "rds_7"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/RDS"
+    ]
+  },
+  "Managed": true
+}

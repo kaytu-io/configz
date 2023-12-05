@@ -1,0 +1,26 @@
+{
+  "ID": "azure_kusto_cluster_encrypted_at_rest_with_cmk",
+  "Title": "Azure Data Explorer encryption at rest should use a customer-managed key",
+  "Description": "Enabling encryption at rest using a customer-managed key on your Azure Data Explorer cluster provides additional control over the key being used by the encryption at rest. This feature is oftentimes applicable to customers with special compliance requirements and requires a Key Vault to managing the keys.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when\n      key_vault_properties -\u003e 'keyName' is not null\n      and key_vault_properties -\u003e 'keyVaultUri' is not null\n      and key_vault_properties -\u003e 'keyVersion' is not null\n    then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when\n      key_vault_properties -\u003e 'keyName' is not null\n      and key_vault_properties -\u003e 'keyVaultUri' is not null\n      and key_vault_properties -\u003e 'keyVersion' is not null\n    then name || ' encrypted at rest with CMK.'\n    else name || ' not encrypted at rest with CMK.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kusto_cluster as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_kusto_cluster",
+    "ListOfTables": [
+      "azure_kusto_cluster",
+      "azure_subscription"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "nist_sp_800_53_rev_5": [
+      "true"
+    ],
+    "service": [
+      "Azure/DataExplorer"
+    ]
+  },
+  "Managed": true
+}

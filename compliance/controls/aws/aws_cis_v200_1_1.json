@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v200_1_1",
+  "Title": "Maintain current contact details",
+  "Description": "Ensure contact email and telephone details for AWS accounts are current and map to more than one individual in your organization.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "medium",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "1.1"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "1"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v2.0.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "AWS accounts are crucial for managing and operating the applications in Amazon Web Services. It is essential to maintain up-to-date contact information on these accounts to ensure smooth communication, troubleshooting, and incident management.\n\nThe control mentioned infers that you must keep the contact email and telephone details for these AWS accounts current and up-to-date. This ensures that AWS can reach out to you in case of any account-related alerts, such as security notifications, service updates, or other imperative details.\n\nMoreover, these contact details should not just be linked to a single individual. Instead, they should map to more than one individual in your organization. This is important for redundancy — if one person is unavailable or leaves the organization, AWS can still contact another person to ensure uninterrupted account management.\n\nHere's an example of how you could represent this control in markup format:\n\n```Markdown\n## AWS Account Management Control\n\n**Objective:** Ensure smooth communication and uninterrupted account management with AWS\n\n- **Control 1:** Keep contact email and telephone details for AWS accounts up-to-date\n- **Control 2:** The contact details must be linked to more than one individual in the organization\n\nThis ensures that AWS can reach out for account-related alerts, service updates, and ensure seamless management even if one individual is unavailable.\n```\nRemember, these controls are put in place to prevent potential communication disruptions with AWS, thus aiding in efficient account administration. \n\nThese practices could be part of your organization's governance, risk management, and compliance (GRC) strategy. Implementing them could help mitigate risks associated with account management and improve overall operational efficiency."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the control of ensuring contact email and telephone details for AWS accounts are current and map to more than one individual in an organization can result in significant costs including operational, financial, and reputational. The details are as follows:\n\n* **Operational Cost:** \n    - If the primary contact is unavailable or leaves the organization without updating the information, it can delay in-case of procurement of support from AWS or in any situation implying immediate action (e.g., security threats, downtime issues, etc.). This delay can cause operational inefficiency and can lead to system downtime.\n\n* **Financial Cost:**\n    - In an emergency, a delay in communication could lead to system failures or a security breach, which may result in significant financial loss. A breach could lead to penalties or fees if compliance regulations are not met.\n    - AWS provides service-related notifications and billing updates on these contact details. Non-availability of the right information could lead to missing out on important payment deadlines resulting in late payment fees or, at worse, losing control over the resources due to non-payment.\n\n* **Reputational Cost:**\n    - Missed AWS account alerts due to non-compliance may lead to serious security breaches exposing customer data, leading to a potential loss of reputation. It could take years for the company to regain customer trust.\n    - Failure in meeting compliance requirements can also lead to decertification which greatly damages the company's reputation.\n\nTherefore, non-compliance to this control is not advisable as it can lead to significant costs. AWS recommends maintaining up to date contact details associated with the account and ensuring that more than one person in the organization receives communication to avoid any negative impact."
+    ],
+    "x-kaytu-usefulness-example": [
+      "**Example:**\n\nABC Corporation is a large enterprise with multiple AWS accounts utilized across various departments and projects. They have a strict policy to ensure up-to-date contact information and proper mapping of email and telephone details for these AWS accounts to more than one individual. \n\nDuring one instance, their primary AWS account experiences a security breach. AWS security frameworks immediately detected the breach and emailed the respective alert to the registered contact emails. \n\n```markup\n- Alert from AWS: \n    Subject: Unauthorized Access Alert\n```\n\nThanks to the corporation's policy, these alerts were not only sent to the account manager but also to the alternate contact person. The account manager was traveling overseas and had limited access to emails. However, upon receiving the alert, the alternate contact person was able to take immediate actions.\n\n```markup\n- To: johndoe@abccorp.com, janedoe@abccorp.com \n    Subject: Unauthorized Access Alert\n```\n\nHe reported the breach to the security team who then worked with Amazon's incident response to mitigate the security risk. \n\nHaving current and mapped contact details for AWS accounts was crucial in quickly responding and managing the security incident. It potentially saved ABC Corporation from severe data loss and maintained their business continuity."
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,47 @@
+{
+  "ID": "aws_cis_v150_5_5",
+  "Title": "Ensure routing tables for VPC peering are \"least access\"",
+  "Description": "Once a VPC peering connection is established, routing tables must be updated to establish any connections between the peered VPCs. These routes can be as specific as desired - even peering a VPC to only a single host on the other side of the connection.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "medium",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "5.5"
+    ],
+    "cis_level": [
+      "2"
+    ],
+    "cis_section_id": [
+      "5"
+    ],
+    "cis_type": [
+      "manual"
+    ],
+    "cis_version": [
+      "v1.5.0"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/VPC"
+    ],
+    "x-kaytu-explanation": [
+      "VPC (Virtual Private Cloud) peering in AWS (Amazon Web Services) allows you to connect two VPCs as if they're on the same network. To ensure the successful communication between the peered VPCs, the routing tables must be updated.\n\nRouting tables dictate where traffic is sent in a network. When a VPC peering connection is established, you need to add a route to the VPC's routing table that points to the IP address range (CIDR block) of the other VPC.\n\nFor example, you have two peered VPCs, VPC A (10.1.0.0/16) and VPC B (10.2.0.0/16). In VPC A's routing table, you should add a route where any destination traffic to 10.2.0.0/16 is targeted to the peering connection, and vice versa in VPC B.\n\nThis ensures that any traffic destined for the other VPC is sent through the peering connection. The exact configuration can vary, allowing for highly custom routes - even setting up the VPC peering in such a way that the VPC is connected to only a single host on the other side of the connection. \n\nThis level of flexibility is important in meeting different networking requirements for different use cases, and can significantly improve the security and efficiency of communication between VPCs.\n```markdown\n## AWS VPC Peering and Routing\n\n*AWS VPC Peering* allows you to connect two VPCs as if they were on the same network. \nTo make this happen:\n\n1. A VPC peering connection must be established.\n2. Routing tables must be updated to handle traffic between the connected VPCs.\n\n### Updating Routing Tables\n\nThese are the high-level steps to update routing tables:\n\n1. Identify the IP address range (CIDR block) of the other VPC.\n2. Add a route to the VPC's routing table that points to the above CIDR block and targets the VPC peering connection.\n\n**Example:**\n\n- VPC A: 10.1.0.0/16\n- VPC B: 10.2.0.0/16\n\nIn the routing table of VPC A, add a route that targets all traffic destined to 10.2.0.0/16 to the peering connection.\n\nDo the same for VPC B, but with VPC A's CIDR block.\n\n### Custom Routes\n\nRoutes can be as specific or as broad as needed. For example, you can set up a VPC to be connected to only a single host on the other VPC side of the connection. This can enhance security and communication efficiency between VPCs.\n```"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with this AWS control can lead to various issues including:\n\n1. **Security Risks**: If routing tables are not updated properly after establishing a VPC peering connection, unauthorized or unintended traffic may be allowed to pass between VPCs, potentially exposing sensitive data and creating security vulnerabilities.\n\n2. **Network Connectivity Issues**: Without correctly updated routing tables, desired network connections between peered VPCs may not be established. This could lead to system downtime, inefficiencies, or failures in data transmission.\n\n3. **Inefficient Resource Usage**: If the routing tables are not finely tuned to route only to necessary hosts, there might be redundant data flow between unnecessary hosts. This can lead to inefficient usage of network resources and increased costs.\n\n4. **Compliance Violations**: Many industries require adhering to specific IT governance and security protocols. Not updating your routing tables adequately can lead to violations of these compliance requirements.  \n\nAs a result of these issues, non-compliance with this AWS control could lead to significant financial and operational costs. These could include, but are not limited to, the cost of lost business due to network downtime, the cost of wasted resources due to inefficient routing, potential fines or legal repercussions due to compliance violations, and the cost of potential data breaches and associated reputational damage."
+    ],
+    "x-kaytu-usefulness-example": [
+      "An ecommerce company runs two different AWS accounts, account A which runs the management services and account B that runs the customer services. They want to ensure that only the management services in account A can access specific services like database backups in account B. In order to achieve this, a VPC Peering connection is established between the two accounts. \n\nHowever, for security reasons, they need to restrict access to only a specific host (management server) in account A. With AWS VPC Peering, the company can go as granular as needed in its connection settings. \n\nThey can modify the routing tables of the peered VPCs such that only the management server in account A can connect to the database in account B. \n\nThis way, they limit exposure of sensitive data and resources, preventing other hosts in account A from accessing the database in account B. This control in AWS can help in preventing data leaks, unwanted access while also aiding in smoother system operation, by reducing unnecessary data traffic between non-essential services.\n\n```\nResources:\n  DBPeeringConnection:\n    Type: 'AWS::EC2::VPCPeeringConnection'\n    Properties: \n      VpcId: vpc-0abcdef1234567890 \n      PeerVpcId: vpc-1abcdef1234567890\n      PeerOwnerId: 123456789012\n``` \n\nIn the routing tables, they can specify the route target as the VPC peering connection for routes that should be routed to the management server's VPC. \n\n```\nResources:\n  DBRoute:\n    Type: 'AWS::EC2::Route'\n    Properties: \n      RouteTableId: 'rtb-abcdef1234567890'\n      DestinationCidrBlock: 10.0.0.0/20\n      VpcPeeringConnectionId: pcx-abcdef1234567890\n```"
+    ]
+  },
+  "Managed": true
+}

@@ -1,0 +1,37 @@
+{
+  "ID": "aws_ecs_cluster_container_insights_enabled",
+  "Title": "ECS clusters should have Container Insights enabled",
+  "Description": "This control checks if ECS clusters use Container Insights. This control fails if Container Insights are not set up for a cluster.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  cluster_arn as resource,\n  case\n    when s -\u003e\u003e 'Name' = 'containerInsights' and s -\u003e\u003e 'Value' = 'enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when s -\u003e\u003e 'Name' = 'containerInsights' and s -\u003e\u003e 'Value' = 'enabled' then title || ' Container Insights enabled.'\n    else title || ' Container Insights disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_cluster as c,\n  jsonb_array_elements(settings) as s;\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ecs_cluster",
+    "ListOfTables": [
+      "aws_ecs_cluster"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "medium",
+  "Tags": {
+    "aws_foundational_security": [
+      "true"
+    ],
+    "category": [
+      "Compliance"
+    ],
+    "foundational_security_category": [
+      "logging"
+    ],
+    "foundational_security_item_id": [
+      "ecs_12"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/ECS"
+    ]
+  },
+  "Managed": true
+}

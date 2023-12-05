@@ -1,0 +1,38 @@
+{
+  "ID": "azure_cis_v140_5_1_1",
+  "Title": "Ensure that a 'Diagnostics Setting' exists",
+  "Description": "Enable Diagnostic settings for exporting activity logs. Diagnostic setting are available for each individual resources within a subscription. Settings should be configured for all appropriate resources for your environment.",
+  "QueryID": null,
+  "ManualVerification": true,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cis": [
+      "true"
+    ],
+    "cis_item_id": [
+      "5.1.1"
+    ],
+    "cis_level": [
+      "1"
+    ],
+    "cis_section_id": [
+      "5.1"
+    ],
+    "cis_type": [
+      "automated"
+    ],
+    "cis_version": [
+      "v1.4.0"
+    ],
+    "plugin": [
+      "azure"
+    ],
+    "service": [
+      "Azure/Monitor"
+    ]
+  },
+  "Managed": true
+}

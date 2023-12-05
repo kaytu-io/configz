@@ -1,0 +1,38 @@
+{
+  "ID": "aws_iam_root_user_virtual_mfa",
+  "Title": "Virtual MFA should be enabled for the root user",
+  "Description": "This control checks whether users of your AWS account require a multi-factor authentication (MFA) device to sign in with root user credentials. It does not check whether you are using hardware MFA.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  'arn:' || s.partition || ':::' || s.account_id as resource,\n  case\n    when account_mfa_enabled and serial_number is not null then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when account_mfa_enabled = false then 'MFA is not enabled for the root user.'\n    when serial_number is null then 'MFA is enabled for the root user, but the MFA associated with the root user is a hardware device.'\n    else 'Virtual MFA enabled for the root user.'\n  end reason\n  , s.account_id\nfrom\n  aws_iam_account_summary as s\n  left join aws_iam_virtual_mfa_device on serial_number = 'arn:' || s.partition || ':iam::' || s.account_id || ':mfa/root-account-mfa-device';\n",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_iam_account_summary",
+    "ListOfTables": [
+      "aws_iam_account_summary",
+      "aws_iam_virtual_mfa_device"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "low",
+  "Tags": {
+    "pci": [
+      "true"
+    ],
+    "pci_item_id": [
+      "iam_5"
+    ],
+    "pci_requirements": [
+      "8.3.1"
+    ],
+    "pci_version": [
+      "v3.2.1"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "iam"
+    ]
+  },
+  "Managed": true
+}

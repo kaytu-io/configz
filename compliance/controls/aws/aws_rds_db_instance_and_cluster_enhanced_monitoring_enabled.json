@@ -1,0 +1,56 @@
+{
+  "ID": "aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled",
+  "Title": "RDS DB instance and cluster enhanced monitoring should be enabled",
+  "Description": "Enable Amazon Relational Database Service (Amazon RDS) to help monitor Amazon RDS availability. This provides detailed visibility into the health of your Amazon RDS database instances.",
+  "Query": {
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "(\nselect\n  arn as resource,\n  case\n    when enabled_cloudwatch_logs_exports is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enabled_cloudwatch_logs_exports is not null then title || ' enhanced monitoring enabled.'\n    else title || ' enhanced monitoring not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_cluster\n)\nunion\n(\nselect\n  arn as resource,\n  case\n    when class = 'db.m1.small' then 'skip'\n    when enhanced_monitoring_resource_arn is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when class = 'db.m1.small' then title || ' enhanced monitoring not supported.'\n    when enhanced_monitoring_resource_arn is not null then title || ' enhanced monitoring enabled.'\n    else title || ' enhanced monitoring not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance\n);\n",
+    "Connector": "AWS",
+    "PrimaryTable": null,
+    "ListOfTables": [
+      "aws_rds_db_cluster",
+      "aws_rds_db_instance"
+    ]
+  },
+  "ManualVerification": false,
+  "Severity": "",
+  "Tags": {
+    "category": [
+      "Compliance"
+    ],
+    "cisa_cyber_essentials": [
+      "true"
+    ],
+    "fedramp_low_rev_4": [
+      "true"
+    ],
+    "fedramp_moderate_rev_4": [
+      "true"
+    ],
+    "ffiec": [
+      "true"
+    ],
+    "hipaa_final_omnibus_security_rule_2013": [
+      "true"
+    ],
+    "nist_800_171_rev_2": [
+      "true"
+    ],
+    "nist_800_53_rev_4": [
+      "true"
+    ],
+    "nist_800_53_rev_5": [
+      "true"
+    ],
+    "nist_csf": [
+      "true"
+    ],
+    "plugin": [
+      "aws"
+    ],
+    "service": [
+      "AWS/RDS"
+    ]
+  },
+  "Managed": true
+}
