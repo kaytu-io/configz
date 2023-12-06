@@ -4,7 +4,7 @@
   "Description": "This control checks if Amazon EFS access points are configured to enforce a root directory. The control fails if the value of Path is set to / (the default root directory of the file system).",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  access_point_arn as resource,\n  case\n    when root_directory -\u003e\u003e 'Path'= '/' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when root_directory -\u003e\u003e 'Path'= '/' then title || ' not configured to enforce a root directory.'\n    else title || ' configured to enforce a root directory.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_efs_access_point;\n",
+    "QueryToExecute": "select\n  access_point_arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when root_directory ->> 'Path'= '/' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when root_directory ->> 'Path'= '/' then title || ' not configured to enforce a root directory.'\n    else title || ' configured to enforce a root directory.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_efs_access_point;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_efs_access_point",
     "ListOfTables": [

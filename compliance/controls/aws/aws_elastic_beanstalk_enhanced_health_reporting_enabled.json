@@ -4,7 +4,7 @@
   "Description": "AWS Elastic Beanstalk enhanced health reporting enables a more rapid response to changes in the health of the underlying infrastructure. These changes could result in a lack of availability of the application. Elastic Beanstalk enhanced health reporting provides a status descriptor to gauge the severity of the identified issues and identify possible causes to investigate.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  application_name as resource,\n  case\n    when health_status is not null and health is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when health_status is not null and health is not null then application_name || ' enhanced health check enabled.'\n    else application_name || ' enhanced health check disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_elastic_beanstalk_environment;\n",
+    "QueryToExecute": "select\n  application_name as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when health_status is not null and health is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when health_status is not null and health is not null then application_name || ' enhanced health check enabled.'\n    else application_name || ' enhanced health check disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_elastic_beanstalk_environment;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_elastic_beanstalk_environment",
     "ListOfTables": [

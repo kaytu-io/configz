@@ -4,7 +4,7 @@
   "Description": "This control checks if an AWS CodeBuild project environment has at least one log option enabled. The rule is non compliant if the status of all present log configurations is set to 'DISABLED'.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  case\n    when logs_config -\u003e 'CloudWatchLogs' -\u003e\u003e 'Status' = 'ENABLED' or logs_config -\u003e 'S3Logs' -\u003e\u003e 'Status' = 'ENABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when logs_config -\u003e 'CloudWatchLogs' -\u003e\u003e 'Status' = 'ENABLED' or logs_config -\u003e 'S3Logs' -\u003e\u003e 'Status' = 'ENABLED' then title || ' logging enabled.'\n    else title || ' logging disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_codebuild_project;\n",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when logs_config -> 'CloudWatchLogs' ->> 'Status' = 'ENABLED' or logs_config -> 'S3Logs' ->> 'Status' = 'ENABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when logs_config -> 'CloudWatchLogs' ->> 'Status' = 'ENABLED' or logs_config -> 'S3Logs' ->> 'Status' = 'ENABLED' then title || ' logging enabled.'\n    else title || ' logging disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_codebuild_project;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_codebuild_project",
     "ListOfTables": [

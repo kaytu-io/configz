@@ -4,7 +4,7 @@
   "Description": "This control checks whether Amazon SQS queues are encrypted at rest.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  queue_arn as resource,\n  case\n    when kms_master_key_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kms_master_key_id is null then title || ' encryption at rest disabled.'\n    else title || ' encryption at rest enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_sqs_queue;\n",
+    "QueryToExecute": "select\n  queue_arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when kms_master_key_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kms_master_key_id is null then title || ' encryption at rest disabled.'\n    else title || ' encryption at rest enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_sqs_queue;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_sqs_queue",
     "ListOfTables": [

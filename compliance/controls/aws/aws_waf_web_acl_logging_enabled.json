@@ -4,7 +4,7 @@
   "Description": "This control checks whether logging is enabled for an AWS WAF global web ACL. This control fails if logging is not enabled for the web ACL.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  case\n    when logging_configuration is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when logging_configuration is null then title || ' logging disabled.'\n    else title || ' logging enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_waf_web_acl;\n",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when logging_configuration is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when logging_configuration is null then title || ' logging disabled.'\n    else title || ' logging enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_waf_web_acl;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_waf_web_acl",
     "ListOfTables": [

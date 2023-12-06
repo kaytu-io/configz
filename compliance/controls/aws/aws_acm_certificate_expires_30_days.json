@@ -4,7 +4,7 @@
   "Description": "Ensure network integrity is protected by ensuring X509 certificates are issued by AWS ACM.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  certificate_arn as resource,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then 'skip'\n    when date(not_after) - date(current_date) \u003e= 30 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then title || ' not eligible for renewal.'\n    else title || ' expires ' || to_char(not_after, 'DD-Mon-YYYY') ||\n    ' (' || extract(day from not_after - current_date) || ' days).'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_acm_certificate;\n",
+    "QueryToExecute": "select\n  certificate_arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then 'skip'\n    when date(not_after) - date(current_date) >= 30 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then title || ' not eligible for renewal.'\n    else title || ' expires ' || to_char(not_after, 'DD-Mon-YYYY') ||\n    ' (' || extract(day from not_after - current_date) || ' days).'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_acm_certificate;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_acm_certificate",
     "ListOfTables": [

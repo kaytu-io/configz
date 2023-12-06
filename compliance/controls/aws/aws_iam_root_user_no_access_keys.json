@@ -4,7 +4,7 @@
   "Description": "Access to systems and assets can be controlled by checking that the root user does not have access keys attached to their AWS Identity and Access Management (IAM) role.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  'arn:' || partition || ':::' || account_id as resource,\n  case\n    when account_access_keys_present \u003e 0 then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when account_access_keys_present \u003e 0 then 'Root user access keys exist.'\n    else 'No root user access keys exist.'\n  end reason\n  , account_id\nfrom\n  aws_iam_account_summary;\n",
+    "QueryToExecute": "select\n  'arn:' || partition || ':::' || account_id as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when account_access_keys_present > 0 then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when account_access_keys_present > 0 then 'Root user access keys exist.'\n    else 'No root user access keys exist.'\n  end reason\n  , account_id\nfrom\n  aws_iam_account_summary;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_iam_account_summary",
     "ListOfTables": [

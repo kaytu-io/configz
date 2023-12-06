@@ -4,7 +4,7 @@
   "Description": "This control checks if Amazon ECS task definitions are configured to share a host’s process namespace with its containers. The control fails if the task definition shares the host's process namespace with the containers running on it.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  task_definition_arn as resource,\n  case\n    when pid_mode = 'host' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when pid_mode = 'host' then title || ' shares the host process namespace.'\n    else title || ' does not share the host process namespace.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_task_definition;\n",
+    "QueryToExecute": "select\n  task_definition_arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when pid_mode = 'host' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when pid_mode = 'host' then title || ' shares the host process namespace.'\n    else title || ' does not share the host process namespace.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ecs_task_definition;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_ecs_task_definition",
     "ListOfTables": [

@@ -4,7 +4,7 @@
   "Description": "This control checks whether a DAX cluster is encrypted at rest. Encrypting data at rest reduces the risk of data stored on disk being accessed by a user not authenticated to AWS. The encryption adds another set of access controls to limit the ability of unauthorized users to access to the data. For example, API permissions are required to decrypt the data before it can be read.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  case\n    when sse_description -\u003e\u003e 'Status' = 'ENABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sse_description -\u003e\u003e 'Status' = 'ENABLED' then title || ' encryption at rest enabled.'\n    else title || ' encryption at rest not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_dax_cluster;\n",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when sse_description ->> 'Status' = 'ENABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sse_description ->> 'Status' = 'ENABLED' then title || ' encryption at rest enabled.'\n    else title || ' encryption at rest not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_dax_cluster;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_dax_cluster",
     "ListOfTables": [

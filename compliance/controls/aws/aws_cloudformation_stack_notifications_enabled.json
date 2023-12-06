@@ -4,7 +4,7 @@
   "Description": "This control checks whether an Amazon Simple Notification Service notification is integrated with a CloudFormation stack. The control fails for a CloudFormation stack if there is no SNS notification associated with it.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  id as resource,\n  case\n    when jsonb_array_length(notification_arns) \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when jsonb_array_length(notification_arns) \u003e 0 then title || ' notifications enabled.'\n    else title || ' notifications disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudformation_stack;\n",
+    "QueryToExecute": "select\n  id as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when jsonb_array_length(notification_arns) > 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when jsonb_array_length(notification_arns) > 0 then title || ' notifications enabled.'\n    else title || ' notifications disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudformation_stack;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_cloudformation_stack",
     "ListOfTables": [

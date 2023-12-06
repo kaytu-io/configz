@@ -4,7 +4,7 @@
   "Description": "Enable this rule to help with identification and documentation of Amazon Elastic Compute Cloud (Amazon EC2) vulnerabilities.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  id as resource,\n  case\n    when c.status = 'COMPLIANT' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when c.status = 'COMPLIANT' then c.resource_id || ' patch ' || c.title || ' is compliant.'\n    else c.resource_id || ' patch ' || c.title || ' is non-compliant.'\n  end as reason\n  , c.region, c.account_id\nfrom\n  aws_ssm_managed_instance as i,\n  aws_ssm_managed_instance_compliance as c\nwhere\n  c.resource_id = i.instance_id\n  and c.compliance_type = 'Patch';\n",
+    "QueryToExecute": "select\n  c.id as resource,\n  c.kaytu_account_id as kaytu_account_id,\n  c.kaytu_resource_id as kaytu_resource_id,\n  case\n    when c.status = 'COMPLIANT' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when c.status = 'COMPLIANT' then c.resource_id || ' patch ' || c.title || ' is compliant.'\n    else c.resource_id || ' patch ' || c.title || ' is non-compliant.'\n  end as reason\n  , c.region, c.account_id\nfrom\n  aws_ssm_managed_instance as i,\n  aws_ssm_managed_instance_compliance as c\nwhere\n  c.resource_id = i.instance_id\n  and c.compliance_type = 'Patch';\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_ssm_managed_instance_compliance",
     "ListOfTables": [
