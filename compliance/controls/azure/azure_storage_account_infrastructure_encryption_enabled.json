@@ -4,7 +4,7 @@
   "Description": "Enabling double encryption at the hardware level on top of the default software encryption for Storage Accounts accessing Azure storage solutions.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when require_infrastructure_encryption then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when require_infrastructure_encryption then name || ' infrastructure encryption enabled.'\n    else name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when require_infrastructure_encryption then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when require_infrastructure_encryption then name || ' infrastructure encryption enabled.'\n    else name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_storage_account",
     "ListOfTables": [

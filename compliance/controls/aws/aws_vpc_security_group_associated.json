@@ -4,7 +4,7 @@
   "Description": "This control helps you maintain an accurate asset inventory of needed security groups in your cardholder data environment (CDE). It does so by checking that security groups are attached to Amazon EC2 instances or to an ENI. A failed finding indicates you may have unused Amazon EC2 security groups.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with associated_sg as (\n  select\n    sg -\u003e\u003e 'GroupId' as secgrp_id,\n    sg -\u003e\u003e 'GroupName' as secgrp_name\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n)\nselect\n  distinct s.arn as resource,\n  case\n    when a.secgrp_id = s.group_id then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.secgrp_id = s.group_id then s.title || ' is associated.'\n    else s.title || ' not associated.'\n  end as reason\n  \n  , s.region, s.account_id\nfrom\n  aws_vpc_security_group s\n  left join associated_sg a on s.group_id = a.secgrp_id;\n",
+    "QueryToExecute": "with associated_sg as (\n  select\n    sg ->> 'GroupId' as secgrp_id,\n    sg ->> 'GroupName' as secgrp_name\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n)\nselect\n  distinct s.arn as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.secgrp_id = s.group_id then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.secgrp_id = s.group_id then s.title || ' is associated.'\n    else s.title || ' not associated.'\n  end as reason\n  \n  , s.region, s.account_id\nfrom\n  aws_vpc_security_group s\n  left join associated_sg a on s.group_id = a.secgrp_id;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_vpc_security_group",
     "ListOfTables": [

@@ -4,7 +4,7 @@
   "Description": "Audit enabling of only connections via SSL to Azure Cache for Redis. Use of secure connections ensures authentication between the server and the service and protects data in transit from network layer attacks such as man-in-the-middle, eavesdropping, and session-hijacking.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  redis.id as resource,\n  case\n    when enable_non_ssl_port then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when enable_non_ssl_port then redis.name || ' secure connections disabled.'\n    else redis.name || ' secure connections enabled.'\n  end as reason\n  \n  , redis.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_redis_cache as redis,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = redis.subscription_id;\n",
+    "QueryToExecute": "select\n  redis.id as resource,\n  redis.kaytu_account_id as kaytu_account_id,\n  redis.kaytu_resource_id as kaytu_resource_id,\n  case\n    when enable_non_ssl_port then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when enable_non_ssl_port then redis.name || ' secure connections disabled.'\n    else redis.name || ' secure connections enabled.'\n  end as reason\n  \n  , redis.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_redis_cache as redis,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = redis.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_redis_cache",
     "ListOfTables": [

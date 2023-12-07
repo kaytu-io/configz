@@ -4,7 +4,7 @@
   "Description": "Microsoft Defender for Resource Manager scans incoming administrative requests to change your infrastructure from both CLI and the Azure portal.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Resource Manager.'\n    else 'Azure Defender off for Resource Manager.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'Arm';\n",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Resource Manager.'\n    else 'Azure Defender off for Resource Manager.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'Arm';\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_security_center_subscription_pricing",
     "ListOfTables": [

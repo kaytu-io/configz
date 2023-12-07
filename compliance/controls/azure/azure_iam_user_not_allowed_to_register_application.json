@@ -4,7 +4,7 @@
   "Description": "Require administrators or appropriately delegated users to register third-party applications.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then a.display_name || ' does not allow user to register applications.'\n    else a.display_name || ' allows user to register applications.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.default_user_role_permissions ->> 'allowedToCreateApps' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions ->> 'allowedToCreateApps' = 'false' then a.display_name || ' does not allow user to register applications.'\n    else a.display_name || ' allows user to register applications.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n",
     "Connector": "Azure",
     "PrimaryTable": "azuread_authorization_policy",
     "ListOfTables": [
@@ -12,7 +12,7 @@
       "azuread_authorization_policy"
     ]
   },
-  "ManualVerification": false,
+  "ManualVerification": true,
   "Severity": "",
   "Tags": {
     "category": [

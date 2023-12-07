@@ -4,7 +4,7 @@
   "Description": "The Azure Storage blobs contain data like ePHI, Financial, secret or personal. Erroneously modified or deleted accidentally by an application or other storage account user cause data loss or data unavailability. It is recommended the Azure Storage be made recoverable by enabling soft delete configuration. This is to save and recover data when blobs or blob snapshots are deleted.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sa.id as resource,\n  case\n    when not blob_soft_delete_enabled then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not blob_soft_delete_enabled then sa.name || ' blobs soft delete disabled.'\n    else sa.name || ' blobs soft delete enabled.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
+    "QueryToExecute": "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not blob_soft_delete_enabled then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not blob_soft_delete_enabled then sa.name || ' blobs soft delete disabled.'\n    else sa.name || ' blobs soft delete enabled.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_storage_account",
     "ListOfTables": [

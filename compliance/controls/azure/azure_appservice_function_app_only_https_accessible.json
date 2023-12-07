@@ -4,7 +4,7 @@
   "Description": "Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  app.id as resource,\n  case\n    when https_only then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when https_only then name || ' https-only accessible enabled.'\n    else name || ' https-only accessible disabled.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_function_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n",
+    "QueryToExecute": "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when https_only then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when https_only then name || ' https-only accessible enabled.'\n    else name || ' https-only accessible disabled.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_function_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_app_service_function_app",
     "ListOfTables": [

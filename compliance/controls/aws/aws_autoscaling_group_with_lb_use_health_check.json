@@ -4,7 +4,7 @@
   "Description": "The Elastic Load Balancer (ELB) health checks for Amazon Elastic Compute Cloud (Amazon EC2) Auto Scaling groups support maintenance of adequate capacity and availability.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  autoscaling_group_arn as resource,\n  case\n    when load_balancer_names is null and target_group_arns is null then 'alarm'\n    when health_check_type != 'ELB' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when load_balancer_names is null and target_group_arns is null then title || ' not associated with a load balancer.'\n    when health_check_type != 'ELB' then title || ' does not use ELB health check.'\n    else title || ' uses ELB health check.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_autoscaling_group;\n",
+    "QueryToExecute": "select\n  autoscaling_group_arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when load_balancer_names is null and target_group_arns is null then 'alarm'\n    when health_check_type != 'ELB' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when load_balancer_names is null and target_group_arns is null then title || ' not associated with a load balancer.'\n    when health_check_type != 'ELB' then title || ' does not use ELB health check.'\n    else title || ' uses ELB health check.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_autoscaling_group;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_ec2_autoscaling_group",
     "ListOfTables": [

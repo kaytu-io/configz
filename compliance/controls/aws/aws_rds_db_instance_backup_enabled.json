@@ -4,7 +4,7 @@
   "Description": "The backup feature of Amazon RDS creates backups of your databases and transaction logs.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  case\n    when backup_retention_period \u003c 1 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when backup_retention_period \u003c 1 then title || ' backups not enabled.'\n    else title || ' backups enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance;\n",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when backup_retention_period < 1 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when backup_retention_period < 1 then title || ' backups not enabled.'\n    else title || ' backups enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_rds_db_instance",
     "ListOfTables": [

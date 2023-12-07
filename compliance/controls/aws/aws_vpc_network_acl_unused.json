@@ -4,7 +4,7 @@
   "Description": "Ensure there are no unused network access control lists (network ACLs). The rule is compliant if each network ACL is associated with a subnet. The rule is non-compliant if a network ACL is not associated with a subnet.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  network_acl_id as resource,\n  case\n    when jsonb_array_length(associations) \u003e= 1  then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when jsonb_array_length(associations) \u003e= 1 then title || ' associated with subnet.'\n    else title || ' not associated with subnet.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_vpc_network_acl;\n",
+    "QueryToExecute": "select\n  network_acl_id as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when jsonb_array_length(associations) >= 1  then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when jsonb_array_length(associations) >= 1 then title || ' associated with subnet.'\n    else title || ' not associated with subnet.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_vpc_network_acl;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_vpc_network_acl",
     "ListOfTables": [

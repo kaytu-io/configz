@@ -4,7 +4,7 @@
   "Description": "Azure Defender for servers provides real-time threat protection for server workloads and generates hardening recommendations as well as alerts about suspicious activities.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  pricing.id as resource,\n  case\n    when name = 'VirtualMachines' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'VirtualMachines' and pricing_tier = 'Standard' then 'VirtualMachines azure defender enabled.'\n    else name || 'VirtualMachines azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'VirtualMachines';\n",
+    "QueryToExecute": "select\n  pricing.id as resource,\n  pricing.kaytu_account_id as kaytu_account_id,\n  pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when name = 'VirtualMachines' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'VirtualMachines' and pricing_tier = 'Standard' then 'VirtualMachines azure defender enabled.'\n    else name || 'VirtualMachines azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'VirtualMachines';\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_security_center_subscription_pricing",
     "ListOfTables": [

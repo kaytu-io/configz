@@ -4,7 +4,7 @@
   "Description": "The storage account container containing the activity log export should not be publicly accessible.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sc.id as resource,\n  case\n    when public_access != 'None' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_access != 'None'\n      then account_name || ' container insights-operational-logs storing activity logs publicly accessible.'\n    else account_name || ' container insights-operational-logs storing activity logs not publicly accessible.'\n  end as reason\n  , sc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container sc,\n  azure_subscription sub\nwhere\n  name = 'insights-operational-logs'\n  and sub.subscription_id = sc.subscription_id;\n",
+    "QueryToExecute": "select\n  sc.id as resource,\n  sc.kaytu_account_id as kaytu_account_id,\n  sc.kaytu_resource_id as kaytu_resource_id,\n  case\n    when public_access != 'None' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_access != 'None'\n      then account_name || ' container insights-operational-logs storing activity logs publicly accessible.'\n    else account_name || ' container insights-operational-logs storing activity logs not publicly accessible.'\n  end as reason\n  , sc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container sc,\n  azure_subscription sub\nwhere\n  name = 'insights-operational-logs'\n  and sub.subscription_id = sc.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_storage_container",
     "ListOfTables": [

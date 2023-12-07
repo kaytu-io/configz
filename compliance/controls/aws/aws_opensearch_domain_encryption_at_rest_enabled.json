@@ -4,7 +4,7 @@
   "Description": "This control checks whether OpenSearch domains have encryption-at-rest configuration enabled. The check fails if encryption at rest is not enabled.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  case\n    when encryption_at_rest_options -\u003e\u003e 'Enabled' = 'false' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when encryption_at_rest_options -\u003e\u003e 'Enabled' = 'false' then title || ' encryption at rest disabled.'\n    else title || ' encryption at rest enabled.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_opensearch_domain;\n",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when encryption_at_rest_options ->> 'Enabled' = 'false' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when encryption_at_rest_options ->> 'Enabled' = 'false' then title || ' encryption at rest disabled.'\n    else title || ' encryption at rest enabled.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_opensearch_domain;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_opensearch_domain",
     "ListOfTables": [

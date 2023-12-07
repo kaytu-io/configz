@@ -4,7 +4,7 @@
   "Description": "This control checks whether CloudFront distributions are associated with either AWS WAF or AWS WAFv2 web ACLs. The control fails if the distribution is not associated with a web ACL.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  case\n    when web_acl_id \u003c\u003e '' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when web_acl_id \u003c\u003e '' then title || ' associated with WAF.'\n    else title || ' not associated with WAF.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution;\n",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when web_acl_id <> '' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when web_acl_id <> '' then title || ' associated with WAF.'\n    else title || ' not associated with WAF.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_cloudfront_distribution;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_cloudfront_distribution",
     "ListOfTables": [

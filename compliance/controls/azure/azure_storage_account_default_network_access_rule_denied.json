@@ -4,7 +4,7 @@
   "Description": "Restricting default network access helps to provide a new layer of security, since storage accounts accept connections from clients on any network. To limit access to selected networks, the default action must be changed.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sa.id as resource,\n  case\n    when sa.network_rule_default_action = 'Allow' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sa.network_rule_default_action = 'Allow' then name || ' allows traffic from all networks.'\n    else name || ' allows traffic from specific networks.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
+    "QueryToExecute": "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sa.network_rule_default_action = 'Allow' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sa.network_rule_default_action = 'Allow' then name || ' allows traffic from all networks.'\n    else name || ' allows traffic from specific networks.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_storage_account",
     "ListOfTables": [

@@ -4,7 +4,7 @@
   "Description": "Enabling double encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. When double encryption has been enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level, using two different encryption algorithms and two different keys.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when enable_double_encryption then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_double_encryption then name || ' double encryption enabled.'\n    else name || ' double encryption disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kusto_cluster as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+    "QueryToExecute": "select\n  kv.id as resource,\n  kv.kaytu_account_id as kaytu_account_id,\n  kv.kaytu_resource_id as kaytu_resource_id,\n  case\n    when enable_double_encryption then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_double_encryption then name || ' double encryption enabled.'\n    else name || ' double encryption disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kusto_cluster as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_kusto_cluster",
     "ListOfTables": [

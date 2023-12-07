@@ -4,7 +4,7 @@
   "Description": "Disabling public network access improves security by ensuring that your Azure Cognitive Search service is not exposed on the public internet. Creating private endpoints can limit exposure of your Search service.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when public_network_access = 'Enabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_network_access = 'Enabled' then name || ' public network access enabled.'\n    else name || ' public network access disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_search_service as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when public_network_access = 'Enabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_network_access = 'Enabled' then name || ' public network access enabled.'\n    else name || ' public network access disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_search_service as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_search_service",
     "ListOfTables": [

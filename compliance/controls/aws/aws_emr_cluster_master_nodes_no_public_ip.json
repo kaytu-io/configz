@@ -4,7 +4,7 @@
   "Description": "Manage access to the AWS Cloud by ensuring Amazon EMR cluster master nodes cannot be publicly accessed.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  c.cluster_arn as resource,\n  case\n    when c.status -\u003e\u003e 'State' not in ('RUNNING', 'WAITING') then 'skip'\n    when s.map_public_ip_on_launch then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when c.status -\u003e\u003e 'State' not in ('RUNNING', 'WAITING') then c.title || ' is in ' || (c.status -\u003e\u003e 'State') || ' state.'\n    when s.map_public_ip_on_launch then c.title || ' master nodes assigned with public IP.'\n    else c.title || ' master nodes not assigned with public IP.'\n  end as reason\n  \n  , c.region, c.account_id\nfrom\n  aws_emr_cluster as c\n  left join aws_vpc_subnet as s on c.ec2_instance_attributes -\u003e\u003e 'Ec2SubnetId' = s.subnet_id;\n",
+    "QueryToExecute": "select\n  c.cluster_arn as resource,\n  c.kaytu_account_id as kaytu_account_id,\n  c.kaytu_resource_id as kaytu_resource_id,\n  case\n    when c.status ->> 'State' not in ('RUNNING', 'WAITING') then 'skip'\n    when s.map_public_ip_on_launch then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when c.status ->> 'State' not in ('RUNNING', 'WAITING') then c.title || ' is in ' || (c.status ->> 'State') || ' state.'\n    when s.map_public_ip_on_launch then c.title || ' master nodes assigned with public IP.'\n    else c.title || ' master nodes not assigned with public IP.'\n  end as reason\n  \n  , c.region, c.account_id\nfrom\n  aws_emr_cluster as c\n  left join aws_vpc_subnet as s on c.ec2_instance_attributes ->> 'Ec2SubnetId' = s.subnet_id;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_emr_cluster",
     "ListOfTables": [

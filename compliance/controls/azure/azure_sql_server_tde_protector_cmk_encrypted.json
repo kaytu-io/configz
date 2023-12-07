@@ -4,7 +4,7 @@
   "Description": "Based on business needs or criticality of data/databases hosted a SQL server, it is recommended that the TDE protector is encrypted by a key that is managed by the data owner (Customer-managed key)",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when encryption -\u003e\u003e 'kind' = 'servicemanaged' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when encryption -\u003e\u003e 'kind' = 'servicemanaged' then s.name || ' TDE protector not encrypted with CMK.'\n    else s.name || ' TDE protector encrypted with CMK.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  jsonb_array_elements(encryption_protector) encryption,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
+    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when encryption ->> 'kind' = 'servicemanaged' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when encryption ->> 'kind' = 'servicemanaged' then s.name || ' TDE protector not encrypted with CMK.'\n    else s.name || ' TDE protector encrypted with CMK.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  jsonb_array_elements(encryption_protector) encryption,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_sql_server",
     "ListOfTables": [

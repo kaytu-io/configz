@@ -4,7 +4,7 @@
   "Description": "This control checks whether an AWS WAF Regional rule has at least one condition. The control fails if no conditions are present within a rule.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  rule_id as resource,\n  case\n    when predicates is null or jsonb_array_length(predicates) = 0 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when predicates is null or jsonb_array_length(predicates) = 0 then title || ' has no attached conditions.'\n    else title || ' has ' || jsonb_array_length(predicates) || ' condition(s) attached.'\n  end as reason\n  , region, account_id\nfrom\n  aws_wafregional_rule;\n",
+    "QueryToExecute": "select\n  rule_id as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when predicates is null or jsonb_array_length(predicates) = 0 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when predicates is null or jsonb_array_length(predicates) = 0 then title || ' has no attached conditions.'\n    else title || ' has ' || jsonb_array_length(predicates) || ' condition(s) attached.'\n  end as reason\n  , region, account_id\nfrom\n  aws_wafregional_rule;\n",
     "Connector": "AWS",
     "PrimaryTable": "aws_wafregional_rule",
     "ListOfTables": [

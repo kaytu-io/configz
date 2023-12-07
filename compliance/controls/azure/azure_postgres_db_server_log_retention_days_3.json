@@ -4,7 +4,7 @@
   "Description": "Enable log_retention_days on PostgreSQL Servers.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id as resource,\n  case\n    when (config -\u003e 'ConfigurationProperties' -\u003e\u003e 'value')::integer \u003c= 3 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when (config -\u003e 'ConfigurationProperties' -\u003e\u003e 'value')::integer \u003c= 3 then s.name || ' log files are retained for 3 days or lesser.'\n    else s.name || ' log files are retained for more than 3 days.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server s,\n  jsonb_array_elements(server_configurations) as config,\n  azure_subscription sub\nwhere\n  config -\u003e\u003e 'Name' = 'log_retention_days'\n  and sub.subscription_id = s.subscription_id;\n",
+    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when (config -> 'ConfigurationProperties' ->> 'value')::integer <= 3 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when (config -> 'ConfigurationProperties' ->> 'value')::integer <= 3 then s.name || ' log files are retained for 3 days or lesser.'\n    else s.name || ' log files are retained for more than 3 days.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server s,\n  jsonb_array_elements(server_configurations) as config,\n  azure_subscription sub\nwhere\n  config ->> 'Name' = 'log_retention_days'\n  and sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_postgresql_server",
     "ListOfTables": [

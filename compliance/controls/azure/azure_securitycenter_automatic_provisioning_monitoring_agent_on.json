@@ -4,7 +4,7 @@
   "Description": "Enable automatic provisioning of the monitoring agent to collect security data.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sc_prov.id as resource,\n  case\n    when auto_provision = 'On' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when auto_provision = 'On' then 'Automatic provisioning of monitoring agent is on.'\n    else 'Automatic provisioning of monitoring agent is off.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_auto_provisioning sc_prov\n  right join azure_subscription sub on sc_prov.subscription_id = sub.subscription_id;\n",
+    "QueryToExecute": "select\n  sc_prov.id as resource,\n  sc_prov.kaytu_account_id as kaytu_account_id,\n  sc_prov.kaytu_resource_id as kaytu_resource_id,\n  case\n    when auto_provision = 'On' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when auto_provision = 'On' then 'Automatic provisioning of monitoring agent is on.'\n    else 'Automatic provisioning of monitoring agent is off.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_auto_provisioning sc_prov\n  right join azure_subscription sub on sc_prov.subscription_id = sub.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_security_center_auto_provisioning",
     "ListOfTables": [
