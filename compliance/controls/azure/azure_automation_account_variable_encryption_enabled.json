@@ -4,7 +4,7 @@
   "Description": "It is important to enable encryption of Automation account variable assets when storing sensitive data",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when is_encrypted then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when is_encrypted then a.title || ' encryption enabled.'\n    else a.title || ' encryption disabled.'\n  end as reason\n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_automation_variable as a,\n  azure_subscription as sub;\n",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when is_encrypted then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when is_encrypted then a.title || ' encryption enabled.'\n    else a.title || ' encryption disabled.'\n  end as reason\n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_automation_variable as a,\n  azure_subscription as sub;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_automation_variable",
     "ListOfTables": [

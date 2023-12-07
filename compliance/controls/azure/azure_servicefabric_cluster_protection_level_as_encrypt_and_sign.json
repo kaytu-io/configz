@@ -4,7 +4,7 @@
   "Description": "Service Fabric provides three levels of protection (None, Sign and EncryptAndSign) for node-to-node communication using a primary cluster certificate. Set the protection level to ensure that all node-to-node messages are encrypted and digitally signed.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when fabric_settings @\u003e '[{\"parameters\":[{\"value\": \"EncryptAndSign\"}]}]'::jsonb then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when fabric_settings @\u003e '[{\"parameters\":[{\"value\": \"EncryptAndSign\"}]}]'::jsonb then a.name || ' ClusterProtectionLevel property set to EncryptAndSign.'\n    else a.name || ' ClusterProtectionLevel property not set to EncryptAndSign.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_service_fabric_cluster a,\n  azure_subscription sub;\n",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when fabric_settings @> '[{\"parameters\":[{\"value\": \"EncryptAndSign\"}]}]'::jsonb then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when fabric_settings @> '[{\"parameters\":[{\"value\": \"EncryptAndSign\"}]}]'::jsonb then a.name || ' ClusterProtectionLevel property set to EncryptAndSign.'\n    else a.name || ' ClusterProtectionLevel property not set to EncryptAndSign.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_service_fabric_cluster a,\n  azure_subscription sub;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_service_fabric_cluster",
     "ListOfTables": [

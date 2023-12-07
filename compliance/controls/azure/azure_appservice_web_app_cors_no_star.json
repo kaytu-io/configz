@@ -4,7 +4,7 @@
   "Description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your web application. Allow only required domains to interact with your web app.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  case\n    when configuration -\u003e 'properties' -\u003e 'cors' -\u003e 'allowedOrigins' @\u003e '[\"*\"]' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when configuration -\u003e 'properties' -\u003e 'cors' -\u003e 'allowedOrigins' @\u003e '[\"*\"]'\n      then a.name || ' CORS allow all domains to access the application.'\n    else a.name || ' CORS does not all domains to access the application.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when configuration -> 'properties' -> 'cors' -> 'allowedOrigins' @> '[\"*\"]' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when configuration -> 'properties' -> 'cors' -> 'allowedOrigins' @> '[\"*\"]'\n      then a.name || ' CORS allow all domains to access the application.'\n    else a.name || ' CORS does not all domains to access the application.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_app_service_web_app",
     "ListOfTables": [

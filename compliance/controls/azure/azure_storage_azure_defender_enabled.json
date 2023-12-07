@@ -4,7 +4,7 @@
   "Description": "Azure Defender for Storage provides detections of unusual and potentially harmful attempts to access or exploit storage accounts.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  pricing.id as resource,\n  case\n    when name = 'StorageAccounts' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'StorageAccounts' and pricing_tier = 'Standard' then 'StorageAccounts azure defender enabled.'\n    else name || 'StorageAccounts azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'StorageAccounts';\n",
+    "QueryToExecute": "select\n  pricing.id as resource,\n  pricing.kaytu_account_id as kaytu_account_id,\n  pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when name = 'StorageAccounts' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'StorageAccounts' and pricing_tier = 'Standard' then 'StorageAccounts azure defender enabled.'\n    else name || 'StorageAccounts azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'StorageAccounts';\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_security_center_subscription_pricing",
     "ListOfTables": [

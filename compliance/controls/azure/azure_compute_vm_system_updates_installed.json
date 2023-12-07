@@ -4,7 +4,7 @@
   "Description": "Missing security system updates on your servers will be monitored by Azure Security Center as recommendations.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  vm.vm_id as resource,\n  case\n    when enable_automatic_updates then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_automatic_updates then vm.title || ' automatic system updates enabled.'\n    else vm.title || ' automatic system updates disabled.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = vm.subscription_id;\n",
+    "QueryToExecute": "select\n  vm.vm_id as resource,\n  vm.kaytu_account_id as kaytu_account_id,\n  vm.kaytu_resource_id as kaytu_resource_id,\n  case\n    when enable_automatic_updates then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_automatic_updates then vm.title || ' automatic system updates enabled.'\n    else vm.title || ' automatic system updates disabled.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = vm.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_compute_virtual_machine",
     "ListOfTables": [

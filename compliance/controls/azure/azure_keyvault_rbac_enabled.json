@@ -4,7 +4,7 @@
   "Description": "Role assignments disappear when a Key Vault has been deleted (soft- delete) and recovered. Afterwards it will be required to recreate all role assignments. This is a limitation of the soft-delete feature across all Azure services.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  kv.id as resource,\n  case\n    when enable_rbac_authorization then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_rbac_authorization then name || ' has RBAC enabled.'\n    else name || ' have RBAC disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
+    "QueryToExecute": "select\n  kv.id as resource,\n  kv.kaytu_account_id as kaytu_account_id,\n  kv.kaytu_resource_id as kaytu_resource_id,\n  case\n    when enable_rbac_authorization then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_rbac_authorization then name || ' has RBAC enabled.'\n    else name || ' have RBAC disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_key_vault",
     "ListOfTables": [

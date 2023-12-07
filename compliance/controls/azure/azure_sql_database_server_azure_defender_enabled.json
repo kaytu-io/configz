@@ -4,7 +4,7 @@
   "Description": "Azure Defender for SQL provides functionality for surfacing and mitigating potential database vulnerabilities, detecting anomalous activities that could indicate threats to SQL databases, and discovering and classifying sensitive data.",
   "Query": {
     "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  pricing.id as resource,\n  case\n    when name = 'SqlServers' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'SqlServers' and pricing_tier = 'Standard' then 'SqlServers azure defender enabled.'\n    else name || 'SqlServers azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'SqlServers';\n",
+    "QueryToExecute": "select\n  pricing.id as resource,\n  pricing.kaytu_account_id as kaytu_account_id,\n  pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when name = 'SqlServers' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'SqlServers' and pricing_tier = 'Standard' then 'SqlServers azure defender enabled.'\n    else name || 'SqlServers azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'SqlServers';\n",
     "Connector": "Azure",
     "PrimaryTable": "azure_security_center_subscription_pricing",
     "ListOfTables": [
