@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_1_11",
   "Title": "Ensure 'User consent for applications' is set to 'Do not allow user consent'",
   "Description": "Require administrators to provide consent for applications before use.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

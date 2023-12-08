@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_21",
   "Title": "Ensure that 'Users can create Microsoft 365 groups in Azure portals, API or PowerShell' is set to 'No'",
   "Description": "Restrict Microsoft 365 group creation to administrators only.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_13",
   "Title": "Ensure that 'Guest invite restrictions' is set to 'Only users assigned to specific admin roles can invite guest users'",
   "Description": "Restrict invitations to users with specific admin roles only.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

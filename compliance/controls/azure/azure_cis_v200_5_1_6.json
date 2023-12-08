@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_5_1_6",
   "Title": "Ensure that Network Security Group Flow logs are captured and sent to Log Analytics",
   "Description": "Ensure that network flow logs are captured and fed into a central log analytics workspace.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "medium",
   "Tags": {

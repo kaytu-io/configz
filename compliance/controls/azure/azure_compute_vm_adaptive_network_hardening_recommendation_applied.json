@@ -2,7 +2,7 @@
   "ID": "azure_compute_vm_adaptive_network_hardening_recommendation_applied",
   "Title": "Adaptive network hardening recommendations should be applied on internet facing virtual machines",
   "Description": "Azure Security Center analyzes the traffic patterns of Internet facing virtual machines and provides Network Security Group rule recommendations that reduce the potential attack surface.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

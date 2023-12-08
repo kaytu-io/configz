@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_5_1_1",
   "Title": "Ensure that a 'Diagnostics Setting' exists",
   "Description": "Enable Diagnostic settings for exporting activity logs. Diagnostic setting are available for each individual resources within a subscription. Settings should be configured for all appropriate resources for your environment.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "aws_cis_v140_1_21",
   "Title": "Ensure IAM users are managed centrally via identity federation or AWS Organizations for multi-account environments",
   "Description": "In multi-account environments, IAM user centralization facilitates greater user control. User access beyond the initial account is then provide via role assumption. Centralization of users can be accomplished through federation with an external identity provider or through the use of AWS Organizations.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

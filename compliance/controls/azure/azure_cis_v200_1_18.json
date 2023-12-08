@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_1_18",
   "Title": "Ensure that 'Restrict user ability to access groups features in the Access Pane' is Set to 'Yes'",
   "Description": "Restricts group creation to administrators with permissions only.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

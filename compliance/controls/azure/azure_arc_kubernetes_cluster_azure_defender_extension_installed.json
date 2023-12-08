@@ -2,7 +2,7 @@
   "ID": "azure_arc_kubernetes_cluster_azure_defender_extension_installed",
   "Title": "Azure Arc enabled Kubernetes clusters should have Azure Defender's extension installed",
   "Description": "Azure Defender's extension for Azure Arc provides threat protection for your Arc enabled Kubernetes clusters. The extension collects data from nodes in the cluster and sends it to the Azure Defender for Kubernetes backend in the cloud for further analysis.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

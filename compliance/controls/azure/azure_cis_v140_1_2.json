@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_2",
   "Title": "Ensure that multi-factor authentication status is enabled for all non- privileged users",
   "Description": "Enable multi-factor authentication for all non-privileged users.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

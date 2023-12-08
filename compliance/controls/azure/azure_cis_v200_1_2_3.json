@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_1_2_3",
   "Title": "Ensure that A Multi-factor Authentication Policy Exists for Administrative Groups",
   "Description": "For designated users, they will be prompted to use their multi-factor authentication (MFA) process on login.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_2_2",
   "Title": "Ensure that an exclusionary Geographic Access Policy is considered",
   "Description": "Conditional Access Policies can be used to block access from geographic locations that are deemed out-of-scope for your organization or application. The scope and variables for this policy should be carefully examined and defined.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

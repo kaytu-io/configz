@@ -2,7 +2,7 @@
   "ID": "azure_compute_vm_container_security_configurations_vulnerabilities_remediated",
   "Title": "Vulnerabilities in container security configurations should be remediated",
   "Description": "Audit vulnerabilities in security configuration on machines with Docker installed and display as recommendations in Azure Security Center.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

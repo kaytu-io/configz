@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_1",
   "Title": "Ensure that multi-factor authentication status is enabled for all privileged users",
   "Description": "Enable multi-factor authentication for all user credentials who have write access to Azure resources. These include roles like 'Service Co-Administrators', 'Subscription Owners', 'Contributors'.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

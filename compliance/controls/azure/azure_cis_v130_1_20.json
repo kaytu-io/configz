@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_1_20",
   "Title": "Ensure that 'Require Multi-Factor Auth to join devices' is set to 'Yes'",
   "Description": "Joining devices to the active directory should require Multi-factor authentication.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

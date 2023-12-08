@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_14",
   "Title": "Ensure That 'Restrict access to Azure AD administration portal' is set to 'Yes'",
   "Description": "Restrict access to the Azure AD administration portal to administrators only.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_2_5",
   "Title": "Ensure Multi-factor Authentication is Required for Risky Sign-ins",
   "Description": "For designated users, they will be prompted to use their multi-factor authentication (MFA) process on login.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

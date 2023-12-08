@@ -2,7 +2,7 @@
   "ID": "aws_cis_v120_1_1",
   "Title": "Avoid the use of the \"root\" account",
   "Description": "The \"root\" account has unrestricted access to all resources in the AWS account. It is highly recommended that the use of this account be avoided.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

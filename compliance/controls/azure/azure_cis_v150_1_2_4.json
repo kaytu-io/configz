@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_2_4",
   "Title": "Ensure that A Multi-factor Authentication Policy Exists for All Users",
   "Description": "For designated users, they will be prompted to use their multi-factor authentication (MFA) process on logins.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_7_5",
   "Title": "Ensure that Only Approved Extensions Are Installed",
   "Description": "For added security, only install organization-approved extensions on VMs.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "medium",
   "Tags": {

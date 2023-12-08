@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_1_6",
   "Title": "Ensure that 'Number of days before users are asked to re-confirm their authentication information' is not set to \"0\"",
   "Description": "Ensure that the number of days before users are asked to re-confirm their authentication information is not set to 0.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

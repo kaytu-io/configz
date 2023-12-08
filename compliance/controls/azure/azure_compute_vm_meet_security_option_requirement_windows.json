@@ -2,7 +2,7 @@
   "ID": "azure_compute_vm_meet_security_option_requirement_windows",
   "Title": "Windows machines should meet requirements for 'Security Options - Accounts'",
   "Description": "Windows machines should have the specified Group Policy settings in the category 'Security Options - Accounts' for limiting local account use of blank passwords and guest account status. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

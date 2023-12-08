@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_22",
   "Title": "Ensure Custom Role is assigned for Administering Resource Locks",
   "Description": "Resource locking is a powerful protection mechanism that can prevent inadvertent modification/deletion of resources within Azure subscriptions/Resource Groups and is a recommended NIST configuration.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

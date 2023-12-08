@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_11",
   "Title": "Ensure that 'Users can register applications' is set to 'No'",
   "Description": "Require administrators to register third-party applications.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

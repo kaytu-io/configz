@@ -2,7 +2,7 @@
   "ID": "azure_audit_diagnostic_setting",
   "Title": "Audit diagnostic setting for selected resource types",
   "Description": "Audit diagnostic setting for selected resource types. Be sure to select only resource types which support diagnostics settings.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

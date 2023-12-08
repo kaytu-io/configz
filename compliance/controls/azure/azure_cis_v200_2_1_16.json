@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_2_1_16",
   "Title": "Ensure that Auto provisioning of 'Vulnerability assessment for machines' is Set to 'On'",
   "Description": "Enable automatic provisioning of vulnerability assessment for machines on both Azure and hybrid (Arc enabled) machines.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

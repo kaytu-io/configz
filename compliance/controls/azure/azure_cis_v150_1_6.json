@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_6",
   "Title": "Ensure That 'Number of methods required to reset' is set to '2'",
   "Description": "Ensures that two alternate forms of identification are provided before allowing a password reset.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

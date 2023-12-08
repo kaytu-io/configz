@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_21",
   "Title": "Ensure Security Defaults is enabled on Azure Active Directory",
   "Description": "Security defaults in Azure Active Directory (Azure AD) make it easier to be secure and help protect your organization. Security defaults contain preconfigured security settings for common attacks.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

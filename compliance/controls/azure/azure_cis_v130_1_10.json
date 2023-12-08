@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_1_10",
   "Title": "Ensure that 'Users can add gallery apps to their Access Panel' is set to 'No'",
   "Description": "Require administrators to provide consent for the apps before use.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_9_11",
   "Title": "Ensure Azure Key Vaults are Used to Store Secrets",
   "Description": "Azure Key Vault will store multiple types of sensitive information such as encryption keys, certificate thumbprints, and Managed Identity Credentials. Access to these 'Secrets' can be controlled through granular permissions.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_25",
   "Title": "Ensure That ‘Subscription Entering AAD Directory’ and ‘Subscription Leaving AAD Directory’ Is Set To ‘Permit No One’",
   "Description": "Users who are set as subscription owners are able to make administrative changes to the subscriptions and move them into and out of Azure Active Directories.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

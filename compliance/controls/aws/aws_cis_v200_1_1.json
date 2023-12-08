@@ -2,7 +2,7 @@
   "ID": "aws_cis_v200_1_1",
   "Title": "Maintain current contact details",
   "Description": "Ensure contact email and telephone details for AWS accounts are current and map to more than one individual in your organization.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "medium",
   "Tags": {

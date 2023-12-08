@@ -2,7 +2,7 @@
   "ID": "azure_compute_vm_scale_set_endpoint_protection_solution_installed",
   "Title": "Endpoint protection solution should be installed on virtual machine scale sets",
   "Description": "Audit the existence and health of an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

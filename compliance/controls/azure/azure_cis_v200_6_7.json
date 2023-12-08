@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_6_7",
   "Title": "Ensure that Public IP addresses are Evaluated on a Periodic Basis",
   "Description": "Public IP Addresses provide tenant accounts with Internet connectivity for resources contained within the tenant. During the creation of certain resources in Azure, a Public IP Address may be created. All Public IP Addresses within the tenant should be periodically reviewed for accuracy and necessity.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "medium",
   "Tags": {

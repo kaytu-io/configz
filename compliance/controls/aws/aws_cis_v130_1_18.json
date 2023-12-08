@@ -2,7 +2,7 @@
   "ID": "aws_cis_v130_1_18",
   "Title": "Ensure IAM instance roles are used for AWS resource access from instances",
   "Description": "AWS access from within AWS instances can be done by either encoding AWS keys into AWS API calls or by assigning the instance to a role which has an appropriate permissions policy for the required access. \"AWS Access\" means accessing the APIs of AWS in order to access AWS resources or manage AWS account resources.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

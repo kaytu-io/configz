@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_1_14",
   "Title": "Ensure that 'Guests can invite' is set to 'No'",
   "Description": "Restrict guest being able to invite other guests to collaborate with your organization.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

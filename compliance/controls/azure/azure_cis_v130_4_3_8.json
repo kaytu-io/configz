@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_4_3_8",
   "Title": "Ensure 'Allow access to Azure services' for PostgreSQL Database Server is disabled",
   "Description": "Disable access from Azure services to PostgreSQL Database Server.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

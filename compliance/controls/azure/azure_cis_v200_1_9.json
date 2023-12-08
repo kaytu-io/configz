@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_1_9",
   "Title": "Ensure that 'Notify users on password resets?' is set to 'Yes'",
   "Description": "Ensure that users are notified on their primary and secondary emails on password resets.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "low",
   "Tags": {

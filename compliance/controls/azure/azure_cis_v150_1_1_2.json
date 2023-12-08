@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_1_2",
   "Title": "Ensure that 'Multi-Factor Auth Status' is 'Enabled' for all Privileged Users",
   "Description": "Enable multi-factor authentication for all roles, groups, and users that have write access or permissions to Azure resources.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

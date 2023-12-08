@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_2_1_12",
   "Title": "Ensure That Microsoft Defender for Resource Manager Is Set To 'On'",
   "Description": "Microsoft Defender for Resource Manager scans incoming administrative requests to change your infrastructure from both CLI and the Azure portal.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

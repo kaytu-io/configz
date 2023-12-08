@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_1_9",
   "Title": "Ensure that 'Users can consent to apps accessing company data on their behalf' is set to 'No'",
   "Description": "Require administrators to provide consent for the apps before use.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

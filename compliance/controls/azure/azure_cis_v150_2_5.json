@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_2_5",
   "Title": "Ensure that Microsoft Defender Recommendation for 'Apply system updates' status is 'Completed'",
   "Description": "Ensure that the latest OS patches for all virtual machines are applied.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

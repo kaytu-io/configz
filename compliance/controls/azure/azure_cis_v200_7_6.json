@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_7_6",
   "Title": "Ensure that Endpoint Protection for all Virtual Machines is installed",
   "Description": "Install endpoint protection for all virtual machines.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

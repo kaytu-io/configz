@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_1_12",
   "Title": "Ensure that 'Guest user permissions are limited' is set to 'Yes'",
   "Description": "Limit guest user permissions.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

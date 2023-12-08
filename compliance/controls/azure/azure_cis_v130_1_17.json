@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_1_17",
   "Title": "Ensure that 'Users can create security groups in Azure Portals' is set to 'No'",
   "Description": "Restrict security group creation to administrators only.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

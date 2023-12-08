@@ -2,7 +2,7 @@
   "ID": "azure_compute_vm_administrators_group_with_no_specified_members_windows",
   "Title": "Audit Windows machines missing any of specified members in the Administrators group",
   "Description": "Requires that prerequisites are deployed to the policy assignment scope. Machines are non-compliant if the local Administrators group does not contain one or more members that are listed in the policy parameter.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

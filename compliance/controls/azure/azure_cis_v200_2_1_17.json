@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_2_1_17",
   "Title": "Ensure that Auto provisioning of 'Microsoft Defender for Containers components' is Set to 'On'",
   "Description": "Enable automatic provisioning of the Microsoft Defender for Containers components.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "high",
   "Tags": {

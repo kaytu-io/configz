@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_1_10",
   "Title": "Ensure That 'Notify all admins when other admins reset their password?' is set to 'Yes'",
   "Description": "Ensure that all Global Administrators are notified if any other administrator resets their password.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "medium",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_compute_vm_administrators_group_with_specified_members_windows",
   "Title": "Audit Windows machines that have the specified members in the Administrators group",
   "Description": "Requires that prerequisites are deployed to the policy assignment scope. Machines are non-compliant if the local Administrators group contains one or more of the members listed in the policy parameter.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

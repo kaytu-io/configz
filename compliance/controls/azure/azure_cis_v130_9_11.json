@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_9_11",
   "Title": "Ensure Azure Keyvaults are used to store secrets",
   "Description": "Encryption keys, Certificate thumbprints and Managed Identity Credentials can be coded into the APP service, this renders them visible as part of the configuration, to maintain security of these keys it is better to store in an Azure Keyvault and reference them from the Keyvault.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_1_4",
   "Title": "Ensure that 'Restore multi-factor authentication on all remembered devices' is Enabled",
   "Description": "Do not allow users to remember multi-factor authentication on devices.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

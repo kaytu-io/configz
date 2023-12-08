@@ -2,7 +2,7 @@
   "ID": "azure_cis_v140_3_2",
   "Title": "Ensure that storage account access keys are periodically regenerated",
   "Description": "Regenerate storage account access keys periodically.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

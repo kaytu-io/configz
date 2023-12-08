@@ -2,7 +2,7 @@
   "ID": "azure_cis_v200_1_12",
   "Title": "Ensure 'User consent for applications' Is Set To 'Allow for Verified Publishers'",
   "Description": "Allow users to provide consent for selected permissions when a request is coming from a verified publisher.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "medium",
   "Tags": {

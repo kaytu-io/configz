@@ -2,7 +2,7 @@
   "ID": "azure_compute_vm_log_analytics_agent_health_issues_resolved",
   "Title": "Log Analytics agent health issues should be resolved on your machines",
   "Description": "Security Center uses the Log Analytics agent, formerly known as the Microsoft Monitoring Agent (MMA). To make sure your virtual machines are successfully monitored, you need to make sure the agent is installed on the virtual machines and properly collects security events to the configured workspace.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

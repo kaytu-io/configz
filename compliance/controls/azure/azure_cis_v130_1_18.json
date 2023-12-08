@@ -2,7 +2,7 @@
   "ID": "azure_cis_v130_1_18",
   "Title": "Ensure that 'Owners can manage group membership requests in the Access Panel' is set to 'No'",
   "Description": "Restrict security group management to administrators only.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {

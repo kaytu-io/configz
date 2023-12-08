@@ -2,7 +2,7 @@
   "ID": "azure_cis_v150_1_5",
   "Title": "Ensure that 'Allow users to remember multi-factor authentication on devices they trust' is 'Disabled'",
   "Description": "Do not allow users to remember multi-factor authentication on devices.",
-  "QueryID": null,
+  "Query": null,
   "ManualVerification": true,
   "Severity": "",
   "Tags": {
