@@ -3,17 +3,18 @@
   "Title": "Ensure that Azure Defender is set to On for Container Registries",
   "Description": "Turning on Azure Defender enables threat detection for Container Registries, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Container Registry.'\n    else 'Azure Defender off for Container Registry.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'ContainerRegistry';\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_subscription_pricing",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Container Registry.'\n    else 'Azure Defender off for Container Registry.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'ContainerRegistry';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "AWS Control is a service provided by Amazon Web Services (AWS). However, your statement refers to Azure Defender, which is a service provided by Microsoft Azure. Therefore, there seems to be a confusion between the two different cloud service providers. \n\nHere is the explanation of the statement above:\n\n```markdown\nMicrosoft Azure offers a service called \"Azure Defender\" which can be turned on to enhance security. This service is particularly useful for Container Registries as it enables threat detection. The types of threats it can detec includes:\n\n1. **Threat Intelligence**: Azure Defender is capable of identifying known malicious activities by leveraging Microsoft's extensive global threat intelligence network.\n2. **Anomaly Detection**: It can detect unusual behaviour or activities that deviate significantly from the expected patterns, which may indicate suspicious activities.\n3. **Behaviour Analytics**: Azure Defender uses machine learning and statistical profiling to identify potentially harmful behaviour.\n\nThese functionalities are all bundled in Microsoft's Azure Security Center, making it a comprehensive, unified security management system.\n```\n\nPlease note that if you intended to inquire about a specific AWS Control in connection with Azure Defender, additional information would be needed. As far, AWS and Azure are competitors in the cloud service industry and their services do not generally intertwine."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The question seems to be mixing up between different cloud services, which is Amazon Web Services (AWS) and Azure by Microsoft. Given the context, I'll assume we're discussing AWS controls specifically regarding Container Registries.\n\nHowever, the cost of non-compliance with the control of enabling threat detection for Container Registries in AWS can be substantial and range across the following:\n\n1. **Financial Cost**\n\nIf the account is compromised due to non-compliance, an attacker can use the account to launch instances and consume resources at the expense of the account owner.\n\n2. **Data Breaches**\n\nAttackers gaining unauthorized access to your container registries could potentially result in the leakage of sensitive data. Apart from the direct financial impact, this could lead to reputational damage and loss of user trust.\n\n3. **Non-Compliance Fines**\n\nDepending on the specific industry and region, failing to comply with regulatory standards could result in substantial penalties, fines, and even legal consequences.\n\n4. **Operational Disruption**\n\nA compromised account will lead to a significant disruption in regular operations. Critical systems could be taken offline due to an attack, impacting service availability.\n\n5. **Recovery Cost**\n\nThe cost of recovering from a security breach is often high, as it involves investigating the breach, remediating the vulnerability, restoring systems to normal, and possibly paying for third-party services to aid with these tasks.\n\n6. **Security Incidents**\n\nFinally, non-compliance with threat detection controls could result in more security incidents, each of which carries its own cost.\n\nIn conclusion, while turning on threat detection for AWS Container Registries might initially require resources, it is an investment toward securing your infrastructure and is significantly less costly than facing the potential consequences of non-compliance."
+    ],
+    "x-kaytu-usefulness-example": [
+      "As an example scenario:\n\nConsider a company that uses Azure Container Registries for managing, storing, and distributing Docker images across their software development lifecycle. These containers can often contain sensitive and proprietary data within them, making them a potential area for cyber-attack exploits.\n\nImagine a situation where one of their developers inadvertently pushes a Docker image containing a vulnerability. If not detected, this vulnerability can be exploited by cyber attackers later on to compromise the overall infrastructure.\n\nHowever, by turning on Azure Defender, the company enhances the protection of these registries. Firstly, Azure Defender provides threat intelligence, which leverages Microsoft’s expertise to provide real-time information about potential threats and vulnerabilities. In this scenario, it would detect the presence of a vulnerability in the pushed Docker image immediately.\n\nThe anomaly detection feature would register the push of a vulnerable image as an anomaly and generate an alert. It continuously monitors registry activities, therefore, any unusual activity would raise a flag.\n\nThe behavior analytics provides a profile of normal activity, so any deviation from this profile is highlighted. In this case, it would alert that a Docker image with a vulnerability has been pushed- which is not a \"normal\" event.\n\nUsers can thus take appropriate action based on these alerts, like rolling back the image, thereby, mitigating potential threats. Thus, Azure Defender proves highly useful in maintaining the integrity and security of Container Registries in Azure."
     ]
   },
   "Managed": true
