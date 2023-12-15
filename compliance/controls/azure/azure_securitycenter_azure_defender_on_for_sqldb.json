@@ -3,17 +3,18 @@
   "Title": "Ensure that Azure Defender is set to On for Azure SQL database servers",
   "Description": "Turning on Azure Defender enables threat detection for Azure SQL database servers, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for SQL database servers.'\n    else 'Azure Defender off for SQL database servers.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'SqlServers';\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_subscription_pricing",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for SQL database servers.'\n    else 'Azure Defender off for SQL database servers.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'SqlServers';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "AWS controls are part of the AWS (Amazon Web Services) cloud platform, which is different from the Azure Defender mentioned in your text. Azure Defender is a security feature of Microsoft's Azure platform, not AWS.\n\nYour text appears to have been taken from Azure's context. Below is the explanation for it:\n\n```markup\nAzure Defender is a built-in tool within Microsoft's Azure platform that helps to enhance cloud security. When enabled on Azure SQL Database servers, Azure Defender:\n\n- Provides threat intelligence: Azure Defender continuously monitors the servers, identifies potential threats, and helps to understand the full scope of an attack. It uses known patterns to recognize and alert the system to potential threats.\n\n- Enables anomaly detection: Azure Defender helps detect unusual behaviors or anomalies, which could indicate a security issue on the server. It uses advanced analytics and machine learning algorithms to identify such behaviors and report them.\n\n- Offers behavior analytics: Azure Defender checks and monitors database activity, providing insights into user behavior and activities to detect abnormal or malicious behavior.\n\nAll these capabilities are provided through the Azure Security Center, a unified infrastructure security management system that strengthens the security posture of data centers, and provides advanced threat protection across hybrid workloads in the cloud.\n\nRegardless of the scale of your data estate, Azure Defender helps secure your Azure SQL databases and makes it easier to ensure database security.\n```\nPlease note, this explanation is not related to AWS or any AWS controls. For AWS controls, information, please provide details on which specific AWS service or feature you want to know about."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The AWS control you mentioned pertains to Azure, Microsoft's cloud service, not Amazon's AWS. It appears to be a mistake. However, I'll explain the cost of non-compliance to threat detection controls in general.\n\n- **Monetary Costs:** If an organization does not comply with threat detection controls, it may suffer from security breaches that could lead to financial losses for several reasons such as downtime, ransom payments, or potential fines for data breaches.\n\n- **Reputation Damage:** If customer data is compromised as a result of inadequate security controls, it could severely damage the organization's reputation and customer trust, leading to the potential loss of business.\n\n- **Regulation Penalties:** Non-compliance may also lead to legal and regulatory penalties. Many industries have strict standards for data protection and can levy large fines or penalties for non-compliance.\n\n- **Data Loss:** Security breaches often result in data loss, which could be costly to recover, if recovery is even possible. In the worst-case scenario, some critical data might be lost permanently.\n\n- **Operational Disruption:** Cyberattacks can cause significant operational disruption leading to loss of business and additional recovery costs.\n\nRemember, the costs of setting up adequate security measures are far less than the cost of a potential security breach. Employing proper security controls, like threat detection, should always be perceived as an investment rather than a cost."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Example:\n\nA retail company that uses Azure SQL database servers to manage its vast customer and inventory data is increasingly concerned about potential cyber threats and data breaches. By turning on Azure Defender in AWS Control, the company can enable better threat detection for its database servers. \n\nAzure Defender can assess the company's vast data streams in real-time, providing threat intelligence to identify potential risks and threats. It uses anomaly detection to flag any abnormal activities or behaviors in the system that could indicate attempted breaches or malware. Also, its behavior analytics can help the company to understand which activities are normal for the system and which aren't, enabling it to quickly spot any potentially malicious deviations.\n\nThis enables the company to proactively detect and respond to cyber threats, strengthening its cybersecurity stance significantly, etching out potential vulnerabilities and protecting their customer's valuable data. It can also ensure consistent compliance with data protection regulations, thereby enhancing the company's reputation and customer trust."
     ]
   },
   "Managed": true
