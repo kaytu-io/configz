@@ -3,17 +3,18 @@
   "Title": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for MySQL Database Server",
   "Description": "Enable SSL connection on MYSQL Servers.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when ssl_enforcement = 'Disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when ssl_enforcement = 'Disabled' then s.name || ' SSL connection disabled.'\n    else s.name || ' SSL connection enabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mysql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_mysql_server",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_mysql_server",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_mysql_server",
+    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when ssl_enforcement = 'Disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when ssl_enforcement = 'Disabled' then s.name || ' SSL connection disabled.'\n    else s.name || ' SSL connection enabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mysql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/MySQL"
+    ],
+    "x-kaytu-explanation": [
+      "With Azure Database for MySQL, you can force all your connections to use SSL and thus increase the security of your data. Here is a sample markup format on how you can enable SSL connection:\n\n1. First, you need to make sure you have SSL enabled for Azure Database in MySQL. To set this, you can use Azure portal or Azure CLI. For Azure portal, navigate to your MySQL server on the Azure portal, select \"Connection security\", then under \"Firewall rules\" enable \"Enforce SSL connection\". \n\n2. Once SSL is enabled, you can now use it in your connection string. Here is an example of a connection string in a markup language like XML:\n\n```xml\n\u003cconnectionStrings\u003e\n    \u003cadd name=\"MyDbConnStr\" connectionString=\"server=mydemoserver.mysql.database.azure.com;database=myDataBase;user=myUser@mydemoserver;pwd=mySecurePassword;sslmode=Required;\" /\u003e\n\u003c/connectionStrings\u003e\n```\n  \nIn the connectionString property, replace server, database, user, pwd as per your configuration. The sslmode parameter is set to Required which means the connection must be SSL encrypted.\n\n3. Install the necessary SSL CA certificate as a trusted root authority on your application's host system.\n   \nNote: It's not a markup language to enable SSL on MySQL Azure. Mostly, it is handled by connection string and portal configurations."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with this Azure control, enabling SSL connection on MySQL Servers, can result in significant costs for a company. The potential costs can be summarized in the following areas:\n\n1. **Security Breaches and Data Theft**:\nWithout SSL encryption, the data transferred between servers is more susceptible to interception and theft. This could potentially lead to security breaches and loss of sensitive data which would not only damage the company’s reputation, but also result in legal and financial consequences.\n\n2. **Regulatory Fines and Legal Complications**:\nVarious regulatory bodies require the protection of certain types of data. If a business is found non-compliant with these regulations, it could face significant fines. For example, under GDPR, non-compliance can lead to fines of up to €20 million or 4% of the company’s global annual turnover.\n\n3. **Loss of Client Trust**:\nOnce the news of a data breach reaches your clients or customers, it is very likely to erode their trust in your business. This could lead to the loss of clients, impacting your revenue.\n\n4. **Potential Downtime**:\nIn the event of a breach, it might be necessary to shut down systems temporarily to remedy the issue, which could lead to operational delays and loss of productivity.\n\nAll these factors can contribute to the cost of non-compliance with enabling SSL connection on MySQL Servers, which signifies the vital role of ensuring secure connections in your Azure environment."
+    ],
+    "x-kaytu-usefulness-example": [
+      "```\nAzure provides the ability to enable SSL connections on MySQL servers to enhance security. Here is an example scenario of its usefulness:\n\nConsider a global FinTech company operating from several locations worldwide running its website and applications on Azure Cloud. The company gathers and processes an enormous volume of sensitive financial data from its customers daily. This data is stored and managed in Azure MySQL databases.\n\nThe company must ensure the utmost security measures to prevent any unauthorized access or potential data breaches. By enabling SSL connections on their MySQL servers, all the data being transmitted between their Azure MySQL database server and the client applications is encrypted. This prevents any interception of sensitive data during transmission, keeping it secure from potential hackers.\n\nExample Configuration in Markup:\n\n```markup\n\"resources\": [\n  {\n    \"name\": \"mydemoserver\",\n    \"type\": \"Microsoft.DBforMySQL/servers\",\n    \"apiVersion\": \"2017-12-01\",\n    \"location\": \"[resourceGroup().location]\",\n    \"sku\": {\n      \"name\": \"GP_Gen5_2\",\n      \"tier\": \"GeneralPurpose\",\n      \"capacity\": 2,\n      \"family\": \"Gen5\"\n    },\n    \"properties\": {\n      \"version\": \"5.7\",\n      \"sslEnforcement\": \"Enabled\",\n      \"createMode\": \"Default\",\n      \"administratorLogin\": \"[parameters('administratorLogin')]\",\n      \"administratorLoginPassword\": \"[parameters('administratorLoginPassword')]\"\n    }\n  }\n]\n\nThis configuration ensures that the FinTech company's MySQL server enforces SSL connections, enhancing the security of the sensitive financial data being transmitted. With SSL enabled, any attempt to connect to the database without SSL will be denied, keeping the data safe and secure.\n```\n"
     ]
   },
   "Managed": true
