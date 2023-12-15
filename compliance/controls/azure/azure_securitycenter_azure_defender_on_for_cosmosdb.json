@@ -3,17 +3,18 @@
   "Title": "Ensure That Microsoft Defender for Cosmos DB Is Set To 'On' ",
   "Description": "Microsoft Defender for Cosmos DB scans all incoming network requests for changes to your virtual machine.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Cosmos DB.'\n    else 'Azure Defender off for Cosmos DB.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'CosmosDbs';\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_subscription_pricing",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Cosmos DB.'\n    else 'Azure Defender off for Cosmos DB.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'CosmosDbs';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "I'm sorry, but this information seems to be a bit incorrect. Microsoft Defender for Cosmos DB is a part of Microsoft Azure, not AWS (Amazon Web Services). Plus, it's designed to protect the Cosmos DB database service from threats, not scan requests for changes to a virtual machine.\n\nFor clarity, here's a corrected version:\n\n`Microsoft Defender for Cosmos DB is a feature within Microsoft Azure, designed to provide threat protection for Azure Cosmos DB resources. It continuously monitors the network, detecting unusual and potentially harmful attempts to access or exploit Azure Cosmos DB databases. However, it is not related to scanning requests for changes to virtual machines.`\n\nPlease note, AWS has its own set of security and threat detection tools, such as `Amazon Macie` and `AWS Shield`, to protect its services and resources."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The AWS control you mentioned seems to be misinterpreted. Azure's Microsoft Defender for Cosmos may have been mixed up with AWS. \n\nAWS offers similar capabilities with its AWS Shield for DDoS protection, AWS WAF for web application firewall, and AWS Macie for data security and data privacy. Non-compliance or not utilizing of these security controls can often lead to increased risk to the organization's resources.\n\nThe cost of non-compliance with AWS controls (or any security controls) could involve several potential financial, reputational, and operational risks:\n\n1. **Financial Impact**: Non-compliance could result in additional fines and penalties from regulatory bodies. Also, there might be potential loss due to a data breach. The true cost of a data breach can be hard to estimate as it could include direct costs (such as regulatory fines or cost to fix the issue), and indirect costs like lost business due to reputational harm.\n\n2. **Reputational Damage**: A breach of data could lead to significant reputational damage that affects your customer base, partners, and shareholders. The company's image could be harmed, leading to loss of business.\n\n3. **Operational Disruption**: If a breach occurs and systems need to be taken offline for investigation or remediation, it could lead to significant operational disruption.\n\n```markdown\n- **Financial Impact**: Non-compliance could result in additional fines and penalties from regulatory bodies. Also, there could be a potential loss due to a data breach. \n- **Reputational Damage**: A breach of data could lead to significant reputational damage that affects customer base, partners, and shareholders.\n- **Operational Disruption**: In case of a breach, if systems need to be taken offline for investigation or remediation, it could lead to significant operational disruption.\n```\n\nPlease review your question for appropriate cloud platform and security service. AWS and Microsoft Azure are different cloud service providers and they have independent security controls and services."
+    ],
+    "x-kaytu-usefulness-example": [
+      "This control could be highly useful for a scenario wherein a fintech company is using Cosmos DB for handling a significant amount of data, including sensitive financial information. In addition to the robust security measures already in place, they need an extra layer of security scans to ensure the immediate detection of any suspicious activity, preventing unauthorized access or breaches.\n\nHere is an example instance in markup format:\n\n```\nScenario: A fintech company handling sensitive financial data with Cosmos DB\n1. Company decides to implement Microsoft Defender for their Cosmos DB\n2. Microsoft Defender is configured to scan all incoming network requests\n3. An unidentified network request tries to make changes to the virtual machine\n4. Microsoft Defender detects the suspicious activity and immediately notifies the security team or blocks the request based on the configured setting\n5. Thus, unauthorized access is prevented, and data security is maintained\n```\nNote: Please be aware, that Microsoft Defender is a security tool provided by Microsoft itself and not directly integrated with Amazon Web Services (AWS). AWS uses different set of controls for security and compliance."
     ]
   },
   "Managed": true
