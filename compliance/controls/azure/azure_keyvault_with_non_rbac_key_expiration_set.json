@@ -3,18 +3,19 @@
   "Title": "Ensure that the Expiration Date is set for all Keys in Non-RBAC Key Vaults",
   "Description": "Ensure that all Keys in Non Role Based Access Control (RBAC) Azure Key Vaults have an expiration time set.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with non_rbac_vault as (\n  select\n    name\n  from\n    azure_key_vault\n  where not enable_rbac_authorization\n)\nselect\n  kvk.id as resource,\n  kvk.kaytu_account_id as kaytu_account_id,\n  kvk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.name is null then 'skip'\n    when enabled and expires_at is null then 'alarm'\n    else 'ok'\n  end as status,\n  vault_name || ' key ' || kvk.name ||\n  case\n    when v.name is null then ' RBAC enabled vault.'\n    when enabled and expires_at is null then ' expiration date not set.'\n    when not enabled then ' disabled.'\n    else ' expiration date set to ' || to_char(expires_at, 'DD-Mon-YYYY') || '.'\n  end as reason\n  \n  , kvk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_key kvk\n  left join non_rbac_vault as v on v.name = kvk.vault_name,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kvk.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_key_vault_key",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_key_vault",
       "azure_key_vault_key",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_key_vault_key",
+    "QueryToExecute": "with non_rbac_vault as (\n  select\n    name\n  from\n    azure_key_vault\n  where not enable_rbac_authorization\n)\nselect\n  kvk.id as resource,\n  kvk.kaytu_account_id as kaytu_account_id,\n  kvk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.name is null then 'skip'\n    when enabled and expires_at is null then 'alarm'\n    else 'ok'\n  end as status,\n  vault_name || ' key ' || kvk.name ||\n  case\n    when v.name is null then ' RBAC enabled vault.'\n    when enabled and expires_at is null then ' expiration date not set.'\n    when not enabled then ' disabled.'\n    else ' expiration date set to ' || to_char(expires_at, 'DD-Mon-YYYY') || '.'\n  end as reason\n  \n  , kvk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_key kvk\n  left join non_rbac_vault as v on v.name = kvk.vault_name,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kvk.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -42,6 +43,15 @@
     ],
     "service": [
       "Azure/KeyVault"
+    ],
+    "x-kaytu-explanation": [
+      "This control aims to enforce best practices for managing cryptographic keys in Azure Key Vaults that are not managed using Role Based Access Control (RBAC). It mandates that all keys should have an expiration time set, to reduce the risk of keys being misplaced or falling into wrong hands. Here is how it might be represented in a markup format:\n\n```markdown\n# Description\nThis control checks that all keys in Non-RBAC Azure Key Vaults have an expiration time set.\n\n# Rationale\nSetting an expiration time on keys is a best practice as it reduces the risk of keys being used inappropriately if they are misplaced or fall into the wrong hands. It also ensures that unused or outdated keys are automatically removed, reducing the potential for security vulnerabilities.\n\n# Remediation\nTo implement this control, follow these steps:\n1. Navigate to the Azure portal.\n2. Choose Key Vaults.\n3. Select the key you want to manage.\n4. Under 'Settings', choose 'Key properties'.\n5. Set 'Expires on' to a suitable future date.\n6. Choose 'Save'.\n\n# Check Logic\nThe control passes if all Non-RBAC Key Vaults in the selected scope have an expiration time set.\n\n# Check Frequency\nThe system will check this at least once every 24 hours.\n\n# Scope\nThis control covers all Non-RBAC Azure Key Vaults in the selected scope.\n```\n\nNote that this is roughly how the control description might look in a markdown document. The actual settings and remediation steps may vary depending on the specifics of the environment and the current version of the Azure platform.\n"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with this AWS control could have significant costs, both financial and otherwise.\n\n1. **Security Risks:** If keys in Non Role Based Access Control (RBAC) Azure Key Vaults do not have an expiration time, they can be used indefinitely by anyone who obtains them. This increases the risk of unauthorized access or use. A successful security attack can lead to financial losses due to fraudulent transactions, regulatory penalties, or loss of business/reputation.\n\n2. **Regulatory Non-Compliance:** Many regulations such as GDPR, HIPAA, CCPA, or PCI-DSS require strict access control and data protection procedures. Non-compliance with these regulations can lead to severe financial penalties, and again, loss of goodwill/reputation.\n\n3. **Operational Disruptions:** Uncontrolled access to key vaults can lead to denied authorized access, data loss, or other operational disruptions causing financial loss.\n\n4. **Increased Costs:** Without an expiration time, old and potentially unused keys continue to exist in the system. This clutters the system, making management, auditing, and key rotation processes more complex and time-consuming.\n\nSo in summary, the costs of non-compliance with this control are the increased security risks, potential regulatory penalties, possible operational disruptions, and increased management costs."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Amazon Web Services (AWS) doesn't have a direct feature like Azure Key Vaults, its comparable service is AWS KMS (Key Management Service). But to make an example in the context of Azure:\n\nThis control ensures that only time-limited, non-permanent access keys are issued within your Azure Key Vaults, significantly increasing the security and integrity of your data. \n\nFor instance, suppose you have a third-party vendor who needs temporary access to your application's sensitive data stored on Azure services for a routine audit. You use Azure Key Vaults to manage keys, secrets, and certificates, providing secure access to this data.\n\nWithout this control, if the vendor's access keys were somehow leaked or stolen, the malicious party could have permanent, uninterrupted access to your sensitive data, leading to potential data breaches.\n\nBut with this control, by ensuring an expiration time on the vendor's access keys, the risk is substantially mitigated. Even if the keys got into the wrong hands, the access would automatically be revoked after the key expiration time passes. Therefore, this control is highly useful in maintaining strict security standards and reducing the potential damage of compromised keys."
     ]
   },
   "Managed": true
