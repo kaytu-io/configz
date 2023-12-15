@@ -3,17 +3,18 @@
   "Title": "Ensure that 'All users with the following roles' is set to 'Owner'",
   "Description": "Enable security alert emails to subscription owners.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with contact_info as (\n  select\n    count(*) filter (where alerts_to_admins = 'On') as admin_alert_count,\n    subscription_id\n  from\n    azure_security_center_contact\n  group by\n    subscription_id\n  limit 1\n)\nselect\n  sub.subscription_id as resource,\n  sub.kaytu_account_id as kaytu_account_id,\n  sub.kaytu_resource_id as kaytu_resource_id,\n  case\n    when admin_alert_count > 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when admin_alert_count > 0 then '\"All users with the following roles\" set to Owner'\n    else '\"All users with the following roles\" not set to Owner.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_subscription sub\n  left join contact_info ci on sub.subscription_id = ci.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_contact",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_contact",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_contact",
+    "QueryToExecute": "with contact_info as (\n  select\n    count(*) filter (where alerts_to_admins = 'On') as admin_alert_count,\n    subscription_id\n  from\n    azure_security_center_contact\n  group by\n    subscription_id\n  limit 1\n)\nselect\n  sub.subscription_id as resource,\n  sub.kaytu_account_id as kaytu_account_id,\n  sub.kaytu_resource_id as kaytu_resource_id,\n  case\n    when admin_alert_count \u003e 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when admin_alert_count \u003e 0 then '\"All users with the following roles\" set to Owner'\n    else '\"All users with the following roles\" not set to Owner.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_subscription sub\n  left join contact_info ci on sub.subscription_id = ci.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "AWS Control allows the configuration of security alert emails to subscription owners. This is an important feature for maintaining the security of the system as it alerts the selected subscription owners in case of any unauthorized activity or security breach. \n\nBelow is how you can enable this control in a markup format:\n\n```xml\n\u003caws:control\u003e\n  \u003caws:name\u003eEnable Security Alerts\u003c/aws:name\u003e\n  \u003caws:description\u003e\n    Enable email notifications for security alerts that are sent to subscription owners.\n  \u003c/aws:description\u003e\n  \u003caws:config\u003e\n    \u003caws:parameter name=\"subscription_owner_email\"\u003e\n      \u003caws:description\u003e\n        Enter the email address of the subscription owner to which alerts will be sent.\n      \u003c/aws:description\u003e\n    \u003c/aws:parameter\u003e\n    \u003caws:parameter name=\"enable_alerts\" value=\"true\"\u003e\n      \u003caws:description\u003e\n        Set this value to \"true\" to enable security alert emails to subscription owners. Otherwise, set it to \"false\".\n      \u003c/aws:description\u003e\n    \u003c/aws:parameter\u003e\n  \u003c/aws:config\u003e\n  \u003caws:rules\u003e\n    \u003caws:rule name=\"security_alerts_rule\"\u003e\n      \u003caws:description\u003e\n        Rules for triggering email notifications when a security alert occurs.\n      \u003c/aws:description\u003e\n      \u003caws:condition type=\"ALERT\"\u003e\n        \u003caws:description\u003e\n          An alert condition type will trigger an email to the subscription owner when there is a security incident.\n        \u003c/aws:description\u003e\n      \u003c/aws:condition\u003e\n    \u003c/aws:rule\u003e\n  \u003c/aws:rules\u003e\n\u003c/aws:control\u003e\n```\n\nNOTE: This is a made-up example for explanatory purposes. The exact way of configuring this control may vary in different AWS services. Always refer to the AWS documentation for specific instructions."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with AWS control \"Enable security alert emails to subscription owners\" can potentially lead to several adverse impacts and associated costs. \n\n- **Potential Security Breach:** Without enabling security alert emails, subscription owners may not be aware of critical security issues. Any new vulnerability or suspicious activity will go unnoticed, leaving an ample opportunity for hackers and malicious users to exploit these weaknesses. This could lead to unauthorized data access, data loss, or potentially worst situations, like ransom attacks.\n\n- **Non-compliance with regulations:** Not setting up security alerts may be seen as a failure in implementing necessary precautions and could be considered non-compliance with certain data security regulations and standards like GDPR, HIPAA etc. Non-compliance with these regulations may lead to hefty fines and penalties. \n\n- **Loss of Trust and Reputation:** If any data breach happens due to undiscovered vulnerabilities or security issues, it can lead to a massive loss of trust among users and customers. Heavily damaging a company's reputation which might lead to business loss.\n\n- **Financial Costs:** In the case of data breaches or cyber-attacks, a significant cost may be incurred in resolving the issues, which includes potential demands from hackers (in case of ransom attacks), or the cost of system repair, data recovery, and necessary enhancements in the security.\n\nTherefore, enabling security alert emails is a necessary control which ensures key stakeholders remain informed about the security posture of their AWS services and can take timely actions to mitigate any risk."
+    ],
+    "x-kaytu-usefulness-example": [
+      "```\nJohn owns a small e-commerce platform which operates on AWS infrastructure. Recently, he enabled security alert emails in AWS for subscription owners. One day, he received an alert email about an unusual data access attempt in his AWS S3 bucket. From this email, he could verify that someone was trying to compromise the data stored in his S3 bucket.\n\nImmediately, he acted upon this alert, investigated the issue, determined the responsible entity and blocked it. Consequently, he tightened his security policies and took necessary measures to prevent such incidents in the future.\n\nIn this instance, enabling security alert emails for subscription owners was extremely useful, since it helped John protect his business from potential data breaches and maintain the trust and confidence of his customers.\n```"
     ]
   },
   "Managed": true
