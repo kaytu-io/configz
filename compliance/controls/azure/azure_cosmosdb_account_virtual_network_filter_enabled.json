@@ -3,17 +3,18 @@
   "Title": "Ensure That 'Firewalls \u0026 Networks' Is Limited to Use Selected Networks Instead of All Networks",
   "Description": "",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when public_network_access = 'Disabled' then 'ok'\n    when public_network_access = 'Enabled' and is_virtual_network_filter_enabled = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when public_network_access = 'Disabled' then a.name || ' public network access disabled.'\n    when public_network_access = 'Enabled' and is_virtual_network_filter_enabled = 'true' then a.name || ' virtual network filter enabled.'\n    else a.name || ' virtual network filter disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cosmosdb_account as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_cosmosdb_account",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_cosmosdb_account",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_cosmosdb_account",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when public_network_access = 'Disabled' then 'ok'\n    when public_network_access = 'Enabled' and is_virtual_network_filter_enabled = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when public_network_access = 'Disabled' then a.name || ' public network access disabled.'\n    when public_network_access = 'Enabled' and is_virtual_network_filter_enabled = 'true' then a.name || ' virtual network filter enabled.'\n    else a.name || ' virtual network filter disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cosmosdb_account as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "The information given doesn't specify an AWS Control to determine a severity level. Please provide the AWS Control in question.",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SQL"
+    ],
+    "x-kaytu-explanation": [
+      "[AWS Control Tower](https://aws.amazon.com/controltower/)\n\nAWS Control Tower is designed to meet the needs of organizations with multiple accounts and teams who are looking for the easiest way to set up their new, secure multi-account AWS environment. \n\nHere is what it does:\n\n1. **Automated Landing Zone Setup**: AWS Control Tower automates the setup of your landing zone, a secure, multi-account AWS environment. \n\n2. **Blueprints**: The service employs AWS best-practice blueprints for high availability, security, and ongoing compliance.\n\n3. **Environment Guardrails**: It gives you ongoing governance enabling you to easily adhere to your company-wide policies.\n\n4. **Centralized Dashboard**: The AWS Control Tower dashboard gives you an instant viewpoint on your AWS environment, indicating compliance with organizational rules from the get-go.\n\nIn the end, AWS Control Tower provides the easiest way to provision a new AWS environment. It also provides ongoing governance and is the service to use for establishing a landing zone that's based on best practices for security and compliance. \n\nThis service is perfect for companies that need to establish a secure and compliant multi-account environment, or for teams that are initiating their AWS Cloud journey. Companies ready to move multiple workloads to AWS and want a management layer to govern their AWS environment also stand to benefit."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "You didn't specify which AWS Control you're asking about. AWS provides a wide range of controls in categories like access control, incident response, audit and accountability, configuration management, identification and authentication, system and communication protection, system and information integrity, contingency planning, risk assessment, and more.\n\nAssuming you're asking about compliance in a general sense, the costs can include:\n\n1. **Financial Penalties:** Increasingly, regulatory bodies are issuing hefty fines for non-compliance violations.\n   \n2. **Data Breaches:** Non-compliance with AWS controls could lead to data breaches, which can result in costly financial damage and harm to the company's reputation.\n    \n3. **Loss of Customer Trust:** Customers value their privacy and want to know their data is secure. Non-compliance can lead to a loss of trust, which is hard to regain.\n   \n4. **Legal Consequences:** Some regulations allow for criminal charges and civil action lawsuits in the event of non-compliance.\n   \n5. **Business Interruption:** Depending on the severity of the non-compliance, businesses could be prohibited from certain activities until compliance is reached or stop operations due to a breach occurred.\n\nTo mitigate these risks, it's important for businesses to maintain compliance with AWS security controls, regularly conduct audits, and stay updated on changes in applicable laws and regulations."
+    ],
+    "x-kaytu-usefulness-example": [
+      "AWS Control: AWS CloudFormation\n\nExample Instance of Usefulness \n\nAWS CloudFormation can be extremely useful if you're constructing and repeatedly deploying extensive, multi-tier web applications. Let's say you are running an e-commerce site built on AWS that involves the use of a load balancer, several EC2 instances and RDS for the user data. \n\nYou also have different environments like Development, Staging, Production \u0026 Test, each being a copy of the other. \n\nIn such situations, it's cumbersome to manually go into the AWS management console to create tons and tons of resources. Here, AWS CloudFormation is extremely useful. \n\nCloudFormation gives developers and system administrators an easy way to create and manage a collection of related AWS resources. Using CloudFormation, you can build, update, and version your AWS infrastructure.\n\nYou simply create a JSON or YAML file (script) that describes the set of resources plus the associated properties which is considered as a `stack`. In the script, you can set the EC2 security group to open for port 80, install packages, configure software, copy data, and then mount EBS volumes etc.\n\nWhen you want to replicate this environment to another, say a Staging or Test environment, you don't need to go over the substantial manual process. You just run this CloudFormation script, and it will build up all the resources defined in it per your set-up.\n\nThis example greatly illustrates time-saving, repeatability, consistency and reliability in build and setup brought by AWS CloudFormation for managing larger AWS-based applications."
     ]
   },
   "Managed": true
