@@ -3,17 +3,18 @@
   "Title": "Ensure 'Infrastructure double encryption' for PostgreSQL Database Server is 'Enabled'",
   "Description": "Enable encryption at rest for PostgreSQL Databases.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when infrastructure_encryption = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when infrastructure_encryption = 'Enabled' then name || ' infrastructure encryption enabled.'\n    else name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_postgresql_server",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_postgresql_server",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_postgresql_server",
+    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when infrastructure_encryption = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when infrastructure_encryption = 'Enabled' then name || ' infrastructure encryption enabled.'\n    else name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/PostgreSQL"
+    ],
+    "x-kaytu-explanation": [
+      "Encryption at rest is a security measure that ensures data saved on physical media remains safe. On Azure, encryption at rest for PostgreSQL Databases is achievable by employing Azure Disk Encryption for the OS and data disks in the virtual machines where PostgreSQL is hosted. \n\nThe Azure CLI command to enable Azure Disk Encryption for a VM is as follows:\n\n```markup\naz vm encryption enable --resource-group myResourceGroup --name myVM --disk-encryption-keyvault myKV\n```\nReplace `myResourceGroup` with the resource group's name; replace `myVM` with the virtual machine's name; replace `myKV` with the key vault's name.\n\nThis command will enable Azure Disk Encryption, which uses the BitLocker feature of Windows (or the DM-Crypt feature of Linux) to encrypt the VM's disks.\n\nNote: The Azure Key Vault that houses the keys to encrypt and decrypt must be in the same region and subscription as the VM. Access to these keys is managed via Azure Active Directory.\n\nFor encrypting data within the PostgreSQL database, Azure offers the Azure Database for PostgreSQL service, which automatically encrypts data at rest. This service employs AES-256 encryption algorithm and the keys are managed by Microsoft. \n\nNo action is required from users for enabling this as it cannot be turned off. This feature provides an added layer of protection for data stored in PostgreSQL on Azure."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance to the Azure Control that mandates the enabling of encryption at rest for PostgreSQL Databases can be understood from different perspectives. \n\n1. **Data Breaches**: If encryption at rest is not enabled for PostgreSQL databases, there's an increased risk of data breaches. Attackers may be able to gain unauthorized access to sensitive data. The cost of such an incident will depend on the importance of the leaked data, but it can lead to financial loss, damage to the company's reputation, regulatory penalties, and potential loss of business.\n\n2. **Regulatory Fines**: Many industries have strict regulations regarding data protection, such as GDPR in the EU, and HIPAA in the health care industry. Non-compliance with these regulations can lead to hefty fines, often calculated per record breached. It can also lead to lawsuits from affected parties.\n\n3. **Loss of Trust**: If a data breach becomes public, it could lead to your customers losing trust in your ability to safeguard their data, causing them to take their business elsewhere. This could result in loss of revenue and damage to your brand's image.\n\n4. **Incident Response Costs**: A data breach requires immediate response, including investigation of the breach, implementation of countermeasures, notification of affected parties, and bolstering security measures to prevent future breaches. These activities can be expensive.\n\n```markdown\n## Cost of Non-Compliance to Enabling Encryption at Rest for PostgreSQL Databases\n\n1. **Data Breaches**: Risk of unauthorized access to sensitive data significantly increases. Financial losses, reputational damage, regulatory penalties and potential loss of business may result from data leak incidents.\n\n2. **Regulatory Fines**: Non-compliance with strict data protection regulations can result in hefty fines and even lead to lawsuits from affected parties.\n\n3. **Loss of Trust**: Public data breaches can cause loss of trust among customers, leading to loss of revenue and brand image tarnishing.\n\n4. **Incident Response Costs**: Immediate response is required after a data breach, a process that involves investigation, countermeasures implementation, affected parties notification, and security measures bolstering, which can potentially be exorbitant.\n```\n"
+    ],
+    "x-kaytu-usefulness-example": [
+      "Azure Database for PostgreSQL is a managed service that enables us to run, manage, and scale highly available PostgreSQL databases. However, given the sensitive nature of data stored in these databases, it is essential to ensure their security. \n\nExample use:\n\nA healthcare organization has decided to shift its data to the cloud. Because this data will include sensitive and confidential information, like patient records, it is crucial to protect it from unauthorized access or breaches. As part of their risk mitigation strategy, they decide to use Azure's encryption at rest for PostgreSQL databases. \n\nHere is an instance in a markup format:\n\n```\n# Creat a variable to store resource group and server name\n$resourcegroupname=\"myResourceGroup\"\n$servername=\"mydemoserver\"\n\n# Create a new resource group\naz group create \\\n    --name $resourcegroupname \\\n    --location eastus\n      \n# Create a new server with data encryption set to Enabled\naz postgres server create \\\n    --name $servername \\\n    --resource-group $resourcegroupname \\\n    --location eastus \\\n    --admin-user myadmin \\\n    --admin-password mysecurepassword \\\n    --sku-name GP_Gen5_2 \\\n    --ssl-enforcement Enabled \\\n    --storage-size 51200 \\\n    --version 9.5 \\\n    --data-encryption Enabled\n```\n\nIn this instance, we have encrypted the stored data to prevent data breaches. Even if an unauthorized individual gains access to the database's physical storage, they will not be able to understand the saved information due to the encryption, significantly enhancing the security of the stored data. The encryption keys are managed by Azure, so there are no additional operational tasks for developers to manage the keys. \n\nBy implementing this, the healthcare organization can ensure that its PostgreSQL databases are secure and comply with the Health Insurance Portability and Accountability (HIPAA) and General Data Protection Regulation (GDPR) compliance requirements."
     ]
   },
   "Managed": true
