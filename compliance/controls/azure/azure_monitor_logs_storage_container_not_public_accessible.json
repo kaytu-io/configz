@@ -3,17 +3,18 @@
   "Title": "Ensure the storage container storing the activity logs is not publicly accessible",
   "Description": "The storage account container containing the activity log export should not be publicly accessible.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sc.id as resource,\n  sc.kaytu_account_id as kaytu_account_id,\n  sc.kaytu_resource_id as kaytu_resource_id,\n  case\n    when public_access != 'None' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_access != 'None'\n      then account_name || ' container insights-operational-logs storing activity logs publicly accessible.'\n    else account_name || ' container insights-operational-logs storing activity logs not publicly accessible.'\n  end as reason\n  , sc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container sc,\n  azure_subscription sub\nwhere\n  name = 'insights-operational-logs'\n  and sub.subscription_id = sc.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_storage_container",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_storage_container",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_storage_container",
+    "QueryToExecute": "select\n  sc.id as resource,\n  sc.kaytu_account_id as kaytu_account_id,\n  sc.kaytu_resource_id as kaytu_resource_id,\n  case\n    when public_access != 'None' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_access != 'None'\n      then account_name || ' container insights-operational-logs storing activity logs publicly accessible.'\n    else account_name || ' container insights-operational-logs storing activity logs not publicly accessible.'\n  end as reason\n  , sc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container sc,\n  azure_subscription sub\nwhere\n  name = 'insights-operational-logs'\n  and sub.subscription_id = sc.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/Monitor"
+    ],
+    "x-kaytu-explanation": [
+      "AWS Control in markup format for ensuring that the storage account container containing the activity log export is not publicly accessible is a method to protect data inside the AWS environment.\n\nTo fully understand this control, we need to understand a few different terms:\n\n1. **Storage Account Container**: This is a part of Azure Service, not AWS. It's essentially a grouping of a set of resources that you want to manage as a group. In Azure, you can use containers to organize and manage blobs.\n   \n2. **Activity Log Export**: This is a log that records all events that occur in your AWS environment. This includes events such as resource creation, modification, and deletion, as well as user sign-in and sign-out events.\n\nGiven this context, the control means that the storage account container that holds the activity log export should be kept private. This is to prevent unauthorized access and potential security breaches.\n\nIn AWS, you can manage access to resources using Identity and Access Management (IAM). You can set permissions to restrict public access and ensure that only authorized users are able to access the activity log exports.\n\nThe markup of this statement would look something like this:\n\n```\n# AWS Control\n\n## Ensure the storage account container with activity log export is not publicly accessible\n\n- **Objective**: To prevent unauthorized access to activity log export, which may contain sensitive data.\n- **Tools/Features Involved**: AWS IAM Policies.\n- **Recommended Practices**: \n   - Set up appropriate IAM policies to restrict public access.\n   - Regularly monitor and review access controls.\n```\n\nPlease note that this answer assumes that you meant \"AWS\" when mentioning a \"storage account container\". If you are talking about \"Azure\", the context and tools/features involved will be different."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with this AWS control can lead to several serious costs:\n\n1. **Data breaches**: If an activity log export is publicly accessible, it might contain sensitive information which can be exploited by unwanted third-parties. This can lead to data breaches and loss of customer trust.\n\n2. **Regulatory fines**: Non-compliance can lead to hefty fines if you're operating in industries that are required to comply with certain data privacy laws and regulations like the GDPR, HIPAA, etc.\n\n3. **Operational disruption**: Unauthorised access to these logs can also lead to operational disruption. If a party with malicious intent were to get hold of these logs, they could potentially use that information to disrupt your business.\n\n4. **Reputation damage**: A public breach of data can harm your company's reputation. This reputational damage can have long-term effects and may cost more to repair than any immediate financial penalty.\n\n5. **Loss of competitive advantage**: These logs might contain business-critical information. If that information was to go into the hands of competitors, it could result in loss of business and competitive edge.\n\nThus maintaining compliance with AWS controls is not just a matter of obedience, but it can significantly impact your cost, business reputation, and operational stability."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Using the AWS control to ensure that your storage account container containing the activity log export is not publicly accessible provides crucial security benefits to your system. For example:\n\nYou are ensuring the operational infrastructure of your company's online store. You receive activity logs every day detailing the transactions and other interactions occurring on the website. These logs contain sensitive information such as IDs, timestamps, and IP addresses. Making sure that this storage account container is not publicly accessible with AWS control helps avoid unauthorized access or potential cybersecurity threats, like data breaches or hacking attempts. Thus, it contributes to maintaining the integrity and confidentiality of your site and your customers' info."
     ]
   },
   "Managed": true
