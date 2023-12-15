@@ -3,17 +3,18 @@
   "Title": "Ensure storage for critical data are encrypted with Customer Managed Key",
   "Description": "Enable sensitive data encryption at rest using Customer Managed Keys rather than Microsoft Managed keys",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sa.encryption_key_source = 'Microsoft.Storage' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sa.encryption_key_source = 'Microsoft.Storage' then sa.name || ' not encrypted with CMK.'\n    else sa.name || ' encrypted with CMK.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_storage_account",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_storage_account",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_storage_account",
+    "QueryToExecute": "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sa.encryption_key_source = 'Microsoft.Storage' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sa.encryption_key_source = 'Microsoft.Storage' then sa.name || ' not encrypted with CMK.'\n    else sa.name || ' encrypted with CMK.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/Storage"
+    ],
+    "x-kaytu-explanation": [
+      "Azure offers two types of encryption to ensure your data is secure and protected against potential security threats: Microsoft-managed keys and customer-managed keys. By default, Azure uses service-managed keys to encrypt your data at rest.\n\nYou also have the option of switching to customer-managed keys for your data at rest. This allows you to have more control over the keys, such as managing their lifecycle or even rotating them. This is particularly useful for sensitive data or for stricter compliance needs.\n\nIn markup format, enabling this might look something like this:\n\n```xml\n\u003cEncryptionServices\u003e\n  \u003cBlob ServiceEnabled=\"true\" KeyType=\"CustomerManaged\"\u003e\n    \u003cKeyVaultProperties KeyName=\"YourKeyName\" KeyVersion=\"YourKeyVersion\" KeyVaultUri=\"https://yourkeyvaultname.vault.azure.net\" /\u003e\n  \u003c/Blob\u003e\n\u003c/EncryptionServices\u003e\n```\n\nIn this XML snippet,\n- `\u003cEncryptionServices\u003e` denotes encryption services.\n- `\u003cBlob ServiceEnabled=\"true\" KeyType=\"CustomerManaged\"\u003e` represents that blob encryption service is enabled with keys managed by the customer. \n- `\u003cKeyVaultProperties...` include the properties of the Key Vault where your key is stored. You can customize this as per your Key Vault details.\n   \nThis is just a representation and actual implementation may vary based on the particular resource or service. The important aspect is setting KeyType to \"CustomerManaged\". This markup is typically part of a larger resource deployment script.\n   \nIt's encouraged to familiarize yourself with Microsoft's extensive documentation for Azure services, which contains detailed guidance on how to implement features such as customer-managed keys."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the Azure control of enabling sensitive data encryption at rest using Customer Managed Keys (CMKs) rather than Microsoft Managed Keys can lead to several costs. Here are some of them:\n\n1. **Data Security Risks**: One of the significant costs of non-compliance is the increased risk to data security. When you use Microsoft Managed Keys, you do not have full control over your encryption keys' lifecycle. Microsoft will manage these keys on your behalf. If any security issue arises, it could potentially affect your stored data. On the other hand, CMKs offer more granular control over the key lifecycle and higher assurance on data security.\n\n2. **Compliance Violations**: Depending on the data security regulations applicable to your business (like GDPR, HIPAA, etc.), not using CMKs could lead to compliance violations. These regulations often require businesses to have complete control over their data, which includes encryption keys. Non-compliance to these regulations can lead to hefty fines and penalties.\n\n3. **Loss of Business Trust**: Non-compliance can also result in loss of business reputation and customer trust. In industries where customer trust is critical, such as finance or healthcare, this cost can significantly impact the business.\n\n4. **Audit Failures**: Your business might fail to pass security audits if encryption is not handled as per best practices. This failure can lead to additional costs to re-audit, not to mention the resources spent to correct the failures.  \n\n5. **Legal and Litigation Costs**: In the event of a data breach, and if it is found that best practices such as CMK were not employed, it might lead to legal and litigation costs. These costs often extend beyond immediate fines and can include long-term reputational damage and loss of business opportunities.\n\nThus, it's critical to follow Azure controls and use CMKs for encrypting sensitive data at rest."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Azure Control enables sensitive data encryption at rest using Customer Managed Keys (CMK) rather than Microsoft Managed keys. This option allows businesses to have full control and ownership over their encryption keys, therefore enhancing data security. \n\nFor example, consider a Financial Services Company that needs to store highly sensitive financial data in Azure. Regulatory requirements and the company's own internal security policies mandate that all customer data must be encrypted at rest using keys that the company itself controls and manages. \n\nTo comply with these requirements, the company can use Azure's control to enable encryption at rest for this data using their own Customer Managed Keys. This way, they can maintain full control over the encryption keys and meet their regulatory requirements. \n\n```\nstorage_account = {\n    \"name\": \"storageaccountname\",\n    \"resource_group_name\": \"resourcegroupname\",\n    \"customer_managed_key\": {\n        \"key_vault\": {\n            \"id\": \"/subscriptions/{guid}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{vault-name}\"\n        },\n        \"key_name\": \"key-name\"\n    }\n}\n```\n\nIn the above markup example, the financial services company specifies its own Key Vault and the name of the encryption key for data at rest in Azure Storage. By using such configurations and Azure controls, the sensitive financial data is securely encrypted with keys owned and managed by the company, not Microsoft, giving them full control over their data encryption."
     ]
   },
   "Managed": true
