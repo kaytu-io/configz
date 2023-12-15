@@ -3,17 +3,18 @@
   "Title": "Ensure That ‘Users Can Register Applications’ Is Set to ‘No’ ",
   "Description": "Require administrators or appropriately delegated users to register third-party applications.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.default_user_role_permissions ->> 'allowedToCreateApps' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions ->> 'allowedToCreateApps' = 'false' then a.display_name || ' does not allow user to register applications.'\n    else a.display_name || ' allows user to register applications.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azuread_authorization_policy",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_tenant",
       "azuread_authorization_policy"
-    ]
+    ],
+    "PrimaryTable": "azuread_authorization_policy",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then a.display_name || ' does not allow user to register applications.'\n    else a.display_name || ' allows user to register applications.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": true,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/ActiveDirectory"
+    ],
+    "x-kaytu-explanation": [
+      "This control involves requiring administrators or users who have been delegated with the appropriate permissions to be responsible for registering third-party applications. This control is necessary because third-party applications may require access to sensitive information or could potentially introduce security risks. Therefore, it's crucial to ensure that only authorized personnel can introduce new applications.\n\nIn AWS, this control can be implemented using Identity \u0026 Access Management (IAM), which allows you to manage access to AWS services and resources.\n\nBelow is an illustration of how this control can be considered in markup format:\n\n```markup\n# AWS Control\n\n## Control Title\nRequire administrators or appropriately delegated users to register third-party applications.\n\n## Summary\nThis control involves requiring only administrators or appropriately delegated users to take responsibility for registering third-party applications. \n\n## Rationale\nThird-party applications may need to access sensitive information or could potentially present security risks, therefore it is important that only authorized personnel should introduce new applications.\n\n## AWS Services/Features\nThis control can be implemented by using AWS Identity and Access Management (IAM) Service.\n\n## Procedures\n1. Navigate to Identity \u0026 Access Management (IAM) dashboard in your AWS management console.\n2. Configure roles/users who have the necessary permissions to register third-party applications.\n\n## Control Area\nAccess Management\n```\n\nPlease customize it according to your requirements in your organization."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to this AWS (Amazon Web Services) control relates to security risks associated with unauthorized or unintended use of third-party applications, which can potentially disrupt, damage or compromise the integrity, confidentiality, and availability of AWS resources and an organization's data.\n\nBelow are some potential costs of non-compliance to the mentioned AWS control:\n\n1. **Data Breach Risks**: If third-party applications are not registered and authorized appropriately, they may have vulnerabilities that can be exploited by attackers, resulting in data leaks, breaches, and loss of confidential data. This could lead to significant financial cost in terms of penalties, fines, and compensations.\n\n2. **Non-Compliance Penalties**: Depending on the jurisdiction and the sector in which your organization operates, non-compliance with data protection and privacy laws (such as GDPR, CCPA, HIPAA) could result in substantial monetary penalties.\n\n3. **Reputational Damage**: A data breach could adversely affect an organization's reputation leading to loss of customers, damage to brand image, and decreased revenue. \n\n4. **Operational Disruption**: Unauthorized third-party applications could disrupt operations, leading to business continuity issues, operational losses, and recovery costs.\n\n5. **Remediation Costs**: If a security incident does occur due to an unregistered third-party application, the cost of incident response, system remediation, and strengthening security measures can be significant.\n\n6. **Legal Cost**: In case of a data breach, organizations may face litigation from affected parties leading to substantial legal costs.\n\nBy enforcing a control that requires administrators to register third-party applications, organizations substantially reduce the risk of these costs. It ensures proper evaluation and permissioning of applications, reducing the likelihood of malicious activity, and maintaining the ongoing integrity and security of the system."
+    ],
+    "x-kaytu-usefulness-example": [
+      "This AWS control ensures that only authorized individuals would be able to install or register third-party applications on your AWS environment. This further strengthens the security of your AWS account.\n\nExample:\nImagine a scenario where you operate in a highly regulated industry like Finance or Healthcare. In such industries, any kind of data breach or security incident can lead to hefty penalties. By implementing this AWS control in your environment, you can ensure that no unauthorized third-party applications are installed without proper permission.\n\nIn such an environment, it could look something like this:\n\n```\n\u003cAppRegistration\u003e\n  \u003cAdmin\u003e\n    \u003cUserID\u003eAdmin1\u003c/UserID\u003e\n    \u003cApp\u003e\n      \u003cAppName\u003eThirdPartyApp1\u003c/AppName\u003e\n      \u003cAppID\u003eXYZ123\u003c/AppID\u003e\n    \u003c/App\u003e\n  \u003c/Admin\u003e\n  \u003cDelegateUser\u003e\n    \u003cUserID\u003eUser1\u003c/UserID\u003e\n    \u003cApp\u003e\n      \u003cAppName\u003eThirdPartyApp2\u003c/AppName\u003e\n      \u003cAppID\u003eABC456\u003c/AppID\u003e\n    \u003c/App\u003e\n  \u003c/DelegateUser\u003e\n\u003c/AppRegistration\u003e\n```\n\nIn this example, only `Admin1` and `User1` have the permissions to register `ThirdPartyApp1` and `ThirdPartyApp2` respectively. This can help prevent unauthorized users from introducing potentially dangerous or unverified third-party applications into your AWS environment."
     ]
   },
   "Managed": true
