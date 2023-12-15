@@ -3,18 +3,19 @@
   "Title": "Ensure the storage account containing the container with activity logs is encrypted with BYOK (Use Your Own Key)",
   "Description": "The storage account with the activity log export container is configured to use BYOK (Use Your Own Key).",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault'\n      then a.name || ' container insights-operational-logs encrypted with BYOK.'\n    else a.name || ' container insights-operational-logs not encrypted with BYOK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container c,\n  azure_storage_account a,\n  azure_subscription sub\nwhere\n  c.name = 'insights-operational-logs'\n  and c.account_name = a.name\n  and sub.subscription_id = a.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_storage_account",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_storage_container",
       "azure_storage_account",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_storage_account",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault'\n      then a.name || ' container insights-operational-logs encrypted with BYOK.'\n    else a.name || ' container insights-operational-logs not encrypted with BYOK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container c,\n  azure_storage_account a,\n  azure_subscription sub\nwhere\n  c.name = 'insights-operational-logs'\n  and c.account_name = a.name\n  and sub.subscription_id = a.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -42,6 +43,15 @@
     ],
     "service": [
       "Azure/Monitor"
+    ],
+    "x-kaytu-explanation": [
+      "## AWS Control: BYOK Configuration for Storage Account \n\nThis control in AWS (Amazon Web Services) ensures the enhanced security and control over the data in storage accounts through the BYOK (Bring Your Own Key) feature. \n\nBYOK allows users to generate and protect encryption keys in an on-premises hardware security module (HSM) outside of AWS, then export and use these keys within AWS services. This meets the security policy requirements of some organizations, which plan to retain the original encryption keys within their premises.\n\nIn terms of the storage account with the activity log export container, the control ensures that the logs are encrypted using a key that the user has provided, rather than a default key provided by AWS. This provides an additional layer of security and gives the user more control over their data.\n\nHere's how it would look in markup:\n\n```markup\n# AWS Control: Use Your Own Key (BYOK) Configuration for Storage Account \n\nAWS provides a security control for storage accounts allowing users to bring their own encryption key (BYOK). This feature offers more granular control over encryption of data and ensures stronger security.\n\n## Benefits\n\n- **Enhanced Security:** Encrypts the logs using a key provided by the user, enhancing the security of stored data.\n- **Greater Control:** Provides users with more control over their data, as the original encryption keys are retained within their premises.\n\n## Configuration\n\nThe user can generate and protect the encryption keys in an on-premises hardware security module (HSM) outside of AWS. These keys are then exported for use within AWS services.\n```\nThis is a sample only. Depending on the context, additional details may be necessary."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the AWS Control that mandates configuring the storage account with the activity log export container to use BYOK (Bring Your Own Key) can have multiple costs. \n* The main cost is related to **security and data privacy**. Non-compliance means you're depending on AWS for managing your security keys, which opens the possibility of unauthorized access or data leakage. If the key is compromised, attackers could gain access to the activity logs and might use this information for malicious purposes.\n  \n* This could lead to **financial costs**. If data is breached and it results in a violation of data privacy laws such as GDPR, CCPA, or HIPAA, the organization could be fined heavily.\n\n* The **reputational cost** is also significant. A breach in data could result in a loss of reputation for your company, which can impact business **customer relationships** and ultimately revenue. \n\n* Depending on the industry, non-compliance could also mean **potential legal ramifications** and could lead to a loss of business licenses.\n\nHere's an example of the above points summarized in a markdown format:\n\n```markdown\n- **Security \u0026 Data Privacy Costs**: Relying on AWS for managing security keys opens up the possibility of unauthorized access or data leakage. This could compromise your activity logs and could be used by attackers for malicious purposes.\n- **Financial Costs**: Non-compliance could result in heavy fines if it leads to a data breach violating laws like GDPR, CCPA, or HIPAA.\n- **Reputational Costs**: A data breach could negatively impact the reputation of your company, influencing customer relationships and future revenue.\n- **Legal Ramifications**: Depending on the industry, non-compliance could result in potential legal actions and could contribute to loss of business licenses.\n```"
+    ],
+    "x-kaytu-usefulness-example": [
+      "AWS Control's feature of using BYOK (Bring Your Own Key) is primarily beneficial in maintaining an organization's control over their data. Handling key management enables increased control, trust, and compliance in cloud-based systems. \n\n**Example:**\n\nConsider a software company, e.g., 'ABC Softwares', that develops, hosts, and manages software applications. They have a variety of clients, many of whom are highly sensitive to security such as banks, law firms, medical institutions, etc. They store their software and client data in AWS and also generate huge amounts of activity logs.\n\n'ABC Softwares' needs to assure their clients that the operational logs and any other sensitive information are fully secure, unfortunately, they can't fully control how AWS manages their keys. In order to convince their clients and to maintain control over the security of their data, they opt to use the AWS feature to Bring Your Own Key (BYOK).\n\nABC Softwares uses AWS Key Management Service (KMS) to generate and manage the cryptographic keys on their behalf, ensuring the logs are adequately secured. The company will be responsible for any breach in their keys security because it is now in their own hands.\n\nIn this situation, BYOK will significantly enable 'ABC Softwares' to own, manage and control the encryption keys in AWS, ensuring better security and better trust with their clients."
     ]
   },
   "Managed": true
