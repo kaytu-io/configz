@@ -3,17 +3,18 @@
   "Title": "Ensure the key vault is recoverable",
   "Description": "The key vault contains object keys, secrets and certificates. Accidental unavailability of a key vault can cause immediate data loss or loss of security functions (authentication, validation, verification, non-repudiation, etc.) supported by the key vault objects. It is recommended the key vault be made recoverable by enabling the \"Do Not Purge\" and \"Soft Delete\" functions.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  kv.id as resource,\n  kv.kaytu_account_id as kaytu_account_id,\n  kv.kaytu_resource_id as kaytu_resource_id,\n  case\n    when soft_delete_enabled and purge_protection_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when not soft_delete_enabled and not purge_protection_enabled then name || ' \"soft delete\" and \"do not purge\" not enabled.'\n    when not soft_delete_enabled then name || ' \"soft delete\" not enabled.'\n    when not purge_protection_enabled then name || ' \"do not purge\" not enabled.'\n    else name || ' \"soft delete\" and \"do not purge\" enabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault kv,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_key_vault",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_key_vault",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_key_vault",
+    "QueryToExecute": "select\n  kv.id as resource,\n  kv.kaytu_account_id as kaytu_account_id,\n  kv.kaytu_resource_id as kaytu_resource_id,\n  case\n    when soft_delete_enabled and purge_protection_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when not soft_delete_enabled and not purge_protection_enabled then name || ' \"soft delete\" and \"do not purge\" not enabled.'\n    when not soft_delete_enabled then name || ' \"soft delete\" not enabled.'\n    when not purge_protection_enabled then name || ' \"do not purge\" not enabled.'\n    else name || ' \"soft delete\" and \"do not purge\" enabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault kv,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "critical",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/KeyVault"
+    ],
+    "x-kaytu-explanation": [
+      "AWS Key Management Service (AWS KMS) allows you to maintain control over cryptographic keys that are used to protect your data. The unavailability of these keys can lead to loss of data or important security functions like authentication, validation, verification, and non-repudiations. \n\nTo minimize such risks, it's recommended to use certain protective measures to make your key vault recoverable:\n\n- **Do Not Purge**: Enabling this function prevents the permanent deletion of the key vault, ensuring that even if it's accidentally deleted, the key vault isn't permanently lost.\n\n- **Soft Delete**: This functionality allows accidental deletions to be reversed within a certain grace period. When a key vault is deleted, it's not immediately removed, but kept in a 'recycle bin' state. The key vault can then be recovered within a specific amount of time.\n\nThis is how it can be expressed in markup format:\n\n```markdown\n## AWS Key Management Service (KMS) \n\nAWS KMS provides control over cryptographic keys which are used to protect your data. The service is designed to reduce the risk of data loss or security function failures such as authentication and validation. \n\n### Key Vault Recovery\n\nTo avoid the risk of losing crucial data or security controls, the following measures should be adopted:\n\n#### Do Not Purge\n\nEnabling this function prevents the permanent deletion of the key vault. Consequently, even if accidentally deleted, the key vault will not be lost permanently.\n\n#### Soft Delete\n\nThis function allows you to reverse accidental deletions within a certain grace period. This ensures that if a key vault is deleted, it remains recoverable within a specific amount of time.\n```\nNote: This control applies specifically to Azure, not AWS. AWS has a comparable service called AWS KMS, but the specific \"Do Not Purge\" and \"Soft Delete\" settings are unique to Azure's Key Vault service."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with AWS controls pertaining to the use of a key vault can have profound financial and operational implications for a business, including:\n\n1. **Data Loss**: If the key vault is not recoverable, any accidental deletion or loss could lead to unrecoverable data loss. The value of lost data can be immense, considering it might include critical business data, customer data, or sensitive information. The cost of this data loss can vary greatly, depending on the data's importance and relevance.\n\n2. **Operational Downtime**: Without the key vault, the services or applications that depend on it for authentication, validation, and verification might stop working. This would lead to operational downtime, and the financial impact could be substantial, especially for businesses operating in real-time markets, such as e-commerce or finance.\n\n3. **Loss of Trust and Reputation**: If key vault data loss leads to security breaches (due to the loss of critical security keys and certificates), it may result in unauthorized access to data, compromising user privacy and security. This could lead to a substantial loss in user trust and overall business reputation, affecting customer retention and acquisition.\n\n4. **Regulatory Penalties**: If the compromised data includes sensitive or personally identifiable information (PII), the data breach may attract regulatory penalties and legal liabilities. Depending on the jurisdiction and the severity of the data breach, these costs can be significant.\n\n5. **Remediation Costs**: After a data loss or breach, considerable resources may need to be spent on investigations, recovery, and preventive measures to avoid future occurrences.\n\nTo avoid these costs, it's critical to comply with the specified AWS control, enabling the \"Do Not Purge\" and \"Soft Delete\" functions. This would ensure that the key vault objects are recoverable, mitigating the risk of data loss and potential security breaches."
+    ],
+    "x-kaytu-usefulness-example": [
+      "An example where this AWS control is put to use is a financial institution that handles sensitive customer information and transaction records. They utilize AWS services for storing and handling their data. In this instance, they will utilize a key vault to securely store object keys, secrets and certificates for data encryption and other security functions.\n\nOne day, due to an error by an employee, the key vault gets accidentally deleted. Because the \"Do Not Purge\" and \"Soft Delete\" settings are enabled, the key vault will not immediately and irreversibly be purged. This means any necessary keys or security attributes are still available for a period which can prevent a security breach or loss of vital data.\n\nIn addition, they could also use AWS backup services to create scheduled backups of the key vault. This ensures that even if the key vault is accidentally deleted, the organization can recover it from the backup, thus avoiding data loss and ensuring continuity of their operations and services.\n\nThis situation highlights the importance and benefits of implementing AWS policy recommendations, particularly the ones related to data recovery and security."
     ]
   },
   "Managed": true
