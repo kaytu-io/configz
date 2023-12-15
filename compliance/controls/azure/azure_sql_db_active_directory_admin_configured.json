@@ -3,17 +3,18 @@
   "Title": "Ensure that Azure Active Directory Admin is configured",
   "Description": "Use Azure Active Directory Authentication for authentication with SQL Database.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when server_azure_ad_administrator is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when server_azure_ad_administrator is null then name || ' Azure AD authentication not configured.'\n    else name || ' Azure AD authentication configured.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_sql_server",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_sql_server",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_sql_server",
+    "QueryToExecute": "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when server_azure_ad_administrator is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when server_azure_ad_administrator is null then name || ' Azure AD authentication not configured.'\n    else name || ' Azure AD authentication configured.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SQL"
+    ],
+    "x-kaytu-explanation": [
+      "Azure Active Directory (Azure AD) authentication is a mechanism of connecting to Azure SQL Database, or Azure Synapse Analytics by using identities in Azure AD. With Azure AD authentication, you can manage the identity of database users and other Microsoft services in one central location.\n\nHere's how you can use Azure AD authentication in a markup format:\n\n1. Create an Azure Active Directory (AAD).\n\n2. Register a new application on Azure AD and get the Application ID.\n\n3. In the SQL Database firewall settings, allow Azure Services.\n\n4. Assign the AAD user or group to the Azure SQL database with proper permission.\n\nHere is a sample connection string using Azure AD Authentication:\n```\nServer=tcp:\u003cserver-name\u003e.database.windows.net,1433;Database=\u003cdatabase-name\u003e; Authentication=Active Directory Password; UID=\u003cusername\u003e@\u003cdomain-name\u003e; PWD=\u003cstrong-password\u003e; Encrypt=yes; TrustServerCertificate=no;Connection Timeout=30;\n```\nWhere,\n- `\u003cserver-name\u003e` is the name of your server.\n- `\u003cdatabase-name\u003e` is the name of your database.\n- `\u003cusername\u003e` is your Azure AD username.\n- `\u003cdomain-name\u003e` is the domain of your Azure AD.\n- `\u003cstrong-password\u003e` is the password for the Azure AD.\n\nPlease note, to use AAD authentication, your must also set up an Azure AD administrator for your server and your client machines need to be registered with your Azure AD."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with this Azure Control could lead to various risks and costs:\n\n1. **Security Breaches:** The primary risk of non-compliance is the potential for increased security vulnerabilities. Azure AD authentication offers integrated security features like Multi-Factor Authentication (MFA), Identity Protection, and Conditional Access. If not used, SQL database will be more exposed to security breaches, leading to potential data theft, unauthorized access, and alterations.\n\n2. **Operational Inefficiency:** Using non Azure AD authentication means you are not able to leverage single-sign-on, which can lead to consolidated management, reduced administrative overhead, and improved operational efficiencies. \n\n3. **Non-Compliance Fines:** Depending on the nature of your business and the data you are managing, non-compliance with certain security protocols or regulations could result in substantial fines. \n\n4. **Damage to Brand Reputation:** If data breaches occur due to non-compliance, not only does the company face financial loss, but also a potential loss in customer trust, which can massively impact brand reputation.\n\n5. **Business Continuity Issues:** In case of a security incident, you might have to pause your operations until the breach is rectified. This can affect your service deliveries and cause service-level agreement (SLA) penalties causing loss of business."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For example, a company looking to develop a secure web application for their business on Azure Cloud. They decided to use Azure SQL Database as their data warehouse and Azure Active Directory (Azure AD) for user identity management and access security. \n\nIn order to ensure only authenticated users are able to access the underlying Azure SQL Database through the web app, the team implements Azure AD Authentication. The operations defined in the web app's codebase must be authenticated before they can access data in Azure SQL Database. \n\n```xml\n\u003cadd name=\"MyDbConnection\" \nconnectionString=\"Server=tcp:myserver.database.windows.net,1433;Database=myDataBase; \nUser ID=user@domain.com@myserver;Password=MyPassword;Trusted_Connection=False;Encrypt=True;\" \nproviderName=\"System.Data.SqlClient\" /\u003e\n```\n\nHere, the `MyDbConnection` connection string uses Azure AD Authentication to connect to the Azure SQL Database.\n\nThis integration of Azure Active Directory Authentication with Azure SQL Database via the web app ensures a secure environment against unauthorized data access. It allows the company to have full control over who can view, modify or delete their data while providing a seamless^ nd secure access experience to their legitimate users."
     ]
   },
   "Managed": true
