@@ -3,17 +3,18 @@
   "Title": "Ensure that 'Unattached disks' are encrypted with CMK",
   "Description": "Ensure that unattached disks in a subscription are encrypted with a Customer Managed Key (CMK).",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  disk.id as resource,\n  disk.kaytu_account_id as kaytu_account_id,\n  disk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when encryption_type = 'EncryptionAtRestWithCustomerKey' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encryption_type = 'EncryptionAtRestWithCustomerKey' then disk.name || ' encrypted with CMK.'\n    else disk.name || ' not encrypted with CMK.'\n  end as reason\n  \n  , disk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_disk disk,\n  azure_subscription sub\nwhere\n  disk_state != 'Attached'\n  and sub.subscription_id = disk.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_compute_disk",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_compute_disk",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_compute_disk",
+    "QueryToExecute": "select\n  disk.id as resource,\n  disk.kaytu_account_id as kaytu_account_id,\n  disk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when encryption_type = 'EncryptionAtRestWithCustomerKey' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encryption_type = 'EncryptionAtRestWithCustomerKey' then disk.name || ' encrypted with CMK.'\n    else disk.name || ' not encrypted with CMK.'\n  end as reason\n  \n  , disk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_disk disk,\n  azure_subscription sub\nwhere\n  disk_state != 'Attached'\n  and sub.subscription_id = disk.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/Compute"
+    ],
+    "x-kaytu-explanation": [
+      "In Azure, disk encryption plays a critical role in protecting data from unauthorized access. Azure provides platform-managed keys and customer-managed keys to encrypt your disks at rest. Azure Disk Encryption (ADE) uses the BitLocker feature for Windows and the DM-Crypt feature for Linux to provide volume encryption for data disks.\n\nIf you're storing sensitive data and need to meet different compliance and regulatory requirements, you may want to have more control over management of your encryption keys and to use a Customer Managed Key (CMK). CMKs allow you to maintain control over key creation, key rotation, and key deletion.\n\nThis markup control ensures that all unattached disks in a subscription are encrypted with a CMK. An unattached disk is a disk that was once attached to a virtual machine and now has been detached but not deleted. These disks are still being billed and can be reattached to a virtual machine.\n   \nMarkup format:\n\n```xml\n\u003cPolicies\u003e\n    \u003cPolicy\u003e\n        \u003cId\u003eEncrypt-Unattached-Disks-with-a-CMK\u003c/Id\u003e\n        \u003cDescription\u003eEnsure that all unattached disks within a subscription are encrypted with a Customer Managed Key (CMK).\u003c/Description\u003e\n        \u003cEffect\u003eEnforce\u003cEffect\u003e\n        \u003cPolicyRule\u003e\n            \u003cIf\u003e\n                \u003cEquals\u003e\n                    \u003cField\u003etype\u003c/Field\u003e\n                    \u003cValue\u003eMicrosoft.Compute/disks\u003c/Value\u003e\n                \u003c/Equals\u003e\n                \u003cAnd\u003e\n                    \u003cEquals\u003e\n                        \u003cField\u003eMicrosoft.Compute/disks/diskState\u003c/Field\u003e\n                        \u003cValue\u003eUnattached\u003c/Value\u003e\n                    \u003c/Equals\u003e\n                    \u003cNotEquals\u003e\n                        \u003cField\u003eMicrosoft.Compute/disks/encryptionType\u003c/Field\u003e\n                        \u003cValue\u003eEncryptionAtRestWithCustomerKey\u003c/Value\u003e\n                    \u003c/NotEquals\u003e\n                \u003c/And\u003e\n            \u003c/If\u003e\n            \u003cThen\u003e\n                \u003cDeny /\u003e\n            \u003c/Then\u003e\n        \u003c/PolicyRule\u003e\n    \u003c/Policy\u003e\n\u003c/Policies\u003e\n```\n\nThis policy ensures that if the type of resource is `Microsoft.Compute/disks` and its state is `unattached`, then the encryption type of the disk should be `EncryptionAtRestWithCustomerKey`. If these conditions are not met, Azure will deny the creation or update of that resource."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "### Cost of Non-Compliance\n\nNot complying with the Azure Control that mandates the encryption of unattached disks in a subscription with a Customer Managed Key (CMK) can have several costs:\n\n1. **Potential Regulatory Fines:** Regulated industries often have strict data protection laws requiring certain levels of security including encryption at rest. Non-compliance could lead to hefty fines and penalties.\n\n2. **Security Risk:** If unattached disks are left unencrypted, it could leave sensitive data vulnerable to breaches. If an attacker gains access to the unattached disk, they could get unauthorized access to data.\n\n3. **Data Loss or Leakage**: Without encryption, the risk of data leakage or data loss becomes significantly higher. This could harm the business's functionality and may result in potential financial loss.\n\n4. **Reputation Damage:** In case of data breach due to non-compliance with this control, the company's reputation gets impacted negatively, which may result in loss of trust among customers and could ultimately lead to loss of business.\n\n5. **Legal Implications:** Apart from the potential regulatory fines, the affected individuals or businesses may take legal actions, leading to high compensation costs and legal fees.\n\nHence, complying with Azure Controls like ensuring encryption of unattached disks isn’t simply a matter of best practice, it has potentially high financial and reputational costs tied to it."
+    ],
+    "x-kaytu-usefulness-example": [
+      "The Azure policy \"Ensure that unattached disks in a subscription are encrypted with a Customer Managed Key (CMK)\" is specifically designed to flag any unattached disk resources in your Azure subscription which are not currently utilizing a specific Customer Managed Key (CMK) for encryption.\n\nFor instance, you're a Cloud Security Officer of a large corporation with a diverse set of deployed Azure resources. Over time, there may be multiple unattached disks that have either been missed during the clean-up process or are waiting to be attached to new VM instances. These disks, if not properly encrypted, can become potential security loopholes, leading to the possible exposure of sensitive data. \n\nMoreover, you need to meet specific regulatory compliance standards that mandate the use of your own on-premises generated encryption keys for all data at rest in the cloud. \n\nYou can utilize the Azure policy, \"Ensure that unattached disks in a subscription are encrypted with a Customer Managed Key (CMK)\". This policy will help ensure that all unattached disks are properly encrypted using the CMKs. Consequently, you get a comprehensive overview of any unencrypted disks in your environment and make sure they adhere to your company security guidelines and meet regulatory compliance. The policy will enforce the encryption and prevent any further potential data leak. \n\nThis greatly reduces the administrative overhead of manually checking all disks and ensures a more secure, compliant infrastructure across your Azure subscription."
     ]
   },
   "Managed": true
