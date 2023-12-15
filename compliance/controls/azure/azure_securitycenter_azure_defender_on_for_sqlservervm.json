@@ -3,17 +3,18 @@
   "Title": "Ensure that Azure Defender is set to On for SQL servers on machines",
   "Description": "Turning on Azure Defender enables threat detection for SQL servers on machines, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for SQL servers on machines.'\n    else 'Azure Defender off for SQL servers on machines.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'SqlServerVirtualMachines';\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_subscription_pricing",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for SQL servers on machines.'\n    else 'Azure Defender off for SQL servers on machines.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'SqlServerVirtualMachines';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "# AWS Control: Azure Defender for SQL servers on machines\n\n## Overview\nAzure Defender, when activated, enables threat detection for SQL servers on machines. It integrates the functionalities of threat intelligence, anomaly detection, and behaviour analytics into the Azure Security Centre. This combination of features works together to enhance the overall security of your SQL servers on machines.\n\n## Key Features\n\n### Threat Intelligence\nAzure Defender's threat intelligence feature proactively identifies potential security threats looming over your SQL servers on machines by analysing patterns and trends in data.\n\n### Anomaly Detection\nAnomaly detection is a feature that allows Azure Defender to detect unusual and potentially harmful activity on your SQL servers. It automatically identifies any deviations or anomalies in behaviour or activity that could indicate a security threat.\n\n### Behaviour Analytics\nBehaviour analytics monitors and analyses activity on your SQL servers to identify any suspicious behaviour or patterns. This feature is able to learn and adapt to the normal behaviour of your servers, making it adept at spotting anything out of the ordinary.\n\n## Azure Security Center Integration\nAzure Defender is integrated within the Azure Security Centre. This centre provides you with a unified security management system that helps to simplify your security strategies, improve your compliance and security posture, and provide threat protection across all your services in Azure, other clouds, and on-premises.\n\n## Turning on Azure Defender\nTo turn on Azure Defender and enable these capabilities for SQL servers on machines, one needs to follow these steps:\n\n1. Navigate to Azure Security Centre in the Azure portal.\n2. Select 'Pricing \u0026 settings' from the sidebar.\n3. Choose the Azure subscription for which you want to enable Azure Defender. \n4. Under 'Defender plans', select 'Azure Defender On' for 'SQL servers on machines'.\n5. Review and confirm your changes by clicking 'Save'.\n\nBy turning on Azure Defender, you avail enhanced security for SQL servers on machines, providing the strength of threat intelligence, anomaly detection, and behaviour analytics through the Azure Security Centre."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "AWS (Amazon Web Services) and Azure are separate cloud services provided by Amazon and Microsoft respectively. The control you're referring to appears to be for Azure, not AWS. \n\nNonetheless, the cost of non-compliance - generally whether it is AWS, Azure, or any other cloud service - can be severe. Here's an explanation in Markdown format:\n\n```markdown\n# Cost of Non-Compliance to AWS or Azure Security Controls\n\nIf an organization fails to comply with the cloud security controls - whether for AWS or Azure like enabling Azure Defender for SQL servers - it can face several potential costs which include:\n\n1. **Financial Loss:** Non-compliance with Security Controls can lead to data breaches, resulting in financial loss due to regulatory fines, business downtime, lost sales, or ransom payments to cybercriminals.\n\n2. **Reputation Damage:** In addition to monetary loss, there can be a substantial damage to the company's reputation resulting from a data breach or compromise. This could lead to loss of customer trust and future business.\n\n3. **Business Continuity Risk:** If critical data is lost, corrupted or breached, it can lead to serious operational disruptions in the organization.\n\n4. **Legal and Regulatory Penalties:** Companies are often subject to specific data privacy and cybersecurity laws and regulations. Non-compliance can result in hefty penalties, fines and legal sanctions.\n\n## Azure Defender Non-Compliance \n\nSpecifically, failure to enable Azure Defender for threat detection in SQL servers on machines can lead to undetected threats and vulnerabilities. This might result in data breaches, unauthorized access to sensitive information, and potential manipulation or deletion of crucial data. \n\n```\nRemember to consider these potential costs before making the decision to not comply with recommended or required security controls."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For example:\n\n```markdown\nAn IT organization ABC wants to ensure the security of their SQL server running on Azure machines. They have tons of data being accessed and stored, making it a potential target for cyberattacks. \n\nBy enabling Azure Defender, ABC has an added layer of protection due to its threat detection capabilities. Whenever a suspicious activity is detected, for instance, a sudden increase in data usage or unusual login attempts, the Azure Security Center is alerted.\n\nThis becomes extremely useful when their traffic spikes due to an attempted DDoS attack. The anomaly detection feature of Azure Defender notices this unusual increase in data requests and alerts the Security Center. It would allow ABC to respond appropriately, mitigating the risk almost immediately. This not only protects their servers but also ensures the smooth running of operations.\n\nMoreover, with the behavior analytics feature, Azure Defender can help ABC to understand the pattern of these attacks, facilitating them to better prepare for any future threats. In this way, turning on Azure Defender contributes significantly to the overall cybersecurity infrastructure of ABC.\n```\n"
     ]
   },
   "Managed": true
