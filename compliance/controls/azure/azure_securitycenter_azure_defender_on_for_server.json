@@ -3,17 +3,18 @@
   "Title": "Ensure that Azure Defender is set to On for Servers",
   "Description": "Turning on Azure Defender enables threat detection for Server, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Servers.'\n    else 'Azure Defender off for Servers.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'VirtualMachines';\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_subscription_pricing",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Servers.'\n    else 'Azure Defender off for Servers.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'VirtualMachines';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "Azure Defender is a built-in tool in Microsoft's Azure Security Center. When switched on, it provides advanced threat protection across hybrid workloads in the cloud, whether they're in Azure or not. It offers additional security intelligence, anomaly detection and behavior analytics which can help you detect threats to your servers and respond to them promptly.\n\nThe content in markdown format would look like this:\n\n```markdown\n**Azure Defender** is a built-in tool in Microsoft's **Azure Security Center**. When switched on, it provides _advanced threat protection_ across hybrid workloads in the cloud, whether they're in Azure or not. It offers additional _security intelligence_, _anomaly detection_ and _behavior analytics_ which can help you detect threats to your servers and respond to them promptly.\n```"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "1. **Loss of Confidential Information**: Without proper security measures in place, sensitive data can be exposed to unauthorized individuals or systems, leading to significant losses for companies.\n\n2. **Business Disruption**: Security breaches can often lead to disruption of business operations, resulting in loss of revenue and customer trust.\n\n3. **Financial Costs**: Companies can face penalties, fines, or even lawsuits for failing to fulfill their responsibilities in managing customer data.\n\n4. **Reputation Damage**: Non-compliance can lead to a tarnished image in the market, reducing customer trust and potentially causing long-term damage to the business.\n\n5. **Failures in Audit**: Non-compliance to AWS controls can lead to failures in an audit, which can, in turn, result in penalties or restrictions imposed by regulatory authorities.\n   \nPlease note that the specific costs can vary depending on the nature of the organization, its location, the applicable regulations, and the specific Azure services being used."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Azure Control: Security Monitoring and Threat Detection \n\nExample: \n\n```\nConsider a scenario where a company, XYZ Corp, has their entire IT infrastructure hosted on Azure and they have confidential client data stored on their servers. Recently, they noticed suspicious activity taking place within the system and are concerned about the security of their data and systems. \n\nBy enabling Security Monitoring and Threat Detection control in Azure, XYZ Corp can efficiently identify, track and manage potential threats and vulnerabilities across all AWS services. \n\nFurthermore, they also get access to Amazon GuardDuty - a threat detection service that continuously monitors your account's activity for malicious or unauthorized behavior. \n\nThis will help XYZ Corp to:\n- Discover potential threats and protect the organization's sensitive data \n- Automate remediation scripts to addressing threats immediately\n- Gain insight into Azure security profiles\n- Monitor all Azure accounts and workloads\n\nSo, the company can focus on its core businesses, knowing that their data and systems are being monitored and protected round the clock. \n```"
     ]
   },
   "Managed": true
