@@ -3,17 +3,18 @@
   "Title": "Ensure the web app has 'Client Certificates (Incoming client certificates)' set to 'On'",
   "Description": "Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not client_cert_enabled then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not client_cert_enabled then name || ' incoming client certificates set to off.'\n    else name || ' incoming client certificates set to on.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_app_service_web_app",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_app_service_web_app",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_app_service_web_app",
+    "QueryToExecute": "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not client_cert_enabled then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not client_cert_enabled then name || ' incoming client certificates set to off.'\n    else name || ' incoming client certificates set to on.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/AppService"
+    ],
+    "x-kaytu-explanation": [
+      "Client certificates are a type of digital certificate that allows a client (like a user's browser) to authenticate itself with a server (like your Azure app). This certificate provides proof of the client's identity and ensures the server that the client can be trusted.\n\nIn the context of Azure, client certificates are used to secure access to web apps, API apps, or function apps in Azure App Service. When you enable client certificate authentication in Azure, your app will request a client certificate from each client that tries to establish a connection. \n\nHere's how it would look in Azure's application settings in a markup format:\n\n```xml\n\u003csystem.webServer\u003e\n    \u003csecurity\u003e\n        \u003caccess sslFlags=\"SslNegotiateCert\" /\u003e\n    \u003c/security\u003e\n\u003c/system.webServer\u003e\n```\n\nIn this markup:\n- `\u003csystem.webServer\u003e` element specifies settings for IIS 7.0 that are applied to the Web server.\n- `\u003csecurity\u003e` element specifies settings for IIS 7.0 security features such as IP and domain restrictions, request filtering, and URL authorization.\n- `\u003caccess\u003e` element specifies the SSL security settings for IIS 7.0. Here, `sslFlags=\"SslNegotiateCert\"` means that the Microsoft Internet Information Services (IIS) will try to negotiate a client certificate.\n\nThe use of client certificates provides an added layer of security by ensuring only those clients possessing a valid certificate can access your Azure application. This can help protect your app from unauthorized access or malicious attacks."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the Azure control that requires the use of client certificates can lead to several risks and potential costs. Here is a breakdown:\n\n1. **Security Vulnerabilities:**\nWithout client certificates, unauthorized clients can access the app, leading to potential data breaches or malicious activities. This makes the system susceptible to digital fraud and hacking attempts.\n\n2. **Violations of Regulations and Standards:**\nSeveral industry standards and regulations require secure communication between applications and their clients. Non-compliance can lead to violations, resulting in heavy fines and penalties, loss of certifications, and in extreme cases, business closure.\n\n3. **Loss of Trust and Reputation:**\nWith increased attention on data privacy and digital security, any breach or perceived lack of security measures (including lacking client certificates) can hurt a company's reputation resulting in loss of customers, partners, and revenue.\n\n4. **Potential Business Disruptions:**\nIn a case of a data breach or hacking attempt, the targeted application might need to be taken down for audit, investigation, and remedy, disrupting the normal course of business.\n\n5. **Increased Recovery Costs:**\nApart from potential fines and penalties, companies would need to invest in troubleshooting, security upgrades, crisis management, PR efforts to restore customer confidence, and potential compensation for affected parties.\n\nIn summary, a lack of compliance in requiring client certificates can result in significant financial costs and reputational damage, making it vital for companies to ensure adherence to this Azure control."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For example, suppose you have a web application hosted on Azure App Service that holds sensitive financial data. You want to enforce secure access to this app, ensuring that only authorized clients can access it.\n\nFirst, you can use Azure to create client certificates for the valid clients. These certificates will then be used to authenticate these clients.\n\n```xml\n\u003csystem.webServer\u003e\n \u003csecurity\u003e\n  \u003caccess sslFlags=\"Ssl, SslNegotiateCert\" /\u003e\n \u003c/security\u003e\n\u003c/system.webServer\u003e\n```\nThe above markup sets the SSL flags to accept SSL connections and negotiate client certification.\n\nWhen a client tries to access the app, it will present the certificate, and then Azure verifies the certificate details. If the certificate is valid, Azure will allow the client to communicate and interact with the app. If the certificate is not valid or absent, Azure blocks the client from accessing the app.\n\nThis way, the use of client certificates as an Azure control can ensure that sensitive apps are accessed only by authenticated and authorized entities, adding an extra layer of security for applications hosted on Azure. Any unauthorized entity will be denied access, protecting the sensitive data contained within the application."
     ]
   },
   "Managed": true

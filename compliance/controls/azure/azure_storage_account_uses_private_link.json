@@ -3,17 +3,18 @@
   "Title": "Ensure Private Endpoints are used to access Storage Accounts",
   "Description": "Use private endpoints for your Azure Storage accounts to allow clients and services to securely access data located over a network via an encrypted Private Link. To do this, the private endpoint uses an IP address from the VNet for each service. Network traffic between disparate services securely traverses encrypted over the VNet. This VNet can also link addressing space, extending your network and accessing resources on it. Similarly, it can be a tunnel through public networks to connect remote infrastructures together. This creates further security through segmenting network traffic and preventing outside sources from accessing it.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with storage_account_connection as (\n  select\n    distinct a.id\n  from\n    azure_storage_account as a,\n    jsonb_array_elements(private_endpoint_connections) as connection\n  where\n    connection -> 'properties' -> 'privateLinkServiceConnectionState' ->> 'status' = 'Approved'\n)\nselect\n  distinct a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when s.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when s.id is null then a.name || ' not uses private link.'\n    else a.name || ' uses private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as a\n  left join storage_account_connection as s on a.id = s.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_storage_account",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_storage_account",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_storage_account",
+    "QueryToExecute": "with storage_account_connection as (\n  select\n    distinct a.id\n  from\n    azure_storage_account as a,\n    jsonb_array_elements(private_endpoint_connections) as connection\n  where\n    connection -\u003e 'properties' -\u003e 'privateLinkServiceConnectionState' -\u003e\u003e 'status' = 'Approved'\n)\nselect\n  distinct a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when s.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when s.id is null then a.name || ' not uses private link.'\n    else a.name || ' uses private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as a\n  left join storage_account_connection as s on a.id = s.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/Storage"
+    ],
+    "x-kaytu-explanation": [
+      "Private endpoints in Azure Storage accounts enable secure access to data over a network through an encrypted Private Link. This functionality is facilitated by the private endpoint's use of an IP address from Virtual Network (VNet) allocated for each distinct service. As a result, network traffic moving securely and encrypting between various services over the VNet is made possible. \n\nIn addition to this, this Virtual Network has the capability to link addressing space. This implies that it can extend your pre-existing network and provide accessibility to the resources on it. It also has the ability to function as a tunnel piecing through public networks in order to link remote infrastructures together.\n\nCreating such a setup enhances security through the segmentation of network traffic and preventing unauthorized external access. This hence solidifies the security landscape and minimizes the potential threats and breaches."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the Azure control of using private endpoints for your Azure Storage accounts can expose your organization to several risks and associated costs, including:\n\n1. **Increased Security Risks**: Without the use of private endpoints, your data may be transmitted over public networks, exposing it to potential security threats such as data breaches and cyber-attacks. This could result in a significant financial loss due to data theft or data corruption.\n\n2. **Non-Compliance Penalties**: Depending on the regulatory standards your organization needs to adhere to (such as GDPR, CCPA, HIPAA, etc.), non-compliance to proper data protection measures such as the use of private endpoints can lead to hefty fines and penalties.\n\n3. **Loss of Reputation**: If a data breach occurs due to non-compliance, this could significantly damage the reputation of your organization leading to loss of customer trust and potential future business.\n\n4. **Additional Costs**: If your network is compromised due to lack of private endpoints, this could lead to additional costs related to incident response, forensics, remediation activities, and potentially, legal costs.\n\n```\nIn summary, non-compliance to the use of private endpoints for Azure Storage accounts not only exposes your organization to security risks, but it can also lead to significant financial costs, regulatory penalties, loss of reputation and trust, and additional remediation efforts.\n```\nThe use of private endpoints ensures that your data is securely accessed over your own network, reducing the risk of exposure from public networks. By providing an additional layer of security, private endpoints help protect against potential data breaches and subsequent consequences."
+    ],
+    "x-kaytu-usefulness-example": [
+      "```markup\n### Example: Protecting Data in a Financial Institution\n\nA financial institution has highly sensitive customer data that it needs to store and access securely. It uses Azure Storage for its scalability and flexibility, but it is concerned about the potential exposure of data during transmission over public networks.\n\nTo enhance security, the institution uses private endpoints for its Azure Storage accounts. Client applications and services in the institution access customer data via a secure, encrypted Private Link. The IP address for the Private Link is sourced from the institution's Virtual Network (VNet), ensuring that network traffic is securely encapsulated within the VNet.\n\nThis setup allows the institution to extend its network by linking addressing spaces, enabling access to resources on the network. Additionally, the institution's various branches and remote workers are securely connected through encrypted tunnels over public networks.\n\nBy using private endpoints, the institution can segment the network traffic, thus preventing unauthorized access by outside sources. The data is more secure, the risk of exposure is minimized, and regulatory compliance is easier to achieve.\n\n\u003cdiv class=\"image\"\u003e\n  \u003cimg src=\"https://docs.microsoft.com/en-us/azure/private-link/media/private-endpoint-overview/private-link-private-endpoint-communications-diagram.png\" alt=\"Diagram of private endpoint communications for Azure Storage\"\u003e\n  \u003cfigcaption\u003eDiagram of private endpoint communications for Azure Storage\u003c/figcaption\u003e\n\u003c/div\u003e\n```"
     ]
   },
   "Managed": true

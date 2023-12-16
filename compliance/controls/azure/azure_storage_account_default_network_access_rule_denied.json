@@ -3,17 +3,18 @@
   "Title": "Ensure default network access rule for Storage Accounts is set to deny",
   "Description": "Restricting default network access helps to provide a new layer of security, since storage accounts accept connections from clients on any network. To limit access to selected networks, the default action must be changed.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sa.network_rule_default_action = 'Allow' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sa.network_rule_default_action = 'Allow' then name || ' allows traffic from all networks.'\n    else name || ' allows traffic from specific networks.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_storage_account",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_storage_account",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_storage_account",
+    "QueryToExecute": "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sa.network_rule_default_action = 'Allow' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sa.network_rule_default_action = 'Allow' then name || ' allows traffic from all networks.'\n    else name || ' allows traffic from specific networks.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/Storage"
+    ],
+    "x-kaytu-explanation": [
+      "Azure Storage Service supports an access control feature called \"firewall and virtual networks\". This feature gives you the ability to grant access to data in your storage account by enforcing network controls that reduce potential attack vectors. \n\nWhen you restrict the networks that can access your storage account, the default action is to \"deny\". Only the networks specified in the firewall rules are given access. Here's how you can do that in the `markup format`.\n\n```html\n\u003cStorageServices\u003e\n  \u003cStorageServiceProperties\u003e\n    \u003cDefaultNetworkAccess\u003eDeny\u003c/DefaultNetworkAccess\u003e\n    \u003cIPRules\u003e\n      \u003cIPRule\u003e\n        \u003cAction\u003eAllow\u003c/Action\u003e\n        \u003cIPAddressOrRange\u003e11.22.33.44\u003c/IPAddressOrRange\u003e\n      \u003c/IPRule\u003e\n    \u003c/IPRules\u003e\n    \u003cVirtualNetworkRules\u003e\n      \u003cVirtualNetworkRule\u003e\n        \u003cAction\u003eAllow\u003c/Action\u003e\n        \u003cState\u003estate\u003c/State\u003e\n        \u003cVirtualNetworkResourceId\u003e/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}\u003c/VirtualNetworkResourceId\u003e\n      \u003c/VirtualNetworkRule\u003e\n    \u003c/VirtualNetworkRules\u003e\n  \u003c/StorageServiceProperties\u003e\n\u003c/StorageServices\u003e\n```\n\nIn the above example, only the IP address `11.22.33.44` and the virtual network specified by the resource id have been given access to the storage account while the rest of the requests will be denied by default.\n\nThis feature enables you to secure your data by ensuring that only requests from allowed networks, as specified by the IP address ranges or virtual network rules, will be accepted. Other requests will be denied. This includes both new requests and existing persistent connections."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance to the Azure Control of restricting default network access can be significant. It includes the following potential threats and monetary implications:\n\n1. **Security Breaches**: Without compliance, your storage accounts may be accessed by unauthorized or malicious actors, leading to potential data leaks or breaches. The cost of a data breach can be severe, potentially running into millions of dollars depending on the size and sensitivity of the data.\n\n2. **Regulatory Penalties**: If your organization must adhere to certain industry regulations (like GDPR, HIPAA, CCPA, etc.) and those regulations include data security provisions, non-compliance with this Azure Control could lead to financial penalties.\n\n3. **Loss of Trust**: Non-compliance to this Azure Control could lead to a loss of customer trust if a data breach occurs. This can impact an organization's reputation, customer base, and eventually bottom-line income.\n\n4. **Downtime Cost**: In case of a breach, a considerable amount of time and resources might have to be diverted to contain the situation and mitigate the impact, leading to opportunity costs.\n\n5. **Incident Recovery Cost**: There could be significant recovery costs involved, including cybersecurity enhancement, PR efforts, regulatory communication, and litigation.\n\nTherefore, non-compliance to restricting default network access can cause a hefty price. Preventing breaches is not just about securing data but also essential to avoid financial and reputational damage."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For instance, consider a scenario where a company utilizes Azure Storage to store their crucial business data. This could include customer details, financial transactions, reports, and so forth. The data stored could be sensitive and should be strictly protected from unauthorized access or network attacks such as DDOS. \n\nUsing Azure default network access restriction feature, the company can limit and control the data access to only selected or certain trusted networks. This could be their internal networks across different branches or certain trusted client networks. They can modify the default action and deny access from all networks by default, hence by only permitting the trusted ones to connect to their storage accounts.\n\nThis adds an extra layer of data security, preventing potential data breaches and protecting the business from potential threats or attacks over the internet. It ensures that their storage accounts are not publicly accessible, thereby keeping their business data safe and secure.\n\n```markup\nresource \"azurerm_storage_account_network_rules\" \"example\" {\n  resource_group_name  = azurerm_resource_group.example.name\n  storage_account_name = azurerm_storage_account.example.name\n  \n  default_action             = \"Deny\"\n  bypass                     = [\"None\"]\n  ip_rules                   = [\"110.0.0.23\"]\n  virtual_network_subnet_ids = [azurerm_subnet.example.id]\n}\n```\n\nIn the above `Terraform` example, the `default_action` is set to `\"Deny\"`, meaning that no network will be allowed to access the storage account by default. However, the `ip_rules` and `virtual_network_subnet_ids` properties specifies the trusted networks which will be granted access to the account."
     ]
   },
   "Managed": true

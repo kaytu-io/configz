@@ -3,17 +3,18 @@
   "Title": "Ensure no SQL Databases allow ingress 0.0.0.0/0 (ANY IP)",
   "Description": "Ensure that no SQL Databases allow ingress from 0.0.0.0/0 (ANY IP).",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  s.id resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when firewall_rules @> '[{\"properties\":{\"endIpAddress\":\"0.0.0.0\",\"startIpAddress\":\"0.0.0.0\"}}]'\n    or firewall_rules @> '[{\"properties\":{\"endIpAddress\":\"255.255.255.255\",\"startIpAddress\":\"0.0.0.0\"}}]'\n      then 'alarm'\n      else 'ok'\n  end as status,\n  case\n    when firewall_rules @> '[{\"properties\":{\"endIpAddress\":\"0.0.0.0\",\"startIpAddress\":\"0.0.0.0\"}}]'\n    or firewall_rules @> '[{\"properties\":{\"endIpAddress\":\"255.255.255.255\",\"startIpAddress\":\"0.0.0.0\"}}]'\n      then s.title || ' allows ingress 0.0.0.0/0 or any ip over internet.'\n      else s.title || ' not allows ingress 0.0.0.0/0 or any ip over internet.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_sql_server",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_sql_server",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_sql_server",
+    "QueryToExecute": "select\n  s.id resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when firewall_rules @\u003e '[{\"properties\":{\"endIpAddress\":\"0.0.0.0\",\"startIpAddress\":\"0.0.0.0\"}}]'\n    or firewall_rules @\u003e '[{\"properties\":{\"endIpAddress\":\"255.255.255.255\",\"startIpAddress\":\"0.0.0.0\"}}]'\n      then 'alarm'\n      else 'ok'\n  end as status,\n  case\n    when firewall_rules @\u003e '[{\"properties\":{\"endIpAddress\":\"0.0.0.0\",\"startIpAddress\":\"0.0.0.0\"}}]'\n    or firewall_rules @\u003e '[{\"properties\":{\"endIpAddress\":\"255.255.255.255\",\"startIpAddress\":\"0.0.0.0\"}}]'\n      then s.title || ' allows ingress 0.0.0.0/0 or any ip over internet.'\n      else s.title || ' not allows ingress 0.0.0.0/0 or any ip over internet.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server s,\n  azure_subscription sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/Network"
+    ],
+    "x-kaytu-explanation": [
+      "Azure Control in markup format is a policy that you can set in Azure to specify the rules and controls for certain resources such as SQL databases. \n\nThe specific control you mentioned is about limiting the source IP addresses that can access Azure SQL databases. When it says \"Ensure that no SQL Databases allow ingress from 0.0.0.0/0\", it means that the policy should prevent any IP addresses from accessing the SQL databases.\n\n\"0.0.0.0/0\" represents all possible IP addresses. In network security, such setting is generally avoided as it practically opens access to your database for the entire internet, making it vulnerable to attacks. Instead, you should only allow specific trusted IP addresses to access your database.\n\nTo implement this control, use Azure Security Center or Azure Policy. They provide built-in policies such as \"Audit unrestricted network access to SQL Server databases\" and use Policy Compliance controls to check and enforce compliance.\n\nSo in markup format, this control might be represented in Azure Policy as follows:\n\n```json\n{\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\n  \"name\": \"sqlDatabasesNoIngressFromAnyIP\",\n  \"properties\": {\n    \"displayName\": \"Ensure no SQL Databases allow ingress from any IP\",\n    \"policyType\": \"Custom\",\n    \"mode\": \"Indexed\",\n    \"parameters\": {},\n    \"policyRule\": {\n      \"if\": {\n        \"allOf\": [\n          {\n            \"field\": \"type\",\n            \"equals\": \"Microsoft.Sql/servers/firewallRules\"\n          },\n          {\n            \"field\": \"Microsoft.Sql/servers/firewallRules/startIpAddress\",\n            \"equals\": \"0.0.0.0\"\n          },\n          {\n            \"field\": \"Microsoft.Sql/servers/firewallRules/endIpAddress\",\n            \"equals\": \"0.0.0.0\"\n          }\n        ]\n      },\n      \"then\": {\n        \"effect\": \"deny\"\n      }\n    }\n  }\n}\n```\nThis policy denies the creation of firewall rules that allow any IP to access SQL databases. Please make sure to replace the markup according to your exact requirements."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the Azure control of preventing ingress from the IP address 0.0.0.0/0 to SQL Databases can have several significant costs:\n\n1. **Security Risk:** Allowing any IP address (0.0.0.0/0) to access the SQL databases presents a huge security risk. It means that potentially, anyone from around the world could attempt to access and manipulate your databases. This can result in data leaks, data corruption, or even loss of data.\n\n2. **Regulatory Fines:** If your company is in a regulated industry (such as the finance or health sector), non-compliance could lead to serious regulatory fines. Government bodies and industry organizations often have extremely stringent data regulations, and failing to comply can lead to hefty penalties.\n\n3. **Reputation Damage:** If a security breach occurs due to this non-compliance and it becomes public knowledge, your company's reputation could potentially be severely damaged. This can lead to loss of customers and a drop in revenue.\n\n4. **Legal Consequences:** If the data breach leads to a compromise of user personal data, affected parties could potentially take legal action against your company. Legal costs and the potential compensation could be significant.\n\n5. **Remediation Costs:** In case of a data breach, remediation costs can be significant. These might include but are not limited to the cost to sort out the incident, data recovery costs, and the cost to further strengthen the security to prevent future breaches.\n\nTherefore, it is paramount to always comply with the Azure control and make sure no SQL Databases allow ingress from 0.0.0.0/0 (ANY IP)."
+    ],
+    "x-kaytu-usefulness-example": [
+      "In practice, allowing ingress from 0.0.0.0/0 (ANY IP) for SQL Databases can open a significant security risk that would make your databases potentially accessible by anyone in the world. Here is an example of how this Azure control could be beneficial:\n\nImagine a scenario where your company is running a complex business intelligence system on a set of Azure SQL Databases. The system involves processing sensitive business data, which should be protected from access by external entities. \n\nBy Using Azure's controls to ensure that no SQL Databases allow ingress from 0.0.0.0/0 (ANY IP), you mitigate this risk by setting up security rules that prevent any potential unauthorized access to the database from an outside network. This helps keep your business intelligence system secure and thus protects your company's sensitive and valuable data."
     ]
   },
   "Managed": true

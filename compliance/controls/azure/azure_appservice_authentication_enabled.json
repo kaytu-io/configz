@@ -3,17 +3,18 @@
   "Title": "Ensure App Service Authentication is set on Azure App Service",
   "Description": "Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the API app, or authenticate those that have tokens before they reach the API app. If an anonymous request is received from a browser, App Service will redirect to a logon page. To handle the logon process, a choice from a set of identity providers can be made, or a custom authentication mechanism can be implemented.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not (auth_settings -> 'properties' ->> 'enabled') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (auth_settings -> 'properties' ->> 'enabled') :: boolean then name || ' authentication not set.'\n    else name || ' authentication set.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_app_service_web_app",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_app_service_web_app",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_app_service_web_app",
+    "QueryToExecute": "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not (auth_settings -\u003e 'properties' -\u003e\u003e 'enabled') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (auth_settings -\u003e 'properties' -\u003e\u003e 'enabled') :: boolean then name || ' authentication not set.'\n    else name || ' authentication set.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/AppService"
+    ],
+    "x-kaytu-explanation": [
+      "Azure App Service Authentication is an Azure feature built to ensure security of web-based applications by managing and controlling user access to these applications. If enabled, it has the capacity to refuse access to anonymous HTTP requests to your App. More so, it goes ahead to authenticate HTTP requests that come with tokens before they get to your API app. \n\nDealing with requests from browsers, the App service is designed to redirect the browser to a logon page whenever an anonymous request is received. This prompt ensures that unauthorised access to the app is curbed. \n\nThe logon process in this model is flexible and can be managed using pre-set identity providers like Microsoft, Facebook, Google, Twitter, or can be carried out using a custom-made and self-implemented authentication mechanism. \n\nThe choice of method to use depends on the preference of the user, and the perceived ease in the authentication process.\n  \nHere is an example of how you can enable Azure App Service Authentication via the Azure portal:\n\n```markup\n1. In the Azure portal search bar, search for and select 'App Services'.\n2. Choose the name of your App service.\n3. Browse to the 'Settings' section in the left navigation pane and select 'Authentication / Authorization'.\n4. In the 'Authentication / Authorization' pane, switch on the 'App Service Authentication' toggle.\n5. Under 'Action to take when request is not authenticated', Choose 'Log in with Azure Active Directory' or  'Allow anonymous requests (no action) or Log in with \u003cyour preferred identity provider\u003e'.\n6. Click 'Save' button at the top.\n```\n\nThis way, only authenticated users will have access to the app services. \n\nPlease note that this feature does not prevent other types of authorisation checks in your code."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the Azure App Service Authentication can result in the following costs:\n\n1. **Security Risk**: Non-compliance means your API app may be vulnerable to unauthorized access. This could lead to potential data breaches, unauthorized manipulations of data or potential system downtime, leading to compliance issues with data protection regulations, potential lawsuits, and damage to the company's reputation.\n\n2. **Operational Costs**: Non-compliance could result in an increase in the number of security incidents that need to be investigated and remediated. These issues would require additional time and resources to rectify.\n\n3. **Regulatory Fines**: Depending on the industry and geographical location, your organization may be subject to hefty fines or sanctions for non-compliance with data protection and information security regulations.\n\n4. **Loss of Trust**: If unauthorized access leads to customer data being compromised, there could be a significant loss of trust from customers and users, resulting in loss of business.\n\n5. **Financial Loss**: The culminating effect of potential system downtime, regulatory fines, and loss of business could result in substantial financial loss.\n\nTo summarize, not implementing Azure App Service Authentication could expose your organization to a variety of risks and costs, underlining the importance of adhering to this control."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For instance, let's say you run a business that offers financial data analytics services and you have a complex API process in place for your internal teams. The service draws information from various sources, processes it, and delivers high quality, value-added financial data to various client teams. \n\nNow, you might be using Azure App Service to host the API given its scalability, easy deployments, and other benefits. However, you wouldn't want just anyone or any service to call your API. It should be secured and only allowed to be accessed by authenticated clients. \n\nHere's where Azure App Service Authentication comes in. \n\nIt helps you secure your API by enforcing rules that only those requests carrying valid authentication tokens can access your API. This helps in keeping out anonymous or potentially harmful web traffic.\n\nA markdown example for documentation or tutorial can be:\n\n```markdown\n# Securing Our Financial Data API With Azure App Service Authentication\n\nOur Financial Data API is a critical resource that must be secured. Here is how we can use Azure App Service Authentication to achieve this.\n\n1. **Set up Azure App Service Authentication**: Go to the Azure portal, navigate to your App Service, then select the 'Authentication/Authorization' section. \n\n2. **Turn on App Service Authentication**: Once you're in the 'Authentication/Authorization' section, turn 'ON' the 'App Service Authentication' option. \n\n3. **Select an Action to take when a request is not authenticated**: Choose 'Log in with Azure Active Directory'.\n\n4. **Configure Azure Active Directory**: For simplicity, you can use the 'Express' management mode. Click on 'Ok' to save the changes.\n\nAnd that's it! Now, every HTTP request to our API must be authenticated with Azure Active Directory. An unauthenticated request will be redirected to a log on page.\n```\n\nThis way, Azure App Service Authentication manages the entire authentication process, giving you time to focus on your core business logic while ensuring your API remains secure."
     ]
   },
   "Managed": true

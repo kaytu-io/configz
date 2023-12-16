@@ -3,15 +3,16 @@
   "Title": "Network public IPs should use standard SKUs as a minimum",
   "Description": "The use of Basic or Free SKUs in Azure whilst cost effective have significant limitations in terms of what can be monitored and what support can be realized from Microsoft. Typically, these SKU’s do not have a service SLA and Microsoft will usually refuse to provide support for them. Consequently Basic/Free SKUs should never be used for production workloads.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  i.id as resource,\n  i.kaytu_account_id as kaytu_account_id,\n  i.kaytu_resource_id as kaytu_resource_id,\n  case\n    when i.sku_name = 'Basic' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when i.sku_name = 'Basic' then i.title || ' using basic SKU.'\n    else i.title || ' using ' || sku_name || ' SKU.'\n  end as reason\n  \n  , i.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_public_ip as i,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = i.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_public_ip",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_public_ip",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_public_ip",
+    "QueryToExecute": "select\n  i.id as resource,\n  i.kaytu_account_id as kaytu_account_id,\n  i.kaytu_resource_id as kaytu_resource_id,\n  case\n    when i.sku_name = 'Basic' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when i.sku_name = 'Basic' then i.title || ' using basic SKU.'\n    else i.title || ' using ' || sku_name || ' SKU.'\n  end as reason\n  \n  , i.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_public_ip as i,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = i.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
   "Severity": "low",
   "Tags": {
@@ -20,6 +21,15 @@
     ],
     "service": [
       "Azure/Network"
+    ],
+    "x-kaytu-explanation": [
+      "Azure Control is a service provided by Microsoft Corporation that allows businesses to control and manage their apps and services deployed in Azure. It provides various options, also known as SKUs (Stock Keeping Units), for businesses to select the resources they need.\n\nWhen it comes to Azure Control, it offers several SKUs, including Basic and Free, which are more cost-effective but come with limitations. These limitations include limited monitoring capabilities, limited support from Microsoft, and usually missing Service Level Agreement (SLA).\n\nMonitoring capabilities like resource usage metrics, application insights, and log analytics are essential for managing and maintaining the health of your applications and services. Due to these limitations, even though Basic or Free SKUs are cheaper, they can not provide complete functionality and support for handling production-level workload.\n\nIn terms of support, Microsoft does not usually provide any for Basic or Free SKUs. If any issue arises, businesses can't rely on Microsoft's support team.\n\nService Level Agreement (SLA), a commitment between a service provider and client that defines the level and quality of service, is usually missing from Basic or Free SKUs. Thus, they do not have any guarantee of availability or performance from Microsoft.\n\nSo, even though Basic and Free SKUs are more affordable, Microsoft generally advises not to use them for production environments due to their limitations. Instead, businesses should consider more robust SKUs for production workloads to ensure optimal performance and support."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with the Azure control mentioned here could incur several costs. Here's how:\n\n1. **No SLA Guarantee**: Azure SKU's like Basic and Free do not have a guaranteed Service-Level Agreement (SLA). Thus, if any downtime occurs, Microsoft isn't committed to resolving it within a specific time frame, leading to potential interruptions in business operations.\n\n2. **Limited Monitoring Capabilities**: These tiers fall short of advanced monitoring features available in higher tiers. This could lead to potential scalability issues, hindrance in troubleshooting, and cost optimization. The inability to monitor resources effectively could also put data at risk.\n\n3. **No Microsoft Support**: Microsoft generally does not provide support for the Basic/Free SKU's. In the event of a technical issue or a security breach, your organization will need to solve it internally without external support from Microsoft. This could increase resolution time and may require paying for outside expertise.\n\n4. **Performance Issues**: Basic/Free SKU's do not have the same performance capabilities as their more costly counterparts. This could result in slower response times, affecting customer satisfaction and potentially leading to a loss of business.\n\n5. **No Redundancy**: These SKU's often do not support high availability and disaster recovery options, making your application more vulnerable to data loss and downtime.\n\nOverall, while Basic or Free SKUs may seem cost-effective, non-compliance with this control - especially in a production environment - would potentially incur significant costs due to increased downtime, loss of business, loss of data, and increased resolution times for issues. Limitations in these SKUs may cause you to miss out on necessary features and support which can ensure business continuity and customer satisfaction."
+    ],
+    "x-kaytu-usefulness-example": [
+      "```\nFor instance, a small company, XYZ Corp, is starting out their journey on Azure and are still in their development stage. They wish to test their application before full deployment. In such a case, they could utilize the Basic/Free SKU that Microsoft Azure offers. \n\nThis way, they can reduce upfront costs while replicating the desired service on a smaller scale. They would be aware that this SKU does not carry an SLA or offer Microsoft's extensive support. However, for a development or test environment, these may not be necessary. \n\nOnce they are confident with their application and ready for production, they would then switch to a paid plan with the necessary SLA and support coverage for optimal security and performance. Thus, the Basic/Free Azure SKUs in this case provide a cost-effective strategy to get started and try out Azure services before a larger investment. \n```"
     ]
   },
   "Managed": true

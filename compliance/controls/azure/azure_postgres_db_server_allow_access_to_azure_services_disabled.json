@@ -3,15 +3,16 @@
   "Title": "Ensure 'Allow access to Azure services' for PostgreSQL Database Server is disabled",
   "Description": "Disable access from Azure services to PostgreSQL Database Server.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with postgres_db_with_allow_access_to_azure_services as (\n  select\n    id\n  from\n    azure_postgresql_server,\n    jsonb_array_elements(firewall_rules) as r\n  where\n    r -> 'FirewallRuleProperties' ->> 'endIpAddress' = '255.255.255.255'\n    and r -> 'FirewallRuleProperties' ->> 'startIpAddress' = '0.0.0.0'\n)\nselect\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.id is not null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when a.id is not null then s.title || ' does not restrict access to azure services.'\n    else s.title || ' restricts access to azure services.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server as s\n  left join postgres_db_with_allow_access_to_azure_services as a on a.id = s.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_postgresql_server",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_postgresql_server",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_postgresql_server",
+    "QueryToExecute": "with postgres_db_with_allow_access_to_azure_services as (\n  select\n    id\n  from\n    azure_postgresql_server,\n    jsonb_array_elements(firewall_rules) as r\n  where\n    r -\u003e 'FirewallRuleProperties' -\u003e\u003e 'endIpAddress' = '255.255.255.255'\n    and r -\u003e 'FirewallRuleProperties' -\u003e\u003e 'startIpAddress' = '0.0.0.0'\n)\nselect\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.id is not null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when a.id is not null then s.title || ' does not restrict access to azure services.'\n    else s.title || ' restricts access to azure services.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_postgresql_server as s\n  left join postgres_db_with_allow_access_to_azure_services as a on a.id = s.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
   "Severity": "high",
   "Tags": {
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/PostgreSQL"
+    ],
+    "x-kaytu-explanation": [
+      "In Azure, you have the capacity to limit the access to your PostgreSQL Database Server from Azure services. This helps you to exercise further control over the security of your database by ensuring only specific services which you grant permission to can access the database. This Azure control is sometimes necessary when you want to add an extra layer of security to your PostgreSQL Database Server. \n\nBelow is a sample Azure control in markup format:\n\n```json\n{\n  \"type\": \"Microsoft.DBforPostgreSQL/servers\",\n  \"apiVersion\": \"2017-12-01\",\n  \"kind\": \"v1\",\n  \"location\": \"eastus\",\n  \"scale\": null,\n  \"name\": \"[parameters('servers_sakila_name')]\",\n  \"properties\": {\n    \"administratorLogin\": \"pgadmin\",\n    \"administratorLoginPassword\": \"[parameters('servers_sakila_administratorLoginPassword')]\",\n    \"version\": \"9.6\",\n    \"sslEnforcement\": \"Enabled\",\n    \"createMode\": \"Default\",\n    \"storageMB\": \"[parameters('servers_sakila_storageMB')]\",\n    \"publicNetworkAccess\": \"Disabled\"\n  }\n}\n```\n\nIn the above example, you are disabling the access from Azure services to PostgreSQL Database Server by setting `\"publicNetworkAccess\": \"Disabled\"`. This property disables all public network access to the PostgreSQL Database Server, meaning only network interfaces within the same Virtual Network can access the server."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the Azure control of disabling access from Azure services to PostgreSQL database server can lead to the following potential costs:\n\n1. **Security Risks:** Non-compliance can expose your PostgreSQL database to potential access by other Azure services, increasing the risk of unauthorized data access, data breaches, and hence, compromising the integrity and confidentiality of your data.\n\n2. **Regulatory Fines:** If your organization deals with customer data or other sensitive information, non-compliance can lead to violations of data protection laws and regulations such as GDPR, HIPAA, etc. This can result in hefty fines and penalties.\n\n3. **Damage to Reputation:** In case of a data breach, besides direct financial loss, the damage to the company's reputation can have long-lasting impacts. It can lead to loss of client trust, which in turn affects future business.\n\n4. **Operational Inefficiencies:** If Azure services can access the database unnecessarily, it can lead to performance issues, unwanted network traffic, potential data inconsistencies, and data redundancy.\n\n5. **Loss of Business:** All factors combined, if a data breach happens or accessibility to your database is compromised, it could lead to substantial business losses. \n\nIn conclusion, ensuring compliance with this Azure control is crucial for maintaining a secure, efficient, and reliable database system, avoiding unnecessary costs, and complying with data protection regulations."
+    ],
+    "x-kaytu-usefulness-example": [
+      "```markdown\nAs a database administrator, there may be instances where you might want to restrict access from Azure services to your Azure Database for PostgreSQL Server. Here is an instance showcasing the usefulness of disabling access:\n\nImagine you are working in a highly regulated industry such as healthcare or finance where you are dealing with sensitive customer data. The data stored in your PostgreSQL Database Servers should have an additional layer of security to prevent unauthorized access. \n\nAccess can be accidentally granted during the creation of the Azure services with the default setting - allowing Azure services to access the PostgreSQL Database Server. In such a case, you can choose to disable access for Azure services to PostgreSQL Database Server using Azure Control concerned with security. \n\nThis is an especially useful feature for risk mitigation as you can control the security settings in accordance with the industry requirements or the sensitivity of data you handle. It ensures that your data is only accessible to authorized personnel or applications, thereby maintaining data integrity and reducing the risk of potential data breaches.\n```"
     ]
   },
   "Managed": true
