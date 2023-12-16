@@ -3,17 +3,18 @@
   "Title": "Ensure That Microsoft Defender for DNS Is Set To 'On'",
   "Description": "Microsoft Defender for DNS scans all network traffic exiting from within a subscription.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for DNS.'\n    else 'Azure Defender off for DNS.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'Dns';\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_subscription_pricing",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for DNS.'\n    else 'Azure Defender off for DNS.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'Dns';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "AzureControl:\n  Name: Microsoft Defender for DNS\n  Description: Scans all network traffic exiting from within a subscription.\n"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance with Microsoft Defender for DNS could include potential security breaches, data loss, and compromised network integrity. The exact financial impact would depend on the severity and scale of the security incidents that might occur due to inadequate DNS protection.\n\n"
+    ],
+    "x-kaytu-usefulness-example": [
+      "Imagine a scenario where a malicious actor attempts to exfiltrate sensitive data from your organization by exploiting DNS vulnerabilities. Microsoft Defender for DNS, by scanning all network traffic exiting from within a subscription, can detect and prevent such unauthorized data transfers. This ensures the security and integrity of your network, safeguarding against potential data breaches and unauthorized access.\n"
     ]
   },
   "Managed": true

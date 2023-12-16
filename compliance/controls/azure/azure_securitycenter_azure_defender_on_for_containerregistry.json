@@ -3,17 +3,18 @@
   "Title": "Ensure that Azure Defender is set to On for Container Registries",
   "Description": "Turning on Azure Defender enables threat detection for Container Registries, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Container Registry.'\n    else 'Azure Defender off for Container Registry.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'ContainerRegistry';\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_security_center_subscription_pricing",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_security_center_subscription_pricing",
+    "QueryToExecute": "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Container Registry.'\n    else 'Azure Defender off for Container Registry.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'ContainerRegistry';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/SecurityCenter"
+    ],
+    "x-kaytu-explanation": [
+      "The Azure Control mentioned involves activating Azure Defender for Container Registries. This action enhances security by incorporating threat detection mechanisms. The Azure Security Center utilizes threat intelligence, anomaly detection, and behavior analytics to bolster the security posture of Container Registries.\n\n"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance with the Azure Control of enabling Azure Defender for Container Registries can be significant. Without the threat detection and security measures provided by Azure Defender, Container Registries may be more susceptible to various threats. This could lead to potential security breaches, data compromise, and reputational damage. The specific financial impact would depend on the nature and scale of the security incidents that could occur in the absence of compliance.\n\n"
+    ],
+    "x-kaytu-usefulness-example": [
+      "An example instance showcasing the usefulness of enabling Azure Defender for Container Registries is when a malicious actor attempts to exploit vulnerabilities in the registry. Azure Defender, through its threat detection capabilities, identifies the anomalous behavior and potential security threats in real-time. For instance, if an unauthorized user tries to access sensitive container images or if there's an unusual spike in network activity, Azure Defender can promptly alert security teams. This timely detection and response help prevent security breaches, ensuring the integrity and confidentiality of the containerized applications and data in the Azure Security Center.\n\n\n\n\n\n\n"
     ]
   },
   "Managed": true

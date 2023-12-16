@@ -3,17 +3,18 @@
   "Title": "Ensure That ‘Users Can Register Applications’ Is Set to ‘No’ ",
   "Description": "Require administrators or appropriately delegated users to register third-party applications.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.default_user_role_permissions ->> 'allowedToCreateApps' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions ->> 'allowedToCreateApps' = 'false' then a.display_name || ' does not allow user to register applications.'\n    else a.display_name || ' allows user to register applications.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azuread_authorization_policy",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_tenant",
       "azuread_authorization_policy"
-    ]
+    ],
+    "PrimaryTable": "azuread_authorization_policy",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.default_user_role_permissions -\u003e\u003e 'allowedToCreateApps' = 'false' then a.display_name || ' does not allow user to register applications.'\n    else a.display_name || ' allows user to register applications.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  azuread_authorization_policy as a;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": true,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "Azure/ActiveDirectory"
+    ],
+    "x-kaytu-explanation": [
+      "Azure Control: Require Registration of Third-Party Applications\nDescription:\nThis control mandates that administrators or users with appropriate delegation must register third-party applications within the Azure environment.\n\nPurpose:\nThe primary purpose of this control is to enhance security and governance by ensuring that any external applications (third-party) intending to interact with Azure services or resources are explicitly registered and authorized. This registration process allows administrators to manage and monitor the access and activities of these applications, thereby mitigating potential security risks.\n\nImplementation:\nAdministrators or delegated users are responsible for initiating the registration process for third-party applications. This involves providing necessary information and permissions to Azure, allowing the platform to recognize and validate the application's identity and access requirements.\n\nBenefits:\nSecurity: By requiring registration, the organization gains better control over which third-party applications can access Azure resources, reducing the risk of unauthorized access or malicious activities.\n\nGovernance: The control facilitates better governance by maintaining a centralized record of approved third-party applications, enabling effective tracking and management.\n\nCompliance: Registration ensures that the organization complies with regulatory requirements and internal policies related to third-party application usage.\n\nConsiderations:\nDelegation of Responsibilities: Delegated users must be carefully chosen and appropriately trained to ensure responsible and secure management of third-party application registrations.\n\nMonitoring and Auditing: Regular monitoring and auditing of registered applications should be conducted to identify and address any security or compliance issues."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "**Control: Require administrators or appropriately delegated users to register third-party applications.**\n\n*Cost of Non-Compliance:*\n\nNon-compliance with this control can lead to several risks and challenges:\n\n1. **Security Vulnerabilities:** Failure to register third-party applications through proper channels may result in unauthorized applications accessing your Azure AD, leading to potential security vulnerabilities and data breaches.\n\n2. **Unauthorized Access:** Without proper registration, it becomes difficult to monitor and control access to third-party applications, increasing the risk of unauthorized access to sensitive resources.\n\n3. **Compliance Violations:** Many regulatory frameworks and compliance standards require organizations to maintain control over access to their systems and data. Non-compliance may lead to violations of these standards, resulting in legal and financial consequences.\n\n4. **Lack of Visibility:** Proper registration ensures visibility into the applications used within the organization. Non-compliance may result in a lack of insight into the landscape of third-party applications, making it challenging to manage and assess risks effectively.\n\n5. **Audit Failures:** Inability to demonstrate compliance through proper registration may lead to audit failures, impacting the organization's reputation and standing with regulatory bodies.\n\n*Recommended Actions:*\n\nTo mitigate the risks associated with non-compliance, organizations should take the following actions:\n\n1. **Enforce Registration Policies:** Implement and enforce policies that require administrators or appropriately delegated users to register third-party applications through approved channels.\n\n2. **Regular Audits:** Conduct regular audits to ensure compliance with the registration process and identify any unauthorized applications.\n\n3. **Education and Training:** Provide education and training to administrators and users on the importance of registering third-party applications and the associated security implications.\n\n4. **Automated Monitoring:** Implement automated monitoring tools to track application registrations, detect anomalies, and promptly address any unauthorized access.\n\nBy adhering to these recommendations, organizations can enhance their security posture, maintain compliance, and reduce the risks associated with unregistered third-party applications.\n"
+    ],
+    "x-kaytu-usefulness-example": [
+      "**Task: Register Third-Party Applications**\n\nTo enhance security and manage access permissions, administrators or appropriately delegated users must register any third-party applications before they can be used within the system.\n\n1. **Access the Administration Panel:**\n   - Log in to the system with administrator credentials.\n   - Navigate to the Administration Panel.\n\n2. **Navigate to Application Registration:**\n   - In the Administration Panel, locate the \"Application Settings\" or a similar section.\n   - Look for the \"Third-Party Applications\" or \"App Registration\" option.\n\n3. **Complete the Registration Form:**\n   - Click on the \"Register New Application\" or a similar button.\n   - Fill in the required details for the third-party application, including but not limited to:\n      - Application Name\n      - Vendor Information\n      - Access Permissions\n\n4. **Submit and Await Approval:**\n   - Once the registration form is complete, submit it for review and approval.\n   - The system administrators will review the application registration and grant necessary permissions.\n\n**Note:** Unauthorized third-party applications may not be granted access to the system to ensure data security and integrity. It is crucial to adhere to this registration process for seamless integration of external applications.\n"
     ]
   },
   "Managed": true

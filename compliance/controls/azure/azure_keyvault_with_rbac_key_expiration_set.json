@@ -3,18 +3,19 @@
   "Title": "Ensure that the Expiration Date is set for all Keys in RBAC Key Vaults",
   "Description": "Ensure that all Keys in Role Based Access Control (RBAC) Azure Key Vaults have an expiration time set.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with rbac_vault as (\n  select\n    name\n  from\n    azure_key_vault\n  where enable_rbac_authorization\n)\nselect\n  kvk.id as resource,\n  kvk.kaytu_account_id as kaytu_account_id,\n  kvk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.name is null then 'skip'\n    when enabled and expires_at is null then 'alarm'\n    else 'ok'\n  end as status,\n  vault_name || ' key ' || kvk.name ||\n  case\n    when v.name is null then ' not RBAC enabled vault.'\n    when enabled and expires_at is null then ' expiration date not set.'\n    when not enabled then ' disabled.'\n    else ' expiration date set to ' || to_char(expires_at, 'DD-Mon-YYYY') || '.'\n  end as reason\n  \n  , kvk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_key kvk\n  left join rbac_vault as v on v.name = kvk.vault_name,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kvk.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_key_vault_key",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_key_vault",
       "azure_key_vault_key",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_key_vault_key",
+    "QueryToExecute": "with rbac_vault as (\n  select\n    name\n  from\n    azure_key_vault\n  where enable_rbac_authorization\n)\nselect\n  kvk.id as resource,\n  kvk.kaytu_account_id as kaytu_account_id,\n  kvk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.name is null then 'skip'\n    when enabled and expires_at is null then 'alarm'\n    else 'ok'\n  end as status,\n  vault_name || ' key ' || kvk.name ||\n  case\n    when v.name is null then ' not RBAC enabled vault.'\n    when enabled and expires_at is null then ' expiration date not set.'\n    when not enabled then ' disabled.'\n    else ' expiration date set to ' || to_char(expires_at, 'DD-Mon-YYYY') || '.'\n  end as reason\n  \n  , kvk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_key kvk\n  left join rbac_vault as v on v.name = kvk.vault_name,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kvk.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -42,6 +43,15 @@
     ],
     "service": [
       "Azure/KeyVault"
+    ],
+    "x-kaytu-explanation": [
+      "# Azure Control: RBAC Key Vault Key Expiration\n\n## Objective\nEnsure that all keys in Azure Key Vaults, managed through Role-Based Access Control (RBAC), have an expiration time set.\n\n## Description\nWhen managing access to Azure Key Vaults using RBAC, it's crucial to enforce security best practices, including setting expiration times for keys. This helps mitigate the risk associated with long-lived keys and enhances the overall security posture of the Key Vaults.\n\n## Implementation Steps\n1. **Review Existing Keys:**\n   - Identify all keys currently present in the Azure Key Vaults.\n   - Check if each key has an expiration time set.\n\n2. **Set Expiration Time for Keys:**\n   - For keys without an expiration time, set an appropriate expiration period.\n   - Consider the sensitivity of the data and compliance requirements when determining expiration periods.\n\n3. **Use RBAC Policies:**\n   - Leverage RBAC policies to enforce the requirement of setting expiration times for keys.\n   - Define RBAC roles that include the responsibility of managing key expiration.\n\n4. **Regular Audits:**\n   - Establish a regular audit schedule to review and update key expiration times.\n   - Ensure compliance with organizational security policies.\n\n## Example RBAC Policy (Azure CLI):\n```shell\n# Define a custom RBAC role with permissions for managing Key Vault keys and enforcing expiration.\naz role definition create --role-definition '{\n  \"Name\": \"KeyVaultKeyManager\",\n  \"Description\": \"Manage Azure Key Vault keys with expiration\",\n  \"Actions\": [\n    \"Microsoft.KeyVault/keys/write\",\n    \"Microsoft.KeyVault/keys/delete\"\n  ],\n  \"DataActions\": [\n    \"Microsoft.KeyVault/keys/backup\",\n    \"Microsoft.KeyVault/keys/restore\"\n  ],\n  \"AssignableScopes\": [\"/subscriptions/{subscription-id}\"]\n}'\n"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "**Cost of Non-Compliance:**\n\n1. **Security Risks:**\n   - Without expiration times set for keys in RBAC Azure Key Vaults, there is a higher risk of unauthorized access and potential misuse of sensitive data.\n   - Lack of key expiration increases the attack surface, leaving the system vulnerable to malicious activities and unauthorized access.\n\n2. **Regulatory Compliance:**\n   - Non-compliance may lead to violations of regulatory requirements related to data protection and access control.\n   - Regulatory bodies may impose fines and penalties for failing to implement adequate security measures, especially concerning the management of cryptographic keys.\n\n3. **Data Breach Consequences:**\n   - In the event of a data breach, if keys do not have expiration times, it becomes challenging to contain and mitigate the impact promptly.\n   - The organization may face legal consequences, reputation damage, and financial losses due to the exposure of sensitive information.\n\n4. **Audit Failures:**\n   - Failure to set expiration times for keys may result in audit failures, as it demonstrates a lack of adherence to best practices and security standards.\n   - Audit trails and compliance reports may indicate non-compliance, leading to further scrutiny and potential business disruptions.\n\n5. **Operational Disruptions:**\n   - Inadequate key management practices can lead to operational disruptions, as compromised keys may necessitate emergency responses such as key rotation.\n   - Emergency measures can be time-consuming, costly, and may impact normal business operations.\n\n**Recommendation:**\n\nTo mitigate these risks and ensure compliance, it is crucial to regularly review and enforce the setting of expiration times for keys in RBAC Azure Key Vaults. Implementing a robust key management policy and leveraging Azure's built-in features for key lifecycle management can help maintain a secure and compliant environment.\n"
+    ],
+    "x-kaytu-usefulness-example": [
+      "Below is an example instance in markup format for ensuring that all keys in Role-Based Access Control (RBAC) Azure Key Vaults have an expiration time set. This example assumes you are using Azure Policy to enforce this control:\n\njson\n{\n  \"if\": {\n    \"allOf\": [\n      {\n        \"field\": \"type\",\n        \"equals\": \"Microsoft.KeyVault/vaults/keys\"\n      },\n      {\n        \"not\": {\n          \"field\": \"Microsoft.KeyVault/vaults/keys/expires\"\n        }\n      }\n    ]\n  },\n  \"then\": {\n    \"effect\": \"deny\"\n  }\n}\nExplanation:\n\nThe condition checks if the resource type is a Key in a Key Vault (Microsoft.KeyVault/vaults/keys).\nIt then checks if the key does not have an expiration time set (Microsoft.KeyVault/vaults/keys/expires).\nIf both conditions are met, the policy denies the action, ensuring that all keys have an expiration time set.\nNote: Azure Policy supports JSON format for defining policies. You can apply this policy to your Azure environment to enforce the specified control. Adjustments may be necessary based on your specific requirements and environment."
     ]
   },
   "Managed": true

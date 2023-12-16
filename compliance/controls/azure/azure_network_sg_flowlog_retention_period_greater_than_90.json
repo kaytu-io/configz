@@ -3,18 +3,19 @@
   "Title": "Ensure that Network Security Group Flow Log retention period is 'greater than 90 days'",
   "Description": "Network Security Group Flow Logs should be enabled and the retention period is set to greater than or equal to 90 days.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  sg.id resource,\n  sg.kaytu_account_id as kaytu_account_id,\n  sg.kaytu_resource_id as kaytu_resource_id,\n  case\n    when fl.id is null or not fl.enabled or fl.retention_policy_days < 90 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when fl.id is null or not fl.enabled\n      then sg.name || ' flowlog not enabled.'\n    when fl.retention_policy_days < 90\n      then sg.name || ' flowlog ' || fl.title || ' retention period is less than 90 days.'\n    else sg.name || ' flowlog ' || fl.title || ' retention period is ' || fl.retention_policy_days || ' days.'\n  end as reason\n  \n  , sg.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_network_security_group sg\n  left join azure_network_watcher_flow_log fl on sg.id = fl.target_resource_id\n  join azure_subscription sub on sub.subscription_id = sg.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_network_security_group",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_network_security_group",
       "azure_network_watcher_flow_log",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_network_security_group",
+    "QueryToExecute": "select\n  sg.id resource,\n  sg.kaytu_account_id as kaytu_account_id,\n  sg.kaytu_resource_id as kaytu_resource_id,\n  case\n    when fl.id is null or not fl.enabled or fl.retention_policy_days \u003c 90 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when fl.id is null or not fl.enabled\n      then sg.name || ' flowlog not enabled.'\n    when fl.retention_policy_days \u003c 90\n      then sg.name || ' flowlog ' || fl.title || ' retention period is less than 90 days.'\n    else sg.name || ' flowlog ' || fl.title || ' retention period is ' || fl.retention_policy_days || ' days.'\n  end as reason\n  \n  , sg.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_network_security_group sg\n  left join azure_network_watcher_flow_log fl on sg.id = fl.target_resource_id\n  join azure_subscription sub on sub.subscription_id = sg.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -42,6 +43,15 @@
     ],
     "service": [
       "Azure/Network"
+    ],
+    "x-kaytu-explanation": [
+      "To define the Azure Control in markup format, you can use Azure Policy definitions. Here's an example in Azure Policy Definition Markup Language (JSON):\n\njson\n\n{\n  \"mode\": \"All\",\n  \"policyRule\": {\n    \"if\": {\n      \"allOf\": [\n        {\n          \"field\": \"type\",\n          \"equals\": \"Microsoft.Network/networkSecurityGroups\"\n        },\n        {\n          \"not\": {\n            \"field\": \"Microsoft.Network/networkSecurityGroups/flowLogs.retentionDays\",\n            \"greaterOrEquals\": 90\n          }\n        }\n      ]\n    },\n    \"then\": {\n      \"effect\": \"audit\"\n    }\n  },\n  \"parameters\": {}\n}\nThis example represents an Azure Policy that ensures Network Security Group Flow Logs have a retention period greater than or equal to 90 days. The mode specifies the enforcement mode, and the policyRule defines the conditions and actions."
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance with the specified Azure Control could include potential security vulnerabilities, regulatory fines, and reputational damage. Failing to enable Network Security Group Flow Logs or maintaining a retention period less than 90 days may lead to inadequate monitoring and forensic capabilities, making it harder to detect and respond to security incidents. Additionally, non-compliance with industry or organizational regulations could result in financial penalties and a tarnished business image."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Consider a scenario where an organization experiences a security incident involving a compromised system. With Network Security Group Flow Logs enabled and a retention period of at least 90 days, the security team can thoroughly investigate the incident. They can trace network traffic, identify the source and impact of the compromise, and determine the extent of unauthorized access. This detailed historical data is crucial for forensic analysis, aiding in the development of effective response strategies and mitigating future security risks."
     ]
   },
   "Managed": true

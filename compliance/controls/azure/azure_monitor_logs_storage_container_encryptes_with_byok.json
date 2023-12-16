@@ -3,18 +3,19 @@
   "Title": "Ensure the storage account containing the container with activity logs is encrypted with BYOK (Use Your Own Key)",
   "Description": "The storage account with the activity log export container is configured to use BYOK (Use Your Own Key).",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault'\n      then a.name || ' container insights-operational-logs encrypted with BYOK.'\n    else a.name || ' container insights-operational-logs not encrypted with BYOK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container c,\n  azure_storage_account a,\n  azure_subscription sub\nwhere\n  c.name = 'insights-operational-logs'\n  and c.account_name = a.name\n  and sub.subscription_id = a.subscription_id;\n",
     "Connector": "Azure",
-    "PrimaryTable": "azure_storage_account",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "azure_storage_container",
       "azure_storage_account",
       "azure_subscription"
-    ]
+    ],
+    "PrimaryTable": "azure_storage_account",
+    "QueryToExecute": "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.encryption_key_source = 'Microsoft.Keyvault'\n      then a.name || ' container insights-operational-logs encrypted with BYOK.'\n    else a.name || ' container insights-operational-logs not encrypted with BYOK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_container c,\n  azure_storage_account a,\n  azure_subscription sub\nwhere\n  c.name = 'insights-operational-logs'\n  and c.account_name = a.name\n  and sub.subscription_id = a.subscription_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "medium",
   "Tags": {
     "category": [
       "Compliance"
@@ -42,6 +43,15 @@
     ],
     "service": [
       "Azure/Monitor"
+    ],
+    "x-kaytu-explanation": [
+      "# Azure Control Description\n\n## Storage Account Configuration\n\nThe Azure storage account in question has been configured with a specific feature related to activity log export.\n\n## Activity Log Export Container\n\nWithin the storage account, there is a designated container responsible for storing activity logs. Activity logs typically contain information about operations that were performed on Azure resources.\n\n## BYOK Configuration\n\nThe storage account is set up to utilize BYOK, which stands for \"Use Your Own Key.\" This implies that the customer has chosen to manage and control the encryption keys used for securing their data stored in Azure. BYOK allows users to bring and manage their own encryption keys rather than relying on keys managed by Azure.\n\nThis added layer of security ensures that the customer retains control over their encryption keys, providing an extra level of confidence in the protection of sensitive data within the Azure environment.\n\n"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "**Azure Control: Storage Account Activity Log Export with BYOK**\n\n<details>\n<summary>**Non-Compliance Cost Explanation**</summary>\n\n1. **Security Risks:** Failure to configure the storage account with the activity log export container to use BYOK exposes sensitive data to potential security risks. Without using Your Own Key (BYOK), the data may be more vulnerable to unauthorized access or data breaches.\n\n2. **Regulatory Compliance Violation:** Many industries and regions have strict regulations regarding data protection and encryption standards. Non-compliance with BYOK may result in violating these regulations, leading to legal consequences, fines, or other regulatory actions.\n\n3. **Limited Control Over Encryption:** Without BYOK, the organization has limited control over the encryption keys used to protect the exported activity logs. BYOK provides an added layer of control, allowing organizations to manage and rotate their own keys, enhancing overall data security.\n\n4. **Loss of Trust:** Inability to meet industry standards and best practices for encryption can erode trust with customers, partners, and stakeholders. Compliance with security measures like BYOK is often seen as a commitment to data protection and can positively impact the organization's reputation.\n\n5. **Audit Trail Challenges:** BYOK helps in maintaining a comprehensive audit trail by ensuring that key management activities are logged and monitored. Non-compliance may result in challenges in tracking and auditing key-related events, impacting the ability to investigate security incidents effectively.\n\n</details>\n"
+    ],
+    "x-kaytu-usefulness-example": [
+      "## Usefulness of Azure Control: Storage Account with Activity Log Export Container and BYOK Configuration\n\n### Control Description:\n\nThe Azure control in focus involves configuring a storage account with an activity log export container to use BYOK (Use Your Own Key). BYOK allows users to enhance the security of their storage accounts by utilizing their own encryption keys, providing an additional layer of control over data access and protection.\n\n### Example Use Case:\n\nConsider a scenario where an organization handles sensitive data in their Azure storage account, and compliance requirements mandate strict control over encryption keys. In such a case, configuring the storage account to use BYOK becomes crucial for meeting security and compliance standards.\n\n#### Steps to Implement:\n\n1. **Create a Key Vault:**\n   - Establish a Key Vault in Azure to securely store and manage encryption keys.\n\n2. **Generate Encryption Key:**\n   - Generate an encryption key within the Key Vault. This key will be used to encrypt and decrypt data in the storage account.\n\n3. **Configure Storage Account:**\n   - Link the storage account to the Key Vault.\n   - Enable BYOK for the storage account, specifying the encryption key from the Key Vault for data protection.\n\n4. **Activity Log Export:**\n   - Set up an activity log export container within the storage account to capture relevant activity logs for auditing and analysis.\n\n### Benefits:\n\n1. **Enhanced Security:**\n   - BYOK ensures that the organization retains control over encryption keys, mitigating the risk of unauthorized access to sensitive data.\n\n2. **Compliance Adherence:**\n   - Meeting regulatory requirements becomes more straightforward as the organization can demonstrate a higher level of control over data encryption.\n\n3. **Auditing Capabilities:**\n   - The activity log export container allows the organization to maintain comprehensive logs of actions within the storage account, aiding in forensic analysis and compliance audits.\n\n### Conclusion:\n\nThe configuration of a storage account with an activity log export container using BYOK is a best practice for organizations that prioritize data security, compliance, and robust auditing capabilities. This Azure control provides a strategic approach to safeguarding sensitive information and ensuring the integrity of storage operations.\n"
     ]
   },
   "Managed": true
