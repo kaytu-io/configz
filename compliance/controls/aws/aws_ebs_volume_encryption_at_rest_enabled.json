@@ -3,16 +3,17 @@
   "Title": "EBS volume encryption at rest should be enabled",
   "Description": "Because sensitive data can exist and to help protect data at rest, ensure encryption is enabled for your Amazon Elastic Block Store (Amazon EBS) volumes.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when encrypted then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encrypted then volume_id || ' encrypted.'\n    else volume_id || ' not encrypted.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_volume;\n",
     "Connector": "AWS",
-    "PrimaryTable": "aws_ebs_volume",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "aws_ebs_volume"
-    ]
+    ],
+    "PrimaryTable": "aws_ebs_volume",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when encrypted then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encrypted then volume_id || ' encrypted.'\n    else volume_id || ' not encrypted.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_volume;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -37,6 +38,15 @@
     ],
     "service": [
       "AWS/EBS"
+    ],
+    "x-kaytu-explanation": [
+      "# AWS Control: Encryption for Amazon Elastic Block Store (Amazon EBS) volumes \n\n**Overview**\n\nData protection is a vital aspect of information security. In the cloud, sensitive data may exist in various forms and at different stages: **DATA AT REST** is one such stage. Therefore, as part of best practices in securing this data to maintain confidentiality and integrity, it is crucial to **Enable Encryption for your Amazon Elastic Block Store (Amazon EBS) volumes**.\n\n## Amazon Elastic Block Store (Amazon EBS)\n\nAmazon EBS provides raw block-level storage that can be attached to Amazon EC2 instances and is used by applications requiring access to fine-tuned storage. \n\n## Why Encryption?\n\nEncryption aims to secure your data by transforming it into an unreadable format except for those who possess the decryption key. This means, if an unauthorized party gains access to the encrypted data, they would not be able to understand or use the information.\n\n## Encrypting Amazon EBS volumes\n\nAmazon EBS supports encryption of the volume, offering seamless encryption of data at rest, data in transit between an instance and its attached volume, and all snapshots created from the volume.  \n\nTo ensure the security of your sensitive data, **it is highly recommended to enable the encryption for your Amazon EBS volumes.**\n\n---\n\nTo add an extra layer of security and enhance data protection, follow the AWS recommended best practices to enable encryption for your Amazon Elastic Block Store (Amazon EBS) volumes. \n\nAlways remember — Protecting your data should be a priority!"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "The cost of non-compliance to this AWS control can be quite significant, and it manifests in several ways:\n\n1. **Data Breach and Loss**: If your Amazon EBS volumes are not encrypted, it may put your sensitive data at risk of being accessed by unauthorized individuals. This can lead to data breaches, where sensitive information such as personal data, customer data, financial data, etc., can be stolen and misused. The cost of a data breach can be enormous, both in terms of financial penalties, credit monitoring services for affected customers, and cost of remediation.\n\n2. **Non-compliance Penalties**: Failing to encrypt EBS volumes can result in violation of various regulations and standards, such as the General Data Protection Regulation (GDPR), the Payment Card Industry Data Security Standard (PCI DSS), and the Health Insurance Portability and Accountability Act (HIPAA). Non-compliance with these regulations can lead to hefty fines and penalties.\n\n3. **Reputation Damage**: Data breaches and non-compliance can severely harm a company's reputation, leading to loss of trust from customers and stakeholders. This can also translate into loss of business, decreased revenues, and in some cases, legal action.\n\n4. **Audit Failures**: Non-encrypted EBS volumes will likely lead to an organization failing IT audits carried out internally, by customers or third-party auditors. This can lead to loss of certification and the need for time-consuming and costly remediation efforts.\n\n5. **Loss of Intellectual Property**: Companies stand to lose their intellectual property if data is not encrypted and a breach occurs.\n\nTherefore, enabling encryption for your Amazon EBS volumes is not just a good practice but a requirement that provides a crucial line of defense for protecting your data and meeting compliance requirements."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Instance: \n\nIn an e-commerce retail business, all the customer-related data like personal details, credit card information, shopping history, etc. are stored on the Amazon EBS volumes. As this is sensitive data, it can be used for malicious purposes if not secured properly. By enabling encryption, the data is safeguarded even if unauthorized access to the storage volumes occurs. Not only can this prevent information leaks and potential breaches, but it also increases customer trust in the company's commitment to privacy and security. Additionally, enabling encryption on EBS volumes is also compliant with data protection regulations, such as GDPR, helping businesses avoid fines and legal issues."
     ]
   },
   "Managed": true
