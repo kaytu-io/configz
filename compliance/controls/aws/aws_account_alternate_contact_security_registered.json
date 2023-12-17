@@ -3,17 +3,18 @@
   "Title": "Ensure security contact information is registered",
   "Description": "AWS provides customers with the option of specifying the contact information for account's security team. It is recommended that this information be provided.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with alternate_security_contact as (\n  select\n    name,\n    account_id\n  from\n    aws_account_alternate_contact\n  where\n    contact_type = 'SECURITY'\n)\nselect\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.partition = 'aws-us-gov' then 'info'\n    -- Name is a required field if setting a security contact\n    when c.name is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.partition = 'aws-us-gov' then a.title || ' in GovCloud, manual verification required.'\n    when c.name is not null then a.title || ' has security contact ' || c.name || ' registered.'\n    else a.title || ' security contact not registered.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join alternate_security_contact as c on c.account_id = a.account_id;\n",
     "Connector": "AWS",
-    "PrimaryTable": "aws_account",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "aws_account",
       "aws_account_alternate_contact"
-    ]
+    ],
+    "PrimaryTable": "aws_account",
+    "QueryToExecute": "with alternate_security_contact as (\n  select\n    name,\n    account_id\n  from\n    aws_account_alternate_contact\n  where\n    contact_type = 'SECURITY'\n)\nselect\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.partition = 'aws-us-gov' then 'info'\n    -- Name is a required field if setting a security contact\n    when c.name is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.partition = 'aws-us-gov' then a.title || ' in GovCloud, manual verification required.'\n    when c.name is not null then a.title || ' has security contact ' || c.name || ' registered.'\n    else a.title || ' security contact not registered.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join alternate_security_contact as c on c.account_id = a.account_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "AWS/IAM"
+    ],
+    "x-kaytu-explanation": [
+      "```markdown\n# AWS Control: Security Team Contact Information\n\nAWS provides a useful control for enhancing account's security: The contact information input for the Security Team. This feature allows customers to specify the contact information for the account's security team.\n\nIt is highly recommended for customers to use this feature and provide accurate contact details. In any security-related scenarios, AWS can readily contact the specified team, ensuring fast and smooth communication which could be crucial for resolving any potential problems.\n\nWhile AWS has robust security protocols in place, the security team contact feature fosters enhanced collaboration between AWS and the customer's security team, contributing to the overall security protocol and incident resolution speed.\n```"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with this AWS control could result in the following potential costs:\n\n1. **Delayed Incident Response**: The time taken to resolve security incidents may increase significantly if AWS has no contact point to rapidly inform about detected security issues. This could lead to breached data remaining exposed for long periods, leading to possible data and financial loss.\n\n2. **Increased Risk**: Lack of contact information would mean AWS is not able to notify your security team about potential vulnerabilities, threats, or breaches. This poses a higher risk to your company's data and could lead to major breaches.\n\n3. **Extended Downtime**: Anomaly alerts or suspected security incidents, if not addressed promptly, could lead to extended downtimes. If AWS is unable to contact you or your security team, it might take longer to resolve these issues. This downtime has potential revenue implications, again adding to the cost. \n\n4. **Legal and Regulatory Costs**: Depending on the industry you are in or the type of data you work with, you could be subject to various laws and regulations. With no immediate point of contact, any security issues could result in non-compliance with laws and regulations, resulting in potential legal costs, penalties, and fines. \n\n5. **Reputational Damage**: If your company is seen as not being responsive to security issues or impacts customers due to longer resolution times, it could result in reputational damage. This could translate to a potential loss of business as customers could be reluctant to trust your services.\n\n6. **Loss of Business Opportunities**: If you are unresponsive or slow to react to security issues, it could undermine your clients' trust and discourage potential business partners from associating with you.\n\nIn conclusion, providing contact information is a simple step that could prevent many potential complications and costs related to your security compliance."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For example, a large organization is using multiple AWS accounts for various departments and projects. One of these accounts is suspected of unusual activities indicating a potential security breach. \n\nAWS security team, through their routine surveillance, identify these activities as potential threats. However, they need more details about the particular activities of the account to determine if they are indeed threats or permissible operations.\n\nBut, without any contact information for the account security team, AWS security will not be able to reach out to verify the issue, leading to delay in treatment and potentially causing damage if it was an actual threat. \n\nBy specifying the contact details of the account's security team, AWS security can quickly get in touch with the right personnel to discuss, verify and rectify the issue immediately. This provides a quicker, more efficient response to any potential security threats, thereby reducing the risk and impact of security breaches."
     ]
   },
   "Managed": true

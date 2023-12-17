@@ -3,16 +3,17 @@
   "Title": "VPC default security group should not allow inbound and outbound traffic",
   "Description": "Amazon Elastic Compute Cloud (Amazon EC2) security groups can help in the management of network access by providing stateful filtering of ingress and egress network traffic to AWS resources.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when jsonb_array_length(ip_permissions) = 0 and jsonb_array_length(ip_permissions_egress) = 0 then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when jsonb_array_length(ip_permissions) > 0 and jsonb_array_length(ip_permissions_egress) > 0\n      then 'Default security group ' || group_id || ' has inbound and outbound rules.'\n    when jsonb_array_length(ip_permissions) > 0 and jsonb_array_length(ip_permissions_egress) = 0\n      then 'Default security group ' || group_id || ' has inbound rules.'\n    when jsonb_array_length(ip_permissions) = 0 and jsonb_array_length(ip_permissions_egress) > 0\n      then 'Default security group ' || group_id || ' has outbound rules.'\n    else 'Default security group ' || group_id || ' has no inbound or outbound rules.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_vpc_security_group\nwhere\n  group_name = 'default';\n",
     "Connector": "AWS",
-    "PrimaryTable": "aws_vpc_security_group",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "aws_vpc_security_group"
-    ]
+    ],
+    "PrimaryTable": "aws_vpc_security_group",
+    "QueryToExecute": "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when jsonb_array_length(ip_permissions) = 0 and jsonb_array_length(ip_permissions_egress) = 0 then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when jsonb_array_length(ip_permissions) \u003e 0 and jsonb_array_length(ip_permissions_egress) \u003e 0\n      then 'Default security group ' || group_id || ' has inbound and outbound rules.'\n    when jsonb_array_length(ip_permissions) \u003e 0 and jsonb_array_length(ip_permissions_egress) = 0\n      then 'Default security group ' || group_id || ' has inbound rules.'\n    when jsonb_array_length(ip_permissions) = 0 and jsonb_array_length(ip_permissions_egress) \u003e 0\n      then 'Default security group ' || group_id || ' has outbound rules.'\n    else 'Default security group ' || group_id || ' has no inbound or outbound rules.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_vpc_security_group\nwhere\n  group_name = 'default';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -64,6 +65,15 @@
     ],
     "soc_2": [
       "true"
+    ],
+    "x-kaytu-explanation": [
+      "```markdown\n# Amazon Elastic Compute Cloud (Amazon EC2) Security Groups\n\nAmazon EC2 security groups function as a virtual firewall to control network accessibility to an EC2 instances. It allows you to set up rules that enable stateful filtering of ingress (incoming) and egress (outgoing) network traffic to AWS resources. \n\n- **Stateful Filtering:** Indicates that any changes in outbound responses/guidelines are automatically applied to the inbound rules. This means if you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules and vice versa.\n  \n- **Ingress Traffic:** Refers to all incoming network traffic or data that is directed towards your EC2 instance.\n  \n- **Egress Traffic:** Refers to all outgoing network traffic or data that is being sent from your EC2 instance.\n\nThrough these security groups, you can manage network access by stipulating which traffic is allowed to reach the instances. You can configure separate rules for different types of traffic, making it an effective and versatile protective barrier for AWS resources.\n  \nBy using Amazon EC2 security groups, it greatly enhances the potential of your network security management on AWS, offering a customizable and flexible solution to secure your cloud resources.\n\n```"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the AWS control - Amazon EC2 security groups management can lead to several costs:\n\n1. **Data Breaches**: Amazon EC2 security groups are essentially virtual firewalls for your instances which control inbound and outbound traffic. Non-compliance can result in unauthorized access, leading to potential data breaches. This may involve financial costs due to potential legal proceedings, fines, and damage to customer trust.\n\n2. **System Compromise**: If the EC2 instances are inadequately protected, it could lead to system tampering or injection of malware into the network by malicious parties. \n\n3. **Service Unavailability**: In the case of non-compliance, an attacker can potentially exploit vulnerabilities, which can cause a disruption in your services. This could lead to both a loss in productivity, customer dissatisfaction and potential loss in revenue.\n\n4. **Non-compliance Fines**: Non-compliance with data protection standards like the General Data Protection Regulation (GDPR) can lead to substantial financial penalties.\n\n5. **Increased Costs**: Without proper security measures in place, organizations have an increased risk of security incidents, which result in significant costs associated with incidence response and system recovery.\n\n6. **Reputation Damage**: A security breach resulting from non-compliance can have severe reputational damage, affecting customer trust and overall business health.\n\nTo prevent these costs, it is essential that organizations ensure appropriate configuration of Amazon EC2 security groups, minimizing the exposure of their AWS resources to potential threats."
+    ],
+    "x-kaytu-usefulness-example": [
+      "For example, assume you manage a web application hosted on Amazon EC2 instances. Your use case requires that only your internal team should have SSH access, and only external users should have HTTP and HTTPS access.\n\nIn this scenario, you can create the following security groups (SGs) for the EC2 instances supporting your web application:\n\n```\n1. **Security Group for SSH (SG-SSH)**: This SG can be attached to EC2 instances which the internal team needs to access.\n    - Ingress Rule: Allow TCP traffic on port 22 (SSH) from the IP addresses of your internal team.\n    - Egress Rule: Allow all traffic.\n\n2. **Security Group for Web Access (SG-WEB)**: This SG can be attached to the EC2 instances of your web application.\n    - Ingress Rule: Allow TCP traffic on port 80 (HTTP) and 443 (HTTPS) from anywhere (0.0.0.0/0 and ::/0).\n    - Egress Rule: Allow all traffic.\n```\n\nBy configuring the above security groups, you limit access to your resources based on the principle of least privilege. This configuration prevents unauthorized SSH access to your instances and restricts web access only to necessary protocols (HTTP and HTTPS).\n\nIn this instance, Amazon EC2 security groups are working as a firewall controlling the traffic in and out of your EC2 instances, helping you ensure your AWS resources are protected from unwanted access or potential attacks."
     ]
   },
   "Managed": true

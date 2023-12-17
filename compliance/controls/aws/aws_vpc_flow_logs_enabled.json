@@ -3,17 +3,18 @@
   "Title": "VPC flow logs should be enabled",
   "Description": "The VPC flow logs provide detailed records for information about the IP traffic going to and from network interfaces in your Amazon Virtual Private Cloud (Amazon VPC.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  distinct v.arn as resource,\n  v.kaytu_account_id as kaytu_account_id,\n  v.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.account_id <> v.owner_id then 'skip'\n    when f.resource_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when v.account_id <> v.owner_id then vpc_id || ' is a shared VPC.'\n    when f.resource_id is not null then vpc_id || ' flow logging enabled.'\n    else vpc_id || ' flow logging disabled.'\n  end as reason\n  \n  , v.region, v.account_id\nfrom\n  aws_vpc as v\n  left join aws_vpc_flow_log as f on v.vpc_id = f.resource_id;\n",
     "Connector": "AWS",
-    "PrimaryTable": "aws_vpc",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "aws_vpc",
       "aws_vpc_flow_log"
-    ]
+    ],
+    "PrimaryTable": "aws_vpc",
+    "QueryToExecute": "select\n  distinct v.arn as resource,\n  v.kaytu_account_id as kaytu_account_id,\n  v.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.account_id \u003c\u003e v.owner_id then 'skip'\n    when f.resource_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when v.account_id \u003c\u003e v.owner_id then vpc_id || ' is a shared VPC.'\n    when f.resource_id is not null then vpc_id || ' flow logging enabled.'\n    else vpc_id || ' flow logging disabled.'\n  end as reason\n  \n  , v.region, v.account_id\nfrom\n  aws_vpc as v\n  left join aws_vpc_flow_log as f on v.vpc_id = f.resource_id;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "low",
   "Tags": {
     "category": [
       "Compliance"
@@ -71,6 +72,15 @@
     ],
     "soc_2": [
       "true"
+    ],
+    "x-kaytu-explanation": [
+      "# VPC Flow Logs in AWS\n\n## Overview\n\nAmazon VPC Flow Logs is a service that monitors and delivers logs of all the IP traffic (i.e., accepted and rejected traffic) going to and from network interfaces in an Amazon VPC.\n\n## Features\n\n- **Log Data**: VPC Flow Logs provide data such as source IP, destination IP, source port, destination port, protocol, number of packets, and number of bytes for each flow.\n\n- **Traffic Insights**: The service enables the user to understand which traffic is being accepted and rejected in their VPC, thus helping in network troubleshooting and understanding bandwidth usage.\n\n- **Flexible Configuration**: VPC Flow Logs can be created at different levels such as VPC level, subnet level or network interface level, providing flexibility based on monitoring requirements. Also, traffic can be filtered to log only accepted traffic, only rejected traffic, or all traffic.\n\n- **Integration with other AWS Services**: The logged data can be stored in Amazon S3 or Amazon CloudWatch Logs for storage, analysis, or use in other AWS services.\n\n*Note: Amazon VPC Flow Logs is not a free service and costs are applicable based on usage.*\n\n## Example Usage\n\nBy using VPC Flow Logs, system administrators and security personnel can monitor and analyze traffic patterns, identify anomalies, troubleshoot network issues, and ensure compliance with security policies. For instance, VPC Flow Logs can help diagnose excessively restrictive security group rules that prevent certain traffic from reaching the instances.\n\n```markdown\n- Service: **VPC Flow Logs**\n- Provider: **Amazon Web Services (AWS)**\n- Function: **IP Traffic Logging in Amazon VPC**\n```\n\nFor detailed specifications and pricing, visit the [official AWS VPC Flow Logs documentation](https://aws.amazon.com/vpc/).\n"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to the AWS control of maintaining VPC Flow Logs can result in several costs to a business:\n\n**1. Increased Security Risk:**\n\nWithout VPC flow logs, you may not be aware of all the IP traffic entering and exiting your network interfaces. This means you could miss out on detecting potential malicious activity, such as unauthorized access or data breaches. The cost of such security incidents can be substantial, in terms of both financial and reputational damage.\n\n**2. Troubleshooting Delays:**\n\nVPC flow logs are crucial for troubleshooting network issues. Without them, resolving performance issues or connectivity problems can take a lot longer, leading to downtime cost. \n\n**3. Audit Failure:**\n\nFor certain industries or businesses, maintaining VPC flow logs may be required for compliance with internal policies or external regulations. Failure to comply could result in failing an audit, leading to penalties, revocation of licenses, or other punitive actions.\n\n**4. Loss of Customer Trust:**\n\nIf a security incident occurs and it is found that VPC flow logs were not maintained, this could damage the business's reputation and result in loss of customer trust.\n\n**5. Legal and Reparation Costs:**\n\nIn extreme cases, failure to maintain VPC flow logs could be seen as negligence, particularly if this allows a security incident to take place that could have been prevented or mitigated. Legal costs and reparations can be significant. \n\nIn conclusion, non-compliance with this AWS control can have significant financial and reputational costs for a business. It is important that businesses ensure they comply with all such best practices to protect themselves."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Instance: \n\nA tech company maintains a complex network architecture with numerous VPCs to segment their various services. Over time, they have scaled their operations and various resources, which has resulted in increased IP traffic. Recently, they have noticed unusual spikes in network activity during non-peak hours. \n\nTo diagnose the issue, their networking team enables VPC Flow Logs in Amazon VPC. After monitoring for a certain period, they utilise these complex information logs to trace the patterns for network anomalies. They are able to identify the certain IP addresses triggering high traffic, and recognize it as a potential security threat. \n\nIn this case, the company was able to use the VPC Flow Logs to track its network traffic patterns, identify the irregularities, and secure their systems. This example highlights how VPC Flow Logs can be useful in diagnosing network issues and providing actionable security insights."
     ]
   },
   "Managed": true
