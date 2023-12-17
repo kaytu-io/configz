@@ -3,17 +3,18 @@
   "Title": "IAM root user hardware MFA should be enabled",
   "Description": "Manage access to resources in the AWS Cloud by ensuring hardware MFA is enabled for the root user.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "select\n  'arn:' || s.partition || ':::' || s.account_id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when account_mfa_enabled and serial_number is null then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when account_mfa_enabled = false then  'MFA not enabled for root account.'\n    when serial_number is not null then 'MFA enabled for root account, but the MFA associated is a virtual device.'\n    else 'Hardware MFA device enabled for root account.'\n  end reason\n  , s.account_id\nfrom\n  aws_iam_account_summary as s\n  left join aws_iam_virtual_mfa_device on serial_number = 'arn:' || s.partition || ':iam::' || s.account_id || ':mfa/root-account-mfa-device';\n",
     "Connector": "AWS",
-    "PrimaryTable": "aws_iam_account_summary",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "aws_iam_account_summary",
       "aws_iam_virtual_mfa_device"
-    ]
+    ],
+    "PrimaryTable": "aws_iam_account_summary",
+    "QueryToExecute": "select\n  'arn:' || s.partition || ':::' || s.account_id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when account_mfa_enabled and serial_number is null then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when account_mfa_enabled = false then  'MFA not enabled for root account.'\n    when serial_number is not null then 'MFA enabled for root account, but the MFA associated is a virtual device.'\n    else 'Hardware MFA device enabled for root account.'\n  end reason\n  , s.account_id\nfrom\n  aws_iam_account_summary as s\n  left join aws_iam_virtual_mfa_device on serial_number = 'arn:' || s.partition || ':iam::' || s.account_id || ':mfa/root-account-mfa-device';\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -68,6 +69,15 @@
     ],
     "soc_2": [
       "true"
+    ],
+    "x-kaytu-explanation": [
+      "```markdown\n# AWS Control: Enabling Hardware MFA For Root User\n\n**Amazon Web Services (AWS)** allows you to manage access to resources in the cloud. The control of access to these resources can be amplified by enabling the Hardware Multi-Factor Authentication (MFA) for the root user. \n\n## What is MFA?\n\nMFA is **Multi-Factor Authentication** that works as an added layer to user/identity validation. This security system requires more than one method of authentication from independent categories of credentials, which implies the user will present two or more evidence for authentication. \n\n## Importance of MFA for Root User \n\nThe **root user** account is the account used to set up your AWS environment and has complete access to all resources in your AWS account. Considering the level of access, securing the root user account is of paramount importance to prevent unauthorized access or potential security breaches.\n\nEnabling MFA for the root user adds an extra security layer. After providing your username and password, AWS requires you to provide additional authentication information from a hardware MFA device before giving access.\n\n## How to Enable MFA? \n\n1. Sign in to the AWS Management Console as the root user.\n2. Go to [the security credentials page](https://console.aws.amazon.com/iam/home?#/security_credentials).\n3. Click on **Activate MFA** under the MFA section.\n4. Follow the on-screen instructions to enable the MFA Device.\n\nThis AWS Control safeguards your AWS resources by enforcing the use of hardware MFA devices, which significantly enhances the security of your AWS account.\n```"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance to AWS control of managing access to resources by ensuring hardware multi-factor authentication (MFA) is enabled for the root user can result in significant costs.\n\n1. **Security Risks**: Failing to enable MFA is a major security risk. If the root account is compromised, it could lead to unauthorized access to your AWS resources. The unauthorized user could potentially delete, alter, or misuse your sensitive data.\n\n2. **Financial Costs**: Unauthorized access to your AWS resources may lead to unwanted usage or manipulation of your resources, leading to unnecessary cost increases. In worst case scenarios, a malicious user could potentially use your AWS resources to carry out costly activities.\n\n3. **Reputation Damage**: A security breach due to non-compliance can lead to severe reputation damage. It could affect customer trust and result in potential loss of business.\n\n4. **Regulatory Penalties**: In certain industries and regions, non-compliance with security controls such as MFA might attract heavy fines and penalties by regulatory authorities.\n\n5. **Data Loss**: Non-compliance can lead to loss of critical and sensitive data due to unauthorized access, which could potentially lead to business disruption, financial loss, and legal consequences.\n\nTherefore, non-compliance to this policy not only potentially threatens the security of the AWS cloud environment but has financial, regulatory, and reputational cost implications."
+    ],
+    "x-kaytu-usefulness-example": [
+      "AWS control \"Manage access to resources in the AWS Cloud by ensuring hardware MFA is enabled for the root user\" is very useful in numerous instances. Here are a few examples:\n\n1. **Securing Sensitive Data:**\n    ```\n    If an organization operates in a highly regulated industry such as healthcare or finance, they often store highly sensitive data. Enabling hardware MFA for the root user helps to provide an extra layer of security, making sure that unauthorized access is prevented and the data is secure.\n    ```\n\n2. **Protection against Cyber Attacks:**\n    ```\n    Cyberattacks such as password cracking and phishing are common threats to a business router user account. With the hardware MFA enabled for the AWS root user, it can significantly reduce the probability of an attacker gaining control over the AWS environment. This is because even if attackers obtain the username and password, they cannot access the account without the hardware MFA device.\n    ```\n\n3. **Regulatory Compliance:**\n    ```\n    If a company is subject to regulatory standards like HIPAA or PCI DSS, they must follow stringent security measures. Utilizing hardware MFA for root users can help organizations meet these compliance requirements, improving audit performance.\n    ```\n   \n4. **Preventing unauthorized changes:**\n    ```\n    Hardware MFA provides an additional layer of security for root accounts, ensuring that only authorized users can modify critical Amazon services and settings. This can prevent unauthorized changes and accidental deletion of resources.\n    ```"
     ]
   },
   "Managed": true
