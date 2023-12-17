@@ -3,17 +3,18 @@
   "Title": "Ensure all data in Amazon S3 has been discovered, classified and secured when required",
   "Description": "Amazon S3 buckets can contain sensitive data, that for security purposes should be discovered, monitored, classified and protected. Macie along with other 3rd party tools can automatically provide an inventory of Amazon S3 buckets.",
   "Query": {
-    "Engine": "odysseus-v0.0.1",
-    "QueryToExecute": "with bucket_list as (\n  select\n    trim(b::text, '\"' ) as bucket_name\n  from\n    aws_macie2_classification_job,\n    jsonb_array_elements(s3_job_definition -> 'BucketDefinitions') as d,\n    jsonb_array_elements(d -> 'Buckets') as b\n)\nselect\n  b.arn as resource,\n  b.kaytu_account_id as kaytu_account_id,\n  b.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.region = any(array['us-gov-east-1', 'us-gov-west-1']) then 'skip'\n    when l.bucket_name is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.region = any(array['us-gov-east-1', 'us-gov-west-1']) then b.title || ' not protected by Macie as Macie is not supported in ' || b.region || '.'\n    when l.bucket_name is not null then b.title || ' protected by Macie.'\n    else b.title || ' not protected by Macie.'\n  end as reason\n  \n  , b.region, b.account_id\nfrom\n  aws_s3_bucket as b\n  left join bucket_list as l on b.name = l.bucket_name;\n",
     "Connector": "AWS",
-    "PrimaryTable": "aws_s3_bucket",
+    "Engine": "odysseus-v0.0.1",
     "ListOfTables": [
       "aws_macie2_classification_job",
       "aws_s3_bucket"
-    ]
+    ],
+    "PrimaryTable": "aws_s3_bucket",
+    "QueryToExecute": "with bucket_list as (\n  select\n    trim(b::text, '\"' ) as bucket_name\n  from\n    aws_macie2_classification_job,\n    jsonb_array_elements(s3_job_definition -\u003e 'BucketDefinitions') as d,\n    jsonb_array_elements(d -\u003e 'Buckets') as b\n)\nselect\n  b.arn as resource,\n  b.kaytu_account_id as kaytu_account_id,\n  b.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.region = any(array['us-gov-east-1', 'us-gov-west-1']) then 'skip'\n    when l.bucket_name is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.region = any(array['us-gov-east-1', 'us-gov-west-1']) then b.title || ' not protected by Macie as Macie is not supported in ' || b.region || '.'\n    when l.bucket_name is not null then b.title || ' protected by Macie.'\n    else b.title || ' not protected by Macie.'\n  end as reason\n  \n  , b.region, b.account_id\nfrom\n  aws_s3_bucket as b\n  left join bucket_list as l on b.name = l.bucket_name;\n"
   },
+  "DocumentURI": "",
   "ManualVerification": false,
-  "Severity": "",
+  "Severity": "high",
   "Tags": {
     "category": [
       "Compliance"
@@ -41,6 +42,15 @@
     ],
     "service": [
       "AWS/S3"
+    ],
+    "x-kaytu-explanation": [
+      "```\n# Amazon S3 Buckets and AWS Macie\n\nAmazon Simple Storage Service (S3) serves as an object storage service that allows for scalable storage for data and a wide range of purposes in the AWS environment. Specifically, `Amazon S3 buckets` can be used to store sensitive data needing high-level security measures.\n\n## Need for Security \n\nSensitive data in Amazon S3 buckets require necessary security protocols to ensure data integrity and confidentiality. This can be achieved through the discovery, monitoring, classification, and protection of data residing in these buckets.\n\n## AWS Macie\n\nTo aid in these security measures, Amazon provides an integrated service called [AWS Macie](https://aws.amazon.com/macie/). Macie uses machine learning to automatically discover, classify, and protect sensitive data like Personally Identifiable Information (PII). This service provides an inventory of Amazon S3 buckets and can identify any bucket containing sensitive data.\n\n## Usage with Other Tools\n\nIn addition to AWS Macie, you can also utilize third-party tools for advanced data protection within Amazon S3 buckets. These tools can integrate with AWS services and enhance the security and manageability of your data.\n\nRemember, adopting a multi-layered approach to security can further safeguard your sensitive information in Amazon S3 buckets and across your entire AWS environment.\n```"
+    ],
+    "x-kaytu-noncompliance-cost": [
+      "Non-compliance with the AWS control that requires discovery, monitoring, classification and protection of sensitive data in Amazon S3 buckets can lead to several cost implications:\n\n1. **Data Breaches**: Non-compliance can result in data breaches. Data breaches can cost an organization several million dollars in damages, including direct costs from incidents, regulatory fines and penalties, and indirect costs such as loss of customer trust and brand reputation. \n\n2. **Regulatory Fines and Penalties**: Regulatory bodies like GDPR, HIPAA, and CCPA impose heavy fines on companies that fail to protect sensitive data. Non-compliance may result in fines ranging from thousands to millions of dollars. \n\n3. **Loss of Business Opportunities**: Companies that fail to comply with data protection rules may lose business opportunities. Companies that cannot trust you with their data may decide to work with other service providers that comply with necessary rules and regulations. \n\n4. **Cost of Remediation**: If an organization is found non-compliant, they will need to pay for the remediation efforts to sort out the violation. This remediation process can be expensive, encompassing software updates, system changes, and potentially hiring third-party auditors or consultants. \n\n5. **Legal Costs**: Non-compliance may lead to lawsuits from customers or business partners. Legal costs combining legal fees, settlements and court judgments can add significant financial burden to the company.\n\n6. **Increased Insurance Premiums**: Following data breach incidents or regulatory fines, cybersecurity insurers may increase the premiums, causing higher operating costs for companies.\n\n7. **Operational Dysfunction**: In case of a severe violation, an organization’s operations could be suspended, causing significant financial losses and operational dysfunction. \n\nTo prevent these costs, it's crucial that organizations use tools like Amazon Macie or trusted third-party services to ensure data within S3 buckets is securely managed and protected."
+    ],
+    "x-kaytu-usefulness-example": [
+      "Suppose a large IT firm named TechCorp has several divisions, each one storing large volumes of data in separate AWS S3 buckets, containing anything from source code and configuration files to customer sales data and financial reports. Given the complex and broad nature of TechCorp's cloud infrastructure, it's difficult for them to keep track of all the objects within their S3 buckets manually.\n\nWith Amazon Macie, TechCorp is able to automatically discover, monitor, classify and protect the sensitive data stored in their S3 buckets. Macie identifies and groups this sensitive data into risk-based categories. It allows TechCorp’s security teams to set up alerts for any unauthorized access or data leaks, thus ensuring a proactive response towards data security threats.\n\nFurthermore, TechCorp can make use of 3rd party tools like Splunk or Loggly integrated with Macie to have a detailed inventory of all their S3 buckets, tracking changes at even more granular level.\n\nThis instance demonstrates the usefulness of AWS control. It not only simplifies data protection tasks for TechCorp but also drastically elevates their overall security posture by providing automatic and continuous security assessment of their data on Amazon S3."
     ]
   },
   "Managed": true
