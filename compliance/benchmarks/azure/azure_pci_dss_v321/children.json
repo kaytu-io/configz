@@ -281,7 +281,6 @@
       "azure_appservice_function_app_only_https_accessible",
       "azure_automation_account_variable_encryption_enabled",
       "azure_azure_redis_cache_ssl_enabled",
-      "azure_compute_vm_temp_disks_cache_and_data_flows_encrypted",
       "azure_servicefabric_cluster_protection_level_as_encrypt_and_sign",
       "azure_sql_database_transparent_data_encryption_enabled",
       "azure_storage_account_secure_transfer_required_enabled"
@@ -424,8 +423,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_compute_vm_endpoint_protection_agent_installed",
-      "azure_compute_vm_security_configuration_vulnerabilities_remediated",
       "azure_compute_vm_system_updates_installed",
       "azure_compute_vm_vulnerability_assessment_solution_enabled",
       "azure_sql_database_vulnerability_findings_resolved"
@@ -466,8 +463,6 @@
       "azure_iam_external_user_with_read_permission",
       "azure_iam_external_user_with_write_permission",
       "azure_iam_no_custom_role",
-      "azure_iam_user_with_owner_permission_on_subscription_mfa_enabled",
-      "azure_iam_user_with_write_permission_on_subscription_mfa_enabled",
       "azure_sql_server_azure_ad_authentication_enabled"
     ]
   },
@@ -506,8 +501,6 @@
       "azure_iam_external_user_with_read_permission",
       "azure_iam_external_user_with_write_permission",
       "azure_iam_no_custom_role",
-      "azure_iam_user_with_owner_permission_on_subscription_mfa_enabled",
-      "azure_iam_user_with_write_permission_on_subscription_mfa_enabled",
       "azure_sql_server_azure_ad_authentication_enabled"
     ]
   },
@@ -546,8 +539,6 @@
       "azure_iam_external_user_with_read_permission",
       "azure_iam_external_user_with_write_permission",
       "azure_iam_no_custom_role",
-      "azure_iam_user_with_owner_permission_on_subscription_mfa_enabled",
-      "azure_iam_user_with_write_permission_on_subscription_mfa_enabled",
       "azure_sql_server_azure_ad_authentication_enabled"
     ]
   },
@@ -765,8 +756,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_compute_vm_endpoint_protection_agent_installed",
-      "azure_compute_vm_security_configuration_vulnerabilities_remediated",
       "azure_compute_vm_system_updates_installed",
       "azure_compute_vm_vulnerability_assessment_solution_enabled",
       "azure_sql_database_vulnerability_findings_resolved"
@@ -803,8 +792,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_compute_vm_endpoint_protection_agent_installed",
-      "azure_compute_vm_security_configuration_vulnerabilities_remediated",
       "azure_compute_vm_system_updates_installed",
       "azure_compute_vm_vulnerability_assessment_solution_enabled",
       "azure_sql_database_vulnerability_findings_resolved"
@@ -1052,8 +1039,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_compute_vm_endpoint_protection_agent_installed",
-      "azure_compute_vm_security_configuration_vulnerabilities_remediated",
       "azure_compute_vm_system_updates_installed",
       "azure_compute_vm_vulnerability_assessment_solution_enabled",
       "azure_sql_database_vulnerability_findings_resolved"
@@ -1125,7 +1110,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_audit_diagnostic_setting",
       "azure_compute_vm_uses_azure_resource_manager",
       "azure_sql_server_auditing_on",
       "azure_storage_account_uses_azure_resource_manager"
@@ -1337,7 +1321,6 @@
       "azure_appservice_function_app_only_https_accessible",
       "azure_automation_account_variable_encryption_enabled",
       "azure_azure_redis_cache_ssl_enabled",
-      "azure_compute_vm_temp_disks_cache_and_data_flows_encrypted",
       "azure_servicefabric_cluster_protection_level_as_encrypt_and_sign",
       "azure_sql_database_transparent_data_encryption_enabled",
       "azure_storage_account_secure_transfer_required_enabled"
@@ -1413,7 +1396,6 @@
       "azure_appservice_function_app_only_https_accessible",
       "azure_automation_account_variable_encryption_enabled",
       "azure_azure_redis_cache_ssl_enabled",
-      "azure_compute_vm_temp_disks_cache_and_data_flows_encrypted",
       "azure_servicefabric_cluster_protection_level_as_encrypt_and_sign",
       "azure_sql_database_transparent_data_encryption_enabled",
       "azure_storage_account_secure_transfer_required_enabled"

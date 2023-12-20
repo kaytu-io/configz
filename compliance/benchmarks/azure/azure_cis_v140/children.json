@@ -88,7 +88,6 @@
       "azure_keyvault_with_non_rbac_key_expiration_set",
       "azure_keyvault_with_rbac_secret_expiration_set",
       "azure_keyvault_with_non_rbac_secret_expiration_set",
-      "azure_cis_v140_8_5",
       "azure_keyvault_vault_recoverable",
       "azure_keyvault_vault_recoverable"
     ]
@@ -130,7 +129,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_cis_v140_5_1_1",
       "azure_monitor_diagnostic_settings_captures_proper_categories",
       "azure_monitor_logs_storage_container_not_public_accessible",
       "azure_monitor_logs_storage_container_encryptes_with_byok",
@@ -176,9 +174,7 @@
     "Enabled": true,
     "AutoAssign": false,
     "Baseline": true,
-    "Controls": [
-      "azure_cis_v140_5_3"
-    ]
+    "Controls": null
   },
   {
     "ID": "azure_cis_v140_7",
@@ -219,11 +215,7 @@
     "Controls": [
       "azure_compute_vm_utilizing_managed_disk",
       "azure_compute_os_and_data_disk_encrypted_with_cmk",
-      "azure_compute_unattached_disk_encrypted_with_cmk",
-      "azure_cis_v140_7_4",
-      "azure_cis_v140_7_5",
-      "azure_cis_v140_7_6",
-      "azure_cis_v140_7_7"
+      "azure_compute_unattached_disk_encrypted_with_cmk"
     ]
   },
   {
@@ -305,28 +297,8 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_cis_v140_1_1",
-      "azure_cis_v140_1_2",
       "azure_ad_guest_user_reviewed_monthly",
-      "azure_cis_v140_1_4",
-      "azure_cis_v140_1_5",
-      "azure_cis_v140_1_6",
-      "azure_cis_v140_1_7",
-      "azure_cis_v140_1_8",
-      "azure_cis_v140_1_9",
-      "azure_cis_v140_1_10",
-      "azure_cis_v140_1_11",
-      "azure_cis_v140_1_12",
-      "azure_cis_v140_1_13",
-      "azure_cis_v140_1_14",
-      "azure_cis_v140_1_15",
-      "azure_cis_v140_1_16",
-      "azure_cis_v140_1_17",
-      "azure_cis_v140_1_18",
-      "azure_cis_v140_1_19",
-      "azure_iam_no_custom_subscription_owner_roles_created",
-      "azure_cis_v140_1_21",
-      "azure_cis_v140_1_22"
+      "azure_iam_no_custom_subscription_owner_roles_created"
     ]
   },
   {
@@ -372,7 +344,6 @@
       "azure_postgres_db_server_log_disconnections_on",
       "azure_postgres_db_server_connection_throttling_on",
       "azure_postgres_db_server_log_retention_days_3",
-      "azure_cis_v140_4_3_7",
       "azure_postgresql_server_infrastructure_encryption_enabled"
     ]
   },
@@ -509,12 +480,8 @@
       "azure_appservice_web_app_latest_tls_version",
       "azure_appservice_web_app_incoming_client_cert_on",
       "azure_appservice_web_app_register_with_active_directory_enabled",
-      "azure_cis_v140_9_6",
-      "azure_cis_v140_9_7",
-      "azure_cis_v140_9_8",
       "azure_appservice_web_app_latest_http_version",
-      "azure_appservice_ftp_deployment_disabled",
-      "azure_cis_v140_9_11"
+      "azure_appservice_ftp_deployment_disabled"
     ]
   },
   {
@@ -596,16 +563,13 @@
     "Baseline": true,
     "Controls": [
       "azure_storage_account_secure_transfer_required_enabled",
-      "azure_cis_v140_3_2",
       "azure_storage_account_queue_services_logging_enabled",
-      "azure_cis_v140_3_4",
       "azure_storage_account_blob_containers_public_access_private",
       "azure_storage_account_default_network_access_rule_denied",
       "azure_storage_account_trusted_microsoft_services_enabled",
       "azure_storage_account_soft_delete_enabled",
       "azure_storage_account_encryption_at_rest_using_cmk",
       "azure_storage_account_blob_service_logging_enabled",
-      "azure_cis_v140_3_11",
       "azure_storage_account_min_tls_1_2"
     ]
   },

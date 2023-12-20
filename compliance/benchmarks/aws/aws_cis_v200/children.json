@@ -40,7 +40,6 @@
       "aws_vpc_security_group_remote_administration_ipv4",
       "aws_vpc_security_group_remote_administration_ipv6",
       "aws_vpc_default_security_group_restricts_all_traffic",
-      "aws_cis_v200_5_5",
       "aws_ec2_instance_uses_imdsv2"
     ]
   },
@@ -309,9 +308,7 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "aws_cis_v200_1_1",
       "aws_account_alternate_contact_security_registered",
-      "aws_cis_v200_1_3",
       "aws_iam_root_user_no_access_keys",
       "aws_iam_root_user_mfa_enabled",
       "aws_iam_root_user_hardware_mfa_enabled",
@@ -326,10 +323,8 @@
       "aws_iam_user_no_inline_attached_policies",
       "aws_iam_policy_all_attached_no_star_star",
       "aws_iam_support_role",
-      "aws_cis_v200_1_18",
       "aws_iam_server_certificate_not_expired",
       "aws_iam_access_analyzer_enabled",
-      "aws_cis_v200_1_21",
       "aws_aws_iam_user_group_role_cloudshell_fullaccess_restricted"
     ]
   },

@@ -36,7 +36,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "aws_cis_v120_1_1",
       "aws_iam_user_console_access_mfa_enabled",
       "aws_iam_user_unused_credentials_90",
       "aws_iam_user_access_key_age_90",
@@ -52,9 +51,7 @@
       "aws_iam_root_user_hardware_mfa_enabled",
       "aws_cis_v120_1_15",
       "aws_iam_user_no_policies",
-      "aws_cis_v120_1_17",
       "aws_account_alternate_contact_security_registered",
-      "aws_cis_v120_1_19",
       "aws_iam_support_role",
       "aws_iam_user_access_keys_and_password_at_setup",
       "aws_iam_policy_all_attached_no_star_star"
@@ -200,8 +197,7 @@
     "Controls": [
       "aws_vpc_security_group_restrict_ingress_ssh_all",
       "aws_vpc_security_group_restrict_ingress_rdp_all",
-      "aws_vpc_default_security_group_restricts_all_traffic",
-      "aws_cis_v120_4_4"
+      "aws_vpc_default_security_group_restricts_all_traffic"
     ]
   }
 ]

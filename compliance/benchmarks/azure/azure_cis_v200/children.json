@@ -47,12 +47,8 @@
       "azure_securitycenter_azure_defender_on_for_cosmosdb",
       "azure_securitycenter_azure_defender_on_for_keyvault",
       "azure_securitycenter_azure_defender_on_for_dns",
-      "azure_cis_v200_2_1_12",
-      "azure_cis_v200_2_1_13",
       "azure_securitycenter_asc_default_setting_not_disabled",
       "azure_securitycenter_automatic_provisioning_monitoring_agent_on",
-      "azure_cis_v200_2_1_16",
-      "azure_cis_v200_2_1_17",
       "azure_securitycenter_security_alerts_to_owner_enabled",
       "azure_securitycenter_additional_email_configured",
       "azure_securitycenter_notify_alerts_configured",
@@ -98,8 +94,7 @@
     "Baseline": true,
     "Controls": [
       "azure_cosmosdb_account_virtual_network_filter_enabled",
-      "azure_cosmosdb_account_uses_private_link",
-      "azure_cis_v200_4_5_3"
+      "azure_cosmosdb_account_uses_private_link"
     ]
   },
   {
@@ -188,8 +183,7 @@
       "azure_network_security_group_udp_service_restricted",
       "azure_network_security_group_https_access_restricted",
       "azure_network_sg_flowlog_retention_period_greater_than_90",
-      "azure_network_watcher_enabled",
-      "azure_cis_v200_6_7"
+      "azure_network_watcher_enabled"
     ]
   },
   {
@@ -284,8 +278,7 @@
       "azure_keyvault_with_non_rbac_secret_expiration_set",
       "azure_keyvault_vault_recoverable",
       "azure_keyvault_rbac_enabled",
-      "azure_keyvault_vault_private_link_used",
-      "azure_cis_v200_8_8"
+      "azure_keyvault_vault_private_link_used"
     ]
   },
   {
@@ -325,13 +318,10 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_cis_v200_5_1_1",
       "azure_monitor_diagnostic_settings_captures_proper_categories",
       "azure_monitor_logs_storage_container_not_public_accessible",
       "azure_monitor_logs_storage_container_encryptes_with_byok",
-      "azure_keyvault_logging_enabled",
-      "azure_cis_v200_5_1_6",
-      "azure_cis_v200_5_1_7"
+      "azure_keyvault_logging_enabled"
     ]
   },
   {
@@ -414,29 +404,10 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_cis_v200_1_3",
-      "azure_cis_v200_1_4",
       "azure_ad_guest_user_reviewed_monthly",
-      "azure_cis_v200_1_6",
-      "azure_cis_v200_1_7",
-      "azure_cis_v200_1_8",
-      "azure_cis_v200_1_9",
-      "azure_cis_v200_1_10",
-      "azure_cis_v200_1_11",
-      "azure_cis_v200_1_12",
-      "azure_cis_v200_1_13",
       "azure_iam_user_not_allowed_to_register_application",
-      "azure_cis_v200_1_15",
-      "azure_cis_v200_1_16",
-      "azure_cis_v200_1_17",
-      "azure_cis_v200_1_18",
       "azure_iam_user_not_allowed_to_create_security_group",
-      "azure_cis_v200_1_20",
-      "azure_cis_v200_1_21",
-      "azure_cis_v200_1_22",
-      "azure_iam_no_custom_subscription_owner_roles_created",
-      "azure_cis_v200_1_24",
-      "azure_cis_v200_1_25"
+      "azure_iam_no_custom_subscription_owner_roles_created"
     ]
   },
   {
@@ -478,10 +449,7 @@
     "Controls": [
       "azure_storage_account_secure_transfer_required_enabled",
       "azure_storage_account_infrastructure_encryption_enabled",
-      "azure_cis_v200_3_3",
-      "azure_cis_v200_3_4",
       "azure_storage_account_queue_services_logging_enabled",
-      "azure_cis_v200_3_6",
       "azure_storage_account_blob_containers_public_access_private",
       "azure_storage_account_default_network_access_rule_denied",
       "azure_storage_account_trusted_microsoft_services_enabled",
@@ -534,9 +502,7 @@
     "Enabled": true,
     "AutoAssign": false,
     "Baseline": true,
-    "Controls": [
-      "azure_cis_v200_5_4"
-    ]
+    "Controls": null
   },
   {
     "ID": "azure_cis_v200_2",
@@ -665,12 +631,7 @@
     "Enabled": true,
     "AutoAssign": false,
     "Baseline": true,
-    "Controls": [
-      "azure_cis_v200_1_1_1",
-      "azure_cis_v200_1_1_2",
-      "azure_cis_v200_1_1_3",
-      "azure_cis_v200_1_1_4"
-    ]
+    "Controls": null
   },
   {
     "ID": "azure_cis_v200_1_2",
@@ -709,11 +670,6 @@
     "AutoAssign": false,
     "Baseline": true,
     "Controls": [
-      "azure_cis_v200_1_2_1",
-      "azure_cis_v200_1_2_2",
-      "azure_cis_v200_1_2_3",
-      "azure_cis_v200_1_2_4",
-      "azure_cis_v200_1_2_5",
       "azure_iam_conditional_access_mfa_enabled"
     ]
   },
@@ -753,9 +709,7 @@
     "Enabled": true,
     "AutoAssign": false,
     "Baseline": true,
-    "Controls": [
-      "azure_cis_v200_10_1"
-    ]
+    "Controls": null
   },
   {
     "ID": "azure_cis_v200_4_4",
@@ -885,10 +839,7 @@
       "azure_network_bastion_host_min_1",
       "azure_compute_vm_utilizing_managed_disk",
       "azure_compute_os_and_data_disk_encrypted_with_cmk",
-      "azure_compute_unattached_disk_encrypted_with_cmk",
-      "azure_cis_v200_7_5",
-      "azure_cis_v200_7_6",
-      "azure_cis_v200_7_7"
+      "azure_compute_unattached_disk_encrypted_with_cmk"
     ]
   },
   {
@@ -927,9 +878,7 @@
     "Enabled": true,
     "AutoAssign": false,
     "Baseline": true,
-    "Controls": [
-      "azure_cis_v200_2_2_1"
-    ]
+    "Controls": null
   },
   {
     "ID": "azure_cis_v200_2_3",
@@ -1102,12 +1051,8 @@
       "azure_appservice_web_app_latest_tls_version",
       "azure_appservice_web_app_incoming_client_cert_on",
       "azure_appservice_web_app_register_with_active_directory_enabled",
-      "azure_cis_v200_9_6",
-      "azure_cis_v200_9_7",
-      "azure_cis_v200_9_8",
       "azure_appservice_web_app_latest_http_version",
-      "azure_appservice_ftp_deployment_disabled",
-      "azure_cis_v200_9_11"
+      "azure_appservice_ftp_deployment_disabled"
     ]
   }
 ]
