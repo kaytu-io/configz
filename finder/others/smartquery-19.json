@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all CloudFront Distribution where Origin Access Identity is enabled",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when o -\u003e\u003e 'DomainName' not like '%s3.amazonaws.com' then 'skip'\n    when o -\u003e\u003e 'DomainName' like '%s3.amazonaws.com'\n    and o -\u003e 'S3OriginConfig' -\u003e\u003e 'OriginAccessIdentity' = '' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when o -\u003e\u003e 'DomainName' not like '%s3.amazonaws.com' then title || ' origin type is not s3.'\n    when o -\u003e\u003e 'DomainName' like '%s3.amazonaws.com'\n    and o -\u003e 'S3OriginConfig' -\u003e\u003e 'OriginAccessIdentity' = '' then title || ' origin access identity not configured.'\n    else title || ' origin access identity configured.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudfront_distribution,\n  jsonb_array_elements(origins) as o"
-}

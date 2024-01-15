@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all AWS Accounts missing Cloud Trail",
-  "query": "with trails_enabled as (\n  select\n    arn,\n    is_logging\n  from\n    aws_cloudtrail_trail\n  where\n    home_region = region\n)\nselect\n  -- Required Columns\n  a.arn as resource,\n  case\n    when b.is_logging is null and a.is_logging then 'ok'\n    when b.is_logging then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.is_logging is null and a.is_logging then a.title || ' enabled.'\n    when b.is_logging then a.title || ' enabled.'\n    else a.title || ' disabled.'\n  end as reason,\n  -- Additional Dimensions\n  a.region,\n  a.account_id\nfrom\n  aws_cloudtrail_trail as a\nleft join trails_enabled b on a.arn = b.arn"
-}

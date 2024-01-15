@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all SSM Managed EC2 instances whose patch compliance status is not compliant after patch",
-  "query": "select\n  -- Required Columns\n  id as resource,\n  case\n    when c.status = 'COMPLIANT' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when c.status = 'COMPLIANT' then c.resource_id || ' patch ' || c.title || ' is compliant.'\n    else c.resource_id || ' patch ' || c.title || ' is non-compliant.'\n  end as reason,\n  -- Additional Dimensions\n  c.region,\n  c.account_id\nfrom\n  aws_ssm_managed_instance as i,\n  aws_ssm_managed_instance_compliance as c\nwhere\n  c.resource_id = i.instance_id\n  and c.compliance_type = 'Patch'"
-}

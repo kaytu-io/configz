@@ -1,8 +1,0 @@
-{
-  "ID": 1,
-  "ShortTitle": "AWS Load Balancers Missing Logging",
-  "LongTitle": "List AWS load balancers with logging disabled",
-  "Description": "List AWS load balancers with logging disabled",
-  "LogoURL": null,
-  "InsightIDs": [32, 33, 34]
-}

@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all VPCs not configured to use VPC endpoints",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when vpc_id not in (\n      select\n        vpc_id\n      from\n        aws_vpc_endpoint\n      where\n        service_name like 'com.amazonaws.' || region || '.ec2'\n    ) then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when vpc_id not in (\n      select\n        vpc_id\n      from\n        aws_vpc_endpoint\n      where\n        service_name like 'com.amazonaws.' || region || '.ec2'\n    ) then title || ' not configured to use VPC endpoints.'\n    else title || ' configured to use VPC endpoints.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_vpc"
-}

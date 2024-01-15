@@ -1,3 +1,0 @@
-{
-  "query": "SELECT kaytu_id FROM kaytu_connections WHERE connector = 'Azure'"
-}

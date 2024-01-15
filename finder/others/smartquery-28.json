@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all S3 buckets not logging access events to CloudTrail",
-  "query": "select\n  -- Required columns\n  t.arn as resource,\n  case\n    when b.logging is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.logging is not null then t.title || '''s logging bucket ' || t.s3_bucket_name || ' has access logging enabled.'\n    else t.title || '''s logging bucket ' || t.s3_bucket_name || ' has access logging disabled.'\n  end as reason,\n  -- Additional columns\n  t.region,\n  t.account_id\nfrom\n  aws_cloudtrail_trail t\n  inner join aws_s3_bucket b on t.s3_bucket_name = b.name\nwhere \n  t.region = t.home_region"
-}

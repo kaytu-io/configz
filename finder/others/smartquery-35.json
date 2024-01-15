@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find CloudTrail Logs where validatio is not enabled",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when log_file_validation_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when log_file_validation_enabled then title || ' log file validation enabled.'\n    else title || ' log file validation disabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudtrail_trail\nwhere \n  region = home_region"
-}

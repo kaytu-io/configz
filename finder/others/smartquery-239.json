@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all AWS WAFv2 missing regional and global web ACLs.",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when logging_configuration is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when logging_configuration is null then title || ' logging disabled.'\n    else title || ' logging enabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_wafv2_web_acl"
-}

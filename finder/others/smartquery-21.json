@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find CloudFront Distribution where WAF is enabled",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when web_acl_id \u003c\u003e '' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when web_acl_id \u003c\u003e '' then title || ' associated with WAF.'\n    else title || ' not associated with WAF.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudfront_distribution"
-}

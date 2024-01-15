@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all ACM Certificates expiring in the next 30 days",
-  "query": "select\n  -- Required Columns\n  certificate_arn as resource,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then 'skip'\n    when not_after \u003c= (current_date - interval '30' day) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when renewal_eligibility = 'INELIGIBLE' then title || ' not eligible for renewal.'\n    else title || ' expires ' || to_char(not_after, 'DD-Mon-YYYY') ||\n    ' (' || extract(day from not_after - current_timestamp) || ' days).'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_acm_certificate"
-}

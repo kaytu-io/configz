@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all CloudFront Distributions which are configured with Original Failover",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when origin_groups -\u003e\u003e 'Items' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when origin_groups -\u003e\u003e 'Items' is not null then title || ' origin group is configured.'\n    else title || ' origin group not configured.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudfront_distribution"
-}

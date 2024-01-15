@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all unused security groups",
-  "query": "-- This also addresses, Lambda in VPC.\n-- As Lambda creates an elastic network interface for each subnet in your function's VPC configuration.\nwith associated_sg as (\n  select\n    sg -\u003e\u003e 'GroupId' as secgrp_id,\n    sg -\u003e\u003e 'GroupName' as secgrp_name\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n)\nselect\n  -- Required Columns\n  distinct s.arn as resource,\n  case\n    when a.secgrp_id = s.group_id then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.secgrp_id = s.group_id then s.title || ' is associated.'\n    else s.title || ' not associated.'\n  end as reason,\n  -- Additional Dimensions\n  s.region,\n  s.account_id\nfrom\n  aws_vpc_security_group s\n  left join associated_sg a on s.group_id = a.secgrp_id"
-}

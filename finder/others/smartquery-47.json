@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all DynamoDB Tables with backup plans",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when lower( point_in_time_recovery_description -\u003e\u003e 'PointInTimeRecoveryStatus' ) = 'disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when lower( point_in_time_recovery_description -\u003e\u003e 'PointInTimeRecoveryStatus' ) = 'disabled' then title || ' point-in-time recovery not enabled.'\n    else title || ' point-in-time recovery enabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_dynamodb_table"
-}

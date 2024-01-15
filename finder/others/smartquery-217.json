@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all SNS Topics not encrypted at rest",
-  "query": "select\n  -- Required Columns\n  topic_arn as resource,\ncase\n  when kms_master_key_id is null then 'alarm'\n  else 'ok'\nend as status,\ncase\n  when kms_master_key_id is null then title || ' encryption at rest disabled.'\n  else title || ' encryption at rest enabled.'\nend as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_sns_topic"
-}

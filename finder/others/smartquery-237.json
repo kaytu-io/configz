@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all EC2 Subnets that auto-assign Public Ips",
-  "query": "select\n  -- Required Columns\n  subnet_id as resource,\n  case\n    when map_public_ip_on_launch = 'false' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when map_public_ip_on_launch = 'false' then title || ' auto assign public IP disabled.'\n    else title || ' auto assign public IP enabled.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_vpc_subnet"
-}

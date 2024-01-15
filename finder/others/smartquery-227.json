@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all unused network ACLs",
-  "query": "select\n  -- Required Columns\n  network_acl_id as resource,\n  case\n    when jsonb_array_length(associations) \u003e= 1  then 'ok'\n    else 'alarm'\n  end status,\n  case\n    when jsonb_array_length(associations) \u003e= 1 then title || ' associated with subnet.'\n    else title || ' not associated with subnet.'\n  end reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_vpc_network_acl"
-}

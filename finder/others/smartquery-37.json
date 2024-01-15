@@ -1,5 +1,0 @@
-{
-  "connectors": ["AWS"],
-  "title": "Find all Cloudwatch Log Groups with out a minutes of 365 day retention",
-  "query": "select\n  -- Required Columns\n  arn as resource,\n  case\n    when retention_in_days is null or retention_in_days \u003c 365 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when retention_in_days is null then title || ' retention period not set.'\n    when retention_in_days \u003c 365 then title || ' retention period less than 365 days.'\n    else title || ' retention period 365 days or above.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_cloudwatch_log_group"
-}
