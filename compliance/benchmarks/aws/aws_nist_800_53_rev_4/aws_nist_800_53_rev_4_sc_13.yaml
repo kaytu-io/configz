@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_4_sc_13
+Title: Cryptographic Protection (SC-13)
+DisplayCode: ""
+Connector: AWS
+Description: "The information system implements [Assignment: organization-defined cryptographic uses and type of cryptography required for each use] in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/DynamoDB
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dynamodb_table_encrypted_with_kms

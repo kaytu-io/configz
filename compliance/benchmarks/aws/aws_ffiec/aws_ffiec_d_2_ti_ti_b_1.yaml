@@ -1,0 +1,26 @@
+ID: aws_ffiec_d_2_ti_ti_b_1
+Title: D2.TI.Ti.B.1
+DisplayCode: ""
+Connector: AWS
+Description: The institution belongs or subscribes to a threat and vulnerability information-sharing source(s) that provides information on threats (e.g., FS-ISAC, US- CERT).
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_securityhub_enabled

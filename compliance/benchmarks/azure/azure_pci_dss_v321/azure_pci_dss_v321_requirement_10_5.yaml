@@ -1,0 +1,25 @@
+ID: azure_pci_dss_v321_requirement_10_5
+Title: PCI DSS requirement 10.5
+DisplayCode: ""
+Connector: Azure
+Description: Secure audit trails so they cannot be altered.
+Children:
+- azure_pci_dss_v321_requirement_10_5_4
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

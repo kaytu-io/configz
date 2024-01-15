@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0607_10h2system
+Title: The organization uses its configuration control program to maintain control of all implemented software and its system documentation and archive prior versions of implemented software and associated system documentation
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

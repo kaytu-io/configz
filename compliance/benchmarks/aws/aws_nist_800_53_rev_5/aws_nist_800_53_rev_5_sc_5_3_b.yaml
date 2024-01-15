@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sc_5_3_b
+Title: SC-5(3)(b)
+DisplayCode: ""
+Connector: AWS
+Description: "Monitor the following system resources to determine if sufficient resources exist to prevent effective denial-of-service attacks: [Assignment: organization-defined system resources]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

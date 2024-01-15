@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_si_12
+Title: Information Management and Retention (SI-12)
+DisplayCode: ""
+Connector: AWS
+Description: Manage and retain information within the system and information output from the system in accordance with applicable laws, executive orders, directives, regulations, policies, standards, guidelines and operational requirements.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudwatch_log_group_retention_period_365

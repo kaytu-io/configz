@@ -1,0 +1,25 @@
+ID: aws_foundational_security_sqs
+Title: SQS
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/SQS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_sqs_queue_encrypted_at_rest

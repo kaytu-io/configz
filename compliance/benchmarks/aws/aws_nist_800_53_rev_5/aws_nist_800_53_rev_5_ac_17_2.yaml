@@ -1,0 +1,29 @@
+ID: aws_nist_800_53_rev_5_ac_17_2
+Title: AC-17(2) Protection Of Confidentiality And Integrity Using Encryption
+DisplayCode: ""
+Connector: AWS
+Description: Implement cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_rest_api_stage_use_ssl_certificate
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_s3_bucket_enforces_ssl

@@ -1,0 +1,27 @@
+ID: aws_nist_csf_de_cm_4
+Title: DE.CM-4
+DisplayCode: ""
+Connector: AWS
+Description: Malicious code is detected.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_guardduty_finding_archived
+- aws_securityhub_enabled

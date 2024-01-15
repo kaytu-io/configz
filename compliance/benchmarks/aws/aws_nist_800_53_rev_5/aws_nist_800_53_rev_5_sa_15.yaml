@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sa_15
+Title: Development Process, Standards, And Tools (SA-15)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Require the developer of the system, system component, or system service to follow a documented development process that: 1.\u2003Explicitly addresses security and privacy requirements; 2.\u2003Identifies the standards and tools used in the development process; 3.\u2003Documents the specific tool options and tool configurations used in the development process; and 4.\u2003Documents, manages, and ensures the integrity of changes to the process and/or tools used in development; and b.\u2003Review the development process, standards, tools, tool options, and tool configurations [Assignment: organization-defined frequency] to determine if the process, standards, tools, tool options and tool configurations selected and employed can satisfy the following security and privacy requirements: [Assignment: organization-defined security and privacy requirements]."
+Children:
+- aws_nist_800_53_rev_5_sa_15_a_4
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

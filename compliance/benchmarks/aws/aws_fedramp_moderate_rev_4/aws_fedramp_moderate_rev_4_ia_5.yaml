@@ -1,0 +1,27 @@
+ID: aws_fedramp_moderate_rev_4_ia_5
+Title: Authenticator Management (IA-5)
+DisplayCode: ""
+Connector: AWS
+Description: Authenticate users and devices. Automate administrative control. Enforce restrictions. Protect against unauthorized use.
+Children:
+- aws_fedramp_moderate_rev_4_ia_5_1
+- aws_fedramp_moderate_rev_4_ia_5_4
+- aws_fedramp_moderate_rev_4_ia_5_7
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

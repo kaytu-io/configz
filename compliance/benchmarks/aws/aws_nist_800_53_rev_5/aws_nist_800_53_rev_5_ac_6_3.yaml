@@ -1,0 +1,28 @@
+ID: aws_nist_800_53_rev_5_ac_6_3
+Title: AC-6(3)
+DisplayCode: ""
+Connector: AWS
+Description: "Authorize network access to [Assignment: organization-defined privileged commands] only for [Assignment: organization-defined compelling operational needs] and document the rationale for such access in the security plan for the system."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_policy_custom_no_star_star
+- aws_iam_user_in_group
+- aws_iam_user_no_inline_attached_policies

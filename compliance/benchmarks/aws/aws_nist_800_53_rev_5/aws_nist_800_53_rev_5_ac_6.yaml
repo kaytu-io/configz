@@ -1,0 +1,52 @@
+ID: aws_nist_800_53_rev_5_ac_6
+Title: Least Privilege (AC-6)
+DisplayCode: ""
+Connector: AWS
+Description: Employ the principle of least privilege, allowing only authorized accesses for users (or processes acting on behalf of users) that are necessary to accomplish assigned organizational tasks.
+Children:
+- aws_nist_800_53_rev_5_ac_6_2
+- aws_nist_800_53_rev_5_ac_6_3
+- aws_nist_800_53_rev_5_ac_6_9
+- aws_nist_800_53_rev_5_ac_6_10
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_ec2_instance_in_vpc
+- aws_ec2_instance_not_publicly_accessible
+- aws_ec2_instance_uses_imdsv2
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_es_domain_in_vpc
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_policy_custom_no_star_star
+- aws_iam_root_user_no_access_keys
+- aws_iam_user_in_group
+- aws_iam_user_no_inline_attached_policies
+- aws_iam_user_unused_credentials_90
+- aws_lambda_function_in_vpc
+- aws_lambda_function_restrict_public_access
+- aws_rds_db_instance_prohibit_public_access
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_public_access_block_account
+- aws_s3_public_access_block_bucket
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_vpc_subnet_auto_assign_public_ip_disabled

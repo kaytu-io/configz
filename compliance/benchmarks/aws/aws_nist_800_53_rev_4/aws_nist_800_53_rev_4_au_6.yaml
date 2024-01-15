@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_4_au_6
+Title: Audit Review, Analysis And Reporting (AU-6)
+DisplayCode: ""
+Connector: AWS
+Description: Integrate audit review, analysis, and reporting with processes for investigation and response to suspicious activities.
+Children:
+- aws_nist_800_53_rev_4_au_6_1
+- aws_nist_800_53_rev_4_au_6_3
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

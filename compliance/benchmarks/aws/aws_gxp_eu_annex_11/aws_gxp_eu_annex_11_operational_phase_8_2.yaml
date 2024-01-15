@@ -1,0 +1,25 @@
+ID: aws_gxp_eu_annex_11_operational_phase_8_2
+Title: 8.2 Printouts - Data Changes
+DisplayCode: ""
+Connector: AWS
+Description: For records supporting batch release it should be possible to generate printouts indicating if any of the data has been changed since the original entry.
+Children: []
+Tags:
+  category:
+  - Compliance
+  gxp_eu_annex_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_s3_data_events_enabled

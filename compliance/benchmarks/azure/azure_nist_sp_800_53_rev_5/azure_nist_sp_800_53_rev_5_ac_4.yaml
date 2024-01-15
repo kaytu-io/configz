@@ -1,0 +1,69 @@
+ID: azure_nist_sp_800_53_rev_5_ac_4
+Title: Information Flow Enforcement (AC-4)
+DisplayCode: ""
+Connector: Azure
+Description: Enforce approved authorizations. Control information workflow between interconnected systems.
+Children:
+- azure_nist_sp_800_53_rev_5_ac_4_3
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_apimanagement_service_with_virtual_network
+- azure_app_configuration_private_link_used
+- azure_appservice_web_app_cors_no_star
+- azure_azure_redis_cache_uses_private_link
+- azure_cognitive_account_private_link_used
+- azure_cognitive_account_public_network_access_disabled
+- azure_cognitive_account_restrict_public_access
+- azure_compute_disk_access_uses_private_link
+- azure_compute_vm_jit_access_protected
+- azure_compute_vm_remote_access_restricted_all_ports
+- azure_compute_vm_tcp_udp_access_restricted_internet
+- azure_container_registry_restrict_public_access
+- azure_container_registry_uses_private_link
+- azure_cosmosdb_account_uses_private_link
+- azure_cosmosdb_account_with_firewall_rules
+- azure_data_factory_uses_private_link
+- azure_eventgrid_domain_private_link_used
+- azure_eventgrid_topic_private_link_used
+- azure_eventhub_namespace_private_link_used
+- azure_healthcare_fhir_uses_private_link
+- azure_keyvault_vault_private_link_used
+- azure_keyvault_vault_public_network_access_disabled
+- azure_kubernetes_cluster_authorized_ip_range_defined
+- azure_mariadb_server_public_network_access_disabled
+- azure_mysql_server_private_link_used
+- azure_mysql_server_public_network_access_disabled
+- azure_network_interface_ip_forwarding_disabled
+- azure_network_security_group_remote_access_restricted
+- azure_network_security_group_subnet_associated
+- azure_postgres_server_private_link_used
+- azure_postgresql_server_public_network_access_disabled
+- azure_search_service_public_network_access_disabled
+- azure_search_service_uses_private_link
+- azure_search_service_uses_sku_supporting_private_link
+- azure_servicebus_name_space_private_link_used
+- azure_signalr_service_private_link_used
+- azure_sql_db_public_network_access_disabled
+- azure_sql_server_uses_private_link
+- azure_storage_account_block_public_access
+- azure_storage_account_default_network_access_rule_denied
+- azure_storage_account_restrict_network_access
+- azure_storage_account_uses_private_link
+- azure_storage_sync_private_link_used
+- azure_synapse_workspace_private_link_used

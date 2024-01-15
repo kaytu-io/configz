@@ -1,0 +1,28 @@
+ID: aws_cisa_cyber_essentials_your_surroundings_2
+Title: Your Surroundings-2
+DisplayCode: ""
+Connector: AWS
+Description: Leverage multi-factor authentication for all users, starting with privileged, administrative and remote access users.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_user_mfa_enabled

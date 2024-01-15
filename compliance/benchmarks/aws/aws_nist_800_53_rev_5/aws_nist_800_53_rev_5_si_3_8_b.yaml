@@ -1,0 +1,31 @@
+ID: aws_nist_800_53_rev_5_si_3_8_b
+Title: SI-3(8)(b)
+DisplayCode: ""
+Connector: AWS
+Description: "[Selection (one or more): issue a warning; audit the command execution; prevent the execution of the command]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_rds_db_instance_logging_enabled
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_s3_bucket_logging_enabled

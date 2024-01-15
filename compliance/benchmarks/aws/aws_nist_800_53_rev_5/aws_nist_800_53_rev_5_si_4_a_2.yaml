@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_si_4_a_2
+Title: SI-4(a)(2)
+DisplayCode: ""
+Connector: AWS
+Description: "a. Monitor the system to detect: 2. Unauthorized local, network, and remote connections."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

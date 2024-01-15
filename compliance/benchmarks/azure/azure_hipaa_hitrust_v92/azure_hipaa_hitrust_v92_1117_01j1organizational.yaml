@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1117_01j1organizational
+Title: Remote access by vendors and business partners (e.g., for remote maintenance) is disabled/deactivated when not in use
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

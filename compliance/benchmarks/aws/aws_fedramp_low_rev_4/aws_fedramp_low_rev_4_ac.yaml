@@ -1,0 +1,27 @@
+ID: aws_fedramp_low_rev_4_ac
+Title: Access Control (AC)
+DisplayCode: ""
+Connector: AWS
+Description: The access control family consists of security requirements detailing system logging. This includes who has access to what assets and reporting capabilities like account management, system privileges, and remote access logging to determine when users have access to the system and their level of access.
+Children:
+- aws_fedramp_low_rev_4_ac_2
+- aws_fedramp_low_rev_4_ac_3
+- aws_fedramp_low_rev_4_ac_17
+Tags:
+  category:
+  - Compliance
+  fedramp_low_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

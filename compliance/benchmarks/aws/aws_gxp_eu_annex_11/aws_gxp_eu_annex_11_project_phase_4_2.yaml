@@ -1,0 +1,25 @@
+ID: aws_gxp_eu_annex_11_project_phase_4_2
+Title: 4.2 Validation - Documentation Change Control
+DisplayCode: ""
+Connector: AWS
+Description: Validation documentation should include change control records (if applicable) and reports on any deviations observed during the validation process.
+Children: []
+Tags:
+  category:
+  - Compliance
+  gxp_eu_annex_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_enabled

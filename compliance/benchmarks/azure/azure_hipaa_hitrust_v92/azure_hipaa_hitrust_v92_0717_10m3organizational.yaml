@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0717_10m3organizational
+Title: 0717.10m3Organizational.2-10.m 10.06 Technical Vulnerability Management
+DisplayCode: ""
+Connector: Azure
+Description: Vulnerability scanning tools include the capability to readily update the information system vulnerabilities scanned.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

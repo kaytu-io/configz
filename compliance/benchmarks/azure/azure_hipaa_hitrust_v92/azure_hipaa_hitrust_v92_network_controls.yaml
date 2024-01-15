@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_network_controls
+Title: Network Controls
+DisplayCode: ""
+Connector: Azure
+Description: The organization monitors for all authorized and unauthorized wireless access to the information system and prohibits installation of wireless access points (WAPs) unless explicitly authorized in writing by the CIO or his/her designated representative.
+Children:
+- azure_hipaa_hitrust_v92_0867_09m3organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,29 @@
+ID: aws_audit_manager_control_tower_multi_factor_authentication_3_0_3
+Title: 3.0.3 - Enable MFA for the root user
+DisplayCode: ""
+Connector: AWS
+Description: Enable MFA for the root user - Checks whether the root user of your AWS account requires multi-factor authentication for console sign-in.
+Children: []
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  audit_manager_control_tower_item_id:
+  - 3.0.3
+  category:
+  - Compliance
+  control_set:
+  - multi_factor_authentication
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_mfa_enabled

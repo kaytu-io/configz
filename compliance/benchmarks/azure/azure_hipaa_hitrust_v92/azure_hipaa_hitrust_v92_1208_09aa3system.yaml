@@ -1,0 +1,26 @@
+ID: azure_hipaa_hitrust_v92_1208_09aa3system
+Title: 1208.09aa3System.1-09.aa 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: Audit logs are maintained for management activities, system and application startup/shutdown/errors, file changes, and security policy changes.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_search_service_logging_enabled
+- azure_servicebus_namespace_logging_enabled

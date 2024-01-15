@@ -1,0 +1,29 @@
+ID: aws_nist_800_53_rev_5_si_7
+Title: Software, Firmware, and Information Integrity (SI-7)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Employ integrity verification tools to detect unauthorized changes to the following software, firmware, and information: [Assignment: organization-defined software, firmware, and information]; and b.\u2003Take the following actions when unauthorized changes to the software, firmware, and information are detected: [Assignment: organization-defined actions]."
+Children:
+- aws_nist_800_53_rev_5_si_7_1
+- aws_nist_800_53_rev_5_si_7_3
+- aws_nist_800_53_rev_5_si_7_7
+- aws_nist_800_53_rev_5_si_7_8
+- aws_nist_800_53_rev_5_si_7_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

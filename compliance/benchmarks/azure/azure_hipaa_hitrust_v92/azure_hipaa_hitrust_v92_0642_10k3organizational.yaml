@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0642_10k3organizational
+Title: 0642.10k3Organizational.12-10.k 10.05 Security In Development and Support Processes
+DisplayCode: ""
+Connector: Azure
+Description: The organization develops, documents, and maintains, under configuration control, a current baseline configuration of the information system, and reviews and updates the baseline as required.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

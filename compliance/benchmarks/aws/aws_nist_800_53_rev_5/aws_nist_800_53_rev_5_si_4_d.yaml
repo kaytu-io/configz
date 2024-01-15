@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_si_4_d
+Title: SI-4(d)
+DisplayCode: ""
+Connector: AWS
+Description: Analyze detected events and anomalies.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudTrail
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_validation_enabled

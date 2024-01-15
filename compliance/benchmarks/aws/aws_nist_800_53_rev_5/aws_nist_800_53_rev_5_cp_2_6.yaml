@@ -1,0 +1,28 @@
+ID: aws_nist_800_53_rev_5_cp_2_6
+Title: CP-2(6) Alternate Processing And Storage Sites
+DisplayCode: ""
+Connector: AWS
+Description: "Plan for the transfer of [Selection: all; essential] mission and business functions to alternate processing and/or storage sites with minimal or no loss of operational continuity and sustain that continuity through system restoration to primary processing and/or storage sites."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_elb_classic_lb_cross_zone_load_balancing_enabled
+- aws_rds_db_instance_multiple_az_enabled
+- aws_vpc_vpn_tunnel_up

@@ -1,0 +1,35 @@
+ID: aws_hipaa_security_rule_2003_164_308_a_3_ii_b
+Title: 164.308(a)(3)(ii)(B) Workforce clearance procedure
+DisplayCode: ""
+Connector: AWS
+Description: Implement procedures to determine that the access of a workforce member to electronic protected health information is appropriate.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_section:
+  - "164_308"
+  hipaa_security_rule_2003:
+  - "true"
+  hipaa_security_rule_2003_item_id:
+  - 164_308_a_3_ii_b
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_group_not_empty
+- aws_iam_policy_custom_no_star_star
+- aws_iam_root_user_no_access_keys
+- aws_iam_user_in_group
+- aws_iam_user_no_inline_attached_policies
+- aws_iam_user_unused_credentials_90
+- aws_s3_bucket_policy_restrict_public_access

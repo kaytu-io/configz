@@ -1,0 +1,26 @@
+ID: aws_nist_csf_id_am_1
+Title: ID.AM-1
+DisplayCode: ""
+Connector: AWS
+Description: Physical devices and systems within the organization are inventoried.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_config_enabled_all_regions
+- aws_ec2_instance_ssm_managed

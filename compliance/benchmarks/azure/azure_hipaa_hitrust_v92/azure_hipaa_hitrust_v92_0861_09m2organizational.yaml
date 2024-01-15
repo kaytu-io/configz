@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0861_09m2organizational
+Title: 0861.09m2Organizational.67-09.m 09.06 Network Security Management
+DisplayCode: ""
+Connector: Azure
+Description: To identify and authenticate devices on local and/or wide area networks, including wireless networks, the information system uses either a (i) shared known information solution or (ii) an organizational authentication solution, the exact selection and strength of which is dependent on the security categorization of the information system.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_web_app_use_virtual_service_endpoint

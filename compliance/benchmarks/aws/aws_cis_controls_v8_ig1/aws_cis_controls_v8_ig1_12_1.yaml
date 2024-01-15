@@ -1,0 +1,26 @@
+ID: aws_cis_controls_v8_ig1_12_1
+Title: 12.1 Ensure Network Infrastructure is Up-to-Date
+DisplayCode: ""
+Connector: AWS
+Description: Ensure network infrastructure is kept up-to-date. Example implementations include running the latest stable release of software and/or using currently supported network-as-a-service (NaaS) offerings. Review software versions monthly, or more frequently, to verify software support.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ec2_instance_ssm_managed
+- aws_ssm_managed_instance_compliance_patch_compliant

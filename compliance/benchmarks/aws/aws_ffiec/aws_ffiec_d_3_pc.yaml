@@ -1,0 +1,42 @@
+ID: aws_ffiec_d_3_pc
+Title: Preventative Controls (PC)
+DisplayCode: ""
+Connector: AWS
+Description: Preventative Controls deter and prevent cyber attacks and include infrastructure management, access management, device and end-point security, and secure coding.
+Children:
+- aws_ffiec_d_3_pc_am_b_1
+- aws_ffiec_d_3_pc_am_b_10
+- aws_ffiec_d_3_pc_am_b_12
+- aws_ffiec_d_3_pc_am_b_13
+- aws_ffiec_d_3_pc_am_b_15
+- aws_ffiec_d_3_pc_am_b_16
+- aws_ffiec_d_3_pc_am_b_2
+- aws_ffiec_d_3_pc_am_b_3
+- aws_ffiec_d_3_pc_am_b_6
+- aws_ffiec_d_3_pc_am_b_7
+- aws_ffiec_d_3_pc_am_b_8
+- aws_ffiec_d_3_pc_im_b_1
+- aws_ffiec_d_3_pc_im_b_2
+- aws_ffiec_d_3_pc_im_b_3
+- aws_ffiec_d_3_pc_im_b_5
+- aws_ffiec_d_3_pc_im_b_6
+- aws_ffiec_d_3_pc_im_b_7
+- aws_ffiec_d_3_pc_se_b_1
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

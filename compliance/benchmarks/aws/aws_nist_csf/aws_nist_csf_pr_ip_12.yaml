@@ -1,0 +1,28 @@
+ID: aws_nist_csf_pr_ip_12
+Title: PR.IP-12
+DisplayCode: ""
+Connector: AWS
+Description: A vulnerability management plan is developed and implemented.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_config_enabled_all_regions
+- aws_ec2_instance_ssm_managed
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_ssm_managed_instance_compliance_patch_compliant

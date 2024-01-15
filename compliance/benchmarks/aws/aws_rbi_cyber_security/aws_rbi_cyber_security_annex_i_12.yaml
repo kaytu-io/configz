@@ -1,0 +1,36 @@
+ID: aws_rbi_cyber_security_annex_i_12
+Title: Annex I (12)
+DisplayCode: ""
+Connector: AWS
+Description: Take periodic back up of the important data and store this data ‘off line’ (i.e., transferring important files to a storage device that can be detached from a computer/system after copying all the files).
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  rbi_cyber_security_item_id:
+  - annex_i_12
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_ebs_volume_in_backup_plan
+- aws_efs_file_system_automatic_backups_enabled
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_versioning_enabled

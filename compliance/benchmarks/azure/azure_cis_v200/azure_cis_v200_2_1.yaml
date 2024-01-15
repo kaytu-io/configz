@@ -1,0 +1,46 @@
+ID: azure_cis_v200_2_1
+Title: 2.1 Microsoft Defender for Cloud
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "2"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_securitycenter_azure_defender_on_for_server
+- azure_securitycenter_azure_defender_on_for_appservice
+- azure_securitycenter_azure_defender_on_for_database
+- azure_securitycenter_azure_defender_on_for_sqldb
+- azure_securitycenter_azure_defender_on_for_sqlservervm
+- azure_securitycenter_azure_defender_on_for_opensource_relational_db
+- azure_securitycenter_azure_defender_on_for_storage
+- azure_securitycenter_azure_defender_on_for_containerregistry
+- azure_securitycenter_azure_defender_on_for_cosmosdb
+- azure_securitycenter_azure_defender_on_for_keyvault
+- azure_securitycenter_azure_defender_on_for_dns
+- azure_securitycenter_asc_default_setting_not_disabled
+- azure_securitycenter_automatic_provisioning_monitoring_agent_on
+- azure_securitycenter_security_alerts_to_owner_enabled
+- azure_securitycenter_additional_email_configured
+- azure_securitycenter_notify_alerts_configured
+- azure_securitycenter_mcas_integration
+- azure_securitycenter_wdatp_integration

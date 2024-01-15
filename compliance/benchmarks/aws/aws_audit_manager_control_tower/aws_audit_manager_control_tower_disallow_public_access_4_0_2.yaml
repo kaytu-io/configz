@@ -1,0 +1,29 @@
+ID: aws_audit_manager_control_tower_disallow_public_access_4_0_2
+Title: 4.0.2 - Disallow public access to RDS database snapshots
+DisplayCode: ""
+Connector: AWS
+Description: Disallow public access to RDS database snapshots - Checks if Amazon Relational Database Service (Amazon RDS) snapshots are public. The rule is non-compliant if any existing and new Amazon RDS snapshots are public.
+Children: []
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  audit_manager_control_tower_item_id:
+  - 4.0.2
+  category:
+  - Compliance
+  control_set:
+  - disallow_public_access
+  plugin:
+  - aws
+  service:
+  - AWS/RDS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_rds_db_snapshot_prohibit_public_access

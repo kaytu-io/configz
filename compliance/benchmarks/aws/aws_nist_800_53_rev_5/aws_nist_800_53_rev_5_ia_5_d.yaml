@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ia_5_d
+Title: IA-5(d)
+DisplayCode: ""
+Connector: AWS
+Description: "Manage system authenticators by: d. Establishing and implementing administrative procedures for initial authenticator distribution, for lost or compromised or damaged authenticators, and for revoking authenticators."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_min_length_14

@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ac_2_j
+Title: AC-2(j)
+DisplayCode: ""
+Connector: AWS
+Description: "The organization: j. Reviews accounts for compliance with account management requirements [Assignment: organization-defined frequency]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_user_unused_credentials_90

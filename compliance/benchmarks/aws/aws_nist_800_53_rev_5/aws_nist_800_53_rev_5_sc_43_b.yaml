@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sc_43_b
+Title: SC-43(b)
+DisplayCode: ""
+Connector: AWS
+Description: Authorize, monitor, and control the use of such components within the system.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

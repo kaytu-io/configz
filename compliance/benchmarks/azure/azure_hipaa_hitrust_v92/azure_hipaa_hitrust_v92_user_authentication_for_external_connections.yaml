@@ -1,0 +1,29 @@
+ID: azure_hipaa_hitrust_v92_user_authentication_for_external_connections
+Title: User Authentication for External Connections
+DisplayCode: ""
+Connector: Azure
+Description: When accessing electronic protected health information (ePHI) from external sources, it's crucial to prioritize user authentication as part of our commitment to HIPAA and HITRUST compliance. To ensure secure access, we have implemented strong authentication measures, including unique user IDs, strong passwords, and multi-factor authentication. These measures verify the identity of individuals accessing ePHI remotely, ensuring that only authorized users with the right credentials can establish secure connections. By prioritizing user authentication, we protect the confidentiality of sensitive health information and minimize the risk of unauthorized access.
+Children:
+- azure_hipaa_hitrust_v92_1117_01j1organizational
+- azure_hipaa_hitrust_v92_1173_01j1organizational
+- azure_hipaa_hitrust_v92_1174_01j1organizational
+- azure_hipaa_hitrust_v92_1176_01j2organizational
+- azure_hipaa_hitrust_v92_1177_01j2organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

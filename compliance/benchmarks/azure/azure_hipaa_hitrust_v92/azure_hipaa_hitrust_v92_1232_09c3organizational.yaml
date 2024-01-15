@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1232_09c3organizational
+Title: 1232.09c3Organizational.12-09.c 09.01 Documented Operating Procedures
+DisplayCode: ""
+Connector: Azure
+Description: Access for individuals responsible for administering access controls is limited to the minimum necessary based upon each user's role and responsibilities and these individuals cannot access audit functions related to these controls.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Network
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_network_security_group_rdp_access_restricted

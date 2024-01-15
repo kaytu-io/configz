@@ -1,0 +1,27 @@
+ID: aws_nist_csf_de
+Title: Detect (DE)
+DisplayCode: ""
+Connector: AWS
+Description: Develop and implement appropriate activities to identify the occurrence of a cybersecurity event.
+Children:
+- aws_nist_csf_de_ae
+- aws_nist_csf_de_cm
+- aws_nist_csf_de_dp
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

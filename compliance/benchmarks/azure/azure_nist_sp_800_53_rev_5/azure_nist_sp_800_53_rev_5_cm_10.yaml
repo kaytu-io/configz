@@ -1,0 +1,24 @@
+ID: azure_nist_sp_800_53_rev_5_cm_10
+Title: Software Usage Restrictions (CM-10)
+DisplayCode: ""
+Connector: Azure
+Description: The organization uses software and associated documentation in accordance with contract agreements and copyright laws, tracks the use of software and associated documentation protected by quantity licenses to control copying and distribution, and controls and documents the use of peer-to-peer file-sharing technology to ensure that this capability is not used for the unauthorized distribution, display, performance, or reproduction of copyrighted work.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

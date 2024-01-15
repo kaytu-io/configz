@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1616_09l1organizational
+Title: 1616.09l1Organizational.16-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: Backup copies of information and software are made and tests of the media and restoration procedures are regularly performed at appropriate intervals.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_sql_database_long_term_geo_redundant_backup_enabled

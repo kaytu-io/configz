@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_si_7_7
+Title: SI-7(7) Integration Of Detection And Response
+DisplayCode: ""
+Connector: AWS
+Description: "Incorporate the detection of the following unauthorized changes into the organizational incident response capability: [Assignment: organization-defined security-relevant changes to the system]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudTrail
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_validation_enabled

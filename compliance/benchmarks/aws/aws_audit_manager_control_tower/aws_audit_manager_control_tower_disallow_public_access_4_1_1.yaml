@@ -1,0 +1,29 @@
+ID: aws_audit_manager_control_tower_disallow_public_access_4_1_1
+Title: 4.1.1 - Disallow public read access to S3 buckets
+DisplayCode: ""
+Connector: AWS
+Description: Disallow public read access to S3 buckets - Checks that your S3 buckets do not allow public read access.
+Children: []
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  audit_manager_control_tower_item_id:
+  - 4.1.1
+  category:
+  - Compliance
+  control_set:
+  - disallow_public_access
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_s3_bucket_restrict_public_read_access

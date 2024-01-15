@@ -1,0 +1,26 @@
+ID: aws_fedramp_moderate_rev_4_cm_8_1
+Title: CM-8(1)
+DisplayCode: ""
+Connector: AWS
+Description: The organization updates the inventory of information system components as an integral part of component installations, removals, and information system updates.
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ec2_instance_ssm_managed
+- aws_ssm_managed_instance_compliance_association_compliant

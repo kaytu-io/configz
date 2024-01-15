@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_11112_01q2organizational
+Title: 11112.01q2Organizational.67-01.q 01.05 Operating System Access Control
+DisplayCode: ""
+Connector: Azure
+Description: The information system employs replay-resistant authentication mechanisms such as nonce, one-time passwords, or time stamps to secure network access for privileged accounts; and, for hardware token-based authentication, employs mechanisms that satisfy minimum token requirements discussed in NIST SP 800-63-2, Electronic Authentication Guideline.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_subscription_owner_max_3

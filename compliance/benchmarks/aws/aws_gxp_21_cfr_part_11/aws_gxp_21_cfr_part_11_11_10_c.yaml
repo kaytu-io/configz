@@ -1,0 +1,55 @@
+ID: aws_gxp_21_cfr_part_11_11_10_c
+Title: 11.10(c) Protection of records to enable their accurate and ready retrieval throughout the records retention period
+DisplayCode: ""
+Connector: AWS
+Description: "Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following: (c) Protection of records to enable their accurate and ready retrieval throughout the records retention period."
+Children: []
+Tags:
+  category:
+  - Compliance
+  gxp_21_cfr_part_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_cloudtrail_trail_validation_enabled
+- aws_cloudwatch_log_group_retention_period_365
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_ebs_volume_in_backup_plan
+- aws_ec2_instance_ebs_optimized
+- aws_ecr_repository_lifecycle_policy_configured
+- aws_efs_file_system_automatic_backups_enabled
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_default_encryption_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_lifecycle_policy_enabled
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_bucket_versioning_and_lifecycle_policy_enabled
+- aws_s3_bucket_versioning_enabled
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled

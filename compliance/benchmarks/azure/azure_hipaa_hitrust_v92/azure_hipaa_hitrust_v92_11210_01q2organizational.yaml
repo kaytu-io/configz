@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_11210_01q2organizational
+Title: Electronic signatures and handwritten signatures executed to electronic records shall be linked to their respective electronic records
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,29 @@
+ID: aws_nist_800_53_rev_5_ca_2_2
+Title: CA-2(2) Specialized Assessments
+DisplayCode: ""
+Connector: AWS
+Description: "Include as part of control assessments, [Assignment: organization-defined frequency], [Selection: announced; unannounced], [Selection (one or more): in-depth monitoring; security instrumentation; automated security test cases; vulnerability scanning; malicious user testing; insider threat assessment; performance and load testing; data leakage or data loss assessment; [Assignment: organization-defined other forms of assessment]]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_cloudwatch_alarm_action_enabled
+- aws_elastic_beanstalk_enhanced_health_reporting_enabled
+- aws_lambda_function_dead_letter_queue_configured
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled

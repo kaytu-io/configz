@@ -1,0 +1,25 @@
+ID: aws_nist_800_171_rev_2_3_5_5
+Title: 3.5.5 Prevent reuse of identifiers for a defined period
+DisplayCode: ""
+Connector: AWS
+Description: Identifiers are provided for users, processes acting on behalf of users, or devices (3.5.1). Preventing reuse of identifiers implies preventing the assignment of previously used individual, group, role, or device identifiers to different individuals, groups, roles, or devices.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_strong_min_reuse_24

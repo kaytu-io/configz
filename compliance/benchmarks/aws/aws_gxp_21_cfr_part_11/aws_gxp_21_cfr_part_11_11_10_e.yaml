@@ -1,0 +1,51 @@
+ID: aws_gxp_21_cfr_part_11_11_10_e
+Title: 11.10(e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records
+DisplayCode: ""
+Connector: AWS
+Description: "Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following: (e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying."
+Children: []
+Tags:
+  category:
+  - Compliance
+  gxp_21_cfr_part_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_stage_logging_enabled
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudwatch_log_group_retention_period_365
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_ebs_volume_in_backup_plan
+- aws_ec2_instance_ebs_optimized
+- aws_efs_file_system_automatic_backups_enabled
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_elb_application_classic_lb_logging_enabled
+- aws_es_domain_logs_to_cloudwatch
+- aws_opensearch_domain_audit_logging_enabled
+- aws_opensearch_domain_logs_to_cloudwatch
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_rds_db_instance_logging_enabled
+- aws_redshift_cluster_audit_logging_enabled
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_logging_enabled
+- aws_s3_bucket_versioning_enabled
+- aws_vpc_flow_logs_enabled
+- aws_wafv2_web_acl_logging_enabled

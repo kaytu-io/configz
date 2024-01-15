@@ -1,0 +1,37 @@
+ID: aws_cis_controls_v8_ig1_8_2
+Title: 8.2 Collect Audit Logs
+DisplayCode: ""
+Connector: AWS
+Description: Collect audit logs. Ensure that logging, per the enterprise’s audit log management process, has been enabled across enterprise assets.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_stage_logging_enabled
+- aws_cloudfront_distribution_logging_enabled
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_elb_application_classic_lb_logging_enabled
+- aws_es_domain_logs_to_cloudwatch
+- aws_rds_db_instance_logging_enabled
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_s3_bucket_logging_enabled
+- aws_vpc_flow_logs_enabled
+- aws_wafv2_web_acl_logging_enabled

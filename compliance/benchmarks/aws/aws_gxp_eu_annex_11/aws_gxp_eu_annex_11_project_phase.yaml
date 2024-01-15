@@ -1,0 +1,25 @@
+ID: aws_gxp_eu_annex_11_project_phase
+Title: Project Phase
+DisplayCode: ""
+Connector: AWS
+Description: This section focuses combination of both human-oriented and automated process that leverages documentation validation and reports for good manufacturing practice (GMP) life cycle process, change control and deviations, systems inventory, user requirement specifications, quality management system, procedure for customized systems, evidence of appropriate test methods and data transfer validation (automated).
+Children:
+- aws_gxp_eu_annex_11_project_phase_4
+Tags:
+  category:
+  - Compliance
+  gxp_eu_annex_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

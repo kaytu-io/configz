@@ -1,0 +1,37 @@
+ID: aws_nist_800_171_rev_2_3_1_12
+Title: 3.1.12 Monitor and control remote access sessions
+DisplayCode: ""
+Connector: AWS
+Description: Remote access is access to organizational systems by users (or processes acting on behalf of users) communicating through external networks (e.g., the Internet). Remote access methods include dial-up, broadband, and wireless. Organizations often employ encrypted virtual private networks (VPNs) to enhance confidentiality over remote connections. The use of encrypted VPNs does not make the access non-remote; however, the use of VPNs, when adequately provisioned with appropriate control (e.g., employing encryption techniques for confidentiality protection), may provide sufficient assurance to the organization that it can effectively treat such connections as internal networks. VPNs with encrypted tunnels can affect the capability to adequately monitor network communications traffic for malicious code. Automated monitoring and control of remote access sessions allows organizations to detect cyberattacks and help to ensure ongoing compliance with remote access policies by auditing connection activities of remote users on a variety of system components (e.g., servers, workstations, notebook computers, smart phones, and tablets).
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_stage_logging_enabled
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_elb_application_classic_lb_logging_enabled
+- aws_es_domain_logs_to_cloudwatch
+- aws_guardduty_enabled
+- aws_rds_db_instance_logging_enabled
+- aws_s3_bucket_logging_enabled
+- aws_securityhub_enabled
+- aws_vpc_flow_logs_enabled
+- aws_vpc_igw_attached_to_authorized_vpc
+- aws_wafv2_web_acl_logging_enabled

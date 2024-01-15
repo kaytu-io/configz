@@ -1,0 +1,42 @@
+ID: aws_nist_800_171_rev_2_3_13_11
+Title: 3.13.11 Employ FIPS-validated cryptography when used to protect the confidentiality of CUI
+DisplayCode: ""
+Connector: AWS
+Description: Cryptography can be employed to support many security solutions including the protection of controlled unclassified information, the provision of digital signatures, and the enforcement of information separation when authorized individuals have the necessary clearances for such information but lack the necessary formal access approvals. Cryptography can also be used to support random number generation and hash generation. Cryptographic standards include FIPSvalidated cryptography and/or NSA-approved cryptography.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_stage_cache_encryption_at_rest_enabled
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_dynamodb_table_encrypted_with_kms
+- aws_ebs_attached_volume_encryption_enabled
+- aws_efs_file_system_encrypt_data_at_rest
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_es_domain_encryption_at_rest_enabled
+- aws_log_group_encryption_at_rest_enabled
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_s3_bucket_default_encryption_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_sns_topic_encrypted_at_rest

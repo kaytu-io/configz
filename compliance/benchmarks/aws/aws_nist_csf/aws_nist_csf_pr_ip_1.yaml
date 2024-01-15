@@ -1,0 +1,57 @@
+ID: aws_nist_csf_pr_ip_1
+Title: PR.IP-1
+DisplayCode: ""
+Connector: AWS
+Description: A baseline configuration of information technology/industrial control systems is created and maintained incorporating security principles (e.g. concept of least functionality).
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_account_part_of_organizations
+- aws_autoscaling_launch_config_hop_limit
+- aws_autoscaling_launch_config_requires_imdsv2
+- aws_cloudformation_stack_drift_detection_check
+- aws_cloudfront_distribution_origin_access_identity_enabled
+- aws_cloudtrail_security_trail_enabled
+- aws_ebs_volume_unused
+- aws_ec2_instance_ssm_managed
+- aws_ec2_instance_virtualization_type_no_paravirtual
+- aws_ec2_stopped_instance_30_days
+- aws_ecr_repository_lifecycle_policy_configured
+- aws_ecr_repository_tag_immutability_enabled
+- aws_ecs_service_fargate_using_latest_platform_version
+- aws_ecs_task_definition_container_environment_no_secret
+- aws_ecs_task_definition_no_host_pid_mode
+- aws_eks_cluster_with_latest_kubernetes_version
+- aws_elb_application_lb_desync_mitigation_mode
+- aws_lambda_function_use_latest_runtime
+- aws_networkfirewall_firewall_policy_default_stateless_action_check_fragmented_packets
+- aws_networkfirewall_firewall_policy_default_stateless_action_check_full_packets
+- aws_networkfirewall_firewall_policy_rule_group_not_empty
+- aws_rds_db_cluster_no_default_admin_name
+- aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+- aws_rds_db_instance_no_default_admin_name
+- aws_redshift_cluster_maintenance_settings_check
+- aws_redshift_cluster_no_default_admin_name
+- aws_redshift_cluster_no_default_database_name
+- aws_s3_bucket_policy_restricts_cross_account_permission_changes
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_waf_regional_web_acl_rule_attached
+- aws_waf_rule_condition_attached
+- aws_waf_rule_group_rule_attached
+- aws_waf_web_acl_resource_associated

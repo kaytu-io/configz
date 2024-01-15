@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0946_09y2organizational
+Title: The organization requires the use of encryption between, and the use of electronic signatures by, each of the parties involved in the transaction
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Redis
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_azure_redis_cache_ssl_enabled

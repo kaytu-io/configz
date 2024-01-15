@@ -1,0 +1,28 @@
+ID: aws_foundational_security_efs
+Title: EFS
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/EFS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_efs_file_system_encrypt_data_at_rest
+- aws_efs_file_system_automatic_backups_enabled
+- aws_efs_access_point_enforce_root_directory
+- aws_efs_access_point_enforce_user_identity

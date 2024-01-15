@@ -1,0 +1,32 @@
+ID: azure_nist_sp_800_53_rev_5_si_2_6
+Title: Removal of Previous Versions of Software and Firmware SI-2(6)
+DisplayCode: ""
+Connector: Azure
+Description: The organization removes organization-defined software and firmware components after updated versions have been installed.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_function_app_latest_http_version
+- azure_appservice_web_app_latest_http_version
+- azure_appservice_function_app_latest_java_version
+- azure_appservice_web_app_latest_java_version
+- azure_appservice_web_app_latest_php_version
+- azure_appservice_function_app_latest_python_version
+- azure_appservice_web_app_latest_python_version
+- azure_kubernetes_cluster_upgraded_with_non_vulnerable_version

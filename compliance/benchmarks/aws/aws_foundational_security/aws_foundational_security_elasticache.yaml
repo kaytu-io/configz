@@ -1,0 +1,31 @@
+ID: aws_foundational_security_elasticache
+Title: ElasticCache
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/ElastiCache
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_elasticache_cluster_auto_minor_version_upgrade_enabled
+- aws_elasticache_replication_group_auto_failover_enabled
+- aws_elasticache_replication_group_encryption_at_rest_enabled
+- aws_elasticache_replication_group_encryption_in_transit_enabled
+- aws_elasticache_replication_group_redis_auth_enabled
+- aws_elasticache_cluster_no_default_subnet_group

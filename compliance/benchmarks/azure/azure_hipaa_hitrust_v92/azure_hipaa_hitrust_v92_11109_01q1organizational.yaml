@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_11109_01q1organizational
+Title: 11109.01q1Organizational.57-01.q 01.05 Operating System Access Control
+DisplayCode: ""
+Connector: Azure
+Description: The organization ensures that redundant user IDs are not issued to other users and that all users are uniquely identified and authenticated for both local and remote access to information systems.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

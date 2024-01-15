@@ -1,0 +1,29 @@
+ID: aws_audit_manager_control_tower_ebs_checks_1_0_1
+Title: 1.0.1 - Disallow launch of EC2 instance types that are not EBS-optimized
+DisplayCode: ""
+Connector: AWS
+Description: Disallow launch of EC2 instance types that are not EBS-optimized - Checks whether EBS optimization is enabled for your EC2 instances that can be EBS-optimized.
+Children: []
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  audit_manager_control_tower_item_id:
+  - 1.0.1
+  category:
+  - Compliance
+  control_set:
+  - ebs_checks
+  plugin:
+  - aws
+  service:
+  - AWS/EBS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ec2_instance_ebs_optimized

@@ -1,0 +1,34 @@
+ID: azure_cis_v200_4_1
+Title: 4.1 SQL Server - Auditing
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "4.1"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_sql_server_auditing_on
+- azure_sql_database_allow_internet_access
+- azure_sql_server_tde_protector_cmk_encrypted
+- azure_sql_db_active_directory_admin_configured
+- azure_sql_database_transparent_data_encryption_enabled
+- azure_sql_server_auditing_retention_period_90

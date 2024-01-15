@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1149_01c2system
+Title: The organization facilitates information sharing by enabling authorized users
+DisplayCode: ""
+Connector: Azure
+Description: To determine a business partner's access when discretion is allowed as defined by the organization and by employing manual processes or automated mechanisms to assist users in making information sharing/collaboration decisions.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/KubernetesService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_kubernetes_instance_rbac_enabled

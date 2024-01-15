@@ -1,0 +1,34 @@
+ID: aws_nist_800_53_rev_5_si
+Title: System and Information integrity (SI)
+DisplayCode: ""
+Connector: AWS
+Description: The SI control family correlates to controls that protect system and information integrity. These include flaw remediation, malicious code protection, information system monitoring, security alerts, software and firmware integrity, and spam protection.
+Children:
+- aws_nist_800_53_rev_5_si_1
+- aws_nist_800_53_rev_5_si_2
+- aws_nist_800_53_rev_5_si_3
+- aws_nist_800_53_rev_5_si_4
+- aws_nist_800_53_rev_5_si_5
+- aws_nist_800_53_rev_5_si_7
+- aws_nist_800_53_rev_5_si_10
+- aws_nist_800_53_rev_5_si_12
+- aws_nist_800_53_rev_5_si_13
+- aws_nist_800_53_rev_5_si_19
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

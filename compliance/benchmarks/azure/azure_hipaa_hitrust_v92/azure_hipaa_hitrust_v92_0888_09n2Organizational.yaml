@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0888_09n2Organizational
+Title: 0888.09n2Organizational.6-09.n 09.06 Network Security Management
+DisplayCode: ""
+Connector: Azure
+Description: The contract with the external/outsourced service provider includes the specification that the service provider is responsible for the protection of covered information shared.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Network
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_network_watcher_enabled

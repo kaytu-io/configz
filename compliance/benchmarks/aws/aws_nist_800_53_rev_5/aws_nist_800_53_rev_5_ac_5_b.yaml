@@ -1,0 +1,27 @@
+ID: aws_nist_800_53_rev_5_ac_5_b
+Title: AC-5(b)
+DisplayCode: ""
+Connector: AWS
+Description: Define system access authorizations to support separation of duties.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ecs_task_definition_user_for_host_mode_check
+- aws_iam_policy_custom_no_service_wildcard
+- aws_iam_policy_custom_no_star_star

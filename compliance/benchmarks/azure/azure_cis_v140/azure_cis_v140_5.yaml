@@ -1,0 +1,30 @@
+ID: azure_cis_v140_5
+Title: 5 Logging and Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children:
+- azure_cis_v140_5_1
+- azure_cis_v140_5_2
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "5"
+  cis_version:
+  - v1.4.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

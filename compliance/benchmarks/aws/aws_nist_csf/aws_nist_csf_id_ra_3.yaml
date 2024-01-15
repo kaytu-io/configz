@@ -1,0 +1,26 @@
+ID: aws_nist_csf_id_ra_3
+Title: ID.RA-3
+DisplayCode: ""
+Connector: AWS
+Description: Threats, both internal and external, are identified and documented.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_securityhub_enabled

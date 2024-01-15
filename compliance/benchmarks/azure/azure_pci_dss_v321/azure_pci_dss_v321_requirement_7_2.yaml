@@ -1,0 +1,25 @@
+ID: azure_pci_dss_v321_requirement_7_2
+Title: PCI DSS requirement 7.2
+DisplayCode: ""
+Connector: Azure
+Description: Establish an access control system(s) for systems components that restricts access based on a user's need to know, and is set to “deny all” unless specifically allowed.
+Children:
+- azure_pci_dss_v321_requirement_7_2_1
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

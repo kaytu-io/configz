@@ -1,0 +1,41 @@
+ID: azure_nist_sp_800_53_rev_5_ra_5
+Title: Vulnerability Monitoring and Scanning (RA-5)
+DisplayCode: ""
+Connector: Azure
+Description: Scan for system vulnerabilities. Share vulnerability information and security controls that eliminate vulnerabilities.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_azure_defender_enabled
+- azure_compute_vm_azure_defender_enabled
+- azure_compute_vm_vulnerability_assessment_solution_enabled
+- azure_container_registry_azure_defender_enabled
+- azure_dns_azure_defender_enabled
+- azure_keyvault_azure_defender_enabled
+- azure_kubernetes_azure_defender_enabled
+- azure_mssql_managed_instance_vulnerability_assessment_enabled
+- azure_resource_manager_azure_defender_enabled
+- azure_securitycenter_azure_defender_on_for_sqlservervm
+- azure_sql_database_server_azure_defender_enabled
+- azure_sql_database_vulnerability_findings_resolved
+- azure_sql_server_and_databases_va_enabled
+- azure_sql_server_azure_defender_enabled
+- azure_sql_server_vm_azure_defender_enabled
+- azure_storage_azure_defender_enabled
+- azure_synapse_workspace_vulnerability_assessment_enabled

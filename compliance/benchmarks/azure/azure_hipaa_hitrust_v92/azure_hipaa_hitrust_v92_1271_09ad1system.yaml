@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1271_09ad1system
+Title: 1271.09ad1System.1-09.ad 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: An intrusion detection system managed outside of the control of system and network administrators is used to monitor system and network administration activities for compliance.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Monitor
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_monitor_log_alert_for_administrative_operations

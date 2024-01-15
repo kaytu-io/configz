@@ -1,0 +1,27 @@
+ID: azure_nist_sp_800_53_rev_5_ac_6
+Title: Least Privilege (AC-6)
+DisplayCode: ""
+Connector: Azure
+Description: Automate least privilege. Allow only authorized accesses for users and processes which are necessary.
+Children:
+- azure_nist_sp_800_53_rev_5_ac_6_7
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_no_custom_role
+- azure_iam_subscription_owner_max_3

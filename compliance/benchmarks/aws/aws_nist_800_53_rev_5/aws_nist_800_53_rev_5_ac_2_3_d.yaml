@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_ac_2_3_d
+Title: AC-2(3)(d)
+DisplayCode: ""
+Connector: AWS
+Description: "Disable accounts within [Assignment: organization-defined time period] when the accounts: (d) Have been inactive for [Assignment: organization-defined time period]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_min_length_14
+- aws_iam_user_unused_credentials_90

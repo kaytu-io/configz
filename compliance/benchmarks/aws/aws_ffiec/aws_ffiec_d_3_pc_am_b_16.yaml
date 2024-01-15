@@ -1,0 +1,28 @@
+ID: aws_ffiec_d_3_pc_am_b_16
+Title: D3.PC.Am.B.16
+DisplayCode: ""
+Connector: AWS
+Description: Administrative, physical, or technical controls are in place to prevent users without administrative responsibilities from installing unauthorized software.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_policy_custom_no_service_wildcard
+- aws_iam_group_not_empty
+- aws_iam_policy_custom_no_star_star
+- aws_iam_user_in_group

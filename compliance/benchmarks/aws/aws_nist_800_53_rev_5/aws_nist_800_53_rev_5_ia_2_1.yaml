@@ -1,0 +1,28 @@
+ID: aws_nist_800_53_rev_5_ia_2_1
+Title: IA-2(1) Multi-Factor Authentication To Privileged Accounts
+DisplayCode: ""
+Connector: AWS
+Description: Implement multi-factor authentication for access to privileged accounts.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_user_mfa_enabled

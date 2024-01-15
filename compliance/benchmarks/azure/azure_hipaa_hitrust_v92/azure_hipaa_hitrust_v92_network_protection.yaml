@@ -1,0 +1,52 @@
+ID: azure_hipaa_hitrust_v92_network_protection
+Title: 08 Network Protection
+DisplayCode: ""
+Connector: Azure
+Description: The organization's security gateways (e.g. firewalls) enforce security policies and are configured to filter traffic between domains, block unauthorized access, and are used to maintain segregation between internal wired, internal wireless, and external network segments (e.g., the Internet) including DMZs and enforce access control policies for each of the domains.
+Children:
+- azure_hipaa_hitrust_v92_0805_01m1organizational
+- azure_hipaa_hitrust_v92_0806_01m2organizational
+- azure_hipaa_hitrust_v92_0809_01n2organizational
+- azure_hipaa_hitrust_v92_0810_01n2organizational
+- azure_hipaa_hitrust_v92_0811_01n2organizational
+- azure_hipaa_hitrust_v92_0812_01n2organizational
+- azure_hipaa_hitrust_v92_0814_01n1organizational
+- azure_hipaa_hitrust_v92_0835_09n1organizational
+- azure_hipaa_hitrust_v92_0836_09_n2organizational
+- azure_hipaa_hitrust_v92_0837_09_n2Organizational
+- azure_hipaa_hitrust_v92_0858_09m1organizational
+- azure_hipaa_hitrust_v92_0859_09m1organizational
+- azure_hipaa_hitrust_v92_0860_09m1organizational
+- azure_hipaa_hitrust_v92_0861_09m2organizational
+- azure_hipaa_hitrust_v92_0862_09m2organizational
+- azure_hipaa_hitrust_v92_0863_09m2organizational
+- azure_hipaa_hitrust_v92_0864_09m2organizational
+- azure_hipaa_hitrust_v92_0865_09m2organizational
+- azure_hipaa_hitrust_v92_0866_09m3organizational
+- azure_hipaa_hitrust_v92_0868_09m3organizational
+- azure_hipaa_hitrust_v92_0869_09m3organizational
+- azure_hipaa_hitrust_v92_0870_09m3organizational
+- azure_hipaa_hitrust_v92_0871_09m3organizational
+- azure_hipaa_hitrust_v92_0885_09n2organizational
+- azure_hipaa_hitrust_v92_0886_09n2Organizational
+- azure_hipaa_hitrust_v92_0887_09n2organizational
+- azure_hipaa_hitrust_v92_0888_09n2Organizational
+- azure_hipaa_hitrust_v92_0894_01m2organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

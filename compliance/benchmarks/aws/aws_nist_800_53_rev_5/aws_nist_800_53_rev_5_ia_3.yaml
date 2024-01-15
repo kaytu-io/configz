@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ia_3
+Title: Device Identification And Authentication (IA-3)
+DisplayCode: ""
+Connector: AWS
+Description: "Uniquely identify and authenticate [Assignment: organization-defined devices and/or types of devices] before establishing a [Selection (one or more): local; remote; network] connection."
+Children:
+- aws_nist_800_53_rev_5_ia_3_3
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

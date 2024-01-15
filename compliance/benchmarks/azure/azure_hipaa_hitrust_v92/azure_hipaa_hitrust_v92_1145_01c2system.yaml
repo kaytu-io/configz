@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1145_01c2system
+Title: 1145.01c2System.1-01.c 01.02 Authorized Access to Information Systems
+DisplayCode: ""
+Connector: Azure
+Description: Role-based access control is implemented and capable of mapping each user to one or more roles, and each role to one or more system functions.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_subscription_owner_more_than_1

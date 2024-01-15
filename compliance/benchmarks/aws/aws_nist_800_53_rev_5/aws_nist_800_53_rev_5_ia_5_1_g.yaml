@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ia_5_1_g
+Title: IA-5(1)(g)
+DisplayCode: ""
+Connector: AWS
+Description: "For password-based authentication: (g) Employ automated tools to assist the user in selecting strong password authenticators."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_min_length_14

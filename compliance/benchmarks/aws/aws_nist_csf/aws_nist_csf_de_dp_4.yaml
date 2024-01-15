@@ -1,0 +1,36 @@
+ID: aws_nist_csf_de_dp_4
+Title: DE.DP-4
+DisplayCode: ""
+Connector: AWS
+Description: Event detection information is communicated.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudformation_stack_notifications_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudwatch_alarm_action_enabled
+- aws_cloudwatch_alarm_action_enabled_check
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_elb_application_lb_waf_enabled
+- aws_guardduty_enabled
+- aws_guardduty_finding_archived
+- aws_s3_bucket_event_notifications_enabled
+- aws_securityhub_enabled
+- aws_sns_topic_notification_delivery_status_enabled
+- aws_wafv2_web_acl_logging_enabled

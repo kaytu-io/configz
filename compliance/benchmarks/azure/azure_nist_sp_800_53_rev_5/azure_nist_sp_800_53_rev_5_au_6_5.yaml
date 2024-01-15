@@ -1,0 +1,59 @@
+ID: azure_nist_sp_800_53_rev_5_au_6_5
+Title: Integrated Analysis of Audit Records AU-6(5)
+DisplayCode: ""
+Connector: Azure
+Description: The organization integrates analysis of audit records with analysis of vulnerable scanning information, performance data, and information system monitoring information collected from other sources to further enhance the ability to identify inappropriate or unusual activity.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_azure_defender_enabled
+- azure_appservice_web_app_diagnostic_logs_enabled
+- azure_arc_compute_machine_linux_log_analytics_agent_installed
+- azure_arc_compute_machine_windows_log_analytics_agent_installed
+- azure_batch_account_logging_enabled
+- azure_compute_vm_azure_defender_enabled
+- azure_compute_vm_guest_configuration_installed
+- azure_compute_vm_guest_configuration_with_system_assigned_managed_identity
+- azure_compute_vm_log_analytics_agent_installed
+- azure_compute_vm_network_traffic_data_collection_linux_agent_installed
+- azure_compute_vm_network_traffic_data_collection_windows_agent_installed
+- azure_compute_vm_scale_set_log_analytics_agent_installed
+- azure_compute_vm_scale_set_logging_enabled
+- azure_container_registry_azure_defender_enabled
+- azure_datalake_analytics_account_logging_enabled
+- azure_datalake_store_account_logging_enabled
+- azure_dns_azure_defender_enabled
+- azure_eventhub_namespace_logging_enabled
+- azure_iot_hub_logging_enabled
+- azure_keyvault_azure_defender_enabled
+- azure_keyvault_logging_enabled
+- azure_kubernetes_azure_defender_enabled
+- azure_logic_app_workflow_logging_enabled
+- azure_network_watcher_enabled
+- azure_resource_manager_azure_defender_enabled
+- azure_search_service_logging_enabled
+- azure_securitycenter_automatic_provisioning_monitoring_agent_on
+- azure_securitycenter_azure_defender_on_for_sqlservervm
+- azure_servicebus_namespace_logging_enabled
+- azure_sql_database_server_azure_defender_enabled
+- azure_sql_server_auditing_on
+- azure_sql_server_azure_defender_enabled
+- azure_sql_server_vm_azure_defender_enabled
+- azure_storage_azure_defender_enabled
+- azure_stream_analytics_job_logging_enabled

@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0871_09m3organizational
+Title: 0871.09m3Organizational.22-09.m 09.07 Network Security Management
+DisplayCode: ""
+Connector: Azure
+Description: Authoritative DNS servers are segregated into internal and external roles.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/ContainerRegistry
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_container_registry_use_virtual_service_endpoint

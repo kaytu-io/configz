@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1123_01q1system
+Title: 1123.01q1System.2-01.q 01.05 Operating System Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Users who performed privileged functions (e.g., system administration) use separate accounts when performing those privileged functions.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

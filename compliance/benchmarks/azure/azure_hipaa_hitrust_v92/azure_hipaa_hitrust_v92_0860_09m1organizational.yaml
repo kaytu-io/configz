@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0860_09m1organizational
+Title: 0860.09m1Organizational.9-09.m 09.06 Network Security Management
+DisplayCode: ""
+Connector: Azure
+Description: The organization formally manages equipment on the network, including equipment in user areas.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Network
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_network_security_group_diagnostic_setting_deployed

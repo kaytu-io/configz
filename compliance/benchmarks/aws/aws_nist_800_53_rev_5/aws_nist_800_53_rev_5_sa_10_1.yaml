@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sa_10_1
+Title: SA-10(1) Software And Firmware Integrity Verification
+DisplayCode: ""
+Connector: AWS
+Description: Require the developer of the system, system component, or system service to enable integrity verification of software and firmware components.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudTrail
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_validation_enabled

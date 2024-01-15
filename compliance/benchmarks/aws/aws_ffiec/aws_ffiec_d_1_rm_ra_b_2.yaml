@@ -1,0 +1,25 @@
+ID: aws_ffiec_d_1_rm_ra_b_2
+Title: D1.RM.RA.B.2
+DisplayCode: ""
+Connector: AWS
+Description: The risk assessment identifies Internet- based systems and high-risk transactions that warrant additional authentication controls.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

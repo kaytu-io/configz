@@ -1,0 +1,28 @@
+ID: aws_nist_800_53_rev_5_ac_3_2
+Title: AC-3(2) Dual Authorization
+DisplayCode: ""
+Connector: AWS
+Description: "Enforce dual authorization for [Assignment: organization-defined privileged commands and/or other organization-defined actions]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_user_mfa_enabled

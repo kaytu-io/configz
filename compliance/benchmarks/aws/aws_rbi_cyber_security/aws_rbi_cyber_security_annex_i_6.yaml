@@ -1,0 +1,31 @@
+ID: aws_rbi_cyber_security_annex_i_6
+Title: Annex I (6)
+DisplayCode: ""
+Connector: AWS
+Description: Put in place systems and processes to identify, track, manage and monitor the status of patches to servers, operating system and application software running at the systems used by the UCB officials (end-users). Implement and update antivirus protection for all servers and applicable end points preferably through a centralised system.
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  rbi_cyber_security_item_id:
+  - annex_i_6
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_finding_archived
+- aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+- aws_redshift_cluster_maintenance_settings_check
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_ssm_managed_instance_compliance_patch_compliant

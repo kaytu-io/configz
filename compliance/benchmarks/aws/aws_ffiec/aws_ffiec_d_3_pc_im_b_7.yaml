@@ -1,0 +1,31 @@
+ID: aws_ffiec_d_3_pc_im_b_7
+Title: D3.PC.Im.B.7
+DisplayCode: ""
+Connector: AWS
+Description: Access to make changes to systems configurations (including virtual machines and hypervisors) is controlled and monitored.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_iam_policy_custom_no_service_wildcard
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_policy_custom_no_star_star
+- aws_iam_user_in_group
+- aws_iam_user_no_inline_attached_policies

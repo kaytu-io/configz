@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_si_4_13
+Title: SI-4(13) Analyze Traffic And Event Patterns
+DisplayCode: ""
+Connector: AWS
+Description: a. Analyze communications traffic and event patterns for the system; b. Develop profiles representing common traffic and event patterns; and c. Use the traffic and event profiles in tuning system-monitoring devices.
+Children:
+- aws_nist_800_53_rev_5_si_4_13_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

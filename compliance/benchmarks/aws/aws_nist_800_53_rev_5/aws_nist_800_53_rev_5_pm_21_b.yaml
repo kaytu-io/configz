@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_pm_21_b
+Title: PM-21(b)
+DisplayCode: ""
+Connector: AWS
+Description: Retain the accounting of disclosures for the length of the time the personally identifiable information is maintained or five years after the disclosure is made, whichever is longer.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudwatch_log_group_retention_period_365

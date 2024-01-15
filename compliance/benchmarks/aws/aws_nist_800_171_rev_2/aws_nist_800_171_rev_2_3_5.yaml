@@ -1,0 +1,33 @@
+ID: aws_nist_800_171_rev_2_3_5
+Title: 3.5 Identification and Authentication
+DisplayCode: ""
+Connector: AWS
+Description: IA controls are specific to the identification and authentication policies in an organization. This includes the identification and authentication of organizational and non-organizational users and how the management of those systems.
+Children:
+- aws_nist_800_171_rev_2_3_5_1
+- aws_nist_800_171_rev_2_3_5_2
+- aws_nist_800_171_rev_2_3_5_3
+- aws_nist_800_171_rev_2_3_5_4
+- aws_nist_800_171_rev_2_3_5_5
+- aws_nist_800_171_rev_2_3_5_6
+- aws_nist_800_171_rev_2_3_5_7
+- aws_nist_800_171_rev_2_3_5_8
+- aws_nist_800_171_rev_2_3_5_9
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,29 @@
+ID: aws_cis_v150_2_4
+Title: 2.4 Elastic File System (EFS)
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "2.4"
+  cis_version:
+  - v1.5.0
+  plugin:
+  - aws
+  service:
+  - AWS/EFS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_efs_file_system_encrypt_data_at_rest

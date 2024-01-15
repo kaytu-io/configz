@@ -1,0 +1,35 @@
+ID: azure_hipaa_hitrust_v92_0810_01n2organizational
+Title: 0810.01n2Organizational.5-01.n 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Transmitted information is secured and, at a minimum, encrypted over open, public networks.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_latest_tls_version
+- azure_appservice_api_app_use_https
+- azure_appservice_function_app_latest_tls_version
+- azure_appservice_function_app_only_https_accessible
+- azure_azure_redis_cache_ssl_enabled
+- azure_compute_vm_attached_with_network
+- azure_compute_vm_tcp_udp_access_restricted_internet
+- azure_mysql_ssl_enabled
+- azure_network_security_group_subnet_associated
+- azure_postgres_sql_ssl_enabled
+- azure_storage_account_secure_transfer_required_enabled

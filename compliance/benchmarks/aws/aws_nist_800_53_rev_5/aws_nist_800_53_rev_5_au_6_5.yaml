@@ -1,0 +1,28 @@
+ID: aws_nist_800_53_rev_5_au_6_5
+Title: AU-6(5) Central Review And Analysis
+DisplayCode: ""
+Connector: AWS
+Description: "Integrate analysis of audit records with analysis of [Selection (one or more): vulnerability scanning information; performance data; system monitoring information; [Assignment: organization-defined data/information collected from other sources]] to further enhance the ability to identify inappropriate or unusual activity."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudwatch_alarm_action_enabled
+- aws_guardduty_enabled
+- aws_securityhub_enabled

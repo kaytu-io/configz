@@ -1,0 +1,44 @@
+ID: aws_cis_v200_4
+Title: 4 Monitoring
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "4"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_log_metric_filter_unauthorized_api
+- aws_log_metric_filter_console_login_mfa
+- aws_log_metric_filter_root_login
+- aws_log_metric_filter_iam_policy
+- aws_log_metric_filter_cloudtrail_configuration
+- aws_log_metric_filter_console_authentication_failure
+- aws_log_metric_filter_disable_or_delete_cmk
+- aws_log_metric_filter_bucket_policy
+- aws_log_metric_filter_config_configuration
+- aws_log_metric_filter_security_group
+- aws_log_metric_filter_network_acl
+- aws_log_metric_filter_network_gateway
+- aws_log_metric_filter_route_table
+- aws_log_metric_filter_vpc
+- aws_log_metric_filter_organization
+- aws_securityhub_enabled

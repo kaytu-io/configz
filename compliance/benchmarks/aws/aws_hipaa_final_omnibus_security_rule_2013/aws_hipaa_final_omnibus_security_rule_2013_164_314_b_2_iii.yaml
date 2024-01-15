@@ -1,0 +1,54 @@
+ID: aws_hipaa_final_omnibus_security_rule_2013_164_314_b_2_iii
+Title: 164.314(b)(2)(iii)
+DisplayCode: ""
+Connector: AWS
+Description: Ensure that any agent to whom it provides this information agrees to implement reasonable and appropriate security measures to protect the information.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013_item_id:
+  - 164_314_b_2_iii
+  hipaa_section:
+  - "164_314"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_dax_cluster_encryption_at_rest_enabled
+- aws_dynamodb_table_encryption_enabled
+- aws_ebs_attached_volume_encryption_enabled
+- aws_ec2_ebs_default_encryption_enabled
+- aws_eks_cluster_secrets_encrypted
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_es_domain_encryption_at_rest_enabled
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_opensearch_domain_https_required
+- aws_opensearch_domain_node_to_node_encryption_enabled
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_kms_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_default_encryption_enabled
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_public_access_block_account
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_vpc_configured_to_use_vpc_endpoints

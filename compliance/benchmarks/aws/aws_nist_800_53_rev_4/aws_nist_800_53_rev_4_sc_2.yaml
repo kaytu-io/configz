@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_4_sc_2
+Title: Application Partitioning (SC-2)
+DisplayCode: ""
+Connector: AWS
+Description: The information system separates user functionality (including user interface services) from information system management functionality.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_group_not_empty
+- aws_iam_policy_custom_no_star_star

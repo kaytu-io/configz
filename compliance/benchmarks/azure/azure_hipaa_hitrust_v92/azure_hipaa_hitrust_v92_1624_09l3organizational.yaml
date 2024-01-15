@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1624_09l3organizational
+Title: 1624.09l3Organizational.12-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: The organization performs incremental or differential backups daily and full backups weekly to separate media.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/MariaDB
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_mariadb_server_geo_redundant_backup_enabled

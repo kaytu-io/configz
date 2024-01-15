@@ -1,0 +1,29 @@
+ID: aws_nist_csf_id_am
+Title: Asset Management (ID.AM)
+DisplayCode: ""
+Connector: AWS
+Description: The data, personnel, devices, systems, and facilities that enable the organization to achieve business purposes are identified and managed consistent with their relative importance to organizational objectives and the organization's risk strategy.
+Children:
+- aws_nist_csf_id_am_1
+- aws_nist_csf_id_am_2
+- aws_nist_csf_id_am_3
+- aws_nist_csf_id_am_5
+- aws_nist_csf_id_am_6
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

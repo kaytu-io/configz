@@ -1,0 +1,33 @@
+ID: aws_foundational_security_redshift
+Title: Redshift
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/Redshift
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_redshift_cluster_prohibit_public_access
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_redshift_cluster_automatic_upgrade_major_versions_enabled
+- aws_redshift_cluster_enhanced_vpc_routing_enabled
+- aws_redshift_cluster_no_default_admin_name
+- aws_redshift_cluster_no_default_database_name
+- aws_redshift_cluster_kms_enabled

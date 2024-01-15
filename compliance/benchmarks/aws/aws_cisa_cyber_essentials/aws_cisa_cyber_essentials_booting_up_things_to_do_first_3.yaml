@@ -1,0 +1,27 @@
+ID: aws_cisa_cyber_essentials_booting_up_things_to_do_first_3
+Title: "Booting Up: Things to Do First-3"
+DisplayCode: ""
+Connector: AWS
+Description: Enable automatic updates whenever possible. Replace unsupported operating systems, applications and hardware. Test and deploy patches quickly.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+- aws_redshift_cluster_maintenance_settings_check
+- aws_ssm_managed_instance_compliance_patch_compliant

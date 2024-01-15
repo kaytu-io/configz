@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0711_10m2organizational
+Title: 0711.10m2Organizational.23-10.m 10.06 Technical Vulnerability Management
+DisplayCode: ""
+Connector: Azure
+Description: A technical vulnerability management program is in place to monitor, assess, rank, and remediate vulnerabilities identified in systems.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_vulnerability_assessment_solution_enabled

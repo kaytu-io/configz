@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1204_09aa1system
+Title: 1204.09aa1System.3-09.aa 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: The activities of privileged users (administrators, operators, etc.) include the success/failure of the event, time the event occurred, the account involved, the processes involved, and additional information about the event.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/IoTHub
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iot_hub_logging_enabled

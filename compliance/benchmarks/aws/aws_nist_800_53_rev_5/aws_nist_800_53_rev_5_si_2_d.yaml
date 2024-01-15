@@ -1,0 +1,27 @@
+ID: aws_nist_800_53_rev_5_si_2_d
+Title: SI-2(d)
+DisplayCode: ""
+Connector: AWS
+Description: Incorporate flaw remediation into the organizational configuration management process.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_elastic_beanstalk_enhanced_health_reporting_enabled
+- aws_redshift_cluster_maintenance_settings_check
+- aws_ssm_managed_instance_compliance_patch_compliant

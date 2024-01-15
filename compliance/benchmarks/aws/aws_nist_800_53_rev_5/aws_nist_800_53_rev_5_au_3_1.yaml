@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_au_3_1
+Title: AU-3(1) Additional Audit Information
+DisplayCode: ""
+Connector: AWS
+Description: "Generate audit records containing the following additional information: [Assignment: organization-defined additional information]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_enabled
+- aws_guardduty_enabled

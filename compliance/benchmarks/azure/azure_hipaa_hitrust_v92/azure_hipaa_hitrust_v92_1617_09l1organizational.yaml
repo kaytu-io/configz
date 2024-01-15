@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1617_09l1organizational
+Title: 1617.09l1Organizational.23-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: A formal definition of the level of backup required for each system is defined and documented including how each system will be restored, the scope of data to be imaged, frequency of imaging, and duration of retention based on relevant contractual, legal, regulatory and business requirements.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/MySQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_mysql_db_server_geo_redundant_backup_enabled

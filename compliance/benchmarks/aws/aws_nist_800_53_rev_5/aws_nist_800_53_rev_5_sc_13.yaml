@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sc_13
+Title: Cryptographic Protection (SC-13)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Determine the [Assignment: organization-defined cryptographic uses]; and b.\u2003Implement the following types of cryptography required for each specified cryptographic use: [Assignment: organization-defined types of cryptography for each specified cryptographic use]."
+Children:
+- aws_nist_800_53_rev_5_sc_13_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

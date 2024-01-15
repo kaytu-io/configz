@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0960_09scsporganizational
+Title: 0960.09sCSPOrganizational.1-09.s 09.08 Exchange of Information
+DisplayCode: ""
+Connector: Azure
+Description: Cloud service providers use secure (e.g., non-clear text and authenticated) standardized network protocols for the import and export of data and to manage the service, and make available a document to consumers (tenants) detailing the relevant interoperability and portability standards that are involved.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_function_app_cors_no_star

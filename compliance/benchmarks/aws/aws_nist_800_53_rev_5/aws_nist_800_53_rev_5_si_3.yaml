@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_si_3
+Title: Malicious Code Protection (SI-3)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Implement [Selection (one or more): signature based; non-signature based] malicious code protection mechanisms at system entry and exit points to detect and eradicate malicious code; b.\u2003Automatically update malicious code protection mechanisms as new releases are available in accordance with organizational configuration management policy and procedures; c.\u2003Configure malicious code protection mechanisms to: 1.\u2003Perform periodic scans of the system [Assignment: organization-defined frequency] and real-time scans of files from external sources at [Selection (one or more): endpoint; network entry and exit points] as the files are downloaded, opened, or executed in accordance with organizational policy; and 2.\u2003[Selection (one or more): block malicious code; quarantine malicious code; take [Assignment: organization-defined action]]; and send alert to [Assignment: organization-defined personnel or roles] in response to malicious code detection; and d.\u2003Address the receipt of false positives during malicious code detection and eradication and the resulting potential impact on the availability of the system."
+Children:
+- aws_nist_800_53_rev_5_si_3_8
+- aws_nist_800_53_rev_5_si_3_c_2
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

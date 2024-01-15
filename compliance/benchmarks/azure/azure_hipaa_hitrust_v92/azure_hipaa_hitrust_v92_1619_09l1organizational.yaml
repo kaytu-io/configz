@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1619_09l1organizational
+Title: 1619.09l1Organizational.7-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: Inventory records for the backup copies, including content and current location, are maintained.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/MariaDB
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_mariadb_server_geo_redundant_backup_enabled

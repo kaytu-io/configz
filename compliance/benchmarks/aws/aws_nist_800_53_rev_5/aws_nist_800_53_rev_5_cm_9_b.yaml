@@ -1,0 +1,56 @@
+ID: aws_nist_800_53_rev_5_cm_9_b
+Title: CM-9(b)
+DisplayCode: ""
+Connector: AWS
+Description: "Develop, document, and implement a configuration management plan for the system that: b. Establishes a process for identifying configuration items throughout the system development life cycle and for managing the configuration of the configuration items."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_account_part_of_organizations
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_cloudtrail_trail_validation_enabled
+- aws_ebs_attached_volume_encryption_enabled
+- aws_ec2_ebs_default_encryption_enabled
+- aws_iam_account_password_policy_min_length_14
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_policy_custom_no_star_star
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_iam_root_user_no_access_keys
+- aws_iam_user_access_key_age_90
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_user_in_group
+- aws_iam_user_no_inline_attached_policies
+- aws_iam_user_unused_credentials_90
+- aws_kms_cmk_rotation_enabled
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_default_encryption_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_logging_enabled
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_public_access_block_account
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_vpc_flow_logs_enabled
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_vpc_security_group_restrict_ingress_ssh_all

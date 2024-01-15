@@ -1,0 +1,31 @@
+ID: aws_cisa_cyber_essentials_your_systems_1
+Title: Your Systems-1
+DisplayCode: ""
+Connector: AWS
+Description: Learn what is on your network. Maintain inventories of hardware and software assets to know what is in play and at-risk from attack.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ebs_volume_unused
+- aws_ec2_instance_ssm_managed
+- aws_ec2_stopped_instance_30_days
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_ssm_managed_instance_compliance_patch_compliant
+- aws_vpc_eip_associated
+- aws_vpc_network_acl_unused

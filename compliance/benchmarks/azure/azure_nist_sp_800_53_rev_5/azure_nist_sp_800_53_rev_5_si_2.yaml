@@ -1,0 +1,46 @@
+ID: azure_nist_sp_800_53_rev_5_si_2
+Title: Flaw Remediation (SI-2)
+DisplayCode: ""
+Connector: Azure
+Description: The organization identifies, reports, and corrects information system flaws, tests software and firmware updates related to flaw remediation for effectiveness and potential side effects before installation, installs security-relevant software and firmware updates within the organization-defined time period of the release of the updates, and incorporates flaw remediation into the organizational configuration management process.
+Children:
+- azure_nist_sp_800_53_rev_5_si_2_6
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_azure_defender_enabled
+- azure_appservice_function_app_latest_http_version
+- azure_appservice_function_app_latest_java_version
+- azure_appservice_function_app_latest_python_version
+- azure_appservice_web_app_latest_http_version
+- azure_appservice_web_app_latest_java_version
+- azure_appservice_web_app_latest_php_version
+- azure_appservice_web_app_latest_python_version
+- azure_compute_vm_azure_defender_enabled
+- azure_compute_vm_system_updates_installed
+- azure_compute_vm_vulnerability_assessment_solution_enabled
+- azure_container_registry_azure_defender_enabled
+- azure_dns_azure_defender_enabled
+- azure_keyvault_azure_defender_enabled
+- azure_kubernetes_azure_defender_enabled
+- azure_kubernetes_cluster_upgraded_with_non_vulnerable_version
+- azure_resource_manager_azure_defender_enabled
+- azure_sql_database_server_azure_defender_enabled
+- azure_sql_database_vulnerability_findings_resolved
+- azure_sql_server_vm_azure_defender_enabled
+- azure_storage_azure_defender_enabled

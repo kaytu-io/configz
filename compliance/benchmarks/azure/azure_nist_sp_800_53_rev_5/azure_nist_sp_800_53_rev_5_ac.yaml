@@ -1,0 +1,31 @@
+ID: azure_nist_sp_800_53_rev_5_ac
+Title: Access Control (AC)
+DisplayCode: ""
+Connector: Azure
+Description: The AC Control Family consists of security requirements detailing system logging. This includes who has access to what assets and reporting capabilities like account management, system privileges, and remote access logging to determine when users have access to the system and their level of access.
+Children:
+- azure_nist_sp_800_53_rev_5_ac_2
+- azure_nist_sp_800_53_rev_5_ac_3
+- azure_nist_sp_800_53_rev_5_ac_4
+- azure_nist_sp_800_53_rev_5_ac_5
+- azure_nist_sp_800_53_rev_5_ac_6
+- azure_nist_sp_800_53_rev_5_ac_16
+- azure_nist_sp_800_53_rev_5_ac_17
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

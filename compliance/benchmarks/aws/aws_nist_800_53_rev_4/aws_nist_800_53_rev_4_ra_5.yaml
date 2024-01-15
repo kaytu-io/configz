@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_4_ra_5
+Title: Vulnerability Scanning (RA-5)
+DisplayCode: ""
+Connector: AWS
+Description: Scan for system vulnerabilities. Share vulnerability information and security controls that eliminate vulnerabilities.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_guardduty_finding_archived

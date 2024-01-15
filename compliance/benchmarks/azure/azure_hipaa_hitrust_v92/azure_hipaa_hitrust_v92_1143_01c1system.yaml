@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1143_01c1system
+Title: 1143.01c1System.123-01.c 01.02 Authorized Access to Information Systems
+DisplayCode: ""
+Connector: Azure
+Description: Privileges are formally authorized and controlled, allocated to users on a need-to-use and event-by-event basis for their functional role (e.g., user or administrator), and documented for each system product/element.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Network
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_network_security_group_remote_access_restricted

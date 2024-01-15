@@ -1,0 +1,27 @@
+ID: aws_foundational_security_dynamodb
+Title: DynamoDB
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/DynamoDB
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_dax_cluster_encryption_at_rest_enabled

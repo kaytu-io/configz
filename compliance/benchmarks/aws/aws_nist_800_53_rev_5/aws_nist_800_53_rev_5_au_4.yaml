@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_au_4
+Title: Audit Log Stprage Capacity (AU-4)
+DisplayCode: ""
+Connector: AWS
+Description: "Allocate audit log storage capacity to accommodate [Assignment: organization-defined audit log retention requirements]."
+Children:
+- aws_nist_800_53_rev_5_au_4_1
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,27 @@
+ID: aws_nist_800_53_rev_4_cm
+Title: Configuration Management (CM)
+DisplayCode: ""
+Connector: AWS
+Description: CM controls are specific to an organization’s configuration management policies. This includes a baseline configuration to operate as the basis for future builds or changes to information systems. Additionally, this includes information system component inventories and a security impact analysis control.
+Children:
+- aws_nist_800_53_rev_4_cm_2
+- aws_nist_800_53_rev_4_cm_7
+- aws_nist_800_53_rev_4_cm_8
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

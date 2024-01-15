@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ma_4_c
+Title: MA-4(c)
+DisplayCode: ""
+Connector: AWS
+Description: Employ strong authentication in the establishment of nonlocal maintenance and diagnostic sessions.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_min_length_14

@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_4_ac_17_3
+Title: AC-17(3) Managed Access Control Points
+DisplayCode: ""
+Connector: AWS
+Description: The information system routes all remote accesses through organization-defined managed network access control points.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/VPC
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_vpc_igw_attached_to_authorized_vpc

@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1638_12b2organizational
+Title: 1638.12b2Organizational.345-12.b 12.01 Information Security Aspects of Business Continuity Management
+DisplayCode: ""
+Connector: Azure
+Description: Business continuity risk assessments (i) are carried out annually with full involvement from owners of business resources and processes; (ii) consider all business processes and is not limited to the information assets, but includes the results specific to information security; and (iii) identifies, quantifies, and prioritizes risks against key business objectives and criteria relevant to the organization, including critical resources, impacts of disruptions, allowable outage times, and recovery priorities.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_disaster_recovery_enabled

@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1127_01q2system
+Title: 1127.01q2System.3-01.q 01.05 Operating System Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Where tokens are provided for multi-factor authentication, in-person verification is required prior to granting access.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

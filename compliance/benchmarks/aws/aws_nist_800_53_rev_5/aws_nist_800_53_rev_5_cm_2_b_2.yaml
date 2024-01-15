@@ -1,0 +1,30 @@
+ID: aws_nist_800_53_rev_5_cm_2_b_2
+Title: CM-2(b)(2)
+DisplayCode: ""
+Connector: AWS
+Description: "Review and update the baseline configuration of the system: 2. When required due to [Assignment: organization-defined circumstances]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_account_part_of_organizations
+- aws_ebs_volume_unused
+- aws_ec2_instance_ssm_managed
+- aws_ec2_stopped_instance_30_days
+- aws_redshift_cluster_maintenance_settings_check
+- aws_ssm_managed_instance_compliance_association_compliant

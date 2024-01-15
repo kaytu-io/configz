@@ -1,0 +1,54 @@
+ID: azure_hipaa_hitrust_v92_access_control
+Title: 11 Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Default and unnecessary system accounts are removed, disabled, or otherwise secured (e.g., the passwords are changed, and privileges are reduced to the lowest access levels). Account managers are notified when users' access rights change (e.g., termination, change in position) and modify the user's account accordingly.
+Children:
+- azure_hipaa_hitrust_v92_11109_01q1organizational
+- azure_hipaa_hitrust_v92_11111_01q2system
+- azure_hipaa_hitrust_v92_11112_01q2organizational
+- azure_hipaa_hitrust_v92_1116_01j1organizational
+- azure_hipaa_hitrust_v92_1118_01j2organizational
+- azure_hipaa_hitrust_v92_11180_01c3system
+- azure_hipaa_hitrust_v92_1119_01j2organizational
+- azure_hipaa_hitrust_v92_1120_09ab3system
+- azure_hipaa_hitrust_v92_1121_01j3organizational
+- azure_hipaa_hitrust_v92_1123_01q1system
+- azure_hipaa_hitrust_v92_1125_01q2system
+- azure_hipaa_hitrust_v92_1127_01q2system
+- azure_hipaa_hitrust_v92_1143_01c1system
+- azure_hipaa_hitrust_v92_1144_01c1system
+- azure_hipaa_hitrust_v92_1145_01c2system
+- azure_hipaa_hitrust_v92_1146_01c2system
+- azure_hipaa_hitrust_v92_1147_01c2system
+- azure_hipaa_hitrust_v92_1148_01c2system
+- azure_hipaa_hitrust_v92_1150_01c2system
+- azure_hipaa_hitrust_v92_1151_01c3system
+- azure_hipaa_hitrust_v92_1152_01c3system
+- azure_hipaa_hitrust_v92_1153_01c3system
+- azure_hipaa_hitrust_v92_1175_01j1organizational
+- azure_hipaa_hitrust_v92_1178_01j2organizational
+- azure_hipaa_hitrust_v92_1179_01j3organizational
+- azure_hipaa_hitrust_v92_1192_01l1organizational
+- azure_hipaa_hitrust_v92_1193_01l2organizational
+- azure_hipaa_hitrust_v92_1194_01l2organizational
+- azure_hipaa_hitrust_v92_1195_01l3organizational
+- azure_hipaa_hitrust_v92_1197_01l3organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

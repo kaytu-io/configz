@@ -1,0 +1,27 @@
+ID: azure_nist_sp_800_53_rev_5_au
+Title: Audit and Accountability Control (AU)
+DisplayCode: ""
+Connector: Azure
+Description: The AU control family consists of security controls related to an organization’s audit capabilities. This includes audit policies and procedures, audit logging, audit report generation, and protection of audit information.
+Children:
+- azure_nist_sp_800_53_rev_5_au_6
+- azure_nist_sp_800_53_rev_5_au_11
+- azure_nist_sp_800_53_rev_5_au_12
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

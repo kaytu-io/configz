@@ -1,0 +1,40 @@
+ID: azure_cis_v150_2_1
+Title: 2.1 Defender Plans
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "2"
+  cis_version:
+  - v1.5.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_securitycenter_azure_defender_on_for_server
+- azure_securitycenter_azure_defender_on_for_appservice
+- azure_securitycenter_azure_defender_on_for_database
+- azure_securitycenter_azure_defender_on_for_sqldb
+- azure_securitycenter_azure_defender_on_for_sqlservervm
+- azure_securitycenter_azure_defender_on_for_opensource_relational_db
+- azure_securitycenter_azure_defender_on_for_storage
+- azure_securitycenter_azure_defender_on_for_containerregistry
+- azure_securitycenter_azure_defender_on_for_cosmosdb
+- azure_securitycenter_azure_defender_on_for_keyvault
+- azure_securitycenter_azure_defender_on_for_dns
+- azure_securitycenter_azure_defender_on_for_resource_manager

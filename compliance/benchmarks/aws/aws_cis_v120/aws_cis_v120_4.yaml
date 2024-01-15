@@ -1,0 +1,31 @@
+ID: aws_cis_v120_4
+Title: 4 Networking
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "4"
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/VPC
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_security_group_restrict_ingress_rdp_all
+- aws_vpc_default_security_group_restricts_all_traffic

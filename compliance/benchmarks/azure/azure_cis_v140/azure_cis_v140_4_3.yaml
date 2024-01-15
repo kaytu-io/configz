@@ -1,0 +1,35 @@
+ID: azure_cis_v140_4_3
+Title: 4.3 PostgreSQL Database Server
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "4.3"
+  cis_version:
+  - v1.4.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_postgres_sql_ssl_enabled
+- azure_postgres_db_server_log_checkpoints_on
+- azure_postgres_db_server_log_connections_on
+- azure_postgres_db_server_log_disconnections_on
+- azure_postgres_db_server_connection_throttling_on
+- azure_postgres_db_server_log_retention_days_3
+- azure_postgresql_server_infrastructure_encryption_enabled

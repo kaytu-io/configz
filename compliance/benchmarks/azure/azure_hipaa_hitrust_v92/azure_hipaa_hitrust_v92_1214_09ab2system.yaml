@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1214_09ab2system
+Title: 1214.09ab2System.3456-09.ab 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: Monitoring includes privileged operations, authorized access or unauthorized access attempts, including attempts to access deactivated accounts, and system alerts or failures.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Monitor
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_monitor_log_profile_enabled_for_all_regions

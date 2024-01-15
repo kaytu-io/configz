@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sa_9
+Title: External System Services (SA-9)
+DisplayCode: ""
+Connector: AWS
+Description: Require the developer of the system, system component, or system service to enable integrity verification of software and firmware components.
+Children:
+- aws_nist_800_53_rev_5_sa_9_6
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/KMS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

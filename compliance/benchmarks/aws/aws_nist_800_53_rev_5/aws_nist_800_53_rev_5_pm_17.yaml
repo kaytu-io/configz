@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_pm_17
+Title: Protecting Controlled Unclassified Information On External Systems (PM-17)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Establish policy and procedures to ensure that requirements for the protection of controlled unclassified information that is processed, stored or transmitted on external systems, are implemented in accordance with applicable laws, executive orders, directives, policies, regulations, and standards; and b.\u2003Review and update the policy and procedures [Assignment: organization-defined frequency]."
+Children:
+- aws_nist_800_53_rev_5_pm_17_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

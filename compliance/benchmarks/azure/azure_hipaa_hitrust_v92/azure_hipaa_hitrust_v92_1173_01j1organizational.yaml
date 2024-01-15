@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1173_01j1organizational
+Title: If encryption is not used for dial-up connections, the CIO or his/her designated representative provides specific written authorization
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

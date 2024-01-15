@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_cp_1
+Title: Policy And Procedures (CP-1)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1.\u2003[Selection (one or more): Organization-level; Mission/business process-level; System-level] contingency planning policy that: a).\u2003Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and b).\u2003Is consistent with applicable laws, executive orders, directives regulations, policies, standards, and guidelines; and 2.\u2003Procedures to facilitate the implementation of the contingency planning policy and the associated contingency planning controls; b.\u2003Designate an [Assignment: organization-defined official] to manage the development, documentation, and dissemination of the contingency planning policy and procedures; and c.\u2003Review and update the current contingency planning: 1.\u2003Policy [Assignment: organization-defined frequency] and following [Assignment: organization-defined events]; and 2.\u2003Procedures [Assignment: organization-defined frequency] and following [Assignment: organization-defined events]."
+Children:
+- aws_nist_800_53_rev_5_cp_1_2
+- aws_nist_800_53_rev_5_cp_1_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

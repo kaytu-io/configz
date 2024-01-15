@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ia_8
+Title: Identification And Authentication (Non-Organizational Users) (IA-8)
+DisplayCode: ""
+Connector: AWS
+Description: Uniquely identify and authenticate non-organizational users or processes acting on behalf of non-organizational users.
+Children:
+- aws_nist_800_53_rev_5_ia_8_2
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

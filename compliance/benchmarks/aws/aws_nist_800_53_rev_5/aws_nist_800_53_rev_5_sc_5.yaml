@@ -1,0 +1,29 @@
+ID: aws_nist_800_53_rev_5_sc_5
+Title: Denial Of Service Protection (SC-5)
+DisplayCode: ""
+Connector: AWS
+Description: "The information system protects against or limits the effects of the following types of denial of service attacks: [Assignment: organization-defined types of denial of service attacks or reference to source for such information] by employing [Assignment: organization-defined security safeguards]."
+Children:
+- aws_nist_800_53_rev_5_sc_5_1
+- aws_nist_800_53_rev_5_sc_5_2
+- aws_nist_800_53_rev_5_sc_5_3
+- aws_nist_800_53_rev_5_sc_5_a
+- aws_nist_800_53_rev_5_sc_5_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

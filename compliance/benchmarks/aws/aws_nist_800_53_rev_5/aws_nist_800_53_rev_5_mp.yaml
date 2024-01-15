@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_mp
+Title: Media Protection (MP)
+DisplayCode: ""
+Connector: AWS
+Description: The Media Protection control family includes controls specific to access, marking, storage, transport policies, sanitization, and defined organizational media use.
+Children:
+- aws_nist_800_53_rev_5_mp_2
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

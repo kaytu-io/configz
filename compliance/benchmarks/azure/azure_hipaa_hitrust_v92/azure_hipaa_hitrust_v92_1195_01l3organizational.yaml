@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1195_01l3organizational
+Title: 1195.01l3Organizational.1-01.l 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: The organization reviews the information system within every three hundred and sixty-five (365) days to identify and disables unnecessary and non-secure functions, ports, protocols, and/or services.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_function_app_remote_debugging_disabled

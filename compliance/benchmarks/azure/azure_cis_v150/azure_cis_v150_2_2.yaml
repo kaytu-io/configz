@@ -1,0 +1,29 @@
+ID: azure_cis_v150_2_2
+Title: 2.2 Auto Provisioning
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "2"
+  cis_version:
+  - v1.5.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_securitycenter_automatic_provisioning_monitoring_agent_on

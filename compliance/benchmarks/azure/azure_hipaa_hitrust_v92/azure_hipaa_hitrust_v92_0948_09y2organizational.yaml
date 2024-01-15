@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0948_09y2organizational
+Title: 0948.09y2Organizational.3-09.y 09.09 Electronic Commerce Services
+DisplayCode: ""
+Connector: Azure
+Description: Where a trusted authority is used (e.g., for the purposes of issuing and maintaining digital signatures and/or digital certificates), security is integrated and embedded throughout the entire end-to-end certificate/signature management process.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/MySQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_mysql_ssl_enabled

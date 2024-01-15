@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_ia_5_18
+Title: IA-5(18) Password Managers
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Employ [Assignment: organization-defined password managers] to generate and manage passwords; and b.\u2003Protect the passwords using [Assignment: organization-defined controls]."
+Children:
+- aws_nist_800_53_rev_5_ia_5_18_a
+- aws_nist_800_53_rev_5_ia_5_18_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

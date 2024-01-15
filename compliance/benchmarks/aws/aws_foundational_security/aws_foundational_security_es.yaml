@@ -1,0 +1,32 @@
+ID: aws_foundational_security_es
+Title: Elasticsearch
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/ES
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_es_domain_encryption_at_rest_enabled
+- aws_es_domain_in_vpc
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_es_domain_error_logging_enabled
+- aws_es_domain_audit_logging_enabled
+- aws_es_domain_data_nodes_min_3
+- aws_es_domain_dedicated_master_nodes_min_3
+- aws_es_domain_encrypted_using_tls_1_2

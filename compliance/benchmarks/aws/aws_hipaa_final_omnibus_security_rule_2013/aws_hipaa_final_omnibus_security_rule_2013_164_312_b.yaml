@@ -1,0 +1,54 @@
+ID: aws_hipaa_final_omnibus_security_rule_2013_164_312_b
+Title: 164.312(b) Audit controls
+DisplayCode: ""
+Connector: AWS
+Description: Implement hardware, software, and/or procedural mechanisms that record and examine activity in information systems that contain or use electronic protected health information.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013_item_id:
+  - 164_312_b
+  hipaa_section:
+  - "164_312"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_rest_api_stage_xray_tracing_enabled
+- aws_apigateway_stage_logging_enabled
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudtrail_trail_validation_enabled
+- aws_cloudwatch_alarm_action_enabled
+- aws_cloudwatch_log_group_retention_period_365
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_elastic_beanstalk_enhanced_health_reporting_enabled
+- aws_elb_application_classic_lb_logging_enabled
+- aws_es_domain_logs_to_cloudwatch
+- aws_guardduty_enabled
+- aws_guardduty_finding_archived
+- aws_lambda_function_concurrent_execution_limit_configured
+- aws_lambda_function_dead_letter_queue_configured
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_rds_db_instance_logging_enabled
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_s3_bucket_logging_enabled
+- aws_securityhub_enabled
+- aws_vpc_flow_logs_enabled
+- aws_waf_web_acl_logging_enabled
+- aws_wafv2_web_acl_logging_enabled

@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_pm_14
+Title: Testing, Training, And Monitoring (PM-14)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Implement a process for ensuring that organizational plans for conducting security and privacy testing, training, and monitoring activities associated with organizational systems: 1.\u2003Are developed and maintained; and 2.\u2003Continue to be executed; and b.\u2003Review testing, training, and monitoring plans for consistency with the organizational risk management strategy and organization-wide priorities for risk response actions."
+Children:
+- aws_nist_800_53_rev_5_pm_14_a_1
+- aws_nist_800_53_rev_5_pm_14_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

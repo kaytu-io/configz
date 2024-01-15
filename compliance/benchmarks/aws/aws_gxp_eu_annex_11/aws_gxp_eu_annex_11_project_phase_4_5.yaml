@@ -1,0 +1,25 @@
+ID: aws_gxp_eu_annex_11_project_phase_4_5
+Title: 4.5 Validation - Development Quality
+DisplayCode: ""
+Connector: AWS
+Description: The regulated user should take all reasonable steps, to ensure that the system has been developed in accordance with an appropriate quality management system. The supplier should be assessed appropriately.
+Children: []
+Tags:
+  category:
+  - Compliance
+  gxp_eu_annex_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_config_enabled_all_regions

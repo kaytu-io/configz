@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_si_5_b
+Title: SI-5(b)
+DisplayCode: ""
+Connector: AWS
+Description: Generate internal security alerts, advisories, and directives as deemed necessary.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudwatch_alarm_action_enabled
+- aws_guardduty_enabled

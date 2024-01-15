@@ -1,0 +1,28 @@
+ID: aws_fedramp_moderate_rev_4_ia_2_1_2
+Title: IA-2(1)(2)
+DisplayCode: ""
+Connector: AWS
+Description: (1) The information system implements multifactor authentication for network access to privileged accounts. (2) The information system implements multifactor authentication for network access to non- privileged accounts.
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_mfa_enabled
+- aws_iam_user_mfa_enabled
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_root_user_hardware_mfa_enabled

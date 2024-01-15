@@ -1,0 +1,34 @@
+ID: aws_ffiec_d_3_pc_am_b_1
+Title: D3.PC.Am.B.1
+DisplayCode: ""
+Connector: AWS
+Description: Employee access is granted to systems and confidential data based on job responsibilities and the principles of least privilege.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ec2_instance_iam_profile_attached
+- aws_ecs_task_definition_user_for_host_mode_check
+- aws_iam_policy_custom_no_service_wildcard
+- aws_iam_group_not_empty
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_policy_custom_no_blocked_kms_actions
+- aws_iam_policy_custom_no_star_star
+- aws_iam_root_user_no_access_keys
+- aws_iam_user_in_group
+- aws_iam_user_no_inline_attached_policies

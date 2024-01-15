@@ -1,0 +1,38 @@
+ID: aws_fedramp_low_rev_4_cp_9
+Title: Information System Backup (CP-9)
+DisplayCode: ""
+Connector: AWS
+Description: The organization conducts backups of user-level information, system-level information  and information system documentation including security-related documentation contained in the information system and protects the confidentiality, integrity, and availability of backup information at storage locations.
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_low_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_backup_plan_min_retention_35_days
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_dynamodb_table_protected_by_backup_plan
+- aws_ebs_volume_protected_by_backup_plan
+- aws_ec2_instance_protected_by_backup_plan
+- aws_efs_file_system_protected_by_backup_plan
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_fsx_file_system_protected_by_backup_plan
+- aws_rds_db_cluster_aurora_protected_by_backup_plan
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_protected_by_backup_plan
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_versioning_enabled

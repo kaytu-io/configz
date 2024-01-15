@@ -1,0 +1,28 @@
+ID: aws_audit_manager_control_tower_disallow_instances
+Title: Disallow Instances
+DisplayCode: ""
+Connector: AWS
+Description: This benchmark checks if RDS storage is encrypted and S3 bucket's versioning is enabled.
+Children:
+- aws_audit_manager_control_tower_disallow_instances_5_0_1
+- aws_audit_manager_control_tower_disallow_instances_5_1_1
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  category:
+  - Compliance
+  control_set:
+  - disallow_instances
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

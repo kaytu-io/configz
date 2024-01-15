@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sc_28_2
+Title: SC-28(2) Offline Storage
+DisplayCode: ""
+Connector: AWS
+Description: "Remove the following information from online storage and store offline in a secure location: [Assignment: organization-defined information]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudwatch_log_group_retention_period_365

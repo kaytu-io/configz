@@ -1,0 +1,32 @@
+ID: aws_foundational_security_ecs
+Title: Elastic Container Service
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/ECS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ecs_task_definition_user_for_host_mode_check
+- aws_ecs_service_not_publicly_accessible
+- aws_ecs_task_definition_no_host_pid_mode
+- aws_ecs_task_definition_container_non_privileged
+- aws_ecs_task_definition_container_readonly_root_filesystem
+- aws_ecs_task_definition_container_environment_no_secret
+- aws_ecs_service_fargate_using_latest_platform_version
+- aws_ecs_cluster_container_insights_enabled

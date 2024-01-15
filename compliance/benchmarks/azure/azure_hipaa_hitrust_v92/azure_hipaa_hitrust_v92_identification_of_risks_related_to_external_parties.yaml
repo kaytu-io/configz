@@ -1,0 +1,28 @@
+ID: azure_hipaa_hitrust_v92_identification_of_risks_related_to_external_parties
+Title: Identification of Risks Related to External Parties
+DisplayCode: ""
+Connector: Azure
+Description: The risks to the organization's information and information assets from business processes involving external parties shall be identified, and appropriate controls implemented before granting access.
+Children:
+- azure_hipaa_hitrust_v92_1401_05i1organizational
+- azure_hipaa_hitrust_v92_1402_05i1organizational
+- azure_hipaa_hitrust_v92_1403_05i1organizational
+- azure_hipaa_hitrust_v92_1418_05i1organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

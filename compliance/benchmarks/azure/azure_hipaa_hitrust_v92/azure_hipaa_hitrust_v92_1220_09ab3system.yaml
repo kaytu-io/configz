@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1220_09ab3system
+Title: 1220.09ab3System.56-09.ab 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: Monitoring includes inbound and outbound communications and file integrity monitoring.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_securitycenter_automatic_provisioning_monitoring_agent_on

@@ -1,0 +1,28 @@
+ID: aws_nist_800_171_rev_2_3_14_3
+Title: 3.14.3 Monitor system security alerts and advisories and take action in response
+DisplayCode: ""
+Connector: AWS
+Description: There are many publicly available sources of system security alerts and advisories. For example, the Department of Homeland Security’s Cybersecurity and Infrastructure Security Agency (CISA) generates security alerts and advisories to maintain situational awareness across the federal government and in nonfederal organizations. Software vendors, subscription services, and industry information sharing and analysis centers (ISACs) may also provide security alerts and advisories. Examples of response actions include notifying relevant external organizations, for example, external mission/business partners, supply chain partners, external service providers, and peer or supporting organizations.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_redshift_cluster_maintenance_settings_check
+- aws_securityhub_enabled
+- aws_ssm_managed_instance_compliance_patch_compliant

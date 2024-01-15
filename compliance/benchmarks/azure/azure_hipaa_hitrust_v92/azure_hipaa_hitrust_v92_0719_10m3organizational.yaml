@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0719_10m3organizational
+Title: 0719.10m3Organizational.5-10.m 10.06 Technical Vulnerability Management
+DisplayCode: ""
+Connector: Azure
+Description: The organization updates the list of information system vulnerabilities scanned within every thirty (30) days or when new vulnerabilities are identified and reported.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/MySQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_mssql_managed_instance_vulnerability_assessment_enabled

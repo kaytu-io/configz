@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1151_01c3system
+Title: 1151.01c3System.1-01.c 01.02 Authorized Access to Information Systems
+DisplayCode: ""
+Connector: Azure
+Description: The organization limits authorization to privileged accounts on information systems to a pre-defined subset of users.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_subscription_owner_max_3

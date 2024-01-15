@@ -1,0 +1,29 @@
+ID: aws_audit_manager_control_tower_disallow_instances_5_1_1
+Title: 5.1.1 - Disallow S3 buckets that are not versioning enabled
+DisplayCode: ""
+Connector: AWS
+Description: Disallow S3 buckets that are not versioning enabled - Checks whether versioning is enabled for your S3 buckets.
+Children: []
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  audit_manager_control_tower_item_id:
+  - 5.1.1
+  category:
+  - Compliance
+  control_set:
+  - disallow_instances
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_s3_bucket_versioning_enabled

@@ -1,0 +1,39 @@
+ID: aws_hipaa_security_rule_2003_164_312_e_2_i
+Title: 164.312(e)(2)(i) Integrity controls
+DisplayCode: ""
+Connector: AWS
+Description: Implement security measures to ensure that electronically transmitted electronic protected health information is not improperly modified without detection until disposed of.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_section:
+  - "164_312"
+  hipaa_security_rule_2003:
+  - "true"
+  hipaa_security_rule_2003_item_id:
+  - 164_312_e_2_i
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_guardduty_enabled
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_logging_enabled
+- aws_securityhub_enabled

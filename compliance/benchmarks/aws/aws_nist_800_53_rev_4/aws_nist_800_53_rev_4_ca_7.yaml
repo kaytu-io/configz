@@ -1,0 +1,30 @@
+ID: aws_nist_800_53_rev_4_ca_7
+Title: Continuous Monitoring (CA-7)
+DisplayCode: ""
+Connector: AWS
+Description: Continuously monitor configuration management processes. Determine security impact, environment and operational risks.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudwatch_alarm_action_enabled
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_guardduty_enabled
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_securityhub_enabled

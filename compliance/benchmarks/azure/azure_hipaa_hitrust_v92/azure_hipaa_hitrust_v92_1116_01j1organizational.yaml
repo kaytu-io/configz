@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1116_01j1organizational
+Title: 1116.01j1Organizational.145-01.j 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Prevent unauthorized access to networked services, such as user authentication for external connections.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

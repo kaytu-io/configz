@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_pm_16
+Title: Threat Awareness Program (PM-16)
+DisplayCode: ""
+Connector: AWS
+Description: Implement a threat awareness program that includes a cross-organization information-sharing capability for threat intelligence.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

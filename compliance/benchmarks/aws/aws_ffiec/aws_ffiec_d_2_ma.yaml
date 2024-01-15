@@ -1,0 +1,26 @@
+ID: aws_ffiec_d_2_ma
+Title: Monitoring and Analyzing (MA)
+DisplayCode: ""
+Connector: AWS
+Description: Monitoring and Analyzing refers to how an institution monitors threat sources and what analysis may be performed to identify threats that are specific to the institution or to resolve conflicts in the different threat intelligence streams.
+Children:
+- aws_ffiec_d_2_ma_ma_b_1
+- aws_ffiec_d_2_ma_ma_b_2
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0716_10m3organizational
+Title: 0716.10m3Organizational.1-10.m 10.06 Technical Vulnerability Management
+DisplayCode: ""
+Connector: Azure
+Description: The organization conducts an enterprise security posture review as needed but no less than once within every three-hundred-sixty-five (365) days, in accordance with organizational IS procedures.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_sql_database_vulnerability_findings_resolved

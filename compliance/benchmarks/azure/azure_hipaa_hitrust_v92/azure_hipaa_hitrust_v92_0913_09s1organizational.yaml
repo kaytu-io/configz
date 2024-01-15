@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0913_09s1organizational
+Title: 0913.09s1Organizational.5-09.s 09.08 Exchange of Information
+DisplayCode: ""
+Connector: Azure
+Description: Strong cryptography protocols are used to safeguard covered information during transmission over less trusted / open public networks.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_function_app_remote_debugging_disabled

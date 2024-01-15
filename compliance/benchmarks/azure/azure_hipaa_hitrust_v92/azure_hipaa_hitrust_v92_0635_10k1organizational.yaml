@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0635_10k1organizational
+Title: 0635.10k1Organizational.12-10.k 10.05 Security In Development and Support Processes
+DisplayCode: ""
+Connector: Azure
+Description: Managers responsible for application systems are also responsible for the strict control (security) of the project or support environment and ensure that all proposed system changes are reviewed to check that they do not compromise the security of either the system or the operating environment.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

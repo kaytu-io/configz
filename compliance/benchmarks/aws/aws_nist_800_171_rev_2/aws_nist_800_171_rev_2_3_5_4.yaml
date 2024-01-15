@@ -1,0 +1,28 @@
+ID: aws_nist_800_171_rev_2_3_5_4
+Title: 3.5.4 Employ replay-resistant authentication mechanisms for network access to privileged and non-privileged accounts
+DisplayCode: ""
+Connector: AWS
+Description: Authentication processes resist replay attacks if it is impractical to successfully authenticate by recording or replaying previous authentication messages. Replay-resistant techniques include protocols that use nonces or challenges such as time synchronous or challenge-response one-time authenticators.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_user_mfa_enabled

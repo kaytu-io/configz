@@ -1,0 +1,57 @@
+ID: aws_nist_800_171_rev_2_3_13_1
+Title: 3.13.1 Monitor, control, and protect communications (i.e., information transmitted or received by organizational systems) at the external boundaries and key internal boundaries of organizational systems
+DisplayCode: ""
+Connector: AWS
+Description: Communications can be monitored, controlled, and protected at boundary components and by restricting or prohibiting interfaces in organizational systems. Boundary components include gateways, routers, firewalls, guards, network-based malicious code analysis and virtualization systems, or encrypted tunnels implemented within a system security architecture (e.g., routers protecting firewalls or application gateways residing on protected subnetworks). Restricting or prohibiting interfaces in organizational systems includes restricting external web communications traffic to designated web servers within managed interfaces and prohibiting external traffic that appears to be spoofing internal addresses. Organizations consider the shared nature of commercial telecommunications services in the implementation of security requirements associated with the use of such services. Commercial telecommunications services are commonly based on network components and consolidated management systems shared by all attached commercial customers and may also include third party-provided access lines and other service elements. Such transmission services may represent sources of increased risk despite contract security provisions.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_acm_certificate_expires_30_days
+- aws_apigateway_stage_logging_enabled
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_validation_enabled
+- aws_ec2_instance_in_vpc
+- aws_elb_application_classic_lb_logging_enabled
+- aws_elb_application_lb_drop_http_headers
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_application_lb_waf_enabled
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_es_domain_in_vpc
+- aws_guardduty_enabled
+- aws_lambda_function_in_vpc
+- aws_opensearch_domain_in_vpc
+- aws_rds_db_instance_logging_enabled
+- aws_rds_db_instance_prohibit_public_access
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_enhanced_vpc_routing_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_logging_enabled
+- aws_s3_public_access_block_bucket
+- aws_securityhub_enabled
+- aws_ssm_document_prohibit_public_access
+- aws_vpc_flow_logs_enabled
+- aws_vpc_route_table_restrict_public_access_to_igw
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_security_group_restrict_ingress_tcp_udp_all
+- aws_wafv2_web_acl_logging_enabled

@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1153_01c3system
+Title: 1153.01c3System.35-01.c 01.02 Authorized Access to Information Systems
+DisplayCode: ""
+Connector: Azure
+Description: All file system access not explicitly required is disabled, and only authorized users are permitted access to only that which is expressly required for the performance of the users' job duties.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/KubernetesService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_kubernetes_instance_rbac_enabled

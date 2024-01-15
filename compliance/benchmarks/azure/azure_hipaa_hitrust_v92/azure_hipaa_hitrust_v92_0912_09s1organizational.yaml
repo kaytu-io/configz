@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0912_09s1organizational
+Title: 0912.09s1Organizational.4-09.s 09.08 Exchange of Information
+DisplayCode: ""
+Connector: Azure
+Description: Cryptography is used to protect the confidentiality and integrity of remote access sessions to the internal network and to external systems.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_remote_debugging_disabled

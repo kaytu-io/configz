@@ -1,0 +1,37 @@
+ID: aws_nist_800_53_rev_5_sc
+Title: System and Communications Protection (SC)
+DisplayCode: ""
+Connector: AWS
+Description: The SC control family is responsible for systems and communications protection procedures. This includes boundary protection, protection of information at rest, collaborative computing devices, cryptographic protection, denial of service protection, and many others.
+Children:
+- aws_nist_800_53_rev_5_sc_5
+- aws_nist_800_53_rev_5_sc_6
+- aws_nist_800_53_rev_5_sc_7
+- aws_nist_800_53_rev_5_sc_8
+- aws_nist_800_53_rev_5_sc_12
+- aws_nist_800_53_rev_5_sc_13
+- aws_nist_800_53_rev_5_sc_16
+- aws_nist_800_53_rev_5_sc_22
+- aws_nist_800_53_rev_5_sc_23
+- aws_nist_800_53_rev_5_sc_25
+- aws_nist_800_53_rev_5_sc_28
+- aws_nist_800_53_rev_5_sc_36
+- aws_nist_800_53_rev_5_sc_43
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

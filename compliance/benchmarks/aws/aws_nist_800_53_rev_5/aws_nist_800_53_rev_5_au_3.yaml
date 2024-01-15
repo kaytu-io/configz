@@ -1,0 +1,31 @@
+ID: aws_nist_800_53_rev_5_au_3
+Title: Content of Audit Records (AU-3)
+DisplayCode: ""
+Connector: AWS
+Description: The information system generates audit records containing information that establishes what type of event occurred, when the event occurred, where the event occurred, the source of the event, the outcome of the event, and the identity of any individuals or subjects associated with the event.
+Children:
+- aws_nist_800_53_rev_5_au_3_1
+- aws_nist_800_53_rev_5_au_3_a
+- aws_nist_800_53_rev_5_au_3_b
+- aws_nist_800_53_rev_5_au_3_c
+- aws_nist_800_53_rev_5_au_3_d
+- aws_nist_800_53_rev_5_au_3_e
+- aws_nist_800_53_rev_5_au_3_f
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

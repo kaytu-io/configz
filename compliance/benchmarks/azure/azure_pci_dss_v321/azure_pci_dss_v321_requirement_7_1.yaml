@@ -1,0 +1,27 @@
+ID: azure_pci_dss_v321_requirement_7_1
+Title: PCI DSS requirement 7.1
+DisplayCode: ""
+Connector: Azure
+Description: Limit access to system components and cardholder data to only those individuals whose job requires such access.
+Children:
+- azure_pci_dss_v321_requirement_7_1_1
+- azure_pci_dss_v321_requirement_7_1_2
+- azure_pci_dss_v321_requirement_7_1_3
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

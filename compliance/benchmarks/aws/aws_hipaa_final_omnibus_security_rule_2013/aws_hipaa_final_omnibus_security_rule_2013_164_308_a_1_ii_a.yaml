@@ -1,0 +1,31 @@
+ID: aws_hipaa_final_omnibus_security_rule_2013_164_308_a_1_ii_a
+Title: 164.308(a)(1)(ii)(A) Risk analysis
+DisplayCode: ""
+Connector: AWS
+Description: Conduct an accurate and thorough assessment of the potential risks and vulnerabilities to the confidentiality, integrity, and availability of electronic protected health information held by the covered entity or business associate.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013_item_id:
+  - 164_308_a_1_ii_a
+  hipaa_section:
+  - "164_308"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_enabled
+- aws_config_enabled_all_regions
+- aws_guardduty_enabled

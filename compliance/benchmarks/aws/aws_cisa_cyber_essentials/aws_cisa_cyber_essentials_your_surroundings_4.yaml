@@ -1,0 +1,25 @@
+ID: aws_cisa_cyber_essentials_your_surroundings_4
+Title: Your Surroundings-4
+DisplayCode: ""
+Connector: AWS
+Description: Leverage unique passwords for all user accounts.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_strong

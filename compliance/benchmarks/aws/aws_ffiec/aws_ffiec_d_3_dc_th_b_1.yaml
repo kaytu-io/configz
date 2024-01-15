@@ -1,0 +1,27 @@
+ID: aws_ffiec_d_3_dc_th_b_1
+Title: D3.DC.Th.B.1
+DisplayCode: ""
+Connector: AWS
+Description: Independent testing (including penetration testing and vulnerability scanning) is conducted according to the risk assessment for external-facing systems and the internal network.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_securityhub_enabled
+- aws_ssm_managed_instance_compliance_patch_compliant

@@ -1,0 +1,25 @@
+ID: azure_pci_dss_v321_requirement_6_5
+Title: PCI DSS requirement 6.5
+DisplayCode: ""
+Connector: Azure
+Description: Prevent common coding vulnerabilities in software development processes by training developers in secure coding techniques and developing applications based on secure coding guidelines - including how sensitive data is handled in memory.
+Children:
+- azure_pci_dss_v321_requirement_6_5_3
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

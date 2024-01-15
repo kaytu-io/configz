@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_cm_8_a_4
+Title: CM-8(a)(4)
+DisplayCode: ""
+Connector: AWS
+Description: "Develop and document an inventory of system components that: 4. Is at the level of granularity deemed necessary for tracking and reporting."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ec2_instance_ssm_managed
+- aws_ssm_managed_instance_compliance_association_compliant

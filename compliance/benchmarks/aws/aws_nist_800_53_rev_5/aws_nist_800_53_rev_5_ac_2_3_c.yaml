@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_ac_2_3_c
+Title: AC-2(3)(c)
+DisplayCode: ""
+Connector: AWS
+Description: "Disable accounts within [Assignment: organization-defined time period] when the accounts: (c) Are in violation of organizational policy."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_min_length_14
+- aws_iam_user_unused_credentials_90

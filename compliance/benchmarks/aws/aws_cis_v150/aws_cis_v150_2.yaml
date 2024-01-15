@@ -1,0 +1,32 @@
+ID: aws_cis_v150_2
+Title: 2 Storage
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children:
+- aws_cis_v150_2_1
+- aws_cis_v150_2_2
+- aws_cis_v150_2_3
+- aws_cis_v150_2_4
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "2"
+  cis_version:
+  - v1.5.0
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

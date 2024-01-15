@@ -1,0 +1,27 @@
+ID: aws_cis_controls_v8_ig1_4
+Title: 4 Secure Configuration of Enterprise Assets and Software
+DisplayCode: ""
+Connector: AWS
+Description: Establish and maintain the secure configuration of enterprise assets (end-user devices, including portable and mobile; network devices; non-computing/IoT devices; and servers) and software (operating systems and applications).
+Children:
+- aws_cis_controls_v8_ig1_4_1
+- aws_cis_controls_v8_ig1_4_6
+- aws_cis_controls_v8_ig1_4_7
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

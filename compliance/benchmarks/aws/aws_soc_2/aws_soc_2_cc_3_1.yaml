@@ -1,0 +1,33 @@
+ID: aws_soc_2_cc_3_1
+Title: "CC3.1 COSO Principle 6: The entity specifies objectives with sufficient clarity to enable the identification and assessment of risks relating to objectives"
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+  soc_2:
+  - "true"
+  soc_2_item_id:
+  - "3.1"
+  soc_2_section_id:
+  - cc3
+  soc_2_type:
+  - automated
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_config_enabled_all_regions
+- aws_guardduty_enabled
+- aws_securityhub_enabled

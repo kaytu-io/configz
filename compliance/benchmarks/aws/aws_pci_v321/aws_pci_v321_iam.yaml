@@ -1,0 +1,28 @@
+ID: aws_pci_v321_iam
+Title: IAM
+DisplayCode: ""
+Connector: ""
+Description: ""
+Children: []
+Tags:
+  pci:
+  - "true"
+  pci_version:
+  - v3.2.1
+  plugin:
+  - aws
+  service:
+  - iam
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_no_access_keys
+- aws_iam_user_no_inline_attached_policies
+- aws_iam_policy_no_star_star
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_virtual_mfa
+- aws_iam_user_mfa_enabled
+- aws_iam_user_unused_credentials_90
+- aws_iam_account_password_policy_strong

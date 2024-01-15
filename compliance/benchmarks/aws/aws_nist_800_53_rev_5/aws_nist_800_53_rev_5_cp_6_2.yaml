@@ -1,0 +1,38 @@
+ID: aws_nist_800_53_rev_5_cp_6_2
+Title: CP-6(2) Recovery Time And Recovery Point Objectives
+DisplayCode: ""
+Connector: AWS
+Description: Configure the alternate storage site to facilitate recovery operations in accordance with recovery time and recovery point objectives.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_ebs_volume_in_backup_plan
+- aws_efs_file_system_automatic_backups_enabled
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_elb_classic_lb_cross_zone_load_balancing_enabled
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_rds_db_instance_multiple_az_enabled
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_versioning_enabled
+- aws_vpc_vpn_tunnel_up

@@ -1,0 +1,47 @@
+ID: aws_hipaa_security_rule_2003_164_308
+Title: 164.308 Administrative Safeguards
+DisplayCode: ""
+Connector: AWS
+Description: An important step in protecting electronic protected health information (EPHI) is to implement reasonable and appropriate administrative safeguards that establish the foundation for a covered entity's security program. The Administrative Safeguards standards in the Security Rule, at § 164.308, were developed to accomplish this purpose.
+Children:
+- aws_hipaa_security_rule_2003_164_308_a_1_ii_a
+- aws_hipaa_security_rule_2003_164_308_a_1_ii_b
+- aws_hipaa_security_rule_2003_164_308_a_1_ii_d
+- aws_hipaa_security_rule_2003_164_308_a_3_i
+- aws_hipaa_security_rule_2003_164_308_a_3_ii_a
+- aws_hipaa_security_rule_2003_164_308_a_3_ii_b
+- aws_hipaa_security_rule_2003_164_308_a_3_ii_c
+- aws_hipaa_security_rule_2003_164_308_a_4_i
+- aws_hipaa_security_rule_2003_164_308_a_4_ii_a
+- aws_hipaa_security_rule_2003_164_308_a_4_ii_b
+- aws_hipaa_security_rule_2003_164_308_a_4_ii_c
+- aws_hipaa_security_rule_2003_164_308_a_5_ii_b
+- aws_hipaa_security_rule_2003_164_308_a_5_ii_c
+- aws_hipaa_security_rule_2003_164_308_a_5_ii_d
+- aws_hipaa_security_rule_2003_164_308_a_6_i
+- aws_hipaa_security_rule_2003_164_308_a_6_ii
+- aws_hipaa_security_rule_2003_164_308_a_7_i
+- aws_hipaa_security_rule_2003_164_308_a_7_ii_a
+- aws_hipaa_security_rule_2003_164_308_a_7_ii_b
+- aws_hipaa_security_rule_2003_164_308_a_7_ii_c
+- aws_hipaa_security_rule_2003_164_308_a_8
+Tags:
+  category:
+  - Compliance
+  hipaa_section:
+  - "164_308"
+  hipaa_security_rule_2003:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

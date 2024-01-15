@@ -1,0 +1,30 @@
+ID: azure_cis_v130_1
+Title: 1 Identity and Access Management
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "1"
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_ad_guest_user_reviewed_monthly
+- azure_iam_no_custom_subscription_owner_roles_created

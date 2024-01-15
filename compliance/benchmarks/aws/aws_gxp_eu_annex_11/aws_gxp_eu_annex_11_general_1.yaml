@@ -1,0 +1,27 @@
+ID: aws_gxp_eu_annex_11_general_1
+Title: 1 Risk Management
+DisplayCode: ""
+Connector: AWS
+Description: Risk management should be applied throughout the lifecycle of the computerised system taking into account patient safety, data integrity and product quality. As part of a risk management system, decisions on the extent of validation and data integrity controls should be based on a justified and documented risk assessment of the computerised system.
+Children: []
+Tags:
+  category:
+  - Compliance
+  gxp_eu_annex_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_enabled
+- aws_config_enabled_all_regions
+- aws_securityhub_enabled

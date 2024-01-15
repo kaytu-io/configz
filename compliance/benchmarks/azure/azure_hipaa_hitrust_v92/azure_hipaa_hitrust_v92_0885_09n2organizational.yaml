@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0885_09n2organizational
+Title: 0885.09n2Organizational.3-09.n 09.06 Network Security Management
+DisplayCode: ""
+Connector: Azure
+Description: The organization reviews and updates the interconnection security agreements on an ongoing basis verifying enforcement of security requirements.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_network_traffic_data_collection_linux_agent_installed

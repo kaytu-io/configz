@@ -1,0 +1,26 @@
+ID: azure_pci_dss_v321_requirement_8_2
+Title: PCI DSS requirement 8.2
+DisplayCode: ""
+Connector: Azure
+Description: "Employ at least one of these to authenticate all users: something you know, such as a password or passphrase; something you have, such as a token device or smart card; or something you are, such as a biometric. Use strong authentication methods and render all passwords/passphrases unreadable during transmission and storage using strong cryptography."
+Children:
+- azure_pci_dss_v321_requirement_8_2_3
+- azure_pci_dss_v321_requirement_8_2_5
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

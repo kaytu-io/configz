@@ -1,0 +1,54 @@
+ID: aws_hipaa_final_omnibus_security_rule_2013_164_308_a_7_ii_b
+Title: 164.308(a)(7)(ii)(B) Disaster recovery plan
+DisplayCode: ""
+Connector: AWS
+Description: Establish (and implement as needed) procedures to restore any loss of data.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013_item_id:
+  - 164_308_a_7_ii_b
+  hipaa_section:
+  - "164_308"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_backup_plan_min_retention_35_days
+- aws_backup_recovery_point_encryption_enabled
+- aws_backup_recovery_point_manual_deletion_disabled
+- aws_backup_recovery_point_min_retention_35_days
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_dynamodb_table_protected_by_backup_plan
+- aws_ebs_volume_in_backup_plan
+- aws_ebs_volume_protected_by_backup_plan
+- aws_ec2_instance_ebs_optimized
+- aws_ec2_instance_protected_by_backup_plan
+- aws_efs_file_system_automatic_backups_enabled
+- aws_efs_file_system_protected_by_backup_plan
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_fsx_file_system_protected_by_backup_plan
+- aws_rds_db_cluster_aurora_protected_by_backup_plan
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_rds_db_instance_multiple_az_enabled
+- aws_rds_db_instance_protected_by_backup_plan
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_versioning_enabled
+- aws_vpc_vpn_tunnel_up

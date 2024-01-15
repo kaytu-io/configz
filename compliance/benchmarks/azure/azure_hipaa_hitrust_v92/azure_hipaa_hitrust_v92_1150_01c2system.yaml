@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1150_01c2system
+Title: 1150.01c2System.10-01.c 01.02 Authorized Access to Information Systems
+DisplayCode: ""
+Connector: Azure
+Description: The access control system for the system components storing, processing or transmitting covered information is set with a default 'deny-all' setting.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Network
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_network_security_group_remote_access_restricted

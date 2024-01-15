@@ -1,0 +1,33 @@
+ID: aws_hipaa_final_omnibus_security_rule_2013_164_312_d
+Title: 164.312(d) Person or entity authentication
+DisplayCode: ""
+Connector: AWS
+Description: Implement procedures to verify that a person or entity seeking access to electronic protected health information is the one claimed.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013_item_id:
+  - 164_312_d
+  hipaa_section:
+  - "164_312"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_strong_min_reuse_24
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_user_mfa_enabled

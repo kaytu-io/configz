@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_cm_12_b
+Title: CM-12(b)
+DisplayCode: ""
+Connector: AWS
+Description: Identify and document the users who have access to the system and system components where the information is processed and stored.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_min_length_14

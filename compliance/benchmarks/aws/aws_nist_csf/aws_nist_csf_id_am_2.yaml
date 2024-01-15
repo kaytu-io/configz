@@ -1,0 +1,29 @@
+ID: aws_nist_csf_id_am_2
+Title: ID.AM-2
+DisplayCode: ""
+Connector: AWS
+Description: Software platforms and applications within the organization are inventoried.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ec2_instance_ssm_managed
+- aws_ec2_stopped_instance_30_days
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_vpc_eip_associated
+- aws_vpc_network_acl_unused

@@ -1,0 +1,32 @@
+ID: aws_rbi_cyber_security_annex_i_5_1
+Title: Annex I (5.1)
+DisplayCode: ""
+Connector: AWS
+Description: The firewall configurations should be set to the highest security level and evaluation of critical device (such as firewall, network switches, security devices, etc.) configurations should be done periodically.
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  rbi_cyber_security_item_id:
+  - annex_i_5_1
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_stage_use_waf_web_acl
+- aws_elb_application_lb_waf_enabled
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_security_group_restrict_ingress_tcp_udp_all

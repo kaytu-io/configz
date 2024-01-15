@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_sc_23_5
+Title: SC-23(5) Allowed Certificate Authorities
+DisplayCode: ""
+Connector: AWS
+Description: "Only allow the use of [Assignment: organization-defined certificate authorities] for verification of the establishment of protected sessions."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/ELB
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_elb_application_network_lb_use_ssl_certificate
+- aws_elb_classic_lb_use_ssl_certificate

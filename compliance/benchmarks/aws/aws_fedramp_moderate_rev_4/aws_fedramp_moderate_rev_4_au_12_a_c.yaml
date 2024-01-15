@@ -1,0 +1,35 @@
+ID: aws_fedramp_moderate_rev_4_au_12_a_c
+Title: AU-12(a)(c)
+DisplayCode: ""
+Connector: AWS
+Description: "The information system: a. Provides audit record generation capability for the auditable events defined in AU-2 a. at all information system and network components where audit capability is deployed/available c. Generates audit records for the events defined in AU-2 d. with the content defined in AU-3."
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_stage_logging_enabled
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_elb_application_classic_lb_logging_enabled
+- aws_rds_db_instance_logging_enabled
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_s3_bucket_logging_enabled
+- aws_vpc_flow_logs_enabled
+- aws_wafv2_web_acl_logging_enabled

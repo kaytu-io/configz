@@ -1,0 +1,35 @@
+ID: azure_cis_v200_8
+Title: 8 Key Vault
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "8"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_keyvault_with_rbac_key_expiration_set
+- azure_keyvault_with_non_rbac_key_expiration_set
+- azure_keyvault_with_rbac_secret_expiration_set
+- azure_keyvault_with_non_rbac_secret_expiration_set
+- azure_keyvault_vault_recoverable
+- azure_keyvault_rbac_enabled
+- azure_keyvault_vault_private_link_used

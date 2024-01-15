@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1194_01l2organizational
+Title: 1194.01l2Organizational.2-01.l 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Ports, services, and similar applications installed on a computer or network systems, which are not specifically required for business functionality, are disabled or removed.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_remote_debugging_disabled

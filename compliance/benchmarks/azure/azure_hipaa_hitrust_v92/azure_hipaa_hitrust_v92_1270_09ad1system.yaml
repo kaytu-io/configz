@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1270_09ad1system
+Title: 1270.09ad1System.12-09.ad 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: The organization ensures proper logging is enabled in order to audit administrator activities; and reviews system administrator and operator logs on a regular basis.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Monitor
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_monitor_log_alert_for_administrative_operations

@@ -1,0 +1,27 @@
+ID: aws_foundational_security_kms
+Title: KMS
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/KMS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_kms_key_decryption_restricted_in_iam_customer_managed_policy
+- aws_kms_key_decryption_restricted_in_iam_inline_policy
+- aws_kms_key_not_pending_deletion

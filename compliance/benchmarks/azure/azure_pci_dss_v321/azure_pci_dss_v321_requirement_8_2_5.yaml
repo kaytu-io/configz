@@ -1,0 +1,30 @@
+ID: azure_pci_dss_v321_requirement_8_2_5
+Title: PCI DSS requirement 8.2.5
+DisplayCode: ""
+Connector: Azure
+Description: Do not allow an individual to submit a new password/phrase that is the same as any of the last four passwords/phrases he or she has used.
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_guest_configuration_installed_windows
+- azure_compute_vm_guest_configuration_with_no_managed_identity
+- azure_compute_vm_guest_configuration_with_user_and_system_assigned_managed_identity
+- azure_compute_vm_max_password_age_70_days_windows
+- azure_compute_vm_min_password_length_14_windows
+- azure_compute_vm_restrict_previous_24_passwords_resuse_windows

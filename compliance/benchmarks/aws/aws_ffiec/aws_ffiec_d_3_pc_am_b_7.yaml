@@ -1,0 +1,25 @@
+ID: aws_ffiec_d_3_pc_am_b_7
+Title: D3.PC.Am.B.7
+DisplayCode: ""
+Connector: AWS
+Description: Access controls include password complexity and limits to password attempts and reuse.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_strong

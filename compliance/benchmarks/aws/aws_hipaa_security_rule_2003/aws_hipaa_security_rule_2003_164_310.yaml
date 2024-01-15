@@ -1,0 +1,27 @@
+ID: aws_hipaa_security_rule_2003_164_310
+Title: 164.310 Physical Safeguards
+DisplayCode: ""
+Connector: AWS
+Description: The Security Rule defines physical safeguards to manage the selection, development, implementation, and maintenance of security measures to protect electronic protected health information and to manage the conduct of the covered entity's or business associate's workforce in relation to the protection of that information.
+Children:
+- aws_hipaa_security_rule_2003_164_310_d_2_iv
+Tags:
+  category:
+  - Compliance
+  hipaa_section:
+  - "164_310"
+  hipaa_security_rule_2003:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

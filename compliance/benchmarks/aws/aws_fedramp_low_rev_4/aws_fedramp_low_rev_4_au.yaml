@@ -1,0 +1,27 @@
+ID: aws_fedramp_low_rev_4_au
+Title: Audit and Accountability (AU)
+DisplayCode: ""
+Connector: AWS
+Description: The AU control family consists of security controls related to an organization’s audit capabilities. This includes audit policies and procedures, audit logging, audit report generation, and protection of audit information.
+Children:
+- aws_fedramp_low_rev_4_au_2
+- aws_fedramp_low_rev_4_au_9
+- aws_fedramp_low_rev_4_au_11
+Tags:
+  category:
+  - Compliance
+  fedramp_low_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

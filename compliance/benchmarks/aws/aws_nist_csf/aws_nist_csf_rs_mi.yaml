@@ -1,0 +1,25 @@
+ID: aws_nist_csf_rs_mi
+Title: Mitigation (RS.MI)
+DisplayCode: ""
+Connector: AWS
+Description: Activities are performed to prevent expansion of an event, mitigate its effects, and eradicate the incident.
+Children:
+- aws_nist_csf_rs_mi_3
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sc_16
+Title: Transmission Of Security And Privacy Attributes (SC-16)
+DisplayCode: ""
+Connector: AWS
+Description: "Associate [Assignment: organization-defined security and privacy attributes] with information exchanged between systems and between system components."
+Children:
+- aws_nist_800_53_rev_5_sc_16_1
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

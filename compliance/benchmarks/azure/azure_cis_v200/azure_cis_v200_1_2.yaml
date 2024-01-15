@@ -1,0 +1,29 @@
+ID: azure_cis_v200_1_2
+Title: 1.2 Conditional Access
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "1.2"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_conditional_access_mfa_enabled

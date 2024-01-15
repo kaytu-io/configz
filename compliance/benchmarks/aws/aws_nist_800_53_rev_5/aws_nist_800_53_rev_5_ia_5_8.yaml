@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ia_5_8
+Title: IA-5(8) Multiple System Accounts
+DisplayCode: ""
+Connector: AWS
+Description: "Implement [Assignment: organization-defined security controls] to manage the risk of compromise due to individuals having accounts on multiple systems."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_no_access_keys

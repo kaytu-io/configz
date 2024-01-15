@@ -1,0 +1,25 @@
+ID: azure_pci_dss_v321_requirement_4
+Title: Requirement 4 - Encrypt transmission of cardholder data across open, public networks
+DisplayCode: ""
+Connector: Azure
+Description: Cyber criminals may be able to intercept transmissions of cardholder data over open, public networks so it is important to prevent their ability to view this data. Encryption is one technology that can be used to render transmitted data unreadable by any unauthorized person.
+Children:
+- azure_pci_dss_v321_requirement_4_1
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

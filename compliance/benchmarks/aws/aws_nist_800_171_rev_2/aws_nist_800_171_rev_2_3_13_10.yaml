@@ -1,0 +1,27 @@
+ID: aws_nist_800_171_rev_2_3_13_10
+Title: 3.13.10 Establish and manage cryptographic keys for cryptography employed in organizational systems
+DisplayCode: ""
+Connector: AWS
+Description: Cryptographic key management and establishment can be performed using manual procedures or mechanisms supported by manual procedures. Organizations define key management requirements in accordance with applicable federal laws, Executive Orders, policies, directives, regulations, and standards specifying appropriate options, levels, and parameters.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_acm_certificate_expires_30_days
+- aws_kms_cmk_rotation_enabled
+- aws_kms_key_not_pending_deletion

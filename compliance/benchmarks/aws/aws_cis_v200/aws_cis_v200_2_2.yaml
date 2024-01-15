@@ -1,0 +1,29 @@
+ID: aws_cis_v200_2_2
+Title: 2.2 Elastic Compute Cloud (EC2)
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "2.2"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - aws
+  service:
+  - AWS/EBS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ebs_volume_encryption_at_rest_enabled

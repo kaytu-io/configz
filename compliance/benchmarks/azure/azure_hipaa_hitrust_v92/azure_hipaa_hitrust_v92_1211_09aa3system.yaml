@@ -1,0 +1,27 @@
+ID: azure_hipaa_hitrust_v92_1211_09aa3system
+Title: 1211.09aa3System.4-09.aa 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: The organization verifies every ninety (90) days for each extract of covered information recorded that the data is erased or its use is still required.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_keyvault_logging_enabled
+- azure_keyvault_managed_hms_logging_enabled
+- azure_sql_server_auditing_on

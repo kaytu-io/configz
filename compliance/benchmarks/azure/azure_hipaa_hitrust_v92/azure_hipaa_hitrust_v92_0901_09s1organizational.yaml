@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0901_09s1organizational
+Title: 0901.09s1Organizational.1-09.s 09.08 Exchange of Information
+DisplayCode: ""
+Connector: Azure
+Description: The organization formally addresses multiple safeguards before allowing the use of information systems for information exchange.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_cors_no_star

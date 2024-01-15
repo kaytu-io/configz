@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ra_10
+Title: Threat Hunting (RA-10)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Establish and maintain a cyber threat hunting capability to: 1.\u2003Search for indicators of compromise in organizational systems; and 2.\u2003Detect, track, and disrupt threats that evade existing controls; and b.\u2003Employ the threat hunting capability [Assignment: organization-defined frequency]."
+Children:
+- aws_nist_800_53_rev_5_ra_10_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,52 @@
+ID: aws_nist_csf_de_cm_2
+Title: DE.CM-2
+DisplayCode: ""
+Connector: AWS
+Description: The physical environment is monitored to detect potential cybersecurity events.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_bucket_not_public
+- aws_cloudtrail_multi_region_read_write_enabled
+- aws_cloudtrail_s3_logging_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_cloudtrail_trail_validation_enabled
+- aws_cloudwatch_alarm_action_enabled
+- aws_config_enabled_all_regions
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_guardduty_enabled
+- aws_kms_cmk_rotation_enabled
+- aws_log_metric_filter_bucket_policy
+- aws_log_metric_filter_cloudtrail_configuration
+- aws_log_metric_filter_config_configuration
+- aws_log_metric_filter_console_authentication_failure
+- aws_log_metric_filter_console_login_mfa
+- aws_log_metric_filter_disable_or_delete_cmk
+- aws_log_metric_filter_iam_policy
+- aws_log_metric_filter_network_acl
+- aws_log_metric_filter_network_gateway
+- aws_log_metric_filter_root_login
+- aws_log_metric_filter_route_table
+- aws_log_metric_filter_security_group
+- aws_log_metric_filter_unauthorized_api
+- aws_log_metric_filter_vpc
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_securityhub_enabled
+- aws_vpc_flow_logs_enabled

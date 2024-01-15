@@ -1,0 +1,47 @@
+ID: aws_hipaa_final_omnibus_security_rule_2013_164_308
+Title: 164.308 Administrative Safeguards
+DisplayCode: ""
+Connector: AWS
+Description: An important step in strengthening the protection of health information, especially in electronic form, as well as give patients more access to their individual health information. The HIPAA Omnibus Rule is a set of final regulations that modifies the existing HIPAA rules and implements a variety of provisions of the Health Information Technology for Economic and Clinical Health (HITECH) Act.
+Children:
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_1_ii_a
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_1_ii_b
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_1_ii_d
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_3_i
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_3_ii_a
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_3_ii_b
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_3_ii_c
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_4_i
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_4_ii_a
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_4_ii_b
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_4_ii_c
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_5_ii_b
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_5_ii_c
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_5_ii_d
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_6_i
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_6_ii
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_7_i
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_7_ii_a
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_7_ii_b
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_7_ii_c
+- aws_hipaa_final_omnibus_security_rule_2013_164_308_a_8
+Tags:
+  category:
+  - Compliance
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_section:
+  - "164_308"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

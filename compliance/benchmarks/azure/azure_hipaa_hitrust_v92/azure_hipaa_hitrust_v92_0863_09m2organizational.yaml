@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0863_09m2organizational
+Title: 0863.09m2Organizational.910-09.m 09.06 Network Security Management
+DisplayCode: ""
+Connector: Azure
+Description: The organization builds a firewall configuration that restricts connections between un-trusted networks and any system components in the covered information environment; and any changes to the firewall configuration are updated in the network diagram.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/EventHub
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_eventhub_namespace_use_virtual_service_endpoint

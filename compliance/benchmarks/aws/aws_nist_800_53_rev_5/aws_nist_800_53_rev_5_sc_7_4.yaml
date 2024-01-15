@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_sc_7_4
+Title: SC-7(4) External Telecommunications Services
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Implement a managed interface for each external telecommunication service; b.\u2003Establish a traffic flow policy for each managed interface; c.\u2003Protect the confidentiality and integrity of the information being transmitted across each interface; d.\u2003Document each exception to the traffic flow policy with a supporting mission or business need and duration of that need; e.\u2003Review exceptions to the traffic flow policy [Assignment: organization-defined frequency] and remove exceptions that are no longer supported by an explicit mission or business need; f.\u2003Prevent unauthorized exchange of control plane traffic with external networks; g.\u2003Publish information to enable remote networks to detect unauthorized control plane traffic from internal networks; and h.\u2003Filter unauthorized control plane traffic from external networks."
+Children:
+- aws_nist_800_53_rev_5_sc_7_4_b
+- aws_nist_800_53_rev_5_sc_7_4_g
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

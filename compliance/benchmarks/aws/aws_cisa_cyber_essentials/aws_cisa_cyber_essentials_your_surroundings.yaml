@@ -1,0 +1,28 @@
+ID: aws_cisa_cyber_essentials_your_surroundings
+Title: Your Surroundings
+DisplayCode: ""
+Connector: AWS
+Description: As your organization's digital workplace, this is an essential element of your organization's Culture of Cyber Readiness. Your task for this element is to ensure only those who belong on your digital workplace have access to it.
+Children:
+- aws_cisa_cyber_essentials_your_surroundings_1
+- aws_cisa_cyber_essentials_your_surroundings_2
+- aws_cisa_cyber_essentials_your_surroundings_3
+- aws_cisa_cyber_essentials_your_surroundings_4
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

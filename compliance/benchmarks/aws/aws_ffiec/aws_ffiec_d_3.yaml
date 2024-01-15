@@ -1,0 +1,27 @@
+ID: aws_ffiec_d_3
+Title: Cybersecurity Controls (Domain 3)
+DisplayCode: ""
+Connector: AWS
+Description: Cybersecurity controls are the practices and processes used to protect assets, infrastructure, and information by strengthening the institution's defensive posture through continuous, automated protection and monitoring.
+Children:
+- aws_ffiec_d_3_cc
+- aws_ffiec_d_3_dc
+- aws_ffiec_d_3_pc
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

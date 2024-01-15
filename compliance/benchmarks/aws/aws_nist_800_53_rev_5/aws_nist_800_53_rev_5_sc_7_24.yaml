@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_sc_7_24
+Title: SC-7(24) Personally Identifiable Information
+DisplayCode: ""
+Connector: AWS
+Description: "For systems that process personally identifiable information: a.\u2003Apply the following processing rules to data elements of personally identifiable information: [Assignment: organization-defined processing rules];b.\u2003Monitor for permitted processing at the external interfaces to the system and at key internal boundaries within the system; c.\u2003Document each processing exception; and d.\u2003Review and remove exceptions that are no longer supported."
+Children:
+- aws_nist_800_53_rev_5_sc_7_24_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

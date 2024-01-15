@@ -1,0 +1,54 @@
+ID: aws_hipaa_security_rule_2003_164_314_b_2
+Title: 164.314(b)(2) Implementation specifications
+DisplayCode: ""
+Connector: AWS
+Description: The plan documents of the group health plan must be amended to incorporate provisions to require the plan sponsor to — (i) Implement administrative, physical, and technical safeguards that reasonably and appropriately protect the confidentiality, integrity, and availability of the electronic protected health information that it creates, receives, maintains, or transmits on behalf of the group health plan; (ii) Ensure that the adequate separation required by 164.504(f)(2)(iii) is supported by reasonable and appropriate security measures; (iii) Ensure that any agent, including a subcontractor, to whom it provides this information agrees to implement reasonable and appropriate security measures to protect the information; and (iv) Report to the group health plan any security incident of which it becomes aware.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_section:
+  - "164_314"
+  hipaa_security_rule_2003:
+  - "true"
+  hipaa_security_rule_2003_item_id:
+  - 164_314_b_2
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_dax_cluster_encryption_at_rest_enabled
+- aws_dynamodb_table_encryption_enabled
+- aws_ebs_attached_volume_encryption_enabled
+- aws_ec2_ebs_default_encryption_enabled
+- aws_eks_cluster_secrets_encrypted
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_es_domain_encryption_at_rest_enabled
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_opensearch_domain_https_required
+- aws_opensearch_domain_node_to_node_encryption_enabled
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_kms_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_default_encryption_enabled
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_public_access_block_account
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_vpc_configured_to_use_vpc_endpoints

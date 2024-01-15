@@ -1,0 +1,31 @@
+ID: aws_ffiec_d_3_pc_am_b_13
+Title: D3.PC.Am.B.13
+DisplayCode: ""
+Connector: AWS
+Description: Confidential data is encrypted when transmitted across public or untrusted networks (e.g., Internet).
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_rest_api_stage_use_ssl_certificate
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_application_network_lb_use_ssl_certificate
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_s3_bucket_enforces_ssl

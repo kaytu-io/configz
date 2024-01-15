@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0947_09y2organizational
+Title: 0947.09y2Organizational.2-09.y 09.09 Electronic Commerce Services
+DisplayCode: ""
+Connector: Azure
+Description: The organization ensures the storage of the transaction details are located outside of any publicly accessible environments (e.g., on a storage platform existing on the organization's intranet) and not retained and exposed on a storage medium directly accessible from the Internet.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/PostgreSQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_postgres_sql_ssl_enabled

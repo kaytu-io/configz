@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ra_1
+Title: Policy And Procedures (RA-1)
+DisplayCode: ""
+Connector: AWS
+Description: Track risk assessment policies that address purpose, scope, roles, management, and organizational compliance.
+Children:
+- aws_nist_800_53_rev_5_ra_1_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

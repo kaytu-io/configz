@@ -1,0 +1,27 @@
+ID: azure_pci_dss_v321_requirement_5_1
+Title: PCI DSS requirement 5.1
+DisplayCode: ""
+Connector: Azure
+Description: Deploy anti-virus software on all systems commonly affected by malicious software (particularly personal computers and servers). For systems not affected commonly by malicious software, perform periodic evaluations to evaluate evolving malware threats and confirm whether such systems continue to not require anti-virus software.
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_system_updates_installed
+- azure_compute_vm_vulnerability_assessment_solution_enabled
+- azure_sql_database_vulnerability_findings_resolved

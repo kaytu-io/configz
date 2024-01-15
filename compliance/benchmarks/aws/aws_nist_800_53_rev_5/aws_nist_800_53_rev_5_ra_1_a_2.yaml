@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ra_1_a_2
+Title: RA-1(a)(2)
+DisplayCode: ""
+Connector: AWS
+Description: "a. Establish and maintain a cyber threat hunting capability to: 2. Detect, track, and disrupt threats that evade existing controls."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

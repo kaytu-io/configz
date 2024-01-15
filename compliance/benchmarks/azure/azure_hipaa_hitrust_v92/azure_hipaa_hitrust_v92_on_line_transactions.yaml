@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_on_line_transactions
+Title: On-line Transactions
+DisplayCode: ""
+Connector: Azure
+Description: Information involved in online transactions shall be protected to prevent incomplete transmission, misrouting, unauthorized message alteration, unauthorized disclosure, unauthorized message duplication or replay.
+Children:
+- azure_hipaa_hitrust_v92_0946_09y2organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_pm_11
+Title: Mission And Business Process Defination (PM-11)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Define organizational mission and business processes with consideration for information security and privacy and the resulting risk to organizational operations, organizational assets, individuals, other organizations, and the Nation; and b.\u2003Determine information protection and personally identifiable information processing needs arising from the defined mission and business processes; and c.\u2003Review and revise the mission and business processes [Assignment: organization-defined frequency]."
+Children:
+- aws_nist_800_53_rev_5_pm_11_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

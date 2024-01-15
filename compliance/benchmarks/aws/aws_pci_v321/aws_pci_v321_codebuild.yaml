@@ -1,0 +1,22 @@
+ID: aws_pci_v321_codebuild
+Title: CodeBuild
+DisplayCode: ""
+Connector: ""
+Description: ""
+Children: []
+Tags:
+  pci:
+  - "true"
+  pci_version:
+  - v3.2.1
+  plugin:
+  - aws
+  service:
+  - codebuild
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_codebuild_project_source_repo_oauth_configured
+- aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values

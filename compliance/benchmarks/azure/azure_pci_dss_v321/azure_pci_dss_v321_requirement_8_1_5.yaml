@@ -1,0 +1,29 @@
+ID: azure_pci_dss_v321_requirement_8_1_5
+Title: PCI DSS requirement 8.1.5
+DisplayCode: ""
+Connector: Azure
+Description: "Manage IDs used by thid parties to access, support, or maintain system components via remote access. Remote access are as follows: - Enabled only during the time period needed and disabled when not in use. - Monitored when in use."
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_deprecated_account_with_owner_roles
+- azure_iam_deprecated_account
+- azure_iam_external_user_with_owner_role
+- azure_iam_external_user_with_read_permission
+- azure_iam_external_user_with_write_permission

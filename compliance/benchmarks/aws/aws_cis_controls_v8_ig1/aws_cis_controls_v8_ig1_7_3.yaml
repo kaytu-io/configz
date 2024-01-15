@@ -1,0 +1,26 @@
+ID: aws_cis_controls_v8_ig1_7_3
+Title: 7.3 Perform Automated Operating System Patch Management
+DisplayCode: ""
+Connector: AWS
+Description: Perform operating system updates on enterprise assets through automated patch management on a monthly, or more frequent, basis.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_redshift_cluster_maintenance_settings_check
+- aws_ssm_managed_instance_compliance_patch_compliant

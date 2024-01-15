@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1203_09aa1system
+Title: 1203.09aa1System.2-09.aa 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: Audit records include the unique user ID, unique data subject ID, function performed, and date/time the event was performed.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Logic
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_logic_app_workflow_logging_enabled

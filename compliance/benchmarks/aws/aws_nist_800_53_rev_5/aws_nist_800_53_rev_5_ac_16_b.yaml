@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ac_16_b
+Title: AC-16(b)
+DisplayCode: ""
+Connector: AWS
+Description: Ensure that the attribute associations are made and retained with the information.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudwatch_log_group_retention_period_365

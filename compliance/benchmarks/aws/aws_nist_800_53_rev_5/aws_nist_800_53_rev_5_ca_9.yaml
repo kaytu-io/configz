@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ca_9
+Title: Internal System Connections (CA-9)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Authorize internal connections of [Assignment: organization-defined system components or classes of components] to the system; b.\u2003Document, for each internal connection, the interface characteristics, security and privacy requirements, and the nature of the information communicated; c.\u2003Terminate internal system connections after [Assignment: organization-defined conditions]; and d.\u2003Review [Assignment: organization-defined frequency] the continued need for each internal connection."
+Children:
+- aws_nist_800_53_rev_5_ca_9_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

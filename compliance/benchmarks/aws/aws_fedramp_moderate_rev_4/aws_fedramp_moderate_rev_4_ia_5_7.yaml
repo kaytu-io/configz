@@ -1,0 +1,25 @@
+ID: aws_fedramp_moderate_rev_4_ia_5_7
+Title: IA-5(7) No Embedded Unencrypted Static Authenticators
+DisplayCode: ""
+Connector: AWS
+Description: The organization ensures that unencrypted static authenticators are not embedded in applications or access scripts or stored on function keys.
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CodeBuild
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values

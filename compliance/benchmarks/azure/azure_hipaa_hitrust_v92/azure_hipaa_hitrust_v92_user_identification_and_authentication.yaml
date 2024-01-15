@@ -1,0 +1,28 @@
+ID: azure_hipaa_hitrust_v92_user_identification_and_authentication
+Title: User Identification and Authentication
+DisplayCode: ""
+Connector: Azure
+Description: User identification and authentication play a crucial role. This involves implementing strong measures to verify the identity of users accessing electronic protected health information (ePHI). To comply with these standards, organizations should establish unique user IDs and enforce the use of strong passwords or passphrases. Additionally, implementing multi-factor authentication adds an extra layer of security by requiring users to provide additional verification, such as a code sent to their mobile device, in addition to their login credentials. By implementing robust user identification and authentication practices, organizations can ensure that only authorized individuals can access ePHI, reducing the risk of unauthorized disclosure and maintaining compliance with HIPAA and HITRUST 9.2 regulations.
+Children:
+- azure_hipaa_hitrust_v92_11110_01q1organizational
+- azure_hipaa_hitrust_v92_11208_01q1organizational
+- azure_hipaa_hitrust_v92_11210_01q2organizational
+- azure_hipaa_hitrust_v92_11211_01q2organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

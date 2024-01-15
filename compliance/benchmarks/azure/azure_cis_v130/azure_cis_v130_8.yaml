@@ -1,0 +1,32 @@
+ID: azure_cis_v130_8
+Title: 8 Other Security Considerations
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "8"
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_keyvault_key_expiration_set
+- azure_keyvault_secret_expiration_set
+- azure_keyvault_vault_recoverable
+- azure_keyvault_vault_recoverable

@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ia_4_4
+Title: IA-4(4)
+DisplayCode: ""
+Connector: AWS
+Description: "Manage individual identifiers by uniquely identifying each individual as [Assignment: organization-defined characteristic identifying individual status]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_root_user_no_access_keys

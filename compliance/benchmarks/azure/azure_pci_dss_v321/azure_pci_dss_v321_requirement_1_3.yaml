@@ -1,0 +1,26 @@
+ID: azure_pci_dss_v321_requirement_1_3
+Title: PCI DSS requirement 1.3
+DisplayCode: ""
+Connector: Azure
+Description: Prohibit direct public access between the Internet and any system component in the cardholder data environment.
+Children:
+- azure_pci_dss_v321_requirement_1_3_2
+- azure_pci_dss_v321_requirement_1_3_4
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

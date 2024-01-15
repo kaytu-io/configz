@@ -1,0 +1,33 @@
+ID: azure_cis_v130_4
+Title: 4 Database Services
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children:
+- azure_cis_v130_4_1
+- azure_cis_v130_4_2
+- azure_cis_v130_4_3
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "4"
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_sql_db_active_directory_admin_configured
+- azure_sql_server_tde_protector_cmk_encrypted

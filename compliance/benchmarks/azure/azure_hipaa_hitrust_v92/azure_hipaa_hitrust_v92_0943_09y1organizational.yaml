@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0943_09y1organizational
+Title: 0943.09y1Organizational.1-09.y 09.09 Electronic Commerce Services
+DisplayCode: ""
+Connector: Azure
+Description: The organization verifies every ninety (90) days for each extract of covered information recorded that the data is erased or its use is still required.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Storage
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_storage_account_secure_transfer_required_enabled

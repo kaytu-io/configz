@@ -261,9 +261,11 @@ Title: API Gateway stage should be associated with waf
 </details>
 
 ### How to define benchmarks:
-Benchmark themselves are seperated into 2 types: `root` and `child`.
-Each file with the name `root.yaml` in `compliance/benchmarks` directory will be considered a `root` benchmark and
-each file with the name `children.yaml` in `compliance/benchmarks` directory will be considered an array of `child` benchmarks.
+All the files with `yaml` extension in `compliance/benchmarks` directory will be considered a `benchmark`.
+One thing to note here is that benchmarks can be nested into each other, with 
+root benchmarks being the ones that are not nested into any other benchmark
+and the ones that we do assignments on, it is recommended to follow the directory structure
+provided in this repository and mark root benchmarks with `root` in their name.
 
 Each benchmark must contain these fields:
 - AutoAssign: `boolean` - only applicable for root benchmarks, whether to assign the benchmark to all the accounts by default or not
@@ -279,217 +281,37 @@ Each benchmark must contain these fields:
 - Title: `string`
 
 <details>
-<summary><b>Example root.yaml</b></summary>
+<summary><b>Example</b></summary>
 
 ```yaml
-AutoAssign: false
-Baseline: true
-Children:
-- aws_cis_v200_1
-- aws_cis_v200_2
-- aws_cis_v200_3
-- aws_cis_v200_4
-- aws_cis_v200_5
+ID: aws_cis_v200_3
+Title: 3 Logging
+DisplayCode: ""
 Connector: AWS
-Controls: null
-Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
-Enabled: true
-ID: aws_cis_v200
-Managed: true
+Description: ""
+Children: []
 Tags:
   category:
-  - Compliance
+    - Compliance
   cis:
-  - "true"
+    - "true"
+  cis_section_id:
+    - "3"
   cis_version:
-  - v2.0.0
-  kaytu_benchmark_type:
-  - compliance
-  kaytu_category:
-  - Best Practices
+    - v2.0.0
   plugin:
-  - aws
+    - aws
   service:
-  - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
-  type:
-  - Benchmark
-Title: CIS v2.0.0 for AWS
-```
-</details>
-
-<details>
-<summary><b>Example children.yaml</b></summary>
-
-```yaml
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
-  - aws_vpc_network_acl_remote_administration
-  - aws_vpc_security_group_remote_administration_ipv4
-  - aws_vpc_security_group_remote_administration_ipv6
-  - aws_vpc_default_security_group_restricts_all_traffic
-  - aws_ec2_instance_uses_imdsv2
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_5
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "5"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS/VPC
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 5 Networking
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
-  - aws_efs_file_system_encrypt_data_at_rest
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_2_4
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "2.4"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS/EFS
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 2.4 Elastic File System (EFS)
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
-  - aws_log_metric_filter_unauthorized_api
-  - aws_log_metric_filter_console_login_mfa
-  - aws_log_metric_filter_root_login
-  - aws_log_metric_filter_iam_policy
-  - aws_log_metric_filter_cloudtrail_configuration
-  - aws_log_metric_filter_console_authentication_failure
-  - aws_log_metric_filter_disable_or_delete_cmk
-  - aws_log_metric_filter_bucket_policy
-  - aws_log_metric_filter_config_configuration
-  - aws_log_metric_filter_security_group
-  - aws_log_metric_filter_network_acl
-  - aws_log_metric_filter_network_gateway
-  - aws_log_metric_filter_route_table
-  - aws_log_metric_filter_vpc
-  - aws_log_metric_filter_organization
-  - aws_securityhub_enabled
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_4
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "4"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS/CloudWatch
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 4 Monitoring
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
-  - aws_ebs_volume_encryption_at_rest_enabled
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_2_2
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "2.2"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS/EBS
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 2.2 Elastic Compute Cloud (EC2)
-- AutoAssign: false
-  Baseline: true
-  Children:
-  - aws_cis_v200_2_1
-  - aws_cis_v200_2_2
-  - aws_cis_v200_2_3
-  - aws_cis_v200_2_4
-  Connector: AWS
-  Controls: null
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_2
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "2"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
     - AWS
-    source_git:
+  source_git:
     - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
+  type:
     - Benchmark
-  Title: 2 Storage
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
   - aws_cloudtrail_multi_region_read_write_enabled
   - aws_cloudtrail_trail_validation_enabled
   - aws_cloudtrail_bucket_not_public
@@ -501,133 +323,5 @@ Title: CIS v2.0.0 for AWS
   - aws_vpc_flow_logs_enabled
   - aws_cloudtrail_s3_object_write_events_audit_enabled
   - aws_cloudtrail_s3_object_read_events_audit_enabled
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_3
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "3"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 3 Logging
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
-  - aws_account_alternate_contact_security_registered
-  - aws_iam_root_user_no_access_keys
-  - aws_iam_root_user_mfa_enabled
-  - aws_iam_root_user_hardware_mfa_enabled
-  - aws_iam_root_last_used
-  - aws_iam_account_password_policy_min_length_14
-  - aws_iam_account_password_policy_reuse_24
-  - aws_iam_user_console_access_mfa_enabled
-  - aws_iam_user_access_keys_and_password_at_setup
-  - aws_iam_user_unused_credentials_45
-  - aws_iam_user_one_active_key
-  - aws_iam_user_access_key_age_90
-  - aws_iam_user_no_inline_attached_policies
-  - aws_iam_policy_all_attached_no_star_star
-  - aws_iam_support_role
-  - aws_iam_server_certificate_not_expired
-  - aws_iam_access_analyzer_enabled
-  - aws_aws_iam_user_group_role_cloudshell_fullaccess_restricted
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_1
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "1"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 1 Identity and Access Management
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
-  - aws_s3_bucket_enforces_ssl
-  - aws_s3_bucket_mfa_delete_enabled
-  - aws_s3_bucket_protected_by_macie
-  - aws_s3_public_access_block_bucket_account
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_2_1
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "2.1"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS/S3
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 2.1 Simple Storage Service (S3)
-- AutoAssign: false
-  Baseline: true
-  Children: null
-  Connector: AWS
-  Controls:
-  - aws_rds_db_instance_encryption_at_rest_enabled
-  - aws_rds_db_instance_automatic_minor_version_upgrade_enabled
-  - aws_rds_db_instance_prohibit_public_access
-  Description: ""
-  Enabled: true
-  ID: aws_cis_v200_2_3
-  Managed: true
-  Tags:
-    category:
-    - Compliance
-    cis:
-    - "true"
-    cis_section_id:
-    - "2.3"
-    cis_version:
-    - v2.0.0
-    plugin:
-    - aws
-    service:
-    - AWS/RDS
-    source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
-    type:
-    - Benchmark
-  Title: 2.3 Relational Database Service (RDS)
 ```
 </details>

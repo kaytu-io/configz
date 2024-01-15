@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1621_09l2organizational
+Title: 1621.09l2Organizational.1-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: Automated tools are used to track all backups.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_sql_database_long_term_geo_redundant_backup_enabled

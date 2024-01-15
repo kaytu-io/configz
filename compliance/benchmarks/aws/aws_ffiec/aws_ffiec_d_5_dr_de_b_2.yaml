@@ -1,0 +1,25 @@
+ID: aws_ffiec_d_5_dr_de_b_2
+Title: D5.DR.De.B.2
+DisplayCode: ""
+Connector: AWS
+Description: System performance reports contain information that can be used as a risk indicator to detect information security incidents.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_lambda_function_dead_letter_queue_configured

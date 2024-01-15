@@ -1,0 +1,35 @@
+ID: azure_nist_sp_800_53_rev_5_sc_28_1
+Title: Cryptographic Protection SC-28(1)
+DisplayCode: ""
+Connector: Azure
+Description: The information system implements cryptographic mechanisms to prevent unauthorized disclosure and modification of organization-defined information on organization-defined information system components.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_app_service_environment_internal_encryption_enabled
+- azure_compute_vm_and_sacle_set_encryption_at_host_enabled
+- azure_databox_edge_device_double_encryption_enabled
+- azure_kubernetes_cluster_temp_disks_and_agent_node_pool_cache_encrypted_at_host
+- azure_kusto_cluster_disk_encryption_enabled
+- azure_kusto_cluster_double_encryption_enabled
+- azure_mysql_server_infrastructure_encryption_enabled
+- azure_postgresql_server_infrastructure_encryption_enabled
+- azure_servicefabric_cluster_protection_level_as_encrypt_and_sign
+- azure_sql_server_transparent_data_encryption_enabled
+- azure_storage_account_infrastructure_encryption_enabled

@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1625_09l3organizational
+Title: 1625.09l3Organizational.34-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: Three (3) generations of backups (full plus all related incremental or differential backups) are stored off-site, and both on-site and off-site backups are logged with name, date, time and action.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

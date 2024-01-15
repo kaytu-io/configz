@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_4_ir_7
+Title: Incident Response Assistance (IR-7)
+DisplayCode: ""
+Connector: AWS
+Description: The organization provides an incident response support resource, integral to the organizational incident response capability that offers advice and assistance to users of the information system for the handling and reporting of security incidents.
+Children:
+- aws_nist_800_53_rev_4_ir_7_1
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

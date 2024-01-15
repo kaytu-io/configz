@@ -1,0 +1,26 @@
+ID: aws_cisa_cyber_essentials_your_data_5
+Title: Your Data-5
+DisplayCode: ""
+Connector: AWS
+Description: Leverage protections for backups, including physical security, encryption and offline copies.
+Children: []
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_backup_recovery_point_encryption_enabled
+- aws_backup_recovery_point_manual_deletion_disabled

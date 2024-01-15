@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1620_09l1organizational
+Title: 1620.09l1Organizational.8-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: When the backup service is delivered by the third party, the service level agreement includes the detailed protections to control confidentiality, integrity and availability of the backup information.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

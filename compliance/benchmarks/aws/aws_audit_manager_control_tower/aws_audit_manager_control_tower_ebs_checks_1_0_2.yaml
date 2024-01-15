@@ -1,0 +1,29 @@
+ID: aws_audit_manager_control_tower_ebs_checks_1_0_2
+Title: 1.0.2 - Disallow EBS volumes that are unattached to an EC2 instance
+DisplayCode: ""
+Connector: AWS
+Description: Disallow EBS volumes that are unattached to an EC2 instance - Checks whether EBS volumes are attached to EC2 instances
+Children: []
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  audit_manager_control_tower_item_id:
+  - 1.0.2
+  category:
+  - Compliance
+  control_set:
+  - ebs_checks
+  plugin:
+  - aws
+  service:
+  - AWS/EBS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ebs_attached_volume_delete_on_termination_enabled

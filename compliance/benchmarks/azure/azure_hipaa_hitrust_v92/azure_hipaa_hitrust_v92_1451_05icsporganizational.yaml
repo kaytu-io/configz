@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1451_05icsporganizational
+Title: 1451.05iCSPOrganizational.2-05.i 05.02 External Parties
+DisplayCode: ""
+Connector: Azure
+Description: Cloud service providers design and implement controls to mitigate and contain data security risks through proper separation of duties, role-based access, and least-privilege access for all personnel within their supply chain.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Redis
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_azure_redis_cache_ssl_enabled

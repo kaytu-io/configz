@@ -1,0 +1,43 @@
+ID: aws_nist_800_53_rev_5_sc_7
+Title: Boundary Protection (SC-7)
+DisplayCode: ""
+Connector: AWS
+Description: "The information system: a. Monitors and controls communications at the external boundary of the system and at key internal boundaries within the system; b. Implements subnetworks for publicly accessible system components that are [Selection: physically; logically] separated from internal organizational networks; and c. Connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture."
+Children:
+- aws_nist_800_53_rev_5_sc_7_2
+- aws_nist_800_53_rev_5_sc_7_3
+- aws_nist_800_53_rev_5_sc_7_4
+- aws_nist_800_53_rev_5_sc_7_5
+- aws_nist_800_53_rev_5_sc_7_7
+- aws_nist_800_53_rev_5_sc_7_9
+- aws_nist_800_53_rev_5_sc_7_11
+- aws_nist_800_53_rev_5_sc_7_12
+- aws_nist_800_53_rev_5_sc_7_16
+- aws_nist_800_53_rev_5_sc_7_20
+- aws_nist_800_53_rev_5_sc_7_21
+- aws_nist_800_53_rev_5_sc_7_24
+- aws_nist_800_53_rev_5_sc_7_25
+- aws_nist_800_53_rev_5_sc_7_26
+- aws_nist_800_53_rev_5_sc_7_27
+- aws_nist_800_53_rev_5_sc_7_28
+- aws_nist_800_53_rev_5_sc_7_a
+- aws_nist_800_53_rev_5_sc_7_b
+- aws_nist_800_53_rev_5_sc_7_c
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

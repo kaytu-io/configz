@@ -1,0 +1,26 @@
+ID: aws_ffiec_d_1_rm
+Title: Risk Management (RM)
+DisplayCode: ""
+Connector: AWS
+Description: Risk Management includes a risk management program, risk assessment process, and audit function to effectively manage risk and assess the effectiveness of key controls.
+Children:
+- aws_ffiec_d_1_rm_ra_b_2
+- aws_ffiec_d_1_rm_rm_b_1
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

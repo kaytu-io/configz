@@ -1,0 +1,31 @@
+ID: aws_foundational_security_autoscaling
+Title: Auto Scaling
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/AutoScaling
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_autoscaling_group_multiple_az_configured
+- aws_autoscaling_launch_config_requires_imdsv2
+- aws_autoscaling_launch_config_hop_limit
+- aws_autoscaling_launch_config_public_ip_disabled
+- aws_autoscaling_use_multiple_instance_types_in_multiple_az
+- aws_autoscaling_group_uses_ec2_launch_template

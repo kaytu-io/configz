@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_cm_8_3
+Title: CM-8(3) Automated Unauthorized Component Detection
+DisplayCode: ""
+Connector: AWS
+Description: "The organization: Employs automated mechanisms [Assignment: organization-defined frequency] to detect the presence of unauthorized hardware, software, and firmware components within the information system; and Takes the following actions when unauthorized components are detected: [Selection (one or more): disables network access by such components; isolates the components; notifies [Assignment: organization-defined personnel or roles]]."
+Children:
+- aws_nist_800_53_rev_5_cm_8_3_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

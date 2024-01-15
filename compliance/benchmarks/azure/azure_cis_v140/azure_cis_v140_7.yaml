@@ -1,0 +1,31 @@
+ID: azure_cis_v140_7
+Title: 7 Virtual Machines
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "7"
+  cis_version:
+  - v1.4.0
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_utilizing_managed_disk
+- azure_compute_os_and_data_disk_encrypted_with_cmk
+- azure_compute_unattached_disk_encrypted_with_cmk

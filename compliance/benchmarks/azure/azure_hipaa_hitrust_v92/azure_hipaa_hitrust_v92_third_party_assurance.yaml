@@ -1,0 +1,26 @@
+ID: azure_hipaa_hitrust_v92_third_party_assurance
+Title: 14 Third Party Assurance
+DisplayCode: ""
+Connector: Azure
+Description: Where software development is outsourced, the development process is monitored by the organization and includes independent security and code reviews.
+Children:
+- azure_hipaa_hitrust_v92_1450_05i2organizational
+- azure_hipaa_hitrust_v92_1451_05icsporganizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

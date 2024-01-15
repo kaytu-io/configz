@@ -1,0 +1,54 @@
+ID: aws_nist_800_171_rev_2_3_13_5
+Title: 3.13.5 Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks
+DisplayCode: ""
+Connector: AWS
+Description: Subnetworks that are physically or logically separated from internal networks are referred to as demilitarized zones (DMZs). DMZs are typically implemented with boundary control devices and techniques that include routers, gateways, firewalls, virtualization, or cloud-based technologies.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_ec2_instance_in_vpc
+- aws_ec2_instance_not_publicly_accessible
+- aws_elb_application_lb_drop_http_headers
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_application_lb_waf_enabled
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_es_domain_in_vpc
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_lambda_function_in_vpc
+- aws_lambda_function_restrict_public_access
+- aws_rds_db_instance_prohibit_public_access
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_policy_restrict_public_access
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_public_access_block_account
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_vpc_igw_attached_to_authorized_vpc
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_security_group_restrict_ingress_tcp_udp_all
+- aws_wafv2_web_acl_logging_enabled

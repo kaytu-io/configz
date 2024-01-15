@@ -1,0 +1,27 @@
+ID: azure_pci_dss_v321_requirement_8_1
+Title: PCI DSS requirement 8.1
+DisplayCode: ""
+Connector: Azure
+Description: Define and implement policies and procedures to ensure proper user identification management for users and administrators on all system components. Assign all users a unique user name before allowing them to access system components or cardholder data.
+Children:
+- azure_pci_dss_v321_requirement_8_1_2
+- azure_pci_dss_v321_requirement_8_1_3
+- azure_pci_dss_v321_requirement_8_1_5
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

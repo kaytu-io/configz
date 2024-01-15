@@ -1,0 +1,47 @@
+ID: aws_nist_800_171_rev_2_3_1_3
+Title: 3.1.3 Control the flow of CUI in accordance with approved authorizations
+DisplayCode: ""
+Connector: AWS
+Description: "Information flow control regulates where information can travel within a system and between systems (versus who can access the information) and without explicit regard to subsequent accesses to that information. Flow control restrictions include the following: keeping exportcontrolled information from being transmitted in the clear to the Internet; blocking outside traffic that claims to be from within the organization; restricting requests to the Internet that are not from the internal web proxy server; and limiting information transfers between organizations based on data structures and content. Organizations commonly use information flow control policies and enforcement mechanisms to control the flow of information between designated sources and destinations (e.g., networks, individuals, and devices) within systems and between interconnected systems. Flow control is based on characteristics of the information or the information path. Enforcement occurs in boundary protection devices (e.g., gateways, routers, guards, encrypted tunnels, firewalls) that employ rule sets or establish configuration settings that restrict system services, provide a packetfiltering capability based on header information, or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics). Organizations also consider the trustworthiness of filtering and inspection mechanisms (i.e., hardware, firmware, and software components) that are critical to information flow enforcement. Transferring information between systems representing different security domains with different security policies introduces risk that such transfers violate one or more domain security policies. In such situations, information owners or stewards provide guidance at designated policy enforcement points between interconnected systems. Organizations consider mandating specific architectural solutions when required to enforce specific security policies. Enforcement includes: prohibiting information transfers between interconnected systems (i.e., allowing access only); employing hardware mechanisms to enforce one-way information flows; and implementing trustworthy regrading mechanisms to reassign security attributes and security labels."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_ec2_instance_in_vpc
+- aws_ec2_instance_not_publicly_accessible
+- aws_eks_cluster_endpoint_restrict_public_access
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_es_domain_in_vpc
+- aws_lambda_function_in_vpc
+- aws_lambda_function_restrict_public_access
+- aws_opensearch_domain_in_vpc
+- aws_rds_db_instance_prohibit_public_access
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_public_access_block_account
+- aws_s3_public_access_block_bucket
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_vpc_route_table_restrict_public_access_to_igw
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_security_group_restrict_ingress_tcp_udp_all

@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1215_09ab2system
+Title: 1215.09ab2System.7-09.ab 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: Auditing and monitoring systems employed by the organization support audit reduction and report generation.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_log_analytics_agent_installed

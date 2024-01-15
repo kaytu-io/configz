@@ -1,0 +1,28 @@
+ID: aws_nist_csf_id_ra
+Title: Risk Assessment (ID.RA)
+DisplayCode: ""
+Connector: AWS
+Description: The organization understands the cybersecurity risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals.
+Children:
+- aws_nist_csf_id_ra_1
+- aws_nist_csf_id_ra_2
+- aws_nist_csf_id_ra_3
+- aws_nist_csf_id_ra_5
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

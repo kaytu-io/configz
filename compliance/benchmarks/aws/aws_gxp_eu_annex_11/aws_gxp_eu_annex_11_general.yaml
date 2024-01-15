@@ -1,0 +1,25 @@
+ID: aws_gxp_eu_annex_11_general
+Title: General
+DisplayCode: ""
+Connector: AWS
+Description: This section focuses on more human oriented checks that leverages risk management, personnel verification of process owners, suppliers and service providers agreement reviews, supplier audit and review documentation for COTS.
+Children:
+- aws_gxp_eu_annex_11_general_1
+Tags:
+  category:
+  - Compliance
+  gxp_eu_annex_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0605_10h1system
+Title: 0605.10h1System.12-10.h 10.04 Security of System Files
+DisplayCode: ""
+Connector: Azure
+Description: Only authorized administrators are allowed to implement approved upgrades to software, applications, and program libraries, based on business requirements and the security implications of the release.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

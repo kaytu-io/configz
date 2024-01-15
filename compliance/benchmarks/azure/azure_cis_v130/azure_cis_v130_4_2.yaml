@@ -1,0 +1,33 @@
+ID: azure_cis_v130_4_2
+Title: 4.2 SQL Server - Azure Defender for SQL
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "4.2"
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_sql_server_atp_enabled
+- azure_sql_server_and_databases_va_enabled
+- azure_sql_server_va_setting_periodic_scan_enabled
+- azure_sql_server_va_setting_scan_reports_configured
+- azure_sql_server_va_setting_reports_notify_admins

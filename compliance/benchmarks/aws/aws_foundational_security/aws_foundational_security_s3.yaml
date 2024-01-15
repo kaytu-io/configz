@@ -1,0 +1,36 @@
+ID: aws_foundational_security_s3
+Title: S3
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_s3_public_access_block_account
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_bucket_default_encryption_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_policy_restricts_cross_account_permission_changes
+- aws_s3_bucket_public_access_blocked
+- aws_s3_bucket_logging_enabled
+- aws_s3_bucket_versioning_and_lifecycle_policy_enabled
+- aws_s3_bucket_event_notifications_enabled
+- aws_s3_bucket_acls_should_prohibit_user_access
+- aws_s3_bucket_lifecycle_policy_enabled

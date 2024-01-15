@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1627_09l3organizational
+Title: 1627.09l3Organizational.6-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: The organization tests backup information following each backup to verify media reliability and information integrity, and at least annually thereafter.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/MariaDB
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_mariadb_server_geo_redundant_backup_enabled

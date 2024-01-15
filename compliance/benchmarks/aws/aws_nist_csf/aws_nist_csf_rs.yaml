@@ -1,0 +1,27 @@
+ID: aws_nist_csf_rs
+Title: Respond (RS)
+DisplayCode: ""
+Connector: AWS
+Description: Develop and implement appropriate activities to take action regarding a detected cybersecurity incident.
+Children:
+- aws_nist_csf_rs_an
+- aws_nist_csf_rs_mi
+- aws_nist_csf_rs_rp
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

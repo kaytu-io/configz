@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1623_09l2organizational
+Title: 1623.09l2Organizational.4-09.l 09.05 Information Back-Up
+DisplayCode: ""
+Connector: Azure
+Description: Covered information is backed-up in an encrypted format to ensure confidentiality.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/PostgreSQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_postgres_db_server_geo_redundant_backup_enabled

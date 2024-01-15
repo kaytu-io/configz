@@ -1,0 +1,25 @@
+ID: aws_gxp_eu_annex_11_operational_phase_12_4
+Title: 12.4 Security - Audit Trail
+DisplayCode: ""
+Connector: AWS
+Description: Management systems for data and for documents should be designed to record the identity of operators entering, changing, confirming or deleting data including date and time.
+Children: []
+Tags:
+  category:
+  - Compliance
+  gxp_eu_annex_11:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_s3_data_events_enabled

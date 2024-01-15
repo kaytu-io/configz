@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_au_11
+Title: Audit Record Retention (AU-11)
+DisplayCode: ""
+Connector: AWS
+Description: "Retain audit records for [Assignment: organization-defined time period consistent with records retention policy] to provide support for after-the-fact investigations of incidents and to meet regulatory and organizational information retention requirements."
+Children:
+- aws_nist_800_53_rev_5_au_11_1
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudwatch_log_group_retention_period_365

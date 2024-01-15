@@ -1,0 +1,26 @@
+ID: aws_cis_controls_v8_ig1_10
+Title: 10 Malware Defenses
+DisplayCode: ""
+Connector: AWS
+Description: Prevent or control the installation, spread, and execution of malicious applications, code, or scripts on enterprise assets.
+Children:
+- aws_cis_controls_v8_ig1_10_1
+- aws_cis_controls_v8_ig1_10_2
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

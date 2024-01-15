@@ -1,0 +1,28 @@
+ID: aws_fedramp_moderate_rev_4_si_4_5
+Title: SI-4(5) System-Generated Alerts
+DisplayCode: ""
+Connector: AWS
+Description: "The information system alerts organization-defined personnel or roles when the following indications of compromise or potential compromise occur: [Assignment: organization-defined compromise indicators]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudwatch_alarm_action_enabled
+- aws_guardduty_enabled
+- aws_securityhub_enabled

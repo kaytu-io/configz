@@ -1,0 +1,29 @@
+ID: aws_audit_manager_control_tower_disallow_internet_connection_2_0_1
+Title: 2.0.1 - Disallow internet connection through RDP
+DisplayCode: ""
+Connector: AWS
+Description: Disallow internet connection through RDP - Checks whether security groups that are in use disallow unrestricted incoming TCP traffic to the specified
+Children: []
+Tags:
+  audit_manager_control_tower:
+  - "true"
+  audit_manager_control_tower_item_id:
+  - 2.0.1
+  category:
+  - Compliance
+  control_set:
+  - disallow_internet_connection
+  plugin:
+  - aws
+  service:
+  - AWS/VPC
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_vpc_security_group_restrict_ingress_common_ports_all

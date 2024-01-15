@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1637_12b2organizational
+Title: 1637.12b2Organizational.2-12.b 12.01 Information Security Aspects of Business Continuity Management
+DisplayCode: ""
+Connector: Azure
+Description: Business impact analysis are used to evaluate the consequences of disasters, security failures, loss of service, and service availability.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

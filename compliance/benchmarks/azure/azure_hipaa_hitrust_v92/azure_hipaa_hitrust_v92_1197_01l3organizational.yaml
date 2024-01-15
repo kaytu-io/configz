@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1197_01l3organizational
+Title: 1197.01l3Organizational.3-01.l 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: The organization disables Bluetooth and peer-to-peer networking protocols within the information system determined to be unnecessary or non-secure.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

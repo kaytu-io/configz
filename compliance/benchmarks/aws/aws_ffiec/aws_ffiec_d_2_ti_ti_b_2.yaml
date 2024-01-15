@@ -1,0 +1,27 @@
+ID: aws_ffiec_d_2_ti_ti_b_2
+Title: D2.TI.Ti.B.2
+DisplayCode: ""
+Connector: AWS
+Description: Threat information is used to monitor threats and vulnerabilities.
+Children: []
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_securityhub_enabled
+- aws_ssm_managed_instance_compliance_patch_compliant

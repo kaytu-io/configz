@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0302_09o2organizational
+Title: 0302.09o2Organizational.1-09.o 09.07 Media Handling
+DisplayCode: ""
+Connector: Azure
+Description: The organization protects and controls media containing sensitive information during transport outside of controlled areas.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

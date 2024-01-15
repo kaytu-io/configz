@@ -1,0 +1,26 @@
+ID: aws_nist_csf_id_ra_2
+Title: ID.RA-2
+DisplayCode: ""
+Connector: AWS
+Description: Cyber threat intelligence is received from information sharing forums and sources.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled
+- aws_securityhub_enabled

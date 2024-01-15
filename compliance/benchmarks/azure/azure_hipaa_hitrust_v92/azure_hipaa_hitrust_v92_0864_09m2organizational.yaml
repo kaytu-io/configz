@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0864_09m2organizational
+Title: 0864.09m2Organizational.12-09.m 09.06 Network Security Management
+DisplayCode: ""
+Connector: Azure
+Description: Usage restrictions and implementation guidance are formally defined for VoIP, including the authorization and monitoring of the service.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/CosmosDB
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_cosmosdb_use_virtual_service_endpoint

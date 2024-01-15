@@ -1,0 +1,29 @@
+ID: aws_nist_800_53_rev_5_cp_9
+Title: System Backup (CP-9)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Conduct backups of user-level information contained in [Assignment: organization-defined system components] [Assignment: organization-defined frequency consistent with recovery time and recovery point objectives]; b.\u2003Conduct backups of system-level information contained in the system [Assignment: organization-defined frequency consistent with recovery time and recovery point objectives]; c.\u2003Conduct backups of system documentation, including security- and privacy-related documentation [Assignment: organization-defined frequency consistent with recovery time and recovery point objectives]; and d.\u2003Protect the confidentiality, integrity, and availability of backup information."
+Children:
+- aws_nist_800_53_rev_5_cp_9_8
+- aws_nist_800_53_rev_5_cp_9_a
+- aws_nist_800_53_rev_5_cp_9_b
+- aws_nist_800_53_rev_5_cp_9_c
+- aws_nist_800_53_rev_5_cp_9_d
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

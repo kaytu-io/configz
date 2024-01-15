@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_0867_09m3organizational
+Title: Wireless access points are placed in secure areas and shut down when not in use (e.g. nights, weekends)
+DisplayCode: ""
+Connector: Azure
+Description: Ensure the protection of information in networks and protection of the supporting network infrastructure.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Storage
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_storage_account_use_virtual_service_endpoint

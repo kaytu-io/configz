@@ -1,0 +1,26 @@
+ID: aws_nist_csf_de_dp
+Title: Detection Processes (DE.DP)
+DisplayCode: ""
+Connector: AWS
+Description: Detection processes and procedures are maintained and tested to ensure awareness of anomalous events.
+Children:
+- aws_nist_csf_de_dp_4
+- aws_nist_csf_de_dp_5
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

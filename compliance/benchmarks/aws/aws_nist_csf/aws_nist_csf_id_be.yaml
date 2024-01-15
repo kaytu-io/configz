@@ -1,0 +1,25 @@
+ID: aws_nist_csf_id_be
+Title: Business Environment (ID.BE)
+DisplayCode: ""
+Connector: AWS
+Description: The organization's mission, objectives, stakeholders, and activities are understood and prioritized; this information is used to inform cybersecurity roles, responsibilities, and risk management decisions.
+Children:
+- aws_nist_csf_id_be_5
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

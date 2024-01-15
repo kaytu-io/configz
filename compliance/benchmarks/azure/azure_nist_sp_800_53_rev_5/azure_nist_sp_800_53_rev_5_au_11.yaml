@@ -1,0 +1,25 @@
+ID: azure_nist_sp_800_53_rev_5_au_11
+Title: Audit Record Retention (AU-11)
+DisplayCode: ""
+Connector: Azure
+Description: Retain audit records for security investigations. Meet regulatory and organizational data retention requirements.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_sql_server_auditing_storage_account_destination_retention_90_days

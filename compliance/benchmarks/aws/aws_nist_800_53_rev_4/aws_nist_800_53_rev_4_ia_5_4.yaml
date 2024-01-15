@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_4_ia_5_4
+Title: IA-5(4) Automated Support For Password Strength Determination
+DisplayCode: ""
+Connector: AWS
+Description: "The organization employs automated tools to determine if password authenticators are sufficiently strong to satisfy [Assignment: organization-defined requirements]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_strong_min_reuse_24

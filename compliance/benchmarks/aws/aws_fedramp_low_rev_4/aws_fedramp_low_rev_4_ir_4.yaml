@@ -1,0 +1,29 @@
+ID: aws_fedramp_low_rev_4_ir_4
+Title: Incident Handling (IR-4)
+DisplayCode: ""
+Connector: AWS
+Description: The organization implements an incident handling capability for security incidents that includes preparation, detection and analysis, containment, eradication, and recovery, coordinates incident handling activities with contingency planning activities and incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implements the resulting changes accordingly.
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_low_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_cloudwatch_alarm_action_enabled
+- aws_guardduty_enabled
+- aws_guardduty_finding_archived
+- aws_securityhub_enabled

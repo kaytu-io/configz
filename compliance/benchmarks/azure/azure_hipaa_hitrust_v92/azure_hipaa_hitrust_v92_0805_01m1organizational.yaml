@@ -1,0 +1,35 @@
+ID: azure_hipaa_hitrust_v92_0805_01m1organizational
+Title: 0805.01m1Organizational.12-01.m 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: The organization's security gateways (e.g. firewalls) enforce security policies and are configured to filter traffic between domains, block unauthorized access, and are used to maintain segregation between internal wired, internal wireless, and external network segments (e.g., the Internet) including DMZs and enforce access control policies for each of the domains.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_web_app_use_virtual_service_endpoint
+- azure_compute_vm_attached_with_network
+- azure_compute_vm_tcp_udp_access_restricted_internet
+- azure_container_registry_use_virtual_service_endpoint
+- azure_cosmosdb_use_virtual_service_endpoint
+- azure_eventhub_namespace_use_virtual_service_endpoint
+- azure_keyvault_vault_use_virtual_service_endpoint
+- azure_network_security_group_not_configured_gateway_subnets
+- azure_network_security_group_subnet_associated
+- azure_sql_server_use_virtual_service_endpoint
+- azure_storage_account_use_virtual_service_endpoint

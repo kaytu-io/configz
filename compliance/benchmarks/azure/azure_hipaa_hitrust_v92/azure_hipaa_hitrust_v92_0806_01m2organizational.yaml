@@ -1,0 +1,35 @@
+ID: azure_hipaa_hitrust_v92_0806_01m2organizational
+Title: 0806.01m2Organizational.12356-01.m 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: The organizations network is logically and physically segmented with a defined security perimeter and a graduated set of controls, including subnetworks for publicly accessible system components that are logically separated from the internal network, based on organizational requirements; and traffic is controlled based on functionality required and classification of the data/systems based on a risk assessment and their respective security requirements.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_web_app_use_virtual_service_endpoint
+- azure_compute_vm_attached_with_network
+- azure_compute_vm_tcp_udp_access_restricted_internet
+- azure_container_registry_use_virtual_service_endpoint
+- azure_cosmosdb_use_virtual_service_endpoint
+- azure_eventhub_namespace_use_virtual_service_endpoint
+- azure_keyvault_vault_use_virtual_service_endpoint
+- azure_network_security_group_not_configured_gateway_subnets
+- azure_network_security_group_subnet_associated
+- azure_sql_server_use_virtual_service_endpoint
+- azure_storage_account_use_virtual_service_endpoint

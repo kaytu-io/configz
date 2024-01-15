@@ -1,0 +1,27 @@
+ID: azure_nist_sp_800_53_rev_5_ia
+Title: Identification and Authentication (IA)
+DisplayCode: ""
+Connector: Azure
+Description: IA controls are specific to the identification and authentication policies in an organization. This includes the identification and authentication of organizational and non-organizational users and how the management of those systems.
+Children:
+- azure_nist_sp_800_53_rev_5_ia_2
+- azure_nist_sp_800_53_rev_5_ia_4
+- azure_nist_sp_800_53_rev_5_ia_5
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

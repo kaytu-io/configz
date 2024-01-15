@@ -1,0 +1,33 @@
+ID: aws_soc_2_cc_4_2
+Title: "CC4.2 COSO Principle 17: The entity evaluates and communicates internal control deficiencies in a timely manner to those parties responsible for taking corrective action, including senior management and the board of directors, as appropriate"
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  soc_2:
+  - "true"
+  soc_2_item_id:
+  - "4.2"
+  soc_2_section_id:
+  - cc4
+  soc_2_type:
+  - automated
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudwatch_alarm_action_enabled_check
+- aws_guardduty_enabled
+- aws_guardduty_finding_archived

@@ -1,0 +1,33 @@
+ID: aws_soc_2_cc_8_1
+Title: CC8.1 The entity authorizes, designs, develops or acquires, configures, documents, tests, approves, and implements changes to infrastructure, data, software, and procedures to meet its objectives
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+  soc_2:
+  - "true"
+  soc_2_item_id:
+  - "8.1"
+  soc_2_section_id:
+  - cc8
+  soc_2_type:
+  - automated
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
+- aws_codebuild_project_source_repo_oauth_configured
+- aws_config_enabled_all_regions

@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0637_10k2organizational
+Title: 0637.10k2Organizational.2-10.k 10.05 Security In Development and Support Processes
+DisplayCode: ""
+Connector: Azure
+Description: The organization has developed, documented, and implemented a configuration management plan for the information system.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

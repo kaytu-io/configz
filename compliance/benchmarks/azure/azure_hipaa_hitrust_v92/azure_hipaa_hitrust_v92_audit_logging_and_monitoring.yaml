@@ -1,0 +1,50 @@
+ID: azure_hipaa_hitrust_v92_audit_logging_and_monitoring
+Title: 12 Audit Logging & Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: Audit logging refers to the process of recording and tracking all system activities, such as user logins, data access, and modifications made to sensitive information. By implementing comprehensive audit logging, the website will maintain a detailed trail of events, enabling organizations to track and investigate any potential security breaches or unauthorized access. Furthermore, monitoring mechanisms will be put in place to actively observe and analyze system activities in real time. This includes the monitoring of network traffic, system logs, and user behaviour to detect any anomalous or suspicious activities promptly.
+Children:
+- azure_hipaa_hitrust_v92_1202_09aa1system
+- azure_hipaa_hitrust_v92_1203_09aa1system
+- azure_hipaa_hitrust_v92_1204_09aa1system
+- azure_hipaa_hitrust_v92_1205_09aa2system
+- azure_hipaa_hitrust_v92_1207_09aa2system
+- azure_hipaa_hitrust_v92_1208_09aa3system
+- azure_hipaa_hitrust_v92_1209_09aa3system
+- azure_hipaa_hitrust_v92_1210_09aa3system
+- azure_hipaa_hitrust_v92_12100_09ab2system
+- azure_hipaa_hitrust_v92_12101_09ab1organizational
+- azure_hipaa_hitrust_v92_12102_09ab1organizational
+- azure_hipaa_hitrust_v92_1211_09aa3system
+- azure_hipaa_hitrust_v92_1212_09ab1system
+- azure_hipaa_hitrust_v92_1213_09ab2system
+- azure_hipaa_hitrust_v92_1214_09ab2system
+- azure_hipaa_hitrust_v92_1215_09ab2system
+- azure_hipaa_hitrust_v92_1216_09ab3system
+- azure_hipaa_hitrust_v92_1217_09ab3system
+- azure_hipaa_hitrust_v92_1219_09ab3system
+- azure_hipaa_hitrust_v92_1220_09ab3system
+- azure_hipaa_hitrust_v92_1229_09c1organizational
+- azure_hipaa_hitrust_v92_1230_09c2organizational
+- azure_hipaa_hitrust_v92_1232_09c3organizational
+- azure_hipaa_hitrust_v92_1270_09ad1system
+- azure_hipaa_hitrust_v92_1271_09ad1system
+- azure_hipaa_hitrust_v92_1277_09c2organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,36 @@
+ID: aws_fedramp_moderate_rev_4_ac_2_g
+Title: AC-2(g)
+DisplayCode: ""
+Connector: AWS
+Description: "The organization: g. Monitors the use of information system accounts."
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_stage_logging_enabled
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_s3_data_events_enabled
+- aws_cloudtrail_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_es_domain_logs_to_cloudwatch
+- aws_guardduty_enabled
+- aws_rds_db_instance_logging_enabled
+- aws_redshift_cluster_encryption_logging_enabled
+- aws_s3_bucket_logging_enabled
+- aws_securityhub_enabled
+- aws_wafv2_web_acl_logging_enabled

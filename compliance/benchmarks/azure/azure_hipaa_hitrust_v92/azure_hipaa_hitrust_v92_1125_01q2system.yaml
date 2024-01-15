@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1125_01q2system
+Title: 1125.01q2System.1-01.q 01.05 Operating System Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Multi-factor authentication methods are used in accordance with organizational policy, (e.g., for remote network access).
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

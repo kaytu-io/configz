@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_0718_10m3organizational
+Title: 0718.10m3Organizational.34-10.m 10.06 Technical Vulnerability Management
+DisplayCode: ""
+Connector: Azure
+Description: The organization scans for vulnerabilities in the information system and hosted applications to determine the state of flaw remediation monthly (automatically) and again (manually or automatically) when new vulnerabilities potentially affecting the systems and networked environments are identified and reported.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

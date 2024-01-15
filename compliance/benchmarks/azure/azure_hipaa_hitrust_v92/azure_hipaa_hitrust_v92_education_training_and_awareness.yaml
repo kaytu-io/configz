@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_education_training_and_awareness
+Title: 13 Education, Training and Awareness
+DisplayCode: ""
+Connector: Azure
+Description: The organization prohibits users from installing unauthorized software, including data and software from external networks, and ensures users are made aware and trained on these requirements.
+Children:
+- azure_hipaa_hitrust_v92_1325_09s1organizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,25 @@
+ID: azure_pci_dss_v321_requirement_11
+Title: Requirement 11 - Regularly test security systems and processes
+DisplayCode: ""
+Connector: Azure
+Description: Vulnerabilities are being discovered continually by malicious individuals and researchers, and being introduced by new software. System components, processes, and custom software should be tested frequently to ensure security is maintained over time. Testing of security controls is especially important for any environmental changes such as deploying new software or changing system configurations.
+Children:
+- azure_pci_dss_v321_requirement_11_2
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

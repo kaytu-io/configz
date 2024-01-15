@@ -1,0 +1,37 @@
+ID: aws_nist_800_53_rev_4_si_4
+Title: Information System Monitoring (SI-4)
+DisplayCode: ""
+Connector: AWS
+Description: "The organization: a.Monitors the information system to detect: 1. Attacks and indicators of potential attacks in accordance with [Assignment: organization-defined monitoring objectives]; and 2.Unauthorized local, network, and remote connections; b. Identifies unauthorized use of the information system through [Assignment: organization-defined techniques and methods]; c. Deploys monitoring devices: 1. Strategically within the information system to collect organization-determined essential information; and 2. At ad hoc locations within the system to track specific types of transactions of interest to the organization; d. Protects information obtained from intrusion-monitoring tools from unauthorized access, modification, and deletion; e. Heightens the level of information system monitoring activity whenever there is an indication of increased risk to organizational operations and assets, individuals, other organizations, or the Nation based on law enforcement information, intelligence information, or other credible sources of information; f. Obtains legal opinion with regard to information system monitoring activities in accordance with applicable federal laws, Executive Orders, directives, policies, or regulations; and g. Provides [Assignment: organization-defined information system monitoring information] to [Assignment: organization-defined personnel or roles] [Selection (one or more): as needed; [Assignment: organization-defined frequency]]."
+Children:
+- aws_nist_800_53_rev_4_si_4_1
+- aws_nist_800_53_rev_4_si_4_2
+- aws_nist_800_53_rev_4_si_4_4
+- aws_nist_800_53_rev_4_si_4_5
+- aws_nist_800_53_rev_4_si_4_16
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudwatch_alarm_action_enabled
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_elb_application_lb_waf_enabled
+- aws_guardduty_enabled
+- aws_guardduty_finding_archived
+- aws_securityhub_enabled
+- aws_wafv2_web_acl_logging_enabled

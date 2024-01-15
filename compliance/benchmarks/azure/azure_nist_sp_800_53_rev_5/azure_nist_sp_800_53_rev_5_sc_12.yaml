@@ -1,0 +1,44 @@
+ID: azure_nist_sp_800_53_rev_5_sc_12
+Title: Cryptographic Key Establishment and Management (SC-12)
+DisplayCode: ""
+Connector: Azure
+Description: The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with organization-defined requirements for key generation, distribution, storage, access, and destruction.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_batch_account_encrypted_with_cmk
+- azure_cognitive_account_encrypted_with_cmk
+- azure_compute_os_and_data_disk_encrypted_with_cmk_and_platform_managed
+- azure_container_registry_encrypted_with_cmk
+- azure_cosmosdb_account_encryption_at_rest_using_cmk
+- azure_data_factory_encrypted_with_cmk
+- azure_hdinsight_cluster_encrypted_at_rest_with_cmk
+- azure_hdinsight_cluster_encryption_at_host_enabled
+- azure_healthcare_fhir_azure_api_encrypted_at_rest_with_cmk
+- azure_hpc_cache_encrypted_with_cmk
+- azure_kubernetes_cluster_os_and_data_disks_encrypted_with_cmk
+- azure_kusto_cluster_encrypted_at_rest_with_cmk
+- azure_machine_learning_workspace_encrypted_with_cmk
+- azure_mssql_managed_instance_encryption_at_rest_using_cmk
+- azure_mysql_server_encrypted_at_rest_using_cmk
+- azure_postgres_sql_server_encrypted_at_rest_using_cmk
+- azure_servicebus_premium_namespace_cmk_encrypted
+- azure_storage_account_encryption_at_rest_using_cmk
+- azure_storage_account_encryption_scopes_encrypted_at_rest_with_cmk
+- azure_synapse_workspace_encryption_at_rest_using_cmk

@@ -1,0 +1,38 @@
+ID: azure_cis_v200_5_2
+Title: 5.2 Monitoring using Activity Log Alerts
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "5"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure/Monitor
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_monitor_log_alert_create_policy_assignment
+- azure_monitor_log_alert_delete_policy_assignment
+- azure_monitor_log_alert_create_update_nsg
+- azure_monitor_log_alert_delete_nsg
+- azure_monitor_log_alert_create_update_security_solution
+- azure_monitor_log_alert_delete_security_solution
+- azure_monitor_log_alert_create_update_sql_servers_firewall_rule
+- azure_monitor_log_alert_delete_sql_servers_firewall_rule
+- azure_monitor_log_alert_create_update_public_ip_address
+- azure_monitor_log_alert_delete_public_ip_address

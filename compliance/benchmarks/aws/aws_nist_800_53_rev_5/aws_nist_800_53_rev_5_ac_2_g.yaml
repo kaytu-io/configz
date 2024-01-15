@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ac_2_g
+Title: AC-2(g)
+DisplayCode: ""
+Connector: AWS
+Description: "The organization: g. Monitors the use of information system accounts."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_user_unused_credentials_90

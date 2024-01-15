@@ -1,0 +1,26 @@
+ID: azure_pci_dss_v321_requirement_7_1_2
+Title: PCI DSS requirement 7.1.2
+DisplayCode: ""
+Connector: Azure
+Description: Restrict access to privileged user IDs to least privileges necessary to perform job responsibilities.
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_subscription_owner_max_3
+- azure_iam_subscription_owner_more_than_1

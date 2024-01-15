@@ -1,0 +1,25 @@
+ID: aws_fedramp_low_rev_4_ia
+Title: Identification and Authentication (IA)
+DisplayCode: ""
+Connector: AWS
+Description: IA controls are specific to the identification and authentication policies in an organization. This includes the identification and authentication of organizational and non-organizational users and how the management of those systems.
+Children:
+- aws_fedramp_low_rev_4_ia_2
+Tags:
+  category:
+  - Compliance
+  fedramp_low_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

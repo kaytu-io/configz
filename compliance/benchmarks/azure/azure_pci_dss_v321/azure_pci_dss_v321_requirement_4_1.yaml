@@ -1,0 +1,31 @@
+ID: azure_pci_dss_v321_requirement_4_1
+Title: PCI DSS requirement 4.1
+DisplayCode: ""
+Connector: Azure
+Description: Use strong cryptography and security protocols to safeguard sensitive cardholder data during transmission over open, public networks (eg. Internet, wireless technologies, cellular technologies, General Packet Radio Service [GPRS], satellite communications). Ensure wireless networks transmitting cardholder data or connected to the cardholder data environment use industry best practices to implement strong encryption for authentication and transmission.
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_use_https
+- azure_appservice_function_app_only_https_accessible
+- azure_automation_account_variable_encryption_enabled
+- azure_azure_redis_cache_ssl_enabled
+- azure_servicefabric_cluster_protection_level_as_encrypt_and_sign
+- azure_sql_database_transparent_data_encryption_enabled
+- azure_storage_account_secure_transfer_required_enabled

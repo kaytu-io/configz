@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_cm_5
+Title: Access Restrictions For Change (CM-5)
+DisplayCode: ""
+Connector: AWS
+Description: Define, document, approve, and enforce physical and logical access restrictions associated with changes to the system.
+Children:
+- aws_nist_800_53_rev_5_cm_5_1
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

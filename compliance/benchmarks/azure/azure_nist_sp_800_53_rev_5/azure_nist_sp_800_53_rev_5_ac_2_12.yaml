@@ -1,0 +1,36 @@
+ID: azure_nist_sp_800_53_rev_5_ac_2_12
+Title: Account Monitoring for Atypical Usage AC-2(12)
+DisplayCode: ""
+Connector: Azure
+Description: The organization monitors information system accounts for organization-defined atypical use and reports atypical usage of information system accounts to organization-defined personnel or roles.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_azure_defender_enabled
+- azure_compute_vm_azure_defender_enabled
+- azure_compute_vm_jit_access_protected
+- azure_container_registry_azure_defender_enabled
+- azure_dns_azure_defender_enabled
+- azure_keyvault_azure_defender_enabled
+- azure_kubernetes_azure_defender_enabled
+- azure_resource_manager_azure_defender_enabled
+- azure_securitycenter_azure_defender_on_for_sqlservervm
+- azure_sql_database_server_azure_defender_enabled
+- azure_sql_server_vm_azure_defender_enabled
+- azure_storage_azure_defender_enabled

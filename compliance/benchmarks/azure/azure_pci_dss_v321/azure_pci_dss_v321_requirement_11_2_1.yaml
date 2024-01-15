@@ -1,0 +1,27 @@
+ID: azure_pci_dss_v321_requirement_11_2_1
+Title: PCI DSS requirement 11.2.1
+DisplayCode: ""
+Connector: Azure
+Description: Perform quarterly internal vulnerability scans and rescans as needed, until all “high-risk” vulnerabilities (as identified in Requirement 6.1) are resolved. Scans must be performed by qualified personnel.
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_system_updates_installed
+- azure_compute_vm_vulnerability_assessment_solution_enabled
+- azure_sql_database_vulnerability_findings_resolved

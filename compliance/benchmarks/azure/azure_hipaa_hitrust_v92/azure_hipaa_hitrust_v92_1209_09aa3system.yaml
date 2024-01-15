@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1209_09aa3system
+Title: 1209.09aa3System.2-09.aa 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: "The information system generates audit records containing the following detailed information: filename accessed, program or command used to initiate the event and source and destination addresses."
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_web_app_diagnostic_logs_enabled

@@ -1,0 +1,36 @@
+ID: azure_hipaa_hitrust_v92_configuration_management
+Title: 06 Configuration Management
+DisplayCode: ""
+Connector: Azure
+Description: Configuration management involves implementing processes and controls to effectively manage and track changes to information systems, ensuring their integrity and security. In the context of compliance, organizations need to establish a robust configuration management program that includes documenting the baseline configuration of systems, implementing change management procedures, and conducting regular configuration reviews and audits.
+Children:
+- azure_hipaa_hitrust_v92_0605_10h1system
+- azure_hipaa_hitrust_v92_0635_10k1organizational
+- azure_hipaa_hitrust_v92_0636_10k2organizational
+- azure_hipaa_hitrust_v92_0637_10k2organizational
+- azure_hipaa_hitrust_v92_0638_10k2organizational
+- azure_hipaa_hitrust_v92_0639_10k2organizational
+- azure_hipaa_hitrust_v92_0640_10k2organizational
+- azure_hipaa_hitrust_v92_0641_10k2organizational
+- azure_hipaa_hitrust_v92_0642_10k3organizational
+- azure_hipaa_hitrust_v92_0643_10k3organizational
+- azure_hipaa_hitrust_v92_0644_10k3organizational
+- azure_hipaa_hitrust_v92_0662_09scsporganizational
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

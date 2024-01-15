@@ -1,0 +1,54 @@
+ID: aws_nist_csf_pr_ds_4
+Title: PR.DS-4
+DisplayCode: ""
+Connector: AWS
+Description: Adequate capacity to ensure availability is maintained.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_autoscaling_group_multiple_az_configured
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_autoscaling_use_multiple_instance_types_in_multiple_az
+- aws_cloudfront_distribution_configured_with_origin_failover
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_ebs_volume_in_backup_plan
+- aws_ec2_instance_ebs_optimized
+- aws_efs_file_system_automatic_backups_enabled
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_elb_application_gateway_network_lb_multiple_az_configured
+- aws_elb_application_lb_deletion_protection_enabled
+- aws_elb_classic_lb_cross_zone_load_balancing_enabled
+- aws_elb_classic_lb_multiple_az_configured
+- aws_lambda_function_multiple_az_configured
+- aws_rds_db_cluster_deletion_protection_enabled
+- aws_rds_db_cluster_multiple_az_enabled
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_deletion_protection_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_rds_db_instance_multiple_az_enabled
+- aws_redshift_cluster_automatic_snapshots_min_7_days
+- aws_redshift_cluster_maintenance_settings_check
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_lifecycle_policy_enabled
+- aws_s3_bucket_versioning_and_lifecycle_policy_enabled
+- aws_s3_bucket_versioning_enabled
+- aws_vpc_vpn_tunnel_up

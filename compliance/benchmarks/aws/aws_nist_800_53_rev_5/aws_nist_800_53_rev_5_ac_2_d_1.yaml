@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ac_2_d_1
+Title: AC-2(d)(1)
+DisplayCode: ""
+Connector: AWS
+Description: "d. Specify: 1. Authorized users of the system;personnel termination and transfer processes."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_iam_account_password_policy_min_length_14

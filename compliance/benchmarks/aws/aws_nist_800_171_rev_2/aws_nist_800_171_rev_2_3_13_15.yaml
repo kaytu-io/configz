@@ -1,0 +1,27 @@
+ID: aws_nist_800_171_rev_2_3_13_15
+Title: 3.13.15 Protect the authenticity of communications sessions
+DisplayCode: ""
+Connector: AWS
+Description: Authenticity protection includes protecting against man-in-the-middle attacks, session hijacking, and the insertion of false information into communications sessions. This requirement addresses communications protection at the session versus packet level (e.g., sessions in service-oriented architectures providing web-based services) and establishes grounds for confidence at both ends of communications sessions in ongoing identities of other parties and in the validity of information transmitted.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_171_rev_2:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_elb_application_lb_drop_http_headers
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_classic_lb_use_tls_https_listeners

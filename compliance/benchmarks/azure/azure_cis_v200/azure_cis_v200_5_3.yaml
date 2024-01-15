@@ -1,0 +1,29 @@
+ID: azure_cis_v200_5_3
+Title: 5.3 Configuring Application Insights
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "5"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure/Monitor
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_monitor_application_insights_configured

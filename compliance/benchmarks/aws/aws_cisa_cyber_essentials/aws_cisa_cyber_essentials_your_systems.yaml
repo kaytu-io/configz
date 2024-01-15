@@ -1,0 +1,27 @@
+ID: aws_cisa_cyber_essentials_your_systems
+Title: Your Systems
+DisplayCode: ""
+Connector: AWS
+Description: As the infrastructure that makes your organization operational, your systems are an essential element of your organization's Culture of Cyber Readiness. Your task for this element is to protect critical assets and applications.
+Children:
+- aws_cisa_cyber_essentials_your_systems_1
+- aws_cisa_cyber_essentials_your_systems_2
+- aws_cisa_cyber_essentials_your_systems_3
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

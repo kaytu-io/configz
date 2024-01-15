@@ -1,0 +1,29 @@
+ID: azure_pci_dss_v321_requirement_8_3_1
+Title: PCI DSS requirement 8.3.1
+DisplayCode: ""
+Connector: Azure
+Description: Incorporate multi-factor authentication for all non-console access into the CDE for personnel with administrative access.
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_external_user_with_owner_role
+- azure_iam_external_user_with_read_permission
+- azure_iam_external_user_with_write_permission
+- azure_iam_no_custom_role
+- azure_sql_server_azure_ad_authentication_enabled

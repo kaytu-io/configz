@@ -1,0 +1,47 @@
+ID: azure_nist_sp_800_53_rev_5_si_4
+Title: System Monitoring (SI-4)
+DisplayCode: ""
+Connector: Azure
+Description: The organization monitors the information system to detect attacks and indicators of potential attacks in accordance with organization-defined monitoring objectives and unauthorized local, network, and remote connections; identifies unauthorized use of the information system through organization-defined techniques and methods; deploys monitoring devices strategically within the information system to collect organization-determined essential information and at ad hoc locations within the system to track specific types of transactions of interest to the organization; protects information obtained from intrusion-monitoring tools from unauthorized access, modification, and deletion; heightens the level of information system monitoring activity whenever there is an indication of increased risk to organizational operations and assets, individuals, other organizations, or the Nation based on law enforcement information, intelligence information, or other credible sources of information; obtains legal opinion with regard to information system monitoring activities in accordance with applicable federal laws, Executive Orders, directives, policies, or regulations; and provides organization-defined system monitoring information to organization-defined personnel or roles as needed.
+Children:
+- azure_nist_sp_800_53_rev_5_si_4_12
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_azure_defender_enabled
+- azure_arc_compute_machine_linux_log_analytics_agent_installed
+- azure_arc_compute_machine_windows_log_analytics_agent_installed
+- azure_compute_vm_azure_defender_enabled
+- azure_compute_vm_guest_configuration_installed
+- azure_compute_vm_guest_configuration_with_system_assigned_managed_identity
+- azure_compute_vm_log_analytics_agent_installed
+- azure_compute_vm_network_traffic_data_collection_linux_agent_installed
+- azure_compute_vm_network_traffic_data_collection_windows_agent_installed
+- azure_compute_vm_scale_set_log_analytics_agent_installed
+- azure_container_registry_azure_defender_enabled
+- azure_dns_azure_defender_enabled
+- azure_keyvault_azure_defender_enabled
+- azure_kubernetes_azure_defender_enabled
+- azure_network_watcher_enabled
+- azure_resource_manager_azure_defender_enabled
+- azure_securitycenter_automatic_provisioning_monitoring_agent_on
+- azure_securitycenter_azure_defender_on_for_sqlservervm
+- azure_sql_database_server_azure_defender_enabled
+- azure_sql_server_azure_defender_enabled
+- azure_sql_server_vm_azure_defender_enabled
+- azure_storage_azure_defender_enabled

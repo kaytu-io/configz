@@ -1,0 +1,27 @@
+ID: aws_cis_controls_v8_ig1_5
+Title: 5 Account Management
+DisplayCode: ""
+Connector: AWS
+Description: Use processes and tools to assign and manage authorization to credentials for user accounts, including administrator accounts, as well as service accounts, to enterprise assets and software.
+Children:
+- aws_cis_controls_v8_ig1_5_2
+- aws_cis_controls_v8_ig1_5_3
+- aws_cis_controls_v8_ig1_5_4
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,28 @@
+ID: aws_nist_800_53_rev_5_ia_4
+Title: Identifier Management (IA-4)
+DisplayCode: ""
+Connector: AWS
+Description: Manage information system identifiers for users and devices. Automate authorizing and disabling users to prevent misuse.
+Children:
+- aws_nist_800_53_rev_5_ia_4_8
+- aws_nist_800_53_rev_5_ia_4_b
+- aws_nist_800_53_rev_5_ia_4_d
+- aws_nist_800_53_rev_5_ia_4_4
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

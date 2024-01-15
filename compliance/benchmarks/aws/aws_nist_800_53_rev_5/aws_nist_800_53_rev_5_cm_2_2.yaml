@@ -1,0 +1,30 @@
+ID: aws_nist_800_53_rev_5_cm_2_2
+Title: CM-2(2) Automation Support For Accuracy And Currency
+DisplayCode: ""
+Connector: AWS
+Description: "Maintain the currency, completeness, accuracy, and availability of the baseline configuration of the system using [Assignment: organization-defined automated mechanisms]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ebs_volume_unused
+- aws_ec2_instance_ssm_managed
+- aws_ec2_stopped_instance_30_days
+- aws_elb_application_lb_deletion_protection_enabled
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_vpc_security_group_restrict_ingress_common_ports_all

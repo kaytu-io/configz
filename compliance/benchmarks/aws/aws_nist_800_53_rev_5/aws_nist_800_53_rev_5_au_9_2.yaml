@@ -1,0 +1,26 @@
+ID: aws_nist_800_53_rev_5_au_9_2
+Title: AU-9(2) Store On Separate Physical Systems Or Components
+DisplayCode: ""
+Connector: AWS
+Description: "Store audit records [Assignment: organization-defined frequency] in a repository that is part of a physically different system or system component than the system or component being audited."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_versioning_enabled

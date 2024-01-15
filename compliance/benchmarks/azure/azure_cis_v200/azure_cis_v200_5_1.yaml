@@ -1,0 +1,32 @@
+ID: azure_cis_v200_5_1
+Title: 5.1 Configuring Diagnostic Settings
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "5"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_monitor_diagnostic_settings_captures_proper_categories
+- azure_monitor_logs_storage_container_not_public_accessible
+- azure_monitor_logs_storage_container_encryptes_with_byok
+- azure_keyvault_logging_enabled

@@ -1,0 +1,25 @@
+ID: aws_fedramp_moderate_rev_4_si_4_1
+Title: SI-4(1) System-Wide Intrusion Detection System
+DisplayCode: ""
+Connector: AWS
+Description: The organization connects and configures individual intrusion detection tools into an information system-wide intrusion detection system.
+Children: []
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

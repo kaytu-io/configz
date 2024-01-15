@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1144_01c1system
+Title: 1144.01c1System.4-01.c 01.02 Authorized Access to Information Systems
+DisplayCode: ""
+Connector: Azure
+Description: The organization explicitly authorizes access to specific security relevant functions (deployed in hardware, software, and firmware) and security-relevant information.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/ActiveDirectory
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_iam_subscription_owner_max_3

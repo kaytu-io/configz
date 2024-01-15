@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_12101_09ab1organizational
+Title: 12101.09ab1Organizational.3-09.ab 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: The organization specifies how often audit logs are reviewed, how the reviews are documented, and the specific roles and responsibilities of the personnel conducting the reviews, including the professional certifications or other qualifications required.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_scale_set_log_analytics_agent_installed

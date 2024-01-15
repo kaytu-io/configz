@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1120_09ab3system
+Title: 1120.09ab3System.9-09.ab 09.10 Monitoring
+DisplayCode: ""
+Connector: Azure
+Description: Unauthorized remote connections to the information systems are monitored and reviewed at least quarterly, and appropriate action is taken if an unauthorized connection is discovered.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Monitor
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_monitor_log_profile_enabled_for_all_regions

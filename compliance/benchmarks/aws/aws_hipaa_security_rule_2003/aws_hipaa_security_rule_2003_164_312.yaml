@@ -1,0 +1,37 @@
+ID: aws_hipaa_security_rule_2003_164_312
+Title: 164.312 Technical Safeguards
+DisplayCode: ""
+Connector: AWS
+Description: The Security Rule defines technical safeguards in § 164.304 as `the technology and the policy and procedures for its use that protect electronic protected health information and control access to it.`
+Children:
+- aws_hipaa_security_rule_2003_164_312_a_1
+- aws_hipaa_security_rule_2003_164_312_a_2_i
+- aws_hipaa_security_rule_2003_164_312_a_2_ii
+- aws_hipaa_security_rule_2003_164_312_a_2_iv
+- aws_hipaa_security_rule_2003_164_312_b
+- aws_hipaa_security_rule_2003_164_312_c_1
+- aws_hipaa_security_rule_2003_164_312_c_2
+- aws_hipaa_security_rule_2003_164_312_d
+- aws_hipaa_security_rule_2003_164_312_e_1
+- aws_hipaa_security_rule_2003_164_312_e_2_i
+- aws_hipaa_security_rule_2003_164_312_e_2_ii
+Tags:
+  category:
+  - Compliance
+  hipaa_section:
+  - "164_312"
+  hipaa_security_rule_2003:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

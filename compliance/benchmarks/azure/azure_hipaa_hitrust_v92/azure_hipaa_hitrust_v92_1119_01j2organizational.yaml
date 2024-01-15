@@ -1,0 +1,25 @@
+ID: azure_hipaa_hitrust_v92_1119_01j2organizational
+Title: 1119.01j2Organizational.3-01.j 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Network equipment is checked for unanticipated dial-up capabilities.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_compute_vm_jit_access_protected

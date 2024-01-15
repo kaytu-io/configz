@@ -1,0 +1,34 @@
+ID: azure_cis_v130_6
+Title: 6 Networking
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "6"
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/Network
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_network_security_group_rdp_access_restricted
+- azure_network_security_group_ssh_access_restricted
+- azure_sql_database_allow_internet_access
+- azure_network_sg_flowlog_retention_period_greater_than_90
+- azure_network_watcher_enabled
+- azure_network_security_group_udp_service_restricted

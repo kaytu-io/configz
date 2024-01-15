@@ -1,0 +1,25 @@
+ID: aws_fedramp_moderate_rev_4_ca_7
+Title: Continuous Monitoring (CA-7)
+DisplayCode: ""
+Connector: AWS
+Description: Continuously monitor configuration management processes. Determine security impact, environment and operational risks.
+Children:
+- aws_fedramp_moderate_rev_4_ca_7_a_b
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ac_2_12_a
+Title: AC-2(12)(a)
+DisplayCode: ""
+Connector: AWS
+Description: "Monitor system accounts for [Assignment: organization-defined atypical usage]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/GuardDuty
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_guardduty_enabled

@@ -1,0 +1,28 @@
+ID: azure_nist_sp_800_53_rev_5_sc_5
+Title: Denial-of-service Protection (SC-5)
+DisplayCode: ""
+Connector: Azure
+Description: The information system protects against or limits the effects of the organization-defined types of denial of service attacks or reference to a source for such information by employing organization-defined security safeguards.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_application_gateway_waf_enabled
+- azure_frontdoor_waf_enabled
+- azure_network_ddos_enabled
+- azure_network_interface_ip_forwarding_disabled

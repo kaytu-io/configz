@@ -1,0 +1,61 @@
+ID: aws_nist_csf_pr_pt_4
+Title: PR.PT-4
+DisplayCode: ""
+Connector: AWS
+Description: Communications and control networks are protected.
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_acm_certificate_expires_30_days
+- aws_apigateway_stage_use_waf_web_acl
+- aws_autoscaling_launch_config_public_ip_disabled
+- aws_cloudfront_distribution_default_root_object_configured
+- aws_cloudfront_distribution_waf_enabled
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_ec2_instance_in_vpc
+- aws_ec2_instance_not_publicly_accessible
+- aws_ec2_transit_gateway_auto_cross_account_attachment_disabled
+- aws_eks_cluster_endpoint_restrict_public_access
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_es_domain_in_vpc
+- aws_lambda_function_in_vpc
+- aws_lambda_function_restrict_public_access
+- aws_networkfirewall_firewall_policy_default_stateless_action_check_full_packets
+- aws_networkfirewall_firewall_policy_rule_group_not_empty
+- aws_networkfirewall_stateless_rule_group_not_empty
+- aws_opensearch_domain_in_vpc
+- aws_rds_db_instance_prohibit_public_access
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_ssm_document_prohibit_public_access
+- aws_vpc_configured_to_use_vpc_endpoints
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_vpc_igw_attached_to_authorized_vpc
+- aws_vpc_network_acl_remote_administration
+- aws_vpc_route_table_restrict_public_access_to_igw
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_security_group_restrict_ingress_tcp_udp_all
+- aws_waf_regional_rule_condition_attached
+- aws_waf_regional_rule_group_rule_attached
+- aws_waf_web_acl_rule_attached

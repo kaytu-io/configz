@@ -1,0 +1,43 @@
+ID: azure_cis_v130_2
+Title: 2 Security Center
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "2"
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_securitycenter_azure_defender_on_for_server
+- azure_securitycenter_azure_defender_on_for_appservice
+- azure_securitycenter_azure_defender_on_for_sqldb
+- azure_securitycenter_azure_defender_on_for_sqlservervm
+- azure_securitycenter_azure_defender_on_for_storage
+- azure_securitycenter_azure_defender_on_for_k8s
+- azure_securitycenter_azure_defender_on_for_containerregistry
+- azure_securitycenter_azure_defender_on_for_keyvault
+- azure_securitycenter_wdatp_integration
+- azure_securitycenter_mcas_integration
+- azure_securitycenter_automatic_provisioning_monitoring_agent_on
+- azure_securitycenter_asc_default_setting_not_disabled
+- azure_securitycenter_additional_email_configured
+- azure_securitycenter_notify_alerts_configured
+- azure_securitycenter_security_alerts_to_owner_enabled

@@ -1,0 +1,24 @@
+ID: azure_hipaa_hitrust_v92_1177_01j2organizational
+Title: User IDs assigned to vendors are reviewed in accordance with the organization's access review policy, at a minimum annually
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure/IAM
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

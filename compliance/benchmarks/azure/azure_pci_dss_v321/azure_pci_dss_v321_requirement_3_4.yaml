@@ -1,0 +1,31 @@
+ID: azure_pci_dss_v321_requirement_3_4
+Title: PCI DSS requirement 3.4
+DisplayCode: ""
+Connector: Azure
+Description: Render PAN unreadable anywhere it is stored - including on portable digital media, backup media, in logs, and data received from or stored by wireless networks. Technology solutions for this requirement may include strong one-way hash functions of the entire PAN, truncation, index tokens with securely stored pads, or strong cryptography.
+Children: []
+Tags:
+  category:
+  - Compliance
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_use_https
+- azure_appservice_function_app_only_https_accessible
+- azure_automation_account_variable_encryption_enabled
+- azure_azure_redis_cache_ssl_enabled
+- azure_servicefabric_cluster_protection_level_as_encrypt_and_sign
+- azure_sql_database_transparent_data_encryption_enabled
+- azure_storage_account_secure_transfer_required_enabled

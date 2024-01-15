@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_ma_4_1
+Title: MA-4(1) Logging And Review
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Log [Assignment: organization-defined audit events] for nonlocal maintenance and diagnostic sessions; and b.\u2003Review the audit records of the maintenance and diagnostic sessions to detect anomalous behavior."
+Children:
+- aws_nist_800_53_rev_5_ma_4_1_a
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

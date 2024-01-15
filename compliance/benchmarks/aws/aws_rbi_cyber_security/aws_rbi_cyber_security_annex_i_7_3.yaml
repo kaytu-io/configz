@@ -1,0 +1,27 @@
+ID: aws_rbi_cyber_security_annex_i_7_3
+Title: Annex I (7.3)
+DisplayCode: ""
+Connector: AWS
+Description: Remote Desktop Protocol (RDP) which allows others to access the computer remotely over a network or over the internet should be always disabled and should be enabled only with the approval of the authorised officer of the UCB. Logs for such remote access shall be enabled and monitored for suspicious activities.
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  rbi_cyber_security_item_id:
+  - annex_i_7_3
+  service:
+  - AWS/VPC
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_vpc_security_group_restrict_ingress_ssh_all

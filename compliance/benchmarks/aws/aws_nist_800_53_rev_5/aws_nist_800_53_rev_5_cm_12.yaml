@@ -1,0 +1,25 @@
+ID: aws_nist_800_53_rev_5_cm_12
+Title: Information Location (CM-12)
+DisplayCode: ""
+Connector: AWS
+Description: "a.\u2003Identify and document the location of [Assignment: organization-defined information] and the specific system components on which the information is processed and stored; b.\u2003Identify and document the users who have access to the system and system components where the information is processed and stored; and c.\u2003Document changes to the location (i.e., system or system components) where the information is processed and stored."
+Children:
+- aws_nist_800_53_rev_5_cm_12_b
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

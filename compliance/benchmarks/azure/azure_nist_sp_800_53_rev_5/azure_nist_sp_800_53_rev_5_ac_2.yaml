@@ -1,0 +1,39 @@
+ID: azure_nist_sp_800_53_rev_5_ac_2
+Title: Account Management (AC-2)
+DisplayCode: ""
+Connector: Azure
+Description: Manage system accounts, group memberships, privileges, workflow, notifications, deactivations, and authorizations.
+Children:
+- azure_nist_sp_800_53_rev_5_ac_2_1
+- azure_nist_sp_800_53_rev_5_ac_2_12
+- azure_nist_sp_800_53_rev_5_ac_2_7
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_uses_managed_identity
+- azure_appservice_function_app_uses_managed_identity
+- azure_appservice_web_app_uses_managed_identity
+- azure_cognitive_service_local_auth_disabled
+- azure_iam_deprecated_account_with_owner_roles
+- azure_iam_deprecated_account
+- azure_iam_external_user_with_owner_role
+- azure_iam_external_user_with_read_permission
+- azure_iam_no_custom_role
+- azure_iam_subscription_owner_max_3
+- azure_servicefabric_cluster_active_directory_authentication_enabled
+- azure_sql_server_azure_ad_authentication_enabled

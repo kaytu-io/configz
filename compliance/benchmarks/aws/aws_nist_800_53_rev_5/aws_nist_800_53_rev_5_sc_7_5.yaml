@@ -1,0 +1,31 @@
+ID: aws_nist_800_53_rev_5_sc_7_5
+Title: SC-7(5) Deny By Default — Allow By Exception
+DisplayCode: ""
+Connector: AWS
+Description: "Deny network communications traffic by default and allow network communications traffic by exception [Selection (one or more): at managed interfaces; for [Assignment: organization-defined systems]]."
+Children: []
+Tags:
+  category:
+  - Compliance
+  nist_800_53_rev_5:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_apigateway_rest_api_stage_use_ssl_certificate
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_vpc_security_group_restrict_ingress_tcp_udp_all

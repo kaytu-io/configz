@@ -1,0 +1,36 @@
+ID: azure_hipaa_hitrust_v92_0894_01m2organizational
+Title: 0894.01m2Organizational.7-01.m 01.04 Network Access Control
+DisplayCode: ""
+Connector: Azure
+Description: Networks are segregated from production-level networks when migrating physical servers, applications or data to virtualized servers.
+Children: []
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_web_app_use_virtual_service_endpoint
+- azure_compute_vm_attached_with_network
+- azure_compute_vm_tcp_udp_access_restricted_internet
+- azure_container_registry_use_virtual_service_endpoint
+- azure_cosmosdb_use_virtual_service_endpoint
+- azure_eventhub_namespace_use_virtual_service_endpoint
+- azure_keyvault_vault_use_virtual_service_endpoint
+- azure_network_security_group_not_configured_gateway_subnets
+- azure_network_security_group_subnet_associated
+- azure_network_watcher_in_regions_with_virtual_network
+- azure_sql_server_use_virtual_service_endpoint
+- azure_storage_account_use_virtual_service_endpoint

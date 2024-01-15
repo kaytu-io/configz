@@ -1,0 +1,38 @@
+ID: azure_nist_sp_800_53_rev_5_ac_3
+Title: Access Enforcement (AC-3)
+DisplayCode: ""
+Connector: Azure
+Description: Enforce approved authorizations for access to systems in accordance with policy.
+Children:
+- azure_nist_sp_800_53_rev_5_ac_3_7
+Tags:
+  category:
+  - Compliance
+  nist_sp_800_53_rev_5:
+  - "true"
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_appservice_api_app_uses_managed_identity
+- azure_appservice_function_app_uses_managed_identity
+- azure_appservice_web_app_uses_managed_identity
+- azure_cognitive_service_local_auth_disabled
+- azure_compute_vm_account_with_password_linux
+- azure_compute_vm_guest_configuration_installed_linux
+- azure_compute_vm_guest_configuration_with_system_assigned_managed_identity
+- azure_compute_vm_guest_configuration_with_user_and_system_assigned_managed_identity
+- azure_compute_vm_ssh_key_authentication_linux
+- azure_compute_vm_uses_azure_resource_manager
+- azure_servicefabric_cluster_active_directory_authentication_enabled
+- azure_sql_server_azure_ad_authentication_enabled
+- azure_storage_account_uses_azure_resource_manager

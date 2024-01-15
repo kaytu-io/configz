@@ -1,0 +1,40 @@
+ID: azure_cis_v200_3
+Title: 3 Storage Accounts
+DisplayCode: ""
+Connector: Azure
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "3"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure/Storage
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- azure_storage_account_secure_transfer_required_enabled
+- azure_storage_account_infrastructure_encryption_enabled
+- azure_storage_account_queue_services_logging_enabled
+- azure_storage_account_blob_containers_public_access_private
+- azure_storage_account_default_network_access_rule_denied
+- azure_storage_account_trusted_microsoft_services_enabled
+- azure_storage_account_uses_private_link
+- azure_storage_account_soft_delete_enabled
+- azure_storage_account_encryption_at_rest_using_cmk
+- azure_storage_account_blob_service_logging_enabled
+- azure_storage_account_table_service_logging_enabled
+- azure_storage_account_min_tls_1_2
