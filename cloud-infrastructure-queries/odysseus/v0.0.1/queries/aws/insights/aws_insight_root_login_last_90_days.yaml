@@ -1,7 +1,0 @@
-Connector: AWS
-Engine: odysseus-v0.0.1
-ID: aws_insight_root_login_last_90_days
-ListOfTables:
-- aws_iam_credential_report
-PrimaryTable: aws_iam_credential_report
-QueryToExecute: select user_arn, password_last_used, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where (user_name = '<root_account>' AND (current_date - DATE(password_last_used)) > 90)

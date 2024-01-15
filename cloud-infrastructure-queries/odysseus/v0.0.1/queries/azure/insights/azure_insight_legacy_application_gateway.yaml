@@ -1,7 +1,0 @@
-Connector: Azure
-Engine: odysseus-v0.0.1
-ID: azure_insight_legacy_application_gateway
-ListOfTables:
-- azure_application_gateway
-PrimaryTable: azure_application_gateway
-QueryToExecute: SELECT name, id, sku->'tier' AS tier, subscription_id, kaytu_account_id, kaytu_resource_id FROM azure_application_gateway WHERE NOT sku IS NULL AND sku->>'tier' = 'Standard_v2';

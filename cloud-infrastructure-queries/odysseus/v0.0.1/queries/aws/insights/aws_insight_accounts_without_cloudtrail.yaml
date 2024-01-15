@@ -1,7 +1,0 @@
-Connector: AWS
-Engine: odysseus-v0.0.1
-ID: aws_insight_accounts_without_cloudtrail
-ListOfTables:
-- kaytu_connections
-- aws_cloudtrail_trail
-QueryToExecute: select id AS account_id, kaytu_id AS kaytu_account_id from kaytu_connections where (connector = 'AWS' AND lifecycle_state = 'onboard' AND id NOT IN (select distinct account_id from aws_cloudtrail_trail))
