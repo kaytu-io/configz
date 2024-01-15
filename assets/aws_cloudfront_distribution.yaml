@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: CloudFront (CDN) Distribution
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::cloudfront::distribution' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Network

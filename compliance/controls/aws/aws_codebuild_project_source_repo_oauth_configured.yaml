@@ -1,0 +1,63 @@
+Description: Ensure the GitHub or Bitbucket source repository URL does not contain personal access tokens, user name and password within AWS Codebuild project environments.
+ID: aws_codebuild_project_source_repo_oauth_configured
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_codebuild_project
+  - aws_codebuild_source_credential
+  PrimaryTable: aws_codebuild_project
+  QueryToExecute: |
+    select
+      p.arn as resource,
+      p.kaytu_account_id as kaytu_account_id,
+      p.kaytu_resource_id as kaytu_resource_id,
+      case
+        when p.source ->> 'Type' not in ('GITHUB', 'BITBUCKET') then 'skip'
+        when c.auth_type = 'OAUTH' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when p.source ->> 'Type' = 'NO_SOURCE' then p.title || ' doesn''t have input source code.'
+        when p.source ->> 'Type' not in ('GITHUB', 'BITBUCKET') then p.title || ' source code isn''t in GitHub/Bitbucket repository.'
+        when c.auth_type = 'OAUTH' then p.title || ' using OAuth to connect source repository.'
+        else p.title || ' not using OAuth to connect source repository.'
+      end as reason
+      
+      , p.region, p.account_id
+    from
+      aws_codebuild_project as p
+      left join aws_codebuild_source_credential as c on (p.region = c.region and p.source ->> 'Type' = c.server_type);
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CodeBuild
+  soc_2:
+  - "true"
+Title: CodeBuild GitHub or Bitbucket source repository URLs should use OAuth

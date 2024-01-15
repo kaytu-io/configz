@@ -1,0 +1,50 @@
+Description: This control checks whether logging is enabled for the delivery status of notification messages sent to an Amazon SNS topic for the endpoints. This control fails if the delivery status notification for messages is not enabled.
+ID: aws_sns_topic_notification_delivery_status_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_sns_topic
+  PrimaryTable: aws_sns_topic
+  QueryToExecute: |
+    select
+      topic_arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when application_failure_feedback_role_arn is null
+          and firehose_failure_feedback_role_arn is null
+          and http_failure_feedback_role_arn is null
+          and lambda_failure_feedback_role_arn is null
+          and sqs_failure_feedback_role_arn is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when application_failure_feedback_role_arn is null
+          and firehose_failure_feedback_role_arn is null
+          and http_failure_feedback_role_arn is null
+          and lambda_failure_feedback_role_arn is null
+          and sqs_failure_feedback_role_arn is null then title || ' has delivery status logging for notification messages disabled.'
+        else title || ' has delivery status logging for notification messages enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_sns_topic;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - resource_configuration
+  foundational_security_item_id:
+  - sns_2
+  plugin:
+  - aws
+  service:
+  - AWS/SNS
+Title: Logging of delivery status should be enabled for notification messages sent to a topic

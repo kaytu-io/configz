@@ -1,0 +1,42 @@
+Description: This control checks whether a private ECR repository has image scanning configured. This control fails if a private ECR repository doesn't have image scanning configured.
+ID: aws_ecr_repository_image_scan_on_push_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ecr_repository
+  PrimaryTable: aws_ecr_repository
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when image_scanning_configuration ->> 'ScanOnPush' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when image_scanning_configuration ->> 'ScanOnPush' = 'true' then title || ' scan on push enabled.'
+        else title || ' scan on push disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ecr_repository;
+Severity: high
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - vulnerability_patch_and_version_management
+  foundational_security_item_id:
+  - ecr_1
+  plugin:
+  - aws
+  service:
+  - AWS/ECR
+Title: ECR private repositories should have image scanning configured

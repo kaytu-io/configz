@@ -1,0 +1,22 @@
+connectors:
+- AWS
+- Azure
+query: |-
+  select 
+    case
+      when resource_type like 'aws::%' then 'AWS'
+      else 'Azure'
+    end as provider, 
+    c.name as cloud_account_name, 
+    c.id as _discovered_provider_id,
+    r.name as name, 
+    r.region as location, 
+    r.connection_id as _kaytu_connection_id,
+    r.resource_id as _resource_id,
+    r.resource_type as _resource_type,
+    r.created_at as _last_discovered
+  from 
+    kaytu_resources r inner join kaytu_connections c on r.connection_id = c.kaytu_id
+  where 
+    resource_type IN ('aws::eks::cluster', 'aws::ecs::cluster', 'microsoft.containerregistry/registries', 'microsoft.containerservice/managedclusters', 'microsoft.app/containerapps')
+title: Container Workload

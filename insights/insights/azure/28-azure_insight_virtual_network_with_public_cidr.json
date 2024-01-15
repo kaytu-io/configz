@@ -1,6 +1,15 @@
 {
   "ID": 28,
-  "QueryID": "azure_insight_virtual_network_with_public_cidr",
+  "Query": {
+    "ID": "azure_insight_virtual_network_with_public_cidr",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  name,\n  cidr_block,\n  region,\n  resource_group, subscription_id, kaytu_account_id, kaytu_resource_id\nfrom\n  azure_virtual_network\n  cross join jsonb_array_elements_text(address_prefixes) as cidr_block\nwhere\n  (not cidr_block :: cidr \u003c\u003c= '10.0.0.0/16'\n  and not cidr_block :: cidr \u003c\u003c= '192.168.0.0/16'\n  and not cidr_block :: cidr \u003c\u003c= '172.16.0.0/12');",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_virtual_network",
+    "ListOfTables": [
+      "azure_virtual_network"
+    ]
+  },
   "Connector": "Azure",
   "ShortTitle": "vNets with Public IP Range",
   "LongTitle": "List Virtual Networks with public CIDR blocks",

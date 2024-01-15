@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: Amazon Transcribe
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'Amazon Transcribe' group by 1,2;
+status: active
+tables:
+- Amazon Transcribe
+tags:
+  category:
+  - AI + ML

@@ -1,0 +1,39 @@
+Description: Enable infrastructure encryption for Azure Database for MySQL servers to have higher level of assurance that the data is secure. When infrastructure encryption is enabled, the data at rest is encrypted twice using FIPS 140-2 compliant Microsoft managed keys.
+ID: azure_mysql_server_infrastructure_encryption_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_mysql_server
+  - azure_subscription
+  PrimaryTable: azure_mysql_server
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when infrastructure_encryption = 'Enabled' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when infrastructure_encryption = 'Enabled' then s.name || ' infrastructure encryption enabled.'
+        else s.name || ' infrastructure encryption disabled.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_mysql_server as s,
+      azure_subscription as sub
+    where
+      sub.subscription_id = s.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/MySQL
+Title: Infrastructure encryption should be enabled for Azure Database for MySQL servers

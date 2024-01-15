@@ -1,6 +1,15 @@
 {
   "ID": 18,
-  "QueryID": "azure_insight_compute_disk_unavailable_in_multiple_az",
+  "Query": {
+    "ID": "azure_insight_compute_disk_unavailable_in_multiple_az",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  name,\n  az,\n  region, subscription_id, kaytu_account_id, kaytu_resource_id\nfrom\n  azure_compute_disk\n  cross join jsonb_array_elements(zones) az\nwhere\n  zones is not null;",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_compute_disk",
+    "ListOfTables": [
+      "azure_compute_disk"
+    ]
+  },
   "Connector": "Azure",
   "ShortTitle": "Non-Resiliency Azure Disks",
   "LongTitle": "List of compute disks which are not available in multiple az",

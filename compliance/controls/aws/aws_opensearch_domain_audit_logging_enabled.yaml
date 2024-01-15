@@ -1,0 +1,42 @@
+Description: This control checks whether OpenSearch domains have audit logging enabled. This control fails if an OpenSearch domain does not have audit logging enabled.
+ID: aws_opensearch_domain_audit_logging_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_opensearch_domain
+  PrimaryTable: aws_opensearch_domain
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when log_publishing_options -> 'AUDIT_LOGS' ->> 'Enabled' = 'true' then 'ok'
+        else 'ok'
+      end as status,
+      case
+        when log_publishing_options -> 'AUDIT_LOGS' ->> 'Enabled' = 'true' then title || ' audit logging enabled.'
+        else title || ' audit logging disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_opensearch_domain;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - logging
+  foundational_security_item_id:
+  - opensearch_5
+  plugin:
+  - aws
+  service:
+  - AWS/OpenSearch
+Title: OpenSearch domains should have audit logging enabled

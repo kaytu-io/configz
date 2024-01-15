@@ -1,0 +1,73 @@
+Description: Enable key rotation to ensure that keys are rotated once they have reached the end of their crypto period.
+DocumentURI: ""
+ID: aws_kms_cmk_rotation_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_kms_key
+  PrimaryTable: aws_kms_key
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when origin = 'EXTERNAL' then 'skip'
+        when key_state = 'PendingDeletion' then 'skip'
+        when key_state = 'Disabled' then 'skip'
+        when not key_rotation_enabled then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when origin = 'EXTERNAL' then title || ' has imported key material.'
+        when key_state = 'PendingDeletion' then title || ' is pending deletion.'
+        when key_state = 'Disabled' then title || ' is disabled.'
+        when not key_rotation_enabled then title || ' key rotation disabled.'
+        else title || ' key rotation enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_kms_key
+    where
+      key_manager = 'CUSTOMER';
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/KMS
+  x-kaytu-explanation:
+  - "```markdown\n# Enable Key Rotation\n\nKey rotation is a security feature that allows you to retire the cryptographic material of a key periodically and replace it with new material. This feature can be useful to reduce the potential impact of a compromised key, as data encrypted under an old key will become inaccessible once the key is rotated.\n\nAWS allows you to enable key rotation on a yearly basis, ensuring that keys are changed once they have reached the end of their crypto period.\n\nTo enable key rotation:\n\n1. Log in to your AWS Management Console.\n2. Navigate to the **KMS (Key Management Service)** section.\n3. Select a Customer master key (CMK) from the list.\n4. On the key's details page, in the **Key Policy** section, select **Edit**.\n5. In the Key rotation section, select **Automatically rotate this CMK every year**.\n6. Click on **Save** to confirm the changes.\n\nAfter enabling, AWS will automatically rotate the key every year.\n\nRemember, for any data encrypted under the old key, you will need to re-encrypt it with the new key following each rotation to maintain access.\n\nEnsuring key rotation can be an important part of your overall key management and security strategy within AWS.\n```"
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance with this AWS (Amazon Web Services) control can lead to several possible costs:\n\n1. **Security Risks**: If keys are not rotated at the end of their crypto-period, the chance that malicious parties could crack the keys increases. This can lead to unauthorized access, data breaches, data corruption, or even loss of data.\n\n2. **Financial Costs**: A data breach can have significant financial implications, ranging from regulatory fines, the cost of remediation, lawsuits from affected parties, to increased cybersecurity insurance premiums.\n\n3. **Reputation Damage**: Any form of data breach or unauthorized data access can damage an organization's reputation, leading to a loss of customer trust, negative publicity, and potential loss of business.\n\n4. **Regulatory Non-Compliance**: Many regulations, such as GDPR, HIPAA, and PCI DSS, require secure handling of data, which includes using and periodically rotating encryption keys. Non-compliance could lead to significant fines and penalties, loss of licenses, or litigations.\n\n5. **Operational Disruption**: Data breaches or unauthorized data access can disrupt operations, affecting an organization's ability to conduct its business.\n\nIn summary, rotating keys at the end of their crypto-period is critical for maintaining data security and business continuity, reducing risks of data breach, avoiding regulatory penalties, and preserving your organization's reputation.\n   \n```markdown\n## Cost of Non-Compliance to AWS Control: Key Rotation\n\n1. **Security Risks**: Increased vulnerability to unauthorized access, data breaches, or data loss.\n\n2. **Financial Costs**: Potential for regulatory fines, remediation costs, lawsuits, and increased insurance premiums.\n\n3. **Reputation Damage**: Loss of customer trust, negative public relations, and potential business loss.\n\n4. **Regulatory Non-Compliance**: Possible fines, penalties, loss of licenses, or litigations due to non-compliance with data security regulations.\n\n5. **Operational Disruption**: Potential for disruptions in business operations.\n```"
+  x-kaytu-usefulness-example:
+  - "Amazon Web Services (AWS) offers Key Management Service (KMS) which allows users to create and manage cryptographic keys, including rotating them once they've reached the end of their crypto period. This can be particularly useful in a security-abiding organization. \n\nFor Example:\n\nConsider a financial institution that handles extremely sensitive information. In order to provide the necessary protection for this data, they encrypt it using keys created and managed through AWS KMS. They have a policy to rotate these keys annually (crypto period), which helps reduce the potential impact if a key is compromised. \n\nRotating keys also align with common regulatory requirements for encryption, such as PCI-DSS (Payment Card Industry Data Security Standard) which dictates key must be replaced at the end of their defined cryptoperiod. \n\n```markup\n# Enable KMS Key rotation\nresource \"aws_kms_key\" \"mykey\" {\n  description             = \"This key is used to encrypt customer data\"\n  deletion_window_in_days = 10\n  enable_key_rotation     = true    # enables the key rotation\n}\n\n```\nBy enabling key rotation, the organization ensures that their keys always comply with these standards, thereby reducing their risk of regulatory non-compliance as well."
+Title: KMS CMK rotation should be enabled

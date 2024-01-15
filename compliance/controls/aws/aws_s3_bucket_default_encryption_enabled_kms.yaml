@@ -1,0 +1,74 @@
+Description: To help protect data at rest, ensure encryption is enabled for your Amazon Simple Storage Service (Amazon S3) buckets.
+ID: aws_s3_bucket_default_encryption_enabled_kms
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_s3_bucket
+  PrimaryTable: aws_s3_bucket
+  QueryToExecute: |
+    with data as (
+      select
+        distinct name
+      from
+        aws_s3_bucket,
+        jsonb_array_elements(server_side_encryption_configuration -> 'Rules') as rules
+      where
+        rules -> 'ApplyServerSideEncryptionByDefault' ->> 'KMSMasterKeyID' is not null
+      )
+    select
+      b.arn as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when d.name is not null then 'ok'
+        else 'alarm'
+      end status,
+      case
+        when d.name is not null then b.name || ' default encryption with KMS enabled.'
+        else b.name || ' default encryption with KMS disabled.'
+      end reason
+      
+      , b.region, b.account_id
+    from
+      aws_s3_bucket as b
+      left join data as d on b.name = d.name;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  gxp_eu_annex_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/S3
+Title: S3 bucket default encryption should be enabled with KMS

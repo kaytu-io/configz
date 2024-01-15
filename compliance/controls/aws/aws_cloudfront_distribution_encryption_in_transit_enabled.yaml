@@ -1,0 +1,56 @@
+Description: This control checks whether an Amazon CloudFront distribution requires viewers to use HTTPS directly or whether it uses redirection. The control fails if ViewerProtocolPolicy is set to allow-all for defaultCacheBehavior or for cacheBehaviors.
+ID: aws_cloudfront_distribution_encryption_in_transit_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_cloudfront_distribution
+  PrimaryTable: aws_cloudfront_distribution
+  QueryToExecute: |
+    with data as (
+      select
+        distinct arn
+      from
+        aws_cloudfront_distribution,
+          jsonb_array_elements(
+        case jsonb_typeof(cache_behaviors -> 'Items')
+            when 'array' then (cache_behaviors -> 'Items')
+            else null end
+        ) as cb
+      where
+        cb ->> 'ViewerProtocolPolicy' = 'allow-all'
+    )
+    select
+      b.arn as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when d.arn is not null or (default_cache_behavior ->> 'ViewerProtocolPolicy' = 'allow-all') then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when d.arn is not null or (default_cache_behavior ->> 'ViewerProtocolPolicy' = 'allow-all') then title || ' data not encrypted in transit.'
+        else title || ' data encrypted in transit.'
+      end as reason
+      
+      , b.region, b.account_id
+    from
+      aws_cloudfront_distribution as b
+      left join data as d on b.arn = d.arn;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - encryption_of_data_in_transit
+  foundational_security_item_id:
+  - cloudfront_3
+  plugin:
+  - aws
+  service:
+  - AWS/CloudFront
+Title: CloudFront distributions should require encryption in transit

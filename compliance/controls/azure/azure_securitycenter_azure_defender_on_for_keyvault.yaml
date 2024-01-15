@@ -1,0 +1,64 @@
+Description: Turning on Azure Defender enables threat detection for Key Vault, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
+DocumentURI: ""
+ID: azure_securitycenter_azure_defender_on_for_keyvault
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+  PrimaryTable: azure_security_center_subscription_pricing
+  QueryToExecute: |
+    select
+      sub_pricing.id as resource,
+      sub_pricing.kaytu_account_id as kaytu_account_id,
+      sub_pricing.kaytu_resource_id as kaytu_resource_id,
+      case
+        when pricing_tier = 'Standard' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when pricing_tier = 'Standard' then 'Azure Defender on for Key Vaults.'
+        else 'Azure Defender off for Key Vaults.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_security_center_subscription_pricing sub_pricing
+      right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
+    where
+      name = 'KeyVaults';
+Severity: low
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "2.8"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "2"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  x-kaytu-explanation:
+  - |+
+    This action activates threat detection capabilities, including the use of threat intelligence, anomaly detection, and behavior analytics within the Azure Security Center.
+
+  x-kaytu-noncompliance-cost:
+  - |+
+    The cost of non-compliance with the specified Azure Control, which involves turning on Azure Defender for Key Vault, may include increased vulnerability to security threats, potential data breaches, and compromised integrity of key vault contents. Non-compliance could lead to financial losses, damage to reputation, and legal consequences.
+
+  x-kaytu-usefulness-example:
+  - |
+    An example instance of the usefulness of the specified Azure Control is its role in detecting a suspicious attempt to access sensitive information stored in Key Vault. With Azure Defender enabled, the system can identify the threat, analyze anomalous activities, and apply behavior analytics to prevent unauthorized access. This enhances overall security, protects sensitive data, and ensures compliance with security best practices.
+Title: Ensure that Azure Defender is set to On for Key Vault

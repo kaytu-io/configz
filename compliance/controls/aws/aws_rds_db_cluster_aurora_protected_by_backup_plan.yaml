@@ -1,0 +1,72 @@
+Description: Checks if Amazon Aurora DB clusters are protected by a backup plan. The rule is non compliant if the Amazon Relational Database Service (Amazon RDS) Database Cluster is not protected by a backup plan.
+ID: aws_rds_db_cluster_aurora_protected_by_backup_plan
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_backup_protected_resource
+  - aws_rds_db_cluster
+  PrimaryTable: aws_rds_db_cluster
+  QueryToExecute: |
+    with backup_protected_cluster as (
+      select
+        resource_arn as arn
+      from
+        aws_backup_protected_resource as b
+      where
+        resource_type = 'Aurora'
+    )
+    select
+      c.arn as resource,
+      c.kaytu_account_id as kaytu_account_id,
+      c.kaytu_resource_id as kaytu_resource_id,
+      case
+        when c.engine not like '%aurora%' then 'skip'
+        when b.arn is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when c.engine not like '%aurora%' then c.title || ' not Aurora resources.'
+        when b.arn is not null then c.title || ' is protected by backup plan.'
+        else c.title || ' is not protected by backup plan.'
+      end as reason
+      
+      , c.region, c.account_id
+    from
+      aws_rds_db_cluster as c
+      left join backup_protected_cluster as b on c.arn = b.arn;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  gxp_eu_annex_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/RDS
+  soc_2:
+  - "true"
+Title: RDS Aurora clusters should be protected by backup plan

@@ -1,6 +1,15 @@
 {
   "ID": 4,
-  "QueryID": "aws_insight_ebs_volume_unencrypted",
+  "Query": {
+    "ID": "aws_insight_ebs_volume_unencrypted",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select volume_id, encrypted, account_id, kaytu_account_id, kaytu_resource_id from\n  aws_ebs_volume\nwhere\n  not encrypted;",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ebs_volume",
+    "ListOfTables": [
+      "aws_ebs_volume"
+    ]
+  },
   "Connector": "AWS",
   "ShortTitle": "Unencrypted EBS Disks",
   "LongTitle": "List of unencrypted EBS volumes",

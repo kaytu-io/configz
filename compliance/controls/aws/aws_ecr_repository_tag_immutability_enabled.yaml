@@ -1,0 +1,42 @@
+Description: This control checks whether a private ECR repository has tag immutability enabled. This control fails if a private ECR repository has tag immutability disabled. This rule passes if tag immutability is enabled and has the value IMMUTABLE.
+ID: aws_ecr_repository_tag_immutability_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ecr_repository
+  PrimaryTable: aws_ecr_repository
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when image_tag_mutability = 'IMMUTABLE' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when image_tag_mutability = 'IMMUTABLE' then title || ' tag immutability enabled.'
+        else title || ' tag immutability disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ecr_repository;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - tagging
+  foundational_security_item_id:
+  - ecr_2
+  plugin:
+  - aws
+  service:
+  - AWS/ECR
+Title: ECR private repositories should have tag immutability configured

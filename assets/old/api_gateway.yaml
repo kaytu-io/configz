@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: API Gateway
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::apigateway::restapi','aws::apigateway::stage','aws::apigatewayv2::api') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Network

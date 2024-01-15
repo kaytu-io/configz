@@ -1,0 +1,5 @@
+connectors:
+- AWS
+- Azure
+query: "select \n  case\n    when resource_type like 'aws::%' then 'AWS'\n    else 'Azure'\n  end as provider, \n  c.name as cloud_account_name, \n  c.id as _discovered_provider_id,\n  r.name as name, \n  r.region as location, \n  r.connection_id as _kaytu_connection_id,\n  r.resource_id as _resource_id,\n  r.resource_type as _resource_type,\n  r.created_at as _last_discovered\nfrom \n  kaytu_resources r inner join kaytu_connections c on r.connection_id = c.kaytu_id\nwhere \n  resource_type IN ('aws::autoscaling::autoscalinggroup', 'microsoft.compute/virtualmachinescalesets')  \n  "
+title: Autoscaling Workload

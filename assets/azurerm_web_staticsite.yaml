@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Static web app
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.web/staticsites' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Compute

@@ -1,0 +1,55 @@
+Description: This policy audits Linux Azure Arc machines if the Log Analytics agent is not installed.
+ID: azure_arc_compute_machine_linux_log_analytics_agent_installed
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_hybrid_compute_machine
+  - azure_subscription
+  PrimaryTable: azure_hybrid_compute_machine
+  QueryToExecute: |
+    with compute_machine as(
+      select
+        id,
+        name,
+        subscription_id,
+        resource_group
+      from
+        azure_hybrid_compute_machine,
+        jsonb_array_elements(extensions) as e
+      where
+      e ->> 'name' = 'OMSAgentForLinux'
+      and e ->> 'provisioningState' = 'Succeeded'
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when a.os_name <> 'linux' then 'skip'
+        when m.id is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when a.os_name <> 'linux' then a.name || ' is of ' || a.os_name || ' operating system.'
+        when m.id is not null then a.name || ' log analytics extension installed.'
+        else a.name || ' log analytics extension not installed.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+    azure_hybrid_compute_machine as a
+    left join compute_machine as m on m.id = a.id,
+    azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/Compute
+Title: Log Analytics agent should be installed on your Linux Azure Arc machines

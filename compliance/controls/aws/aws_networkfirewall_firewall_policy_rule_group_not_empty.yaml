@@ -1,0 +1,44 @@
+Description: This control checks whether a Network Firewall policy has any stateful or stateless rule groups associated. The control fails if stateless or stateful rule groups are not assigned.
+ID: aws_networkfirewall_firewall_policy_rule_group_not_empty
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_networkfirewall_firewall_policy
+  PrimaryTable: aws_networkfirewall_firewall_policy
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when (firewall_policy ->> 'StatefulRuleGroupReferences' is null or jsonb_array_length(firewall_policy -> 'StatefulRuleGroupReferences') = 0)
+          and (firewall_policy ->> 'StatelessRuleGroupReferences' is null or jsonb_array_length(firewall_policy -> 'StatelessRuleGroupReferences') = 0) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (firewall_policy ->> 'StatefulRuleGroupReferences' is null or jsonb_array_length(firewall_policy -> 'StatefulRuleGroupReferences') = 0)
+          and (firewall_policy ->> 'StatelessRuleGroupReferences' is null or jsonb_array_length(firewall_policy -> 'StatelessRuleGroupReferences') = 0) then title || ' has no associated rule groups.'
+        else title || ' has associated rule groups.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_networkfirewall_firewall_policy;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - secure_network_configuration
+  foundational_security_item_id:
+  - networkfirewall_3
+  plugin:
+  - aws
+  service:
+  - AWS/NetworkFirewall
+Title: Network Firewall policies should have at least one rule group associated

@@ -1,0 +1,109 @@
+Description: Use Azure Active Directory Authentication for authentication with SQL Database.
+DocumentURI: ""
+ID: azure_sql_db_active_directory_admin_configured
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+  PrimaryTable: azure_sql_server
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when server_azure_ad_administrator is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when server_azure_ad_administrator is null then name || ' Azure AD authentication not configured.'
+        else name || ' Azure AD authentication configured.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_server s,
+      azure_subscription sub
+    where
+      sub.subscription_id = s.subscription_id;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "4.4"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "4"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  x-kaytu-explanation:
+  - |-
+    Azure Active Directory (Azure AD) authentication is a mechanism of connecting to Azure SQL Database, or Azure Synapse Analytics by using identities in Azure AD. With Azure AD authentication, you can manage the identity of database users and other Microsoft services in one central location.
+
+    Here's how you can use Azure AD authentication in a markup format:
+
+    1. Create an Azure Active Directory (AAD).
+
+    2. Register a new application on Azure AD and get the Application ID.
+
+    3. In the SQL Database firewall settings, allow Azure Services.
+
+    4. Assign the AAD user or group to the Azure SQL database with proper permission.
+
+    Here is a sample connection string using Azure AD Authentication:
+    ```
+    Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>; Authentication=Active Directory Password; UID=<username>@<domain-name>; PWD=<strong-password>; Encrypt=yes; TrustServerCertificate=no;Connection Timeout=30;
+    ```
+    Where,
+    - `<server-name>` is the name of your server.
+    - `<database-name>` is the name of your database.
+    - `<username>` is your Azure AD username.
+    - `<domain-name>` is the domain of your Azure AD.
+    - `<strong-password>` is the password for the Azure AD.
+
+    Please note, to use AAD authentication, your must also set up an Azure AD administrator for your server and your client machines need to be registered with your Azure AD.
+  x-kaytu-noncompliance-cost:
+  - |-
+    Non-compliance with this Azure Control could lead to various risks and costs:
+
+    1. **Security Breaches:** The primary risk of non-compliance is the potential for increased security vulnerabilities. Azure AD authentication offers integrated security features like Multi-Factor Authentication (MFA), Identity Protection, and Conditional Access. If not used, SQL database will be more exposed to security breaches, leading to potential data theft, unauthorized access, and alterations.
+
+    2. **Operational Inefficiency:** Using non Azure AD authentication means you are not able to leverage single-sign-on, which can lead to consolidated management, reduced administrative overhead, and improved operational efficiencies. 
+
+    3. **Non-Compliance Fines:** Depending on the nature of your business and the data you are managing, non-compliance with certain security protocols or regulations could result in substantial fines. 
+
+    4. **Damage to Brand Reputation:** If data breaches occur due to non-compliance, not only does the company face financial loss, but also a potential loss in customer trust, which can massively impact brand reputation.
+
+    5. **Business Continuity Issues:** In case of a security incident, you might have to pause your operations until the breach is rectified. This can affect your service deliveries and cause service-level agreement (SLA) penalties causing loss of business.
+  x-kaytu-usefulness-example:
+  - |-
+    For example, a company looking to develop a secure web application for their business on Azure Cloud. They decided to use Azure SQL Database as their data warehouse and Azure Active Directory (Azure AD) for user identity management and access security. 
+
+    In order to ensure only authenticated users are able to access the underlying Azure SQL Database through the web app, the team implements Azure AD Authentication. The operations defined in the web app's codebase must be authenticated before they can access data in Azure SQL Database. 
+
+    ```xml
+    <add name="MyDbConnection" 
+    connectionString="Server=tcp:myserver.database.windows.net,1433;Database=myDataBase; 
+    User ID=user@domain.com@myserver;Password=MyPassword;Trusted_Connection=False;Encrypt=True;" 
+    providerName="System.Data.SqlClient" />
+    ```
+
+    Here, the `MyDbConnection` connection string uses Azure AD Authentication to connect to the Azure SQL Database.
+
+    This integration of Azure Active Directory Authentication with Azure SQL Database via the web app ensures a secure environment against unauthorized data access. It allows the company to have full control over who can view, modify or delete their data while providing a seamless^ nd secure access experience to their legitimate users.
+Title: Ensure that Azure Active Directory Admin is configured

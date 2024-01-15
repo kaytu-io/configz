@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Cognitive Search
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.search/searchservices') group by 1,2;
+status: invisible
+tags:
+  category:
+  - AI + ML

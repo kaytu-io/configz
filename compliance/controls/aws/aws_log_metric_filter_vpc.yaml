@@ -1,0 +1,43 @@
+Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. It is possible to have more than 1 VPC within an account, in addition it is also possible to create a peer connection between 2 VPCs enabling network traffic to route between VPCs. It is recommended that a metric filter and alarm be established for changes made to VPCs.
+DocumentURI: ""
+ID: aws_log_metric_filter_vpc
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_account
+  - aws_cloudtrail_trail
+  - aws_cloudwatch_alarm
+  - aws_cloudwatch_log_metric_filter
+  - aws_sns_topic_subscription
+  PrimaryTable: aws_account
+  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    alarm.name as alarm_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventName\\s*=\\s*CreateVpc.+\\$\\.eventName\\s*=\\s*DeleteVpc.+\\$\\.eventName\\s*=\\s*ModifyVpcAttribute.+\\$\\.eventName\\s*=\\s*AcceptVpcPeeringConnection.+\\$\\.eventName\\s*=\\s*CreateVpcPeeringConnection.+\\$\\.eventName\\s*=\\s*DeleteVpcPeeringConnection.+\\$\\.eventName\\s*=\\s*RejectVpcPeeringConnection.+\\$\\.eventName\\s*=\\s*AttachClassicLinkVpc.+\\$\\.eventName\\s*=\\s*DetachClassicLinkVpc.+\\$\\.eventName\\s*=\\s*DisableVpcClassicLink.+\\$\\.eventName\\s*=\\s*EnableVpcClassicLink'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for VPC changes.'\n    else filter_name || ' forwards events for VPC changes.'\n  end as reason\n\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "3.14"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "3"
+  cis_type:
+  - scored
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  x-kaytu-explanation:
+  - "```\n## AWS Control\n\nAWS provides a capability for real-time monitoring of API calls. This can be achieved by directing [`CloudTrail Logs`](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) to [`CloudWatch Logs`](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html). Through this, corresponding metric filters and alarms can be established to promptly identify and react to any significant events or changes. \n\nIt's important and beneficial to note that an account can contain more than one Virtual Private Cloud(VPC). A [`VPC`](https://aws.amazon.com/vpc/) allows users to control their virtual networking environment, which includes IP address range, subnets, route tables, and network gateways.\n\nFurthermore, AWS allows the creation of a peer connection between two VPCs. This peer connection enables network traffic to be routed between the VPCs, offering more flexibility and control over the network structure.\n\nFor enhancing the security and governance, it is recommended to establish a metric filter and alarm for changes made to VPCs. This provides an additional layer of observability and control, ensuring all changes are logged, monitored and alerted, if necessary.\n```"
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to this AWS security control can have various costs associated with it:\n\n1. **Loss of Visibility**: Not monitoring API calls in real time means losing the ability to oversee activity in your AWS environment. This lack of visibility can result in undetected security breaches or operations failures.\n\n2. **Breach of Security**: If changes to VPCs aren't monitored, unauthorized or malicious configuration changes might go unnoticed. This can lead to data breaches, getting your AWS resources compromised, and misusage of your resources.\n\n3. **Non-Compliance Penalties**: If your organization operates in a regulated industry (such as finance or healthcare), non-compliance to certain regulation requirements (like HIPAA or PCI DSS) regarding logging and monitoring could result in hefty fines or legal actions.\n\n4. **Operational Disruptions**: Without real-time monitoring of API calls, unexpected changes or errors could lead to service disruptions, which could impact customers and result in loss of revenue or reputation.\n\n5. **Increased Investigation Time**: Without appropriate monitoring, the time taken to investigate security incidents or operational issues may increase as there isn't a clear audit trail of activity.\n\nSo, it is important to comply with this AWS control to avoid the aforementioned costs. By using services like CloudTrail and CloudWatch to regularly monitor and analyze activity, and setting alarms for unusual or undesired behaviors, you can maintain a robust, secure, and efficient AWS environment."
+  x-kaytu-usefulness-example:
+  - "Example:\n\nA particular organization has several AWS user accounts, each with its own VPCs for handling a variety of applications, data bases, and services. Due to the high level of activity and numerous APIs calls, it is critical to be able to monitor these in real-time to prevent potential threats or unusual behaviors. \n\nUsing AWS CloudTrail, it logs all of the API calls, storing the valuable details for each call, such as the identity of the caller, the time of the call, the source IP address, the request parameters, and the response elements returned by the AWS service. \n\nUsing CloudWatch, these logs can be accessed in real time. They filter and set alarms for certain API call metrics, specifically looking for changes within the VPCs. One such example could be an increase in data transfer or an unexpected API call, which could signify a potential security concern. \n\nAdditionally, a peering connection established between two VPCs within an account allows for easy network traffic routing. At the same time, the VPC change monitor will keep track of any changes made in this connection, providing an added layer of security and control to the organization.\n\nHere is the markup format:\n\n```\nResources:\n  CloudWatchAlarm:\n    Type: \"AWS::CloudWatch::Alarm\"\n    Properties:\n      AlarmDescription: Monitor VPC Changes\n      Namespace: AWS/Logs\n      MetricName: VPCChanges\n      Statistic: SampleCount\n      Period: '300'\n      EvaluationPeriods: '1'\n      Threshold: '1'\n      ComparisonOperator: GreaterThanOrEqualToThreshold\n      AlarmActions: \n      - (insert SNS topic ARN)\n      Dimensions:\n      - Name: LogGroupName\n        Value: CloudTrail/DefaultLogGroup\n      - Name: FilterName\n        Value: VPCChanges\n\n  MetricFilter:\n    Type: 'AWS::Logs::MetricFilter'\n    Properties:\n      LogGroupName: CloudTrail/DefaultLogGroup\n      FilterPattern: '{ ($.eventName = CreateVpc) || ($.eventName = DeleteVpc) || ($.eventName = ModifyVpcAttribute) || ($.eventName = AcceptVpcPeeringConnection) || ($.eventName = CreateVpcPeeringConnection) || ($.eventName = DeleteVpcPeeringConnection) }'\n      MetricTransformations:\n      - MetricValue: '1'\n        MetricNamespace: AWS/Logs\n        MetricName: VPCChanges\n```\n\nPlease replace \"(insert SNS topic ARN)\" with the ARN of your SNS topic where you want to receive the alerts. With this CloudFormation template, you can track the changes in your VPCs via API calls in real time and set up alarms."
+Title: Ensure a log metric filter and alarm exist for VPC changes

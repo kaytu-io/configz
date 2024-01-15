@@ -1,0 +1,54 @@
+Description: This control checks if Amazon Simple Storage Service (Amazon S3) version enabled buckets have lifecycle policy configured. This rule fails if Amazon S3 lifecycle policy is not enabled.
+ID: aws_s3_bucket_versioning_and_lifecycle_policy_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_s3_bucket
+  PrimaryTable: aws_s3_bucket
+  QueryToExecute: |
+    with lifecycle_rules_enabled as (
+      select
+        arn
+      from
+        aws_s3_bucket,
+        jsonb_array_elements(lifecycle_rules) as r
+      where
+        r ->> 'Status' = 'Enabled'
+    )
+    select
+      b.arn as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when not versioning_enabled then 'alarm'
+        when versioning_enabled and r.arn is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when not versioning_enabled then name || ' versioning diabled.'
+        when versioning_enabled and r.arn is not null then name || ' lifecycle policy configured.'
+        else name || ' lifecycle policy not configured.'
+      end as reason
+      
+      , b.region, b.account_id
+    from
+      aws_s3_bucket as b
+      left join lifecycle_rules_enabled as r on r.arn = b.arn;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - logging
+  foundational_security_item_id:
+  - s3_10
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+Title: S3 buckets with versioning enabled should have lifecycle policies configured

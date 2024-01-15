@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: Amazon DocumentDB (with MongoDB compatibility)
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'Amazon DocumentDB (with MongoDB compatibility)' group by 1,2;
+status: active
+tables:
+- Amazon DocumentDB (with MongoDB compatibility)
+tags:
+  category:
+  - Database

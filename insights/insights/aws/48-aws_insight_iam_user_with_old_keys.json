@@ -1,6 +1,15 @@
 {
   "ID": 48,
-  "QueryID": "aws_insight_iam_user_with_old_keys",
+  "Query": {
+    "ID": "aws_insight_iam_user_with_old_keys",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select access_key_1_active, access_key_1_last_rotated, access_key_2_active, access_key_2_last_rotated, user_arn, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where ((access_key_1_active = true AND (access_key_1_last_rotated IS NULL OR (current_date - DATE(access_key_1_last_rotated)) \u003e 90)) OR (access_key_2_active = true AND (access_key_2_last_rotated IS NULL OR (current_date - DATE(access_key_2_last_rotated)) \u003e 90)))",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_iam_credential_report",
+    "ListOfTables": [
+      "aws_iam_credential_report"
+    ]
+  },
   "Connector": "AWS",
   "ShortTitle": "IAM Users with old access keys",
   "LongTitle": "IAM Users with old access keys",

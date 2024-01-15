@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Azure Stream Analytics
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.streamanalytics/cluster' group by 1,2;
+status: active
+tags:
+  category:
+  - Data Analytics

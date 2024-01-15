@@ -1,0 +1,29 @@
+Connector: AWS
+Description: List all the users for whom MFA is not enabled
+Enabled: true
+ID: 8.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List all the users for whom MFA is not enabled
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_iam_user_with_mfa_disabled
+  ListOfTables:
+  - aws_iam_user
+  PrimaryTable: aws_iam_user
+  QueryToExecute: |-
+    select
+      name,
+      user_id,
+      mfa_enabled, account_id, kaytu_account_id, kaytu_resource_id
+    from
+      aws_iam_user
+    where
+     not mfa_enabled;
+ShortTitle: Users with no MFA
+Tags:
+  category:
+  - Security
+  - Technical Debt

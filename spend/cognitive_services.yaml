@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Cognitive Services
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Cognitive Services' group by 1,2;
+status: active
+tables:
+- Cognitive Services
+tags:
+  category:
+  - AI + ML

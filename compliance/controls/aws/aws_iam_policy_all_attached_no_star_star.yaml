@@ -1,0 +1,95 @@
+Description: IAM policies are the means by which privileges are granted to users, groups, or roles. It is recommended and considered a standard security advice to grant least privilege—that is, granting only the permissions required to perform a task. Determine what users need to do and then craft policies for them that let the users perform only those tasks, instead of allowing full administrative privileges.
+DocumentURI: ""
+ID: aws_iam_policy_all_attached_no_star_star
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_iam_policy
+  PrimaryTable: aws_iam_policy
+  QueryToExecute: |
+    with star_access_policies as (
+      select
+        arn,
+        is_aws_managed,
+        count(*) as num_bad_statements
+      from
+        aws_iam_policy,
+        jsonb_array_elements(policy_std -> 'Statement') as s,
+        jsonb_array_elements_text(s -> 'Resource') as resource,
+        jsonb_array_elements_text(s -> 'Action') as action
+      where
+        s ->> 'Effect' = 'Allow'
+        and resource = '*'
+        and (
+          (action = '*'
+          or action = '*:*'
+          )
+        )
+        and is_attached
+      group by
+        arn,
+        is_aws_managed
+    )
+    select
+      p.arn as resource,
+      p.kaytu_account_id as kaytu_account_id,
+      p.kaytu_resource_id as kaytu_resource_id,
+      case
+        when s.arn is not null and s.is_aws_managed then 'info'
+        when s.arn is null then 'ok'
+        else 'alarm'
+      end status,
+      case
+        when s.arn is not null and s.is_aws_managed then p.name || ' is an AWS managed policy with ' || coalesce(s.num_bad_statements, 0) || ' statements that allow action "*" on resource "*".'
+        else p.name || ' contains ' || coalesce(s.num_bad_statements, 0) || ' statements that allow action "*" on resource "*".'
+      end as reason
+      
+      , p.account_id
+    from
+      aws_iam_policy as p
+      left join star_access_policies as s on p.arn = s.arn
+    where
+      p.is_attached;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "1.22"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "1"
+  cis_type:
+  - scored
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  x-kaytu-explanation:
+  - "```markdown\n# IAM Policies\n\nIdentity and Access Management (IAM) policies in AWS are utilized to grant or deny privileges to users, groups, or roles. This is a pivotal point of access monitoring and security within the AWS ecosystem.\n\n## Principle of Least Privilege\n\nA standard and highly recommended security practice within AWS IAM is adhering to the Principle of _Least Privilege_. This principle underlines the concept of granting **only** the permissions or privileges that are required for users to perform their necessary tasks or roles. \n\nFor example, rather than granting a user full administrative privileges across all services, which may lead to accidental configuration changes or potential security risks, you should precisely determine what actions a user needs to perform. Subsequently, you should configure IAM policies which allow the user to only perform these specific tasks.\n\n## Configuring Policies\n\nWhen configuring IAM policies, the following steps are generally followed:\n\n1. **Identify the users' requirements**: Understand what actions or tasks the user needs to perform within your AWS environment.\n\n2. **Configure the IAM policy**: Create a policy within IAM that provides **only** the necessary access for the users to perform their identified tasks. \n\n3. **Assign the policy**: Attach the created policy to the user, group, or role.\n\nBy following these steps and applying the Principle of Least Privilege, you can enhance the security and management of your AWS environment.\n```"
+  x-kaytu-noncompliance-cost:
+  - |-
+    The cost of non-compliance to this AWS control can be multifold which includes:
+
+    1. **Security Breach Risk:** With more privileges, users are more likely to have accidental or intentional misuse of the permissions. This could lead to unauthorized data access or worse, data breaches, resulting in reputational damage and possible financial penalties. 
+
+    2. **Financial Costs:** If someone with full administrative privileges starts, stops, or modifies services without understanding the implications, it could result in increased operational costs. Databases can be erased, data transfers can trigger costs, and instances can be started and left running.
+
+    3. **Regulatory Compliance:** If your organization has to comply with certain regulatory standards like GDPR, HIPAA, or PCI DSS etc., not following the principle of least privilege can result in non-compliance to regulatory standards and can lead to heavy monetary penalties.
+
+    4. **Operational Disruption:** Actions performed by users with excess privileges can disrupt operations unintentionally causing system downtime or loss of crucial business data.
+
+    5. **Difficulty in Access Control Management:** It can become difficult to manage, monitor and audit overly permissive access rights which could potentially lead to unidentified security threats.
+
+    It is therefore essential to ensure IAM policies are closely adhered to and regularly reviewed to avoid the potential costs associated with non-compliance.
+  x-kaytu-usefulness-example:
+  - "For example, consider a situation in an organization where an employee is responsible for managing AWS EC2 instances and nothing more. Without IAM policies, this employee would have access to the entire AWS console, potentially leading to misuse or unintended changes.\n\nYou can set the IAM policy to give the employee only the necessary permissions on EC2 instances. The following is a sample policy written in AWS' JSON-based policy language:\n\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"ec2:Describe*\",\n                \"ec2:StartInstances\",\n                \"ec2:StopInstances\"\n            ],\n            \"Resource\": \"*\"\n        }\n    ]\n\nIn this IAM policy, the employee could only view all EC2 resources (`ec2:Describe*`), start instances (`ec2:StartInstances`), and stop instances (`ec2:StopInstances`). All other actions on the AWS are denied, thus minimizing risk and adhering to the principle of least privilege."
+Title: Ensure IAM policies that allow full "*:*" administrative privileges are not created

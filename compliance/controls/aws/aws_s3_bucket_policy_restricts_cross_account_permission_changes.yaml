@@ -1,0 +1,64 @@
+Description: This control checks whether the S3 bucket policy prevents principals from other AWS accounts from performing denied actions on resources in the S3 bucket.
+ID: aws_s3_bucket_policy_restricts_cross_account_permission_changes
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_s3_bucket
+  PrimaryTable: aws_s3_bucket
+  QueryToExecute: |
+    with cross_account_buckets as (
+      select
+        distinct arn
+      from
+        aws_s3_bucket,
+        jsonb_array_elements(policy_std -> 'Statement') as s,
+        jsonb_array_elements_text(s -> 'Principal' -> 'AWS') as p,
+        string_to_array(p, ':') as pa,
+        jsonb_array_elements_text(s -> 'Action') as a
+      where
+        s ->> 'Effect' = 'Allow'
+        and (
+          pa [5] != account_id
+          or p = '*'
+        )
+        and a in (
+          's3:deletebucketpolicy',
+          's3:putbucketacl',
+          's3:putbucketpolicy',
+          's3:putencryptionconfiguration',
+          's3:putobjectacl'
+        )
+    )
+    select
+      a.arn as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.arn is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.arn is null then title || ' restricts cross-account bucket access.'
+        else title || ' allows cross-account bucket access.'
+      end as reason
+      
+      , a.region, a.account_id
+    from
+      aws_s3_bucket a
+      left join cross_account_buckets b on a.arn = b.arn;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+Title: Amazon S3 permissions granted to other AWS accounts in bucket policies should be restricted

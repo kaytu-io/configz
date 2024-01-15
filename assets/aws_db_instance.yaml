@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: RDS Instances
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::rds::dbinstance' group by 1,2;
+status: active
+tags:
+  category:
+  - Database

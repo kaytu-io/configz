@@ -1,0 +1,50 @@
+Description: To ensure the relevant people in your organization are notified when there is a potential security breach in one of your subscriptions, set a security contact to receive email notifications from Security Center.
+ID: azure_securitycenter_email_configured
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_security_center_contact
+  - azure_subscription
+  PrimaryTable: azure_security_center_contact
+  QueryToExecute: |
+    with contact_info as (
+      select
+        jsonb_agg(email) filter (where name = 'default' and email != '') as default_email,
+        count(*) filter (where name != 'default') as non_default_count,
+        count(*) filter (where name = 'default') as default_count,
+        subscription_id
+      from
+        azure_security_center_contact
+      group by
+        subscription_id
+      limit 1
+    )
+    select
+      sub.subscription_id as resource,
+      sub.kaytu_account_id as kaytu_account_id,
+      sub.kaytu_resource_id as kaytu_resource_id,
+      case
+        when non_default_count > 0 then 'ok'
+        when default_count = 1 and jsonb_array_length(default_email) != 0 then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when non_default_count > 0 then 'Additional email addresses configured.'
+        when default_count = 1 and default_email is not null then'Additional email addresses configured.'
+        else 'Additional email addresses not configured.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_subscription sub
+      left join contact_info ci on sub.subscription_id = ci.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SecurityCenter
+Title: Subscriptions should have a contact email address for security issues

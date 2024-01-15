@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: VPN Gateway
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/vpngateways' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Security

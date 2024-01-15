@@ -1,0 +1,43 @@
+Description: This control checks the number of network hops that a metadata token can travel. The control fails if the metadata response hop limit is greater than 1.
+ID: aws_autoscaling_launch_config_hop_limit
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_launch_configuration
+  PrimaryTable: aws_ec2_launch_configuration
+  QueryToExecute: |
+    select
+      launch_configuration_arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when metadata_options_put_response_hop_limit is null then 'ok'
+        when metadata_options_put_response_hop_limit > 1 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        --If you do not specify a value, the hop limit default is 1.
+        when metadata_options_put_response_hop_limit is null then title || ' metadata response hop limit set to default.'
+        else title || ' has a metadata response hop limit of ' || metadata_options_put_response_hop_limit || '.'
+      end as reason
+      , region, account_id
+    from
+      aws_ec2_launch_configuration;
+Severity: high
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - secure_network_configuration
+  foundational_security_item_id:
+  - autoscaling_4
+  plugin:
+  - aws
+  service:
+  - AWS/AutoScaling
+Title: Auto Scaling group launch configuration should not have metadata response hop limit greater than 1

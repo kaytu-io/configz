@@ -1,0 +1,74 @@
+Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. It is recommended that a metric filter and alarm be established for failed console authentication attempts.
+DocumentURI: ""
+ID: aws_log_metric_filter_console_authentication_failure
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_account
+  - aws_cloudtrail_trail
+  - aws_cloudwatch_alarm
+  - aws_cloudwatch_log_metric_filter
+  - aws_sns_topic_subscription
+  PrimaryTable: aws_account
+  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventName\\s*=\\s*ConsoleLogin.+\\$\\.errorMessage\\s*=\\s*\"Failed authentication\"'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for console authentication failures.'\n    else filter_name || ' forwards events for console authentication failures.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "3.6"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "3"
+  cis_type:
+  - scored
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  x-kaytu-explanation:
+  - |-
+    ```
+    AWS Control
+    ==========
+
+    Real-time monitoring of API calls can help in promptly detecting anomalies or security breaches. This can be achieved by directing CloudTrail Logs to CloudWatch Logs and setting up appropriate metric filters and alarms.
+
+    CloudTrail Logs
+    ---------------------
+    [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) records all API calls made in your AWS environment and delivers the log files to an Amazon S3 bucket. These logs provide valuable data such as the identity of the caller, the time of the call, the source IP address of the call, etc.
+
+    CloudWatch Logs
+    ---------------------
+    [Amazon CloudWatch Logs](https://aws.amazon.com/cloudwatch/) lets you centralize the logs from all your systems, applications, and AWS services. CloudWatch provides the feature to monitor these logs in near real-time.
+
+    Metric Filters and Alarms
+    -------------------------------
+    Metric filters in CloudWatch Logs allow users to search and match terms, phrases, or patterns in the logs and create metric filters out of them. These metrics can then be used to set up alarms. When an alarm condition is met, Amazon CloudWatch can send notifications or perform automated actions. 
+
+    Console Authentication Failures
+    ---------------------------------------
+    It is crucial to monitor and manually review authentication failures, specifically, `console sign-in` failures, as these may indicate a potential unauthorized attempt to access the AWS resources. Therefore, it is recommended to create a metric filter and alarm for failed console authentication attempts.
+
+    Setting up these AWS controls will provide a robust mechanism for real-time monitoring of API calls, thereby enhancing the overall security of the AWS environment.
+    ```
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance with this AWS control, which necessitates real-time monitoring of API calls through directing CloudTrail Logs to CloudWatch Logs and setting up corresponding metric filters and alarms, can lead to several costs:\n\n1. **Security Breach**: Without real-time monitoring, suspicious or malicious activities such as unauthorized data access or failed login attempts could go unnoticed, increasing the risk of a security breach.\n\n2. **Financial Loss**: A security breach can lead to financial loss due to lost business, potential fines due to non-compliance with data protection regulations, and the cost to fix the breach.\n\n3. **Ineffective Resource Optimization**: Without monitoring API calls, you can't efficiently track resources resulting in their misuse or underutilization. This could significantly impact AWS costs as you might end up paying for resources you are not using optimally.\n\n4. **Operational Disruptions**: Lack of monitoring can result in operational issues going unnoticed leading to prolonged system downtime or loss of essential services, which can negatively affect your business operations and customer service.\n\n5. **Regulatory Non-compliance**: If your organization falls under the purview of certain regulations like GDPR, HIPAA, etc., that require tracking of user activities for audit purposes, not adhering to this control could result in non-compliance, potentially leading to heavy fines. \n\n6. **Damage to Company Reputation**: Last but not the least, a security breach due to lack of real-time monitoring might dent the company's reputation, leading to loss of customer trust and business. \n\nTo avoid these costs, it is crucial to establish a metric filter and alarm for failed console authentication attempts, as recommended by AWS."
+  x-kaytu-usefulness-example:
+  - |-
+    Suppose you are managing an application that relies heavily on your AWS resources. You want to ensure that all API calls and console authentication are secure and legitimate. However, manually monitoring it is not feasible due to the high volume of API calls and console login attempts. So, you set up AWS CloudTrail to log all the API calls and direct them to AWS CloudWatch Logs.
+
+    Now, let's say, the worst-case scenario happens, and some unauthorized individuals are attempting to infiltrate your AWS console by trying to login multiple times with incorrect credentials. As you have set up a filter and alarm for failed console authentication attempts, AWS CloudWatch will track these malicious activities. 
+
+    The metric filter will identify these failed console authentication attempts in real-time, and the alarm will send you an alert about the irregularity. Therefore, you can take immediate actions to secure your resources, which can potentially prevent a catastrophic data breach. 
+
+    By using these features, AWS helps you to monitor your AWS environment proactively, respond instantly to irregularities, thus strengthening your security posture.
+Title: Ensure a log metric filter and alarm exist for AWS Management Console authentication failures

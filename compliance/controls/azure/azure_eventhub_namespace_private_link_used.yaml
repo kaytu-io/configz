@@ -1,0 +1,51 @@
+Description: Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Event Hub namespaces, data leakage risks are reduced.
+ID: azure_eventhub_namespace_private_link_used
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_eventhub_namespace
+  - azure_subscription
+  PrimaryTable: azure_eventhub_namespace
+  QueryToExecute: |
+    with eventhub_service_connection as (
+      select
+        distinct a.id
+      from
+        azure_eventhub_namespace as a,
+        jsonb_array_elements(private_endpoint_connections) as connection
+      where
+        connection -> 'privateLinkServiceConnectionState' ->> 'status' = 'Approved'
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when sku_tier = 'Basic' then 'skip'
+        when c.id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when sku_tier = 'Basic' then a.name || ' is of ' || sku_tier || ' tier.'
+        when c.id is null then a.name || ' not uses private link.'
+        else a.name || ' uses private link.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_eventhub_namespace as a
+      left join eventhub_service_connection as c on c.id = a.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/EventHub
+Title: Event Hub namespaces should use private link

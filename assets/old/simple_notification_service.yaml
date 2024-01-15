@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Simple Notification Service (SNS)
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::sns::topic','aws::sns::subscription') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Application Integration

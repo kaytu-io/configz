@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: VM Image template
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.virtualmachineimages/imagetemplates' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Compute

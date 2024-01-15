@@ -1,0 +1,50 @@
+Description: To ensure secure configurations of in-guest settings of your machine, install the Guest Configuration extension. In-guest settings that the extension monitors include the configuration of the operating system, application configuration or presence, and environment settings. Once installed, in-guest policies will be available such as 'Windows Exploit guard should be enabled'.
+ID: azure_compute_vm_guest_configuration_installed
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+  PrimaryTable: azure_compute_virtual_machine
+  QueryToExecute: |
+    with agent_installed_vm as (
+      select
+        distinct a.vm_id
+      from
+        azure_compute_virtual_machine as a,
+        jsonb_array_elements(extensions) as b
+      where
+        b ->> 'Publisher' = 'Microsoft.GuestConfiguration'
+        and b ->> 'ProvisioningState' = 'Succeeded'
+    )
+    select
+      a.vm_id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.vm_id is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.vm_id is not null then a.title || ' have guest configuration extension installed.'
+        else a.title || ' guest configuration extension not installed.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_compute_virtual_machine as a
+      left join agent_installed_vm as b on a.vm_id = b.vm_id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/Compute
+Title: Guest Configuration extension should be installed on your machines

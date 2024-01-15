@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Local network gateway
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/localnetworkgateways' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Network Gateways

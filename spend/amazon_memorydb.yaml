@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: Amazon MemoryDB
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'Amazon MemoryDB' group by 1,2;
+status: active
+tables:
+- Amazon MemoryDB
+tags:
+  category:
+  - Database

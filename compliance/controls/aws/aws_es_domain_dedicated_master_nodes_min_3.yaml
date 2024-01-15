@@ -1,0 +1,45 @@
+Description: This control checks whether Elasticsearch domains are configured with at least three dedicated master nodes. This control fails if the domain does not use dedicated master nodes. This control passes if Elasticsearch domains have five dedicated master nodes. However, using more than three master nodes might be unnecessary to mitigate the availability risk, and will result in additional cost.
+ID: aws_es_domain_dedicated_master_nodes_min_3
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_elasticsearch_domain
+  PrimaryTable: aws_elasticsearch_domain
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when elasticsearch_cluster_config ->> 'DedicatedMasterEnabled' = 'false' then 'alarm'
+        when
+          elasticsearch_cluster_config ->> 'DedicatedMasterEnabled' = 'true'
+          and (elasticsearch_cluster_config ->> 'DedicatedMasterCount')::integer >= 3 then 'ok'
+        else 'alarm'
+      end status,
+      case
+        when elasticsearch_cluster_config ->> 'DedicatedMasterEnabled' = 'false' then title || ' dedicated master nodes disabled.'
+        else title || ' has ' || (elasticsearch_cluster_config ->> 'DedicatedMasterCount') || ' dedicated master node(s).'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_elasticsearch_domain;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - high_availability
+  foundational_security_item_id:
+  - es_7
+  plugin:
+  - aws
+  service:
+  - AWS/ES
+Title: Elasticsearch domains should be configured with at least three dedicated master nodes

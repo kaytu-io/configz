@@ -1,0 +1,41 @@
+Description: This policy creates a network watcher resource in regions with virtual networks. You need to ensure existence of a resource group named networkWatcherRG, which will be used to deploy network watcher instances.
+ID: azure_network_watcher_in_regions_with_virtual_network
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_network_watcher
+  - azure_subscription
+  - azure_virtual_network
+  PrimaryTable: azure_virtual_network
+  QueryToExecute: |
+    select
+      a.id resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.region is null then 'alarm'
+        when lower(b.resource_group) = 'networkwatcherrg' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.region is null then 'Network watcher does not exist in region' || a.region || '.'
+        when lower(b.resource_group) = 'networkwatcherrg' then b.name || ' exist in networkWatcherRG resource group.'
+        else b.name || ' does not exist in networkWatcherRG resource group.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_virtual_network as a
+      left join azure_network_watcher as b on a.region = b.region
+      join azure_subscription sub on sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  service:
+  - Azure/Network
+Title: Deploy network watcher when virtual networks are created

@@ -1,0 +1,95 @@
+Description: Ensure that OS disks (boot volumes) and data disks (non-boot volumes) are encrypted with CMK.
+DocumentURI: ""
+ID: azure_compute_os_and_data_disk_encrypted_with_cmk
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_compute_disk
+  - azure_subscription
+  PrimaryTable: azure_compute_disk
+  QueryToExecute: |
+    select
+      disk.id as resource,
+      disk.kaytu_account_id as kaytu_account_id,
+      disk.kaytu_resource_id as kaytu_resource_id,
+      case
+        when encryption_type = 'EncryptionAtRestWithCustomerKey' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when encryption_type = 'EncryptionAtRestWithCustomerKey' then disk.name || ' encrypted with CMK.'
+        else disk.name || ' not encrypted with CMK.'
+      end as reason
+      
+      , disk.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_compute_disk disk,
+      azure_subscription sub
+    where
+      disk_state = 'Attached'
+      and sub.subscription_id = disk.subscription_id;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "7.2"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "7"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/Compute
+  x-kaytu-explanation:
+  - "This Azure control refers to the security measure of encrypting your operating system (OS) disks and data disks with a Customer-Managed Key (CMK). \n\nAzure Disk Encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. It uses the BitLocker feature of Windows and the DM-Crypt feature of Linux to provide volume encryption for the OS and data disks. \n\nIn this context, CMK allows you to be in control of the key used for encryption. Instead of relying on Azure's service-managed keys, you handle key management tasks such as key creation, rotation, and storage. \n\nEnsuring OS disks and data disks are encrypted with CMK enhances the security of your data by ensuring that only individuals with the correct key can decrypt and access the information. \n\nThe corresponding markup in Azure (based on Azure Resource Manager templates) might look like this:\n\n```json\n{\n  \"type\": \"Microsoft.Compute/disks\",\n  \"apiVersion\": \"2019-11-01\",\n  \"name\": \"[variables('osDiskName')]\",\n  \"location\": \"[parameters('location')]\",\n  \"sku\": {\n    \"name\": \"Premium_LRS\",\n    \"tier\": \"Premium\"\n  },\n  \"properties\": {\n    \"creationData\": {\n      \"createOption\": \"Empty\"\n    },\n    \"encryption\": {\n      \"type\": \"EncryptionAtRestWithCustomerKey\",\n      \"diskEncryptionSetId\": \"[parameters('diskEncryptionSetId')]\"\n    }\n  }\n}\n```\n\nPlease replace the `diskEncryptionSetId` parameter with your appropriate DiskEncryptionSet resource ID that contains your CMK.\n\nRemember to comply with local laws and regulations in regards to the key management and data encryption."
+  x-kaytu-noncompliance-cost:
+  - |-
+    Failure to comply with the Azure control of encrypting OS disks (boot volumes) and data disks (non-boot volumes) can have several potential costs:
+
+    1. **Security Risk:** The biggest potential cost is the security risk. Unencrypted disks can potentially be compromised, leading to unauthorized data access, leakage of sensitive information, or data corruption. 
+
+    2. **Regulatory Violations:** Depending on the nature of your business, specifically if you are dealing with private user data or sensitive information, not adhering to the control can lead to regulatory violations. Several compliance regulations like GDPR, HIPAA, PCI DSS require data, including that residing on OS and non-boot volumes, to be encrypted.
+
+    3. **Financial Penalties:** Breach of aforementioned regulations could lead to significant financial penalties. For example, under GDPR, fines can be up to €20 million, or 4% of the worldwide annual revenue of the prior fiscal year, whichever is higher.
+
+    4. **Reputation Damage:** Data breaches often lead to severe damage to a company's reputation, leading to loss of customers and revenues. 
+
+    5. **Business Continuity:** In the event of a security breach, the effort required to recover the data and resume normal operations could be considerable, leading to cost in terms of both time and resources.
+
+    6. **Legal Liability:** In some cases, failure to adequately protect sensitive data could potentially lead to legal liability, adding to the cost of non-compliance.
+
+    It is therefore in an organization's best interest to adhere to this control and ensure disks are appropriately encrypted with a Customer Managed Key (CMK). This practice significantly reduces the threat landscape and helps maintain the integrity and security of your data.
+  x-kaytu-usefulness-example:
+  - |-
+    Azure Disk Encryption is a useful feature that helps protect your data by encrypting your Windows and Linux IaaS virtual machine disks. Indeed, using your own key, as a customer-managed key (CMK), for disk encryption enhances data protection and compliance efforts. 
+
+    As an example, let's consider a financial company managing sensitive client data on Azure. It is important to make sure that client data housed in virtual machines is not compromised. For this, every bit of data stored - byte to disk - should be encrypted. In that case, using CMK, it would certainly add an additional layer of security and control. You'd be in charge of key management tasks like key rotation and creating security snapshots.
+
+    Therefore, it would look like:
+
+    1. Create a Key Vault and a CMK.
+    ```
+    az keyvault create --name "mySecureVault" --resource-group "myResourceGroup" --location "eastus"
+
+    az keyvault key create --vault-name "mySecureVault" --name "myDiskEncryptionKey" --protection software
+    ```
+
+    2. Encrypt your OS and data disks with your CMK.
+    ```
+    az vm encryption enable --resource-group "myResourceGroup" --name "myVM" --disk-encryption-keyvault "mySecureVault" --key-encryption-key "myDiskEncryptionKey" --volume-type “ALL”
+    ```
+
+    After these steps, all the disks (OS and data) of the specified VM will be encrypted with the given CMK. At this point, even if a malicious agent were to gain access to the disk, they would not be able to read the data without also having access to the CMK used for encryption. Thus, it provides an additional security layer to protect sensitive data.
+Title: Ensure that 'OS and Data' disks are encrypted with CMK

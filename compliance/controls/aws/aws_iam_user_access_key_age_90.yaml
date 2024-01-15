@@ -1,0 +1,53 @@
+Description: Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS. AWS users need their own access keys to make programmatic calls to AWS from the AWS Command Line Interface (AWS CLI), Tools for Windows PowerShell, the AWS SDKs, or direct HTTP calls using the APIs for individual AWS services. It is recommended that all access keys be regularly rotated.
+DocumentURI: ""
+ID: aws_iam_user_access_key_age_90
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_iam_access_key
+  PrimaryTable: aws_iam_access_key
+  QueryToExecute: |
+    select
+      'arn:' || partition || ':iam::' || account_id || ':user/' || user_name || '/accesskey/' || access_key_id as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when create_date <= (current_date - interval '90' day) then 'alarm'
+        else 'ok'
+      end status,
+      user_name || ' ' || access_key_id || ' created ' || to_char(create_date , 'DD-Mon-YYYY') ||
+        ' (' || extract(day from current_timestamp - create_date) || ' days).'
+      as reason
+      , account_id
+    from
+      aws_iam_access_key;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "1.4"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "1"
+  cis_type:
+  - scored
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  x-kaytu-explanation:
+  - "Sure, here you go:\n\n```markdown\n## AWS Access keys\n\nAccess keys in [AWS](https://aws.amazon.com/) are a pair of data, which consist of an **Access Key ID** and **Secret Access Key**. These keys are used for signing programmatic requests whenever a user makes a call to AWS.\n\nAWS users generally require their own access keys in order to make programmatic calls to AWS. These calls are made from a variety of sources, including:\n\n1. [AWS Command Line Interface (AWS CLI)](https://aws.amazon.com/cli/)\n2. [Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-windows.html)\n3. [The AWS SDKs](https://aws.amazon.com/tools/)\n4. Direct HTTP calls using the APIs for individual AWS services.\n\nAs a best practice, it is recommended to regularly rotate all access keys to help secure your AWS resources. Regularly changing your AWS security credentials can make your account less vulnerable to identity theft or other unauthorized access.\n```\nThis above markup provides the necessary information on AWS access keys, their usage, and recommended practices."
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance with this AWS control might result in the following costs:\n\n1. **Security Risks**: Not rotating access keys regularly can expose an organization to security risks such as unauthorized access and data breaches. If access keys are exposed accidentally or stolen, malicious users can use them to access and manipulate AWS resources.\n\n2. **Financial Loss**: Non-compliance could lead to financial loss, especially if the compromised access keys are used to carry out costly operations (e.g., running large EC2 instances) on your AWS account.\n\n3. **Regulatory Penalties**: Organizations operating under regulatory environments might face penalties for non-compliance with security controls. Regulations like GDPR and CCPA mandate that organizations implement appropriate security measures to protect user data.\n\n4. **Reputation Damage**: If a security breach occurs due to non-rotation of access keys, the company’s reputation may suffer. This can lead to loss of customers, partners, and potential business opportunities.\n\n5. **Operational Costs**: In the event of a security incident caused by non-compliant practices, resources will need to be diverted to damage control, investigations, recovery efforts, and bolstering security.\n\nHence, it is highly recommended to comply with this AWS control by regularly rotating access keys to mitigate potential data and financial losses."
+  x-kaytu-usefulness-example:
+  - "# Example of AWS Control - Access Keys Usefulness\n\nConsider a scenario where a software development team is working on a project which uses Amazon S3 bucket to store images. The application resides on premises and needs to interact with the AWS S3 Bucket for uploading and retrieving images as per the customer requirements. \n\nIn such cases, AWS Access Keys come into play. The software development team would need to make programmatic calls to the AWS S3 service from their application. \n\nThey can use these access keys, which consists of an access key ID and secret access key, to sign their requests to AWS S3 Service. It can be done either from AWS CLI, AWS SDKs used in their application, or directly making HTTP calls using AWS S3 Service specific APIs. \n\nLet's see an example of how to use access keys in Python using Boto3, which is the Amazon Web Services (AWS) Software Development Kit (SDK) for Python:\n\n```python\nimport boto3\n\n# Create a session using your access keys\nsession = boto3.Session(\n    aws_access_key_id='YOUR_ACCESS_KEY',\n    aws_secret_access_key='YOUR_SECRET_KEY'\n)\n\n# Now you can use this session to make programmatic AWS calls\ns3 = session.resource('s3')\n\n# List all the buckets\nfor bucket in s3.buckets.all():\n    print(bucket.name)\n```\n\nIn this script, the session is created using access keys, and then this session is used to list all the S3 buckets. \n\nThis scenario underlines the way in which the access keys allow secure access to AWS resources programmatically, proving their essential role within AWS environments. \n\nAs a best practice, it is recommended to rotate these access keys regularly to ensure secure access. AWS IAM provides functionality to manage and rotate these access keys effectively.\n"
+Title: Ensure access keys are rotated every 90 days or less

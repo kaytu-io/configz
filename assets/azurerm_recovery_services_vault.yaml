@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Recovery Services vault
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.recoveryservices/vaults' group by 1,2;
+status: active
+tags:
+  category:
+  - Resiliency

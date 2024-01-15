@@ -1,0 +1,78 @@
+Description: This control checks whether the RDS cluster or instance uses a port other than the default port of the database engine.
+ID: aws_rds_db_instance_and_cluster_no_default_port
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_rds_db_cluster
+  - aws_rds_db_instance
+  PrimaryTable: null
+  QueryToExecute: |
+    (
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      'aws_rds_db_cluster' as kaytu_table_name,
+      case
+          when engine similar to '%(aurora|mysql|mariadb)%' and port = '3306' then 'alarm'
+          when engine like '%postgres%' and port = '5432' then 'alarm'
+          when engine like 'oracle%' and port = '1521' then 'alarm'
+          when engine like 'sqlserver%' and port = '1433' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+          when engine similar to '%(aurora|mysql|mariadb)%' and port = '3306' then  title || ' ' ||  engine || ' uses a default port.'
+          when engine like '%postgres%' and port = '5432' then  title || ' ' ||  engine || ' uses a default port.'
+          when engine like 'oracle%' and port = '1521' then  title || ' ' ||  engine || ' uses a default port.'
+          when engine like 'sqlserver%' and port = '1433' then  title || ' ' ||  engine || ' uses a default port.'
+        else title || ' doesnt use a default port.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_rds_db_cluster
+    )
+    union
+    (
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      'aws_rds_db_instance' as kaytu_table_name,
+      case
+          when engine similar to '%(aurora|mysql|mariadb)%' and port = '3306' then 'alarm'
+          when engine like '%postgres%' and port = '5432' then 'alarm'
+          when engine like 'oracle%' and port = '1521' then 'alarm'
+          when engine like 'sqlserver%' and port = '1433' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+          when engine similar to '%(aurora|mysql|mariadb)%' and port = '3306' then  title || ' ' ||  engine || ' uses a default port.'
+          when engine like '%postgres%' and port = '5432' then  title || ' ' ||  engine || ' uses a default port.'
+          when engine like 'oracle%' and port = '1521' then  title || ' ' ||  engine || ' uses a default port.'
+          when engine like 'sqlserver%' and port = '1433' then  title || ' ' ||  engine || ' uses a default port.'
+        else title || ' doesnt use a default port.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_rds_db_instance
+    );
+Severity: low
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - secure_network_configuration
+  foundational_security_item_id:
+  - rds_23
+  plugin:
+  - aws
+  service:
+  - AWS/RDS
+Title: RDS databases and clusters should not use a database engine default port

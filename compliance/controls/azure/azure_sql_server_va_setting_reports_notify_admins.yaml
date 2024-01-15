@@ -1,0 +1,108 @@
+Description: Enable Vulnerability Assessment (VA) setting 'Also send email notifications to admins and subscription owners'.
+DocumentURI: ""
+ID: azure_sql_server_va_setting_reports_notify_admins
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+  PrimaryTable: azure_sql_server
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when
+          security -> 'properties' ->> 'state' = 'Disabled'
+          or
+          (
+            security -> 'properties' ->> 'state' = 'Enabled'
+            and assessment -> 'properties' ->> 'storageContainerPath' is not null
+            and assessment -> 'properties' -> 'recurringScans' ->> 'emailSubscriptionAdmins' = 'false'
+          )
+          then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when
+          security -> 'properties' ->> 'state' = 'Disabled'
+          or
+          (
+            security -> 'properties' ->> 'state' = 'Enabled'
+            and assessment -> 'properties' ->> 'storageContainerPath' is not null
+            and assessment -> 'properties' -> 'recurringScans' ->> 'emailSubscriptionAdmins' = 'false'
+          )
+          then s.name || ' VA setting not configured to send email notifications to subscription admins and owners.'
+        else s.name || ' VA setting configured to send email notifications to subscription admins and owners.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_server s,
+      jsonb_array_elements(server_security_alert_policy) security,
+      jsonb_array_elements(server_vulnerability_assessment) assessment,
+      azure_subscription sub
+    where
+      sub.subscription_id = s.subscription_id;
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - 4.2.5
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "4.2"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/SQL
+  x-kaytu-explanation:
+  - |-
+    Azure Vulnerability Assessment (VA) is a service that provides visibility into your security state through continuous assessment of your environment. This can help to detect and fix security vulnerabilities before they can be exploited.
+
+    In Azure, you can enable a setting that allows VA to also send email notifications to admins and subscription owners whenever a vulnerability is detected. This can be particularly useful for ensuring that the right people are aware of any potential security issues as soon as possible. 
+
+    The markup to enable this setting might look something like this:
+
+    ```xml
+    <VulnerabilityAssessmentSettings>
+      <SendNotificationsToAdmins>true</SendNotificationsToAdmins>
+    </VulnerabilityAssessmentSettings>
+    ```
+
+    This markup is using XML format. When the 'SendNotificationsToAdmins' tag is set to 'true', it means that the VA will also send email notifications to admins and subscription owners. Please note this is a hypothetical explanation because the actual process involves configurations in the Azure portal or using Azure CLI or PowerShell but not the XML markup format.
+  x-kaytu-noncompliance-cost:
+  - "The cost of non-compliance with the Azure Control that requires the setting 'Also send email notifications to admins and subscription owners' in your Vulnerability Assessment (VA) could be very extensive:\n\n1. **Undetected Threats**: If this control is not enabled, administrators and subscription owners may not receive immediate or prompt notifications about potential vulnerabilities. This can delay the response to threats and expose the Azure environment to avoidable risks.\n\n2. **Increased Risks**: This can lead to an increase in potential breaches to security, data loss, or downtime which may result in regulatory fines if sensitive data is involved.\n\n3. **Operational Disruption**: Lack of prompt vulnerability notifications can lead to operational disruptions as responding to a threat after it has caused damage is often a more lengthy and complex process, which can impact productivity and escalate recovery costs.\n\n4. **Increased Financial Costs**: Responding to cyber threats or attacks could require massive resources in terms of manpower and finances, especially if the threat leads to a data breach, system misconfiguration, or unwanted system interruption.\n\n5. **Damage to Reputation**: If vulnerabilities are exploited due to this oversight, the incident could damage the organization’s reputation, especially if clients' or users' data are compromised. Customers could potentially lose trust and confidence in the services, which can lead to reduced customer base and sales revenue.\n\n6. **Legal Consequences**: If an organization is found to be non-compliant with certain laws, regulations, or standards (specific to the industry or type of data handled), it could face legal consequences, including heavy fines or sanctions.\n\nTherefore, it is essential to follow the Azure Control's guidelines to enable Vulnerability Assessment settings for sending notifications to admins and subscription owners."
+  x-kaytu-usefulness-example:
+  - |-
+    Azure's Vulnerability Assessment (VA) is a useful tool that helps to identify and mitigate potential security risks to your resources. Enabling the 'Also send email notifications to admins and subscription owners' setting can enhance your organization's security management, as outlined in the following instance:
+
+    ```
+    John is a Security Engineer responsible for maintaining the security of cloud-based resources in his company. They have diverse resources hosted on Azure and it's crucial for John and his team to not overlook any potential vulnerabilities.
+
+    To ensure effective security management, John has activated Azure's Vulnerability Assessment for his organization's resources. Moreover, he has enabled the 'Also send email notifications to admins and subscription owners' setting. 
+
+    This configuration is very beneficial:
+
+    - It makes security management more proactive. Now, whenever the Vulnerability Assessment identifies a potential risk, both John and the subscription owner instantly receive an email alert.  
+
+    - The immediacy of these notifications allows John and his team to quickly respond to vulnerabilities and prevent any potential breaches.
+
+    - Moreover, since the subscription owner also receives the notification, it boosts transparency about the state of security within the company.
+
+    ```
+    Hence, this Azure control setting is effective in enhancing real-time security risk identification and management.
+Title: Ensure that VA setting 'Also send email notifications to admins and subscription owners' is set for a SQL server

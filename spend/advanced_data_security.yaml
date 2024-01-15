@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Advanced Data Security
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Advanced Data Security' group by 1,2;
+status: active
+tables:
+- Advanced Data Security
+tags:
+  category:
+  - Security

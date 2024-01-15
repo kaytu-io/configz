@@ -1,6 +1,15 @@
 {
   "ID": 12,
-  "QueryID": "aws_insight_ebs_snapshot_older_than_year",
+  "Query": {
+    "ID": "aws_insight_ebs_snapshot_older_than_year",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "SELECT snapshot_id, arn, start_time, account_id, kaytu_account_id, kaytu_resource_id FROM aws_ebs_snapshot WHERE start_time \u003c now() - interval '1 year';",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ebs_snapshot",
+    "ListOfTables": [
+      "aws_ebs_snapshot"
+    ]
+  },
   "Connector": "AWS",
   "ShortTitle": "Snapshots older than a year",
   "LongTitle": "List Snapshots older than 365 days",

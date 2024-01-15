@@ -1,0 +1,46 @@
+Description: This control checks whether Elasticsearch domains have audit logging enabled. This control fails if an Elasticsearch domain does not have audit logging enabled.
+ID: aws_es_domain_audit_logging_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_elasticsearch_domain
+  PrimaryTable: aws_elasticsearch_domain
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when
+          log_publishing_options -> 'AUDIT_LOGS' -> 'Enabled' = 'true'
+          and log_publishing_options -> 'AUDIT_LOGS' -> 'CloudWatchLogsLogGroupArn' is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when
+          log_publishing_options -> 'AUDIT_LOGS' -> 'Enabled' = 'true'
+          and log_publishing_options -> 'AUDIT_LOGS' -> 'CloudWatchLogsLogGroupArn' is not null then title || ' audit logging enabled.'
+        else title || ' audit logging disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_elasticsearch_domain;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - logging
+  foundational_security_item_id:
+  - es_5
+  plugin:
+  - aws
+  service:
+  - AWS/ES
+Title: Elasticsearch domains should have audit logging enabled

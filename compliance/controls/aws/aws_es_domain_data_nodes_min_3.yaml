@@ -1,0 +1,45 @@
+Description: This control checks whether Elasticsearch domains are configured with at least three data nodes and zoneAwarenessEnabled is true.
+ID: aws_es_domain_data_nodes_min_3
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_elasticsearch_domain
+  PrimaryTable: aws_elasticsearch_domain
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when elasticsearch_cluster_config ->> 'ZoneAwarenessEnabled' = 'false' then 'alarm'
+        when
+          elasticsearch_cluster_config ->> 'ZoneAwarenessEnabled' = 'true'
+          and (elasticsearch_cluster_config ->> 'InstanceCount')::integer >= 3 then 'ok'
+        else 'alarm'
+      end status,
+      case
+        when elasticsearch_cluster_config ->> 'ZoneAwarenessEnabled' = 'false' then title || ' zone awareness disabled.'
+        else title || ' has ' || (elasticsearch_cluster_config ->> 'InstanceCount') || ' data node(s).'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_elasticsearch_domain;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - high_availability
+  foundational_security_item_id:
+  - es_6
+  plugin:
+  - aws
+  service:
+  - AWS/ES
+Title: Elasticsearch domains should have at least three data nodes

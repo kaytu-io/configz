@@ -1,0 +1,1080 @@
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_waf_web_acl_logging_enabled
+  - aws_waf_regional_rule_condition_attached
+  - aws_waf_regional_rule_group_rule_attached
+  - aws_waf_regional_web_acl_rule_attached
+  - aws_waf_rule_condition_attached
+  - aws_waf_rule_group_rule_attached
+  - aws_waf_web_acl_rule_attached
+  - aws_wafv2_web_acl_rule_attached
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_waf
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/WAF
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: WAF
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_efs_file_system_encrypt_data_at_rest
+  - aws_efs_file_system_automatic_backups_enabled
+  - aws_efs_access_point_enforce_root_directory
+  - aws_efs_access_point_enforce_user_identity
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_efs
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/EFS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: EFS
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudfront_distribution_default_root_object_configured
+  - aws_cloudfront_distribution_origin_access_identity_enabled
+  - aws_cloudfront_distribution_encryption_in_transit_enabled
+  - aws_cloudfront_distribution_configured_with_origin_failover
+  - aws_cloudfront_distribution_logging_enabled
+  - aws_cloudfront_distribution_waf_enabled
+  - aws_cloudfront_distribution_use_custom_ssl_certificate
+  - aws_cloudfront_distribution_sni_enabled
+  - aws_cloudfront_distribution_custom_origins_encryption_in_transit_enabled
+  - aws_cloudfront_distribution_no_deprecated_ssl_protocol
+  - aws_cloudfront_distribution_no_non_existent_s3_origin
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_cloudfront
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/CloudFront
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: CloudFront
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_account_alternate_contact_security_registered
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_account
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/Account
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Account
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_redshift_cluster_prohibit_public_access
+  - aws_redshift_cluster_encryption_in_transit_enabled
+  - aws_redshift_cluster_automatic_snapshots_min_7_days
+  - aws_redshift_cluster_automatic_snapshots_min_7_days
+  - aws_redshift_cluster_automatic_upgrade_major_versions_enabled
+  - aws_redshift_cluster_enhanced_vpc_routing_enabled
+  - aws_redshift_cluster_no_default_admin_name
+  - aws_redshift_cluster_no_default_database_name
+  - aws_redshift_cluster_kms_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_redshift
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/Redshift
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Redshift
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ebs_snapshot_not_publicly_restorable
+  - aws_vpc_default_security_group_restricts_all_traffic
+  - aws_ebs_attached_volume_encryption_enabled
+  - aws_ec2_stopped_instance_30_days
+  - aws_vpc_flow_logs_enabled
+  - aws_ec2_ebs_default_encryption_enabled
+  - aws_ec2_instance_uses_imdsv2
+  - aws_ec2_instance_not_publicly_accessible
+  - aws_vpc_configured_to_use_vpc_endpoints
+  - aws_vpc_subnet_auto_assign_public_ip_disabled
+  - aws_vpc_network_acl_unused
+  - aws_ec2_instance_not_use_multiple_enis
+  - aws_vpc_security_group_allows_ingress_authorized_ports
+  - aws_vpc_security_group_restricted_common_ports
+  - aws_vpc_vpn_tunnel_up
+  - aws_vpc_network_acl_remote_administration
+  - aws_vpc_security_group_unused
+  - aws_ec2_transit_gateway_auto_cross_account_attachment_disabled
+  - aws_ec2_instance_virtualization_type_no_paravirtual
+  - aws_ec2_launch_template_not_publicly_accessible
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_ec2
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/EC2
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: EC2
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_codebuild_project_source_repo_oauth_configured
+  - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
+  - aws_codebuild_project_s3_logs_encryption_enabled
+  - aws_codebuild_project_logging_enabled
+  - aws_codebuild_project_environment_privileged_mode_disabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_codebuild
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/CodeBuild
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: CodeBuild
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_kinesis_stream_server_side_encryption_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_kinesis
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/Kinesis
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Kinesis
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_elastic_beanstalk_enhanced_health_reporting_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_elasticbeanstalk
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ElasticBeanstalk
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Elastic Beanstalk
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ecs_task_definition_user_for_host_mode_check
+  - aws_ecs_service_not_publicly_accessible
+  - aws_ecs_task_definition_no_host_pid_mode
+  - aws_ecs_task_definition_container_non_privileged
+  - aws_ecs_task_definition_container_readonly_root_filesystem
+  - aws_ecs_task_definition_container_environment_no_secret
+  - aws_ecs_service_fargate_using_latest_platform_version
+  - aws_ecs_cluster_container_insights_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_ecs
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ECS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Elastic Container Service
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudtrail_multi_region_trail_enabled
+  - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+  - aws_cloudtrail_trail_validation_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_cloudtrail
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/CloudTrail
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: CloudTrail
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_es_domain_encryption_at_rest_enabled
+  - aws_es_domain_in_vpc
+  - aws_es_domain_node_to_node_encryption_enabled
+  - aws_es_domain_error_logging_enabled
+  - aws_es_domain_audit_logging_enabled
+  - aws_es_domain_data_nodes_min_3
+  - aws_es_domain_dedicated_master_nodes_min_3
+  - aws_es_domain_encrypted_using_tls_1_2
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_es
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ES
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Elasticsearch
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudformation_stack_notifications_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_cloudformation
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/CloudFormation
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: CloudFormation
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_autoscaling_group_with_lb_use_health_check
+  - aws_autoscaling_group_multiple_az_configured
+  - aws_autoscaling_launch_config_requires_imdsv2
+  - aws_autoscaling_launch_config_hop_limit
+  - aws_autoscaling_launch_config_public_ip_disabled
+  - aws_autoscaling_use_multiple_instance_types_in_multiple_az
+  - aws_autoscaling_group_uses_ec2_launch_template
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_autoscaling
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/AutoScaling
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Auto Scaling
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_emr_cluster_master_nodes_no_public_ip
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_emr
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/EMR
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: EMR
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_policy_custom_attached_no_star_star
+  - aws_iam_user_no_inline_attached_policies
+  - aws_iam_user_access_key_age_90
+  - aws_iam_root_user_no_access_keys
+  - aws_iam_user_console_access_mfa_enabled
+  - aws_iam_root_user_hardware_mfa_enabled
+  - aws_iam_account_password_policy_strong_min_length_8
+  - aws_iam_user_unused_credentials_90
+  - aws_iam_policy_custom_no_service_wildcard
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_iam
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/IAM
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: IAM
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_elb_application_lb_redirect_http_request_to_https
+  - aws_elb_classic_lb_use_ssl_certificate
+  - aws_elb_classic_lb_use_tls_https_listeners
+  - aws_elb_application_lb_drop_http_headers
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_elb_application_lb_deletion_protection_enabled
+  - aws_ec2_classic_lb_connection_draining_enabled
+  - aws_elb_classic_lb_cross_zone_load_balancing_enabled
+  - aws_elb_classic_lb_multiple_az_configured
+  - aws_elb_application_lb_desync_mitigation_mode
+  - aws_elb_application_gateway_network_lb_multiple_az_configured
+  - aws_elb_classic_lb_desync_mitigation_mode
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_elb
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ELB
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: ELB
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_rds_db_snapshot_prohibit_public_access
+  - aws_rds_db_instance_prohibit_public_access
+  - aws_rds_db_instance_encryption_at_rest_enabled
+  - aws_rds_db_snapshot_encrypted_at_rest
+  - aws_rds_db_instance_multiple_az_enabled
+  - aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+  - aws_rds_db_cluster_deletion_protection_enabled
+  - aws_rds_db_instance_deletion_protection_enabled
+  - aws_rds_db_instance_logging_enabled
+  - aws_rds_db_instance_iam_authentication_enabled
+  - aws_rds_db_instance_backup_enabled
+  - aws_rds_db_cluster_iam_authentication_enabled
+  - aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+  - aws_rds_db_cluster_aurora_backtracking_enabled
+  - aws_rds_db_cluster_multiple_az_enabled
+  - aws_rds_db_cluster_copy_tags_to_snapshot_enabled
+  - aws_rds_db_instance_copy_tags_to_snapshot_enabled
+  - aws_rds_db_instance_in_vpc
+  - aws_rds_db_cluster_events_subscription
+  - aws_rds_db_instance_events_subscription
+  - aws_rds_db_parameter_group_events_subscription
+  - aws_rds_db_security_group_events_subscription
+  - aws_rds_db_instance_and_cluster_no_default_port
+  - aws_rds_db_cluster_no_default_admin_name
+  - aws_rds_db_instance_no_default_admin_name
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_rds
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/RDS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: RDS
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_elb_application_lb_redirect_http_request_to_https
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_elbv2
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ELBv2
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: ELBv2
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_networkfirewall_firewall_policy_rule_group_not_empty
+  - aws_networkfirewall_firewall_policy_default_stateless_action_check_full_packets
+  - aws_networkfirewall_firewall_policy_default_stateless_action_check_fragmented_packets
+  - aws_networkfirewall_stateless_rule_group_not_empty
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_networkfirewall
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/NetworkFirewall
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Network Firewall
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_sagemaker_notebook_instance_direct_internet_access_disabled
+  - aws_sagemaker_notebook_instance_in_vpc
+  - aws_sagemaker_notebook_instance_root_access_disabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_sagemaker
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/SageMaker
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: SageMaker
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_s3_public_access_block_account
+  - aws_s3_bucket_restrict_public_read_access
+  - aws_s3_bucket_restrict_public_write_access
+  - aws_s3_bucket_default_encryption_enabled
+  - aws_s3_bucket_enforces_ssl
+  - aws_s3_bucket_policy_restricts_cross_account_permission_changes
+  - aws_s3_bucket_public_access_blocked
+  - aws_s3_bucket_logging_enabled
+  - aws_s3_bucket_versioning_and_lifecycle_policy_enabled
+  - aws_s3_bucket_event_notifications_enabled
+  - aws_s3_bucket_acls_should_prohibit_user_access
+  - aws_s3_bucket_lifecycle_policy_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_s3
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/S3
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: S3
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_guardduty
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/GuardDuty
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: GuardDuty
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_config_enabled_all_regions
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_config
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/Config
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Config
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ec2_instance_ssm_managed
+  - aws_ssm_managed_instance_compliance_patch_compliant
+  - aws_ssm_managed_instance_compliance_association_compliant
+  - aws_ssm_document_prohibit_public_access
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_ssm
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/SSM
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: SSM
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_sqs_queue_encrypted_at_rest
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_sqs
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/SQS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: SQS
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ecr_repository_image_scan_on_push_enabled
+  - aws_ecr_repository_tag_immutability_enabled
+  - aws_ecr_repository_lifecycle_policy_configured
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_ecr
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ECR
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Elastic Container Registry
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_kms_key_decryption_restricted_in_iam_customer_managed_policy
+  - aws_kms_key_decryption_restricted_in_iam_inline_policy
+  - aws_kms_key_not_pending_deletion
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_kms
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/KMS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: KMS
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_opensearch_domain_encryption_at_rest_enabled
+  - aws_opensearch_domain_in_vpc
+  - aws_opensearch_domain_node_to_node_encryption_enabled
+  - aws_opensearch_domain_logs_to_cloudwatch
+  - aws_opensearch_domain_audit_logging_enabled
+  - aws_opensearch_domain_data_node_fault_tolerance
+  - aws_opensearch_domain_fine_grained_access_enabled
+  - aws_opensearch_domain_https_required
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_opensearch
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/OpenSearch
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Opensearch
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_dms_replication_instance_not_publicly_accessible
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_dms
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/DMS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: DMS
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_sns_topic_encrypted_at_rest
+  - aws_sns_topic_notification_delivery_status_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_sns
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/SNS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: SNS
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_lambda_function_restrict_public_access
+  - aws_lambda_function_use_latest_runtime
+  - aws_lambda_function_multiple_az_configured
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_lambda
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/Lambda
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Lambda
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_logging_enabled
+  - aws_apigateway_rest_api_stage_use_ssl_certificate
+  - aws_apigateway_rest_api_stage_xray_tracing_enabled
+  - aws_apigateway_stage_use_waf_web_acl
+  - aws_apigateway_stage_cache_encryption_at_rest_enabled
+  - aws_api_gatewayv2_route_authorization_type_configured
+  - aws_gatewayv2_stage_access_logging_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_apigateway
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/APIGateway
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: API Gateway
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_acm_certificate_expires_30_days
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_acm
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ACM
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: ACM
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_secretsmanager_secret_automatic_rotation_enabled
+  - aws_secretsmanager_secret_rotated_as_scheduled
+  - aws_secretsmanager_secret_last_used_1_day
+  - aws_secretsmanager_secret_automatic_rotation_lambda_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_secretsmanager
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/SecretsManager
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Secrets Manager
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_dynamodb_table_auto_scaling_enabled
+  - aws_dynamodb_table_point_in_time_recovery_enabled
+  - aws_dax_cluster_encryption_at_rest_enabled
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_dynamodb
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/DynamoDB
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: DynamoDB
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_eks_cluster_endpoint_restrict_public_access
+  - aws_eks_cluster_with_latest_kubernetes_version
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_eks
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/EKS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: EKS
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+  - aws_elasticache_cluster_auto_minor_version_upgrade_enabled
+  - aws_elasticache_replication_group_auto_failover_enabled
+  - aws_elasticache_replication_group_encryption_at_rest_enabled
+  - aws_elasticache_replication_group_encryption_in_transit_enabled
+  - aws_elasticache_replication_group_redis_auth_enabled
+  - aws_elasticache_cluster_no_default_subnet_group
+  Description: ""
+  Enabled: true
+  ID: aws_foundational_security_elasticache
+  Managed: true
+  Tags:
+    aws_foundational_security:
+    - "true"
+    category:
+    - Compliance
+    plugin:
+    - aws
+    service:
+    - AWS/ElastiCache
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: ElasticCache

@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Container Registry
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Container Registry' group by 1,2;
+status: active
+tables:
+- Container Registry
+tags:
+  category:
+  - Containers

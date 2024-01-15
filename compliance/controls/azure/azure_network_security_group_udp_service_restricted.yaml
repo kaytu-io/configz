@@ -1,0 +1,82 @@
+Description: Disable Internet exposed UDP ports on network security groups.
+DocumentURI: ""
+ID: azure_network_security_group_udp_service_restricted
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_network_security_group
+  - azure_subscription
+  PrimaryTable: azure_network_security_group
+  QueryToExecute: "with network_sg as (\n  select\n    distinct name sg_name\n  from\n    azure_network_security_group nsg,\n    jsonb_array_elements(security_rules) sg,\n    jsonb_array_elements_text(sg -> 'properties' -> 'destinationPortRanges' || (sg -> 'properties' -> 'destinationPortRange') :: jsonb) dport,\n    jsonb_array_elements_text(sg -> 'properties' -> 'sourceAddressPrefixes' || (sg -> 'properties' -> 'sourceAddressPrefix') :: jsonb) sip\n  where\n    sg -> 'properties' ->> 'access' = 'Allow'\n    and sg -> 'properties' ->> 'direction' = 'Inbound'\n    and sg -> 'properties' ->> 'protocol' = 'UDP'\n    and sip in ('*', '0.0.0.0', '0.0.0.0/0', 'Internet', 'any', '<nw>/0', '/0')\n    and (\n      dport = '*'\n      or (\n        dport like '%-%'\n        and (\n          53 between split_part(dport, '-', 1) :: integer and split_part(dport, '-', 2) :: integer\n          or 123 between split_part(dport, '-', 1) :: integer and split_part(dport, '-', 2) :: integer\n          or 161 between split_part(dport, '-', 1) :: integer and split_part(dport, '-', 2) :: integer\n          or 389 between split_part(dport, '-', 1) :: integer and split_part(dport, '-', 2) :: integer\n          or 1900 between split_part(dport, '-', 1) :: integer and split_part(dport, '-', 2) :: integer\n        )\n      )\n    )\n)\nselect\n  sg.id resource,\n  sg.kaytu_account_id as kaytu_account_id,\n  sg.kaytu_resource_id as kaytu_resource_id,\n  case\n    when nsg.sg_name is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when nsg.sg_name is null\n      then sg.title || ' restricts UDP services from internet.'\n    else sg.title || ' allows UDP services from internet.'\n  end as reason\n  \n  , sg.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_network_security_group sg\n  left join network_sg nsg on nsg.sg_name = sg.name\n  join azure_subscription sub on sub.subscription_id = sg.subscription_id;\n"
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "6.6"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "6"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/Network
+  x-kaytu-explanation:
+  - "### Azure Control: Disable Internet exposed UDP ports on network security groups\n\n#### Description:\nThis Azure Control focuses on enhancing security by preventing Internet exposure of UDP ports within network security groups (NSGs).\n\n#### Implementation Steps:\n1. Identify the network security group associated with the target resources.\n2. Review existing inbound and outbound rules for UDP ports.\n3. Disable Internet-exposed UDP ports by updating NSG rules.\n4. Validate the changes to ensure desired security posture.\n\n#### Rationale:\nBy restricting UDP port exposure to the Internet, this control helps mitigate potential security risks, unauthorized access, and malicious activities.\n\n#### Compliance Status:\nCheck and ensure that all NSGs align with the configured rules to comply with this control.\n\n"
+  x-kaytu-noncompliance-cost:
+  - |-
+    Non-compliance with this Azure Control can result in several potential costs:
+
+    Security Risks:
+
+    Exposure of UDP ports to the Internet increases the risk of unauthorized access and potential security breaches.
+    Data Breach Consequences:
+
+    Failure to disable Internet-exposed UDP ports may lead to data breaches, compromising sensitive information.
+    Regulatory Penalties:
+
+    Non-compliance with security controls, especially related to network exposure, may result in regulatory penalties.
+    Operational Disruptions:
+
+    Security incidents due to open UDP ports can lead to operational disruptions, downtime, and additional remediation efforts.
+    Reputation Damage:
+
+    A security incident resulting from non-compliance can harm the organization's reputation, eroding customer trust.
+    Legal Consequences:
+
+    Legal actions may be taken against the organization for failing to adhere to security standards and protect user data.
+  x-kaytu-usefulness-example:
+  - |-
+    Consider a scenario where an organization hosts a web application on Azure that communicates with a backend server using UDP. The organization follows the Azure Control to disable Internet-exposed UDP ports on network security groups.
+
+    Usefulness Scenario:
+
+    Scenario Description:
+
+    The web application uses UDP for efficient communication with the backend server.
+    Initially, UDP ports were open to the Internet, allowing potential exposure.
+    Implementation of Azure Control:
+
+    The organization identifies the UDP ports used for communication.
+    Network security groups associated with the application are updated to disable Internet exposure for these UDP ports.
+    Result:
+
+    By implementing the control, the organization ensures that UDP ports are only accessible within the intended network.
+    This prevents unauthorized access, reducing the risk of malicious activities targeting the application.
+    Benefits:
+
+    Enhanced security for the web application.
+    Mitigation of potential threats associated with Internet-exposed UDP ports.
+    Compliance with best practices for network security in Azure.
+    This example illustrates how implementing the Azure Control contributes to the overall security posture of the organization's Azure environment.
+Title: Ensure that UDP Services are restricted from the Internet

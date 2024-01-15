@@ -1,0 +1,48 @@
+AutoAssign: false
+Baseline: true
+Children:
+- azure_hipaa_hitrust_v92_privilege_management
+- azure_hipaa_hitrust_v92_user_authentication_for_external_connections
+- azure_hipaa_hitrust_v92_user_identification_and_authentication
+- azure_hipaa_hitrust_v92_endpoint_protection
+- azure_hipaa_hitrust_v92_portable_media_security
+- azure_hipaa_hitrust_v92_identification_of_risks_related_to_external_parties
+- azure_hipaa_hitrust_v92_configuration_management
+- azure_hipaa_hitrust_v92_vulnerability_management
+- azure_hipaa_hitrust_v92_network_protection
+- azure_hipaa_hitrust_v92_back_up
+- azure_hipaa_hitrust_v92_network_controls
+- azure_hipaa_hitrust_v92_on_line_transactions
+- azure_hipaa_hitrust_v92_transmission_protection
+- azure_hipaa_hitrust_v92_control_of_operational_software
+- azure_hipaa_hitrust_v92_access_control
+- azure_hipaa_hitrust_v92_audit_logging_and_monitoring
+- azure_hipaa_hitrust_v92_education_training_and_awareness
+- azure_hipaa_hitrust_v92_third_party_assurance
+- azure_hipaa_hitrust_v92_business_continuity_and_disaster_recovery
+Connector: Azure
+Controls: null
+Description: The HIPAA HITRUST 9.2 provides a combined set of predefined compliance and security best-practice checks for Health Insurance Portability and Accountability Act.
+Enabled: true
+ID: azure_hipaa_hitrust_v92
+Managed: true
+Tags:
+  category:
+  - Compliance
+  hipaa_hitrust_v92:
+  - "true"
+  kaytu_benchmark_type:
+  - compliance
+  kaytu_category:
+  - Laws & Regulations
+  - Frameworks
+  - Privacy
+  plugin:
+  - azure
+  service:
+  - Azure
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+  type:
+  - Benchmark
+Title: HIPAA HITRUST 9.2 for Azure

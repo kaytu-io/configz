@@ -1,0 +1,62 @@
+Description: Ensure TLS version on MySQL flexible servers is set to the default value.
+DocumentURI: ""
+ID: azure_mysql_server_min_tls_1_2
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_mysql_server
+  - azure_subscription
+  PrimaryTable: azure_mysql_server
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when minimal_tls_version = 'TLSEnforcementDisabled' then 'alarm'
+        when minimal_tls_version = 'TLS1_2' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when minimal_tls_version = 'TLSEnforcementDisabled' then s.name || ' TLS enforcement is disabled.'
+        when minimal_tls_version = 'TLS1_2' then s.name || ' minimum TLS version set to ' || minimal_tls_version || '.'
+        else s.name || ' minimum TLS version set to ' || minimal_tls_version || '.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_mysql_server as s,
+      azure_subscription as sub
+    where
+      sub.subscription_id = s.subscription_id;
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - 4.4.2
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "4.4"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.4.0
+  plugin:
+  - azure
+  service:
+  - Azure/MySQL
+  x-kaytu-explanation:
+  - "This Azure control in markup format implies the necessity to ensure that the TLS (Transport Layer Security) version on MySQL flexible servers are set to their default value for secure communication.\n\nHere's an explanation of each term:\n\n1. `TLS (Transport Layer Security)`: This is a protocol that provides privacy and data integrity between two communicating applications. It ensures that the data or information being sent from one point to another is encrypted and secure.\n\n2. `MySQL Flexible servers`: MySQL flexible server is a deployment option of the Azure Database for MySQL which provides better control and manageability capabilities.\n\nIt's vital to set the TLS version to its default value because the default value is usually the most stable and secure one. It reduces the risk of any potential security breaches that could compromise the data being communicated between two points.\n\nTypically, controls are put in place as part of Governance and Policies on Azure. In markup format, it might look something like this:\n\n```xml\n<IfNotExists>\n    <MySQLServer>\n        <TLSVersion>Default</TLSVersion>\n    </MySQLServer>\n</IfNotExists>\n```\n\n(Note: This is a simplification and might not exactly apply to Azure standards, it's just to illustrate the explanation).\n\nThis ensures that if the condition (`TLS Version set to the default.`) doesn’t exist, the policy will take action and enforce the rule. Once the policy is in place, when one creates or updates a MySQL flexible server, Azure makes certain the TLS version adheres to the default version. If not, Azure will raise a compliance issue.\n\nPlease check the official documentation or consult with your administrator in order to obtain the correct policy script according to your requirements."
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to the Azure control, that mandates setting the TLS version on MySQL flexible servers to the default value, can significantly increase the financial, operational, and reputational risks for an organization. \n\n**Financial Impact**\nNon-compliance can result in fines and penalties from regulators. Organizations can also face potential litigation costs, especially if the non-compliance issue leads to a data breach.\n\n**Operational Impact**\nA non-standard TLS version can lead to compatibility issues with clients that only support the default or more recent versions of TLS. This could disrupt regular database operations and result in system downtimes.\n\n**Reputational Impact**\nNon-compliance could lead to a loss of trust among clients and partners. If the non-compliance is associated with a data breach, the damage to the organization's reputation could be significant and long-lasting. This could, in turn, impact the business by leading to a loss of clients and a decrease in revenue.\n\nHere is how it's represented in the markup language (Markdown):\n\n```markdown\n# Cost of Non-compliance to Azure Control\n\nNon-compliance to the Azure control of setting the TLS version on MySQL flexible servers to the default value can significantly upsurge the financial, operational, and reputational perils for an organization. \n\n## Financial Impact\nNon-compliance can result in monetary penalties imposed by regulators. Organizations may also face possible suit costs, especially if the non-compliance issue pivots to a data breach.\n\n## Operational Impact\nA non-default TLS version can lead to compatibility issues with clients that solely support the default or more advanced versions of TLS. This can disrupt the regular database operations and culminate to system downtimes.\n\n## Reputational Impact\nNon-compliance can lead to a loss of trust among clients and partners. If it is associated with a data breach, the damage to the organization's reputation can be significant and enduring. This can affect the business by a reduction in clients and a decline in revenue.\n```\n"
+  x-kaytu-usefulness-example:
+  - "This Azure control helps ensure the security of the communication between your application and Azure MySQL database. The control checks the version of Transport Layer Security (TLS) implemented by Azure on MySQL flexible server deployment. This is crucial because TLS encrypts data that moves between your application and the database, preventing unauthorized access to your information.\n\nExample:\n\nYou run an e-commerce platform hosted on Azure. The platform has a web application that communicates with an Azure MySQL database storing customer details and transaction records. Ensuring the use of default or higher TLS version on the MySQL server will protect this data transmission from attacks such as eavesdropping, tampering, or message forgery. Here's how you can add it in your azure policy in JSON format:\n\n```json\n{\n    \"properties\": {\n        \"displayName\": \"Ensure TLS version on MySQL flexible servers is set to the default value\",\n        \"policyType\": \"BuiltIn\",\n        \"mode\": \"Indexed\",\n        \"description\": \"This policy ensures the MySQL flexible servers' TLS version is set to the default value.\",\n        \"metadata\": {\n            \"version\": \"1.0.0\",\n            \"category\": \"SQL\"\n        },\n        \"parameters\": {\n            \"effect\": {\n                \"type\": \"String\",\n                \"metadata\": {\n                    \"displayName\": \"Effect\",\n                    \"description\": \"Enable or disable the execution of the policy.\"\n                },\n                \"allowedValues\": [\"Audit\", \"Disabled\"],\n                \"defaultValue\": \"Audit\"\n            }\n        },\n        \"policyRule\": {\n            \"if\": {\n                \"allOf\": [{\n                    \"field\": \"type\",\n                    \"equals\": \"Microsoft.DBforMySQL/flexibleServers\"\n                }, {\n                    \"field\": \"Microsoft.DBforMySQL/flexibleServers/sslEnforcement\",\n                    \"notEquals\": \"Enabled\"\n                }]\n            },\n            \"then\": {\n                \"effect\": \"[parameters('effect')]\"\n            }\n        }\n    }\n}\n``` \n\nThis policy checks that SSL enforcement is enabled on all MySQL flexible servers. If a server is found, where SSL enforcement is disabled, it will be reported in the audit logs."
+Title: Ensure 'TLS Version' is set to 'TLSV1.2' for MySQL flexible Database Server

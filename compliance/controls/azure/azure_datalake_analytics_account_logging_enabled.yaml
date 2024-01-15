@@ -1,0 +1,21 @@
+Description: Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.
+ID: azure_datalake_analytics_account_logging_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_data_lake_analytics_account
+  - azure_subscription
+  PrimaryTable: azure_data_lake_analytics_account
+  QueryToExecute: "with logging_details as (\n  select\n    distinct account_id as account_id\n  from\n    azure_data_lake_analytics_account,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -> 'properties' -> 'logs') log\n  where\n    diagnostic_settings is not null\n    and (\n      (\n        (log ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy' ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy') :: JSONB ? 'days'\n      )\n      or\n      (\n        (log ->> 'enabled') :: boolean\n        and (\n          log -> 'retentionPolicy' ->> 'enabled' <> 'true'\n          or setting -> 'properties' ->> 'storageAccountId' = ''\n        )\n      )\n    )\n)\nselect\n  a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.diagnostic_settings is null then 'alarm'\n    when l.account_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.diagnostic_settings is null then a.name || ' logging disabled.'\n    when l.account_id is not null then a.name || ' logging enabled.'\n    else a.name || ' logging disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_data_lake_analytics_account as a\n  left join logging_details as l on a.account_id = l.account_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/DataLakeAnalytics
+Title: Resource logs in Data Lake Analytics should be enabled

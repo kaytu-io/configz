@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Private Link
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.network/privatelinkservices' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Networking

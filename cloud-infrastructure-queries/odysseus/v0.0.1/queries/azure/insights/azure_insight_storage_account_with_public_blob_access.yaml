@@ -1,0 +1,14 @@
+Connector: Azure
+Engine: odysseus-v0.0.1
+ID: azure_insight_storage_account_with_public_blob_access
+ListOfTables:
+- azure_storage_account
+PrimaryTable: azure_storage_account
+QueryToExecute: |-
+  select
+    name,
+    allow_blob_public_access, subscription_id, kaytu_account_id, kaytu_resource_id
+  from
+    azure_storage_account
+  where
+    allow_blob_public_access;

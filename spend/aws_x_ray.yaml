@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: AWS X-Ray
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'AWS X-Ray' group by 1,2;
+status: active
+tables:
+- AWS X-Ray
+tags:
+  category:
+  - DevOps

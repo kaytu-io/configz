@@ -1,0 +1,70 @@
+Description: Ensure the Instance Metadata Service Version 2 (IMDSv2) method is enabled to help protect access and control of Amazon Elastic Compute Cloud (Amazon EC2) instance metadata.
+DocumentURI: ""
+ID: aws_ec2_instance_uses_imdsv2
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_instance
+  PrimaryTable: aws_ec2_instance
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when metadata_options ->> 'HttpTokens' = 'optional' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when metadata_options ->> 'HttpTokens' = 'optional' then title || ' not configured to use Instance Metadata Service Version 2 (IMDSv2).'
+        else title || ' configured to use Instance Metadata Service Version 2 (IMDSv2).'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ec2_instance;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/EC2
+  x-kaytu-explanation:
+  - "# AWS Control: Enable Instance Metadata Service Version 2 (IMDSv2)\n\nBy enabling the Instance Metadata Service Version 2 (IMDSv2) method, you can safeguard access to and control the metadata of your Amazon Elastic Compute Cloud (Amazon EC2) instances in a more secure manner. IMDSv2 presents considerable improvements over its precursor – [IMDSv1](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html) by adding defense measures against various types of threats, such as [Server Side Request Forgery (SSRF) attacks](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery) and open firewalls.\n\n## Rationale\n\nEnabling IMDSv2 helps secure your Amazon EC2 instances by:\n\n- Limiting access via session-oriented requests, unlike IMDSv1 that responded to every request irrespective of its origin.\n- Providing an optional Instance Metadata Service hop limit to curtail the ability to contact an instance metadata from a forwarded IP packet.\n\n## Implementation Steps\n\n1. Navigate to the Amazon EC2 dashboard.\n2. Select the instance for which the metadata service needs to be upgraded.\n3. Go to instance settings and modify Instance metadata.\n4. Set Metadata version to IMDSv2 and set the Metadata hop limit if required.\n5. Save the settings to apply changes.\n\nKeep in mind that it's crucial to verify if your instances are compatible with IMDSv2, as there may be situations where updating to the new service version could affect instance accessibility and functionality."
+  x-kaytu-noncompliance-cost:
+  - |-
+    Non-compliance to this AWS control - ensuring the Instance Metadata Service Version 2 (IMDSv2) method is enabled can have a significant financial, technical, and reputational cost. 
+
+    *Financial Cost:* If the IMDSv2 is not enabled, it could lead to security breaches, including unauthorized access to an EC2 instance's metadata. These breaches can result in data theft or loss, which typically entails considerable monetary losses either through the immediate cost of the breach or potential fines arising from compliance violation.
+
+    *Technical Cost:* — Non-compliant instances may suffer from unexpected outages or performance degradation as unauthorized users could exploit vulnerabilities to alter or disrupt operations. Restoration of normal operations could be complex and time-consuming if the metadata has been maliciously altered or deleted.
+
+    *Reputational Cost:* In case security breaches occur and sensitive data is compromised due to non-compliance with this control, the reputation of the company can be severely damaged. This could lead to loss of stakeholders' trust, which might have a direct impact on the company's marketplace standing and could potentially lead to loss of business.
+
+    *Regulatory Cost:* Depending on the jurisdiction and industry in which your organization operates, there may be compliance requirements and regulatory penalties for not adequately protecting metadata. Non-compliance could lead to substantial fines or sanctions.
+
+    Therefore, it is critical to ensure IMDSv2 is enabled on your EC2 instances as it is more secure and offers better protection against SSRF (Server Side Request Forgery) attacks. It requires users to establish a session to interact with IMDS, which drastically reduces the attack surface as compared to version 1.
+  x-kaytu-usefulness-example:
+  - "For example, a company is using AWS EC2 instances to host various web applications. These instances contain sensitive data such as user information, application configuration settings, keys, credentials and so on in their metadata. \n\nThis data can potentially be accessed by unauthorized entities, leading to data breaches. By ensuring the Instance Metadata Service Version 2 (IMDSv2) method is enabled, the company is setting up additional barriers to secure their metadata.\n\nIMDSv2 enforces session-oriented requests which help to mitigate the chances of SSRF (Server-Side Request Forgery) attacks. By using session-oriented requests, every HTTP request to IMDSv2 from the EC2 instance should be a PUT request to start a session by retrieving a secret token, followed by GET requests that include this secret token in their headers.\n\nIn other words, an unauthorized entity would need this secret token to access the metadata which adds another level of protection.\n\nHere is a sample code to fetch an instance's ID with IMDSv2:\n\n```markdown\nTOKEN=`curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\"` \\\n&& curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -v http://169.254.169.254/latest/meta-data/instance-id\n```\n\nSo, by enabling IMDSv2, the company increases the security of their AWS EC2 instances and reduces the risk of potential data breaches."
+Title: EC2 instances should use IMDSv2

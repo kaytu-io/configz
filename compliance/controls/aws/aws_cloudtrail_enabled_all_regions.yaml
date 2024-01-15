@@ -1,0 +1,63 @@
+Description: This control checks whether CloudTrail is enabled in your AWS account. However, some AWS services do not enable logging of all APIs and events. You should implement any additional audit trails other than CloudTrail and review the documentation for each service.
+ID: aws_cloudtrail_enabled_all_regions
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_cloudtrail_trail
+  PrimaryTable: aws_cloudtrail_trail
+  QueryToExecute: |
+    with trail_details as (
+      select
+        name as trail_name,
+        arn,
+        is_multi_region_trail,
+        is_logging,
+        event_selectors,
+        e ->> 'ReadWriteType' as read_write_type,
+        account_id,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_resource_id as kaytu_resource_id,
+        region
+      from
+        aws_cloudtrail_trail,
+        jsonb_array_elements(event_selectors) as e
+    )
+    select
+      -- Required Columns
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when not trail_details.is_multi_region_trail then 'alarm'
+        when not trail_details.is_logging then 'alarm'
+        when read_write_type <> 'All' then 'alarm'
+        else 'ok'
+      end as status,
+      trail_details.trail_name ||
+        case when trail_details.is_multi_region_trail then ' is ' else ' is not ' end || 'multi-region,' ||
+        case when trail_details.is_logging then ' logging enabled' else ' logging disabled' end ||
+        ' for ' || read_write_type || ' events.'
+      as reason,
+      -- Additional Dimensions
+      region,
+      account_id
+    from
+      trail_details
+Severity: low
+Tags:
+  pci:
+  - "true"
+  pci_item_id:
+  - cloudtrail_2
+  pci_requirements:
+  - 10.1,10.2.1,10.2.2,10.2.3,10.2.4,10.2.5,10.2.6,10.2.7,10.3.1,10.3.2,10.3.3,10.3.4,10.3.5,10.3.6
+  pci_version:
+  - v3.2.1
+  plugin:
+  - aws
+  service:
+  - cloudtrail
+Title: CloudTrail should be enabled

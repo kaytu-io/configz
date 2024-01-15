@@ -1,0 +1,54 @@
+Description: Ensure that your Amazon Simple Storage Service (Amazon S3) bucket has lock enabled, by default.
+ID: aws_s3_bucket_object_lock_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_s3_bucket
+  PrimaryTable: aws_s3_bucket
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when object_lock_configuration is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when object_lock_configuration is null then title || ' object lock not enabled.'
+        else title || ' object lock enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_s3_bucket;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+  soc_2:
+  - "true"
+Title: S3 bucket object lock should be enabled

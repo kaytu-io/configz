@@ -1,0 +1,42 @@
+Description: Cross-Origin Resource Sharing (CORS) should not allow all domains to access your Function app. Allow only required domains to interact with your Function app.
+ID: azure_appservice_function_app_cors_no_star
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_subscription
+  PrimaryTable: azure_app_service_function_app
+  QueryToExecute: |
+    select
+      b.id as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when configuration -> 'properties' -> 'cors' -> 'allowedOrigins' @> '["*"]' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when configuration -> 'properties' -> 'cors' -> 'allowedOrigins' @> '["*"]'
+          then b.name || ' CORS allow all domains to access the application.'
+        else b.name || ' CORS does not all domains to access the application.'
+      end as reason
+      
+      , b.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_app_service_function_app as b,
+      azure_subscription as sub
+    where
+      sub.subscription_id = b.subscription_id;
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/AppService
+Title: Function apps should not have CORS configured to allow every resource to access your apps

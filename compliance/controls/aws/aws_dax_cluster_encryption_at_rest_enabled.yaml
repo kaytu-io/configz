@@ -1,0 +1,42 @@
+Description: This control checks whether a DAX cluster is encrypted at rest. Encrypting data at rest reduces the risk of data stored on disk being accessed by a user not authenticated to AWS. The encryption adds another set of access controls to limit the ability of unauthorized users to access to the data. For example, API permissions are required to decrypt the data before it can be read.
+ID: aws_dax_cluster_encryption_at_rest_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_dax_cluster
+  PrimaryTable: aws_dax_cluster
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when sse_description ->> 'Status' = 'ENABLED' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when sse_description ->> 'Status' = 'ENABLED' then title || ' encryption at rest enabled.'
+        else title || ' encryption at rest not enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_dax_cluster;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - encryption_of_data_at_rest
+  foundational_security_item_id:
+  - dynamodb_3
+  plugin:
+  - aws
+  service:
+  - AWS/DynamoDB
+Title: DynamoDB Accelerator (DAX) clusters should be encrypted at rest

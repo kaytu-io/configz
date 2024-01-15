@@ -1,0 +1,56 @@
+Description: Ensure if Amazon Redshift clusters are using a specified AWS Key Management Service (AWS KMS) key for encryption. The rule is compliant if encryption is enabled and the cluster is encrypted with the key provided in the kmsKeyArn parameter. The rule is non compliant if the cluster is not encrypted or encrypted with another key.
+ID: aws_redshift_cluster_kms_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_redshift_cluster
+  PrimaryTable: aws_redshift_cluster
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when encrypted and kms_key_id is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when encrypted and kms_key_id is not null then title || ' encrypted with KMS.'
+        else title || ' not encrypted with KMS'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_redshift_cluster;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/Redshift
+Title: Amazon Redshift clusters should be encrypted with KMS

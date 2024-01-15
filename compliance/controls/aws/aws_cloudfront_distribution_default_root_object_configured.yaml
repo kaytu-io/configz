@@ -1,0 +1,42 @@
+Description: This control checks whether an Amazon CloudFront distribution is configured to return a specific object that is the default root object. The control fails if the CloudFront distribution does not have a default root object configured.
+ID: aws_cloudfront_distribution_default_root_object_configured
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_cloudfront_distribution
+  PrimaryTable: aws_cloudfront_distribution
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when default_root_object = '' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when default_root_object = '' then title || ' default root object not configured.'
+        else title || ' default root object configured.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_cloudfront_distribution;
+Severity: critical
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - resources_not_publicly_accessible
+  foundational_security_item_id:
+  - cloudfront_1
+  plugin:
+  - aws
+  service:
+  - AWS/CloudFront
+Title: CloudFront distributions should have a default root object configured

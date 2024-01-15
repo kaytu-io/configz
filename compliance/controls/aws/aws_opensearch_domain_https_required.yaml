@@ -1,0 +1,42 @@
+Description: This control checks whether connections to OpenSearch domains are required to use TLS 1.2. The check fails if the OpenSearch domain TLSSecurityPolicy is not Policy-Min-TLS-1-2-2019-07.
+ID: aws_opensearch_domain_https_required
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_opensearch_domain
+  PrimaryTable: aws_opensearch_domain
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when (domain_endpoint_options ->> 'EnforceHTTPS' = 'false') or (domain_endpoint_options ->> 'EnforceHTTPS' = 'true' and domain_endpoint_options ->> 'TLSSecurityPolicy' not in ('tlsPolicies')) then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when (domain_endpoint_options ->> 'EnforceHTTPS' = 'false') or (domain_endpoint_options ->> 'EnforceHTTPS' = 'true' and domain_endpoint_options ->> 'TLSSecurityPolicy' not in ('tlsPolicies')) then title || ' does not use HTTPS.'
+        else title || ' uses HTTPS.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_opensearch_domain;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - encryption_of_data_in_transit
+  foundational_security_item_id:
+  - opensearch_8
+  plugin:
+  - aws
+  service:
+  - AWS/OpenSearch
+Title: Connections to OpenSearch domains should be encrypted using TLS 1.2

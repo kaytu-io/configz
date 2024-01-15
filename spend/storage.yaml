@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Storage
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Storage' group by 1,2;
+status: active
+tables:
+- Storage
+tags:
+  category:
+  - Storage

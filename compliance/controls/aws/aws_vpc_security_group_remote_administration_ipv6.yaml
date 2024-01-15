@@ -1,0 +1,83 @@
+Description: Security groups provide stateful filtering of ingress and egress network traffic to AWS resources. It is recommended that no security group allows unrestricted ingress access to remote server administration ports, such as SSH to port 22 and RDP to port 3389.
+ID: aws_vpc_security_group_remote_administration_ipv6
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+  PrimaryTable: aws_vpc_security_group
+  QueryToExecute: |
+    with bad_rules as (
+      select
+        group_id,
+        count(*) as num_bad_rules
+      from
+        aws_vpc_security_group_rule
+      where
+        type = 'ingress'
+        and (
+          cidr_ipv6 = '::/0'
+        )
+        and (
+            ( ip_protocol = '-1'      -- all traffic
+            and from_port is null
+            )
+            or (
+                from_port >= 22
+                and to_port <= 22
+            )
+            or (
+                from_port >= 3389
+                and to_port <= 3389
+            )
+        )
+      group by
+        group_id
+    )
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when bad_rules.group_id is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when bad_rules.group_id is null then sg.group_id || ' does not allow ingress to port 22 or 3389 from ::/0.'
+        else  sg.group_id || ' contains ' || bad_rules.num_bad_rules || ' rule(s) that allow ingress to port 22 or 3389 from ::/0.'
+      end as reason
+      
+      , sg.region, sg.account_id
+    from
+      aws_vpc_security_group as sg
+      left join bad_rules on bad_rules.group_id = sg.group_id;
+Severity: critical
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "5.3"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "5"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.5.0
+  plugin:
+  - aws
+  service:
+  - AWS/VPC
+  x-kaytu-explanation:
+  - "## AWS Control: Security Groups\n\nSecurity groups are virtual firewalls that control inbound and outbound traffic for resources run on Amazon Web Services (AWS). They act as a primary method of network security, allowing you to specify permissible traffic based on protocol, port, and source or destination IP address.\n\nThe security groups in AWS are _stateful_, which means any changes in inbound rules will automatically reflect in outbound rules. This type of filtering ensures that if you send a request from your instance, the response to that request will be allowed to return, even if the inbound security rules do not allow it.\n\n### Restrictions on Ingress Access\nFor enhanced security, it is recommended not to enable unrestricted ingress access on remote server administration ports. These include:\n\n- __SSH (Secure Shell):__ Port 22. SSH is a networking protocol used for secure connections between a client and a server over an unsecured network.\n\n- __RDP (Remote Desktop Protocol):__ Port 3389. RDP is a Microsoft protocol used in Windows Server to remotely administer a desktop.\n\nUnrestricted access to these ports can open avenues for cyber attacks like Brute Force or Denial of Service (DoS). The recommendation is to limit the source IP addresses that can connect to these ports, or better, to use a VPN or a bastion host.\n\nThus, implementing the best practices for security groups will help improve the overall security posture of your AWS environment."
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to this AWS control can result in several costs ranging from financial to reputational damage:\n\n1. **Financial Costs**: Non-compliance can lead to financial losses due to a successful cyberattack. For instance, in case of an attack resulting in data breach can incur substantial costs related to breach notification, potential fines or lawsuits, and even loss of business.\n\n2. **Damage to Reputation**: If unrestricted ingress access to remote server administration ports results in a security breach, the damage done to the company's reputation can be severe. This can cause loss of trust with existing customers and deter potential customers, which can eventually lead to loss in business.\n\n3. **Operational Disruption**: Cyberattacks, made possible by non-compliance, may result in system downtime or service disruptions, leading to lost productivity and potential loss of business. Depending on the extent of the attack, this could also result in loss of critical data.\n\n4. **Regulatory Fines and Sanctions**: Non-compliance can also lead to penalties from regulatory bodies. Depending on the regulations a company is subject to (GDPR, CCPA, HIPAA, etc.), these fines can be very substantial.\n\nThe costs mentioned above emphasize the necessity to comply with this AWS control - securing the remote server administration ports like SSH to port-22 and RDP to port 3389. By restricting unrestricted ingress access, a crucial layer of security is added, preventing unauthorized access to sensitive information usually needed for server administration."
+  x-kaytu-usefulness-example:
+  - "The following example is a scenario showcasing the usefulness of AWS Security Groups:\n\nA mid-sized company, XYZ Inc., has their web application hosted on AWS EC2 instances. The web application is built in such a way that it has multiple layers, such as UI, API, Database etc., and each layer is hosted on different sets of EC2 instances.\n\nIn this scenario, AWS Security Groups can be effectively used to manage and control both incoming (ingress) and outgoing (egress) network traffic to these EC2 instances.\n\nFor example, the traffic flow between UI layer and API layer can be strictly restricted to only necessary ports and specific source IP addresses (in this case, IP addresses of EC2 instances hosting UI layer). This prevents unwanted network traffic reaching the API layer, thereby enhancing its security.\n\n```markdown\n- Security Group for UI layer EC2 instances\n    - Ingress: Allows HTTP and HTTPS traffic from any IP.\n    - Egress: Restricts traffic to API layer EC2 instances IP addresses only over specific ports.\n    \n- Security Group for API layer EC2 instances\n    - Ingress: Allows traffic from UI layer EC2 instances IP addresses only over specific ports.\n    - Egress: Allows traffic only to Database layer EC2 instances IP addresses.\n```\n\nAlso, administrative access like SSH (port 22) or RDP (port 3389) can be strictly limited to specific IP addresses, which belong to the company's secure VPN. This closes any potential security loophole that might allow unauthorised access to the EC2 instances.\n\nThis way, AWS Security Groups provide a robust way to manage network traffic to AWS resources, enhancing the overall security of the application."
+Title: Ensure no security groups allow ingress from ::/0 to remote server administration ports

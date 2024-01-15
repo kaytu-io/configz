@@ -1,0 +1,72 @@
+Description: EFS data should be encrypted at rest using AWS KMS (Key Management Service).
+ID: aws_efs_file_system_encrypt_data_at_rest
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_efs_file_system
+  PrimaryTable: aws_efs_file_system
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when encrypted then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when encrypted then title || ' encrypted at rest.'
+        else title || ' not encrypted at rest.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_efs_file_system;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - 2.4.1
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "2.4"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.5.0
+  plugin:
+  - aws
+  service:
+  - AWS/EFS
+  x-kaytu-explanation:
+  - "AWS Elastic File System (EFS) provides a simple, scalable, and fully managed elastic NFS file system for use with AWS cloud services and on-premises resources. Data stored within EFS should be encrypted at rest to add another layer of data protection. Encrypting data at rest provides an additional security barrier in case unauthorized users gain access to storage.\n\nAWS Key Management Service (KMS) is the tool that can be used within AWS services to create and manage cryptographic keys, referred to as Customer Master Keys (CMKs), and control their use across a wide range of AWS services and in your applications. \n\nYou can use AWS KMS to encrypt EFS data at rest. When data at rest is encrypted, even if someone unauthorized gains access to the storage, they would not be able to make sense of the data without the key.\n\nSo, the control here is saying: For security and compliances purpose, configure EFS data to be encrypted at rest using AWS KMS.\n\n```html\n<p>AWS Elastic File System (EFS) should be configured to encrypt data at rest using AWS Key Management Service (KMS). This helps add an additional layer of security to protect against unauthorized access to your data. With encryption, even if an unauthorized entity gains access to the storage, they cannot comprehend the data without the encryption key provided by KMS.</p> \n```"
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to the AWS control that \"EFS data should be encrypted at rest using AWS KMS\" can lead to several costs:\n\n1. **Security Breach Costs**: If data is not encrypted at rest, it increases the susceptibility of your AWS data to security breaches. The cost of such breaches can be massive, involving sensitive data loss, financial implications, and harm to the organization's reputation. \n\n2. **Regulatory Compliance Fines**: Various regulations (like GDPR, HIPAA, PCI DSS) require data to be encrypted at rest. Non-compliance could lead to substantial fines and penalties. \n\n3. **Loss of Trust**: Clients or customers who discover that their data is not being stored securely may lose trust in your business, leading to potential business losses.\n\n4. **Recovery Costs**: If a breach occurs, there may be significant expenses related to recovering lost data, restoring systems, forensic analysis, and remediation efforts.\n\n```markdown\n### Cost of Non-Compliance to the AWS Control: EFS data should be encrypted at rest using AWS KMS ###\n1. **Security Breach Costs**: Not encrypting data at rest can lead to potential security breaches which can lead to data loss or exposure, resulting in financial losses alongside harm to the company brand and reputation.\n2. **Regulatory Compliance Fines**: Several regulations (like GDPR, HIPAA, PCI DSS) mandate that data be encrypted at rest. Non-adherence to these requirements could result in severe penalties or fines.\n3. **Loss of Trust**: Customers who discover that their data is not being stored securely may lose faith in the business, potentially leading to business losses.\n4. **Recovery Costs**: In case of a security breach, the expenses related to data recovery, system restoration, forensic analysis, and other rectification efforts can be significant.\n```\nNote that the actual costs will depend on the specific nature of the non-compliance, the sensitivity of the data involved, the regulatory environment, and the effectiveness of the organization's response to the issue."
+  x-kaytu-usefulness-example:
+  - |-
+    AWS Elastic File System (EFS) is a cloud storage service provided by AWS. However, any data at rest in the EFS can be a potential vulnerability. Therefore, it's recommended to encrypt the data at rest in EFS using AWS Key Management Service (KMS). This mechanism ensures that your data is safe and only users with the decryption key can access the data.
+
+    Example:
+
+    Suppose a company is storing sensitive user information, like financial details or private user data, in the AWS EFS. It's paramount that this information is kept secure and confidential to avoid any potential malicious attacks or data breaches. By using AWS KMS to encrypt this data at rest, the company adds an extra layer of security. Furthermore, KMS allows the company to fully control the keys, including establishing policies and auditing key usage to ensure the appropriate use of encryption keys.
+
+    ```
+    Ensure all data in Amazon EFS is encrypted at rest:
+        
+        Step 1:
+        aws efs describe-file-systems --query 'FileSystems[*].[FileSystemId,Name]' --output text > EFS_fileSystems.txt
+
+        Step 2:
+        for filesystem in (cat EFS_fileSystems.txt); do  aws efs describe-file-systems --file-system-id $filesystem | grep KmsKeyId; done
+
+    If KmsKeyId is 'null', then the file system is unencrypted, and the company would be at risk of exposing user sensitive data. Hence, it's useful to encrypt at rest using AWS KMS.
+    ```
+    This example illustrates protecting user sensitive data by encrypting at rest using AWS KMS and highlights the importance of EFS data encryption in maintaining data security and confidentiality.
+Title: Ensure that encryption is enabled for EFS file systems

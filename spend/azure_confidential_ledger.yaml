@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Azure confidential ledger
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Azure confidential ledger' group by 1,2;
+status: active
+tables:
+- Azure confidential ledger
+tags:
+  category:
+  - Blockchain

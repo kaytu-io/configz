@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Key vault
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.keyvault/vaults' group by 1,2;
+status: active
+tags:
+  category:
+  - Security

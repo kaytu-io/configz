@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: Refund
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'Refund' group by 1,2;
+status: active
+tables:
+- Refund
+tags:
+  category:
+  - Administrative & Support

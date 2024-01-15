@@ -1,0 +1,8 @@
+Description: List unencrypted disks
+ID: 2.0
+InsightIDs:
+- 4.0
+- 19.0
+LogoURL: null
+LongTitle: List unencrypted disks
+ShortTitle: Unencrypted Disks

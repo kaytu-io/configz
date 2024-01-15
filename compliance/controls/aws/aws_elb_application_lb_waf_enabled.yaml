@@ -1,0 +1,58 @@
+Description: Ensure AWS WAF is enabled on Elastic Load Balancers (ELB) to help protect web applications.
+ID: aws_elb_application_lb_waf_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  PrimaryTable: aws_ec2_application_load_balancer
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when load_balancer_attributes @> '[{"Key":"waf.fail_open.enabled","Value":"true"}]' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when load_balancer_attributes @> '[{"Key":"waf.fail_open.enabled","Value":"true"}]' then title || ' WAF enabled.'
+        else title || ' WAF disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ec2_application_load_balancer;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/ELB
+  soc_2:
+  - "true"
+Title: ELB application load balancers should have Web Application Firewall (WAF) enabled

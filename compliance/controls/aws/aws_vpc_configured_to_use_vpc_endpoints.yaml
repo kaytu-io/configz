@@ -1,0 +1,57 @@
+Description: This control checks whether a service endpoint for Amazon EC2 is created for each VPC. The control fails if a VPC does not have a VPC endpoint created for the Amazon EC2 service.
+ID: aws_vpc_configured_to_use_vpc_endpoints
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_vpc
+  - aws_vpc_endpoint
+  PrimaryTable: aws_vpc
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when vpc_id not in (
+          select
+            vpc_id
+          from
+            aws_vpc_endpoint
+          where
+            service_name like 'com.amazonaws.' || region || '.ec2'
+        ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when vpc_id not in (
+          select
+            vpc_id
+          from
+            aws_vpc_endpoint
+          where
+            service_name like 'com.amazonaws.' || region || '.ec2'
+        ) then title || ' not configured to use VPC endpoints.'
+        else title || ' configured to use VPC endpoints.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_vpc;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - api_private_access
+  foundational_security_item_id:
+  - ec2_10
+  plugin:
+  - aws
+  service:
+  - AWS/EC2
+Title: Amazon EC2 should be configured to use VPC endpoints

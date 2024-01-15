@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Resource Groups
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::resourcegroups::groups' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Governance

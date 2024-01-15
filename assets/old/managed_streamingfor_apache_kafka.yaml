@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Managed Streaming for Apache Kafka (MSK)
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::kafka::cluster') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Application Integration

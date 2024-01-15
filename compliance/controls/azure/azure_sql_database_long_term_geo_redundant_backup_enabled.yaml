@@ -1,0 +1,48 @@
+Description: This policy audits any Azure SQL Database with long-term geo-redundant backup not enabled.
+ID: azure_sql_database_long_term_geo_redundant_backup_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_sql_database
+  - azure_subscription
+  PrimaryTable: azure_sql_database
+  QueryToExecute: |
+    select
+      s.database_id resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when retention_policy_property ->> 'monthlyRetention' <> 'PT0S'
+          or retention_policy_property ->> 'weeklyRetention' <> 'PT0S'
+          or retention_policy_property ->> 'yearlyRetention' <> 'PT0S'
+          then 'ok'
+          else 'alarm'
+      end as status,
+      case
+        when retention_policy_property ->> 'monthlyRetention' <> 'PT0S'
+          or retention_policy_property ->> 'weeklyRetention' <> 'PT0S'
+          or retention_policy_property ->> 'yearlyRetention' <> 'PT0S'
+          then s.title || ' long-term geo-redundant backup enabled.'
+          else s.title || ' long-term geo-redundant backup disabled.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_database s,
+      azure_subscription sub
+    where
+      sub.subscription_id = s.subscription_id
+      and s.name <> 'master';
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SQL
+Title: Long-term geo-redundant backup should be enabled for Azure SQL Databases

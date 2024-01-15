@@ -1,0 +1,28 @@
+Connector: AWS
+Description: List users that have inline policies
+Enabled: true
+ID: 9.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List users that have inline policies
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_iam_user_with_inline_policies
+  ListOfTables:
+  - aws_iam_user
+  PrimaryTable: aws_iam_user
+  QueryToExecute: |-
+    select
+      name as user_name,
+      inline_policies, account_id, kaytu_account_id, kaytu_resource_id
+    from
+      aws_iam_user
+    where
+      inline_policies is not null;
+ShortTitle: Users with Inline Policies
+Tags:
+  category:
+  - Security
+  - Technical Debt

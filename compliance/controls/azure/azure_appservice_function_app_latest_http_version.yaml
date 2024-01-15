@@ -1,0 +1,64 @@
+Description: Periodically, newer versions are released for HTTP either due to security flaws or to include additional functionality. Using the latest HTTP version for web apps to take advantage of security fixes, if any, and/or new functionalities of the newer version. Currently, this policy only applies to Linux web apps.
+ID: azure_appservice_function_app_latest_http_version
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_subscription
+  PrimaryTable: azure_app_service_function_app
+  QueryToExecute: |
+    with all_function_app as (
+      select
+        id
+      from
+        azure_app_service_function_app
+      where
+        exists (
+          select
+          from
+            unnest(regexp_split_to_array(kind, ',')) elem
+          where
+            elem like 'functionapp%'
+        )
+        and
+        exists (
+          select
+          from
+            unnest(regexp_split_to_array(kind, ',')) elem
+          where
+            elem = 'linux'
+        )
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.id is null then 'skip'
+        when configuration -> 'properties' ->> 'http20Enabled' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.id is null then a.title || ' is not a linux function app.'
+        when configuration -> 'properties' ->> 'http20Enabled' = 'true' then a.name || ' using the latest HTTP version.'
+        else a.name || ' not using latest HTTP version.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_app_service_function_app as a
+      left join all_function_app as b on a.id = b.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/AppService
+Title: Ensure that 'HTTP Version' is the latest, if used to run the Function app

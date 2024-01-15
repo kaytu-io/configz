@@ -1,0 +1,24 @@
+Connector: AWS
+Description: EKS clusters running anything other than 1.27, 1.26, 1.25, 1.24, 1.23
+Enabled: true
+ID: 36.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: EKS clusters with old Kubernetes version
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_deprecated_eks
+  ListOfTables:
+  - aws_eks_cluster
+  PrimaryTable: aws_eks_cluster
+  QueryToExecute: SELECT name, arn, version, account_id, kaytu_account_id, kaytu_resource_id FROM aws_eks_cluster WHERE version != '1.27' AND version != '1.26' AND version != '1.25' AND version != '1.24' AND version != '1.23'
+ShortTitle: Deprecated EKS clusters
+Tags:
+  category:
+  - Technical Debt
+  persona:
+  - Executive
+  - Product
+  - FinOps

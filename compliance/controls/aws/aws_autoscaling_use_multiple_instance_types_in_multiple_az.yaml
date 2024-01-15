@@ -1,0 +1,69 @@
+Description: This control checks whether an Amazon EC2 Auto Scaling group uses multiple instance types. The control fails if the Auto Scaling group has only one instance type defined.
+ID: aws_autoscaling_use_multiple_instance_types_in_multiple_az
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_autoscaling_group
+  PrimaryTable: aws_ec2_autoscaling_group
+  QueryToExecute: |
+    with autoscaling_groups as (
+      select
+        autoscaling_group_arn,
+        title,
+        mixed_instances_policy_launch_template_overrides,
+        region,
+        tags,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_resource_id as kaytu_resource_id,
+        _ctx,
+        account_id
+    from
+        aws_ec2_autoscaling_group
+    ),
+    distinct_instance_types_count as (
+      select
+        autoscaling_group_arn,
+        count(distinct(e -> 'InstanceType')) as distinct_instance_types
+    from
+        autoscaling_groups,
+        jsonb_array_elements(mixed_instances_policy_launch_template_overrides) as e
+    group by
+        autoscaling_group_arn,
+        title,
+        mixed_instances_policy_launch_template_overrides
+    )
+    select
+      a.autoscaling_group_arn as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.distinct_instance_types > 1 then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.distinct_instance_types > 1 then title || ' uses ' || b.distinct_instance_types || ' instance types.'
+        else title || ' does not use multiple instance types.'
+      end as reason
+      
+      , a.region, a.account_id
+    from
+      autoscaling_groups as a
+      left join distinct_instance_types_count as b on a.autoscaling_group_arn = b.autoscaling_group_arn;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - high_availability
+  foundational_security_item_id:
+  - autoscaling_6
+  plugin:
+  - aws
+  service:
+  - AWS/AutoScaling
+Title: Auto Scaling groups should use multiple instance types in multiple Availability Zones

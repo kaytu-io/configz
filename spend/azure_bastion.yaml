@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Azure Bastion
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Azure Bastion' group by 1,2;
+status: active
+tables:
+- Azure Bastion
+tags:
+  category:
+  - Security

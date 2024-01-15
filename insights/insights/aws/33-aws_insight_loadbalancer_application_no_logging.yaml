@@ -1,0 +1,33 @@
+Connector: AWS
+Description: List application Load Balancers without logging
+Enabled: true
+ID: 33.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List application Load Balancers without logging
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_loadbalancer_application_no_logging
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  PrimaryTable: aws_ec2_application_load_balancer
+  QueryToExecute: |-
+    select
+      name,
+      lb ->> 'Key' as logging_key,
+      lb ->> 'Value' as logging_value, account_id, kaytu_account_id, kaytu_resource_id 
+    from
+      aws_ec2_application_load_balancer
+      cross join jsonb_array_elements(load_balancer_attributes) as lb
+    where
+      lb ->> 'Key' = 'access_logs.s3.enabled'
+      and lb ->> 'Value' = 'false';
+ShortTitle: Application Load Balancers without logging
+Tags:
+  category:
+  - Technical Debt
+  persona:
+  - Security
+  - DevOps

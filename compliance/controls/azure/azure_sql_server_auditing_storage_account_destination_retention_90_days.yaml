@@ -1,0 +1,59 @@
+Description: For incident investigation purposes, we recommend setting the data retention for your SQL Server' auditing to storage account destination to at least 90 days. Confirm that you are meeting the necessary retention rules for the regions in which you are operating. This is sometimes required for compliance with regulatory standards.
+ID: azure_sql_server_auditing_storage_account_destination_retention_90_days
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+  PrimaryTable: azure_sql_server
+  QueryToExecute: |
+    with sql_server as(
+      select
+        id,
+        name,
+        subscription_id,
+        resource_group,
+        p -> 'properties' ->> 'retentionDays' as retentionDays
+      from
+        azure_sql_server,
+        jsonb_array_elements(server_audit_policy) as p
+      where
+      p -> 'properties' ->> 'state' = 'Enabled'
+      and p -> 'properties' ->> 'storageEndpoint' is not null
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when s.id is null then 'skip'
+        -- The value in days of the retention period (0 is an indication for unlimited retention).
+        when s.retentionDays::Integer = 0 then 'ok'
+        when s.retentionDays::Integer >= 90 then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when s.id is null then a.name || ' auditing to storage account destination not enabled.'
+        when s.retentionDays::Integer = 0 then a.name || ' auditing to storage account destination configured with unlimited retention days.'
+        when s.retentionDays::Integer >= 90 then a.name || ' auditing to storage account destination configured with 90 days retention or higher.'
+        else a.name || ' auditing to storage account destination not configured with 90 days retention or higher.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_server as a
+      left join sql_server as s on s.id = a.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SQL
+Title: SQL servers with auditing to storage account destination should be configured with 90 days retention or higher

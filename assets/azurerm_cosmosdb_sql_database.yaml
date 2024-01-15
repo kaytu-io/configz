@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Azure Cosmos DB database
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.documentdb/sqldatabases' group by 1,2;
+status: active
+tags:
+  category:
+  - Database

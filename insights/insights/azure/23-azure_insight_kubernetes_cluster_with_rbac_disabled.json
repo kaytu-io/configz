@@ -1,6 +1,15 @@
 {
   "ID": 23,
-  "QueryID": "azure_insight_kubernetes_cluster_with_rbac_disabled",
+  "Query": {
+    "ID": "azure_insight_kubernetes_cluster_with_rbac_disabled",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  name,\n  id,\n  location,\n  type,\n  identity,\n  enable_rbac,\n  sku, subscription_id, kaytu_account_id, kaytu_resource_id\nfrom\n  azure_kubernetes_cluster\nwhere\n  not enable_rbac;",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_kubernetes_cluster",
+    "ListOfTables": [
+      "azure_kubernetes_cluster"
+    ]
+  },
   "Connector": "Azure",
   "ShortTitle": "Clusters with no RBAC",
   "LongTitle": "List clusters that have role-based access control (RBAC) disabled",

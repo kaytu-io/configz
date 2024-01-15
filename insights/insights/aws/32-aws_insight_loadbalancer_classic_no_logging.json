@@ -1,6 +1,15 @@
 {
   "ID": 32,
-  "QueryID": "aws_insight_loadbalancer_classic_no_logging",
+  "Query": {
+    "ID": "aws_insight_loadbalancer_classic_no_logging",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  name,\n  access_log_enabled, account_id, kaytu_account_id, kaytu_resource_id\nfrom\n  aws_ec2_classic_load_balancer\nwhere\n  access_log_enabled = 'false';",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_classic_load_balancer",
+    "ListOfTables": [
+      "aws_ec2_classic_load_balancer"
+    ]
+  },
   "Connector": "AWS",
   "ShortTitle": "Classic Load Balancers without logging",
   "LongTitle": "List classic Load Balancers without logging",

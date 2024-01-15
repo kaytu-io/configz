@@ -1,0 +1,64 @@
+Description: "This control checks whether the default version of AWS Identity and Access Management policies (also known as customer managed policies) do not have administrator access with a statement that has 'Effect': 'Allow' with 'Action': '*' over 'Resource': '*'."
+ID: aws_iam_policy_no_star_star
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_iam_policy
+  PrimaryTable: aws_iam_policy
+  QueryToExecute: |
+    with bad_policies as (
+      select
+        arn,
+        count(*) as num_bad_statements
+      from
+        aws_iam_policy,
+        jsonb_array_elements(policy_std -> 'Statement') as s,
+        jsonb_array_elements_text(s -> 'Resource') as resource,
+        jsonb_array_elements_text(s -> 'Action') as action
+      where
+        s ->> 'Effect' = 'Allow'
+        and resource = '*'
+        and (
+          (action = '*'
+          or action = '*:*'
+          )
+      )
+      group by
+        arn
+    )
+    select
+      -- Required Columns
+      p.arn as resource,
+      p.kaytu_account_id as kaytu_account_id,
+      p.kaytu_resource_id as kaytu_resource_id,
+      case
+        when bad.arn is null then 'ok'
+        else 'alarm'
+      end status,
+      p.name || ' contains ' || coalesce(bad.num_bad_statements,0)  ||
+         ' statements that allow action "*" on resource "*".' as reason,
+      -- Additional Dimensions
+      p.account_id
+    from
+      aws_iam_policy as p
+      left join bad_policies as bad on p.arn = bad.arn
+    where
+      p.arn not like 'arn:aws:iam::aws:policy%'
+Severity: low
+Tags:
+  pci:
+  - "true"
+  pci_item_id:
+  - iam_3
+  pci_requirements:
+  - 7.2.1
+  pci_version:
+  - v3.2.1
+  plugin:
+  - aws
+  service:
+  - iam
+Title: IAM policies should not allow full '*' administrative privileges

@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Azure Cache for Redis instance
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.cache/redis' group by 1,2;
+status: active
+tags:
+  category:
+  - Database

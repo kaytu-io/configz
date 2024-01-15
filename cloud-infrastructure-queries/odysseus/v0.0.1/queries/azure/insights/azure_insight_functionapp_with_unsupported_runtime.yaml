@@ -1,0 +1,55 @@
+Connector: Azure
+Engine: odysseus-v0.0.1
+ID: azure_insight_functionapp_with_unsupported_runtime
+ListOfTables:
+- azure_app_service_function_app
+PrimaryTable: azure_app_service_function_app
+QueryToExecute: |-
+  SELECT 
+    id, language_runtime_type, language_runtime_version, subscription_id, kaytu_account_id, kaytu_resource_id
+  FROM azure_app_service_function_app
+  WHERE ( 
+    (
+      language_runtime_type = 'dotnet' AND (
+        language_runtime_version != '6' AND
+        language_runtime_version != '7'
+      )
+    ) OR (
+      language_runtime_type = 'dotnetcore' AND (
+        language_runtime_version != 'v4.0' AND
+        language_runtime_version != 'v6.0' AND
+        language_runtime_version != 'v7.0' AND
+        language_runtime_version != '6' AND
+        language_runtime_version != '7' AND
+        language_runtime_version != '4' AND
+        language_runtime_version != '4.8'
+      )
+    ) OR (
+      language_runtime_type = 'python' AND (
+        language_runtime_version != '3.7' AND
+        language_runtime_version != '3.8' AND
+        language_runtime_version != '3.9' AND
+        language_runtime_version != '3.10' AND
+        language_runtime_version != '3.11'
+      )
+    ) OR (
+      language_runtime_type = 'java' AND (
+        language_runtime_version != '8' AND
+        language_runtime_version != '11' AND
+        language_runtime_version != '17'
+      )
+    ) OR (
+      language_runtime_type = 'powershell' AND (
+        language_runtime_version != '7.2'
+      )
+    ) OR (
+      language_runtime_type = 'node' AND (
+        language_runtime_version != '14' AND
+        language_runtime_version != '16' AND
+        language_runtime_version != '18' AND
+        language_runtime_version != '~14' AND
+        language_runtime_version != '~16' AND
+        language_runtime_version != '~18'
+      )
+    )
+  );

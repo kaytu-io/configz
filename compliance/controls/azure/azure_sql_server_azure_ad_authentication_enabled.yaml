@@ -1,0 +1,51 @@
+Description: Audit provisioning of an Azure Active Directory administrator for your SQL server to enable Azure AD authentication. Azure AD authentication enables simplified permission management and centralized identity management of database users and other Microsoft services.
+ID: azure_sql_server_azure_ad_authentication_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+  PrimaryTable: azure_sql_server
+  QueryToExecute: |
+    with sever_with_ad_admin as (
+      select
+        distinct a.id
+      from
+        azure_sql_server as a,
+        jsonb_array_elements(server_azure_ad_administrator) as ad_admin
+      where
+        ad_admin ->> 'type' = 'Microsoft.Sql/servers/administrators'
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when s.id is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when s.id is not null then a.name || ' azure AD authentication enabled.'
+        else a.name || ' azure AD authentication disabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_server as a
+      left join sever_with_ad_admin as s on a.id = s.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  service:
+  - Azure/SQL
+Title: An Azure Active Directory administrator should be provisioned for SQL servers

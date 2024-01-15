@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: VPN Gateway
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'VPN Gateway' group by 1,2;
+status: active
+tables:
+- VPN Gateway
+tags:
+  category:
+  - Network

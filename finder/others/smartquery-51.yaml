@@ -1,0 +1,4 @@
+connectors:
+- AWS
+query: "select\n  -- Required Columns\n  'arn:' || partition || ':ec2:' || region || ':' || account_id || ':snapshot/' || snapshot_id as resource,\n  case\n    when create_volume_permissions @> '[{\"Group\": \"all\", \"UserId\": null}]' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when create_volume_permissions @> '[{\"Group\": \"all\", \"UserId\": null}]' then title || ' is publicly restorable.'\n    else title || ' is not publicly restorable.'\n  end reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_ebs_snapshot"
+title: Find all EBS snapshots that are publicly restorable

@@ -1,0 +1,32 @@
+Connector: Azure
+Description: List clusters that have role-based access control (RBAC) disabled
+Enabled: true
+ID: 23.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List clusters that have role-based access control (RBAC) disabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ID: azure_insight_kubernetes_cluster_with_rbac_disabled
+  ListOfTables:
+  - azure_kubernetes_cluster
+  PrimaryTable: azure_kubernetes_cluster
+  QueryToExecute: |-
+    select
+      name,
+      id,
+      location,
+      type,
+      identity,
+      enable_rbac,
+      sku, subscription_id, kaytu_account_id, kaytu_resource_id
+    from
+      azure_kubernetes_cluster
+    where
+      not enable_rbac;
+ShortTitle: Clusters with no RBAC
+Tags:
+  category:
+  - Security

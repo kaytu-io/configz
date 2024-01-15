@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Lambda Function
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::lambda::function' group by 1,2;
+status: active
+tags:
+  category:
+  - PaaS

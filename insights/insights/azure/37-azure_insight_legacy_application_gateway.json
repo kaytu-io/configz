@@ -1,6 +1,15 @@
 {
   "ID": 37,
-  "QueryID": "azure_insight_legacy_application_gateway",
+  "Query": {
+    "ID": "azure_insight_legacy_application_gateway",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "SELECT name, id, sku-\u003e'tier' AS tier, subscription_id, kaytu_account_id, kaytu_resource_id FROM azure_application_gateway WHERE NOT sku IS NULL AND sku-\u003e\u003e'tier' = 'Standard_v2';",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_application_gateway",
+    "ListOfTables": [
+      "azure_application_gateway"
+    ]
+  },
   "Connector": "Azure",
   "ShortTitle": "Legacy Application Gateways",
   "LongTitle": "Legacy Application Gateways",

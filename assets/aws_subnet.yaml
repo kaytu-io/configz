@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Subnet
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::ec2::subnet' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Network

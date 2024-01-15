@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: MySQL Server
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.dbformysql/servers' group by 1,2;
+status: active
+tags:
+  category:
+  - Database

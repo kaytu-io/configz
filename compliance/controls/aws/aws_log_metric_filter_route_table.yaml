@@ -1,0 +1,71 @@
+Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. Routing tables are used to route network traffic between subnets and to network gateways. It is recommended that a metric filter and alarm be established for changes to route tables.
+DocumentURI: ""
+ID: aws_log_metric_filter_route_table
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_account
+  - aws_cloudtrail_trail
+  - aws_cloudwatch_alarm
+  - aws_cloudwatch_log_metric_filter
+  - aws_sns_topic_subscription
+  PrimaryTable: aws_account
+  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    alarm.name as alarm_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventName\\s*=\\s*CreateRoute.+\\$\\.eventName\\s*=\\s*CreateRouteTable.+\\$\\.eventName\\s*=\\s*ReplaceRoute.+\\$\\.eventName\\s*=\\s*ReplaceRouteTableAssociation.+\\$\\.eventName\\s*=\\s*DeleteRouteTable.+\\$\\.eventName\\s*=\\s*DeleteRoute.+\\$\\.eventName\\s*=\\s*DisassociateRouteTable'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for route table changes.'\n    else filter_name || ' forwards events for route table changes.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "3.13"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "3"
+  cis_type:
+  - scored
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
+  x-kaytu-explanation:
+  - "```markdown\n# AWS Control: Real-time API Monitoring and Route Tables Management\n\n## Real-time API Monitoring\nAmazon Web Services (AWS) provides functionality to monitor API calls in real-time. This feature is highly useful in tracking the activities within your AWS environment and can be attained by integrating **CloudTrail Logs** with **CloudWatch Logs**. \n\nAWS CloudTrail records the API calls made on your account and delivers the log files. These recorded activities include actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.\n\nOn the other hand, **CloudWatch Logs** lets you monitor and troubleshoot your systems by aggregating these logs from your resources into one place. \n\nTo set up this control, you must:\n1.  Direct your CloudTrail logs to CloudWatch Logs.\n2.  Establish corresponding metric filters and alarms in the CloudWatch Logs.\n\n## Route Tables Management\nRouting tables in AWS virtual private cloud (VPC) are crucial elements in controlling network traffic. \n\nThese tables route the network traffic from subnets to different gateways and between various subnets. \n\nIn terms of security, it is highly recommended to establish metric filters and alarms for changes to routing tables. This ensures any unexpected or unwanted changes are caught and addressed promptly. This can prevent potential security threats, including exposing your resources to untrusted networks.\n```"
+  x-kaytu-noncompliance-cost:
+  - |-
+    Non-compliance to this AWS control could potentially lead to high costs for a business, in several ways:
+
+    1. **Security Vulnerabilities:** Without real-time monitoring of API calls, an unauthorized user or hacker could potentially access, alter or delete data without being detected. This could lead to data breaches, causing financial loss due to regulatory fines and loss of customers' trust.
+
+    2. **Operational Disruptions:** If changes to route tables are not monitored, cognitive errors or malicious activities could tamper with the routing configurations, which may lead to disruptions in application performance or availability.
+
+    3. **Increased Troubleshooting Costs:** If real-time monitoring is not in place, the diagnosis of issues becomes more challenging and time-consuming - leading to increased troubleshooting costs.
+
+    4. **Non-compliance with Regulations:** For organizations dealing with sensitive data like financial, healthcare or personal information, not having real-time monitoring may be a violation of compliance regulations like HIPAA, GDPR or PCI-DSS. Non-compliance can result in hefty fines and penalties.
+
+    In a markup format:
+
+    - **Security Vulnerabilities:** 
+        * Unauthorized access to data
+        * Potential data breaches
+        * Financial loss due to regulatory fines and loss of customers' trust.
+        
+    - **Operational Disruptions:**
+        * Tampering with routing configurations
+        * Disruptions in application performance or availability.
+
+    - **Increased Troubleshooting Costs:**
+        * Difficulty in diagnosing issues
+        * Increased time and cost in troubleshooting.
+
+    - **Non-compliance with Regulations:**
+        * Violation of compliance regulations like HIPAA, GDPR, PCI-DSS
+        * Financial penalties due to non-compliance.
+  x-kaytu-usefulness-example:
+  - "An example instance might be having a complex cloud environment with multiple subnets and network gateways. Effective management and security of this environment would be essential and any unexpected changes to the route tables could potentially lead to unauthorized access or data breach.\n\n```\n# Example Instance\n\nA company is using Amazon Web Services to host their highly sensitive customer data. They have an architectural setup with several subnets, internet gateways, and route tables. To ensure the security and integrity of their stored data, they decide to enable real-time monitoring of API calls using CloudTrail Logs and CloudWatch Logs. \n\nSpecifically, they establish metric filters and alarms for changes to route tables. This means if a route table is altered – possibly as an attempt to reroute data traffic for malicious intents – an alarm will be triggered and the company will be immediately notified. \n\nWith this setup, a potential sequence could be:\n\n1. An unauthorized user gains access to the AWS console.\n2. They try to reroute traffic by altering a route table.\n3. AWS CloudTrail logs the API call made to change the route table.\n4. AWS CloudWatch alerts the security team in real-time, based on the established metric filters and alarms.\n5. The security team can then investigate the change, verify if it was legitimate, and if not, quickly rollback the change and track down the intruder.\n\nSuch a monitoring and alert system dramatically enhances the company's ability to protect their data and respond to security threats, making this AWS control invaluable for bolstering the cloud infrastructure's resilience.\n```"
+Title: Ensure a log metric filter and alarm exist for route table changes

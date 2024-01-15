@@ -1,0 +1,42 @@
+Description: This control checks whether you've changed the administrative username for Amazon Relational Database Service (Amazon RDS) database instances from the default value. The control fails if the administrative username is set to the default value.
+ID: aws_rds_db_instance_no_default_admin_name
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_rds_db_instance
+  PrimaryTable: aws_rds_db_instance
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when master_user_name in ('admin','postgres') then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when master_user_name in ('admin', 'postgres') then title || ' using default master user name.'
+        else title || ' not using default master user name.'
+      end reason
+      
+      , region, account_id
+    from
+      aws_rds_db_instance;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - resource_configuration
+  foundational_security_item_id:
+  - rds_25
+  plugin:
+  - aws
+  service:
+  - AWS/RDS
+Title: RDS database instances should use a custom administrator username

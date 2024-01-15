@@ -1,0 +1,64 @@
+Description: Access keys are long-term credentials for an IAM user or the AWS account root user. You can use access keys to sign programmatic requests to the AWS CLI or AWS API. One of the best ways to protect your account is to not allow users to have multiple access keys.
+DocumentURI: ""
+ID: aws_iam_user_one_active_key
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_iam_access_key
+  - aws_iam_user
+  PrimaryTable: aws_iam_user
+  QueryToExecute: |
+    select
+      u.arn as resource,
+      u.kaytu_account_id as kaytu_account_id,
+      u.kaytu_resource_id as kaytu_resource_id,
+      case
+        when count(k.*) > 1 then 'alarm'
+        else 'ok'
+      end as status,
+      u.name || ' has ' || count(k.*) || ' active access key(s).' as reason
+      
+      , u.account_id
+    from
+      aws_iam_user as u
+      left join aws_iam_access_key as k on u.name = k.user_name and u.account_id = k.account_id
+    where
+      k.status = 'Active' or k.status is null
+    group by
+      u.arn,
+      u.name,
+      u.account_id,
+      u.tags,
+      u.kaytu_account_id,
+      u.kaytu_resource_id,
+      u._ctx;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "1.13"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "1"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  x-kaytu-explanation:
+  - "```markup\n# AWS Control: Access Keys\n\n**Access keys** are the long-term credentials provided for an **IAM user** or the **AWS account root user**. These keys play a significant role in signing programmatic requests to the AWS CLI (Command Line Interface) or the AWS API (Application Programming Interface).\n\nBut bear in mind that, as these keys are powerful and allow broad access, they should be managed with utmost care. Therefore, it is essential to ensure high-level security. One such precaution is not allowing individual users to own multiple access keys. This practice can avoid unwarranted access and potential misuse, thus strengthening the security of your account.\n```"
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to this AWS control can result in multiple risks and subsequent costs such as:\n\n1. **Security Risks:** If a user has multiple access keys, it presents a substantial security risk. If one key gets compromised, the attacker gains unauthorized access to the AWS resources that the key holder has privileges to. This security risk can lead to a breach of confidential and sensitive information.\n\n2. **Financial Costs**: In cases where the compromised access key is tied to resources that incur costs (like spinning up EC2 instances), an attacker can cause an increase in AWS charges. The financial costs in such situations can be substantial.\n\n3. **Regulatory Non-Compliance**: If the organization operates in a regulatory environment that demands strict access control and its audit, non-compliance with such AWS control could result in regulatory penalties or fines.\n\n4. **Operational Disruption**: Unauthorized changes in resources might lead to an operational disruption to business services hosted on AWS leading to loss of business revenue and reputation.\n\n5. **Recovery Costs**: Recovery from such breaches would require time and financial resources. This includes costs associated with investigation, remediation, notifications, and potential credit monitoring services for affected customers.\n\nTherefore, it is crucial to avoid non-compliance with this control for maintaining good security posture and reducing the potential risk of financial and reputational damage."
+  x-kaytu-usefulness-example:
+  - "For example, consider an organization that uses AWS for hosting their web applications. The developers in the team require access to various AWS services like EC2, S3, DynamoDB, etc for deploying, troubleshooting, and managing the applications.\n\nInstead of sharing the root user's access keys with all developers, the organization creates individual IAM users for each developer which provides them separate access keys. This approach is more secure and it allows the Admin to precisely control what AWS services and resources each developer can access.\n\nAdditionally, by restricting the users to have a single access key, the organization can minimize the risk of unauthorized access. Even if a user's access key gets compromised, the accidental damage or data breach can be contained due to lack of multiple access keys.\n\nHere is an illustrative example in markup:\n\n```markup\n-> Developer A use case\nIAM User: Developer A\nAccess Key: *************\nAllowed AWS services: EC2, S3\nInstructions: \n1. Use the provided access key for making programmatic requests to allowed AWS services.\n2. Strictly follow best practices for using and storing AWS access keys.\n\n-> Developer B use case\nIAM User: Developer B\nAccess Key: *************\nAllowed AWS services: DynamoDB, S3\nInstructions: \n1. Use the provided access key for making programmatic requests to allowed AWS services.\n2. Strictly follow best practices for using and storing AWS access keys.\n```\n\nBy this method and using the rule of not allowing multiple access keys, the risk of unauthorized access or misuse of privileges can be greatly reduced."
+Title: Ensure there is only one active access key available for any single IAM user

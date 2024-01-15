@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Elastic File Storage (EFS)
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::efs::filesystem') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Storage

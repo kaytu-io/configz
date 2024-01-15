@@ -1,0 +1,36 @@
+Connector: AWS
+Description: List all ELB with no WAF.
+Enabled: true
+ID: 15.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List all ELB with no WAF.
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_elb_application_lb_waf_enabled
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  PrimaryTable: aws_ec2_application_load_balancer
+  QueryToExecute: |-
+    select
+      -- Required Columns
+      arn as resource, account_id, kaytu_account_id, kaytu_resource_id,
+      case
+        when load_balancer_attributes @> '[{"Key":"waf.fail_open.enabled","Value":"true"}]' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when load_balancer_attributes @> '[{"Key":"waf.fail_open.enabled","Value":"true"}]' then title || ' WAF enabled.'
+        else title || ' WAF disabled.'
+      end as reason,
+      -- Additional Dimensions
+      region 
+    from
+      aws_ec2_application_load_balancer;
+ShortTitle: Load Balancers with no WAF
+Tags:
+  category:
+  - Security
+  - Technical Debt

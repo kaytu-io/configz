@@ -1,0 +1,29 @@
+Connector: Azure
+Description: List storage accounts with encryption in transit disabled
+Enabled: true
+ID: 30.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List storage accounts with encryption in transit disabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ID: azure_insight_storage_account_with_disabled_encryption_in_transit
+  ListOfTables:
+  - azure_storage_account
+  PrimaryTable: azure_storage_account
+  QueryToExecute: |-
+    select
+      name,
+      enable_https_traffic_only, subscription_id, kaytu_account_id, kaytu_resource_id
+    from
+      azure_storage_account
+    where
+      not enable_https_traffic_only;
+ShortTitle: Storage Accounts No Unecrypted Transit
+Tags:
+  category:
+  - Security
+  - Technical Debt
+  - Resiliency

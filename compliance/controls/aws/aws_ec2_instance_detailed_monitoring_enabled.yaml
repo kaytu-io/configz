@@ -1,0 +1,50 @@
+Description: Enable this rule to help improve Amazon Elastic Compute Cloud (Amazon EC2) instance monitoring on the Amazon EC2 console, which displays monitoring graphs with a 1-minute period for the instance.
+ID: aws_ec2_instance_detailed_monitoring_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_instance
+  PrimaryTable: aws_ec2_instance
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when monitoring_state = 'enabled' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when monitoring_state = 'enabled' then instance_id || ' detailed monitoring enabled.'
+        else instance_id || ' detailed monitoring disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ec2_instance;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/EC2
+  soc_2:
+  - "true"
+Title: EC2 instance detailed monitoring should be enabled

@@ -1,0 +1,72 @@
+Description: This control checks whether an Elastic Load Balancer V2 (Application, Network, or Gateway Load Balancer) has registered instances from multiple Availability Zones. The control fails if an Elastic Load Balancer V2 has instances registered in fewer than two Availability Zones.
+ID: aws_elb_application_gateway_network_lb_multiple_az_configured
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  - aws_ec2_gateway_load_balancer
+  - aws_ec2_network_load_balancer
+  PrimaryTable: null
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      'aws_ec2_application_load_balancer' as kaytu_table_name,
+      case
+        when jsonb_array_length(availability_zones) < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason
+      
+      , region, account_id
+    from
+      aws_ec2_application_load_balancer
+    union
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      'aws_ec2_network_load_balancer' as kaytu_table_name,
+      case
+        when jsonb_array_length(availability_zones) < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason
+      
+      , region, account_id
+    from
+      aws_ec2_network_load_balancer
+    union
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      'aws_ec2_gateway_load_balancer' as kaytu_table_name,
+      case
+        when jsonb_array_length(availability_zones) < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason
+      
+      , region, account_id
+    from
+      aws_ec2_gateway_load_balancer;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - high_availability
+  foundational_security_item_id:
+  - elb_13
+  plugin:
+  - aws
+  service:
+  - AWS/ELB
+Title: Application, Network, and Gateway Load Balancers should span multiple Availability Zones

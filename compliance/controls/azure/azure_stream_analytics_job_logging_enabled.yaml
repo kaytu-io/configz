@@ -1,0 +1,21 @@
+Description: Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.
+ID: azure_stream_analytics_job_logging_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_stream_analytics_job
+  - azure_subscription
+  PrimaryTable: azure_stream_analytics_job
+  QueryToExecute: "with logging_details as (\n  select\n    distinct name as job_name\n  from\n    azure_stream_analytics_job,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -> 'properties' -> 'logs') log\n  where\n    diagnostic_settings is not null\n    and (\n      (\n        (log ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy' ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy') :: JSONB ? 'days'\n      )\n      or\n      (\n        (log ->> 'enabled') :: boolean\n        and (\n          log -> 'retentionPolicy' ->> 'enabled' <> 'true'\n          or setting -> 'properties' ->> 'storageAccountId' = ''\n        )\n      )\n    )\n)\nselect\n  v.job_id as resource,\n  v.kaytu_account_id as kaytu_account_id,\n  v.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.diagnostic_settings is null then 'alarm'\n    when l.job_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when v.diagnostic_settings is null then v.name || ' logging not enabled.'\n    when l.job_name is null then v.name || ' logging not enabled.'\n    else v.name || ' logging enabled.'\n  end as reason\n  \n  , v.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_stream_analytics_job as v\n  left join logging_details as l on v.name = l.job_name,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = v.subscription_id;\n"
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/StreamAnalytics
+Title: Resource logs in Azure Stream Analytics should be enabled

@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Internet Gateway (Egress-Only)
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::ec2::egressonlyinternetgateway' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Network Gateways

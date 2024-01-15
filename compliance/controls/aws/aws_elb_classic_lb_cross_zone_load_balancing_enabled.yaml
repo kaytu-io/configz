@@ -1,0 +1,58 @@
+Description: Enable cross-zone load balancing for your Elastic Load Balancers (ELBs) to help maintain adequate capacity and availability. The cross-zone load balancing reduces the need to maintain equivalent numbers of instances in each enabled availability zone.
+ID: aws_elb_classic_lb_cross_zone_load_balancing_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_classic_load_balancer
+  PrimaryTable: aws_ec2_classic_load_balancer
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when cross_zone_load_balancing_enabled then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when cross_zone_load_balancing_enabled then title || ' cross-zone load balancing enabled.'
+        else title || ' cross-zone load balancing disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ec2_classic_load_balancer;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  gxp_eu_annex_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/ELB
+Title: ELB classic load balancers should have cross-zone load balancing enabled

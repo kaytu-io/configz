@@ -1,6 +1,15 @@
 {
   "ID": 15,
-  "QueryID": "aws_insight_elb_application_lb_waf_enabled",
+  "Query": {
+    "ID": "aws_insight_elb_application_lb_waf_enabled",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  -- Required Columns\n  arn as resource, account_id, kaytu_account_id, kaytu_resource_id,\n  case\n    when load_balancer_attributes @\u003e '[{\"Key\":\"waf.fail_open.enabled\",\"Value\":\"true\"}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when load_balancer_attributes @\u003e '[{\"Key\":\"waf.fail_open.enabled\",\"Value\":\"true\"}]' then title || ' WAF enabled.'\n    else title || ' WAF disabled.'\n  end as reason,\n  -- Additional Dimensions\n  region \nfrom\n  aws_ec2_application_load_balancer;",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_application_load_balancer",
+    "ListOfTables": [
+      "aws_ec2_application_load_balancer"
+    ]
+  },
   "Connector": "AWS",
   "ShortTitle": "Load Balancers with no WAF",
   "LongTitle": "List all ELB with no WAF.",

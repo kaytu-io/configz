@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: EC2 - EBS Optimized Instances
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'EC2 - EBSOptimized' group by 1,2;
+status: active
+tables:
+- EC2 - EBSOptimized
+tags:
+  category:
+  - Compute

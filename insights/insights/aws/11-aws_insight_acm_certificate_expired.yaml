@@ -1,0 +1,27 @@
+Connector: AWS
+Description: List of expired certificates
+Enabled: true
+ID: 11.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List of expired certificates
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_acm_certificate_expired
+  ListOfTables:
+  - aws_acm_certificate
+  PrimaryTable: aws_acm_certificate
+  QueryToExecute: |-
+    select certificate_arn, domain_name, status, account_id, kaytu_account_id, kaytu_resource_id from
+      aws_acm_certificate
+    where
+      status = 'EXPIRED';
+ShortTitle: Expired Certificates
+Tags:
+  category:
+  - Security
+  - Technical Debt
+  - Resiliency
+  - Cost Management

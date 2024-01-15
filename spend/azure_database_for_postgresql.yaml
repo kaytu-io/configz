@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Azure Database for PostgreSQL
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Azure Database for PostgreSQL' group by 1,2;
+status: active
+tables:
+- Azure Database for PostgreSQL
+tags:
+  category:
+  - Database

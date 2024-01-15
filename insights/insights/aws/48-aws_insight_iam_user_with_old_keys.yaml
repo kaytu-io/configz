@@ -1,0 +1,24 @@
+Connector: AWS
+Description: IAM users with access keys older than 90 days
+Enabled: true
+ID: 48.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: IAM Users with old access keys
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_iam_user_with_old_keys
+  ListOfTables:
+  - aws_iam_credential_report
+  PrimaryTable: aws_iam_credential_report
+  QueryToExecute: select access_key_1_active, access_key_1_last_rotated, access_key_2_active, access_key_2_last_rotated, user_arn, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where ((access_key_1_active = true AND (access_key_1_last_rotated IS NULL OR (current_date - DATE(access_key_1_last_rotated)) > 90)) OR (access_key_2_active = true AND (access_key_2_last_rotated IS NULL OR (current_date - DATE(access_key_2_last_rotated)) > 90)))
+ShortTitle: IAM Users with old access keys
+Tags:
+  category:
+  - Security
+  persona:
+  - DevOps
+  - Security
+  - Executive

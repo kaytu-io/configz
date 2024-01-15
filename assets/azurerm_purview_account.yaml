@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Microsoft Purview Account
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.purview/accounts' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Management and governance

@@ -1,0 +1,71 @@
+Description: Private endpoints will secure network traffic from Azure Key Vault to the resources requesting secrets and keys.
+DocumentURI: ""
+ID: azure_keyvault_vault_private_link_used
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_key_vault
+  - azure_subscription
+  PrimaryTable: azure_key_vault
+  QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n  -- Having private_endpoint_connections will not permit vault to use the same.\n  -- In case'defaultAction' = 'Allow', All Network including internet is allowed, which will not satisfy the private endpoint connection.\n  -- Default All network will have not network_acls associated.\n    when network_acls is null or network_acls ->> 'defaultAction' = 'Allow' then 'alarm'\n    when private_endpoint_connections is null then 'info'\n    when private_endpoint_connections @> '[{\"PrivateLinkServiceConnectionStateStatus\": \"Approved\"}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when network_acls is null or network_acls ->> 'defaultAction' = 'Allow' then a.name || ' using public networks.'\n    when private_endpoint_connections is null then a.name || ' no private link exists.'\n    when private_endpoint_connections @> '[{\"PrivateLinkServiceConnectionStateStatus\": \"Approved\"}]'\n    then a.name || ' using private link.'\n    else a.name || ' private link not enabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault a,\n  azure_subscription sub;\n"
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "8.7"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "8"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.5.0
+  plugin:
+  - azure
+  service:
+  - Azure/KeyVault
+  x-kaytu-explanation:
+  - "Azure Key Vault is a cloud service from Microsoft Azure providing secure storage for secrets, keys, and certificates. It helps in protecting cryptographic keys and other secrets used by cloud applications and services. By using Azure Key Vault, you can encrypt keys and small secrets (like passwords) by using keys. These keys are safeguarded by Hardware Security Modules (HSMs).\n\nHowever, the traffic between Azure Key Vault and the resources requesting these secrets and keys can be vulnerable to interceptions or breaches.\n\nTo secure this traffic, you can use private endpoints. A private endpoint is a special kind of network interface that connects your application privately and securely to a service powered by Azure Private Link.\n\nAzure Private Link provides private connectivity from a virtual network to Azure services. This eliminates exposure to the public internet.\n\nSo, when you use a private endpoint in your Azure Key Vault instance, the traffic between the vault and the resources requesting secrets or keys is secured, minimizing the risk of interception or breach. \n\n**In Azure Markup:**\n```markdown\n- Service: Azure Key Vault\n- Description: Uses Azure Private Link (private endpoints) to secure the network traffic between Azure Key Vault and the resources.\n- Actions: \n  - `Secure Key Vault traffic`: Traffic between the Key Vault and client applications is secured.\n- Considerations:  \n   - This reduces the attack surface area by limiting access to the vault to only authorized resources in the virtual network.  \n   - With Azure Private Link, data in transit is secured and private as it remains on Microsoft's backbone network. \n- References:\n   - Azure Key Vault Documentation: https://docs.microsoft.com/en-us/azure/key-vault/\n   - Azure Private Link Documentation: https://docs.microsoft.com/en-us/azure/private-link/private-link-overview\n- Related Resources: \n   - `Azure Virtual Network`\n   - `Azure Applications`\n```\nThis Azure control would help you to manage your resources and their access as per your needs, while also securing sensitive traffic between your Key Vault and client applications."
+  x-kaytu-noncompliance-cost:
+  - |-
+    Non-compliance to this Azure control could lead to several negative implications including:
+
+    1. **Security Breach:** Without the use of private endpoints, your network traffic from Azure Key Vault might be exposed to vulnerabilities and risks such as data sniffing and manipulation by unauthorized parties. This could result in detrimental theft of crucial and confidential information like passwords, tokens or cryptographic keys.
+
+    2. **Non-compliance Penalties:** Deviation from laid down security protocols and controls could also attract penalties or fines based on regional or industry-specific regulations such as GDPR or HIPAA. It could also lead to non-fulfillment of contractual obligations with clients that may have serious financial implications as well as reputation damage.
+
+    3. **Network Attack exposure:** the absence of the private endpoints increases the susceptibility of your network to DDoS attacks or unwanted intrusion that could bring down your service or disrupt your operations.
+
+    4. **Increased Cost:** While it might seem like an easy cut-cost measure to avoid private endpoints, the costs that could potentially stem from dealing with security breaches, network disruptions and regulatory infringements may outweigh the supposed benefits.
+
+    5. **Brand and Trust Damage:** Security breaches can result in damage to a company's reputation, which may lead to loss of customers and business opportunities. Trust is hard to build, especially in the realm of business dealing with sensitive data, and once it's eroded, it could take years and significant resources to rebuild.
+
+    In essence, ensuring the use of private endpoints is crucial to maintaining the overall security of your Azure operations as well as your regulatory compliance.
+  x-kaytu-usefulness-example:
+  - |-
+    Instance:
+
+    A financial service organization has a requirement to ensure maximum security protocols in order to secure confidential data. The organization has several microservices hosted on Azure, which utilize secrets and keys from Azure Key Vault for secure communication. These secrets and keys hold sensitive data like database connection strings, passwords, etc.
+
+    However, exposing the Azure Key Vault public endpoint poses a potential network security risk since internet-based threats can attack it. The organization wants to minimize the exposure of these secrets and keys to the internet and reduce the risk of unauthorized access.
+
+    A secure solution can be implemented by using private endpoints in Azure. With Azure PrivateLink, the organization can securely connect its Virtual Private Cloud (VPC) to Azure Key Vault on Azure without exposing the traffic to the public Internet. This ensures that all the traffic between the organization's VPC and Azure Key Vault is securely transferred over the Amazon network.
+
+    This would be an ideal example of using Azure PrivateLink for Azure Key Vault providing a secure and private network connection between Azure VPC and Azure services, thus eliminating the exposure to the public Internet.
+
+    Example in markup:
+
+    ```
+    - **Company:** Finserve Inc
+    - **Issue:** Risk of unauthorized access to Azure Key Vault through public internet exposure
+    - **Solution:** Implement Azure PrivateLink to establish secure and private connections from VPCs to Azure Key Vault
+    - **Outcome:** Secure transfer of secrets and keys between the organization's VPC and Azure Key Vault over the Amazon network, enhancing network security by avoiding public internet exposure.
+    ```
+Title: Ensure that Private Endpoints are Used for Azure Key Vault

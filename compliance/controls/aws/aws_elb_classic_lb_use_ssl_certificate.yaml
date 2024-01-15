@@ -1,0 +1,80 @@
+Description: Because sensitive data can exist and to help protect data at transit, ensure encryption is enabled for your Elastic Load Balancing.
+ID: aws_elb_classic_lb_use_ssl_certificate
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ec2_classic_load_balancer
+  PrimaryTable: aws_ec2_classic_load_balancer
+  QueryToExecute: |
+    with detailed_classic_listeners as (
+      select
+        name,
+        kaytu_resource_id
+      from
+        aws_ec2_classic_load_balancer,
+        jsonb_array_elements(listener_descriptions) as listener_description
+      where
+        listener_description -> 'Listener' ->> 'Protocol' in ('HTTPS', 'SSL', 'TLS')
+        and listener_description -> 'Listener' ->> 'SSLCertificateId' like 'arn:aws:acm%'
+    )
+    select
+      'arn:' || a.partition || ':elasticloadbalancing:' || a.region || ':' || a.account_id || ':loadbalancer/' || a.name as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when a.listener_descriptions is null then 'skip'
+        when b.name is not null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when a.listener_descriptions is null then a.title || ' has no listener.'
+        when b.name is not null then a.title || ' does not use certificates provided by ACM.'
+        else a.title || ' uses certificates provided by ACM.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ec2_classic_load_balancer as a
+      left join detailed_classic_listeners as b on a.kaytu_resource_id = b.kaytu_resource_id;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/ELB
+  soc_2:
+  - "true"
+Title: ELB classic load balancers should use SSL certificates

@@ -1,0 +1,66 @@
+Description: This policy audits any virtual machine connected to a virtual network that is not approved.
+ID: azure_compute_vm_attached_with_network
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_network_interface
+  - azure_subscription
+  PrimaryTable: azure_compute_virtual_machine
+  QueryToExecute: |
+    with vm_with_network_interfaces as (
+      select
+        vm.id as vm_id,
+        n ->> 'id' as network_id
+      from
+        azure_compute_virtual_machine as vm,
+        jsonb_array_elements(network_interfaces) as n
+    ),
+    vm_with_appoved_networks as (
+      select
+        vn.vm_id as vm_id,
+        vn.network_id as network_id,
+        t.title as title
+      from
+        vm_with_network_interfaces as vn
+        left join azure_network_interface as t on t.id = vn.network_id
+        where exists
+          (select
+            ip -> 'properties' -> 'subnet' ->> 'id' as ip
+          FROM
+            azure_network_interface,
+            jsonb_array_elements(ip_configurations) as ip
+          where
+            ip -> 'properties' -> 'subnet' ->> 'id' is not null)
+    )
+    select
+      a.vm_id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.vm_id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when b.vm_id is null then a.title || ' not attached with virtual network.'
+        else a.name || ' attached with virtual network ' || b.title || '.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_compute_virtual_machine as a
+      left join vm_with_appoved_networks as b on a.id = b.vm_id,
+      azure_subscription sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  service:
+  - Azure/Compute
+Title: Virtual machines should be connected to an approved virtual network

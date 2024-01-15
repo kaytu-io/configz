@@ -1,0 +1,72 @@
+Description: "The Storage Blob service provides scalable, cost-efficient objective storage in the cloud. Storage Logging happens server-side and allows details for both successful and failed requests to be recorded in the storage account. These logs allow users to see the details of read, write, and delete operations against the blobs. Storage Logging log entries contain the following information about individual requests: Timing information such as start time, end-to-end latency, and server latency, authentication details , concurrency information and the sizes of the request and response messages."
+DocumentURI: ""
+ID: azure_storage_account_blob_service_logging_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+  PrimaryTable: azure_storage_account
+  QueryToExecute: "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not (sa.blob_service_logging ->> 'Read') :: boolean\n    or not (sa.blob_service_logging ->> 'Write') :: boolean\n    or not (sa.blob_service_logging ->> 'Delete') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (sa.blob_service_logging ->> 'Read') :: boolean\n    or not (sa.blob_service_logging ->> 'Write') :: boolean\n    or not (sa.blob_service_logging ->> 'Delete') :: boolean then name || ' blob service logging not enabled for ' ||\n      concat_ws(', ',\n        case when not (sa.blob_service_logging ->> 'Write') :: boolean then 'write' end,\n        case when not (sa.blob_service_logging ->> 'Read') :: boolean then 'read' end,\n        case when not (sa.blob_service_logging ->> 'Delete') :: boolean then 'delete' end\n      ) || ' requests.'\n    else name || ' blob service logging enabled for read, write, delete requests.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n"
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "3.10"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "3"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/Storage
+  x-kaytu-explanation:
+  - |-
+    `<AzureControl>`
+     `<BlobStorageService>`
+       `<Description>`
+         The Storage Blob service provides scalable, cost-efficient objective storage in the cloud. 
+       `</Description>`
+       `<StorageLogging>`
+         Storage Logging happens server-side and records details of both successful and failed requests in the storage account. These logs provide visibility into operations such as read, write, and delete against the blobs.
+         `<LogEntries>`
+           `<Details>`
+             Timing information such as start time, end-to-end latency, and server latency.
+           `<AuthenticationDetails>`
+             Authentication details of the request.
+           `<ConcurrencyInfo>`
+             Information about concurrency of the request.
+           `<RequestSize>`
+             Size of the request message.
+           `<ResponseSize>`
+             Size of the response message.
+           `</Details>`
+         `</LogEntries>`
+       `</StorageLogging>`
+     `</BlobStorageService>`
+    `</AzureControl>`
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to the mentioned Azure Storage Blob service control can lead to the following expenses or costs:\n\n1. **Data Breaches**: Failure to log and monitor blob operations can make your Azure environment susceptible to data breaches. Without proper logging, it would be difficult to detect unauthorized access or modifications to your data. The cost of data breaches can be enormously high, including financial losses, reputational damage, legal issues, and customer confidence reduction.\n\n2. **Debugging and Problem Solving**: When issues occur, it would be challenging to troubleshoot and resolve problems without having detailed logs at your disposal. Increased downtime can result in additional costs due to lost revenue and productivity.\n\n3. **Regulatory Fines**: Many industries are subject to various regulations that require detailed logging for accountability and audit purposes. If your organization fails to adhere to such guidelines, it may result in hefty regulatory fines and penalties.\n\n4. **Forensic Investigation**: In case of any security incident, proper logging can aid in forensic investigation. Failure to have these logs can significantly increase the time, effort, and thus cost of forensic investigations.\n\n5. **Operational Inefficiency**: Monitoring logs assists in understanding system performance and operational behavior. Without it, it's hard to optimize the system, leading to operational inefficiency and increased costs.\n\n6. **Additional Security Costs**: The absence of effective logging may necessitate the adoption of more expensive, complex security measures to compensate for the lack of visibility and control. \n\n7. **Service Disruption**: The consequences of system or service disruption can be costly. Regular logging helps prevent such disruptions or reduce their impact by enabling a swift response.\n\nThe costs associated with non-compliance can be multifold, considering both direct and indirect consequences. It is necessary to continually monitor and log blob service operations, reinforcing the ecosystem's security posture."
+  x-kaytu-usefulness-example:
+  - |
+    ```azure
+    Example:
+
+    Suppose you have an application on Azure that allows users to upload and download files stored in a Blob storage account. Suddenly, a critical problem occurs where users report they are unable to upload files, and some are reporting their previously uploaded files are missing. 
+
+    Storage Logging can help diagnose the issue. You can enable it and gather logs for the errors being generated by the failed upload requests. Storage Logging would provide you with a detailed picture including the time the issue occurred, latency information, the specific blobs that were impacted, as well as the size of requests and response messages. This information will be crucial in diagnosing the issue, potentially identifying a bottleneck or error in your application's code, and applying a necessary fix.
+
+    Additionally, logs for delete operations can provide an audit trail to identify if some files were deleted inadvertently or maliciously. With authentication details available in the logs, you can establish who made the request to delete a blob in case of an unauthorized or unexpected deletion.
+    ```
+Title: Ensure Storage logging is enabled for Blob service for read, write, and delete requests

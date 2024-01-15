@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Synapse Analytics
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.synapse/workspaces/sqlpools','microsoft.synapse/workspaces') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Data & Analytics

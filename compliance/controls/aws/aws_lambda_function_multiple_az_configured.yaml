@@ -1,0 +1,55 @@
+Description: This control checks if Lambda has more than one availability zone associated. The rule fails if only one availability zone is associated with Lambda.
+ID: aws_lambda_function_multiple_az_configured
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_lambda_function
+  - aws_vpc_subnet
+  PrimaryTable: aws_lambda_function
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when vpc_id is null or vpc_id = '' then 'skip'
+        else case
+          when
+          (
+            select
+              count(distinct availability_zone_id)
+            from
+              aws_vpc_subnet
+            where
+              subnet_id in (select jsonb_array_elements_text(vpc_subnet_ids) )
+          ) >= 2
+          then 'ok'
+          else 'alarm'
+        end
+      end as status,
+      case
+        when vpc_id is null or vpc_id = '' then title || ' is not in VPC.'
+        else title || ' has ' || jsonb_array_length(vpc_subnet_ids) || ' availability zone(s).'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_lambda_function;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - high_availability
+  foundational_security_item_id:
+  - lambda_5
+  plugin:
+  - aws
+  service:
+  - AWS/Lambda
+Title: VPC Lambda functions should operate in more than one Availability Zone

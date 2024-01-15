@@ -1,0 +1,39 @@
+Description: Disable public network access for your key vault so that it's not accessible over the public internet. This can reduce data leakage risks.
+ID: azure_keyvault_vault_public_network_access_disabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_key_vault
+  - azure_subscription
+  PrimaryTable: azure_key_vault
+  QueryToExecute: |
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+      -- In case'defaultAction' = 'Allow', All Network including internet is allowed
+      -- Default All network will have not network_acls associated
+        when network_acls is null or network_acls ->> 'defaultAction' != 'Deny' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when network_acls is null or network_acls ->> 'defaultAction' != 'Deny' then a.name || ' public network access enabled.'
+        else a.name || ' public network access disabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_key_vault a,
+      azure_subscription sub;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/KeyVault
+Title: Azure Key Vault should disable public network access

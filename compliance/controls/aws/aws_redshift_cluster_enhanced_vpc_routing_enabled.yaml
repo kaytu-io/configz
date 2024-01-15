@@ -1,0 +1,48 @@
+Description: Ensure if Amazon Redshift cluster has 'enhancedVpcRouting' enabled. The rule is non  compliant if 'enhancedVpcRouting' is not enabled or if the configuration.enhancedVpcRouting field is 'false'.
+ID: aws_redshift_cluster_enhanced_vpc_routing_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_redshift_cluster
+  PrimaryTable: aws_redshift_cluster
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when enhanced_vpc_routing then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when enhanced_vpc_routing then title || ' enhanced VPC routing enabled.'
+        else title || ' enhanced VPC routing disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_redshift_cluster;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/Redshift
+Title: Amazon Redshift enhanced VPC routing should be enabled

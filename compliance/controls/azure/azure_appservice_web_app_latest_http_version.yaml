@@ -1,0 +1,63 @@
+Description: Periodically, newer versions are released for HTTP either due to security flaws or to include additional functionality. Using the latest HTTP version for web apps to take advantage of security fixes, if any, and/or new functionalities of the newer version.
+DocumentURI: ""
+ID: azure_appservice_web_app_latest_http_version
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+  PrimaryTable: azure_app_service_web_app
+  QueryToExecute: "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not (configuration -> 'properties' ->> 'http20Enabled') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (configuration -> 'properties' ->> 'http20Enabled') :: boolean then name || ' HTTP version not latest.'\n    else name || ' HTTP version is latest.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n"
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "9.9"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "9"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  x-kaytu-explanation:
+  - "Microsoft Azure provides a feature where users can control the HTTP version that their app uses. This control is useful to ensure the application is using a version of HTTP that is aligned with the app requirements and provides the best compatibility, functionality, and security.\n\nThis can be controlled in Azure through the Azure Resource Manager and Azure CLI, for both Linux and Windows.\n\nHere is a code markup in JSON format showing how to specify the HTTP version in Azure Resource Manager:\n\n```json\n{\n    \"properties\": {\n        \"siteConfig\": {\n            \"http20Enabled\": true\n        }\n    }\n}\n```\n\nIn this JSON code snippet, the `\"http20Enabled\": true` line means that HTTP/2.0 is enabled for the app.\n\nYou can also update the settings using Azure CLI using the following command:\n\n```\naz webapp config set --resource-group <resource-group-name> --name <app-name> --http20-enabled true\n```\n\nIn this CLI command, `--http20-enabled true` means that HTTP/2.0 is enabled for the app.\n\nAdditionally, this variable can be set directly in the Azure portal on the \"Configuration\" page in the \"General settings\" tab.\n\nPlease replace `<resource-group-name>` and `<app-name>` with actual values. \n\nRemember to always keep your app updated to the latest HTTP version supported by Azure to take advantage of new updates, improved security and added functionalities."
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to this Azure control has several potential cost implications:\n\n1. **Security Vulnerabilities**: Outdated HTTP versions might contain well-documented security flaws that attackers can take advantage of. This may result in data breaches, loss of customer trust, and potentially heavy fines depending on the type of data that an organization handles.\n\n2. **Loss of Functionality**: Newer HTTP versions often come with additional functionalities that can improve the performance or experience of web apps. By not using these versions, a company might be missing out on these features which could give them a competitive edge in the market.\n\n3. **Increased Maintenance Costs**: Outdated HTTP versions may not work properly with newer technologies or software updates. This mismatch can lead to increased maintenance efforts and costs.\n\n4. **Non-Compliance Fines or Penalties**: If the use of latest HTTP versions is mandated in compliance standards or regulations that a company has to follow, non-compliance could result in monetary fines or penalties.\n\n5. **System Downtime & Recovery Costs**: In case of a security breach, the cost of system downtime and recovery can be significant.\n\nTherefore, it is in the company's best interest to comply with the Azure control and use the latest HTTP version for their web apps. Not only does it save them from potential fines and security breaches, it can also give a better experience to their users with the added features and functionalities."
+  x-kaytu-usefulness-example:
+  - |-
+    Here's an example of how you might use this Azure control to update to a newer HTTP version:
+
+    ```markdown
+    If you've developed a web application that runs on Azure and HTTP 1.1 is being used, you may periodically check for HTTP versions update. Let's say HTTP 2.0 is the latest version available which comes with additional functionality and resolves security flaws existing in prior versions.
+
+    Steps to update to HTTP 2.0 in Azure:
+
+    1. Navigate to the Azure portal.
+
+    2. On the left sidebar, click on "App Services".
+
+    3. Choose the web application for which you want to update the HTTP version.
+
+    4. In the left sidebar of the web app page, scroll down and click on "Configuration".
+
+    5. Click on the "General settings" tab.
+
+    6. In the HTTP version drop-down, select "2.0".
+
+    7. Click on "Save".
+
+    This way, the web application takes advantage of the security fixes and new functionalities included in HTTP 2.0, making your application more efficient and secure.
+    ```
+Title: Ensure that 'HTTP Version' is the latest, if used to run the web app

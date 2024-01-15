@@ -1,0 +1,28 @@
+Connector: Azure
+Description: List of unattached disks
+Enabled: true
+ID: 17.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List of unattached disks
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ID: azure_insight_compute_disk_unattached
+  ListOfTables:
+  - azure_compute_disk
+  PrimaryTable: azure_compute_disk
+  QueryToExecute: |-
+    select
+      name,
+      disk_state, subscription_id, kaytu_account_id, kaytu_resource_id
+    from
+      azure_compute_disk
+    where
+      disk_state = 'Unattached';
+ShortTitle: Unused Azure Disks
+Tags:
+  category:
+  - Technical Debt
+  - Cost Management

@@ -1,0 +1,52 @@
+Description: This policy automatically deploys diagnostic settings to network security groups. A storage account with name '{storagePrefixParameter}{NSGLocation}' will be automatically created.
+ID: azure_network_security_group_diagnostic_setting_deployed
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_network_security_group
+  - azure_subscription
+  PrimaryTable: azure_network_security_group
+  QueryToExecute: |
+    with logging_details as (
+      select
+        distinct name as nsg_name
+      from
+        azure_network_security_group,
+        jsonb_array_elements(diagnostic_settings) setting
+      where
+        diagnostic_settings is not null
+        and setting ->> 'name' = 'setbypolicy'
+    )
+    select
+      a.resource_guid as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when a.diagnostic_settings is null then 'alarm'
+        when l.nsg_name is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when a.diagnostic_settings is null then a.name || ' logging not enabled.'
+        when l.nsg_name is null then a.name || ' logging not enabled.'
+        else a.name || ' logging enabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_network_security_group as a
+      left join logging_details as l on a.name = l.nsg_name,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  service:
+  - Azure/Network
+Title: Deploy Diagnostic Settings for Network Security Groups

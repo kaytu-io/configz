@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Network Watcher
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Network Watcher' group by 1,2;
+status: active
+tables:
+- Network Watcher
+tags:
+  category:
+  - Monitoring

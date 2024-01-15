@@ -1,0 +1,67 @@
+Description: Enabling double encryption at the hardware level on top of the default software encryption for Storage Accounts accessing Azure storage solutions.
+DocumentURI: ""
+ID: azure_storage_account_infrastructure_encryption_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+  PrimaryTable: azure_storage_account
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when require_infrastructure_encryption then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when require_infrastructure_encryption then name || ' infrastructure encryption enabled.'
+        else name || ' infrastructure encryption disabled.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_storage_account as s,
+      azure_subscription as sub
+    where
+      sub.subscription_id = s.subscription_id;
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "3.2"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "3"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.5.0
+  plugin:
+  - azure
+  service:
+  - Azure/Storage
+  x-kaytu-explanation:
+  - "In Azure, data in Storage Accounts are encrypted by default at the service and infrastructure level using Storage Service Encryption (SSE). However, Azure also offers an additional layer of encryption to secure your data at the hardware-level using Azure Disk Encryption. This is what is referred to as \"double encryption\".\n\nHere's how you can enable it in Azure Resource Manager (ARM) template (a form of Azure Markup):\n\n```json\n\"resources\": [\n    {\n      \"name\": \"[parameters('storageAccountName')]\",\n      \"type\": \"Microsoft.Storage/storageAccounts\",\n      \"apiVersion\": \"2019-06-01\",\n      \"location\": \"[parameters('location')]\",\n      \"kind\": \"StorageV2\",\n      \"sku\": {\n        \"name\": \"Standard_RAGRS\",\n        \"tier\": \"Standard\"\n    },\n    \"properties\": {\n        \"encryption\": {\n            \"services\": {\n                \"blob\": {\n                    \"enabled\": true,\n                    \"defaultServiceVersion\": \"2019-06-01\"\n                },\n                \"file\": {\n                    \"enabled\": true\n                }\n            },\n            \"keySource\": \"Microsoft.Storage\",\n            \"requireInfrastructureEncryption\": true\n        }\n    }\n}\n]\n```\n\nIn this ARM template:\n\n- `Microsoft.Storage/storageAccounts` specifies the type of resources to create; in this case, Storage Accounts.\n- The `encryption` property inside `properties` is where you specify the encryption settings.\n  - `services` specify which services to encrypt (Blob service and File service)\n  - `keySource` specifies that encryption keys will be managed by Azure storage.\n  - `requireInfrastructureEncryption` when set to `true`, enables double encryption.\n\nPlease note that double encryption can generate additional data ingress and egress costs and slightly higher latencies."
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to the Azure control of enabling double encryption at the hardware level on top of the default software encryption for Storage Accounts accessing Azure storage solutions could result in several potential costs:\n\n1. **Security Risks**: Without double encryption, data may be vulnerable to hacking and unauthorized access. This could result in breaches leading to significant financial losses, reputation damage, and potential fines for violating data protection laws and regulations.\n\n2. **Regulatory Penalties**: Many industries are subject to strict regulations that require certain levels of data protection. Failure to comply with these regulations can lead to substantial fines.\n\n3. **Loss of Confidence**: The lack of double encryption could lead to a loss of trust and confidence from customers or business partners, impacting business relationships and revenues.\n\n4. **Data Loss**: In the event of a security breach, crucial business data could potentially be lost, leading to significant disruptions to business operations and financial loss.\n\n5. **Recovery Costs**: If a security breach occurs, the cost of recovering lost or compromised data can be substantial.\n\n```\n<ol>\n<li><b>Security Risks:</b> Without double encryption, data may be vulnerable to hacking and unauthorized access. This could result in breaches leading to significant financial losses, reputation damage, and potential fines for violating data protection laws and regulations.</li>\n<li><b>Regulatory Penalties:</b> Many industries are subject to strict regulations that require certain levels of data protection. Failure to comply with these regulations can lead to substantial fines.</li>\n<li><b>Loss of Confidence:</b> The lack of double encryption could lead to a loss of trust and confidence from customers or business partners, impacting business relationships and revenues.</li>\n<li><b>Data Loss:</b> In the event of a security breach, crucial business data could potentially be lost, leading to significant disruptions to business operations and financial loss.</li>\n<li><b>Recovery Costs:</b> If a security breach occurs, the cost of recovering lost or compromised data can be substantial.</li>\n</ol>\n```"
+  x-kaytu-usefulness-example:
+  - |-
+    For example, a global financial firm has strict regulations regarding the security and privacy of their customer data. They are hosting their application on Azure and storing extremely sensitive customer data on Azure Storage Accounts. They want to ensure they are going beyond regular safeguards to protect their data from any potential malicious attacks or data breaches.
+
+    By enabling double encryption at the hardware level alongside the default software encryption, they are making it even more difficult for unauthorized users to access the stored data. If one encryption key was somehow obtained by a malicious party, it would not matter because the data is still protected by the second encryption layer.
+
+    Additionally, this would also act as a backup encryption should one method fail. This ensures that the stored data always maintains its integrity and confidentiality, providing a safer and more secure environment for the firm's customer data.
+
+    This is an instance where Azure's ability to provide double encryption at both hardware and software level can be instrumental in enhancing data security for Azure Storage Accounts.
+Title: Ensure that 'Enable Infrastructure Encryption' for Each Storage Account in Azure Storage is Set to ‘enabled’

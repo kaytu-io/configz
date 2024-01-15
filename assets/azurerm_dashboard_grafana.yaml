@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Azure Managed Grafana
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.dashboard/grafana' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Managed Services

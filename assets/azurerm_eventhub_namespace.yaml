@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Event Hubs namespace
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.eventhub/namespaces' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Data Analytics

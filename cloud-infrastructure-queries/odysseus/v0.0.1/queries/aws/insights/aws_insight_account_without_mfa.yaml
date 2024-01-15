@@ -1,0 +1,7 @@
+Connector: AWS
+Engine: odysseus-v0.0.1
+ID: aws_insight_account_without_mfa
+ListOfTables:
+- aws_iam_credential_report
+PrimaryTable: aws_iam_credential_report
+QueryToExecute: select account_id, kaytu_account_id from aws_iam_account_summary where account_mfa_enabled = false

@@ -1,0 +1,44 @@
+Description: This control checks if Amazon CloudFront distributions are configured to capture information from Amazon Simple Storage Service (Amazon S3) server access logs. This rule is non compliant if a CloudFront distribution does not have logging configured.
+ID: aws_cloudfront_distribution_logging_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_cloudfront_distribution
+  PrimaryTable: aws_cloudfront_distribution
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when logging ->> 'Enabled' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when logging ->> 'Enabled' = 'true' then title || ' logging enabled.'
+        else title || ' logging disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_cloudfront_distribution;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CloudFront
+Title: CloudFront distributions access logs should be enabled

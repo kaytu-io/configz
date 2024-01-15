@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Organization
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::organizations::organization' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Management and governance

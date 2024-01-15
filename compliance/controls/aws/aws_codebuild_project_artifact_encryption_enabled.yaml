@@ -1,0 +1,56 @@
+Description: This control checks if a CodeBuild project has encryption enabled for all of its artifacts. The rule is non compliant if 'encryptionDisabled' is set to 'true' for any primary or secondary (if present) artifact configurations.
+ID: aws_codebuild_project_artifact_encryption_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_codebuild_project
+  PrimaryTable: aws_codebuild_project
+  QueryToExecute: |
+    with secondary_artifact as (
+      select
+        distinct arn
+      from
+        aws_codebuild_project,
+        jsonb_array_elements(secondary_artifacts) as a
+      where
+        a -> 'EncryptionDisabled' = 'true'
+    )
+    select
+      a.arn as resource,
+      p.kaytu_account_id as kaytu_account_id,
+      p.kaytu_resource_id as kaytu_resource_id,
+      case
+        when p.artifacts ->> 'EncryptionDisabled' = 'false'
+        and (p.secondary_artifacts is null or a.arn is null) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when p.artifacts ->> 'EncryptionDisabled' = 'false'
+        and (p.secondary_artifacts is null or a.arn is null) then p.title || ' all artifacts encryption enabled.'
+        else p.title || ' all artifacts encryption not enabled.'
+      end as reason
+      
+      , p.region, p.account_id
+    from
+      aws_codebuild_project as p
+      left join secondary_artifact as a on a.arn = p.arn;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  gxp_eu_annex_11:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CodeBuild
+Title: CodeBuild project artifact encryption should be enabled

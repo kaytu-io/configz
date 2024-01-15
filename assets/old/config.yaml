@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: Config
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::config::rule','aws::config::configurationrecorder') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Governance

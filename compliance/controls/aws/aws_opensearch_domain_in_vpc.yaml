@@ -1,0 +1,65 @@
+Description: This control checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access.
+ID: aws_opensearch_domain_in_vpc
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_opensearch_domain
+  - aws_vpc_route_table
+  PrimaryTable: aws_opensearch_domain
+  QueryToExecute: |
+    with public_subnets as (
+      select
+        distinct a -> 'SubnetId' as SubnetId
+      from
+        aws_vpc_route_table as t,
+        jsonb_array_elements(associations) as a,
+        jsonb_array_elements(routes) as r
+      where
+        r ->> 'DestinationCidrBlock' = '0.0.0.0/0'
+        and  r ->>  'GatewayId' like 'igw-%'
+    ), opensearch_domain_with_public_subnet as (
+      select
+        arn
+      from
+        aws_opensearch_domain ,
+        jsonb_array_elements(vpc_options -> 'SubnetIds') as s
+      where
+        s in (select SubnetId from public_subnets)
+    )
+    select
+      d.arn as resource,
+      d.kaytu_account_id as kaytu_account_id,
+      d.kaytu_resource_id as kaytu_resource_id,
+      case
+        when d.vpc_options ->> 'VPCId' is null then 'alarm'
+        when d.vpc_options ->> 'VPCId' is not null and p.arn is not null then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when vpc_options ->> 'VPCId' is null then title || ' not in VPC.'
+        when d.vpc_options ->> 'VPCId' is not null and p.arn is not null then title || ' attached to public subnet.'
+        else title || ' in VPC ' || (vpc_options ->> 'VPCId') || '.'
+      end reason
+      
+      , d.region, d.account_id
+    from
+      aws_opensearch_domain as d
+      left join opensearch_domain_with_public_subnet as p on d.arn = p.arn;
+Severity: critical
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - resources_within_vpc
+  foundational_security_item_id:
+  - opensearch_2
+  plugin:
+  - aws
+  service:
+  - AWS/OpenSearch
+Title: OpenSearch domains should be in a VPC

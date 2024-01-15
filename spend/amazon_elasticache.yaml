@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: Amazon ElastiCache
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'Amazon ElastiCache' group by 1,2;
+status: active
+tables:
+- Amazon ElastiCache
+tags:
+  category:
+  - Data & Analytics

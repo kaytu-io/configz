@@ -1,0 +1,24 @@
+Connector: AWS
+Description: List of Instances which are not of the desired type.
+Enabled: true
+ID: 6.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List of Instances which are not of the desired type.
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_ec2_instance_of_undesired_type
+  ListOfTables:
+  - aws_ec2_instance
+  PrimaryTable: aws_ec2_instance
+  QueryToExecute: SELECT instance_id, arn, instance_type, instance_state, account_id, kaytu_account_id, kaytu_resource_id FROM aws_ec2_instance WHERE instance_type LIKE ANY(array['m1.%', 'm2.%', 'm3.%', 'c1.%', 'c3.%', 'g2.%', 'cr1.%', 'r3.%', 'i2.%', 'hs1.%', 't1.%']);
+ShortTitle: Legacy Instance Types
+Tags:
+  category:
+  - Technical Debt
+  persona:
+  - Executive
+  - Product
+  - FinOps

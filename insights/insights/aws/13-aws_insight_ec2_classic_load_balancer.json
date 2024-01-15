@@ -1,6 +1,15 @@
 {
   "ID": 13,
-  "QueryID": "aws_insight_ec2_classic_load_balancer",
+  "Query": {
+    "ID": "aws_insight_ec2_classic_load_balancer",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "SELECT name, arn, account_id, kaytu_account_id, kaytu_resource_id FROM aws_ec2_classic_load_balancer",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_ec2_classic_load_balancer",
+    "ListOfTables": [
+      "aws_ec2_classic_load_balancer"
+    ]
+  },
   "Connector": "AWS",
   "ShortTitle": "Classic Load Balancers",
   "LongTitle": "List all Classic Load Balancer. Link here.",

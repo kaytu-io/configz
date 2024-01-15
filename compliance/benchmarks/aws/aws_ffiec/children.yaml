@@ -1,0 +1,1741 @@
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_policy_custom_no_service_wildcard
+  - aws_iam_group_not_empty
+  - aws_iam_policy_custom_no_star_star
+  - aws_iam_user_in_group
+  Description: Administrative, physical, or technical controls are in place to prevent users without administrative responsibilities from installing unauthorized software.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_16
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.16
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_2_is_is_b_1
+  Connector: AWS
+  Controls: null
+  Description: "Information Sharing encompasses establishing relationships with peers and information-sharing forums and how threat information is communicated to those groups as well as internal stakeholders. "
+  Enabled: true
+  ID: aws_ffiec_d_2_is
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Information Sharing (IS)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ebs_attached_volume_delete_on_termination_enabled
+  - aws_ebs_volume_unused
+  - aws_ec2_instance_ssm_managed
+  - aws_ec2_stopped_instance_30_days
+  - aws_vpc_eip_associated
+  Description: An inventory of organizational assets (e.g., hardware, software, data, and systems hosted externally) is maintained.
+  Enabled: true
+  ID: aws_ffiec_d_1_g_it_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D1.G.IT.B.1
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_4_c_co_b_2
+  Connector: AWS
+  Controls: null
+  Description: Connections incorporate the identification, monitoring, and management of external connections and data flows to third parties.
+  Enabled: true
+  ID: aws_ffiec_d_4_c
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Connections (C)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_acm_certificate_expires_30_days
+  - aws_apigateway_stage_use_waf_web_acl
+  - aws_autoscaling_launch_config_public_ip_disabled
+  - aws_dms_replication_instance_not_publicly_accessible
+  - aws_ebs_snapshot_not_publicly_restorable
+  - aws_ec2_instance_in_vpc
+  - aws_ec2_instance_not_publicly_accessible
+  - aws_elb_application_lb_waf_enabled
+  - aws_emr_cluster_master_nodes_no_public_ip
+  - aws_es_domain_in_vpc
+  - aws_lambda_function_in_vpc
+  - aws_lambda_function_restrict_public_access
+  - aws_rds_db_instance_prohibit_public_access
+  - aws_rds_db_snapshot_prohibit_public_access
+  - aws_redshift_cluster_enhanced_vpc_routing_enabled
+  - aws_redshift_cluster_prohibit_public_access
+  - aws_s3_bucket_restrict_public_read_access
+  - aws_s3_bucket_restrict_public_write_access
+  - aws_s3_public_access_block_account
+  - aws_s3_public_access_block_bucket_account
+  - aws_sagemaker_notebook_instance_direct_internet_access_disabled
+  - aws_vpc_default_security_group_restricts_all_traffic
+  - aws_vpc_route_table_restrict_public_access_to_igw
+  - aws_vpc_security_group_restrict_ingress_common_ports_all
+  - aws_vpc_security_group_restrict_ingress_ssh_all
+  - aws_vpc_security_group_restrict_ingress_tcp_udp_all
+  - aws_vpc_subnet_auto_assign_public_ip_disabled
+  Description: Network perimeter defense tools (e.g., border router and firewall) are used.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_im_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Im.B.1
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_5_dr
+  - aws_ffiec_d_5_er
+  - aws_ffiec_d_5_ir
+  Connector: AWS
+  Controls: null
+  Description: Cyber incident management includes establishing, identifying, and analyzing cyber events; prioritizing the institution's containment or mitigation; and escalating information to appropriate stakeholders. Cyber resilience encompasses both planning and testing to maintain and recover ongoing operations during and following a cyber incident.
+  Enabled: true
+  ID: aws_ffiec_d_5
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Cyber Incident Management and Resilience (Domain 5)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_logging_enabled
+  - aws_cloudtrail_multi_region_trail_enabled
+  - aws_cloudtrail_s3_data_events_enabled
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_es_domain_logs_to_cloudwatch
+  - aws_rds_db_instance_logging_enabled
+  - aws_s3_bucket_logging_enabled
+  - aws_vpc_flow_logs_enabled
+  - aws_wafv2_web_acl_logging_enabled
+  Description: Logs of physical and/or logical access are reviewed following events.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_an_b_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.An.B.3
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_3_cc_pm_b_1
+  - aws_ffiec_d_3_cc_pm_b_3
+  Connector: AWS
+  Controls: null
+  Description: Corrective Controls are utilized to resolve system and software vulnerabilities through patch management and remediation of issues identified during vulnerability scans and penetration testing.
+  Enabled: true
+  ID: aws_ffiec_d_3_cc
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Corrective Controls (CC)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_lambda_function_dead_letter_queue_configured
+  Description: System performance reports contain information that can be used as a risk indicator to detect information security incidents.
+  Enabled: true
+  ID: aws_ffiec_d_5_dr_de_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D5.DR.De.B.2
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ec2_instance_ssm_managed
+  - aws_ssm_managed_instance_compliance_association_compliant
+  - aws_ssm_managed_instance_compliance_patch_compliant
+  Description: Systems configurations (for servers, desktops, routers, etc.) follow industry standards and are enforced
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_im_b_5
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Im.B.5
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  Description: The institution belongs or subscribes to a threat and vulnerability information-sharing source(s) that provides information on threats (e.g., FS-ISAC, US- CERT).
+  Enabled: true
+  ID: aws_ffiec_d_2_ti_ti_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D2.TI.Ti.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_account_password_policy_strong
+  - aws_iam_policy_custom_no_service_wildcard
+  - aws_iam_group_not_empty
+  - aws_iam_policy_custom_no_star_star
+  - aws_iam_root_user_hardware_mfa_enabled
+  - aws_iam_root_user_mfa_enabled
+  - aws_iam_user_access_key_age_90
+  - aws_iam_user_console_access_mfa_enabled
+  - aws_iam_user_in_group
+  - aws_iam_user_mfa_enabled
+  - aws_iam_user_no_inline_attached_policies
+  - aws_iam_user_unused_credentials_90
+  Description: Identification and authentication are required and managed for access to systems, applications, and hardware.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_6
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.6
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_vpc_default_security_group_restricts_all_traffic
+  - aws_vpc_security_group_restrict_ingress_common_ports_all
+  - aws_vpc_security_group_restrict_ingress_ssh_all
+  - aws_vpc_security_group_restrict_ingress_tcp_udp_all
+  Description: The institution ensures that third-party connections are authorized.
+  Enabled: true
+  ID: aws_ffiec_d_4_c_co_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D4.C.Co.B.2
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_policy_custom_no_service_wildcard
+  - aws_iam_group_not_empty
+  - aws_iam_policy_custom_no_star_star
+  - aws_iam_root_user_hardware_mfa_enabled
+  - aws_iam_root_user_mfa_enabled
+  - aws_iam_root_user_no_access_keys
+  Description: Elevated privileges (e.g., administrator privileges) are limited and tightly controlled (e.g., assigned to individuals, not shared, and require stronger password controls)
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.3
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudwatch_alarm_action_enabled
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  Description: Alert parameters are set for detecting information security incidents that prompt mitigating actions.
+  Enabled: true
+  ID: aws_ffiec_d_5_dr_de_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D5.DR.De.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_autoscaling_group_with_lb_use_health_check
+  - aws_backup_plan_min_retention_35_days
+  - aws_backup_recovery_point_min_retention_35_days
+  - aws_dynamodb_table_auto_scaling_enabled
+  - aws_dynamodb_table_in_backup_plan
+  - aws_dynamodb_table_point_in_time_recovery_enabled
+  - aws_ebs_volume_in_backup_plan
+  - aws_ec2_instance_protected_by_backup_plan
+  - aws_efs_file_system_automatic_backups_enabled
+  - aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+  - aws_elb_application_lb_deletion_protection_enabled
+  - aws_elb_classic_lb_cross_zone_load_balancing_enabled
+  - aws_lambda_function_concurrent_execution_limit_configured
+  - aws_rds_db_cluster_aurora_protected_by_backup_plan
+  - aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+  - aws_rds_db_instance_backup_enabled
+  - aws_rds_db_instance_deletion_protection_enabled
+  - aws_rds_db_instance_multiple_az_enabled
+  - aws_rds_db_instance_protected_by_backup_plan
+  - aws_s3_bucket_cross_region_replication_enabled
+  - aws_s3_bucket_versioning_enabled
+  - aws_vpc_vpn_tunnel_up
+  Description: The institution plans to use business continuity, disaster recovery, and data backup programs to recover operations following an incident.
+  Enabled: true
+  ID: aws_ffiec_d_5_ir_pi_b_6
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D5.IR.Pl.B.6
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_1_g
+  - aws_ffiec_d_1_rm
+  Connector: AWS
+  Controls: null
+  Description: Cyber risk management and oversight addresses the board of directors' (board's) oversight and management's development and implementation of an effective enterprise-wide cybersecurity program with comprehensive policies and procedures for establishing appropriate accountability and oversight.
+  Enabled: true
+  ID: aws_ffiec_d_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Cyber Risk Management and Oversight (Domain 1)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_rest_api_stage_use_ssl_certificate
+  - aws_elb_application_lb_redirect_http_request_to_https
+  - aws_iam_root_user_hardware_mfa_enabled
+  - aws_iam_root_user_mfa_enabled
+  - aws_iam_user_console_access_mfa_enabled
+  - aws_redshift_cluster_encryption_in_transit_enabled
+  - aws_s3_bucket_enforces_ssl
+  Description: Remote access to critical systems by employees, contractors, and third parties uses encrypted connections and multifactor authentication.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_15
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.15
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_4_c
+  Connector: AWS
+  Controls: null
+  Description: External dependency management involves establishing and maintaining a comprehensive program to oversee and manage external connections and third-party relationships with access to the institution's technology assets and information.
+  Enabled: true
+  ID: aws_ffiec_d_4
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: External Dependency Management (Domain 4)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_logging_enabled
+  - aws_cloudtrail_multi_region_trail_enabled
+  - aws_cloudtrail_s3_data_events_enabled
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_lambda_function_concurrent_execution_limit_configured
+  - aws_redshift_cluster_encryption_logging_enabled
+  - aws_redshift_cluster_kms_enabled
+  - aws_vpc_flow_logs_enabled
+  Description: A normal network activity baseline is established.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_ev_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.Ev.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudtrail_trail_enabled
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  - aws_vpc_flow_logs_enabled
+  Description: Processes are in place to monitor for the presence of unauthorized users, devices, connections, and software.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_ev_b_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.Ev.B.3
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudtrail_multi_region_trail_enabled
+  - aws_cloudtrail_s3_data_events_enabled
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_cloudwatch_alarm_action_enabled
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_guardduty_enabled
+  - aws_rds_db_instance_logging_enabled
+  - aws_redshift_cluster_encryption_logging_enabled
+  - aws_redshift_cluster_kms_enabled
+  - aws_s3_bucket_logging_enabled
+  - aws_securityhub_enabled
+  - aws_wafv2_web_acl_logging_enabled
+  Description: Tools and processes are in place to detect, alert, and trigger the incident response program.
+  Enabled: true
+  ID: aws_ffiec_d_5_dr_de_b_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D5.DR.De.B.3
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_use_waf_web_acl
+  - aws_elb_application_lb_waf_enabled
+  - aws_vpc_default_security_group_restricts_all_traffic
+  - aws_vpc_security_group_restrict_ingress_common_ports_all
+  - aws_vpc_security_group_restrict_ingress_ssh_all
+  - aws_vpc_security_group_restrict_ingress_tcp_udp_all
+  Description: Systems that are accessed from the Internet or by external parties are protected by firewalls or other similar devices.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_im_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.IM.B.2
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_5_er_es_b_4
+  Connector: AWS
+  Controls: null
+  Description: Escalation & Reporting ensures key stakeholders are informed about the impact of cyber incidents, and regulators, law enforcement, and customers are notified as required.
+  Enabled: true
+  ID: aws_ffiec_d_5_er
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Escalation and Reporting (ER)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_policy_custom_no_service_wildcard
+  - aws_iam_policy_custom_no_star_star
+  - aws_iam_user_in_group
+  Description: Employee access to systems and confidential data provides for separation of duties.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.2
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_5_dr_de_b_1
+  - aws_ffiec_d_5_dr_de_b_2
+  - aws_ffiec_d_5_dr_de_b_3
+  Connector: AWS
+  Controls: null
+  Description: Detection, Response, & Mitigation refers to the steps management takes to identify, prioritize, respond to, and mitigate the effects of internal and external threats and vulnerabilities.
+  Enabled: true
+  ID: aws_ffiec_d_5_dr
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Detection, Response, & Mitigation (DR)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+  - aws_redshift_cluster_maintenance_settings_check
+  - aws_ssm_managed_instance_compliance_patch_compliant
+  Description: A patch management program is implemented and ensures that software and firmware patches are applied in a timely manner.
+  Enabled: true
+  ID: aws_ffiec_d_3_cc_pm_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.CC.PM.B.1
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_3_pc_am_b_1
+  - aws_ffiec_d_3_pc_am_b_10
+  - aws_ffiec_d_3_pc_am_b_12
+  - aws_ffiec_d_3_pc_am_b_13
+  - aws_ffiec_d_3_pc_am_b_15
+  - aws_ffiec_d_3_pc_am_b_16
+  - aws_ffiec_d_3_pc_am_b_2
+  - aws_ffiec_d_3_pc_am_b_3
+  - aws_ffiec_d_3_pc_am_b_6
+  - aws_ffiec_d_3_pc_am_b_7
+  - aws_ffiec_d_3_pc_am_b_8
+  - aws_ffiec_d_3_pc_im_b_1
+  - aws_ffiec_d_3_pc_im_b_2
+  - aws_ffiec_d_3_pc_im_b_3
+  - aws_ffiec_d_3_pc_im_b_5
+  - aws_ffiec_d_3_pc_im_b_6
+  - aws_ffiec_d_3_pc_im_b_7
+  - aws_ffiec_d_3_pc_se_b_1
+  Connector: AWS
+  Controls: null
+  Description: Preventative Controls deter and prevent cyber attacks and include infrastructure management, access management, device and end-point security, and secure coding.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Preventative Controls (PC)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_vpc_default_security_group_restricts_all_traffic
+  - aws_vpc_security_group_restrict_ingress_common_ports_all
+  - aws_vpc_security_group_restrict_ingress_ssh_all
+  - aws_vpc_security_group_restrict_ingress_tcp_udp_all
+  Description: Ports, functions, protocols and services are prohibited if no longer needed for business purposes.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_im_b_6
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Im.B.6
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_account_password_policy_strong
+  Description: Access controls include password complexity and limits to password attempts and reuse.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_7
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.7
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_2_ma_ma_b_1
+  - aws_ffiec_d_2_ma_ma_b_2
+  Connector: AWS
+  Controls: null
+  Description: Monitoring and Analyzing refers to how an institution monitors threat sources and what analysis may be performed to identify threats that are specific to the institution or to resolve conflicts in the different threat intelligence streams.
+  Enabled: true
+  ID: aws_ffiec_d_2_ma
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Monitoring and Analyzing (MA)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_logging_enabled
+  - aws_cloudtrail_multi_region_trail_enabled
+  - aws_cloudtrail_s3_data_events_enabled
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_es_domain_logs_to_cloudwatch
+  - aws_redshift_cluster_encryption_logging_enabled
+  - aws_redshift_cluster_kms_enabled
+  - aws_s3_bucket_logging_enabled
+  - aws_vpc_flow_logs_enabled
+  Description: Computer event logs are used for investigations once an event has occurred.
+  Enabled: true
+  ID: aws_ffiec_d_2_ma_ma_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D2.MA.Ma.B.2
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  Description: The risk assessment identifies Internet- based systems and high-risk transactions that warrant additional authentication controls.
+  Enabled: true
+  ID: aws_ffiec_d_1_rm_ra_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D1.RM.RA.B.2
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_5_ir_pi_b_6
+  Connector: AWS
+  Controls: null
+  Description: Incident Resilience Planning & Strategy incorporates resilience planning and testing into existing business continuity and disaster recovery plans to minimize service disruptions and the destruction or corruption of data.
+  Enabled: true
+  ID: aws_ffiec_d_5_ir
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Incident Resilience Planning & Strategy (IR)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_rest_api_stage_use_ssl_certificate
+  - aws_backup_recovery_point_encryption_enabled
+  - aws_ebs_attached_volume_encryption_enabled
+  - aws_ec2_ebs_default_encryption_enabled
+  - aws_efs_file_system_encrypt_data_at_rest
+  - aws_elb_application_lb_redirect_http_request_to_https
+  - aws_elb_classic_lb_use_tls_https_listeners
+  - aws_emr_cluster_kerberos_enabled
+  - aws_es_domain_encryption_at_rest_enabled
+  - aws_es_domain_node_to_node_encryption_enabled
+  - aws_rds_db_instance_encryption_at_rest_enabled
+  - aws_redshift_cluster_encryption_in_transit_enabled
+  - aws_redshift_cluster_encryption_logging_enabled
+  - aws_redshift_cluster_kms_enabled
+  - aws_s3_bucket_default_encryption_enabled_kms
+  - aws_s3_bucket_enforces_ssl
+  Description: All passwords are encrypted in storage and in transit.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_12
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.12
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_2_is
+  - aws_ffiec_d_2_ma
+  - aws_ffiec_d_2_ti
+  Connector: AWS
+  Controls: null
+  Description: Threat intelligence and collaboration includes processes to effectively discover, analyze, and understand cyber threats, with the capability to share information internally and with appropriate third parties.
+  Enabled: true
+  ID: aws_ffiec_d_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Threat Intelligence and Collaboration (Domain 2)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_rest_api_stage_use_ssl_certificate
+  - aws_elb_application_lb_redirect_http_request_to_https
+  - aws_elb_application_network_lb_use_ssl_certificate
+  - aws_elb_classic_lb_use_ssl_certificate
+  - aws_elb_classic_lb_use_tls_https_listeners
+  - aws_redshift_cluster_encryption_in_transit_enabled
+  - aws_s3_bucket_enforces_ssl
+  Description: Confidential data is encrypted when transmitted across public or untrusted networks (e.g., Internet).
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_13
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.13
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  Description: Elevated privileges are monitored.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_an_b_5
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.An.B.5
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  Description: Customer transactions generating anomalous activity alerts are monitored and reviewed.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_an_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.An.B.2
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_logging_enabled
+  - aws_cloudtrail_multi_region_trail_enabled
+  - aws_cloudtrail_s3_data_events_enabled
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_es_domain_logs_to_cloudwatch
+  - aws_rds_db_instance_logging_enabled
+  - aws_redshift_cluster_encryption_logging_enabled
+  - aws_redshift_cluster_kms_enabled
+  - aws_s3_bucket_logging_enabled
+  - aws_vpc_flow_logs_enabled
+  - aws_wafv2_web_acl_logging_enabled
+  Description: Access to critical systems by third parties is monitored for unauthorized or unusual activity.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_an_b_4
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.An.B.4
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+  - aws_redshift_cluster_maintenance_settings_check
+  - aws_ssm_managed_instance_compliance_patch_compliant
+  Description: Patch management reports are reviewed and reflect missing security patches.
+  Enabled: true
+  ID: aws_ffiec_d_3_cc_pm_b_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.CC.PM.B.3
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_finding_archived
+  Description: Incidents are classified, logged and tracked.
+  Enabled: true
+  ID: aws_ffiec_d_5_er_es_b_4
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D5.ER.Es.B.4
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_1_rm_ra_b_2
+  - aws_ffiec_d_1_rm_rm_b_1
+  Connector: AWS
+  Controls: null
+  Description: Risk Management includes a risk management program, risk assessment process, and audit function to effectively manage risk and assess the effectiveness of key controls.
+  Enabled: true
+  ID: aws_ffiec_d_1_rm
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Risk Management (RM)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ec2_instance_iam_profile_attached
+  - aws_ecs_task_definition_user_for_host_mode_check
+  - aws_iam_policy_custom_no_service_wildcard
+  - aws_iam_group_not_empty
+  - aws_iam_group_user_role_no_inline_policies
+  - aws_iam_policy_custom_no_blocked_kms_actions
+  - aws_iam_policy_custom_no_star_star
+  - aws_iam_root_user_no_access_keys
+  - aws_iam_user_in_group
+  - aws_iam_user_no_inline_attached_policies
+  Description: Employee access is granted to systems and confidential data based on job responsibilities and the principles of least privilege.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.1
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_3_cc
+  - aws_ffiec_d_3_dc
+  - aws_ffiec_d_3_pc
+  Connector: AWS
+  Controls: null
+  Description: Cybersecurity controls are the practices and processes used to protect assets, infrastructure, and information by strengthening the institution's defensive posture through continuous, automated protection and monitoring.
+  Enabled: true
+  ID: aws_ffiec_d_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Cybersecurity Controls (Domain 3)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ec2_instance_in_vpc
+  - aws_vpc_security_group_restrict_ingress_common_ports_all
+  - aws_vpc_security_group_restrict_ingress_ssh_all
+  - aws_vpc_security_group_restrict_ingress_tcp_udp_all
+  Description: Production and non-production environments are segregated to prevent unauthorized access or changes to information assets. (*N/A if no production environment exists at the institution or the institution's third party.)
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_10
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.10
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_autoscaling_group_with_lb_use_health_check
+  - aws_backup_plan_min_retention_35_days
+  - aws_backup_recovery_point_manual_deletion_disabled
+  - aws_backup_recovery_point_min_retention_35_days
+  - aws_dynamodb_table_in_backup_plan
+  - aws_ebs_volume_protected_by_backup_plan
+  - aws_ec2_instance_protected_by_backup_plan
+  - aws_efs_file_system_automatic_backups_enabled
+  - aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+  - aws_rds_db_cluster_aurora_protected_by_backup_plan
+  - aws_rds_db_instance_backup_enabled
+  - aws_rds_db_instance_in_backup_plan
+  - aws_rds_db_instance_multiple_az_enabled
+  - aws_redshift_cluster_automatic_snapshots_min_7_days
+  - aws_s3_bucket_cross_region_replication_enabled
+  Description: An information security and business continuity risk management function(s) exists within the institution.
+  Enabled: true
+  ID: aws_ffiec_d_1_rm_rm_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D1.RM.Rm.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_iam_policy_custom_no_service_wildcard
+  - aws_iam_group_user_role_no_inline_policies
+  - aws_iam_policy_custom_no_star_star
+  - aws_iam_user_in_group
+  - aws_iam_user_no_inline_attached_policies
+  Description: Access to make changes to systems configurations (including virtual machines and hypervisors) is controlled and monitored.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_im_b_7
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Im.B.7
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_logging_enabled
+  - aws_cloudtrail_multi_region_trail_enabled
+  - aws_cloudtrail_s3_data_events_enabled
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_cloudwatch_log_group_retention_period_365
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_es_domain_logs_to_cloudwatch
+  - aws_rds_db_instance_logging_enabled
+  - aws_redshift_cluster_encryption_logging_enabled
+  - aws_redshift_cluster_kms_enabled
+  - aws_s3_bucket_logging_enabled
+  - aws_s3_bucket_object_lock_enabled
+  - aws_vpc_flow_logs_enabled
+  - aws_wafv2_web_acl_logging_enabled
+  Description: Audit log records and other security event logs are reviewed and retained in a secure manner.
+  Enabled: true
+  ID: aws_ffiec_d_2_ma_ma_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D2.MA.Ma.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  - aws_guardduty_finding_archived
+  - aws_securityhub_enabled
+  Description: The institution is able to detect anomalous activities through monitoring across the environment.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_an_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.An.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  Description: Mechanisms (e.g., antivirus alerts, log event alerts) are in place to alert management to potential attacks.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_ev_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.Ev.B.2
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_2_ti_ti_b_1
+  - aws_ffiec_d_2_ti_ti_b_2
+  - aws_ffiec_d_2_ti_ti_b_3
+  Connector: AWS
+  Controls: null
+  Description: Threat intelligence and collaboration includes processes to effectively discover, analyze, and understand cyber threats, with the capability to share information internally and with appropriate third parties.
+  Enabled: true
+  ID: aws_ffiec_d_2_ti
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Threat Intelligence (TI)
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_1_g_it_b_1
+  Connector: AWS
+  Controls: null
+  Description: Governance includes oversight, strategies, policies, and IT asset management to implement an effective governance of the cybersecurity program.
+  Enabled: true
+  ID: aws_ffiec_d_1_g
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Governance (G)
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_root_user_no_access_keys
+  Description: All default passwords and unnecessary default accounts are changed before system implementation.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_am_b_8
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Am.B.8
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
+  - aws_codebuild_project_source_repo_oauth_configured
+  Description: Developers working for the institution follow secure program coding practices, as part of a system development life cycle (SDLC), that meet industry standards.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_se_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.Se.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  - aws_ssm_managed_instance_compliance_patch_compliant
+  Description: Threat information is used to monitor threats and vulnerabilities.
+  Enabled: true
+  ID: aws_ffiec_d_2_ti_ti_b_2
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D2.TI.Ti.B.2
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_apigateway_stage_logging_enabled
+  - aws_cloudtrail_trail_enabled
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_elb_application_classic_lb_logging_enabled
+  - aws_vpc_flow_logs_enabled
+  - aws_wafv2_web_acl_logging_enabled
+  Description: All ports are monitored.
+  Enabled: true
+  ID: aws_ffiec_d_3_pc_im_b_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.PC.IM.B.3
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  - aws_ssm_managed_instance_compliance_patch_compliant
+  Description: Independent testing (including penetration testing and vulnerability scanning) is conducted according to the risk assessment for external-facing systems and the internal network.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc_th_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D3.DC.Th.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_cloudtrail_trail_integrated_with_logs
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  Description: Information security threats are gathered and shared with applicable internal employees.
+  Enabled: true
+  ID: aws_ffiec_d_2_is_is_b_1
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D2.IS.Is.B.1
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_guardduty_enabled
+  - aws_securityhub_enabled
+  Description: "Threat information is used to enhance internal risk management and controls. "
+  Enabled: true
+  ID: aws_ffiec_d_2_ti_ti_b_3
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: D2.TI.Ti.B.3
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_ffiec_d_3_dc_an_b_1
+  - aws_ffiec_d_3_dc_an_b_2
+  - aws_ffiec_d_3_dc_an_b_3
+  - aws_ffiec_d_3_dc_an_b_4
+  - aws_ffiec_d_3_dc_an_b_5
+  - aws_ffiec_d_3_dc_ev_b_1
+  - aws_ffiec_d_3_dc_ev_b_2
+  - aws_ffiec_d_3_dc_ev_b_3
+  - aws_ffiec_d_3_dc_th_b_1
+  Connector: AWS
+  Controls: null
+  Description: Detective Controls include threat and vulnerability detection, anomalous activity detection, and event detection, may alert the institution to network and system irregularities that indicate an incident has or may occur.
+  Enabled: true
+  ID: aws_ffiec_d_3_dc
+  Managed: true
+  Tags:
+    category:
+    - Compliance
+    ffiec:
+    - "true"
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Detective Controls (DC)

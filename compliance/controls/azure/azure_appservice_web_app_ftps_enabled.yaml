@@ -1,0 +1,56 @@
+Description: Enable FTPS enforcement for enhanced security.
+ID: azure_appservice_web_app_ftps_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+  PrimaryTable: azure_app_service_web_app
+  QueryToExecute: |
+    with all_web_app as (
+      select
+        id
+      from
+        azure_app_service_web_app
+      where
+        exists (
+          select
+          from
+            unnest(regexp_split_to_array(kind, ',')) elem
+          where
+            elem like 'app%'
+      )
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.id is null then 'skip'
+        when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when b.id is null then a.title || ' is ' || a.kind || ' kind.'
+        when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then a.name || ' FTPS disabled.'
+        else a.name || ' FTPS enabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_app_service_web_app as a
+      left join all_web_app as b on a.id = b.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/AppService
+Title: FTPS should be required in your Web App

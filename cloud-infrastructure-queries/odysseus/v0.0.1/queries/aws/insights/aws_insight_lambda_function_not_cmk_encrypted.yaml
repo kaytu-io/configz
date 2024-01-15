@@ -1,0 +1,14 @@
+Connector: AWS
+Engine: odysseus-v0.0.1
+ID: aws_insight_lambda_function_not_cmk_encrypted
+ListOfTables:
+- aws_lambda_function
+PrimaryTable: aws_lambda_function
+QueryToExecute: |-
+  select
+    name,
+    kms_key_arn, account_id, kaytu_account_id, kaytu_resource_id
+  from
+    aws_lambda_function
+  where
+    kms_key_arn is null;

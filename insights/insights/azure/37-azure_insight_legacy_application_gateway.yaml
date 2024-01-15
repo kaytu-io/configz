@@ -1,0 +1,24 @@
+Connector: Azure
+Description: This insight returns all legacy application gateways.
+Enabled: true
+ID: 37.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Legacy Application Gateways
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ID: azure_insight_legacy_application_gateway
+  ListOfTables:
+  - azure_application_gateway
+  PrimaryTable: azure_application_gateway
+  QueryToExecute: SELECT name, id, sku->'tier' AS tier, subscription_id, kaytu_account_id, kaytu_resource_id FROM azure_application_gateway WHERE NOT sku IS NULL AND sku->>'tier' = 'Standard_v2';
+ShortTitle: Legacy Application Gateways
+Tags:
+  category:
+  - Technical Debt
+  persona:
+  - Executive
+  - Product
+  - FinOps

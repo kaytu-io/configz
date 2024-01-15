@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: DNS
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.network/dnszones','microsoft.network/privatednszones') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Network

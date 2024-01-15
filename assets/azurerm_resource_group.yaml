@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Resource group
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.resources/resourcegroups' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Management and governance

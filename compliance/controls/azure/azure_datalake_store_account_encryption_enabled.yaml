@@ -1,0 +1,39 @@
+Description: This policy ensures encryption is enabled on all Data Lake Store accounts.
+ID: azure_datalake_store_account_encryption_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_data_lake_store
+  - azure_subscription
+  PrimaryTable: azure_data_lake_store
+  QueryToExecute: |
+    select
+      b.account_id as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when encryption_state = 'Enabled' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when encryption_state = 'Enabled' then b.name || ' encryption enabled.'
+        else b.name || ' encryption disabled.'
+      end as reason
+      
+      , b.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_data_lake_store as b,
+      azure_subscription as sub
+    where
+      sub.subscription_id = b.subscription_id;
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  service:
+  - Azure/DataLakeStorage
+Title: Require encryption on Data Lake Store accounts

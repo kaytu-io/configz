@@ -1,0 +1,60 @@
+Description: Ensure Amazon Elastic File Systems (Amazon EFS) are encrypted using CMK. The rule is non compliant if the EFS File System is not encrypted using CMK.
+ID: aws_efs_file_system_encrypted_with_cmk
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_efs_file_system
+  - aws_kms_key
+  PrimaryTable: aws_efs_file_system
+  QueryToExecute: |
+    with encrypted_fs as (
+      select
+        fs.arn as arn,
+        key_manager
+      from
+        aws_efs_file_system as fs
+        left join aws_kms_key as k on fs.kms_key_id = k.arn
+      where
+        enabled
+    )
+    select
+      f.arn as resource,
+      f.kaytu_account_id as kaytu_account_id,
+      f.kaytu_resource_id as kaytu_resource_id,
+      case
+        when not encrypted then 'alarm'
+        when encrypted and e.key_manager = 'CUSTOMER' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when not encrypted then title || ' not encrypted.'
+        when encrypted and e.key_manager = 'CUSTOMER' then title || ' encrypted with CMK.'
+        else title || ' not encrypted with CMK.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_efs_file_system as f
+      left join encrypted_fs as e on f.arn = e.arn;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  other_checks:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/EFS
+  x-kaytu-explanation:
+  - "This AWS control in markup format basically mandates that your Amazon Elastic File Systems (EFS) should always be encrypted using Customer Master Keys (CMKs). This is a security best practice to protect your data at rest within EFS.\n\nHere's what it would look like in a simple markup format:\n\n```markdown\n# Policy Name: Ensure EFS is encrypted with CMK\n\n## Policy Description:\nAll Amazon Elastic File Systems (EFS) should be encrypted with AWS KMS Customer Master Keys (CMKs). An EFS file system that is not encrypted using CMK is considered non-compliant with this policy.\n\n## Rationale:\nEncrypting EFS using CMKs enhance data security as it adds an additional layer of protection to your data at rest. This ensures that only authorized systems or users can access and read the data.\n\n## Compliance:\n- This policy fulfills best security practices and compliance requirements for data encryption.\n\n## Remediation:\n- Identify the non-compliant EFS file systems.\n- Encrypt them using the AWS KMS CMKs. If CMKs have not been created, create a new one using AWS KMS.\n- Verify that the encryption has been successfully implemented.\n```\n\nThis AWS control helps in managing data security risks and meeting compliance requirements. CMKs provide you control and visibility into your key usage in AWS, making your file systems secure from unauthorized access."
+  x-kaytu-noncompliance-cost:
+  - "The cost of non-compliance to the AWS Control that requires Amazon Elastic File Systems (Amazon EFS) encryption using Customer Master Key (CMK) can be elaborated through the following aspects:\n\n1. **Risk to Data Security**: The most prominent cost is the risk posed to data security. If Amazon EFS is not encrypted using CMK, it can potentially be accessible to unauthorized users, risking the leakage of potentially sensitive data. This can lead to financial penalties but also significant reputational damage.\n\n2. **Regulatory Penalties**: Many industries (healthcare, finance, etc.) are required to comply with specific regulations (like HIPAA, PCI DSS, GDPR), and they often mandate the encryption of sensitive data at rest. Non-compliance could result in large fines and penalties.\n\n3. **Loss of Client Trust**: If a security breach occurs due to non-encryption, it could lead to the loss of client trust, impacting business relationships and future contracts. This could have a long-term impact on the revenue and growth of the company.\n\n4. **Impact on Audit Results**: For companies that have audits around infrastructure and data security, non-encrypted EFS could lead to poor audit results. This may impact the company's legal standing and its reputation in the industry.\n\n5. **Potential System Vulnerabilities**: Without encryption, data is more vulnerable to cyber-attacks. This could lead to system downtime, which indirectly links to productivity and revenue loss.\n\nIn summary, non-compliance to this rule could potentially have devastating, multi-faceted effects, compromising data security, legal standing, company reputation, client relationships, and productivity."
+  x-kaytu-usefulness-example:
+  - "Given an example of a globally operating e-commerce company, it stores sensitive financial data and payment information of its customers on the Amazon Elastic File System (EFS). The AWS rule that ensures EFS is encrypted using Customer Master Key (CMK) becomes highly beneficial for this organization.\n\nIf, for instance, a malicious entity attempts to gain unauthorized access to this data, the encryption offered by the CMK ensures that the raw data cannot be read without having the appropriate decryption key. \n\nAn audit or compliance check is done and it discovers that the EFS file system is not encrypted. In this case, the rule would suggest non-compliance, prompting immediate action from security professionals to rectify the issue and continue preventing potential data breaches.\n\nHere is the usage in markup format:\n\n```markup\nResources:\n  MyEfsFileSystem:\n    Type: \"AWS::EFS::FileSystem\"\n    Properties:\n      PerformanceMode: generalPurpose\n      FileSystemTags:\n        - Key: Name\n          Value: MyEncryptedEfsFileSystem\n      KmsKeyId: \"arn:aws:kms:us-west-2:111122223333:key/abcd1234-a123-456a-a12b-a123b4cd56ef\" # CMK\n      Encrypted: true\n``` \n\nIn this CloudFormation snippet, the EFS is being encrypted with a specific CMK as specified by the KmsKeyId property. The Encrypted property being set to `true` means that the file system will be encrypted."
+Title: EFS file systems should be encrypted with CMK

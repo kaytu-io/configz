@@ -1,6 +1,15 @@
 {
   "ID": 22,
-  "QueryID": "azure_insight_key_vault_with_disabled_soft_delete",
+  "Query": {
+    "ID": "azure_insight_key_vault_with_disabled_soft_delete",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  name,\n  id,\n  soft_delete_enabled,\n  soft_delete_retention_in_days, subscription_id, kaytu_account_id, kaytu_resource_id\nfrom\n  azure_key_vault\nwhere\n  not soft_delete_enabled;",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_key_vault",
+    "ListOfTables": [
+      "azure_key_vault"
+    ]
+  },
   "Connector": "Azure",
   "ShortTitle": "Key Vaults with no Deletion Protection",
   "LongTitle": "List of key vaults where soft deletion is not enabled",

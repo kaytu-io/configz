@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: EC2 VM Image
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::ec2::image' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Storage

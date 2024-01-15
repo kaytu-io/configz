@@ -1,0 +1,70 @@
+Description: This control checks if Amazon CloudFront distributions are encrypting traffic to custom origins. This control fails for a CloudFront distribution whose origin protocol policy allows 'http-only'. This control also fails if the distribution's origin protocol policy is 'match-viewer' while the viewer protocol policy is 'allow-all'.
+ID: aws_cloudfront_distribution_custom_origins_encryption_in_transit_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_cloudfront_distribution
+  PrimaryTable: aws_cloudfront_distribution
+  QueryToExecute: |
+    with viewer_protocol_policy_value as (
+      select
+        distinct arn
+      from
+        aws_cloudfront_distribution,
+          jsonb_array_elements(
+        case jsonb_typeof(cache_behaviors -> 'Items')
+            when 'array' then (cache_behaviors -> 'Items')
+            else null end
+        ) as cb
+      where
+        cb ->> 'ViewerProtocolPolicy' = 'allow-all'
+    ),
+    origin_protocol_policy_value as (
+      select
+        distinct arn,
+        o -> 'CustomOriginConfig' ->> 'OriginProtocolPolicy' as origin_protocol_policy
+      from
+        aws_cloudfront_distribution,
+        jsonb_array_elements(origins) as o
+      where
+        o -> 'CustomOriginConfig' ->> 'OriginProtocolPolicy' = 'http-only'
+        or o -> 'CustomOriginConfig' ->> 'OriginProtocolPolicy' = 'match-viewer'
+    )
+    select
+      b.arn as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when o.arn is not null and o.origin_protocol_policy = 'http-only' then 'alarm'
+        when o.arn is not null and o.origin_protocol_policy = 'match-viewer' and ( v.arn is not null or (default_cache_behavior ->> 'ViewerProtocolPolicy' = 'allow-all') ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when o.arn is not null and o.origin_protocol_policy = 'http-only' then title || ' custom origins traffic not encrypted in transit.'
+        when o.arn is not null and o.origin_protocol_policy = 'match-viewer' and ( v.arn is not null or (default_cache_behavior ->> 'ViewerProtocolPolicy' = 'allow-all') )  then title || ' custom origins traffic not encrypted in transit.'
+        else title || ' custom origins traffic encrypted in transit.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_cloudfront_distribution as b
+      left join origin_protocol_policy_value as o on b.arn = o.arn
+      left join viewer_protocol_policy_value as v on b.arn = v.arn;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - encryption_of_data_in_transit
+  foundational_security_item_id:
+  - cloudfront_9
+  plugin:
+  - aws
+  service:
+  - AWS/CloudFront
+Title: CloudFront distributions should encrypt traffic to custom origins

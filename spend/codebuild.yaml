@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: CodeBuild
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'CodeBuild' group by 1,2;
+status: active
+tables:
+- CodeBuild
+tags:
+  category:
+  - DevOps

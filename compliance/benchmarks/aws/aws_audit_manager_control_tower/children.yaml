@@ -1,0 +1,531 @@
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_audit_manager_control_tower_multi_factor_authentication_3_0_1
+  - aws_audit_manager_control_tower_multi_factor_authentication_3_0_2
+  - aws_audit_manager_control_tower_multi_factor_authentication_3_0_3
+  Connector: AWS
+  Controls: null
+  Description: This benchmark checks if MFA is enabled for all the IAM users.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_multi_factor_authentication
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    category:
+    - Compliance
+    control_set:
+    - multi_factor_authentication
+    plugin:
+    - aws
+    service:
+    - AWS/IAM
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Multi-Factor Authentication
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_vpc_security_group_restrict_ingress_ssh_all
+  Description: Disallow internet connection through SSH - Checks whether security groups that are in use disallow unrestricted incoming SSH traffic.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_internet_connection_2_0_2
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 2.0.2
+    category:
+    - Compliance
+    control_set:
+    - disallow_internet_connection
+    plugin:
+    - aws
+    service:
+    - AWS/VPC
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 2.0.2 - Disallow internet connection through SSH
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_rds_db_instance_prohibit_public_access
+  Description: Disallow public access to RDS database instances - Checks whether the Amazon Relational Database Service (RDS) instances are not publicly accessible. The rule is non-compliant if the publiclyAccessible field is true in the instance configuration item.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_public_access_4_0_1
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 4.0.1
+    category:
+    - Compliance
+    control_set:
+    - disallow_public_access
+    plugin:
+    - aws
+    service:
+    - AWS/RDS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 4.0.1 - Disallow public access to RDS database instances
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_audit_manager_control_tower_disallow_public_access_4_0_1
+  - aws_audit_manager_control_tower_disallow_public_access_4_0_2
+  - aws_audit_manager_control_tower_disallow_public_access_4_1_1
+  - aws_audit_manager_control_tower_disallow_public_access_4_1_2
+  Connector: AWS
+  Controls: null
+  Description: This benchmark checks if RDS instances, snapshots and S3 buckets are not publicly accessible.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_public_access
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    category:
+    - Compliance
+    control_set:
+    - disallow_public_access
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Disallow Public Access
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_user_console_access_mfa_enabled
+  Description: Disallow console access to IAM users without MFA - Checks whether AWS Multi-Factor Authentication (MFA) is enabled for all AWS Identity and Access Management (IAM) users that use a console password.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_multi_factor_authentication_3_0_2
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 3.0.2
+    category:
+    - Compliance
+    control_set:
+    - multi_factor_authentication
+    plugin:
+    - aws
+    service:
+    - AWS/IAM
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 3.0.2 - Disallow console access to IAM users without MFA
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ec2_instance_ebs_optimized
+  Description: Disallow launch of EC2 instance types that are not EBS-optimized - Checks whether EBS optimization is enabled for your EC2 instances that can be EBS-optimized.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_ebs_checks_1_0_1
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 1.0.1
+    category:
+    - Compliance
+    control_set:
+    - ebs_checks
+    plugin:
+    - aws
+    service:
+    - AWS/EBS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 1.0.1 - Disallow launch of EC2 instance types that are not EBS-optimized
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_root_user_mfa_enabled
+  Description: Enable MFA for the root user - Checks whether the root user of your AWS account requires multi-factor authentication for console sign-in.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_multi_factor_authentication_3_0_3
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 3.0.3
+    category:
+    - Compliance
+    control_set:
+    - multi_factor_authentication
+    plugin:
+    - aws
+    service:
+    - AWS/IAM
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 3.0.3 - Enable MFA for the root user
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_iam_user_mfa_enabled
+  Description: Disallow access to IAM users without MFA - Checks whether the AWS Identity and Access Management users have multi-factor authentication (MFA) enabled.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_multi_factor_authentication_3_0_1
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 3.0.1
+    category:
+    - Compliance
+    control_set:
+    - multi_factor_authentication
+    plugin:
+    - aws
+    service:
+    - AWS/IAM
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 3.0.1 - Disallow access to IAM users without MFA
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_s3_bucket_restrict_public_write_access
+  Description: Disallow public write access to S3 buckets - Checks that your S3 buckets do not allow public write access.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_public_access_4_1_2
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 4.1.2
+    category:
+    - Compliance
+    control_set:
+    - disallow_public_access
+    plugin:
+    - aws
+    service:
+    - AWS/S3
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 4.1.2 - Disallow public write access to S3 buckets
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_audit_manager_control_tower_disallow_internet_connection_2_0_1
+  - aws_audit_manager_control_tower_disallow_internet_connection_2_0_2
+  Connector: AWS
+  Controls: null
+  Description: This benchmark checks if the VPC security group restricts ingress from RDP and SSH.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_internet_connection
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    category:
+    - Compliance
+    control_set:
+    - disallow_internet_connection
+    plugin:
+    - aws
+    service:
+    - AWS/VPC
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Disallow Internet Connection
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_rds_db_snapshot_prohibit_public_access
+  Description: Disallow public access to RDS database snapshots - Checks if Amazon Relational Database Service (Amazon RDS) snapshots are public. The rule is non-compliant if any existing and new Amazon RDS snapshots are public.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_public_access_4_0_2
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 4.0.2
+    category:
+    - Compliance
+    control_set:
+    - disallow_public_access
+    plugin:
+    - aws
+    service:
+    - AWS/RDS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 4.0.2 - Disallow public access to RDS database snapshots
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ebs_attached_volume_encryption_enabled
+  Description: Enable encryption for EBS volumes attached to EC2 instances - Checks whether EBS volumes that are in an attached state are encrypted.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_ebs_checks_1_0_3
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 1.0.3
+    category:
+    - Compliance
+    control_set:
+    - ebs_checks
+    plugin:
+    - aws
+    service:
+    - AWS/EBS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 1.0.3 - Enable encryption for EBS volumes attached to EC2 instances
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_ebs_attached_volume_delete_on_termination_enabled
+  Description: Disallow EBS volumes that are unattached to an EC2 instance - Checks whether EBS volumes are attached to EC2 instances
+  Enabled: true
+  ID: aws_audit_manager_control_tower_ebs_checks_1_0_2
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 1.0.2
+    category:
+    - Compliance
+    control_set:
+    - ebs_checks
+    plugin:
+    - aws
+    service:
+    - AWS/EBS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 1.0.2 - Disallow EBS volumes that are unattached to an EC2 instance
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_s3_bucket_restrict_public_read_access
+  Description: Disallow public read access to S3 buckets - Checks that your S3 buckets do not allow public read access.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_public_access_4_1_1
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 4.1.1
+    category:
+    - Compliance
+    control_set:
+    - disallow_public_access
+    plugin:
+    - aws
+    service:
+    - AWS/S3
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 4.1.1 - Disallow public read access to S3 buckets
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_s3_bucket_versioning_enabled
+  Description: Disallow S3 buckets that are not versioning enabled - Checks whether versioning is enabled for your S3 buckets.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_instances_5_1_1
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 5.1.1
+    category:
+    - Compliance
+    control_set:
+    - disallow_instances
+    plugin:
+    - aws
+    service:
+    - AWS/S3
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 5.1.1 - Disallow S3 buckets that are not versioning enabled
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_vpc_security_group_restrict_ingress_common_ports_all
+  Description: Disallow internet connection through RDP - Checks whether security groups that are in use disallow unrestricted incoming TCP traffic to the specified
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_internet_connection_2_0_1
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 2.0.1
+    category:
+    - Compliance
+    control_set:
+    - disallow_internet_connection
+    plugin:
+    - aws
+    service:
+    - AWS/VPC
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 2.0.1 - Disallow internet connection through RDP
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_audit_manager_control_tower_ebs_checks_1_0_1
+  - aws_audit_manager_control_tower_ebs_checks_1_0_2
+  - aws_audit_manager_control_tower_ebs_checks_1_0_3
+  Connector: AWS
+  Controls: null
+  Description: This benchmark checks if EBS volumes are in use, encrypted etc.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_ebs_checks
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    category:
+    - Compliance
+    control_set:
+    - ebs_checks
+    plugin:
+    - aws
+    service:
+    - AWS/EBS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: EBS checks
+- AutoAssign: false
+  Baseline: true
+  Children:
+  - aws_audit_manager_control_tower_disallow_instances_5_0_1
+  - aws_audit_manager_control_tower_disallow_instances_5_1_1
+  Connector: AWS
+  Controls: null
+  Description: This benchmark checks if RDS storage is encrypted and S3 bucket's versioning is enabled.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_instances
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    category:
+    - Compliance
+    control_set:
+    - disallow_instances
+    plugin:
+    - aws
+    service:
+    - AWS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: Disallow Instances
+- AutoAssign: false
+  Baseline: true
+  Children: null
+  Connector: AWS
+  Controls:
+  - aws_rds_db_snapshot_encrypted_at_rest
+  Description: Disallow RDS database instances that are not storage encrypted - Checks whether storage encryption is enabled for your RDS DB instances.
+  Enabled: true
+  ID: aws_audit_manager_control_tower_disallow_instances_5_0_1
+  Managed: true
+  Tags:
+    audit_manager_control_tower:
+    - "true"
+    audit_manager_control_tower_item_id:
+    - 5.0.1
+    category:
+    - Compliance
+    control_set:
+    - disallow_instances
+    plugin:
+    - aws
+    service:
+    - AWS/RDS
+    source_git:
+    - https://github.com/turbot/steampipe-mod-aws-compliance.git
+    type:
+    - Benchmark
+  Title: 5.0.1 - Disallow RDS database instances that are not storage encrypted

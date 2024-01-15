@@ -1,0 +1,10 @@
+connectors:
+- AWS
+name: Classic Load Balancer (Legacy)
+query: select kaytu_account_id, region, count(*) from aws_ec2_classic_load_balancer group by 1,2;
+status: active
+tables:
+- aws::elasticloadbalancing::loadbalancer
+tags:
+  category:
+  - Network

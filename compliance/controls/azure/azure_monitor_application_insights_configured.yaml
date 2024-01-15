@@ -1,0 +1,82 @@
+Description: Application Insights within Azure act as an Application Performance Monitoring solution providing valuable data into how well an application performs and additional information when performing incident response. The types of log data collected include application metrics, telemetry data, and application trace logging data providing organizations with detailed information about application activity and application transactions.
+DocumentURI: ""
+ID: azure_monitor_application_insights_configured
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_application_insight
+  - azure_subscription
+  PrimaryTable: azure_application_insight
+  QueryToExecute: |
+    with application_insights as (
+      select
+        subscription_id,
+        count(*) as no_application_insight
+      from
+        azure_application_insight
+      group by
+        subscription_id
+    )
+    select
+      sub.id as resource,
+      sub.kaytu_account_id as kaytu_account_id,
+      sub.kaytu_resource_id as kaytu_resource_id,
+      case
+        when i.subscription_id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when i.subscription_id is null then sub.display_name || ' does not have application insights configured.'
+        else sub.display_name || ' has ' || no_application_insight || ' application insights configured.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_subscription as sub
+      left join application_insights as i on i.subscription_id = sub.subscription_id;
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - 5.3.1
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "5"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.4.0
+  plugin:
+  - azure
+  service:
+  - Azure/Monitor
+  x-kaytu-explanation:
+  - "#Application Insights in Azure\n\nAzure's Application Insights service is part of the Azure Monitor toolkit and is responsible for acting as the Application Performance Monitoring (APM) solution. It performs extremely crucial functions of collecting, analysing, and acting on telemetry data from your application.\n\n## Key Features\n\n**1.** **Performance Monitoring:**\nApplication Insights helps in understanding how well an application is performing by collecting application performance data. This aids in identifying performance bottlenecks and optimization measures.\n\n**2.** **Incident Response:**\nWhen an incident occurs, understanding and determining the root cause is vital. Application Insights aids in this process by providing valuable data that can help speed up the response and recovery process.\n\n**3.** **Application Metrics:**\nThis service continuously collects and monitors real-time data about to how your application is performing and being used.\n\n**4.** **Telemetry Data:**\nTelemetry data like request rates, response times, failure rates, exceptions, and dependency rates are collected through Application Insights. \n\n**5.** **Trace Logging Data:**\nApplication Insights can collect detailed information about application activity and application transactions. It's capable of reading log data from .NET, Java, Node.js, and other logging libraries.\n\nBy keeping a track of these variables, organizations get an insightful understanding into the behaviour and performance of their applications, significantly improving their decision making and incident handling abilities. \n\n## In Summation\nApplication Insights within Azure acts as a comprehensive Application Performance Monitoring solution, offering deep insights on the performance and functionality of applications, ensuring smooth operations and quick incident responses."
+  x-kaytu-noncompliance-cost:
+  - |-
+    1. **Performance Degradation:** Without effective application performance monitoring, organizations may experience slower application speeds and decreased system efficiency. This could lead to reduced site traffic and customer engagement, imposing a potential loss of revenue.
+
+    2. **Incident Response Inefficiency:** Having detailed information on application activity and transactions is highly beneficial during incident response. Poor incident response due to lack of information could increase operational costs, damage reputations, and cause potential revenue losses.
+
+    3. **Unplanned Downtime:** Lack of timely insights can lead to higher system downtime. This can incur significant financial cost, impact customer service and damage brand credibility.
+
+    4. **Poor Decision-Making in Resource Allocation:** Without detailed logs and monitoring data, it becomes more challenging to make informed decisions about system updates, resource allocation, and cost optimization strategies. 
+
+    5. **Increased Operating Expenses:** Slower incidents detection and resolution typically leads to higher operational expenses as more resources are required for longer duration to address and fix issues.
+
+    6. **Non-Compliance Penalties:** Depending on the industry, organizations may also face regulatory fines for non-compliance with required standards (such as GDPR, HIPAA), resulting in potential financial penalties.
+  x-kaytu-usefulness-example:
+  - |-
+    For instance, a software company developed a web-based CRM (Customer Relationship Management) platform. To better understand the platform's performance, they used Application Insights within Azure. By doing so, they could track several metrics such as customer operations, server response time, and failure instances.
+
+    Using the collected data, the company was able to identify some recurring issues, such as occasional slow server response times during peak business hours. These insights helped the team undertake proactive measures to increase server resources during peak times and improve customer experience.
+
+    Additionally, during an incident response, the team noted an abnormal increase in failed customer operations. Upon reviewing the trace logging data provided by Application Insights, the team could isolate the issue to a recent software update, quickly roll back to the previous version, and fix the issues before deploying the updated version again. Thus, Azure's Application Insights played a crucial role in enabling the company to maintain high application performance and ensure smooth customer experiences.
+Title: Ensure Application Insights are Configured

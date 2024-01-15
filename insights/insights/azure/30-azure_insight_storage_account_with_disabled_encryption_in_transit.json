@@ -1,6 +1,15 @@
 {
   "ID": 30,
-  "QueryID": "azure_insight_storage_account_with_disabled_encryption_in_transit",
+  "Query": {
+    "ID": "azure_insight_storage_account_with_disabled_encryption_in_transit",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  name,\n  enable_https_traffic_only, subscription_id, kaytu_account_id, kaytu_resource_id\nfrom\n  azure_storage_account\nwhere\n  not enable_https_traffic_only;",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_storage_account",
+    "ListOfTables": [
+      "azure_storage_account"
+    ]
+  },
   "Connector": "Azure",
   "ShortTitle": "Storage Accounts No Unecrypted Transit",
   "LongTitle": "List storage accounts with encryption in transit disabled",

@@ -1,0 +1,42 @@
+Description: This control evaluates whether ElastiCache for Redis automatically applies minor version upgrades to cache clusters. This control fails if ElastiCache for Redis cache clusters do not have minor version upgrades automatically applied.
+ID: aws_elasticache_cluster_auto_minor_version_upgrade_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_elasticache_cluster
+  PrimaryTable: aws_elasticache_cluster
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when auto_minor_version_upgrade then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when auto_minor_version_upgrade then title || ' automatic minor version upgrades enabled.'
+        else title || ' automatic minor version upgrades disabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_elasticache_cluster;
+Severity: high
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - vulnerability_patch_and_version_management
+  foundational_security_item_id:
+  - elasticache_2
+  plugin:
+  - aws
+  service:
+  - AWS/ElastiCache
+Title: Minor version upgrades should be automatically applied to ElastiCache for Redis cache clusters

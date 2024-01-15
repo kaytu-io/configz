@@ -1,0 +1,63 @@
+Description: Use a managed identity for enhanced authentication security.
+ID: azure_appservice_api_app_uses_managed_identity
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+  PrimaryTable: azure_app_service_web_app
+  QueryToExecute: |
+    with all_api_app as (
+      select
+        id
+      from
+        azure_app_service_web_app
+      where
+        exists (
+          select
+          from
+            unnest(regexp_split_to_array(kind, ',')) elem
+          where
+            elem like '%api'
+      )
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.id is null then 'skip'
+        when
+          configuration -> 'properties' ->> 'xManagedServiceIdentityId' is not null
+          or configuration -> 'properties' ->> 'managedServiceIdentityId' is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.id is null then a.title || ' is ' || a.kind || ' kind.'
+        when
+          configuration -> 'properties' ->> 'xManagedServiceIdentityId' is not null
+          or configuration -> 'properties' ->> 'managedServiceIdentityId' is not null
+          then a.name || ' uses managed identity.'
+        else a.name || ' not uses managed identity'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_app_service_web_app as a
+      left join all_api_app as b on a.id = b.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/AppService
+Title: Managed identity should be used in your API App

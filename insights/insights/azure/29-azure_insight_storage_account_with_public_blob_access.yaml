@@ -1,0 +1,29 @@
+Connector: Azure
+Description: List storage accounts that allow blob public access
+Enabled: true
+ID: 29.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List storage accounts that allow blob public access
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ID: azure_insight_storage_account_with_public_blob_access
+  ListOfTables:
+  - azure_storage_account
+  PrimaryTable: azure_storage_account
+  QueryToExecute: |-
+    select
+      name,
+      allow_blob_public_access, subscription_id, kaytu_account_id, kaytu_resource_id
+    from
+      azure_storage_account
+    where
+      allow_blob_public_access;
+ShortTitle: Storage Accounts with Public Internet
+Tags:
+  category:
+  - Security
+  - Technical Debt
+  - Resiliency

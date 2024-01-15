@@ -1,0 +1,39 @@
+Description: Azure Defender for SQL provides functionality for surfacing and mitigating potential database vulnerabilities, detecting anomalous activities that could indicate threats to SQL databases, and discovering and classifying sensitive data.
+ID: azure_sql_server_vm_azure_defender_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+  PrimaryTable: azure_security_center_subscription_pricing
+  QueryToExecute: |
+    select
+      pricing.id as resource,
+      pricing.kaytu_account_id as kaytu_account_id,
+      pricing.kaytu_resource_id as kaytu_resource_id,
+      case
+        when name = 'SqlServerVirtualMachines' and pricing_tier = 'Standard' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when name = 'SqlServerVirtualMachines' and pricing_tier = 'Standard' then 'SqlServerVirtualMachines azure defender enabled.'
+        else name || 'SqlServerVirtualMachines azure defender disabled.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_security_center_subscription_pricing as pricing,
+      azure_subscription as sub
+    where
+      sub.subscription_id = pricing.subscription_id
+      and name = 'SqlServerVirtualMachines';
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SQL
+Title: Azure Defender for SQL servers on machines should be enabled

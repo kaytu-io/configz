@@ -1,0 +1,10 @@
+connectors:
+- Azure
+name: Traffic Manager
+query: SELECT kaytu_account_id, usage_date::text as date, sum(cost) FROM azure_costmanagement_costbyresourcetype WHERE service_name = 'Traffic Manager' group by 1,2;
+status: active
+tables:
+- Traffic Manager
+tags:
+  category:
+  - Network

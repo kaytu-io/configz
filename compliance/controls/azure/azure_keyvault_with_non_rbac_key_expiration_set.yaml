@@ -1,0 +1,73 @@
+Description: Ensure that all Keys in Non Role Based Access Control (RBAC) Azure Key Vaults have an expiration time set.
+DocumentURI: ""
+ID: azure_keyvault_with_non_rbac_key_expiration_set
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_key_vault
+  - azure_key_vault_key
+  - azure_subscription
+  PrimaryTable: azure_key_vault_key
+  QueryToExecute: |
+    with non_rbac_vault as (
+      select
+        name
+      from
+        azure_key_vault
+      where not enable_rbac_authorization
+    )
+    select
+      kvk.id as resource,
+      kvk.kaytu_account_id as kaytu_account_id,
+      kvk.kaytu_resource_id as kaytu_resource_id,
+      case
+        when v.name is null then 'skip'
+        when enabled and expires_at is null then 'alarm'
+        else 'ok'
+      end as status,
+      vault_name || ' key ' || kvk.name ||
+      case
+        when v.name is null then ' RBAC enabled vault.'
+        when enabled and expires_at is null then ' expiration date not set.'
+        when not enabled then ' disabled.'
+        else ' expiration date set to ' || to_char(expires_at, 'DD-Mon-YYYY') || '.'
+      end as reason
+      
+      , kvk.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_key_vault_key kvk
+      left join non_rbac_vault as v on v.name = kvk.vault_name,
+      azure_subscription sub
+    where
+      sub.subscription_id = kvk.subscription_id;
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "8.2"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "8"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.4.0
+  plugin:
+  - azure
+  service:
+  - Azure/KeyVault
+  x-kaytu-explanation:
+  - "# Azure Key Vault Non-RBAC Key Expiration Control\n\n## Control Statement\n\nEnsure that all keys within Azure Key Vaults, which are not subject to Role-Based Access Control (RBAC), have an expiration time set.\n\n## Rationale\n\nSetting expiration times for keys adds an additional layer of security by limiting the lifespan of cryptographic materials. This control helps mitigate potential risks associated with long-lived keys and ensures that access to sensitive information is regularly reviewed and renewed as necessary.\n\n## Implementation\n\n1. Identify Azure Key Vaults that do not have RBAC applied to their keys.\n\n2. For each key within the identified Key Vaults, verify that an expiration time is set.\n\n3. If a key lacks an expiration time, enforce the setting of an appropriate expiration period based on security best practices.\n\n## Examples\n\n### Azure PowerShell\n\n```powershell\n# Connect to Azure account\nConnect-AzAccount\n\n# Get Key Vaults without RBAC\n$nonRbacKeyVaults = Get-AzKeyVault | Where-Object { $_.VaultUri -notin (Get-AzRoleAssignment -RoleDefinitionName 'Key Vault Contributor').ResourceName }\n\nforeach ($vault in $nonRbacKeyVaults) {\n    # Get keys without expiration time\n    $keysWithoutExpiration = Get-AzKeyVaultKey -VaultName $vault.VaultName | Where-Object { $_.Attributes.Expires -eq $null }\n\n    foreach ($key in $keysWithoutExpiration) {\n        # Set an expiration time (adjust the duration as needed)\n        Set-AzKeyVaultKeyAttribute -VaultName $vault.VaultName -KeyName $key.Name -Expires (Get-Date).AddYears(1)\n    }\n}\n"
+  x-kaytu-noncompliance-cost:
+  - "**Cost of Non-Compliance:**\n\n1. **Security Risks:**\n   - *Unrestricted Access:* Without setting expiration times for keys in non-RBAC Azure Key Vaults, there is a risk of unauthorized and prolonged access to sensitive information.\n   - *Increased Vulnerability:* Lack of key expiration may lead to an increased vulnerability to security threats, as outdated or compromised keys may remain active.\n\n2. **Compliance Violations:**\n   - *Regulatory Penalties:* Non-compliance may result in regulatory penalties and fines, especially if the organization is subject to data protection regulations that mandate proper key management practices.\n   - *Audit Failures:* Failure to adhere to key expiration requirements can lead to audit failures, negatively impacting the organization's compliance status.\n\n3. **Operational Challenges:**\n   - *Key Rotation Issues:* Without key expiration, the organization may face challenges in effectively rotating keys, which is a crucial aspect of maintaining a secure key management lifecycle.\n   - *Difficulty in Monitoring:* Monitoring and tracking key usage become more challenging when keys do not have expiration times, making it harder to detect suspicious activities promptly.\n\n4. **Reputation Damage:**\n   - *Loss of Trust:* Security lapses and non-compliance can damage the organization's reputation, leading to a loss of trust among customers, partners, and stakeholders.\n   - *Customer Concerns:* Customers may be concerned about the security of their data if they perceive inadequate measures in place to manage access to sensitive information.\n\n5. **Operational Downtime:**\n   - *Security Incidents:* In the event of a security incident, the lack of key expiration may necessitate urgent remediation actions, leading to operational downtime and potential business disruptions.\n\n**Conclusion:**\nEnsuring that all keys in non-RBAC Azure Key Vaults have expiration times set is critical for maintaining a secure and compliant Azure environment. Non-compliance not only poses security risks but also exposes the organization to regulatory penalties, operational challenges, and potential damage to its reputation.\n"
+  x-kaytu-usefulness-example:
+  - "To enforce the requirement of having expiration times set for keys in Non-RBAC Azure Key Vaults, you can use Azure Policy. Below is an example of how you can define an Azure Policy in markup format for this purpose:\n\njson\nCopy code\n{\n  \"mode\": \"All\",\n  \"policyRule\": {\n    \"if\": {\n      \"allOf\": [\n        {\n          \"field\": \"type\",\n          \"equals\": \"Microsoft.KeyVault/vaults\"\n        },\n        {\n          \"not\": {\n            \"field\": \"Microsoft.KeyVault/vaults/enableRbacAuthorization\",\n            \"equals\": \"true\"\n          }\n        }\n      ]\n    },\n    \"then\": {\n      \"effect\": \"deployIfNotExists\",\n      \"details\": {\n        \"type\": \"Microsoft.KeyVault/vaults/keys\",\n        \"existenceCondition\": {\n          \"field\": \"Microsoft.KeyVault/vaults/keys/properties.expires\",\n          \"exists\": \"false\"\n        },\n        \"deployment\": {\n          \"properties\": {\n            \"mode\": \"incremental\",\n            \"template\": {\n              \"$schema\": \"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\",\n              \"contentVersion\": \"1.0.0.0\",\n              \"resources\": [\n                {\n                  \"type\": \"Microsoft.KeyVault/vaults/keys\",\n                  \"apiVersion\": \"2019-09-01\",\n                  \"name\": \"[concat(parameters('vaultName'), '/', 'default')]\",\n                  \"properties\": {\n                    \"expires\": \"2023-12-31T23:59:59Z\"\n                    // You can customize the expiration time based on your requirement\n                  }\n                }\n              ]\n            }\n          }\n        }\n      }\n    }\n  },\n  \"parameters\": {\n    \"vaultName\": {\n      \"type\": \"String\",\n      \"metadata\": {\n        \"displayName\": \"Key Vault Name\",\n        \"description\": \"Name of the Azure Key Vault\"\n      }\n    }\n  }\n}\nIn this example:\n\nThe policy checks if the resource type is a Key Vault and if RBAC is not enabled.\nIf the conditions are met, it deploys a key with a predefined expiration time (you can customize the expiration time based on your requirement) to the specified Key Vault.\nMake sure to deploy this policy to the appropriate scope (management group, subscription, or resource group) based on where your Key Vaults are located. Also, adjust the parameters and conditions as needed for your specific use case."
+Title: Ensure that the Expiration Date is set for all Keys in Non-RBAC Key Vaults

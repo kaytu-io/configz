@@ -1,0 +1,14 @@
+Connector: AWS
+Engine: odysseus-v0.0.1
+ID: aws_insight_loadbalancer_classic_no_logging
+ListOfTables:
+- aws_ec2_classic_load_balancer
+PrimaryTable: aws_ec2_classic_load_balancer
+QueryToExecute: |-
+  select
+    name,
+    access_log_enabled, account_id, kaytu_account_id, kaytu_resource_id
+  from
+    aws_ec2_classic_load_balancer
+  where
+    access_log_enabled = 'false';

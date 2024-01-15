@@ -1,6 +1,15 @@
 {
   "ID": 26,
-  "QueryID": "azure_insight_compute_availability_set_without_managed_disk_configuration",
+  "Query": {
+    "ID": "azure_insight_compute_availability_set_without_managed_disk_configuration",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select\n  name,\n  sku_name, subscription_id, kaytu_account_id, kaytu_resource_id\nfrom\n  azure_compute_availability_set\nwhere\n  sku_name = 'Classic';",
+    "Connector": "Azure",
+    "PrimaryTable": "azure_compute_availability_set",
+    "ListOfTables": [
+      "azure_compute_availability_set"
+    ]
+  },
   "Connector": "Azure",
   "ShortTitle": "AV Sets with Legacy Disks",
   "LongTitle": "List of availability sets which does not use managed disks configuration",

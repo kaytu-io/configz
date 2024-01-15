@@ -1,0 +1,19 @@
+Description: Upgrade your Kubernetes service cluster to a later Kubernetes version to protect against known vulnerabilities in your current Kubernetes version. Vulnerability CVE-2019-9946 has been patched in Kubernetes versions 1.11.9+, 1.12.7+, 1.13.5+, and 1.14.0+.
+ID: azure_kubernetes_cluster_upgraded_with_non_vulnerable_version
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_kubernetes_cluster
+  - azure_subscription
+  PrimaryTable: azure_kubernetes_cluster
+  QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when\n      a.kubernetes_version ~ '1\\.13\\.[0-4]'\n      or a.kubernetes_version ~ '1\\.12\\.[0-6]'\n      or a.kubernetes_version ~ '1\\.11\\.[0-8]'\n      or a.kubernetes_version ~ '1\\.\\d|10\\.*' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when\n      a.kubernetes_version ~ '1\\.13\\.[0-4]'\n      or a.kubernetes_version ~ '1\\.12\\.[0-6]'\n      or a.kubernetes_version ~ '1\\.11\\.[0-8]'\n      or a.kubernetes_version ~ '1\\.\\d|10\\.*' then a.name || ' not upgraded to a non-vulnerable Kubernetes version.'\n    else a.name || ' upgraded to a non-vulnerable Kubernetes version.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/KubernetesService
+Title: Kubernetes Services should be upgraded to a non-vulnerable Kubernetes version

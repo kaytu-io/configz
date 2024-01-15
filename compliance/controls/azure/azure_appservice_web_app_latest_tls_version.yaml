@@ -1,0 +1,119 @@
+Description: The TLS(Transport Layer Security) protocol secures transmission of data over the internet using standard encryption technology. Encryption should be set with the latest version of TLS. App service allows TLS 1.2 by default, which is the recommended TLS level by industry standards, such as PCI DSS.
+DocumentURI: ""
+ID: azure_appservice_web_app_latest_tls_version
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+  PrimaryTable: azure_app_service_web_app
+  QueryToExecute: |
+    select
+      app.id as resource,
+      app.kaytu_account_id as kaytu_account_id,
+      app.kaytu_resource_id as kaytu_resource_id,
+      case
+        when configuration -> 'properties' ->> 'minTlsVersion' < '1.2' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when configuration -> 'properties' ->> 'minTlsVersion' < '1.2' then name || ' not using the latest version of TLS encryption.'
+        else name || ' using the latest version of TLS encryption.'
+      end as reason
+      
+      , app.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_app_service_web_app as app,
+      azure_subscription as sub
+    where
+      sub.subscription_id = app.subscription_id;
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "9.3"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "9"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  x-kaytu-explanation:
+  - |-
+    In Microsoft Azure, you can set up web applications to use the Transport Layer Security protocol in order to secure data transmission over the internet. This is achieved using standard encryption technology. The App Service feature in Azure is configured to use by default the TLS version 1.2, which is an industry-standard recommended level according to guidelines like the Payment Card Industry Data Security Standard (PCI DSS). 
+
+    Here is an illustrative example of how you might set this up in Azure's markup language:
+
+    ```xml
+    <configuration>
+        <system.web>
+            <compilation targetFramework="4.6" />
+            <httpRuntime targetFramework="4.6" />
+        </system.web>
+        <system.webServer>
+            <security>
+                <access sslFlags="Ssl, Ssl128, Ssl3, Tls, Tls1, Tls12" />
+            </security>
+            <httpProtocol>
+                <customHeaders>
+                    <add name="Strict-Transport-Security" value="max-age=31536000" />
+                </customHeaders>
+            </httpProtocol>
+        </system.webServer>
+    </configuration>
+    ```
+
+    In the above configuration, the sslFlags property is used to specify the versions of the SSL/TLS protocol that can be used for network communication. Users should replace this with their required TLS version (in this case, `Tls12` for TLS 1.2). Tls12 will be used for securing connections. The `Strict-Transport-Security` header is also set to ensure all communication is performed over HTTPS.
+
+    Please note that Azure enables by default the last version of TLS but you have the capability to apply configurations as per your security requirements and compliance.
+  x-kaytu-noncompliance-cost:
+  - |-
+    Non-compliance with this Azure Control could result in several negative consequences including:
+
+    1. **Increased Vulnerability to Cyber Threats:** Older versions of TLS have been found to be less secure, therefore, if you're not using the latest version of TLS, the data transmitted over the internet could be intercepted and deciphered by malicious actors.
+       
+    2. **Non-Compliance with Industry Standards:** Many industry standards, such as PCI DSS for the payment card industry, mandate using the latest version of TLS. Therefore, not doing so could result in non-compliant with these standards.
+       
+    3. **Reputational Damage:** If a data breach should occur due to the use of outdated encryption, this could potentially harm the organisation's reputation, possibly resulting in loss of business.
+       
+    4. **Financial Penalties:** Non-compliance with regulations and standards such as PCI DSS can result in hefty fines and penalties. For example, the PCI DSS can impose fines up to $100,000 per month until compliance is achieved.
+
+    5. **Loss of Business Opportunities:** Some customers, especially in regulated industries, may require proof of compliance with industry standards, such as using the latest version of TLS for encryption. Not complying can mean losing these business opportunities.
+       
+    6. **Legal Action:** In case of a data breach, and it is found that the latest security measures were not in place, affected parties could potentially take legal action against the organisation.
+
+    Overall, the cost of non-compliance with this Azure Control can be very high, and as such, it's critical to ensure your encryption protocols are up-to-date and in line with industry standards.
+  x-kaytu-usefulness-example:
+  - |-
+    For example, consider a situation in which a company named ‘Tech Corp’ is handling sensitive client data - such as credit card information or personally identifiable information (PII) - in its cloud-based applications. This data is crucial for their business transactions and maintaining client trust but is constantly at risk of being intercepted or manipulated by malicious actors during transmission.
+
+    To mitigate this risk, Tech Corp makes use of Azure App Service, and specifically, its support for the recommended industry-standard TLS 1.2. Given that the Payment Card Industry Data Security Standard (PCI DSS) requires that any business that handles credit card data must use 'strong cryptography and security protocols', the TLS 1.2 protocol implemented via Azure App Service ensures Tech Corp is compliant with this standard.
+
+    By doing this, Tech Corp can secure all transmission of sensitive client data over the internet, leveraging the robust encryption technology provided by the TLS 1.2 protocol. This ultimately strengthens their security posture, promotes client trust, and fulfills regulatory requirements. Example in markup format:
+
+    ```
+    <configuration>
+        <system.web>
+           <httpRuntime targetFramework="4.7" />
+        </system.web>
+        <appSettings>
+           <add key="AppServiceTls12" value="True" />
+        </appSettings>
+    </configuration>
+    ```
+
+    In the above configuration, Tech Corp sets the target framework to .NET 4.7 and enables TLS 1.2 in Azure App Service through the 'AppServiceTls12' app setting.
+Title: Ensure web app is using the latest version of TLS encryption

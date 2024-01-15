@@ -1,0 +1,11 @@
+Description: Risky AWS Account Configuration
+ID: 5.0
+InsightIDs:
+- 40.0
+- 41.0
+- 42.0
+- 43.0
+- 44.0
+LogoURL: null
+LongTitle: Risky AWS Account Configuration
+ShortTitle: Risky AWS Account Configuration

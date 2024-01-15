@@ -1,0 +1,4 @@
+connectors:
+- AWS
+query: "select\n  -- Required Columns\n  'arn:' || partition || ':ec2:' || region || ':' || account_id || ':internet-gateway/' || title as resource,\n  case\n    when attachments is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when attachments is null then title || ' not attached to VPC.'\n    else title || ' attached to ' || split_part(\n      substring(attachments :: text, 3, length(attachments :: text) -6),\n      '\"VpcId\": \"',\n      2\n    ) || '.'\n  end as reason,\n  -- Additional Dimensions\n  region,\n  account_id\nfrom\n  aws_vpc_internet_gateway"
+title: Find all IGWs that are not attached to VPs

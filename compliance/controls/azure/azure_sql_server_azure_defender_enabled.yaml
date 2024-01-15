@@ -1,0 +1,52 @@
+Description: Audit SQL servers without Advanced Data Security.
+ID: azure_sql_server_azure_defender_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+  PrimaryTable: azure_sql_server
+  QueryToExecute: |
+    with sql_server_policy as (
+      select
+        distinct a.name
+      from
+        azure_sql_server as a,
+        jsonb_array_elements(server_security_alert_policy) as policy
+      where
+        policy ->> 'name' = 'Default'
+        and policy -> 'properties' ->> 'state' = 'Enabled'
+    )
+    select
+      distinct a.name as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when kind like '%analytics%' then 'skip'
+        when s.name is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when kind like '%analytics%' then a.name || ' azure defender not applicable.'
+        when s.name is null then a.name || 'sql azure defender disabled.'
+        else a.name || ' sql azure defender enabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_server as a
+      left join sql_server_policy as s on a.name = s.name,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SQL
+Title: Azure Defender for SQL should be enabled for unprotected Azure SQL servers

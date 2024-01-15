@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: SES Email Identity (Legacy)
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'aws::ses::identity' group by 1,2;
+status: inactive
+tags:
+  category:
+  - End User

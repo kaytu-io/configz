@@ -1,0 +1,81 @@
+Description: Turning on Microsoft Defender for Databases enables threat detection for the instances running your database software. This provides threat intelligence, anomaly detection, and behavior analytics in the Azure Microsoft Defender for Cloud. Instead of being enabled on services like Platform as a Service (PaaS), this implementation will run within your instances as Infrastructure as a Service (IaaS) on the Operating Systems hosting your databases.
+DocumentURI: ""
+ID: azure_securitycenter_azure_defender_on_for_database
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+  PrimaryTable: azure_security_center_subscription_pricing
+  QueryToExecute: |
+    with defender_list as (
+      select
+        json_object_agg(name, pricing_tier) as data,
+        subscription_id
+      from
+        azure_security_center_subscription_pricing
+      where
+        name = any(ARRAY ['CosmosDbs', 'OpenSourceRelationalDatabases', 'SqlServerVirtualMachines', 'SqlServers'])
+      group by
+        subscription_id
+    )
+    select
+      sub.id as resource,
+      sub.kaytu_account_id as kaytu_account_id,
+      sub.kaytu_resource_id as kaytu_resource_id,
+      case
+        when
+          data ->> 'CosmosDbs' = 'Standard'
+          and data ->> 'OpenSourceRelationalDatabases' = 'Standard'
+          and data ->> 'SqlServerVirtualMachines' = 'Standard'
+          and data ->> 'SqlServers' = 'Standard'
+          then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when
+          data ->> 'CosmosDbs' = 'Standard'
+          and data ->> 'OpenSourceRelationalDatabases' = 'Standard'
+          and data ->> 'SqlServerVirtualMachines' = 'Standard'
+          and data ->> 'SqlServers' = 'Standard'
+          then 'Azure Defender on for Databases.'
+        else 'Azure Defender off for Databases.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_subscription as sub
+      left join defender_list as l on l.subscription_id = sub.subscription_id;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - 2.1.3
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "2.1"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.5.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  x-kaytu-explanation:
+  - "Azure Control: Microsoft Defender for Databases\n\nDescription:\nTurning on Microsoft Defender for Databases enables threat detection for the instances running your database software. This provides threat intelligence, anomaly detection, and behavior analytics in the Azure Microsoft Defender for Cloud. Instead of being enabled on services like Platform as a Service (PaaS), this implementation will run within your instances as Infrastructure as a Service (IaaS) on the Operating Systems hosting your databases.\n"
+  x-kaytu-noncompliance-cost:
+  - |+
+    The cost of non-compliance for Microsoft Defender for Databases can vary based on factors such as the severity of security threats, potential data breaches, and regulatory penalties. Non-compliance may lead to compromised data integrity and confidentiality, financial losses, and damage to the organization's reputation. Exact monetary values depend on the specific consequences and legal implications in each case.
+
+  x-kaytu-usefulness-example:
+  - |
+    An example instance of the usefulness of Microsoft Defender for Databases is the proactive detection and mitigation of a potential SQL injection attack on a critical database instance. By enabling threat detection, the system can identify anomalous activities, analyze behavior patterns, and provide timely alerts to administrators. In this scenario, the Azure control helps prevent data breaches and ensures the security of sensitive information stored in the databases.
+Title: Ensure That Microsoft Defender for Databases Is Set To 'On'

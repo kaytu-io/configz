@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Storage account
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.storage/storageaccounts' group by 1,2;
+status: active
+tags:
+  category:
+  - Storage

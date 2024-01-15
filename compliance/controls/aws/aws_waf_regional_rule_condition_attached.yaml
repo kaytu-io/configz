@@ -1,0 +1,41 @@
+Description: This control checks whether an AWS WAF Regional rule has at least one condition. The control fails if no conditions are present within a rule.
+ID: aws_waf_regional_rule_condition_attached
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_wafregional_rule
+  PrimaryTable: aws_wafregional_rule
+  QueryToExecute: |
+    select
+      rule_id as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when predicates is null or jsonb_array_length(predicates) = 0 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when predicates is null or jsonb_array_length(predicates) = 0 then title || ' has no attached conditions.'
+        else title || ' has ' || jsonb_array_length(predicates) || ' condition(s) attached.'
+      end as reason
+      , region, account_id
+    from
+      aws_wafregional_rule;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - secure_network_configuration
+  foundational_security_item_id:
+  - waf_2
+  plugin:
+  - aws
+  service:
+  - AWS/WAF
+Title: A WAF Regional rule should have at least one condition

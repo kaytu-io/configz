@@ -1,0 +1,52 @@
+Description: This setting enables Microsoft Cloud App Security (MCAS) integration with Security Center.
+ID: azure_securitycenter_mcas_integration
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_security_center_setting
+  - azure_subscription
+  PrimaryTable: azure_security_center_setting
+  QueryToExecute: |
+    select
+      sc_sett.id as resource,
+      sc_sett.kaytu_account_id as kaytu_account_id,
+      sc_sett.kaytu_resource_id as kaytu_resource_id,
+      case
+        when enabled then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when enabled then 'Windows Defender ATP (WDATP) integrated with Security Center.'
+        else 'Windows Defender ATP (WDATP) not integrated with Security Center.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_security_center_setting sc_sett
+      right join azure_subscription sub on sc_sett.subscription_id = sub.subscription_id
+    where
+      name = 'MCAS';
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "2.10"
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "2"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+Title: Ensure that Microsoft Cloud App Security (MCAS) integration with Security Center is selected

@@ -1,0 +1,39 @@
+Description: Use customer-managed keys to manage the encryption at rest of your Azure Cosmos DB. By default, the data is encrypted at rest with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
+ID: azure_cosmosdb_account_encryption_at_rest_using_cmk
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_cosmosdb_account
+  - azure_subscription
+  PrimaryTable: azure_cosmosdb_account
+  QueryToExecute: |
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when key_vault_key_uri is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when key_vault_key_uri is not null then a.name || ' encrypted at rest using CMK.'
+        else a.name || ' not encrypted at rest using CMK.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_cosmosdb_account as a,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/CosmosDB
+Title: Azure Cosmos DB accounts should use customer-managed keys to encrypt data at rest

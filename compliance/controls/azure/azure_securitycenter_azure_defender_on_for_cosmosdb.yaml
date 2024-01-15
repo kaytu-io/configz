@@ -1,0 +1,59 @@
+Description: Microsoft Defender for Cosmos DB scans all incoming network requests for changes to your virtual machine.
+DocumentURI: ""
+ID: azure_securitycenter_azure_defender_on_for_cosmosdb
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+  PrimaryTable: azure_security_center_subscription_pricing
+  QueryToExecute: |
+    select
+      sub_pricing.id as resource,
+      sub_pricing.kaytu_account_id as kaytu_account_id,
+      sub_pricing.kaytu_resource_id as kaytu_resource_id,
+      case
+        when pricing_tier = 'Standard' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when pricing_tier = 'Standard' then 'Azure Defender on for Cosmos DB.'
+        else 'Azure Defender off for Cosmos DB.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_security_center_subscription_pricing sub_pricing
+      right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
+    where
+      name = 'CosmosDbs';
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - 2.1.9
+  cis_level:
+  - "2"
+  cis_section_id:
+  - "2.1"
+  cis_type:
+  - manual
+  cis_version:
+  - v1.5.0
+  plugin:
+  - azure
+  service:
+  - Azure/SecurityCenter
+  x-kaytu-explanation:
+  - "Azure Control: Microsoft Defender for Cosmos DB\n\nDescription:\nMicrosoft Defender for Cosmos DB is a security feature that actively scans all incoming network requests for changes to your virtual machine within the Cosmos DB service.\n\nMarkup Format Explanation:\n- **Azure Control:** Microsoft Defender for Cosmos DB\n- **Functionality:** Scans all incoming network requests\n- **Purpose:** Detect changes to the virtual machine within Cosmos DB\n"
+  x-kaytu-noncompliance-cost:
+  - "The cost of non-compliance with Microsoft Defender for Cosmos DB, which scans all incoming network requests for changes to your virtual machine, can vary based on factors such as the severity and impact of security breaches. Potential costs include:\n\nData Breach Costs: Expenses related to the loss or compromise of sensitive data.\nReputation Damage: Negative impact on the organization's reputation, potentially leading to customer distrust.\nRegulatory Fines: Non-compliance may result in fines imposed by regulatory authorities.\nLegal Consequences: Legal actions and liabilities arising from security incidents.\nIt's essential to comply with Azure controls to mitigate these potential costs and ensure a secure environment."
+  x-kaytu-usefulness-example:
+  - "Consider a scenario where an organization utilizes Microsoft Defender for Cosmos DB to scan all incoming network requests for changes to their virtual machine. In this case, the Azure Control proves useful by:\n\nEarly Threat Detection: Identifying and alerting on potential unauthorized changes to the virtual machine.\nPreventing Exploitation: Proactively blocking or mitigating security threats before they impact the system.\nEnhancing Security Posture: Contributing to an overall improved security posture by actively monitoring and responding to potential risks.\nThis example illustrates how the Azure Control can enhance security measures within the Cosmos DB service by effectively scanning and safeguarding against unauthorized changes."
+Title: "Ensure That Microsoft Defender for Cosmos DB Is Set To 'On' "

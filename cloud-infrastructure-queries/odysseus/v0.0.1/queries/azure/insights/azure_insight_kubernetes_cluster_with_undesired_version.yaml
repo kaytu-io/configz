@@ -1,0 +1,17 @@
+Connector: Azure
+Engine: odysseus-v0.0.1
+ID: azure_insight_kubernetes_cluster_with_undesired_version
+ListOfTables:
+- azure_kubernetes_cluster
+PrimaryTable: azure_kubernetes_cluster
+QueryToExecute: |-
+  select
+    name,
+    id,
+    location,
+    type,
+    kubernetes_version, subscription_id, kaytu_account_id, kaytu_resource_id
+  from
+    azure_kubernetes_cluster
+  where
+    kubernetes_version < '1.24';

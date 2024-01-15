@@ -1,6 +1,15 @@
 {
   "ID": 45,
-  "QueryID": "aws_insight_account_without_mfa",
+  "Query": {
+    "ID": "aws_insight_account_without_mfa",
+    "Engine": "odysseus-v0.0.1",
+    "QueryToExecute": "select account_id, kaytu_account_id from aws_iam_account_summary where account_mfa_enabled = false",
+    "Connector": "AWS",
+    "PrimaryTable": "aws_iam_credential_report",
+    "ListOfTables": [
+      "aws_iam_credential_report"
+    ]
+  },
   "Connector": "AWS",
   "ShortTitle": "AWS Account without MFA",
   "LongTitle": "AWS Account without MFA",

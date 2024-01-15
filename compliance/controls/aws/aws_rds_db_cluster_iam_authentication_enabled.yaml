@@ -1,0 +1,42 @@
+Description: This control checks whether an RDS DB cluster has IAM database authentication enabled. IAM database authentication allows for password-free authentication to database instances. The authentication uses an authentication token. Network traffic to and from the database is encrypted using SSL.
+ID: aws_rds_db_cluster_iam_authentication_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_rds_db_cluster
+  PrimaryTable: aws_rds_db_cluster
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when iam_database_authentication_enabled then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when iam_database_authentication_enabled then title || ' IAM authentication enabled.'
+        else title || ' IAM authentication not enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_rds_db_cluster;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - passwordless_aauthentication
+  foundational_security_item_id:
+  - rds_12
+  plugin:
+  - aws
+  service:
+  - AWS/RDS
+Title: IAM authentication should be configured for RDS clusters

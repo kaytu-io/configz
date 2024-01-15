@@ -1,0 +1,84 @@
+Description: Use Amazon CloudWatch to centrally collect and manage log event activity. Inclusion of AWS CloudTrail data provides details of API call activity within your AWS account.
+DocumentURI: ""
+ID: aws_cloudtrail_trail_integrated_with_logs
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_cloudtrail_trail
+  PrimaryTable: aws_cloudtrail_trail
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when log_group_arn != 'null' and ((latest_delivery_time) > current_date - 1) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when log_group_arn != 'null' and ((latest_delivery_time) > current_date - 1) then title || ' integrated with CloudWatch logs.'
+        else title || ' not integrated with CloudWatch logs.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_cloudtrail_trail
+    where
+      region = home_region;
+Severity: low
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/CloudTrail
+  soc_2:
+  - "true"
+  x-kaytu-explanation:
+  - "~~~\n# Control: Use Amazon CloudWatch for Log Event Activity Management\n\nWith Amazon CloudWatch, you can perform **centralized collection and management of log event activity**. The service provides you with actionable insights to monitor your applications, respond to system-wide performance changes, optimize resource utilization, and get a unified view of operational health.\n\n## AWS CloudTrail Integration\n\nCombining CloudWatch with AWS CloudTrail enables you to gain detailed visibility of **API call activity** within your AWS account. This combination facilitates tracking and understanding API requests made by or on behalf of your account.\n\nAWS CloudTrail provides event history of your AWS account activity including actions taken through AWS Management Console, SDKs, command-line tools, and other AWS services. This event history simplifies security analyses, resource change tracking, and troubleshooting.\n\nTo implement this control:\n\n1. Ensure AWS CloudTrail is activated in your AWS account.\n2. Create a new trail in AWS CloudTrail and select the option to send events to Amazon CloudWatch logs.\n3. Configure necessary IAM permissions to allow CloudTrail to write logs to CloudWatch.\n4. Use Amazon CloudWatch for log monitoring and analysis.\n~~~\nThis description in markup format explains the use of Amazon CloudWatch for collecting and managing log event activity and how it can be integrated with AWS CloudTrail to provide more details of API call activity. It provides the benefits of such an integration and steps on how to implement it."
+  x-kaytu-noncompliance-cost:
+  - "Non-compliance to this AWS control could have several potential costs:\n\n1. **Security Risks**: Not using Amazon CloudWatch or AWS CloudTrail could lead to a lack of visibility into user activities and system operations, which could potentially mask security incidents or breaches.\n\n2. **Operational Troubleshooting Difficulty**: Without centralized log collection and management, identifying operational issues could become more difficult and time-consuming due to the lack of a structured way of accessing log data.\n\n3. **Compliance Issues**: For businesses in regulated industries or dealing with sensitive data, non-compliance with this control could lead to regulatory issues as they may not satisfy the audit requirements for tracking and analyzing user activities and system operations.\n\n4. **Cost inefficiencies**: Detecting abnormal patterns that may lead to cost inefficiencies can be made more difficult without proper logs. For example, identifying over-provisioned resources or determining system usage trends may not be possible without centralized log data.\n\n5. **Forensic Investigation Difficulty**: Without the logs, it could be difficult to perform forensic analysis in cases of a security incident.\n\n6. **Less Effective Decision Making**: Without the insights provided by these services, decision making on aspects like cost optimization, performance tuning, and architecture changes could be less effective. \n\nIn conclusion, the cost of non-compliance to this AWS control could lead to increased security risks, operational inefficiencies and potential regulatory penalties in some scenarios. It can also negatively impact long-term system performance and cost management. Therefore, it is highly recommended to employ tools like Amazon CloudWatch and AWS CloudTrail to centrally collect and manage log event activity."
+  x-kaytu-usefulness-example:
+  - |-
+    For example, a business known as XYZ Corp uses multiple AWS services like EC2, Lambda, RDS, and others that generate substantial log activity. To gain insights from these logs, they need to be centrally managed and analyzed to understand application performances, debug issues, or detect abnormalities. 
+
+    Incorporating Amazon CloudWatch helps XYZ Corp to aggregate and monitor all these logs from different services in one place. Moreover, adding AWS CloudTrail data to CloudWatch allows the company to gain detailed insights on API call activity. 
+
+    For instance, XYZ Corp identifies a sudden surge in their application traffic leading to application performance degradation. By reviewing CloudWatch log events along with CloudTrail data, they can outline that unnecessary API calls made to their EC2 instances were causing the issue. After identifying the problem, they can then adjust their application to limit such excessive API calls, thus alleviating the performance issue.
+
+    This centralized approach not only helps XYZ Corp to optimize their applications and services but also enhances the security and compliance initiatives by providing visibility into user activity and resource usage.
+Title: CloudTrail trails should be integrated with CloudWatch logs

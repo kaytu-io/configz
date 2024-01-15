@@ -1,0 +1,44 @@
+Description: This control checks if Amazon ECS Fargate services are running the latest Fargate platform version. This control fails if the platform version is not the latest.
+ID: aws_ecs_service_fargate_using_latest_platform_version
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_ecs_service
+  PrimaryTable: aws_ecs_service
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when launch_type <> 'FARGATE' then 'skip'
+        when platform_version = 'LATEST' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when launch_type <> 'FARGATE' then title || ' is ' || launch_type || ' service.'
+        when platform_version = 'LATEST' then title || ' running on the latest fargate platform version.'
+        else title || ' not running on the latest fargate platform version.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_ecs_service;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - vulnerability_patch_and_version_management
+  foundational_security_item_id:
+  - ecs_10
+  plugin:
+  - aws
+  service:
+  - AWS/ECS
+Title: Fargate services should run on the latest Fargate platform version

@@ -1,0 +1,73 @@
+Description: Enable IAM Access analyzer for IAM policies about all resources. IAM Access Analyzer is a technology introduced at AWS reinvent 2019. After the Analyzer is enabled in IAM, scan results are displayed on the console showing the accessible resources. Scans show resources that other accounts and federated users can access, such as KMS keys and IAM roles. So the results allow you to determine if an unintended user is allowed, making it easier for administrators to monitor least privileges access.
+DocumentURI: ""
+ID: aws_iam_access_analyzer_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_accessanalyzer_analyzer
+  - aws_region
+  PrimaryTable: aws_region
+  QueryToExecute: |
+    select
+      'arn:' || r.partition || '::' || r.region || ':' || r.account_id as resource,
+      r.kaytu_account_id as kaytu_account_id,
+      r.kaytu_resource_id as kaytu_resource_id,
+      case
+        -- Skip any regions that are disabled in the account.
+        when r.opt_in_status = 'not-opted-in' then 'skip'
+        when aa.arn is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when r.opt_in_status = 'not-opted-in' then r.region || ' region is disabled.'
+        when aa.arn is not null then aa.name ||  ' enabled in ' || r.region || '.'
+        else 'Access Analyzer not enabled in ' || r.region || '.'
+      end as reason
+      , r.region, r.account_id
+    from
+      aws_region as r
+      left join aws_accessanalyzer_analyzer as aa on r.account_id = aa.account_id and r.region = aa.region;
+Severity: high
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "1.21"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "1"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  x-kaytu-explanation:
+  - "# Enable IAM Access Analyzer\n\n- **IAM Access Analyzer** is an AWS service that was launched at the AWS re:Invent 2019.\n\n- With IAM Access Analyzer, you can scan IAM policies in your account. It helps you ensure that your resources aren't shared with unintended users by examining resource-based policies in your AWS environment.\n\n- **How Does It Work?**\n\n  - After enabling IAM Access Analyzer, scan results will be displayed on the AWS console.\n  \n  - These scans indicate the resources that can be accessed by other AWS accounts and federated users.\n\n  - Resources that can be flagged by IAM Access Analyzer range from KMS keys to IAM roles.\n\n- **Importance of IAM Access Analyzer**\n\n  - IAM Access Analyzer results allow you to determine if an unintended user has access permissions which could potentially lead to a security breach.\n\n  - This tool makes it easier for administrators to monitor least privileges access and ensure that the principle of least privilege is maintained throughout the AWS environment."
+  x-kaytu-noncompliance-cost:
+  - "The cost of non-compliance to this AWS Control of enabling IAM Access Analyzer for all resources can be categorized into two broad categories - security risks and potential financial implications.\n\n### Security Risks\nNon-compliance can lead to significant security vulnerabilities. Without IAM Access Analyzer, you might unknowingly allow access to sensitive data or critical AWS resources to unauthorized entities. This could lead to data breaches, unauthorized modifications, or even service disruptions if those entities with unintended access use it maliciously. \n\n### Financial Implications\nIn addition to security risks, there can be potential financial implications. Data breaches often result in revenue loss due to reputational damage, loss of customers, or potential lawsuits. Additionally, organizations might need to invest additional resources and efforts to remediate the security incidents, such as incident investigations, system improvements, and customer notifications, which could also significantly increase the operational costs.\n\nNon-compliance might also lead to penalties or fines if your organization is subject to specific industry regulations or standards (such as HIPAA or GDPR) that require a certain level of security controls, including the monitoring and controlling of data access.\n\nIn conclusion, although there might not be a direct cost associated with the non-compliance of this specific AWS Control, the potential security risks and financial implications due to this non-compliance could be considerable. Therefore, it's recommended to enable IAM Access Analyzer to help prevent unauthorized access to your AWS resources and data."
+  x-kaytu-usefulness-example:
+  - |-
+    For instance, a large enterprise utilising multiple AWS services across various regions and accounts would often have numerous IAM policies in place. Over time and scaling, certain access permissions may be unknowingly exposed causing potential security breaches. This is where the IAM Access Analyzer can be extremely useful.
+
+    ```
+    Example
+    -------
+
+    Imagine this large enterprise recently noticed an unusual activity in one of their accounts. There seems to be data access from an unknown source. To investigate, they turn to IAM Access Analyzer.
+
+    They simply enable IAM Access Analyzer and trigger a scan for all the resources. The results displayed show all the accessible resources and who can access them. Among the results, they found a suspicious IAM Role that was allowing access to federation users from an unknown domain.
+
+    Having observed this, they quickly modified the policy, thus fixing a potential critical security issue. In this case, the IAM Access Analyzer was crucial in identifying the security vulnerability, showcasing its use in maintaining least privileges access and enhancing overall security posture.
+    ```
+
+    IAM Access Analyzer, in this way, provides a comprehensive view of who can access which resources from where. It not only helps in monitoring but also in achieving security compliance which is critical to most businesses.
+Title: Ensure that IAM Access analyzer is enabled

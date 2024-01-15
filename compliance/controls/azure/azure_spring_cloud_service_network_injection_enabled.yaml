@@ -1,0 +1,41 @@
+Description: "Azure Spring Cloud instances should use virtual network injection for the following purposes: 1. Isolate Azure Spring Cloud from Internet. 2. Enable Azure Spring Cloud to interact with systems in either on premises data centers or Azure service in other virtual networks. 3. Empower customers to control inbound and outbound network communications for Azure Spring Cloud."
+ID: azure_spring_cloud_service_network_injection_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_spring_cloud_service
+  - azure_subscription
+  PrimaryTable: azure_spring_cloud_service
+  QueryToExecute: |
+    select
+      distinct a.name as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when sku_tier <> 'Standard' then 'Skip'
+        when sku_tier = 'Standard' and network_profile ->> 'ServiceRuntimeSubnetID' is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when sku_tier <> 'Standard' then a.name || ' is of ' || sku_tier || ' tier.'
+        when sku_tier = 'Standard' and network_profile ->> 'ServiceRuntimeSubnetID' is not null then a.name || ' network injection enabled.'
+        else a.name || ' network injection disabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_spring_cloud_service as a,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SpringCloud
+Title: Azure Spring Cloud should use network injection

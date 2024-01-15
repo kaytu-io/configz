@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Disk encryption set
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.compute/diskencryptionsets' group by 1,2;
+status: inactive
+tags:
+  category:
+  - Compute

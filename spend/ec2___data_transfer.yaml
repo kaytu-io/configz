@@ -1,0 +1,12 @@
+connectors:
+- AWS
+name: EC2 - Data Transfer
+query: SELECT kaytu_account_id, period_start::date::text as date, sum(amortized_cost_amount) FROM aws_cost_by_service_daily WHERE service = 'EC2 - DataTransfer' OR service = 'EC2 - AWS In' OR service = 'EC2 - AWS Out' group by 1,2;
+status: active
+tables:
+- EC2 - DataTransfer
+- EC2 - AWS In
+- EC2 - AWS Out
+tags:
+  category:
+  - Network

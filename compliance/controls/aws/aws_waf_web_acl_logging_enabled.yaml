@@ -1,0 +1,42 @@
+Description: This control checks whether logging is enabled for an AWS WAF global web ACL. This control fails if logging is not enabled for the web ACL.
+ID: aws_waf_web_acl_logging_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_waf_web_acl
+  PrimaryTable: aws_waf_web_acl
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when logging_configuration is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when logging_configuration is null then title || ' logging disabled.'
+        else title || ' logging enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_waf_web_acl;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - logging
+  foundational_security_item_id:
+  - waf_1
+  plugin:
+  - aws
+  service:
+  - AWS/WAF
+Title: AWS WAF Classic Global Web ACL logging should be enabled

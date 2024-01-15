@@ -1,0 +1,8 @@
+connectors:
+- AWS
+name: FSx for OpenZFS
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('aws::fsx::filesystem') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Storage

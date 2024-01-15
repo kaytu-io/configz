@@ -1,0 +1,62 @@
+Description: The key vault contains object keys, secrets and certificates. Accidental unavailability of a key vault can cause immediate data loss or loss of security functions (authentication, validation, verification, non-repudiation, etc.) supported by the key vault objects. It is recommended the key vault be made recoverable by enabling the "Do Not Purge" and "Soft Delete" functions.
+DocumentURI: ""
+ID: azure_keyvault_vault_recoverable
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_key_vault
+  - azure_subscription
+  PrimaryTable: azure_key_vault
+  QueryToExecute: |
+    select
+      kv.id as resource,
+      kv.kaytu_account_id as kaytu_account_id,
+      kv.kaytu_resource_id as kaytu_resource_id,
+      case
+        when soft_delete_enabled and purge_protection_enabled then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when not soft_delete_enabled and not purge_protection_enabled then name || ' "soft delete" and "do not purge" not enabled.'
+        when not soft_delete_enabled then name || ' "soft delete" not enabled.'
+        when not purge_protection_enabled then name || ' "do not purge" not enabled.'
+        else name || ' "soft delete" and "do not purge" enabled.'
+      end as reason
+      
+      , kv.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_key_vault kv,
+      azure_subscription sub
+    where
+      sub.subscription_id = kv.subscription_id;
+Severity: critical
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "8.4"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "8"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/KeyVault
+  x-kaytu-explanation:
+  - "# Azure Control: Key Vault Recoverability\n\n## Description\n\nThe key vault serves as a secure repository for object keys, secrets, and certificates. In the event of accidental unavailability, the key vault may result in immediate data loss or the loss of crucial security functions such as authentication, validation, verification, and non-repudiation, among others. To mitigate this risk, it is strongly recommended to make the key vault recoverable.\n\n## Recommendations\n\n- **Enable \"Do Not Purge\" Functionality:** Ensure that the \"Do Not Purge\" function is enabled for the key vault. This feature prevents the permanent deletion of data and allows for recovery in case of accidental deletion.\n\n- **Enable \"Soft Delete\" Functionality:** Activate the \"Soft Delete\" function for the key vault. Soft delete allows the recovery of deleted objects within a specified retention period, offering an additional layer of protection against accidental data loss.\n\n## Importance\n\nThe recoverability of the key vault is crucial for maintaining the integrity and security of stored objects. Enabling \"Do Not Purge\" and \"Soft Delete\" functions enhances the ability to recover from accidental deletions or unavailability, thereby safeguarding sensitive data and preserving the key vault's role in supporting essential security functions.\n\n**Note:** Implementing these recommendations aligns with best practices for managing Azure Key Vaults and contributes to a robust and resilient security posture.\n"
+  x-kaytu-noncompliance-cost:
+  - "**Control: Azure Key Vault Recovery Configuration**\n\nThe Azure Key Vault contains critical object keys, secrets, and certificates. In the event of accidental unavailability of the key vault, there is a significant risk of immediate data loss or the loss of essential security functions such as authentication, validation, verification, and non-repudiation, all of which are supported by the key vault objects.\n\nTo mitigate these risks and ensure recoverability, it is strongly recommended to adhere to the following configuration settings:\n\n1. **Enable \"Do Not Purge\":** This setting prevents the permanent deletion of key vault data. Without this safeguard, accidental or intentional deletion of key vault objects could lead to irreversible data loss and disrupt security functions.\n\n2. **Enable \"Soft Delete\":** Enabling soft delete adds an additional layer of protection by allowing the recovery of deleted key vault objects within a specified retention period. This feature acts as a safety net against unintentional deletions, providing a window of opportunity to restore critical data.\n\nFailure to implement and maintain these recommended configurations exposes the organization to the following potential costs:\n\n- **Immediate Data Loss:** The loss of key vault objects can result in the immediate compromise of sensitive information, leading to operational disruptions and potential security breaches.\n\n- **Compromised Security Functions:** Without the necessary key vault objects, essential security functions, including authentication and validation, may fail, leaving systems vulnerable to unauthorized access and exploitation.\n\nTo ensure compliance and safeguard against these risks, it is imperative to implement and regularly audit the \"Do Not Purge\" and \"Soft Delete\" functions for Azure Key Vault.\n"
+  x-kaytu-usefulness-example:
+  - "here's an example instance of how you might use markup format (assuming you mean a configuration file or script) to set up Azure Key Vault with the recommended \"Do Not Purge\" and \"Soft Delete\" functions enabled:\n\nyaml\nCopy code\nresources:\n  - type: Microsoft.KeyVault/vaults\n    name: YourKeyVaultName\n    apiVersion: '2019-09-01'\n    properties:\n      sku:\n        family: 'A'  # Choose the appropriate SKU family\n        name: 'standard'\n      tenantId: '<your-tenant-id>'\n      accessPolicies:\n        - objectId: '<object-id-of-your-identity-principal>'\n          permissions:\n            keys:\n              - 'get'\n              - 'list'\n              - 'purge'\n              - 'recover'\n            secrets:\n              - 'get'\n              - 'list'\n              - 'purge'\n              - 'recover'\n            certificates:\n              - 'get'\n              - 'list'\n              - 'delete'\n              - 'recover'\n      enableSoftDelete: true\n      enablePurgeProtection: true\nPlease note that you need to replace placeholders like YourKeyVaultName, <your-tenant-id>, and <object-id-of-your-identity-principal> with your actual Key Vault name, Azure AD tenant ID, and the object ID of the identity principal you want to grant access to.\n\nThis example is in YAML format, but you can use other formats such as JSON or ARM templates depending on your preference and the deployment method you're using (Azure CLI, Azure PowerShell, Azure Resource Manager templates, etc.). Adjust the script accordingly based on your specific requirements and deployment strategy."
+Title: Ensure the key vault is recoverable

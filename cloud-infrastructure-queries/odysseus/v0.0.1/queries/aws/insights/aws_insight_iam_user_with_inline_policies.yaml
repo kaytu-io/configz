@@ -1,0 +1,14 @@
+Connector: AWS
+Engine: odysseus-v0.0.1
+ID: aws_insight_iam_user_with_inline_policies
+ListOfTables:
+- aws_iam_user
+PrimaryTable: aws_iam_user
+QueryToExecute: |-
+  select
+    name as user_name,
+    inline_policies, account_id, kaytu_account_id, kaytu_resource_id
+  from
+    aws_iam_user
+  where
+    inline_policies is not null;

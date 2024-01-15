@@ -1,0 +1,7 @@
+Connector: AWS
+Engine: odysseus-v0.0.1
+ID: aws_insight_ec2_classic_load_balancer
+ListOfTables:
+- aws_ec2_classic_load_balancer
+PrimaryTable: aws_ec2_classic_load_balancer
+QueryToExecute: SELECT name, arn, account_id, kaytu_account_id, kaytu_resource_id FROM aws_ec2_classic_load_balancer

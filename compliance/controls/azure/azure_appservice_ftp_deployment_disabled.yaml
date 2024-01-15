@@ -1,0 +1,126 @@
+Description: By default, Azure Functions, Web and API Services can be deployed over FTP. If FTP is required for an essential deployment workflow, FTPS should be required for FTP login for all App Service Apps and Functions.
+DocumentURI: ""
+ID: azure_appservice_ftp_deployment_disabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_app_service_web_app
+  - azure_subscription
+  PrimaryTable: null
+  QueryToExecute: |
+    select
+        fa.id as resource,
+        fa.kaytu_account_id as kaytu_account_id,
+        fa.kaytu_resource_id as kaytu_resource_id,
+        'azure_app_service_function_app' as kaytu_table_name,
+        case
+          when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then 'alarm'
+          else 'ok'
+        end as status,
+        case
+          when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then name || ' FTP deployments enabled.'
+          else name || ' FTP deployments disabled.'
+        end as reason
+      
+      , fa.resource_group as resource_group
+      , sub.display_name as subscription
+      from
+        azure_app_service_function_app fa,
+        azure_subscription sub
+      where
+        sub.subscription_id = fa.subscription_id
+    union
+      select
+        wa.id as resource,
+        wa.kaytu_account_id as kaytu_account_id,
+        wa.kaytu_resource_id as kaytu_resource_id,
+        'azure_app_service_web_app' as kaytu_table_name,
+        case
+          when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then 'alarm'
+          else 'ok'
+        end as status,
+        case
+          when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then name || ' FTP deployments enabled.'
+          else name || ' FTP deployments disabled.'
+        end as reason
+      
+      , wa.resource_group as resource_group
+      , sub.display_name as subscription
+      from
+        azure_app_service_web_app as wa,
+        azure_subscription as sub
+      where
+        sub.subscription_id = wa.subscription_id;
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "9.10"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "9"
+  cis_type:
+  - automated
+  cis_version:
+  - v1.3.0
+  plugin:
+  - azure
+  service:
+  - Azure/AppService
+  x-kaytu-explanation:
+  - |-
+    Azure provides several ways to deploy your applications such as deploying directly from source control using Git, Visual Studio Team Service, or Bitbucket, and publishing directly from Visual Studio or Eclipse. One of the other popular methods is deploying over FTP. 
+
+    However, FTP does not encrypt data or commands, which could enable attackers to view sensitive information such as your username and password. Therefore, to improve security during file transfer, Microsoft recommends using FTP over SSL (FTPS) for all App Service Apps and Functions.
+
+    Here is a provider configuration example of this Azure Control in a markup format:
+
+    ```xml
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="AzureServiceBinding">
+                    <security mode="Transport">
+                        <transport clientCredentialType="Basic" />
+                    </security>
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint
+                address="ftp://MyFtpServer.com/service.svc" 
+                binding="basicHttpBinding"
+                bindingConfiguration="AzureServiceBinding"
+                contract="IAzureService"
+                name="AzureServiceEndpoint" />
+        </client>
+    </system.serviceModel>
+    ```
+
+    In the above example, this uses 'Transport' mode to secure the data for an HTTP endpoint (Azure Service) and requires the client to provide Basic authentication. If you replace "ftp" with "https" in the address, it becomes FTPS (FTP over SSL). Also, modify your FTP server and service.svc as per your details to make this work.
+  x-kaytu-noncompliance-cost:
+  - |-
+    Non-compliance to this Azure Control could result in several potential costs:
+
+    1. **Security Vulnerabilities:** FTP (File Transfer Protocol) is an older protocol that is insecure. Any data transferred via FTP can be intercepted and read by anyone monitoring the network. This could potentially mean that sensitive data, such as login credentials or essential application code, could be stolen. Depending on the nature of the data stolen, this could cause serious damage to the organization.
+
+    2. **Data Breaches:** If FTP is used and an attacker gains access to sensitive data, this could potentially result in a data breach. There could be significant financial penalties associated with a data breach, including potential penalties from regulatory bodies.
+
+    3. **Loss of Client Trust:** If an organization experiences a data breach and it was due to using insecure FTP rather than FTPS, it could result in a loss of client trust. This could potentially lead to lost business.
+
+    4. **Regulatory Fines and Penalties:** Depending on the industry, there might be specific regulations around data protection and transfer. Failure to comply with these regulations could result in fines and penalties.
+
+    5. **Reputational Damage:** Repeated non-compliance could lead to reputational damage, affecting the organization's ability to attract customers, partners, and employees.
+
+    6. **Remediation Costs:** If a breach does occur due to non-compliance, the organization would need to spend potentially significant resources on investigating the breach, repairing any damage, and implementing new, compliant systems.
+  x-kaytu-usefulness-example:
+  - "For example, let's assume you have a web development agency and you use Azure App Services for hosting your client's websites. These websites need periodic updates in terms of design or functionality. You want to ensure that the upload of new website versions is secure and doesn't compromise the client's sensitive data stored in the app. \n\nBy enforcing the use of FTPS (FTP Secure) for all your Azure App Services and Functions instead of plain FTP, you're adding an extra layer of security by encrypting the data that is transferred. This works as a preventative measure against potential data breaches that could occur during the data transfer process.\n\nThe Azure Control for enforcing FTPS could be used in the following markup:\n\n```yaml\nresources:\n- name: Enable-FTPS-AzureAppServices\n  type: Microsoft.Web/sites/config\n  apiVersion: 2019-08-01\n  properties:\n    ftpsState: 'AllAllowed'\n```\n\nThis setup avoids plain unencrypted FTP to be used, hence reducing potential security risks and ensuring compliance with best security practices. It's a useful feature, especially for applications dealing with personally identifiable information or financial data. It ensures that any code or data that you're uploading through FTP stays secure and keeps your client's information safe."
+Title: Ensure FTP deployments are disabled

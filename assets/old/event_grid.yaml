@@ -1,0 +1,8 @@
+connectors:
+- Azure
+name: Event Grid
+query: select connection_id, region, count(*) from kaytu_lookup where resource_type IN ('microsoft.eventgrid/topics') group by 1,2;
+status: invisible
+tags:
+  category:
+  - Application Integration

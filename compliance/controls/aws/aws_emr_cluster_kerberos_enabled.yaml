@@ -1,0 +1,54 @@
+Description: The access permissions and authorizations can be managed and incorporated with the principles of least privilege and separation of duties, by enabling Kerberos for Amazon EMR clusters.
+ID: aws_emr_cluster_kerberos_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_emr_cluster
+  PrimaryTable: aws_emr_cluster
+  QueryToExecute: |
+    select
+      cluster_arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when kerberos_attributes is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when kerberos_attributes is null then title || ' Kerberos not enabled.'
+        else title || ' Kerberos enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_emr_cluster;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/EMR
+  soc_2:
+  - "true"
+Title: EMR cluster Kerberos should be enabled

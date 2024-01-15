@@ -1,0 +1,22 @@
+Connector: AWS
+Description: List Snapshots older than 365 days
+Enabled: true
+ID: 12.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: List Snapshots older than 365 days
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID: aws_insight_ebs_snapshot_older_than_year
+  ListOfTables:
+  - aws_ebs_snapshot
+  PrimaryTable: aws_ebs_snapshot
+  QueryToExecute: SELECT snapshot_id, arn, start_time, account_id, kaytu_account_id, kaytu_resource_id FROM aws_ebs_snapshot WHERE start_time < now() - interval '1 year';
+ShortTitle: Snapshots older than a year
+Tags:
+  category:
+  - Security
+  - Technical Debt
+  - Cost Management

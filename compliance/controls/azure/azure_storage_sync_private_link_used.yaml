@@ -1,0 +1,51 @@
+Description: Creating a private endpoint for the indicated Storage Sync Service resource allows you to address your Storage Sync Service resource from within the private IP address space of your organization's network, rather than through the internet-accessible public endpoint. Creating a private endpoint by itself does not disable the public endpoint.
+ID: azure_storage_sync_private_link_used
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_storage_sync
+  - azure_subscription
+  PrimaryTable: azure_storage_sync
+  QueryToExecute: |
+    with storagesync_service_connection as (
+      select
+        distinct a.id
+      from
+        azure_storage_sync as a,
+        jsonb_array_elements(private_endpoint_connections) as connection
+      where
+        connection -> 'PrivateLinkServiceConnectionState' ->> 'status' = 'Approved'
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when incoming_traffic_policy = 'AllowAllTraffic' then 'alarm'
+        when c.id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when incoming_traffic_policy = 'AllowAllTraffic' then a.name || ' using public networks.'
+        when c.id is null then a.name || ' not uses private link.'
+        else a.name || ' uses private link.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_storage_sync as a
+      left join storagesync_service_connection as c on c.id = a.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/FileSync
+Title: Azure File Sync should use private link

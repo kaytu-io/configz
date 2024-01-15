@@ -1,0 +1,39 @@
+Description: Azure Defender for Resource Manager automatically monitors the resource management operations in your organization. Azure Defender detects threats and alerts you about suspicious activity.
+ID: azure_resource_manager_azure_defender_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+  PrimaryTable: azure_security_center_subscription_pricing
+  QueryToExecute: |
+    select
+      pricing.id as resource,
+      pricing.kaytu_account_id as kaytu_account_id,
+      pricing.kaytu_resource_id as kaytu_resource_id,
+      case
+        when name = 'Arm' and pricing_tier = 'Standard' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when name = 'Arm' and pricing_tier = 'Standard' then 'Arm azure defender enabled.'
+        else name || 'Arm azure defender disabled.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_security_center_subscription_pricing as pricing,
+      azure_subscription as sub
+    where
+      sub.subscription_id = pricing.subscription_id
+      and name = 'Arm';
+Severity: ""
+Tags:
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/ResourceManager
+Title: Azure Defender for Resource Manager should be enabled

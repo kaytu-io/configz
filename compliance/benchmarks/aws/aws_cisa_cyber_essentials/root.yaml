@@ -1,0 +1,32 @@
+AutoAssign: false
+Baseline: true
+Children:
+- aws_cisa_cyber_essentials_your_systems
+- aws_cisa_cyber_essentials_your_surroundings
+- aws_cisa_cyber_essentials_your_data
+- aws_cisa_cyber_essentials_your_crisis_response
+- aws_cisa_cyber_essentials_booting_up_things_to_do_first
+Connector: AWS
+Controls: null
+Description: CISA's Cyber Essentials is a guide for leaders of small businesses as well as leaders of small and local government agencies to develop an actionable understanding of where to start implementing organizational cybersecurity practices.
+Enabled: true
+ID: aws_cisa_cyber_essentials
+Managed: true
+Tags:
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  kaytu_benchmark_type:
+  - compliance
+  kaytu_category:
+  - Best Practices
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Title: CISA Cyber Essentials for AWS

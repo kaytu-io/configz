@@ -1,0 +1,55 @@
+Description: This policy audits any Storage Account not configured to use a virtual network service endpoint.
+ID: azure_storage_account_use_virtual_service_endpoint
+Managed: true
+ManualVerification: false
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - azure_storage_account
+  - azure_subnet
+  - azure_subscription
+  PrimaryTable: azure_storage_account
+  QueryToExecute: |
+    with storage_account_subnet as (
+      select
+        distinct a.id as storage_account_id,
+        rule ->> 'id' as id
+      from
+        azure_storage_account as a,
+        jsonb_array_elements(virtual_network_rules) as rule,
+        azure_subnet as subnet,
+        jsonb_array_elements(service_endpoints) as endpoints
+      where
+        endpoints ->> 'service' like '%Microsoft.Storage%'
+    )
+    select
+      distinct a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when network_rule_default_action <> 'Deny' then 'alarm'
+        when s.storage_account_id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when network_rule_default_action <> 'Deny' then a.name || ' not configured with virtual service endpoint.'
+        when s.storage_account_id is null then a.name || ' not configured with virtual service endpoint.'
+        else a.name || ' configured with virtual service endpoint.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_storage_account as a
+      left join storage_account_subnet as s on a.id = s.storage_account_id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+Severity: ""
+Tags:
+  hipaa_hitrust_v92:
+  - "true"
+  service:
+  - Azure/Storage
+Title: Storage Accounts should use a virtual network service endpoint

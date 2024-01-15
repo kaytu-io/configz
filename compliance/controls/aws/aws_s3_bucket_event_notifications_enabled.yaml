@@ -1,0 +1,50 @@
+Description: This control checks whether S3 Event Notifications are enabled on an Amazon S3 bucket. This control fails if S3 Event Notifications are not enabled on a bucket.
+ID: aws_s3_bucket_event_notifications_enabled
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_s3_bucket
+  PrimaryTable: aws_s3_bucket
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when
+          event_notification_configuration ->> 'EventBridgeConfiguration' is null
+          and event_notification_configuration ->> 'LambdaFunctionConfigurations' is null
+          and event_notification_configuration ->> 'QueueConfigurations' is null
+          and event_notification_configuration ->> 'TopicConfigurations' is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when
+          event_notification_configuration ->> 'EventBridgeConfiguration' is null
+          and event_notification_configuration ->> 'LambdaFunctionConfigurations' is null
+          and event_notification_configuration ->> 'QueueConfigurations' is null
+          and event_notification_configuration ->> 'TopicConfigurations' is null then title || ' event notifications disabled.'
+        else title || ' event notifications enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_s3_bucket;
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - logging
+  foundational_security_item_id:
+  - s3_11
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+Title: S3 buckets should have event notifications enabled

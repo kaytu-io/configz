@@ -1,0 +1,66 @@
+Description: Redundant Site-to-Site VPN tunnels can be implemented to achieve resilience requirements.
+ID: aws_vpc_vpn_tunnel_up
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+  - aws_vpc_vpn_connection
+  PrimaryTable: aws_vpc_vpn_connection
+  QueryToExecute: |
+    with filter_data as (
+      select
+        arn,
+        count(t ->> 'Status')
+      from
+        aws_vpc_vpn_connection,
+        jsonb_array_elements(vgw_telemetry) as t
+      where t ->> 'Status' = 'UP'
+      group by arn
+    )
+    select
+      a.arn as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.count is null or b.count < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when b.count is null then a.title || ' has both tunnels offline.'
+        when b.count = 1 then a.title || ' has one tunnel offline.'
+        else a.title || ' has both tunnels online.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_vpc_vpn_connection as a
+      left join filter_data as b on a.arn = b.arn;
+Severity: ""
+Tags:
+  category:
+  - Compliance
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/VPC
+Title: Both VPN tunnels provided by AWS Site-to-Site VPN should be in UP status
