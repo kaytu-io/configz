@@ -9,27 +9,49 @@ Query:
   ListOfTables:
   - aws_accessanalyzer_analyzer
   - aws_region
-  PrimaryTable: aws_region
+  - aws_account
+  PrimaryTable: aws_account
   QueryToExecute: |
-    select
+    with regions as (
+      select
       'arn:' || r.partition || '::' || r.region || ':' || r.account_id as resource,
       r.kaytu_account_id as kaytu_account_id,
       r.kaytu_resource_id as kaytu_resource_id,
       case
-        -- Skip any regions that are disabled in the account.
-        when r.opt_in_status = 'not-opted-in' then 'skip'
-        when aa.arn is not null then 'ok'
-        else 'alarm'
+        when r.opt_in_status = 'not-opted-in' then 1
+        when aa.arn is not null then 0
+        else 2
       end as status,
-      case
-        when r.opt_in_status = 'not-opted-in' then r.region || ' region is disabled.'
-        when aa.arn is not null then aa.name ||  ' enabled in ' || r.region || '.'
-        else 'Access Analyzer not enabled in ' || r.region || '.'
-      end as reason
-      , r.region, r.account_id
+      r.region, r.account_id
     from
       aws_region as r
-      left join aws_accessanalyzer_analyzer as aa on r.account_id = aa.account_id and r.region = aa.region;
+      left join aws_accessanalyzer_analyzer as aa on r.account_id = aa.account_id and r.region = aa.region
+    ),
+    results as (
+      SELECT 
+        account_id AS resource,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_account_id as kaytu_resource_id,
+        case
+          when max(status) = 2 then 'alarm'
+          when max(status) = 1 then 'skip'
+          when max(status) = 0 then 'ok'
+        end as status,
+        case
+          when max(status) = 2 then 'IAM Access analyzer is not enabled for this account on regions: [' || string_agg(region, ',') || ']' 
+          when max(status) = 1 then 'Account is not opted in regions: [' || string_agg(region, ',') || ']'
+          when max(status) = 0 then 'IAM Access analyzer is enabled for this account on regions: [' || string_agg(region, ',') || ']'
+          end as reason
+      FROM regions
+      GROUP BY account_id, kaytu_account_id
+    )
+    SELECT 
+      r.resource AS resource,
+      r.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      r.status as status,
+      r.reason as reason
+    FROM results as r JOIN aws_account as a ON r.kaytu_account_id = a.kaytu_account_id
 Severity: high
 Tags:
   category:
@@ -70,4 +92,4 @@ Tags:
     ```
 
     IAM Access Analyzer, in this way, provides a comprehensive view of who can access which resources from where. It not only helps in monitoring but also in achieving security compliance which is critical to most businesses.
-Title: Ensure that IAM Access analyzer is enabled
+Title: Ensure AWS Accounts have IAM Access analyzer enabled
