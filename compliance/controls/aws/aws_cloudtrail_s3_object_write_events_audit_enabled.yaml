@@ -1,15 +1,8 @@
-Description: S3 object-level API operations such as GetObject, DeleteObject, and PutObject are called data events. By default, CloudTrail trails don't log data events and so it is recommended to enable Object-level logging for S3 buckets.
-DocumentURI: ""
 ID: aws_cloudtrail_s3_object_write_events_audit_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure that Object-level logging for write events is enabled for S3 bucket
+Description: S3 object-level API operations such as GetObject, DeleteObject, and PutObject are called data events. By default, CloudTrail trails don't log data events and so it is recommended to enable Object-level logging for S3 buckets.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudtrail_trail
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     with s3_selectors as
     (
@@ -53,6 +46,12 @@ Query:
         or bucket_selector = 'arn:aws:s3'
     group by
       b.kaytu_account_id, b.kaytu_resource_id, b.account_id, b.region, b.arn, b.name, b.tags, b._ctx;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_cloudtrail_trail
+  - aws_s3_bucket
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -73,17 +72,4 @@ Tags:
   - aws
   service:
   - AWS/S3
-  x-kaytu-explanation:
-  - "Markdown would format the description as following:\n\n```markdown\n# S3 Object-Level API Operations\n\n**S3 object-level API operations** such as `GetObject`, `DeleteObject`, and `PutObject` are referred to as *data events*.\n\nBy default, **CloudTrail trails** do not log these data events. Therefore, it is recommended to enable **Object-level logging** for S3 buckets to ensure all these operations are properly logged and monitored.\n```"
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance to the AWS control of enabling object-level logging for S3 buckets can result in several costs:\n\n1. **Data Breach/Leakage Risks**: Without the logging of S3 object-level operations, there may be no records of who is accessing or altering the objects in your bucket. This means unauthorized access would go undetected and potentially lead to data leaks or breaches, which could result in financial losses and damage to the company reputation.\n\n2. **Loss of Accountability**: In case any data is unintentionally deleted or altered, correctly configured logs would give you details of each operation, thus maintaining accountability. Without such records, determining fault would be challenging, also putting the responsibility of any damage on the organization.\n\n3. **Audit Failures**: Without proper logging, you could fail to meet the requirements of an information system audit, as you wouldn't be able to provide sufficient evidence of who did what and when it happened. Fines and penalties may be levied in case of non-compliance with audit requirements.\n\n4. **Difficulty in Troubleshooting**: Logs provide a detailed record of operations performed on your S3 objects. Without them, diagnosing and resolving system errors would become more challenging, increasing operation costs and system downtime.\n\n5. **Non-compliance with Regulatory Standards**: If your organization is in a regulated industry (like healthcare or finance), non-compliance with data logging standards could result in heavy fines and penalties, which could further impact your business.\n\n```markdown\n**Potential Costs of Non-compliance to AWS Object-level Logging for S3 buckets:**\n- Increases risk of **data breaches/leakages** with potential financial losses and reputational damage.\n- Loss of **accountability** due to difficulty in assigning responsibility for any data alterations or deletions.\n- Greater likelihood of **audit failures** resulting in potential fines and penalties.\n- Delays and difficulties in **troubleshooting** system errors leading to increased costs and downtime.\n- **Non-compliance with Regulatory Standards** could lead to heavy fines and penalties in regulated industries.\n```"
-  x-kaytu-usefulness-example:
-  - |-
-    The usefulness of S3 object-level API operations can be illustrated by the following example in a scenario where an organization wants to keep track of who accesses, modifies, or deletes data from their S3 buckets:
-
-    For instance, let's consider a company X that stores sensitive user data in S3 buckets. Due to the sensitive nature of the data, it's critical to always know who is accessing it. If there is any unauthorized access or modification to the data, it could potentially lead to data breaches and severe regulatory penalties. Therefore, by enabling the object-level logging of S3 buckets, all `GetObject`, `PutObject`, `DeleteObject` operations will be logged and audited in CloudTrail. 
-
-    For example, if a particular user retrieves (GetObject) a data file from the bucket, it will be logged and visible for security audits. If someone tries to delete a file (DeleteObject), it is also traced and logged. Such logging allows for greater operational insight, easier auditing, and stronger compliance to data security standards.
-
-    Hence, enabling object-level logging gives Company X detailed event history of all the activities related to the S3 objects and helps in maintaining security, compliance needs, and troubleshooting.
-Title: Ensure that Object-level logging for write events is enabled for S3 bucket
+Managed: true

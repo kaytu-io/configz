@@ -1,14 +1,8 @@
-Description: Access to systems and assets can be controlled by checking that the root user does not have access keys attached to their AWS Identity and Access Management (IAM) role.
-DocumentURI: ""
 ID: aws_iam_root_user_no_access_keys
-Managed: true
-ManualVerification: false
+Title: IAM root user should not have access keys
+Description: Access to systems and assets can be controlled by checking that the root user does not have access keys attached to their AWS Identity and Access Management (IAM) role.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_account_summary
-  PrimaryTable: aws_iam_account_summary
   QueryToExecute: |
     select
       'arn:' || partition || ':::' || account_id as resource,
@@ -25,6 +19,11 @@ Query:
       , account_id
     from
       aws_iam_account_summary;
+  Connector: AWS
+  PrimaryTable: aws_iam_account_summary
+  ListOfTables:
+  - aws_iam_account_summary
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -65,34 +64,4 @@ Tags:
   - AWS/IAM
   soc_2:
   - "true"
-  x-kaytu-explanation:
-  - "```markdown\n# AWS Control: Restriction Access to Systems and Assets \n\n## Description\nIn Amazon Web Services (AWS), there is a control level to restrict access to systems and assets. One of the key controls is ensuring that the root user does not have any access keys attached to their AWS Identity and Access Management (IAM) role. \n\nAWS IAM role is an identity with certain permission policies that determine what the identity can and cannot do in AWS. By preventing the root user from having access keys attached to their IAM role, you are ensuring that they must perform actions as IAM users as opposed to having full root level privileges, thereby limiting the potential for misuse or exploitation.\n\nThis ultimately increases the security of your systems and assets in the AWS environment.\n```"
-  x-kaytu-noncompliance-cost:
-  - |-
-    The cost of non-compliance to the AWS control regarding the root user not having access keys attached to their AWS Identity and Access Management (IAM) role can be significant. Here are some potential risks and costs associated with this non-compliance:
-
-    1. **Security Risks:** The root user has unrestricted access to your AWS resources. If the root user's access keys were to become compromised, an attacker would have total access to your AWS environment.
-
-    2. **Financial Impact:** With full access to your AWS environment, an attacker could carry out costly operations such as launching EC2 instances for Bitcoin mining or deleting crucial S3 bucket data which could lead to significant financial losses.
-
-    3. **Regulatory Violations:** If your business has to comply with certain regulations like GDPR, HIPAA, or PCI-DSS, improper access controls can lead to non-compliance penalties. 
-
-    4. **Operational Disruptions:** An unauthorized user could disrupt your operations by altering configurations, stopping services, or deleting critical resources.
-
-    5. **Reputation Damage:** Any data breach or security incident can harm your organization's reputation, leading to customer losses and reduced business.
-
-    6. **Cost of Incident Response and Recovery:** In case of a security incident, the organization would have to invest in incident response activities, forensic investigations, and potentially a system-wide recovery.
-
-    In conclusion, it is vital to ensure that access to systems/assets is appropriately controlled, including the principle that the AWS root user should not have access keys attached.
-  x-kaytu-usefulness-example:
-  - |-
-    For instance, let's say a company has multiple AWS accounts managed by multiple developers and system admins for various projects. In order to ensure security and prevent unauthorized access, the company uses AWS Identity and Access Management (IAM) feature for giving permissions and managing users, groups, roles and their corresponding access to AWS resources.
-
-    Previously, they were using root user accounts that have full access to all resources in the AWS account, which is a security concern. If that account gets compromised, then all assets could be accessed and tampered with by an unauthorized user.
-
-    After realizing this, they decided to check if the root user has any access keys attached to their IAM roles. They realized that this should not be the case; as per the AWS recommended best security practices, it is not suggested to use a root user for everyday tasks that require access to AWS services. 
-
-    So they create separate IAM users with limited permissions for every admin and developer. They now have the ability to give only required permissions via IAM Policies, reducing the chances of access to other irrelevant resources. Also, IAM provides detailed logs on user activities which can be reviewed periodically to check on any unauthorized access attempts.
-
-    As a result, they now have better control over their AWS resources, and the risk of unauthorized access is minimized. This also ensures that their organization is following the principle of least privilege, granting only the minimum access necessary for users to perform their tasks.
-Title: IAM root user should not have access keys
+Managed: true

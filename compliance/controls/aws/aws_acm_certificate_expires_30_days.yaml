@@ -1,13 +1,8 @@
-Description: Ensure network integrity is protected by ensuring X509 certificates are issued by AWS ACM.
 ID: aws_acm_certificate_expires_30_days
-Managed: true
-ManualVerification: false
+Title: ACM certificates should be set to expire within 30 days
+Description: Ensure network integrity is protected by ensuring X509 certificates are issued by AWS ACM.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_acm_certificate
-  PrimaryTable: aws_acm_certificate
   QueryToExecute: |
     select
       certificate_arn as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_acm_certificate;
+  Connector: AWS
+  PrimaryTable: aws_acm_certificate
+  ListOfTables:
+  - aws_acm_certificate
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -63,4 +63,4 @@ Tags:
   - AWS/ACM
   soc_2:
   - "true"
-Title: ACM certificates should be set to expire within 30 days
+Managed: true

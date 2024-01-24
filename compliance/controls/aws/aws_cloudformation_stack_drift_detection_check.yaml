@@ -1,13 +1,8 @@
-Description: Ensure if the actual configuration of a Cloud Formation stack differs, or has drifted, from the expected configuration, a stack is considered to have drifted if one or more of its resources differ from their expected configuration.
 ID: aws_cloudformation_stack_drift_detection_check
-Managed: true
-ManualVerification: false
+Title: CloudFormation stacks differ from the expected configuration
+Description: Ensure if the actual configuration of a Cloud Formation stack differs, or has drifted, from the expected configuration, a stack is considered to have drifted if one or more of its resources differ from their expected configuration.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudformation_stack
-  PrimaryTable: aws_cloudformation_stack
   QueryToExecute: |
     select
       id as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_cloudformation_stack;
+  Connector: AWS
+  PrimaryTable: aws_cloudformation_stack
+  ListOfTables:
+  - aws_cloudformation_stack
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFormation
-Title: CloudFormation stacks differ from the expected configuration
+Managed: true

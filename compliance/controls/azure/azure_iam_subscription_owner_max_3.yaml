@@ -1,15 +1,8 @@
-Description: It is recommended to designate up to 3 subscription owners in order to reduce the potential for breach by a compromised owner.
 ID: azure_iam_subscription_owner_max_3
-Managed: true
-ManualVerification: false
+Title: A maximum of 3 owners should be designated for your subscription
+Description: It is recommended to designate up to 3 subscription owners in order to reduce the potential for breach by a compromised owner.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_role_assignment
-  - azure_role_definition
-  - azure_subscription
-  PrimaryTable: azure_subscription
   QueryToExecute: |
     with owner_roles as (
       select
@@ -49,6 +42,13 @@ Query:
       owner.kaytu_resource_id,
       owner._ctx,
       sub.display_name;
+  Connector: Azure
+  PrimaryTable: azure_subscription
+  ListOfTables:
+  - azure_role_assignment
+  - azure_role_definition
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -59,4 +59,4 @@ Tags:
   - "true"
   service:
   - Azure/ActiveDirectory
-Title: A maximum of 3 owners should be designated for your subscription
+Managed: true

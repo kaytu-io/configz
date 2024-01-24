@@ -1,14 +1,8 @@
-Description: Implementing Transparent Data Encryption (TDE) with your own key provides you with increased transparency and control over the TDE Protector, increased security with an HSM-backed external service, and promotion of separation of duties. This recommendation applies to organizations with a related compliance requirement.
 ID: azure_mssql_managed_instance_encryption_at_rest_using_cmk
-Managed: true
-ManualVerification: false
+Title: SQL managed instances should use customer-managed keys to encrypt data at rest
+Description: Implementing Transparent Data Encryption (TDE) with your own key provides you with increased transparency and control over the TDE Protector, increased security with an HSM-backed external service, and promotion of separation of duties. This recommendation applies to organizations with a related compliance requirement.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_mssql_managed_instance
-  - azure_subscription
-  PrimaryTable: azure_mssql_managed_instance
   QueryToExecute: |
     with encryption_protector as (
       select
@@ -41,6 +35,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_mssql_managed_instance
+  ListOfTables:
+  - azure_mssql_managed_instance
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -49,4 +49,4 @@ Tags:
   - "true"
   service:
   - Azure/MySQL
-Title: SQL managed instances should use customer-managed keys to encrypt data at rest
+Managed: true

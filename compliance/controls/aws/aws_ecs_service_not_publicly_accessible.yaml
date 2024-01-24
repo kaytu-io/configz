@@ -1,14 +1,8 @@
-Description: This control checks whether Amazon ECS services are configured to automatically assign public IP addresses. This control fails if AssignPublicIP is ENABLED. This control passes if AssignPublicIP is DISABLED.
 ID: aws_ecs_service_not_publicly_accessible
-Managed: true
-ManualVerification: false
+Title: Amazon ECS services should not have public IP addresses assigned to them automatically
+Description: This control checks whether Amazon ECS services are configured to automatically assign public IP addresses. This control fails if AssignPublicIP is ENABLED. This control passes if AssignPublicIP is DISABLED.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ecs_service
-  - aws_ecs_task_definition
-  PrimaryTable: aws_ecs_service
   QueryToExecute: |
     with service_awsvpc_mode_task_definition as (
       select
@@ -39,6 +33,12 @@ Query:
     from
       aws_ecs_service as a
       left join service_awsvpc_mode_task_definition as b on a.service_name = b.service_name;
+  Connector: AWS
+  PrimaryTable: aws_ecs_service
+  ListOfTables:
+  - aws_ecs_service
+  - aws_ecs_task_definition
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -53,4 +53,4 @@ Tags:
   - aws
   service:
   - AWS/ECS
-Title: Amazon ECS services should not have public IP addresses assigned to them automatically
+Managed: true

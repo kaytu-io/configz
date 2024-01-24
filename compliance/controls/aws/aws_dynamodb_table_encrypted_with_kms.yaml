@@ -1,13 +1,8 @@
-Description: Ensure that encryption is enabled for your Amazon DynamoDB tables. Because sensitive data can exist at rest in these tables, enable encryption at rest to help protect that data.
 ID: aws_dynamodb_table_encrypted_with_kms
-Managed: true
-ManualVerification: false
+Title: DynamoDB table should be encrypted with AWS KMS
+Description: Ensure that encryption is enabled for your Amazon DynamoDB tables. Because sensitive data can exist at rest in these tables, enable encryption at rest to help protect that data.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_dynamodb_table
-  PrimaryTable: aws_dynamodb_table
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_dynamodb_table;
+  Connector: AWS
+  PrimaryTable: aws_dynamodb_table
+  ListOfTables:
+  - aws_dynamodb_table
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -57,4 +57,4 @@ Tags:
   - "true"
   service:
   - AWS/DynamoDB
-Title: DynamoDB table should be encrypted with AWS KMS
+Managed: true

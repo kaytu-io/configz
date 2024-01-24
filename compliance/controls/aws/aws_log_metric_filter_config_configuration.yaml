@@ -1,19 +1,18 @@
-Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. It is recommended that a metric filter and alarm be established for detecting changes to CloudTrail's configurations.
-DocumentURI: ""
 ID: aws_log_metric_filter_config_configuration
-Managed: true
-ManualVerification: false
+Title: Ensure a log metric filter and alarm exist for AWS Config configuration changes
+Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. It is recommended that a metric filter and alarm be established for detecting changes to CloudTrail's configurations.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
+  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventSource\\s*=\\s*config.amazonaws.com.+\\$\\.eventName\\s*=\\s*StopConfigurationRecorder.+\\$\\.eventName\\s*=\\s*DeleteDeliveryChannel.+\\$\\.eventName\\s*=\\s*PutDeliveryChannel.+\\$\\.eventName\\s*=\\s*PutConfigurationRecorder'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for AWS Config configuration changes.'\n    else filter_name || ' forwards events for AWS Config configuration changes.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+  Connector: AWS
+  PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_cloudtrail_trail
   - aws_cloudwatch_alarm
   - aws_cloudwatch_log_metric_filter
   - aws_sns_topic_subscription
-  PrimaryTable: aws_account
-  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventSource\\s*=\\s*config.amazonaws.com.+\\$\\.eventName\\s*=\\s*StopConfigurationRecorder.+\\$\\.eventName\\s*=\\s*DeleteDeliveryChannel.+\\$\\.eventName\\s*=\\s*PutDeliveryChannel.+\\$\\.eventName\\s*=\\s*PutConfigurationRecorder'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for AWS Config configuration changes.'\n    else filter_name || ' forwards events for AWS Config configuration changes.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -34,27 +33,4 @@ Tags:
   - aws
   service:
   - AWS/CloudWatch
-  x-kaytu-explanation:
-  - "AWS CloudTrail is a service that provides event history of your AWS account activity, including actions taken through the AWS Management Console, AWS SDKs, command line tools, and other AWS services. AWS CloudWatch Logs is a service that monitors, stores, and accesses your log files from AWS CloudTrail and other sources. \n\n## CloudTrail Logs to CloudWatch Logs\n\nReal-time monitoring of API calls can be achieved by directing `CloudTrail Logs` to `CloudWatch Logs`. This enables you to continuously monitor and retain account activity related to actions across your AWS infrastructure. By customizing the CloudWatch metric filters, you can search for and match specific terms, phrases, or values that indicate AWS API call activities of interest.\n\n## Metric Filters and Alarms\n\nAn important part of this monitoring is establishing corresponding metric filters and alarms. A metric filter is a search pattern that scans for and matches terms, phrases, or values in your log data. After a metric filter is created, CloudWatch begins aggregating data according to the metric filter pattern.\n\nYou can then set alarms based on the filters - for instance, if a certain activity or pattern happens a certain number of times (as specified by you), an alarm will be triggered, notifying you of the event.\n\n## Recommended Configuration\n\nIt is recommended to specifically set up a metric filter and alarm to detect changes to CloudTrail's configurations. This would alert you whenever settings are changed or tampered with - which could potentially indicate a security threat or breach - to ensure you can respond promptly and minimize any damage from such events.\n\nFor example, the markup language would be:\n\n```yaml\nalarms:\n  - name: 'cloudtrail-configuration-changes'\n    metric: 'Events'\n    namespace: 'AWS/CloudTrail'\n    statistic: 'SampleCount'\n    period: '300'\n    evaluation_periods: '1'\n    threshold: '1'\n    comparison_operator: 'GreaterThanOrEqualToThreshold'\n    description: 'Alarm for detecting changes to CloudTrail configurations'\n    alarm_actions:\n      - Your_SNS_Topic_ARN\n    ok_actions:\n      - Your_SNS_Topic_ARN\n    insufficient_data_actions:\n      - Your_SNS_Topic_ARN\n```\n\nReplace `Your_SNS_Topic_ARN` with the Amazon Resource Name (ARN) of your Amazon SNS topic."
-  x-kaytu-noncompliance-cost:
-  - |-
-    The cost of non-compliance to this particular AWS control can be quite significant. CloudTrail is a web service that records AWS API calls for an account. It's used to log, continuously monitor, and retain events related to API calls across your AWS infrastructure, and provides a history of API calls for an account. 
-
-    The major types of cost of non-compliance can be categorized as:
-
-    1. **Security Risks:** If changes to CloudTrail's configuration are not monitored effectively, unauthorized actions could go undetected, potentially leading to data breaches or other security incidents. 
-
-    2. **Regulatory Fines:** Many regulations require ongoing monitoring of IT infrastructure for changes that could affect the security or privacy of data. Failure to maintain this compliance could result in substantial fines. 
-
-    3. **Operational Disruption:** Changes to CloudTrail's configurations could potentially impact the operations of other services that depend on these configurations. The failure to quickly detect and deal with such changes could therefore result in operational disruptions. 
-
-    Therefore, non-compliance of this control might end up costing an organization operational reliability, security and could attract legal liabilities depending on the specific jurisdiction and the nature of the business.
-
-    ```
-    - **Security Risks:** Non-compliance can make the system vulnerable to unauthorized activities and potential data breaches or leaks.  
-    - **Regulatory Fines:** Certain regulations require ongoing monitoring of IT infrastructure, and failure to comply can lead to substantial fines.
-    - **Operational Disruption:** Unmonitored changes can impact other services, leading to potential operational disruptions and associated costs.
-    ```
-  x-kaytu-usefulness-example:
-  - "For example, imagine you operate an industry-leading eCommerce website that heavily relies on functionality provided by numerous API calls. Your IT department needs to ensure uninterrupted connections and data transfers by monitoring the calls and their successful responses extensively. Most importantly, by any chance, if there is unauthorized access or an unexpected change in CloudTrail configurations, everyone needs to get alerted immediately to avoid catastrophic system issues or possible data breaches. \n\n```markdown\n**AWS CloudTrail to CloudWatch for Real-Time API Monitoring Implementation**\n\n1. **Initial Setup**: Connect CloudTrail Logs to CloudWatch Logs.\n\n2. **Establish Metric Filters**: Create filters for the specific events of interest - in this case, any changes to CloudTrail configurations. Also, monitor for any unauthorized APIs calls.\n\n3. **Set up Alarms**: Establish alarms and tie them with metric filters. Whenever the filter catches a predefined irregularity or pattern, it will trigger the established alarm. \n\n4. **Notification Channels**: Attach communication channels like email or SMS for the alarm's notification.\n\nWith this setup, \n- You gain real-time insight into your API's behavior and can respond quickly to potential malfunctions or threats, ensuring the continuous operation of your eCommerce platform. \n- Any unexpected changes in the CloudTrail configuration, possibly indicating an unauthorized intrusion, immediately trigger an alarm, allowing your IT team to swiftly investigate and address the matter. \n```\nThis is a crucial security measure protecting your AWS infrastructure and customer data while ensuring system robustness and service reliability."
-Title: Ensure a log metric filter and alarm exist for AWS Config configuration changes
+Managed: true

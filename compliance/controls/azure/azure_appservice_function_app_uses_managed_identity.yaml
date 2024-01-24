@@ -1,14 +1,8 @@
-Description: Use a managed identity for enhanced authentication security.
 ID: azure_appservice_function_app_uses_managed_identity
-Managed: true
-ManualVerification: false
+Title: Managed identity should be used in your Function App
+Description: Use a managed identity for enhanced authentication security.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_function_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_function_app
   QueryToExecute: |
     with all_function_app as (
       select
@@ -52,6 +46,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_function_app
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -60,4 +60,4 @@ Tags:
   - "true"
   service:
   - Azure/AppService
-Title: Managed identity should be used in your Function App
+Managed: true

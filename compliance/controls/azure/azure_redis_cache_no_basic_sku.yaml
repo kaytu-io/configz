@@ -1,15 +1,8 @@
-Description: The use of Basic or Free SKUs in Azure whilst cost effective have significant limitations in terms of what can be monitored and what support can be realized from Microsoft. Typically, these SKU’s do not have a service SLA and Microsoft will usually refuse to provide support for them. Consequently Basic/Free SKUs should never be used for production workloads.
-DocumentURI: ""
 ID: azure_redis_cache_no_basic_sku
-Managed: true
-ManualVerification: false
+Title: Azure Cache for Redis should use standard SKUs as a minimum
+Description: The use of Basic or Free SKUs in Azure whilst cost effective have significant limitations in terms of what can be monitored and what support can be realized from Microsoft. Typically, these SKU’s do not have a service SLA and Microsoft will usually refuse to provide support for them. Consequently Basic/Free SKUs should never be used for production workloads.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_redis_cache
-  - azure_subscription
-  PrimaryTable: azure_redis_cache
   QueryToExecute: |
     select
       c.id as resource,
@@ -31,23 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = c.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_redis_cache
+  ListOfTables:
+  - azure_redis_cache
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   cis:
   - "true"
   service:
   - Azure/Redis
-  x-kaytu-explanation:
-  - |-
-    The Azure control in Markup format indicates that while using Basic or Free SKU's (Stock Keeping Units) in Azure is cost-effective, it has significant limitations. SKU here refers to the type of service being used, whose features can vary based on the chosen plan e.g., Free, Basic or Standard. 
-
-    The limitations primarily relate to the degree of monitoring and support you can get from Microsoft. For instance, these SKU's are usually not covered under a service SLA (Service-Level Agreement). A service SLA is a contract between a service provider and a customer that specifies, usually in measurable terms, what services the network service provider will furnish. This means without an SLA, there is no guarantee of service reliability, availability or performance.
-
-    Additionally, Microsoft usually refuses to provide support for these basic SKU's. This means if you run into technical issues or require troubleshooting, you might not receive assistance from Microsoft's technical team. 
-
-    Therefore, it's recommended not to use Basic or Free SKU's for production workloads. Production workloads are applications or services that are being actively used by customers or end-users. Given that issues with these applications or services could directly affect your business or customers, it's critical to have adequate support and guarantees around their performance and uptime. Hence, for such scenarios, you would want to consider higher-level SKU's with applicable SLA's and support.
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance to the Azure control of avoiding Basic or Free SKUs for production workloads can lead to numerous costly consequences:\n\n1. **Limited Monitoring**: Basic or Free SKUs offer limited monitoring capabilities. This not only reduces visibility into the performance of an application but also makes it harder to identify and mitigate potential risks or errors. It can cause significant downtime, leading to loss of productivity and revenue.\n\n2. **Inadequate Support**: Basic/Free SKUs lack a service SLA, implying that Microsoft may refuse to provide support for them. In case of any issues or complications, you will be left to resolve them on your own. This could further lead to increased downtime and resultant business losses.\n\n3. **Decreased Availability And Performance**: The absence of a service SLA also suggests a potentially lower level of availability and performance as compared to premium SKUs. This could affect the user experience, hurting the reputation of your product or service.\n\n4. **Security Risks**: Restricted monitoring and lack of support could expose your systems to potential security threats. If not identified and resolved in a timely manner, these threats could lead to data breaches with severe financial and reputational damages.\n\n5. **Inability to Scale**: Basic/Free SKUs lack the capabilities to scale up to meet increasing workloads and demands. This limitation could hinder the growth of your services and might even lead to system failures during peak loads.\n\nTherefore, non-compliance with this Azure control not only increases operational risks but also leads to potential financial and reputational losses. Although Basic or Free SKUs may seem cost-effective initially, the potential costs of non-compliance significantly outweigh the initial cost savings. It's highly recommended to use paid SKUs for production workloads to maintain optimal performance, security, and scalability."
-  x-kaytu-usefulness-example:
-  - "Despite the drawbacks, Basic or Free SKUs can still be useful in certain instances. \n\nFor example:\n\n1. **Testing and Development**: If a company is developing an application, Basic or Free SKUs can be used for initial testing and development. Using a lower tier saves cost during the development phase. Once the application is ready for production, the SKU can be upgraded to a higher tier.\n\n   ```markdown\n   - Resource Group: DevTest\n   - SKU: Basic\n   - Reason: This SKU Tier is intended for testing our new features. We're planning to transform this to higher tier when ready for production.\n   ```\n\n2. **Small Projects or Startups**: Small businesses or startups might not have a big budget and utilizing Basic or Free SKU’s makes financial sense. They might only require the bare minimum functionalities provided by the Basic SKU.\n\n   ```markdown\n   - Resource Group: StartupA\n   - SKU: Free\n   - Reason: This startup is in the early stages and does not require advanced features for their cloud operations. The free tier should suffice for their current operations and can be upgraded when necessary.\n   ```\n\n3. **Non-critical Workloads**: If a business has non-critical workloads, they could be placed under lower tiers to save costs. Non-critical workloads can afford to have less support and no SLA.\n\n   ```markdown\n   - Resource Group: NonCriticalWorkloads\n   - SKU: Basic\n   - Reason: This workload does not require high availability or priority support. The Basic tier will fulfill workload requirements.\n   ```\n   \n4. **Education and Training**: Basic or free SKUs can be useful for educational purposes when people are learning to use Azure and do not need advanced features or high performance. This allows trainees to familiarize themselves with Azure without costing a lot.\n\n   ```markdown\n   - Resource Group: TrainingClass\n   - SKU: Free\n   - Reason: This is for a training session. The free tier provides enough resources to demonstrate Azure's capabilities without the need for advanced features.\n   ```"
-Title: Azure Cache for Redis should use standard SKUs as a minimum
+Managed: true

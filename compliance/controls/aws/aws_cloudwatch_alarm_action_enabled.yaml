@@ -1,13 +1,8 @@
-Description: Checks if CloudWatch alarms have an action configured for the ALARM, INSUFFICIENT_DATA, or OK state. Optionally checks if any actions match a named ARN. The rule is non compliant if there is no action specified for the alarm or optional parameter.
 ID: aws_cloudwatch_alarm_action_enabled
-Managed: true
-ManualVerification: false
+Title: CloudWatch alarm should have an action configured
+Description: Checks if CloudWatch alarms have an action configured for the ALARM, INSUFFICIENT_DATA, or OK state. Optionally checks if any actions match a named ARN. The rule is non compliant if there is no action specified for the alarm or optional parameter.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudwatch_alarm
-  PrimaryTable: aws_cloudwatch_alarm
   QueryToExecute: |
     select
       arn as resource,
@@ -32,6 +27,11 @@ Query:
       , region, account_id
     from
       aws_cloudwatch_alarm;
+  Connector: AWS
+  PrimaryTable: aws_cloudwatch_alarm
+  ListOfTables:
+  - aws_cloudwatch_alarm
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -62,4 +62,4 @@ Tags:
   - AWS/CloudWatch
   soc_2:
   - "true"
-Title: CloudWatch alarm should have an action configured
+Managed: true

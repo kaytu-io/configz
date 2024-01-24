@@ -1,15 +1,8 @@
-Description: "Some Microsoft services that interact with storage accounts operate from networks that can't be granted access through network rules. To help this type of service work as intended, allow the set of trusted Microsoft services to bypass the network rules. These services will then use strong authentication to access the storage account. If the Allow trusted Microsoft services exception is enabled, the following services: Azure Backup, Azure Site Recovery, Azure DevTest Labs, Azure Event Grid, Azure Event Hubs, Azure Networking, Azure Monitor and Azure SQL Data Warehouse (when registered in the subscription), are granted access to the storage account."
-DocumentURI: ""
 ID: azure_storage_account_trusted_microsoft_services_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure 'Trusted Microsoft Services' is enabled for Storage Account access
+Description: "Some Microsoft services that interact with storage accounts operate from networks that can't be granted access through network rules. To help this type of service work as intended, allow the set of trusted Microsoft services to bypass the network rules. These services will then use strong authentication to access the storage account. If the Allow trusted Microsoft services exception is enabled, the following services: Azure Backup, Azure Site Recovery, Azure DevTest Labs, Azure Event Grid, Azure Event Hubs, Azure Networking, Azure Monitor and Azure SQL Data Warehouse (when registered in the subscription), are granted access to the storage account."
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_storage_account
-  - azure_subscription
-  PrimaryTable: azure_storage_account
   QueryToExecute: |
     select
       sa.id as resource,
@@ -31,6 +24,12 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = sa.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -51,10 +50,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
-  x-kaytu-explanation:
-  - "Azure Control in markup format allows you to control and manage access to your Azure storage accounts. Essentially, it gives trusted Microsoft services the ability to bypass network rules and access your storage account. This is critical for certain Microsoft services that operate from networks that are not able to have access granted through network rules. \n\nWhen the \"Allow trusted Microsoft services exception\" is enabled, it allows the following services to access your storage account as they will use strong authentication for access: \n\n- Azure Backup\n- Azure Site Recovery\n- Azure DevTest Labs\n- Azure Event Grid\n- Azure Event Hubs\n- Azure Networking\n- Azure Monitor\n- Azure SQL Data Warehouse (only when registered in the subscription)\n\nBy allowing these trusted services to bypass network rules, you allow these services to operate as intended while ensuring strong authentication is retained to protect the security of your storage account."
-  x-kaytu-noncompliance-cost:
-  - "By failing to comply to this Azure Control, various Microsoft services will not be able to properly interact with storage accounts. If you fail to allow the trusted Microsoft services differentiation, the Azure services such as Azure Backup, Azure Site Recovery, Azure DevTest Labs, Azure Event Grid, Azure Event Hubs, Azure Networking, Azure Monitor, and Azure SQL Data Warehouse (if registered in your subscription) might be restricted from accessing the storage account. \n\nThis could lead to the following potential costs:\n\n1. **Operational Disruption**: The Microsoft services listed above won't be able to access data on the storage account. This could disrupt their functionality and, in turn, affect your business operations that rely on these services. For example, you might not be able to use Azure Backup to back up data, which could then lead to potential data loss.\n\n2. **Limited Monitoring and Diagnostics**: Azure Monitor, which relies on the ability to access storage accounts for logging and diagnostics purposes, will be affected. This could limit the ability to track applications' health and performance, diagnose issues, and perform root cause analysis.\n\n3. **Compliance Violations**: If your organization operates in a regulated industry (such as healthcare or finance), non-compliance to these controls could lead to violations of industry regulations, leading to potential legal and financial repercussions.\n\n4. **Increased Security Risks**: These trusted services use strong authentication methods to access the storage account. By not allowing them to bypass network rules, you are limiting these security protocols and potentially increasing the risk of unauthorized access to your storage account.\n\n5. **Increased Operational Costs**: Workarounds to ensure services operate correctly without having access to storage may lead to increased operational costs, such as additional infrastructure or higher consumption of resources. \n\n6. **Delayed Business Decision Making**: Services like Azure SQL Data Warehouse, crucial for business intelligence and decision-making, will have impaired functionality, potentially delaying informed strategic business decisions.\n\nIt's always prudent to comply with recommended Azure Controls to ensure the seamless operation of your services, maintain security, reduce costs, and avoid compliance issues."
-  x-kaytu-usefulness-example:
-  - "#### Example\n\nLet's say you are utilizing Azure Backup to backup your application data stored in an Azure Storage account. The data is crucial to your business operations and for privacy and security reasons you have decided to setup network rules to restrict access to this data.\n\nHowever, because the Azure Backup service operates from a network that cannot be granted access through regular network rules, it cannot access and backup your data. \n\nTo resolve this, you can use the \"Allow trusted Microsoft services\" exception. By enabling this exception, you allow Azure Backup (and other trusted Microsoft services) to bypass the network rules that you have set up. As a result, Azure Backup can access the data in your storage account, ensure that your data is being backed up and your operations continue without interruption.\n\nThe code could look like this:\n\n```markup\naz storage account network-rule add \\\n    --resource-group my_rg \\\n    --account-name mystorageaccount \\\n    --bypass Metrics Logging AzureServices \\\n    --ip-address 23.45.1.0/24\n```\n\nIn this example, `AzureServices` is added to the bypass list. This covers Azure Backup and other trusted Microsoft services."
-Title: Ensure 'Trusted Microsoft Services' is enabled for Storage Account access
+Managed: true

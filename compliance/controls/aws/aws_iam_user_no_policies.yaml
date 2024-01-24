@@ -1,13 +1,8 @@
-Description: By default, IAM users, groups, and roles have no access to AWS resources. IAM policies are the means by which privileges are granted to users, groups, or roles. It is recommended that IAM policies be applied directly to groups and roles but not users.
 ID: aws_iam_user_no_policies
-Managed: true
-ManualVerification: false
+Title: Ensure IAM policies are attached only to groups or roles
+Description: By default, IAM users, groups, and roles have no access to AWS resources. IAM policies are the means by which privileges are granted to users, groups, or roles. It is recommended that IAM policies be applied directly to groups and roles but not users.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_user
-  PrimaryTable: aws_iam_user
   QueryToExecute: |
     select
       arn as resource,
@@ -22,6 +17,11 @@ Query:
       , account_id
     from
       aws_iam_user;
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+  - aws_iam_user
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -42,4 +42,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
-Title: Ensure IAM policies are attached only to groups or roles
+Managed: true

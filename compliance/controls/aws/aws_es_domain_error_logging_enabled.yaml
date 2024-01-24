@@ -1,13 +1,8 @@
-Description: This control checks whether Elasticsearch domains are configured to send error logs to CloudWatch Logs.
 ID: aws_es_domain_error_logging_enabled
-Managed: true
-ManualVerification: false
+Title: Elasticsearch domain error logging to CloudWatch Logs should be enabled
+Description: This control checks whether Elasticsearch domains are configured to send error logs to CloudWatch Logs.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_elasticsearch_domain
-  PrimaryTable: aws_elasticsearch_domain
   QueryToExecute: |
     select
       arn as resource,
@@ -29,6 +24,11 @@ Query:
       , region, account_id
     from
       aws_elasticsearch_domain;
+  Connector: AWS
+  PrimaryTable: aws_elasticsearch_domain
+  ListOfTables:
+  - aws_elasticsearch_domain
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -43,4 +43,4 @@ Tags:
   - aws
   service:
   - AWS/ES
-Title: Elasticsearch domain error logging to CloudWatch Logs should be enabled
+Managed: true

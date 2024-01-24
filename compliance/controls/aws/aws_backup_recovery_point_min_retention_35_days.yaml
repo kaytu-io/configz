@@ -1,13 +1,8 @@
-Description: Ensure a recovery point expires no earlier than after the specified period. The rule is non-compliant if the recovery point has a retention point less than 35 days.
 ID: aws_backup_recovery_point_min_retention_35_days
-Managed: true
-ManualVerification: false
+Title: Backup recovery points should not expire before retention period
+Description: Ensure a recovery point expires no earlier than after the specified period. The rule is non-compliant if the recovery point has a retention point less than 35 days.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_backup_recovery_point
-  PrimaryTable: aws_backup_recovery_point
   QueryToExecute: |
     select
       recovery_point_arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_backup_recovery_point;
+  Connector: AWS
+  PrimaryTable: aws_backup_recovery_point
+  ListOfTables:
+  - aws_backup_recovery_point
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -53,4 +53,4 @@ Tags:
   - AWS/Backup
   soc_2:
   - "true"
-Title: Backup recovery points should not expire before retention period
+Managed: true

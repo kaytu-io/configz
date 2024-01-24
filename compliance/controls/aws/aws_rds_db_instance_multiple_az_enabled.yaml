@@ -1,13 +1,8 @@
-Description: Multi-AZ support in Amazon Relational Database Service (Amazon RDS) provides enhanced availability and durability for database instances.
 ID: aws_rds_db_instance_multiple_az_enabled
-Managed: true
-ManualVerification: false
+Title: RDS DB instance multiple az should be enabled
+Description: Multi-AZ support in Amazon Relational Database Service (Amazon RDS) provides enhanced availability and durability for database instances.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_rds_db_instance;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -57,4 +57,4 @@ Tags:
   - aws
   service:
   - AWS/RDS
-Title: RDS DB instance multiple az should be enabled
+Managed: true

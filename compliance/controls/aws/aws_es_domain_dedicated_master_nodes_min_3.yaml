@@ -1,13 +1,8 @@
-Description: This control checks whether Elasticsearch domains are configured with at least three dedicated master nodes. This control fails if the domain does not use dedicated master nodes. This control passes if Elasticsearch domains have five dedicated master nodes. However, using more than three master nodes might be unnecessary to mitigate the availability risk, and will result in additional cost.
 ID: aws_es_domain_dedicated_master_nodes_min_3
-Managed: true
-ManualVerification: false
+Title: Elasticsearch domains should be configured with at least three dedicated master nodes
+Description: This control checks whether Elasticsearch domains are configured with at least three dedicated master nodes. This control fails if the domain does not use dedicated master nodes. This control passes if Elasticsearch domains have five dedicated master nodes. However, using more than three master nodes might be unnecessary to mitigate the availability risk, and will result in additional cost.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_elasticsearch_domain
-  PrimaryTable: aws_elasticsearch_domain
   QueryToExecute: |
     select
       arn as resource,
@@ -28,6 +23,11 @@ Query:
       , region, account_id
     from
       aws_elasticsearch_domain;
+  Connector: AWS
+  PrimaryTable: aws_elasticsearch_domain
+  ListOfTables:
+  - aws_elasticsearch_domain
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -42,4 +42,4 @@ Tags:
   - aws
   service:
   - AWS/ES
-Title: Elasticsearch domains should be configured with at least three dedicated master nodes
+Managed: true

@@ -1,15 +1,8 @@
-Description: Role assignments disappear when a Key Vault has been deleted (soft- delete) and recovered. Afterwards it will be required to recreate all role assignments. This is a limitation of the soft-delete feature across all Azure services.
-DocumentURI: ""
 ID: azure_keyvault_rbac_enabled
-Managed: true
-ManualVerification: false
+Title: Enable Role Based Access Control for Azure Key Vault
+Description: Role assignments disappear when a Key Vault has been deleted (soft- delete) and recovered. Afterwards it will be required to recreate all role assignments. This is a limitation of the soft-delete feature across all Azure services.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_key_vault
-  - azure_subscription
-  PrimaryTable: azure_key_vault
   QueryToExecute: |
     select
       kv.id as resource,
@@ -31,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = kv.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_key_vault
+  ListOfTables:
+  - azure_key_vault
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -51,10 +50,4 @@ Tags:
   - azure
   service:
   - Azure/KeyVault
-  x-kaytu-explanation:
-  - "# AWS Control Explanation\n\n**Issue:**\n\nIn Azure services, when you delete (soft-delete) a Key Vault, all associated role assignments disappear or get deleted. And when you recover the deleted Key Vault, the role assignments don't get recovered automatically. \n\n**Implication:**\n\nThis means, after recovering a soft-deleted Key Vault, you will have to manually recreate all the role assignments that existed prior to deletion.\n\n**Limitation:**\n\nThis is a global limitation of the soft-delete feature inherent in all Azure services. There is currently no capability to automatically recover the role assignments along with the Key Vault.\n\n**Recovery:**\n\nAfter the Key Vault has been recovered, you must manually reassign roles to the appropriate users, groups, or applications for the Key Vault.\n\n**Example:**\n\n```markdown\n- Name: Reassign Roles after Key Vault Recovery\n  Azure Resource: Key Vault\n  Description: After recovering a soft-deleted Key Vault, you need to manually recreate all role assignments. \n  Actions:\n    1. Navigate to \"Key Vaults\" in the Azure portal. \n    2. Select the recovered Key Vault.\n    3. In the left panel, under \"Settings\", select \"Access policies\". \n    4. Click on \"+ Add Access Policy\".\n    5. Assign the necessary permissions to the required user, group or application.\n    6. Click on \"Save\" to apply the changes. \n```\n\nPlease note that even though this control is labelled as AWS, it's actually relevant to the Microsoft's Azure cloud services. A correct label would be \"Azure Control\"."
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance to the stated AWS control can result in several potential costs:\n\n1. **Security Risks**: With the deletion of a Key Vault or likewise Azure services, the role assignments disappear and if they are not recreated promptly after recovery, there is a potential security risk. Unauthorized users may gain access to critical resources or data while authorized users may be locked out, creating a disruption in service and potential data breaches.\n\n2. **Operational Disruptions**: The process of recreating all role assignments is time-consuming and disruptive to normal operations. During the time it takes to reassign roles, normal operations may be affected, impacting the business performance.\n\n3. **Administrative Overhead**: Need to recreate role assignments each time a key vault is deleted and recovered. This increases administrative overhead as manual intervention is required whenever this happens.\n\n4. **Potential Data Loss**: If role assignments are not restored in a timely manner after a Key Vault is recovered, there might be potential loss of data which could have serious consequences depending on the nature of the data stored or managed under those assignments.\n\n5. **Compliance Violations**: If the AWS system is used in an environment subject to regulations, non-compliance with necessary controls such as this could lead to violations of said regulations, potentially leading to substantial fines and penalties, along with damage to company reputation.\n\n```markdown\n# Cost of Non-Compliance with AWS Control\n\nNon-compliance with the stated AWS control can lead to:\n\n- High security risks, including potential unauthorized access and data breaches.\n- Disruptions in normal operations due to the need to recreate role assignments.\n- Increased administrative overhead due to the necessity of manual intervention.\n- Potential data loss, which could have serious consequences.\n- Violations of regulations, leading to fines, penalties, and damage to company reputation.\n```"
-  x-kaytu-usefulness-example:
-  - "```markdown\nExample:\n\nConsider a software company that uses AWS for their operations. They usually store their data and other sensitive information such as encryption keys, database credentials, certificates etc. in Key Vaults. \n\nOnce, due to some internal issues, a Key Vault had to be deleted. They opted for soft-deletion so that the data could be recovered instead of being permanently lost. After the issue was resolved, the Key Vault was recovered successfully and all the data was intact. \n\nBut there was a problem: the role assignments linked with that Key Vault had disappeared. Their developers, managers, and other team members who had access to that Key Vault previously, no longer had access to it. \n\nWithout role assignments, their routine operations got interrupted as not all the team members could access the key vault. ASAP, they had to recreate all role assignments, and associate each of them with the corresponding user(s) and/or service principal(s) and grant them the necessary permissions to regain operational efficiency. \n\nThus, while soft-delete feature could recover their data, the loss of role assignments presented a significant complication, showcasing a limitation of the soft-delete feature across all Azure services.\n```"
-Title: Enable Role Based Access Control for Azure Key Vault
+Managed: true

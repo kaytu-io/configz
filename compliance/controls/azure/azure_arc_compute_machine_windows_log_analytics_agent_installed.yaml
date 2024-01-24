@@ -1,14 +1,8 @@
-Description: This policy audits Windows Azure Arc machines if the Log Analytics agent is not installed.
 ID: azure_arc_compute_machine_windows_log_analytics_agent_installed
-Managed: true
-ManualVerification: false
+Title: Log Analytics agent should be installed on your Windows Azure Arc machines
+Description: This policy audits Windows Azure Arc machines if the Log Analytics agent is not installed.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_hybrid_compute_machine
-  - azure_subscription
-  PrimaryTable: azure_hybrid_compute_machine
   QueryToExecute: |
     with compute_machine as(
       select
@@ -46,10 +40,16 @@ Query:
     azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_hybrid_compute_machine
+  ListOfTables:
+  - azure_hybrid_compute_machine
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/Compute
-Title: Log Analytics agent should be installed on your Windows Azure Arc machines
+Managed: true

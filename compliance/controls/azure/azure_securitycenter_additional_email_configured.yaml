@@ -1,15 +1,8 @@
-Description: Security Center emails the subscription owners whenever a high-severity alert is triggered for their subscription. You should provide a security contact email address as an additional email address.
-DocumentURI: ""
 ID: azure_securitycenter_additional_email_configured
-Managed: true
-ManualVerification: false
+Title: Ensure 'Additional email addresses' is configured with a security contact email
+Description: Security Center emails the subscription owners whenever a high-severity alert is triggered for their subscription. You should provide a security contact email address as an additional email address.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_contact
-  - azure_subscription
-  PrimaryTable: azure_security_center_contact
   QueryToExecute: |
     with contact_info as (
       select
@@ -42,6 +35,12 @@ Query:
     from
       azure_subscription sub
       left join contact_info ci on sub.subscription_id = ci.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_security_center_contact
+  ListOfTables:
+  - azure_security_center_contact
+  - azure_subscription
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -62,19 +61,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-  x-kaytu-explanation:
-  - "# AWS Control: High-Severity Alert Emails\n\nThe AWS Security Center continuously monitors and safeguards your AWS resources to help you adhere to security best practices. It utilizes various security checks and algorithms to detect unusual and potentially harmful activity within your AWS environment. \n\n## Overview\n\nWhenever a high-severity alert is triggered for your subscription, Security Center automatically sends an email notification to the subscription owners. High severity alerts often indicate a significant security issue that requires immediate attention, such as a breach, an attempted breach, or the violation of a particular security setting or policy.\n\nTo ensure that the appropriate party is informed and can take immediate action, we highly recommend that you provide a security contact email address as an additional email address. Setting a specific security contact will allow the necessary people in your organization to respond quickly, and will help to prevent notification emails to be overlooked amidst other standard emails.\n\n## Setting Up \n\nHere are the steps on how to set up a security contact email:\n\n1. Sign in to the AWS Management Console.\n2. Open the settings page of your AWS Security Center.\n3. Add a security contact email in `Security Contact Settings` section.\n4. Now, whenever a high-severity alert is triggered, the security contact will receive an email notification.\n\nNotice: The security contact should be responsible for addressing security issues or should have the authority to contact someone who can.\n\nAs these alerts concern severe threats, there should be a rapid response. Therefore, select a contact who is regularly available and capable of responding to threats promptly. The distinctive security contact, aside from the primary subscription owners, will ensure that urgent and high-priority alerts are not missed."
-  x-kaytu-noncompliance-cost:
-  - "The cost of non-compliance to this AWS control could manifest in different ways. Here are a few potential ramifications summarized:\n\n1. **Risk of Ignored or Unnoticed Threats**: If AWS Security Center triggers a high-severity alert and the subscription owners are not notified through email, they could remain unaware of significant security threats and potential data breaches. This risk can lead to devastating consequences for any organization.\n\n2. **Delayed Response Time**: When the designated security contacts are not identified, it can lead to time-consuming confusion and delay in response. This delay could escalate the potential damage of a given security threat.\n\n3. **Legal Repercussions**: Depending on the nature of your business, failure to provide a security contact email address could also lead to legal penalties, especially in regulated industries where such security controls are part of compliance requirements.\n\n4. **Loss of Customer Trust**: If a security breach occurs and it emerges that you had not provided a contact email, resulting in a delay in addressing the breach, it could lead to loss of trust among your clients or customers. \n\n5. **Financial Loss**: To remediate the security breaches, organisations might need to invest heavily in damage control, fixing the exploited vulnerability, and potentially to discover and address other related vulnerabilities. This could be financially straining for the organisation. \n\nIn summary, while providing a security contact email address can seem like a minor item, not doing so can add up to significant risks and potential costs down the line. It is an essential part of creating a culture of proactive security and should not be overlooked."
-  x-kaytu-usefulness-example:
-  - |-
-    In an instance where a tech company, let's call it XYZ Tech, is using AWS, the application of this control could look something like this:
-
-    XYZ Tech has several AWS subscriptions for different teams within their company. They have set up various security measures and alerts to ensure the safety and security of their applications and data. However, despite all security measures, breaches can still occur. For example, a malicious hacker might attempt to penetrate one of the teams' services, triggering a high-severity alert.
-
-    With AWS Control, a notification is then immediately sent to the subscription owner's email. However, if the team leader is temporarily unavailable or if they don't notice the alert in time, a delay in response to a high-severity alert of this nature could be disastrous.
-
-    This is why XYZ provides a security contact email address as an additional email address. The AWS system will also send an alert to this address. Usually, such addresses are monitored by members of the security team who are on-call or who specifically assigned to handle these types of situations.
-
-    With this security measure in place, XYZ is ensuring a prompt response to severe security alerts, guarding their applications and data on AWS against potential breaches. This instance shows how useful AWS Control can be in maintaining security at an optimal level.
-Title: Ensure 'Additional email addresses' is configured with a security contact email
+Managed: true

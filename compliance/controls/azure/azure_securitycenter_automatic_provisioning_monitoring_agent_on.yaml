@@ -1,15 +1,8 @@
-Description: Enable automatic provisioning of the monitoring agent to collect security data.
-DocumentURI: ""
 ID: azure_securitycenter_automatic_provisioning_monitoring_agent_on
-Managed: true
-ManualVerification: false
+Title: Ensure that 'Automatic provisioning of monitoring agent' is set to 'On'
+Description: Enable automatic provisioning of the monitoring agent to collect security data.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_auto_provisioning
-  - azure_subscription
-  PrimaryTable: azure_security_center_auto_provisioning
   QueryToExecute: |
     select
       sc_prov.id as resource,
@@ -28,6 +21,12 @@ Query:
     from
       azure_security_center_auto_provisioning sc_prov
       right join azure_subscription sub on sc_prov.subscription_id = sub.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_security_center_auto_provisioning
+  ListOfTables:
+  - azure_security_center_auto_provisioning
+  - azure_subscription
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -48,10 +47,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-  x-kaytu-explanation:
-  - "AzureControl:\n  Name: Enable automatic provisioning of the monitoring agent\n  Purpose: Collect security data for monitoring\n  Description: This control facilitates the automatic provisioning of a monitoring agent in Azure to gather security-related data, enhancing the overall monitoring capabilities for improved security posture.\n"
-  x-kaytu-noncompliance-cost:
-  - "Azure Control: Enable automatic provisioning of the monitoring agent to collect security data.\n\nNon-compliance Cost Analysis:\n\nFailure to comply with this Azure Control may result in increased vulnerability to security threats due to the absence of a properly provisioned monitoring agent. The potential costs of non-compliance include:\n\nSecurity Breaches: Without continuous monitoring, the organization is at a higher risk of security breaches, leading to potential data leaks or unauthorized access.\n\nRegulatory Fines: Non-compliance may lead to violations of data protection regulations, resulting in fines and legal consequences.\n\nReputation Damage: Security incidents can harm the organization's reputation, leading to loss of trust among customers and partners.\n\nOperational Disruptions: Lack of real-time security monitoring may impede the organization's ability to detect and respond promptly to security incidents, causing operational disruptions.\n\n"
-  x-kaytu-usefulness-example:
-  - "Azure Control: Enable automatic provisioning of the monitoring agent to collect security data.\n\nExample Usefulness Scenario:\n\nConsider a scenario where a company operates a web application on Azure. By enabling automatic provisioning of the monitoring agent, the organization ensures continuous surveillance of the application's security. In this instance:\n\nThreat Detection: The monitoring agent detects unusual patterns in user activity, signaling a potential cyber attack.\n\nIncident Response: Real-time data collection allows the security team to respond promptly, mitigating the threat before it escalates.\n\nCompliance Assurance: Continuous monitoring ensures adherence to security compliance standards, demonstrating the organization's commitment to data protection.\n\nPerformance Optimization: Insights from the monitoring agent also help in optimizing the application's performance, ensuring a seamless user experience while maintaining security protocols.\n\nThis example illustrates how the Azure Control enhances security and operational efficiency in a real-world scenario."
-Title: Ensure that 'Automatic provisioning of monitoring agent' is set to 'On'
+Managed: true

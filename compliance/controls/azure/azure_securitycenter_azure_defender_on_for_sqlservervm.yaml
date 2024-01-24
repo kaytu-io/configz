@@ -1,15 +1,8 @@
-Description: Turning on Azure Defender enables threat detection for SQL servers on machines, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
-DocumentURI: ""
 ID: azure_securitycenter_azure_defender_on_for_sqlservervm
-Managed: true
-ManualVerification: false
+Title: Ensure that Azure Defender is set to On for SQL servers on machines
+Description: Turning on Azure Defender enables threat detection for SQL servers on machines, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
-  PrimaryTable: azure_security_center_subscription_pricing
   QueryToExecute: |
     select
       sub_pricing.id as resource,
@@ -30,6 +23,12 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       name = 'SqlServerVirtualMachines';
+  Connector: Azure
+  PrimaryTable: azure_security_center_subscription_pricing
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+ManualVerification: false
 Severity: low
 Tags:
   category:
@@ -50,10 +49,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-  x-kaytu-explanation:
-  - "**Azure Control: Threat Detection for SQL Servers**\n\nEnabling Azure Defender empowers threat detection for SQL servers deployed on machines within your Azure environment. By activating Azure Defender, you unlock a suite of advanced security features in the Azure Security Center. These include:\n\n- **Threat Intelligence:** Azure Defender leverages up-to-date threat intelligence to identify and respond to potential security threats targeting your SQL servers.\n\n- **Anomaly Detection:** The system employs anomaly detection mechanisms to identify unusual patterns or behaviors within your SQL server environment. This helps in early detection of potential security incidents.\n\n- **Behavior Analytics:** Leveraging advanced behavior analytics, Azure Defender analyzes the activities and interactions within your SQL servers. This enables the system to recognize and alert on abnormal or suspicious behavior, providing an additional layer of security.\n\nBy integrating these security capabilities, Azure Defender enhances the overall security posture of your SQL servers, contributing to a proactive approach in safeguarding your data and infrastructure.\n\n*Note: Ensure proper configuration and monitoring within the Azure Security Center to fully leverage the capabilities offered by Azure Defender for comprehensive threat detection.*\n"
-  x-kaytu-noncompliance-cost:
-  - "**Azure Security Control: Azure Defender for SQL Servers**\n\nEnabling Azure Defender for SQL Servers is crucial for maintaining a secure environment. Non-compliance with this control may result in:\n\n- **Increased Security Risks:**\n  Failure to activate Azure Defender exposes SQL servers to potential threats, leaving them vulnerable to attacks. Without threat detection mechanisms, the risk of security breaches and unauthorized access is higher.\n\n- **Lack of Threat Intelligence:**\n  Azure Defender provides threat intelligence that is essential for staying ahead of evolving cybersecurity threats. Non-compliance means missing out on real-time insights and updates, making it difficult to proactively address emerging risks.\n\n- **Missed Anomaly Detection:**\n  Anomaly detection is a key feature of Azure Defender, helping identify unusual patterns or activities that may indicate a security threat. Non-compliance leaves the environment susceptible to undetected malicious behavior.\n\n- **Absence of Behavior Analytics:**\n  Azure Defender utilizes behavior analytics to understand and recognize patterns of normal and abnormal behavior within the SQL servers. Non-compliance means losing out on the insights provided by these analytics, making it challenging to identify and mitigate potential security incidents.\n\n- **Reduced Incident Response Capability:**\n  Without Azure Defender, incident response capabilities are compromised. Timely detection and response to security incidents become challenging, leading to extended exposure periods and increased damage in case of a security breach.\n\n- **Potential Compliance Violations:**\n  Depending on regulatory requirements and industry standards, the lack of comprehensive threat detection and security measures may lead to compliance violations, resulting in legal and financial repercussions.\n\n**Conclusion:**\nEnabling Azure Defender for SQL Servers is not only a best practice for security but also a fundamental aspect of compliance and risk management. Non-compliance can lead to severe security incidents, data breaches, and regulatory penalties, emphasizing the importance of adhering to this Azure Security Control.\n"
-  x-kaytu-usefulness-example:
-  - "Here's an example instance of using Azure Policy in markup format to turn on Azure Defender for threat detection on SQL servers:\n\njson\n\n{\n  \"mode\": \"All\",\n  \"policyRule\": {\n    \"if\": {\n      \"field\": \"type\",\n      \"equals\": \"Microsoft.Sql/servers\"\n    },\n    \"then\": {\n      \"effect\": \"auditIfNotExists\",\n      \"details\": {\n        \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\",\n        \"existenceCondition\": {\n          \"field\": \"Microsoft.Sql/servers/securityAlertPolicies/alertType\",\n          \"equals\": \"SQL_ADS\"\n        }\n      }\n    }\n  },\n  \"parameters\": {}\n}\nIn this example:\n\nThe policy is targeting resources of type Microsoft.Sql/servers, which represents SQL servers.\nThe policy uses the auditIfNotExists effect, meaning it will audit resources that do not comply with the specified condition.\nThe condition checks for the existence of a security alert policy for the specified alert type (SQL_ADS), which is related to Azure Defender threat detection for SQL servers.\nThis policy can be used to enforce the presence of Azure Defender threat detection settings for SQL servers within the Azure Security Center. If a SQL server is found without the appropriate security alert policy, it will be flagged as non-compliant during policy evaluation."
-Title: Ensure that Azure Defender is set to On for SQL servers on machines
+Managed: true

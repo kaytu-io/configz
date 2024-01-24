@@ -1,13 +1,8 @@
-Description: Manage access to resources in the AWS Cloud by ensuring that Amazon SageMaker notebooks do not allow direct internet access.
 ID: aws_sagemaker_notebook_instance_direct_internet_access_disabled
-Managed: true
-ManualVerification: false
+Title: SageMaker notebook instances should not have direct internet access
+Description: Manage access to resources in the AWS Cloud by ensuring that Amazon SageMaker notebooks do not allow direct internet access.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_sagemaker_notebook_instance
-  PrimaryTable: aws_sagemaker_notebook_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_sagemaker_notebook_instance;
+  Connector: AWS
+  PrimaryTable: aws_sagemaker_notebook_instance
+  ListOfTables:
+  - aws_sagemaker_notebook_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -63,4 +63,4 @@ Tags:
   - AWS/SageMaker
   soc_2:
   - "true"
-Title: SageMaker notebook instances should not have direct internet access
+Managed: true

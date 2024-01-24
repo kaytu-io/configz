@@ -1,14 +1,8 @@
-Description: Ensure that encryption is enabled for your Amazon Relational Database Service (Amazon RDS) snapshots.
 ID: aws_rds_db_snapshot_encrypted_at_rest
-Managed: true
-ManualVerification: false
+Title: RDS DB snapshots should be encrypted at rest
+Description: Ensure that encryption is enabled for your Amazon Relational Database Service (Amazon RDS) snapshots.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_cluster_snapshot
-  - aws_rds_db_snapshot
-  PrimaryTable: null
   QueryToExecute: |
     (
     select
@@ -49,6 +43,12 @@ Query:
     from
       aws_rds_db_snapshot
     );
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_rds_db_cluster_snapshot
+  - aws_rds_db_snapshot
+ManualVerification: false
 Severity: ""
 Tags:
   audit_manager_control_tower:
@@ -87,4 +87,4 @@ Tags:
   - AWS/RDS
   soc_2:
   - "true"
-Title: RDS DB snapshots should be encrypted at rest
+Managed: true

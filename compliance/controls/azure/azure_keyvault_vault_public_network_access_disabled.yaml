@@ -1,14 +1,8 @@
-Description: Disable public network access for your key vault so that it's not accessible over the public internet. This can reduce data leakage risks.
 ID: azure_keyvault_vault_public_network_access_disabled
-Managed: true
-ManualVerification: false
+Title: Azure Key Vault should disable public network access
+Description: Disable public network access for your key vault so that it's not accessible over the public internet. This can reduce data leakage risks.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_key_vault
-  - azure_subscription
-  PrimaryTable: azure_key_vault
   QueryToExecute: |
     select
       a.id as resource,
@@ -30,10 +24,16 @@ Query:
     from
       azure_key_vault a,
       azure_subscription sub;
+  Connector: Azure
+  PrimaryTable: azure_key_vault
+  ListOfTables:
+  - azure_key_vault
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/KeyVault
-Title: Azure Key Vault should disable public network access
+Managed: true

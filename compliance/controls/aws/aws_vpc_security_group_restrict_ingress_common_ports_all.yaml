@@ -1,14 +1,8 @@
-Description: Manage access to resources in the AWS Cloud by ensuring common ports are restricted on Amazon Elastic Compute Cloud (Amazon EC2) security groups.
 ID: aws_vpc_security_group_restrict_ingress_common_ports_all
-Managed: true
-ManualVerification: false
+Title: VPC security groups should restrict ingress access on ports 20, 21, 22, 3306, 3389, 4333 from 0.0.0.0/0
+Description: Manage access to resources in the AWS Cloud by ensuring common ports are restricted on Amazon Elastic Compute Cloud (Amazon EC2) security groups.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_vpc_security_group
-  - aws_vpc_security_group_rule
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with ingress_ssh_rules as (
       select
@@ -68,6 +62,12 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_ssh_rules on ingress_ssh_rules.group_id = sg.group_id;
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+ManualVerification: false
 Severity: ""
 Tags:
   audit_manager_control_tower:
@@ -104,4 +104,4 @@ Tags:
   - AWS/VPC
   soc_2:
   - "true"
-Title: VPC security groups should restrict ingress access on ports 20, 21, 22, 3306, 3389, 4333 from 0.0.0.0/0
+Managed: true

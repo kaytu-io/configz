@@ -1,13 +1,8 @@
-Description: This control checks if a lifecycle policy is configured for an Amazon S3 bucket. This control fails if a lifecycle policy is not configured for an S3 bucket.
 ID: aws_s3_bucket_lifecycle_policy_enabled
-Managed: true
-ManualVerification: false
+Title: S3 buckets should have lifecycle policies configured
+Description: This control checks if a lifecycle policy is configured for an Amazon S3 bucket. This control fails if a lifecycle policy is not configured for an S3 bucket.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     with lifecycle_rules_enabled as (
       select
@@ -35,6 +30,11 @@ Query:
     from
       aws_s3_bucket as b
       left join lifecycle_rules_enabled as r on r.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: low
 Tags:
   aws_foundational_security:
@@ -49,4 +49,4 @@ Tags:
   - aws
   service:
   - AWS/S3
-Title: S3 buckets should have lifecycle policies configured
+Managed: true

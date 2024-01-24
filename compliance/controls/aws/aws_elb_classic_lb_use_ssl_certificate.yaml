@@ -1,13 +1,8 @@
-Description: Because sensitive data can exist and to help protect data at transit, ensure encryption is enabled for your Elastic Load Balancing.
 ID: aws_elb_classic_lb_use_ssl_certificate
-Managed: true
-ManualVerification: false
+Title: ELB classic load balancers should use SSL certificates
+Description: Because sensitive data can exist and to help protect data at transit, ensure encryption is enabled for your Elastic Load Balancing.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_classic_load_balancer
-  PrimaryTable: aws_ec2_classic_load_balancer
   QueryToExecute: |
     with detailed_classic_listeners as (
       select
@@ -39,6 +34,11 @@ Query:
     from
       aws_ec2_classic_load_balancer as a
       left join detailed_classic_listeners as b on a.kaytu_resource_id = b.kaytu_resource_id;
+  Connector: AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+  - aws_ec2_classic_load_balancer
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -77,4 +77,4 @@ Tags:
   - AWS/ELB
   soc_2:
   - "true"
-Title: ELB classic load balancers should use SSL certificates
+Managed: true

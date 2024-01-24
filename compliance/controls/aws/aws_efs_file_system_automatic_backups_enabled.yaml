@@ -1,13 +1,8 @@
-Description: To help with data back-up processes, ensure your Amazon Elastic File System (Amazon EFS) file systems are a part of an AWS Backup plan.
 ID: aws_efs_file_system_automatic_backups_enabled
-Managed: true
-ManualVerification: false
+Title: EFS file systems should be in a backup plan
+Description: To help with data back-up processes, ensure your Amazon Elastic File System (Amazon EFS) file systems are a part of an AWS Backup plan.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_efs_file_system
-  PrimaryTable: aws_efs_file_system
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_efs_file_system;
+  Connector: AWS
+  PrimaryTable: aws_efs_file_system
+  ListOfTables:
+  - aws_efs_file_system
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -59,4 +59,4 @@ Tags:
   - AWS/EFS
   soc_2:
   - "true"
-Title: EFS file systems should be in a backup plan
+Managed: true

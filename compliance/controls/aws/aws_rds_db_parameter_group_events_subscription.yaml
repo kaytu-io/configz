@@ -1,13 +1,8 @@
-Description: This control checks whether an Amazon RDS event subscription exists with notifications enabled for the following source type, event category key-value pairs.
 ID: aws_rds_db_parameter_group_events_subscription
-Managed: true
-ManualVerification: false
+Title: An RDS event notifications subscription should be configured for critical database parameter group events
+Description: This control checks whether an Amazon RDS event subscription exists with notifications enabled for the following source type, event category key-value pairs.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_event_subscription
-  PrimaryTable: aws_rds_db_event_subscription
   QueryToExecute: |
     select
       arn as resource,
@@ -26,6 +21,11 @@ Query:
       , region, account_id
     from
       aws_rds_db_event_subscription;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_event_subscription
+  ListOfTables:
+  - aws_rds_db_event_subscription
+ManualVerification: false
 Severity: low
 Tags:
   aws_foundational_security:
@@ -40,4 +40,4 @@ Tags:
   - aws
   service:
   - AWS/RDS
-Title: An RDS event notifications subscription should be configured for critical database parameter group events
+Managed: true

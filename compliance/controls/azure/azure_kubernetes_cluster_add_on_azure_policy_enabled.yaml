@@ -1,14 +1,8 @@
-Description: Azure Policy Add-on for Kubernetes service (AKS) extends Gatekeeper v3, an admission controller webhook for Open Policy Agent (OPA), to apply at-scale enforcements and safeguards on your clusters in a centralized, consistent manner.
 ID: azure_kubernetes_cluster_add_on_azure_policy_enabled
-Managed: true
-ManualVerification: false
+Title: Azure Policy Add-on for Kubernetes service (AKS) should be installed and enabled on your clusters
+Description: Azure Policy Add-on for Kubernetes service (AKS) extends Gatekeeper v3, an admission controller webhook for Open Policy Agent (OPA), to apply at-scale enforcements and safeguards on your clusters in a centralized, consistent manner.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_kubernetes_cluster
-  - azure_subscription
-  PrimaryTable: azure_kubernetes_cluster
   QueryToExecute: |
     select
       kc.id as resource,
@@ -30,10 +24,16 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = kc.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+  - azure_kubernetes_cluster
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/KubernetesService
-Title: Azure Policy Add-on for Kubernetes service (AKS) should be installed and enabled on your clusters
+Managed: true

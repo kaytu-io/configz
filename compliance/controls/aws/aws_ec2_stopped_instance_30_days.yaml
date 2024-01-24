@@ -1,13 +1,8 @@
-Description: Enable this rule to help with the baseline configuration of Amazon Elastic Compute Cloud (Amazon EC2) instances by checking whether Amazon EC2 instances have been stopped for more than the allowed number of days, according to your organization's standards.
 ID: aws_ec2_stopped_instance_30_days
-Managed: true
-ManualVerification: false
+Title: EC2 stopped instances should be removed in 30 days
+Description: Enable this rule to help with the baseline configuration of Amazon Elastic Compute Cloud (Amazon EC2) instances by checking whether Amazon EC2 instances have been stopped for more than the allowed number of days, according to your organization's standards.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  PrimaryTable: aws_ec2_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -26,6 +21,11 @@ Query:
       , region, account_id
     from
       aws_ec2_instance;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+  - aws_ec2_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -58,4 +58,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: EC2 stopped instances should be removed in 30 days
+Managed: true

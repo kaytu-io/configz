@@ -1,14 +1,8 @@
-Description: Azure Defender for container registries provides vulnerability scanning of any images pulled within the last 30 days, pushed to your registry, or imported, and exposes detailed findings per image.
 ID: azure_container_registry_azure_defender_enabled
-Managed: true
-ManualVerification: false
+Title: Azure Defender for container registries should be enabled
+Description: Azure Defender for container registries provides vulnerability scanning of any images pulled within the last 30 days, pushed to your registry, or imported, and exposes detailed findings per image.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
-  PrimaryTable: azure_security_center_subscription_pricing
   QueryToExecute: |
     select
       pricing.id as resource,
@@ -30,10 +24,16 @@ Query:
     where
       sub.subscription_id = pricing.subscription_id
       and name = 'ContainerRegistry';
+  Connector: Azure
+  PrimaryTable: azure_security_center_subscription_pricing
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/ContainerRegistry
-Title: Azure Defender for container registries should be enabled
+Managed: true

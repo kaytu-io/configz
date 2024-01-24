@@ -1,14 +1,8 @@
-Description: This setting enables Microsoft Cloud App Security (MCAS) integration with Security Center.
 ID: azure_securitycenter_mcas_integration
-Managed: true
-ManualVerification: false
+Title: Ensure that Microsoft Cloud App Security (MCAS) integration with Security Center is selected
+Description: This setting enables Microsoft Cloud App Security (MCAS) integration with Security Center.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_setting
-  - azure_subscription
-  PrimaryTable: azure_security_center_setting
   QueryToExecute: |
     select
       sc_sett.id as resource,
@@ -29,6 +23,12 @@ Query:
       right join azure_subscription sub on sc_sett.subscription_id = sub.subscription_id
     where
       name = 'MCAS';
+  Connector: Azure
+  PrimaryTable: azure_security_center_setting
+  ListOfTables:
+  - azure_security_center_setting
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -49,4 +49,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-Title: Ensure that Microsoft Cloud App Security (MCAS) integration with Security Center is selected
+Managed: true

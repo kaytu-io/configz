@@ -1,13 +1,8 @@
-Description: This control checks whether Amazon SQS queues are encrypted at rest.
 ID: aws_sqs_queue_encrypted_at_rest
-Managed: true
-ManualVerification: false
+Title: Amazon SQS queues should be encrypted at rest
+Description: This control checks whether Amazon SQS queues are encrypted at rest.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_sqs_queue
-  PrimaryTable: aws_sqs_queue
   QueryToExecute: |
     select
       queue_arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_sqs_queue;
+  Connector: AWS
+  PrimaryTable: aws_sqs_queue
+  ListOfTables:
+  - aws_sqs_queue
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/SQS
-Title: Amazon SQS queues should be encrypted at rest
+Managed: true

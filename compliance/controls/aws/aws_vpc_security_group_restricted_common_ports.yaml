@@ -1,14 +1,8 @@
-Description: This control checks whether unrestricted incoming traffic for the security groups is accessible to the specified ports that have the highest risk. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 for those ports.
 ID: aws_vpc_security_group_restricted_common_ports
-Managed: true
-ManualVerification: false
+Title: Security groups should not allow unrestricted access to ports with high risk
+Description: This control checks whether unrestricted incoming traffic for the security groups is accessible to the specified ports that have the highest risk. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 for those ports.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_vpc_security_group
-  - aws_vpc_security_group_rule
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with ingress_ssh_rules as (
       select
@@ -120,6 +114,12 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_ssh_rules on ingress_ssh_rules.group_id = sg.group_id;
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -134,4 +134,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: Security groups should not allow unrestricted access to ports with high risk
+Managed: true

@@ -1,14 +1,8 @@
-Description: Use virtual network service endpoints to restrict access to your app from selected subnets from an Azure virtual network. To learn more about App Service service endpoints, visit https://aks.ms/appservice-vnet-service-endpoint.
 ID: azure_appservice_web_app_use_virtual_service_endpoint
-Managed: true
-ManualVerification: false
+Title: App Service apps should use a virtual network service endpoint
+Description: Use virtual network service endpoints to restrict access to your app from selected subnets from an Azure virtual network. To learn more about App Service service endpoints, visit https://aks.ms/appservice-vnet-service-endpoint.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_web_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_web_app
   QueryToExecute: |
     select
       a.id as resource,
@@ -30,10 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_web_app
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
   - "true"
   service:
   - Azure/AppService
-Title: App Service apps should use a virtual network service endpoint
+Managed: true

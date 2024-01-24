@@ -1,13 +1,8 @@
-Description: This control checks that the access granted by the S3 bucket is restricted by any of the principals, federated users, service principals, IP addresses, or VPCs that you provide. The rule is compliant if a bucket policy is not present.
 ID: aws_s3_bucket_policy_restrict_public_access
-Managed: true
-ManualVerification: false
+Title: S3 bucket policy should prohibit public access
+Description: This control checks that the access granted by the S3 bucket is restricted by any of the principals, federated users, service principals, IP addresses, or VPCs that you provide. The rule is compliant if a bucket policy is not present.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     with public_buckets as (
       select
@@ -39,6 +34,11 @@ Query:
     from
       aws_s3_bucket as b
       left join public_buckets as p on p.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -59,4 +59,4 @@ Tags:
   - AWS/S3
   soc_2:
   - "true"
-Title: S3 bucket policy should prohibit public access
+Managed: true

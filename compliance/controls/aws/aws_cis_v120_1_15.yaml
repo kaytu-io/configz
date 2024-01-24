@@ -1,8 +1,8 @@
-Description: The AWS support portal allows account owners to establish security questions that can be used to authenticate individuals calling AWS customer service for support. It is recommended that security questions be established.
 ID: aws_cis_v120_1_15
-Managed: true
-ManualVerification: true
+Title: Ensure security questions are registered in the AWS account
+Description: The AWS support portal allows account owners to establish security questions that can be used to authenticate individuals calling AWS customer service for support. It is recommended that security questions be established.
 Query: null
+ManualVerification: true
 Severity: ""
 Tags:
   category:
@@ -23,4 +23,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
-Title: Ensure security questions are registered in the AWS account
+Managed: true

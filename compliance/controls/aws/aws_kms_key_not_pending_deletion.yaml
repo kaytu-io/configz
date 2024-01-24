@@ -1,13 +1,8 @@
-Description: To help protect data at rest, ensure necessary customer master keys (CMKs) are not scheduled for deletion in AWS Key Management Service (AWS KMS).
 ID: aws_kms_key_not_pending_deletion
-Managed: true
-ManualVerification: false
+Title: KMS keys should not be pending deletion
+Description: To help protect data at rest, ensure necessary customer master keys (CMKs) are not scheduled for deletion in AWS Key Management Service (AWS KMS).
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_kms_key
-  PrimaryTable: aws_kms_key
   QueryToExecute: |
     select
       arn as resource,
@@ -27,6 +22,11 @@ Query:
       aws_kms_key
     where
       key_manager = 'CUSTOMER';
+  Connector: AWS
+  PrimaryTable: aws_kms_key
+  ListOfTables:
+  - aws_kms_key
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -59,4 +59,4 @@ Tags:
   - AWS/KMS
   soc_2:
   - "true"
-Title: KMS keys should not be pending deletion
+Managed: true

@@ -1,13 +1,8 @@
-Description: Ensure if Amazon OpenSearch Service (OpenSearch Service) domains are configured to send logs to Amazon CloudWatch Logs. The rule is compliant if a log is enabled for an OpenSearch Service domain. This rule is non compliant if logging is not configured.
 ID: aws_es_domain_logs_to_cloudwatch
-Managed: true
-ManualVerification: false
+Title: Elasticsearch domain should send logs to CloudWatch
+Description: Ensure if Amazon OpenSearch Service (OpenSearch Service) domains are configured to send logs to Amazon CloudWatch Logs. The rule is compliant if a log is enabled for an OpenSearch Service domain. This rule is non compliant if logging is not configured.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_elasticsearch_domain
-  PrimaryTable: aws_elasticsearch_domain
   QueryToExecute: |
     select
       arn as resource,
@@ -48,6 +43,11 @@ Query:
       , region, account_id
     from
       aws_elasticsearch_domain;
+  Connector: AWS
+  PrimaryTable: aws_elasticsearch_domain
+  ListOfTables:
+  - aws_elasticsearch_domain
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -82,4 +82,4 @@ Tags:
   - AWS/ES
   soc_2:
   - "true"
-Title: Elasticsearch domain should send logs to CloudWatch
+Managed: true

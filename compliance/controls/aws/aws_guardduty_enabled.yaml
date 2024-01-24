@@ -1,14 +1,8 @@
-Description: Amazon GuardDuty can help to monitor and detect potential cybersecurity events by using threat intelligence feeds.
 ID: aws_guardduty_enabled
-Managed: true
-ManualVerification: false
+Title: GuardDuty should be enabled
+Description: Amazon GuardDuty can help to monitor and detect potential cybersecurity events by using threat intelligence feeds.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_guardduty_detector
-  - aws_region
-  PrimaryTable: aws_region
   QueryToExecute: |
     select
       'arn:' || r.partition || '::' || r.region || ':' || r.account_id as resource,
@@ -34,6 +28,12 @@ Query:
     from
       aws_region as r
       left join aws_guardduty_detector d on r.account_id = d.account_id and r.name = d.region;
+  Connector: AWS
+  PrimaryTable: aws_region
+  ListOfTables:
+  - aws_guardduty_detector
+  - aws_region
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -72,4 +72,4 @@ Tags:
   - AWS/GuardDuty
   soc_2:
   - "true"
-Title: GuardDuty should be enabled
+Managed: true

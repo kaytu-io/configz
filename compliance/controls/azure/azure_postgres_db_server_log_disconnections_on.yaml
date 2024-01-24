@@ -1,15 +1,8 @@
-Description: Enable log_disconnections on PostgreSQL Servers.
-DocumentURI: ""
 ID: azure_postgres_db_server_log_disconnections_on
-Managed: true
-ManualVerification: false
+Title: Ensure server parameter 'log_disconnections' is set to 'ON' for PostgreSQL Database Server
+Description: Enable log_disconnections on PostgreSQL Servers.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_postgresql_server
-  - azure_subscription
-  PrimaryTable: azure_postgresql_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -33,6 +26,12 @@ Query:
     where
       config ->> 'Name' = 'log_disconnections'
       and sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_postgresql_server
+  ListOfTables:
+  - azure_postgresql_server
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -53,10 +52,4 @@ Tags:
   - azure
   service:
   - Azure/PostgreSQL
-  x-kaytu-explanation:
-  - "Azure provides various controls and configurations for optimizing your services based on your requirements. One of these is enabling `log_disconnections` on PostgreSQL servers.\n\n`log_disconnections` is a configuration parameter that can be enabled on PostgreSQL servers in Azure. When this feature is enabled, it logs the end of each session, including the duration of the session in milliseconds. This can be beneficial for auditing purposes or debugging database connection issues.\n\nYou can enable `log_disconnections` using Azure portal, Azure CLI, or Azure PowerShell. However, there is no direct markup language like XML or HTML that can enable `log_disconnections`.\n\nHere is an example of how you can enable this feature using Azure CLI:\n\n```shell\naz postgres server configuration set --name log_disconnections --resource-group [ResourceGroup] --server-name [ServerName] --value ON\n```\n\nPlease replace `[ResourceGroup]` and `[ServerName]` with your own values.\n\nYou can also enable `log_disconnections` through Azure portal by navigating to your PostgreSQL server -> Settings -> Configuration parameters -> Search for `log_disconnections` and set it as enabled.\n\nNote: You should have appropriate permissions to the PostgreSQL server to change the configuration."
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance to the Azure Control, \"Enable log_disconnections on PostgreSQL Servers,\" can lead to a variety of costs, both financial and operational. Here are some significant implications:\n\n1. **Lack of Auditability**: Without enabling log_disconnections, it's harder to monitor and audit user-disconnection, which may be crucial data for identifying potential security threats or anomalies. This lack reduces the visibility into the system’s operation.\n\n2. **Increased Security Risk**: Without the appropriate logging, it becomes increasingly difficult to detect and respond to potential security threats. In the event of actual data breaches, not having the necessary logs might hinder investigation and mitigation processes.\n\n3. **Non-Compliance Penalties**: Failure to comply with certain industry regulations and standards (like GDPR, HIPAA, PCI-DSS, etc.) that require specific logging capabilities could result in hefty fines and penalties.\n\n4. **Loss of Trust**: Poor security practice can lead to loss of customers' trust and brand reputation if sensitive information is exposed in breaches that could have been prevented or quickly mitigated with proper logging.\n\n5. **Operational Inefficiencies**: If issues arise within the PostgreSQL Server connections, the lack of log_disconnections can prolong the time it takes to diagnose and resolve the issues, resulting in operational inefficiencies and unnecessary downtime. \n\n6. **Possible Legal Implications**: In the event of a serious data breach, the lack of appropriate logs could lead to legal repercussions, particularly if the lack of compliance can be tied to negligence.\n\nTo avoid these costs, it is advisable to follow the Azure Control and enable log_disconnections on PostgreSQL Servers to maintain comprehensive logs regarding the disconnection events. Additionally, these logs should be reviewed and managed efficiently to detect any unusual activity at the earliest."
-  x-kaytu-usefulness-example:
-  - "This control enables logging of all disconnections to the PostgreSQL Servers. It would help system administrators to mitigate any risk that could affect data availability and safety. \n\nFor instance, suppose there is a company using Azure PostgreSQL like an eCommerce store. With multiple departments accessing the database, continuous connections and disconnections are expected. However, if the backend PostgreSQL database suddenly starts experiencing frequent unexpected disconnections, it can be very concerning.\n\nUnexpected disconnections might indicate network problems, server instability, or, worse, malicious activity. By enabling log_disconnections on PostgreSQL Servers, the system administrators can log all disconnection events, inspect them, and take appropriate actions. It would be easier to detect and troubleshoot the issue causing these unexpected disconnections. Therefore, the log_disconnection control is extremely useful in ensuring database's availability and security.\n\nHere is an example of how to enable the log_disconnections in PostgreSQL.\n\n```\npostgresql:\n  parameters:\n    log_disconnections: on\n```\n\nIn this example, the log_disconnections parameter in the PostgreSQL configuration is set to 'on,' which will log all disconnection events to the server."
-Title: Ensure server parameter 'log_disconnections' is set to 'ON' for PostgreSQL Database Server
+Managed: true

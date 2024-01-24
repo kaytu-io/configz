@@ -1,14 +1,8 @@
-Description: Ensure if Amazon Elastic File System (Amazon EFS) File Systems are protected by a backup plan. The rule is non compliant if the EFS File System is not covered by a backup plan.
 ID: aws_efs_file_system_protected_by_backup_plan
-Managed: true
-ManualVerification: false
+Title: EFS file systems should be protected by backup plan
+Description: Ensure if Amazon Elastic File System (Amazon EFS) File Systems are protected by a backup plan. The rule is non compliant if the EFS File System is not covered by a backup plan.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_backup_protected_resource
-  - aws_efs_file_system
-  PrimaryTable: aws_efs_file_system
   QueryToExecute: |
     with backup_protected_file_system as (
       select
@@ -35,6 +29,12 @@ Query:
     from
       aws_efs_file_system as f
       left join backup_protected_file_system as b on f.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_efs_file_system
+  ListOfTables:
+  - aws_backup_protected_resource
+  - aws_efs_file_system
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -65,4 +65,4 @@ Tags:
   - AWS/EFS
   soc_2:
   - "true"
-Title: EFS file systems should be protected by backup plan
+Managed: true

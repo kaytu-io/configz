@@ -1,15 +1,8 @@
-Description: Enable audit_log_enabled on MySQL Servers.
-DocumentURI: ""
 ID: azure_mysql_server_audit_logging_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure server parameter 'audit_log_enabled' is set to 'ON' for MySQL Database Server
+Description: Enable audit_log_enabled on MySQL Servers.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_mysql_server
-  - azure_subscription
-  PrimaryTable: azure_mysql_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -33,6 +26,12 @@ Query:
     where
       config ->> 'Name' = 'audit_log_enabled'
       and sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_mysql_server
+  ListOfTables:
+  - azure_mysql_server
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -53,42 +52,4 @@ Tags:
   - azure
   service:
   - Azure/MySQL
-  x-kaytu-explanation:
-  - "The `audit_log_enabled` control in Azure is used to enable auditing on MySQL servers. Auditing is a security measure that records all the events occurring on your MySQL server. This includes login attempts, queries executed, and changes in database structure. It helps you monitor the server, detect suspicious activities, and comply with regulatory standards.\n\nEnabling `audit_log_enabled` control will help to track these events and find out what happened, when it happened, and who made the change.\n\nHere is how you can enable it in the Azure Policy JSON format:\n\n```json\n{\n  \"properties\": {\n    \"displayName\": \"Enable audit log on MySQL servers\",\n    \"policyType\": \"BuiltIn\",\n    \"mode\": \"Indexed\",\n    \"description\": \"This policy enables the audit log on MySQL servers.\",\n    \"metadata\": {\n      \"version\": \"1.0.0\",\n      \"category\": \"SQL\"\n    },\n    \"parameters\": {},\n    \"policyRule\": {\n      \"if\": {\n        \"allOf\": [\n          {\n            \"field\": \"type\",\n            \"equals\": \"Microsoft.DBforMySQL/servers\"\n          },\n          {\n            \"field\": \"Microsoft.DBforMySQL/servers/auditingSettings[*].state\",\n            \"notEquals\": \"Enabled\"\n          }\n        ]\n      },\n      \"then\": {\n        \"effect\": \"DeployIfNotExists\",\n        \"details\": {\n          \"type\": \"Microsoft.DBforMySQL/servers/auditingSettings\",\n          \"existenceCondition\": {\n            \"field\": \"Microsoft.DBforMySQL/servers/auditingSettings[*].state\",\n            \"equals\": \"Enabled\"\n          },\n          \"roleDefinitionIds\": [\n            \"/providers/microsoft.authorization/roleDefinitions/XXXX\"\n          ],\n          \"deployment\": {\n            \"properties\": {\n              \"parameters\": {\n                \"auditingSettingsName\": {\n                  \"value\": \"default\"\n                },\n                \"state\": {\n                  \"value\": \"Enabled\"\n                }\n              },\n              \"template\": {\n                \"$schema\": \"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\n                \"contentVersion\": \"1.0.0.0\",\n                \"resources\": [\n                  {\n                    \"type\": \"Microsoft.DBforMySQL/servers/auditingSettings\",\n                    \"apiVersion\": \"2017-12-01\",\n                    \"name\": \"[concat(parameters('auditingSettingsName'))]\",\n                    \"properties\": {\n                      \"state\": \"[parameters('state')]\"\n                    }\n                  }\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n```\nThis policy checks if auditing is enabled on all MySQL servers (`Microsoft.DBforMySQL/servers`) and if not it deploys the necessary resources to enable it. As the effect is `DeployIfNotExists`, it will only perform the action if auditing is disabled."
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance with the Azure control \"Enable audit_log_enabled on MySQL Servers\" can potentially have significant costs. Firstly, it involves the financial, operational, security, and reputational risks associated with potential data breaches or unauthorized access.\n\n1. **Financial Costs**: If an organization fails to enable audit_log_enabled, it misses the opportunity to track database events and user activity on MySQL servers. If a security incident occurs, this could lead to substantial financial losses including regulatory fines and the costs associated with identifying, containing, and recovering from the incident.\n\n2. **Operational Costs**: Without enabling this control, your IT and security teams may spend significant amounts of time troubleshooting or investigating issues that could have been easily traced with proper auditing. This could lead to increased operational costs and decreased productivity.\n\n3. **Security Costs**: Failing to enable audit logging can leave your MySQL servers more vulnerable to attacks, as malicious activities could go undetected. This could potentially lead to the damage or loss of vital data, interruption of business operations, etc.\n\n4. **Reputational Costs**: In the event of a data breach or auditable event, the reputation of the company could be damaged if it is found to have not enforced adequate controls such as enabling the audit logs.\n\n5. **Regulatory Compliance Costs**: Depending on the industry and location of the business, there may also be compliance regulations that mandate certain levels of auditing and logging. Non-compliance with these regulations could result in substantial fines or penalties.\n\nThus, the cost of non-compliance to the Azure control - 'Enable audit_log_enabled on MySQL Servers' is intertwined with the potential ramifications of poor data governance and inadequate security measures."
-  x-kaytu-usefulness-example:
-  - |-
-    The `audit_log_enabled` Azure Control is beneficial in a scenario where a company has an Azure-based MySQL Server. The company wants to ensure the security of their data, enable accountability, and keep track of all server activities.
-
-    ```markup
-    resource "azurerm_mysql_server" "example" {
-      name                = "example-mysql-server"
-      location            = azurerm_resource_group.example.location
-      resource_group_name = azurerm_resource_group.example.name
-
-      administrator_login          = "mysqladmin"
-      administrator_login_password = "Password12345678"
-
-      sku_name   = "GP_Gen5_4"
-      storage_mb = 51200
-      version    = "5.7"
-
-      auto_grow_enabled                 = true
-      backup_retention_days             = 7
-      geo_redundant_backup_enabled      = false
-      infrastructure_encryption_enabled = false
-      public_network_access_enabled     = true
-      ssl_enforcement_enabled           = true
-      ssl_minimal_tls_version_enforced  = "TLS1_2"
-
-      audit_log_enabled = true
-
-      timeouts {
-        create = "60m"
-        delete = "20m"
-      }
-    }
-    ```
-    In the configuration above, the company has enabled the audit_log feature on their MySQL Server (`audit_log_enabled = true`). As a result, every time a significant event occurs on the server (like changes to users, permissions, databases, or data), Azure logs that event. The company can use these logs to track who did what on the server, which is crucial for investigating potential security breaches and ensuring accountability among its team members.
-Title: Ensure server parameter 'audit_log_enabled' is set to 'ON' for MySQL Database Server
+Managed: true

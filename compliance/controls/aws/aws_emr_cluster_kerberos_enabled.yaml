@@ -1,13 +1,8 @@
-Description: The access permissions and authorizations can be managed and incorporated with the principles of least privilege and separation of duties, by enabling Kerberos for Amazon EMR clusters.
 ID: aws_emr_cluster_kerberos_enabled
-Managed: true
-ManualVerification: false
+Title: EMR cluster Kerberos should be enabled
+Description: The access permissions and authorizations can be managed and incorporated with the principles of least privilege and separation of duties, by enabling Kerberos for Amazon EMR clusters.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_emr_cluster
-  PrimaryTable: aws_emr_cluster
   QueryToExecute: |
     select
       cluster_arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_emr_cluster;
+  Connector: AWS
+  PrimaryTable: aws_emr_cluster
+  ListOfTables:
+  - aws_emr_cluster
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -51,4 +51,4 @@ Tags:
   - AWS/EMR
   soc_2:
   - "true"
-Title: EMR cluster Kerberos should be enabled
+Managed: true

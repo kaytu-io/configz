@@ -1,13 +1,8 @@
-Description: This control checks whether a Classic Load Balancer has been configured to span multiple Availability Zones. The control fails if the Classic Load Balancer does not span multiple Availability Zones.
 ID: aws_elb_classic_lb_multiple_az_configured
-Managed: true
-ManualVerification: false
+Title: Classic Load Balancers should span multiple Availability Zones
+Description: This control checks whether a Classic Load Balancer has been configured to span multiple Availability Zones. The control fails if the Classic Load Balancer does not span multiple Availability Zones.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_classic_load_balancer
-  PrimaryTable: aws_ec2_classic_load_balancer
   QueryToExecute: |
     select
       arn as resource,
@@ -22,6 +17,11 @@ Query:
       , region, account_id
     from
       aws_ec2_classic_load_balancer;
+  Connector: AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+  - aws_ec2_classic_load_balancer
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -36,4 +36,4 @@ Tags:
   - aws
   service:
   - AWS/ELB
-Title: Classic Load Balancers should span multiple Availability Zones
+Managed: true

@@ -1,15 +1,8 @@
-Description: The Azure Bastion service allows secure remote access to Azure Virtual Machines over the Internet without exposing remote access protocol ports and services directly to the Internet. The Azure Bastion service provides this access using TLS over 443/TCP, and subscribes to hardened configurations within an organization's Azure Active Directory service.
-DocumentURI: ""
 ID: azure_network_bastion_host_min_1
-Managed: true
-ManualVerification: false
+Title: Ensure an Azure Bastion Host Exists
+Description: The Azure Bastion service allows secure remote access to Azure Virtual Machines over the Internet without exposing remote access protocol ports and services directly to the Internet. The Azure Bastion service provides this access using TLS over 443/TCP, and subscribes to hardened configurations within an organization's Azure Active Directory service.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_bastion_host
-  - azure_subscription
-  PrimaryTable: azure_bastion_host
   QueryToExecute: |
     with bastion_hosts as (
       select
@@ -43,6 +36,12 @@ Query:
     from
       azure_subscription as sub
       left join bastion_hosts as i on i.subscription_id = sub.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_bastion_host
+  ListOfTables:
+  - azure_bastion_host
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -63,10 +62,4 @@ Tags:
   - azure
   service:
   - Azure/Compute
-  x-kaytu-explanation:
-  - "Azure Bastion is a fully managed PaaS service that provides secure and seamless RDP (Remote Desktop Protocol) and SSH (Secure Shell) access to virtual machines. \n\n```xml\n<azure-bastion>\n  <secure-remote-access>true</secure-remote-access>\n  <internet-access>false</internet-access>\n  <remote-access-protocol-ports>none</remote-access-protocol-ports>\n  <remote-access-services>none</remote-access-services>\n  <access-method>TLS over 443/TCP</access-method>\n  <configurations>Hardened</configurations>\n  <authentication>Azure Active Directory</authentication>\n</azure-bastion>\n```\nThis markup might not be 100% semantically correct, as there's not an official XML or markup language for representing Azure resources, but it aims to describe the key features/properties of Azure Bastion in a more structured format.\n\nDifferent tags within the above markup breakdown and represents different services provided by Azure bastion.\n\n- `<secure-remote-access>`: This tag indicates that the Azure Bastion service provides secure remote access.\n- `<internet-access>`: This tag set to \"false\" signifies that there is no direct exposure of remote access protocol ports and services to the Internet.\n- `<remote-access-protocol-ports>` and `<remote-access-services>`: These tags set to \"none\" indicate that these are not directly exposed to the Internet.\n- `<access-method>`: This tag refers how the access is provided, which is via TLS over 443/TCP.\n- `<configurations>`: This tag refers to the hardened configurations within an organization's Active Directory service in Azure.\n- `<authentication>`: This indicates that Azure Bastion uses Azure Active Directory as its authentication method."
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance with the Azure Bastion service can have several potential costs:\n\n1. **Security Risks**: Without the Azure Bastion service, remote access protocol ports and services would be directly exposed to the Internet, increasing the risk of unauthorized access and potential data breaches.\n\n2. **Regulatory Fines**: Non-compliance with secure practices could result in regulatory fines if consumer or user data is compromised.\n\n3. **Reputation Damage**: In the event of a data breach, an organization's reputation could be severely damaged, resulting in loss of customer trust and potentially business.\n\n4. **Increased Operational Costs**: The Azure Bastion service is designed to provide secure access using hardened configurations within Azure Active Directory service. Without it, an organization might need to spend additional resources on managing and maintaining secure access.\n\n5. **Potential Data Loss**: Directly exposing remote access protocol ports can lead to potential unauthorized data access, alteration, or deletion.\n\n6. **Loss of Confidentiality**: Without the secure connections provided by the Azure Bastion service, data transmitted over the network might be intercepted by unauthorized parties.\n\nIn sum, while missing out on the Azure Bastion service might save short-term costs, the long-term repercussions can be costly and detrimental to an organization's operation, security, and reputation."
-  x-kaytu-usefulness-example:
-  - "For example, a company called Tech Corp. has its departments spread across different geographical locations and they all leverage cloud resources on Azure. These resources include various virtual machines that store sensitive company information. Traditionally, these Azure VMs would be exposed via a public IP, and remote desktop protocol ports were open to the internet. This traditional setup posed a significant security threat, as the companies VMs were vulnerable to various malicious activities and cyber attacks. \n\nNow, using Azure Bastion service, Tech Corp. can significantly enhance their security. They don't have to expose their VMs' remote access protocol ports and services directly to the internet. Instead, the IT department from any location in the company can connect securely using SSL and remote desktop protocol through their web browser. \n\nHere is an example in Azure Resource Manager (ARM) template:\n\n```markdown\n{\n  \"name\": \"bastion\",\n  \"type\": \"Microsoft.Network/bastionHosts\",\n  \"apiVersion\": \"2019-04-01\",\n  \"location\": \"[parameters('location')]\",\n  \"dependsOn\": [\n    \"[concat('Microsoft.Network/publicIpAddresses/', parameters('bastionPublicIP'))]\",\n    \"[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetwork'))]\"\n  ],\n  \"properties\": {\n    \"ipConfigurations\": [\n      {\n        \"name\": \"bastionIpConfig\",\n        \"properties\": {\n          \"subnet\": {\n            \"id\": \"[parameters('bastionSubnetId')]\"\n          },\n          \"publicIPAddress\": {\n            \"id\": \"[parameters('bastionPublicIPId')]\"\n          }\n        }\n      }\n    ]\n  }\n}\n```\n\nSecure Shell (SSH) access to Linux VMs and Remote Desktop Protocol (RDP) access to Windows VMs over the Azure Portal are made possible due to the Azure Bastion service. This comprehensive security measure ensures that Tech Corp. can continue its operations without worrying about their VMs' security."
-Title: Ensure an Azure Bastion Host Exists
+Managed: true

@@ -1,13 +1,8 @@
-Description: A rule group contains rules that define how your firewall processes traffic in your VPC. An empty stateless rule group when present in a firewall policy might give the impression that the rule group will process traffic. However, when the stateless rule group is empty, it does not process traffic.
 ID: aws_networkfirewall_stateless_rule_group_not_empty
-Managed: true
-ManualVerification: false
+Title: Stateless network firewall rule group should not be empty
+Description: A rule group contains rules that define how your firewall processes traffic in your VPC. An empty stateless rule group when present in a firewall policy might give the impression that the rule group will process traffic. However, when the stateless rule group is empty, it does not process traffic.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_networkfirewall_rule_group
-  PrimaryTable: aws_networkfirewall_rule_group
   QueryToExecute: |
     select
       arn as resource,
@@ -26,6 +21,11 @@ Query:
       , region, account_id
     from
       aws_networkfirewall_rule_group;
+  Connector: AWS
+  PrimaryTable: aws_networkfirewall_rule_group
+  ListOfTables:
+  - aws_networkfirewall_rule_group
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -40,4 +40,4 @@ Tags:
   - aws
   service:
   - AWS/NetworkFirewall
-Title: Stateless network firewall rule group should not be empty
+Managed: true

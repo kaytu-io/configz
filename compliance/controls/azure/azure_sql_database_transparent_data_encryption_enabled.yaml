@@ -1,15 +1,8 @@
-Description: ""
-DocumentURI: ""
 ID: azure_sql_database_transparent_data_encryption_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure that 'Data encryption' is set to 'On' on a SQL Database
+Description: ""
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_database
-  - azure_subscription
-  PrimaryTable: azure_sql_database
   QueryToExecute: |
     select
       s.database_id resource,
@@ -32,6 +25,12 @@ Query:
     where
       sub.subscription_id = s.subscription_id
       and s.name <> 'master';
+  Connector: Azure
+  PrimaryTable: azure_sql_database
+  ListOfTables:
+  - azure_sql_database
+  - azure_subscription
+ManualVerification: false
 Severity: The text does not provide information about a specific Azure Control to determine its suggested severity.
 Tags:
   category:
@@ -52,10 +51,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  x-kaytu-explanation:
-  - "I assume you want to know about Azure Resource Manager, which is the deployment and management system provided by Azure. It provides a management layer that enables you to create, update, and delete resources in your Azure subscription.\n\nIn Azure development, the term \"markup\" usually refers to Azure Resource Manager (ARM) templates. ARM templates are written in JavaScript Object Notation (JSON), a lightweight data-interchange format. This templates are declarative and state what the deployment is rather than how the deployment happens.\n\nHere is an example of it:\n\n\n```\n{\n  \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\n  \"contentVersion\": \"1.0.0.0\",\n  \"parameters\": {},\n  \"variables\": {},\n  \"resources\": [],\n  \"outputs\": {}\n}\n```\n\nLet me explain the different elements:\n\n1. **Schema**: Specifies the location of the JSON schema file. This is used by development tools, such as Visual Studio and Resource Manager, to validate the template document is correct.\n\n2. **Content Version**: Specifies the version of the template (in the form major.minor.patch.build). When deploying resources using the template, this value can be used to ensure that the right template is being used.\n\n3. **Parameters**: Values that are provided when deployment is executed to customize resource deployment perform input validation and constrain what values can be used.\n\n4. **Variables**: Values that are used as JSON fragments in the template to simplify template language expressions.\n\n5. **Resources**: Specifies the resources to deploy based on types, names and configurable properties.\n\n6. **Outputs**: Values that are returned after deployment, usually in the form of properties of the resources deployed. \n\nYou can customize your Azure deployment according to your requirements by modifying these sections in your ARM templates.\n"
-  x-kaytu-noncompliance-cost:
-  - You have mentioned a control related to Microsoft Azure but you didn't specify which control you're talking about. Microsoft Azure has several compliance offerings like Azure Government, Azure China 21Vianet, Azure Germany, and third-party considerations. In general, the costs of non-compliance can be financial losses, legal repercussions, or reputational damage. It's also important to mention that in Microsoft Azure, non-compliance can also lead to the suspension or cancellation of the service. Please provide the specifics so that I could give you a more accurate response.
-  x-kaytu-usefulness-example:
-  - "Azure Control: Azure Logic Apps\n\nThese are cloud-based services that allow developers to schedule and automate business processes and workflows, integrating various applications, data, and services across the enterprise. \n\nUsefulness: \n\nFor instance, let's consider a scenario where a company needs to ensure timely follow-ups with clients after a support ticket closure. Automated emails are sent to clients once a support ticket is closed, asking for their feedback and if they require further assistance. \n\nIn this scenario, the developer can automate this process using Azure Logic Apps by integrating the support ticket system with the company's email system. \n\nHere is a sample code in markup format:\n\n```xml\n<logic-app xmlns=\"http://schemas.microsoft.com/logic/2015/03/logicapp\">\n  <properties>\n    <definition>\n      {\n        \"$schema\": \"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#\",\n        \"contentVersion\": \"1.0.0.0\",\n        \"parameters\": {\"runworkflowmanually\": {\"defaultValue\": true, \"type\": \"Bool\"}, \n                     },\n        \"triggers\": {\n          \"When_ticket_closes\": {\n            \"recurrence\": { \"frequency\": \"Minute\", \"interval\": 1 },\n            \"splitOn\": \"@triggerBody()?.value\",\n            \"type\": \"Request\",\n            \"uri\": \"https://ticketsystem.com/tickets?status=closed\"\n          }\n        },\n        \"actions\": {\n          \"Send_email\": {\n            \"type\": \"SendEmail\",\n            \"inputs\": {\n              \"From\": \"no-reply@company.com\",\n              \"To\": \"@triggerBody().value.client_email\",\n              \"Subject\": \"Feedback on ticket support\",\n              \"Body\": \"Hello, your support ticket has been closed. Can you provide your feedback ?\"\n            },\n            \"runAfter\": { \"When_ticket_closes\": [\"Succeeded\"] }\n          }\n        }\n      },\n    \"parameters\": {\"runworkflowmanually\": {}},\n    \"state\": \"Enabled\"\n  },\n  \"name\": \"FollowUpEmailLogicApp\"\n</logic-app>\n```\nThis Azure Logic App checks every minute if there are any closed tickets from `https://ticketsystem.com/tickets?status=closed` and if it finds any, it automatically sends follow-up emails to the clients associated with those tickets."
-Title: Ensure that 'Data encryption' is set to 'On' on a SQL Database
+Managed: true

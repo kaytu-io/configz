@@ -1,13 +1,8 @@
-Description: This control checks whether a Network Firewall policy has any stateful or stateless rule groups associated. The control fails if stateless or stateful rule groups are not assigned.
 ID: aws_networkfirewall_firewall_policy_rule_group_not_empty
-Managed: true
-ManualVerification: false
+Title: Network Firewall policies should have at least one rule group associated
+Description: This control checks whether a Network Firewall policy has any stateful or stateless rule groups associated. The control fails if stateless or stateful rule groups are not assigned.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_networkfirewall_firewall_policy
-  PrimaryTable: aws_networkfirewall_firewall_policy
   QueryToExecute: |
     select
       arn as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_networkfirewall_firewall_policy;
+  Connector: AWS
+  PrimaryTable: aws_networkfirewall_firewall_policy
+  ListOfTables:
+  - aws_networkfirewall_firewall_policy
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -41,4 +41,4 @@ Tags:
   - aws
   service:
   - AWS/NetworkFirewall
-Title: Network Firewall policies should have at least one rule group associated
+Managed: true

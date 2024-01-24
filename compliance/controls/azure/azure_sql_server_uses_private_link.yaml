@@ -1,14 +1,8 @@
-Description: Private endpoint connections enforce secure communication by enabling private connectivity to Azure SQL Database.
 ID: azure_sql_server_uses_private_link
-Managed: true
-ManualVerification: false
+Title: Private endpoint connections on Azure SQL Database should be enabled
+Description: Private endpoint connections enforce secure communication by enabling private connectivity to Azure SQL Database.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_server
-  - azure_subscription
-  PrimaryTable: azure_sql_server
   QueryToExecute: |
     with sql_server_private_connection as (
       select
@@ -40,10 +34,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/SQL
-Title: Private endpoint connections on Azure SQL Database should be enabled
+Managed: true

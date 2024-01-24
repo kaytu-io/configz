@@ -1,13 +1,8 @@
-Description: This control checks if an Amazon SageMaker notebook instance is launched within a custom virtual private cloud (VPC). This control fails if a SageMaker notebook instance is not launched within a custom VPC or if it is launched in the SageMaker service VPC.
 ID: aws_sagemaker_notebook_instance_in_vpc
-Managed: true
-ManualVerification: false
+Title: SageMaker notebook instances should be launched in a custom VPC
+Description: This control checks if an Amazon SageMaker notebook instance is launched within a custom virtual private cloud (VPC). This control fails if a SageMaker notebook instance is not launched within a custom VPC or if it is launched in the SageMaker service VPC.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_sagemaker_notebook_instance
-  PrimaryTable: aws_sagemaker_notebook_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_sagemaker_notebook_instance;
+  Connector: AWS
+  PrimaryTable: aws_sagemaker_notebook_instance
+  ListOfTables:
+  - aws_sagemaker_notebook_instance
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/SageMaker
-Title: SageMaker notebook instances should be launched in a custom VPC
+Managed: true

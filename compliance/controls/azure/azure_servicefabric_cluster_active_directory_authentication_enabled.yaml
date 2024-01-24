@@ -1,14 +1,8 @@
-Description: Audit usage of client authentication only via Azure Active Directory in Service Fabric.
 ID: azure_servicefabric_cluster_active_directory_authentication_enabled
-Managed: true
-ManualVerification: false
+Title: Service Fabric clusters should only use Azure Active Directory for client authentication
+Description: Audit usage of client authentication only via Azure Active Directory in Service Fabric.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_service_fabric_cluster
-  - azure_subscription
-  PrimaryTable: azure_service_fabric_cluster
   QueryToExecute: |
     select
       a.id as resource,
@@ -28,10 +22,16 @@ Query:
     from
       azure_service_fabric_cluster a,
       azure_subscription sub;
+  Connector: Azure
+  PrimaryTable: azure_service_fabric_cluster
+  ListOfTables:
+  - azure_service_fabric_cluster
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/ServiceFabric
-Title: Service Fabric clusters should only use Azure Active Directory for client authentication
+Managed: true

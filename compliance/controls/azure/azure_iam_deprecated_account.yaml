@@ -1,16 +1,8 @@
-Description: Deprecated accounts should be removed from your subscriptions. Deprecated accounts are accounts that have been blocked from signing in.
 ID: azure_iam_deprecated_account
-Managed: true
-ManualVerification: false
+Title: Deprecated accounts should be removed from your subscription
+Description: Deprecated accounts should be removed from your subscriptions. Deprecated accounts are accounts that have been blocked from signing in.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_role_assignment
-  - azure_role_definition
-  - azure_tenant
-  - azuread_user
-  PrimaryTable: azuread_user
   QueryToExecute: |
     with disabled_users as (
       select
@@ -44,6 +36,14 @@ Query:
       azure_tenant as t,
       azuread_user as u
       left join disabled_users as d on d.id = u.id;
+  Connector: Azure
+  PrimaryTable: azuread_user
+  ListOfTables:
+  - azure_role_assignment
+  - azure_role_definition
+  - azure_tenant
+  - azuread_user
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -54,4 +54,4 @@ Tags:
   - "true"
   service:
   - Azure/ActiveDirectory
-Title: Deprecated accounts should be removed from your subscription
+Managed: true

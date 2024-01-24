@@ -1,13 +1,8 @@
-Description: This control checks whether Amazon Redshift clusters have automated snapshots enabled. It also checks whether the snapshot retention period is greater than or equal to seven.
 ID: aws_redshift_cluster_automatic_snapshots_min_7_days
-Managed: true
-ManualVerification: false
+Title: Amazon Redshift clusters should have automatic snapshots enabled
+Description: This control checks whether Amazon Redshift clusters have automated snapshots enabled. It also checks whether the snapshot retention period is greater than or equal to seven.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_redshift_cluster
-  PrimaryTable: aws_redshift_cluster
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_redshift_cluster;
+  Connector: AWS
+  PrimaryTable: aws_redshift_cluster
+  ListOfTables:
+  - aws_redshift_cluster
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -65,4 +65,4 @@ Tags:
   - AWS/Redshift
   soc_2:
   - "true"
-Title: Amazon Redshift clusters should have automatic snapshots enabled
+Managed: true

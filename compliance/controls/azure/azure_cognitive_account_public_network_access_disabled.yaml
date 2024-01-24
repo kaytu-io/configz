@@ -1,14 +1,8 @@
-Description: Disabling public network access improves security by ensuring that Cognitive Services account isn't exposed on the public internet. Creating private endpoints can limit exposure of Cognitive Services account.
 ID: azure_cognitive_account_public_network_access_disabled
-Managed: true
-ManualVerification: false
+Title: Cognitive Services accounts should disable public network access
+Description: Disabling public network access improves security by ensuring that Cognitive Services account isn't exposed on the public internet. Creating private endpoints can limit exposure of Cognitive Services account.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_cognitive_account
-  - azure_subscription
-  PrimaryTable: azure_cognitive_account
   QueryToExecute: |
     select
       s.id as resource,
@@ -30,10 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_cognitive_account
+  ListOfTables:
+  - azure_cognitive_account
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/CognitiveServices
-Title: Cognitive Services accounts should disable public network access
+Managed: true

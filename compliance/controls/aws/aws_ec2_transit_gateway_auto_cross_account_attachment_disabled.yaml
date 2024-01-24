@@ -1,13 +1,8 @@
-Description: This control checks if EC2 Transit Gateways are automatically accepting shared VPC attachments. This control fails for a Transit Gateway that automatically accepts shared VPC attachment requests.
 ID: aws_ec2_transit_gateway_auto_cross_account_attachment_disabled
-Managed: true
-ManualVerification: false
+Title: EC2 Transit Gateways should not automatically accept VPC attachment requests
+Description: This control checks if EC2 Transit Gateways are automatically accepting shared VPC attachments. This control fails for a Transit Gateway that automatically accepts shared VPC attachment requests.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_transit_gateway
-  PrimaryTable: aws_ec2_transit_gateway
   QueryToExecute: |
     select
       transit_gateway_arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_ec2_transit_gateway;
+  Connector: AWS
+  PrimaryTable: aws_ec2_transit_gateway
+  ListOfTables:
+  - aws_ec2_transit_gateway
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: EC2 Transit Gateways should not automatically accept VPC attachment requests
+Managed: true

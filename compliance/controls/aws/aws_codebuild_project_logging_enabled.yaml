@@ -1,13 +1,8 @@
-Description: This control checks if an AWS CodeBuild project environment has at least one log option enabled. The rule is non compliant if the status of all present log configurations is set to 'DISABLED'.
 ID: aws_codebuild_project_logging_enabled
-Managed: true
-ManualVerification: false
+Title: CodeBuild projects should have logging enabled
+Description: This control checks if an AWS CodeBuild project environment has at least one log option enabled. The rule is non compliant if the status of all present log configurations is set to 'DISABLED'.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_codebuild_project
-  PrimaryTable: aws_codebuild_project
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_codebuild_project;
+  Connector: AWS
+  PrimaryTable: aws_codebuild_project
+  ListOfTables:
+  - aws_codebuild_project
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -41,4 +41,4 @@ Tags:
   - aws
   service:
   - AWS/CodeBuild
-Title: CodeBuild projects should have logging enabled
+Managed: true

@@ -1,14 +1,8 @@
-Description: An inventory of the software platforms and applications within the organization is possible by managing Amazon Elastic Compute Cloud (Amazon EC2) instances with AWS Systems Manager.
 ID: aws_ec2_instance_ssm_managed
-Managed: true
-ManualVerification: false
+Title: EC2 instances should be managed by AWS Systems Manager
+Description: An inventory of the software platforms and applications within the organization is possible by managing Amazon Elastic Compute Cloud (Amazon EC2) instances with AWS Systems Manager.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  - aws_ssm_managed_instance
-  PrimaryTable: aws_ec2_instance
   QueryToExecute: |
     select
       i.arn as resource,
@@ -29,6 +23,12 @@ Query:
     from
       aws_ec2_instance i
       left join aws_ssm_managed_instance m on m.instance_id = i.instance_id;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+  - aws_ec2_instance
+  - aws_ssm_managed_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -67,4 +67,4 @@ Tags:
   - AWS/SSM
   soc_2:
   - "true"
-Title: EC2 instances should be managed by AWS Systems Manager
+Managed: true

@@ -1,14 +1,8 @@
-Description: Ensure if Amazon DynamoDB tables are protected by a backup plan. The rule is non compliant if the DynamoDB Table is not covered by a backup plan.
 ID: aws_dynamodb_table_protected_by_backup_plan
-Managed: true
-ManualVerification: false
+Title: DynamoDB table should be protected by backup plan
+Description: Ensure if Amazon DynamoDB tables are protected by a backup plan. The rule is non compliant if the DynamoDB Table is not covered by a backup plan.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_backup_protected_resource
-  - aws_dynamodb_table
-  PrimaryTable: aws_dynamodb_table
   QueryToExecute: |
     with backup_protected_table as (
       select
@@ -35,6 +29,12 @@ Query:
     from
       aws_dynamodb_table as t
       left join backup_protected_table as b on t.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_dynamodb_table
+  ListOfTables:
+  - aws_backup_protected_resource
+  - aws_dynamodb_table
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -65,4 +65,4 @@ Tags:
   - AWS/DynamoDB
   soc_2:
   - "true"
-Title: DynamoDB table should be protected by backup plan
+Managed: true

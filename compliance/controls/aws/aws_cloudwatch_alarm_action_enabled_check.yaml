@@ -1,13 +1,8 @@
-Description: Checks if Amazon CloudWatch alarm actions are in enabled state. The rule is non compliant if the CloudWatch alarm actions are not in enabled state.
 ID: aws_cloudwatch_alarm_action_enabled_check
-Managed: true
-ManualVerification: false
+Title: CloudWatch alarm action should be enabled
+Description: Checks if Amazon CloudWatch alarm actions are in enabled state. The rule is non compliant if the CloudWatch alarm actions are not in enabled state.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudwatch_alarm
-  PrimaryTable: aws_cloudwatch_alarm
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_cloudwatch_alarm;
+  Connector: AWS
+  PrimaryTable: aws_cloudwatch_alarm
+  ListOfTables:
+  - aws_cloudwatch_alarm
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -39,4 +39,4 @@ Tags:
   - AWS/CloudWatch
   soc_2:
   - "true"
-Title: CloudWatch alarm action should be enabled
+Managed: true

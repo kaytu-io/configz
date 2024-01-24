@@ -1,14 +1,8 @@
-Description: API Gateway logging displays detailed views of users who accessed the API and the way they accessed the API.
 ID: aws_apigateway_stage_logging_enabled
-Managed: true
-ManualVerification: false
+Title: API Gateway stage logging should be enabled
+Description: API Gateway logging displays detailed views of users who accessed the API and the way they accessed the API.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_api_gateway_stage
-  - aws_api_gatewayv2_stage
-  PrimaryTable: null
   QueryToExecute: |
     with all_stages as (
       select
@@ -58,6 +52,12 @@ Query:
       , region, account_id
     from
       all_stages;
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_api_gateway_stage
+  - aws_api_gatewayv2_stage
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -96,4 +96,4 @@ Tags:
   - AWS/APIGateway
   soc_2:
   - "true"
-Title: API Gateway stage logging should be enabled
+Managed: true

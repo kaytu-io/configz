@@ -1,14 +1,8 @@
-Description: Disabling the public network access property improves security by ensuring your Azure SQL Database can only be accessed from a private endpoint. This configuration denies all logins that match IP or virtual network based firewall rules.
 ID: azure_sql_db_public_network_access_disabled
-Managed: true
-ManualVerification: false
+Title: Public network access on Azure SQL Database should be disabled
+Description: Disabling the public network access property improves security by ensuring your Azure SQL Database can only be accessed from a private endpoint. This configuration denies all logins that match IP or virtual network based firewall rules.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_server
-  - azure_subscription
-  PrimaryTable: azure_sql_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -30,10 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/SQL
-Title: Public network access on Azure SQL Database should be disabled
+Managed: true

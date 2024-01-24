@@ -1,13 +1,8 @@
-Description: Check if Amazon Elastic Container Service (Amazon ECS) task definition with host networking mode has 'privileged' or 'user' container definitions.The rule is non compliant for task definitions with host network mode and container definitions of privileged=false or empty and user=root or empty.
 ID: aws_ecs_task_definition_user_for_host_mode_check
-Managed: true
-ManualVerification: false
+Title: ECS task definition container definitions should be checked for host mode
+Description: Check if Amazon Elastic Container Service (Amazon ECS) task definition with host networking mode has 'privileged' or 'user' container definitions.The rule is non compliant for task definitions with host network mode and container definitions of privileged=false or empty and user=root or empty.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ecs_task_definition
-  PrimaryTable: aws_ecs_task_definition
   QueryToExecute: |
     with host_network_task_definition as (
       select
@@ -45,6 +40,11 @@ Query:
     from
       aws_ecs_task_definition as a
       left join host_network_task_definition as b on a.task_definition_arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_ecs_task_definition
+  ListOfTables:
+  - aws_ecs_task_definition
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -73,4 +73,4 @@ Tags:
   - aws
   service:
   - AWS/ECS
-Title: ECS task definition container definitions should be checked for host mode
+Managed: true

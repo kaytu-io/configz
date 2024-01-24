@@ -1,15 +1,8 @@
-Description: Checks if the inline policies attached to IAM users, roles, and groups do not allow blocked actions on all AWS Key Management Service (KMS) keys. The rule is non - compliant if any blocked action is allowed on all KMS keys in an inline policy.
 ID: aws_iam_policy_inline_no_blocked_kms_actions
-Managed: true
-ManualVerification: false
+Title: Ensure inline policies attached to IAM users, roles, and groups should not allow blocked actions on KMS keys
+Description: Checks if the inline policies attached to IAM users, roles, and groups do not allow blocked actions on all AWS Key Management Service (KMS) keys. The rule is non - compliant if any blocked action is allowed on all KMS keys in an inline policy.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_group
-  - aws_iam_role
-  - aws_iam_user
-  PrimaryTable: null
   QueryToExecute: |
     with iam_resource_types as (
       select
@@ -81,6 +74,13 @@ Query:
     from
       iam_resource_types as u
       left join kms_blocked_actions as w on u.arn = w.arn;
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_iam_group
+  - aws_iam_role
+  - aws_iam_user
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -103,4 +103,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
-Title: Ensure inline policies attached to IAM users, roles, and groups should not allow blocked actions on KMS keys
+Managed: true

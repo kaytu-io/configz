@@ -1,13 +1,8 @@
-Description: Checks if the managed AWS Identity and Access Management (IAM) policies that you create do not allow blocked actions on AWS KMS keys. The rule is non - compliant if any blocked action is allowed on AWS KMS keys by the managed IAM policy.
 ID: aws_iam_policy_custom_no_blocked_kms_actions
-Managed: true
-ManualVerification: false
+Title: Ensure managed IAM policies should not allow blocked actions on KMS keys
+Description: Checks if the managed AWS Identity and Access Management (IAM) policies that you create do not allow blocked actions on AWS KMS keys. The rule is non - compliant if any blocked action is allowed on AWS KMS keys by the managed IAM policy.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_policy
-  PrimaryTable: aws_iam_policy
   QueryToExecute: |
     with kms_blocked_actions as (
       select
@@ -41,6 +36,11 @@ Query:
       left join kms_blocked_actions as w on p.arn = w.arn
     where
       not p.is_aws_managed;
+  Connector: AWS
+  PrimaryTable: aws_iam_policy
+  ListOfTables:
+  - aws_iam_policy
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -67,4 +67,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
-Title: Ensure managed IAM policies should not allow blocked actions on KMS keys
+Managed: true

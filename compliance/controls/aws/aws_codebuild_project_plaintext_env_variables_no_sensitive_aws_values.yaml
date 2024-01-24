@@ -1,13 +1,8 @@
-Description: Ensure authentication credentials AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY do not exist within AWS CodeBuild project environments. Do not store these variables in clear text. Storing these variables in clear text leads to unintended data exposure and unauthorized access.
 ID: aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
-Managed: true
-ManualVerification: false
+Title: CodeBuild project plaintext environment variables should not contain sensitive AWS values
+Description: Ensure authentication credentials AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY do not exist within AWS CodeBuild project environments. Do not store these variables in clear text. Storing these variables in clear text leads to unintended data exposure and unauthorized access.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_codebuild_project
-  PrimaryTable: aws_codebuild_project
   QueryToExecute: |
     with invalid_key_name as (
       select
@@ -37,6 +32,11 @@ Query:
     from
       aws_codebuild_project as a
       left join invalid_key_name b on a.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_codebuild_project
+  ListOfTables:
+  - aws_codebuild_project
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -67,4 +67,4 @@ Tags:
   - AWS/CodeBuild
   soc_2:
   - "true"
-Title: CodeBuild project plaintext environment variables should not contain sensitive AWS values
+Managed: true

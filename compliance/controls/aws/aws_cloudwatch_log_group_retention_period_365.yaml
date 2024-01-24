@@ -1,13 +1,8 @@
-Description: Ensure a minimum duration of event log data is retained for your log groups to help with troubleshooting and forensics investigations.
 ID: aws_cloudwatch_log_group_retention_period_365
-Managed: true
-ManualVerification: false
+Title: Log group retention period should be at least 365 days
+Description: Ensure a minimum duration of event log data is retained for your log groups to help with troubleshooting and forensics investigations.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudwatch_log_group
-  PrimaryTable: aws_cloudwatch_log_group
   QueryToExecute: |
     select
       arn as resource,
@@ -26,6 +21,11 @@ Query:
       , region, account_id
     from
       aws_cloudwatch_log_group;
+  Connector: AWS
+  PrimaryTable: aws_cloudwatch_log_group
+  ListOfTables:
+  - aws_cloudwatch_log_group
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -62,4 +62,4 @@ Tags:
   - AWS/CloudWatch
   soc_2:
   - "true"
-Title: Log group retention period should be at least 365 days
+Managed: true

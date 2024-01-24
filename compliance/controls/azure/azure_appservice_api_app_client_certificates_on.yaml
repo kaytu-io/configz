@@ -1,14 +1,8 @@
-Description: Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.
 ID: azure_appservice_api_app_client_certificates_on
-Managed: true
-ManualVerification: false
+Title: App Service apps should have 'Client Certificates (Incoming client certificates)' enabled
+Description: Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_web_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_web_app
   QueryToExecute: |
     with all_api_app as (
       select
@@ -47,6 +41,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_web_app
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -55,4 +55,4 @@ Tags:
   - "true"
   service:
   - Azure/AppService
-Title: App Service apps should have 'Client Certificates (Incoming client certificates)' enabled
+Managed: true

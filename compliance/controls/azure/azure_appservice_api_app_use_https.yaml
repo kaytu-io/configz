@@ -1,14 +1,8 @@
-Description: Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks.
 ID: azure_appservice_api_app_use_https
-Managed: true
-ManualVerification: false
+Title: App Service API apps should only be accessible over HTTPS
+Description: Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_web_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_web_app
   QueryToExecute: |
     with all_api_app as (
       select
@@ -47,6 +41,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_web_app
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -57,4 +57,4 @@ Tags:
   - "true"
   service:
   - Azure/AppService
-Title: App Service API apps should only be accessible over HTTPS
+Managed: true

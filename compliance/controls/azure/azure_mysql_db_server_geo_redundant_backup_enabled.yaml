@@ -1,14 +1,8 @@
-Description: Azure Database for MySQL allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data is not only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option in case of a region failure. Configuring geo-redundant storage for backup is only allowed during server create.
 ID: azure_mysql_db_server_geo_redundant_backup_enabled
-Managed: true
-ManualVerification: false
+Title: Geo-redundant backup should be enabled for Azure Database for MySQL
+Description: Azure Database for MySQL allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data is not only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option in case of a region failure. Configuring geo-redundant storage for backup is only allowed during server create.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_mysql_server
-  - azure_subscription
-  PrimaryTable: azure_mysql_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -30,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_mysql_server
+  ListOfTables:
+  - azure_mysql_server
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -38,4 +38,4 @@ Tags:
   - "true"
   service:
   - Azure/MySQL
-Title: Geo-redundant backup should be enabled for Azure Database for MySQL
+Managed: true

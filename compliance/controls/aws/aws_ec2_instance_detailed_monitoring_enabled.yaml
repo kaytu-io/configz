@@ -1,13 +1,8 @@
-Description: Enable this rule to help improve Amazon Elastic Compute Cloud (Amazon EC2) instance monitoring on the Amazon EC2 console, which displays monitoring graphs with a 1-minute period for the instance.
 ID: aws_ec2_instance_detailed_monitoring_enabled
-Managed: true
-ManualVerification: false
+Title: EC2 instance detailed monitoring should be enabled
+Description: Enable this rule to help improve Amazon Elastic Compute Cloud (Amazon EC2) instance monitoring on the Amazon EC2 console, which displays monitoring graphs with a 1-minute period for the instance.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  PrimaryTable: aws_ec2_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_ec2_instance;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+  - aws_ec2_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -47,4 +47,4 @@ Tags:
   - AWS/EC2
   soc_2:
   - "true"
-Title: EC2 instance detailed monitoring should be enabled
+Managed: true

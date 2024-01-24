@@ -1,14 +1,8 @@
-Description: Microsoft Defender for Resource Manager scans incoming administrative requests to change your infrastructure from both CLI and the Azure portal.
 ID: azure_securitycenter_azure_defender_on_for_resource_manager
-Managed: true
-ManualVerification: false
+Title: Ensure That Microsoft Defender for Resource Manager Is Set To 'On'
+Description: Microsoft Defender for Resource Manager scans incoming administrative requests to change your infrastructure from both CLI and the Azure portal.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
-  PrimaryTable: azure_security_center_subscription_pricing
   QueryToExecute: |
     select
       sub_pricing.id as resource,
@@ -29,6 +23,12 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       name = 'Arm';
+  Connector: Azure
+  PrimaryTable: azure_security_center_subscription_pricing
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -49,4 +49,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-Title: Ensure That Microsoft Defender for Resource Manager Is Set To 'On'
+Managed: true

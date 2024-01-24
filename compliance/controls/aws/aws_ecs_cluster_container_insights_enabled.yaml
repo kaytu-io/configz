@@ -1,13 +1,8 @@
-Description: This control checks if ECS clusters use Container Insights. This control fails if Container Insights are not set up for a cluster.
 ID: aws_ecs_cluster_container_insights_enabled
-Managed: true
-ManualVerification: false
+Title: ECS clusters should have Container Insights enabled
+Description: This control checks if ECS clusters use Container Insights. This control fails if Container Insights are not set up for a cluster.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ecs_cluster
-  PrimaryTable: aws_ecs_cluster
   QueryToExecute: |
     select
       cluster_arn as resource,
@@ -26,6 +21,11 @@ Query:
     from
       aws_ecs_cluster as c,
       jsonb_array_elements(settings) as s;
+  Connector: AWS
+  PrimaryTable: aws_ecs_cluster
+  ListOfTables:
+  - aws_ecs_cluster
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -40,4 +40,4 @@ Tags:
   - aws
   service:
   - AWS/ECS
-Title: ECS clusters should have Container Insights enabled
+Managed: true

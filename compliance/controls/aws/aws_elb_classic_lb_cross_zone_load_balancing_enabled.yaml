@@ -1,13 +1,8 @@
-Description: Enable cross-zone load balancing for your Elastic Load Balancers (ELBs) to help maintain adequate capacity and availability. The cross-zone load balancing reduces the need to maintain equivalent numbers of instances in each enabled availability zone.
 ID: aws_elb_classic_lb_cross_zone_load_balancing_enabled
-Managed: true
-ManualVerification: false
+Title: ELB classic load balancers should have cross-zone load balancing enabled
+Description: Enable cross-zone load balancing for your Elastic Load Balancers (ELBs) to help maintain adequate capacity and availability. The cross-zone load balancing reduces the need to maintain equivalent numbers of instances in each enabled availability zone.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_classic_load_balancer
-  PrimaryTable: aws_ec2_classic_load_balancer
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_ec2_classic_load_balancer;
+  Connector: AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+  - aws_ec2_classic_load_balancer
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -55,4 +55,4 @@ Tags:
   - aws
   service:
   - AWS/ELB
-Title: ELB classic load balancers should have cross-zone load balancing enabled
+Managed: true

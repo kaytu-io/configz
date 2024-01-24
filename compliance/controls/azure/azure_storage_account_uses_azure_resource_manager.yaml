@@ -1,14 +1,8 @@
-Description: "Use new Azure Resource Manager for your storage accounts to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management."
 ID: azure_storage_account_uses_azure_resource_manager
-Managed: true
-ManualVerification: false
+Title: Storage accounts should be migrated to new Azure Resource Manager resources
+Description: "Use new Azure Resource Manager for your storage accounts to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management."
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_storage_account
-  - azure_subscription
-  PrimaryTable: azure_storage_account
   QueryToExecute: |
     select
       s.id as resource,
@@ -30,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
@@ -38,4 +38,4 @@ Tags:
   - "true"
   service:
   - Azure/Storage
-Title: Storage accounts should be migrated to new Azure Resource Manager resources
+Managed: true

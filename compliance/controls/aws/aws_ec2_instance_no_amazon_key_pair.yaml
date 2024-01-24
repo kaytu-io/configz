@@ -1,13 +1,8 @@
-Description: This control checks whether running EC2 instances are using key pairs. The control fails if a running EC2 instance uses a key pair.
 ID: aws_ec2_instance_no_amazon_key_pair
-Managed: true
-ManualVerification: false
+Title: EC2 instances should not use key pairs in running state
+Description: This control checks whether running EC2 instances are using key pairs. The control fails if a running EC2 instance uses a key pair.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  PrimaryTable: aws_ec2_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_ec2_instance;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+  - aws_ec2_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -37,4 +37,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: EC2 instances should not use key pairs in running state
+Managed: true

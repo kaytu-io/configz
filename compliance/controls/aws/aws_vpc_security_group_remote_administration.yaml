@@ -1,14 +1,8 @@
-Description: Security groups provide stateful filtering of ingress and egress network traffic to AWS resources. It is recommended that no security group allows unrestricted ingress access to remote server administration ports, such as SSH to port 22 and RDP to port 3389.
 ID: aws_vpc_security_group_remote_administration
-Managed: true
-ManualVerification: false
+Title: Ensure no security groups allow ingress from 0.0.0.0/0 to remote server administration ports
+Description: Security groups provide stateful filtering of ingress and egress network traffic to AWS resources. It is recommended that no security group allows unrestricted ingress access to remote server administration ports, such as SSH to port 22 and RDP to port 3389.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_vpc_security_group
-  - aws_vpc_security_group_rule
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with bad_rules as (
       select
@@ -55,6 +49,12 @@ Query:
     from
       aws_vpc_security_group as sg
       left join bad_rules on bad_rules.group_id = sg.group_id;
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -75,4 +75,4 @@ Tags:
   - aws
   service:
   - AWS/VPC
-Title: Ensure no security groups allow ingress from 0.0.0.0/0 to remote server administration ports
+Managed: true

@@ -1,13 +1,8 @@
-Description: Deploy Amazon Elastic Compute Cloud (Amazon EC2) instances within an Amazon Virtual Private Cloud (Amazon VPC) to enable secure communication between an instance and other services within the amazon VPC, without requiring an internet gateway, NAT device, or VPN connection.
 ID: aws_ec2_instance_in_vpc
-Managed: true
-ManualVerification: false
+Title: EC2 instances should be in a VPC
+Description: Deploy Amazon Elastic Compute Cloud (Amazon EC2) instances within an Amazon Virtual Private Cloud (Amazon VPC) to enable secure communication between an instance and other services within the amazon VPC, without requiring an internet gateway, NAT device, or VPN connection.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  PrimaryTable: aws_ec2_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_ec2_instance;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+  - aws_ec2_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -63,4 +63,4 @@ Tags:
   - AWS/EC2
   soc_2:
   - "true"
-Title: EC2 instances should be in a VPC
+Managed: true

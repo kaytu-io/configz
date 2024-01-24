@@ -1,15 +1,8 @@
-Description: Subscription ownership should not include permission to create custom owner roles. The principle of least privilege should be followed and only necessary privileges should be assigned instead of allowing full administrative access.
-DocumentURI: ""
 ID: azure_iam_no_custom_subscription_owner_roles_created
-Managed: true
-ManualVerification: false
+Title: Ensure that no custom subscription owner roles are created
+Description: Subscription ownership should not include permission to create custom owner roles. The principle of least privilege should be followed and only necessary privileges should be assigned instead of allowing full administrative access.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_role_definition
-  - azure_subscription
-  PrimaryTable: azure_subscription
   QueryToExecute: |
     with owner_custom_roles as (
       select
@@ -55,6 +48,12 @@ Query:
       cr.kaytu_resource_id,
       cr._ctx,
       sub.display_name;
+  Connector: Azure
+  PrimaryTable: azure_subscription
+  ListOfTables:
+  - azure_role_definition
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -75,24 +74,4 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
-  x-kaytu-explanation:
-  - |-
-    Here, control is addressing the privilege management within Azure, a cloud computing service created by Microsoft. 
-
-    Subscription owners in Azure generally have full administrative control and can perform any action of their choosing, with the ability to create custom owner roles being one of them. 
-
-    This control in the markup format is suggesting that subscription owners should not have the power to create custom owner roles. The rationale behind this is the principle of least privilege (PoLP). According to this principle, a user should be given the least amount of privileges necessary to carry out their role, and nothing more. This minimizes the potential damage certain roles can cause, either by error or by malicious intent.
-
-    In simpler terms, subscription owners should only hold the necessary permissions required for their function rather it being a default full administrative control, thus reducing needless exposure to risk.
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance with this Azure Control could potentially result in significant costs, both financial and operational. \n\n1. **Security Risks**: Allowing subscription ownership to include permission to create custom owner roles can lead to significant security risks. By ignoring the principle of least privilege (that is, assigning only necessary privileges), there can be unintentional access granted. This can lead to unauthorized operations, leading to security breaches, data leaks, or downtime on services. The cost of a data breach can be extremely high due to regulatory fines, penalties, and loss of customer trust.\n\n2. **Regulatory Compliance Violation**: Depending on the type of data your organization manages, non-compliance might result in violation of specific laws such as GDPR, HIPAA etc. This could lead to significant financial penalties, which can have severe impacts.\n\n3. **Operational Disruptions**: If everyone has administrative privileges, there's a risk of inconsistent management of Azure resource, resulting in significant operational disruptions. This could lead to unwanted changes and disruptions in services.\n\n4. **Increased Cost**: Giving too many individuals the ability to create resources can easily lead to an unmonitored increase in costs. This could severely impact the budget.\n\n5. **Inefficiency**: If every user has elevated permissions, it becomes challenging to manage system configurations or track changes in the environment. It leads to inefficiencies and could increase remediation costs. \n\nIn summary, the cost of non-compliance can be significant as it can lead to security breaches, regulatory penalties, operational inefficiencies, and increased costs. Therefore, it is crucial to follow the principle of least privilege in Azure environment, ensuring that users have just the rights they need to perform their jobs, nothing more."
-  x-kaytu-usefulness-example:
-  - |-
-    Azure Control is useful in maintaining security and governance in an organization by ensuring that subscription ownership does not include permission to create custom owner roles. This helps to minimize the risk of unauthorized access or incorrect settings caused by excessive permissions.
-
-    For instance, consider a large organization that uses Azure for various applications and services. They're multiple user roles, including developers, testers, managers, and system administrators. Each role requires different levels of access to perform their tasks.
-
-    If the organization allows the subscription owner to create custom roles, they might unintentionally provide administrative access to roles that don't require it, such as developers or testers. This could inadvertently lead to severe security breaches, such as unauthorized modification of services, mishandling of data, or potentially creating loopholes that external hackers might exploit.
-
-    By implementing this Azure Control, the organization can restrict the creation of custom owner roles. It forces the subscription owner to assign predefined roles that adhere to the principle of least privilege, ensuring that each role only has the access they require to complete their tasks. This helps the organization maintain a secure, efficient, and compliant Azure environment.
-Title: Ensure that no custom subscription owner roles are created
+Managed: true

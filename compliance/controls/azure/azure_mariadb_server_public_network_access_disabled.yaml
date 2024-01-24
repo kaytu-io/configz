@@ -1,14 +1,8 @@
-Description: Disable the public network access property to improve security and ensure your Azure Database for MariaDB can only be accessed from a private endpoint. This configuration strictly disables access from any public address space outside of Azure IP range, and denies all logins that match IP or virtual network-based firewall rules.
 ID: azure_mariadb_server_public_network_access_disabled
-Managed: true
-ManualVerification: false
+Title: Public network access should be disabled for MariaDB servers
+Description: Disable the public network access property to improve security and ensure your Azure Database for MariaDB can only be accessed from a private endpoint. This configuration strictly disables access from any public address space outside of Azure IP range, and denies all logins that match IP or virtual network-based firewall rules.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_mariadb_server
-  - azure_subscription
-  PrimaryTable: azure_mariadb_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -30,10 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_mariadb_server
+  ListOfTables:
+  - azure_mariadb_server
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/MariaDB
-Title: Public network access should be disabled for MariaDB servers
+Managed: true

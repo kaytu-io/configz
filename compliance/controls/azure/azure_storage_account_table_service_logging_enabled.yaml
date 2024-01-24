@@ -1,16 +1,15 @@
-Description: "Azure Table storage is a service that stores structured NoSQL data in the cloud, providing a key/attribute store with a schema-less design. Storage Logging happens server-side and allows details for both successful and failed requests to be recorded in the storage account. These logs allow users to see the details of read, write, and delete operations against the tables. Storage Logging log entries contain the following information about individual requests: timing information such as start time, end-to-end latency, and server latency; authentication details; concurrency information; and the sizes of the request and response messages."
-DocumentURI: ""
 ID: azure_storage_account_table_service_logging_enabled
-Managed: true
-ManualVerification: false
+Title: "Ensure Storage Logging is Enabled for Table Service for 'Read', 'Write', and 'Delete' Requests "
+Description: "Azure Table storage is a service that stores structured NoSQL data in the cloud, providing a key/attribute store with a schema-less design. Storage Logging happens server-side and allows details for both successful and failed requests to be recorded in the storage account. These logs allow users to see the details of read, write, and delete operations against the tables. Storage Logging log entries contain the following information about individual requests: timing information such as start time, end-to-end latency, and server latency; authentication details; concurrency information; and the sizes of the request and response messages."
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
+  QueryToExecute: "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when table_logging_write and table_logging_read and table_logging_delete then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when table_logging_write and table_logging_read and table_logging_delete\n      then sa.name || ' table service logging enabled for read, write, delete requests.'\n    else sa.name || ' table service logging not enabled for: ' ||\n      concat_ws(', ',\n        case when not table_logging_write then 'write' end,\n        case when not table_logging_read then 'read' end,\n        case when not table_logging_delete then 'delete' end\n      ) || ' requests.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as sa,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n"
+  Connector: Azure
+  PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_subscription
-  PrimaryTable: azure_storage_account
-  QueryToExecute: "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when table_logging_write and table_logging_read and table_logging_delete then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when table_logging_write and table_logging_read and table_logging_delete\n      then sa.name || ' table service logging enabled for read, write, delete requests.'\n    else sa.name || ' table service logging not enabled for: ' ||\n      concat_ws(', ',\n        case when not table_logging_write then 'write' end,\n        case when not table_logging_read then 'read' end,\n        case when not table_logging_delete then 'delete' end\n      ) || ' requests.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as sa,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n"
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -31,49 +30,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
-  x-kaytu-explanation:
-  - "Azure Table Storage allows storing structured NoSQL data in the cloud. It acts as a key/attribute store having a schema-less design. Storage Logging is performed on the server-side that records details about successful as well as failed requests in the storage account. These logs provide details of operations such as read, write, and delete operations performed against the tables.\n\nA Storage Logging log entry contains information about:\n\n- Timing Information: This includes the start time of a request, its end-to-end latency, and the server latency.\n- Authentication Details: Details about which user (or system) made a request and whether it was successfully authenticated or not\n- Concurrency Information: Details about simultaneous operations performed against the same data in the table\n- Request and Response Sizes: The sizes of both the request and the response messages\n\nHere is an example of how you would use this in markup format:\n\n```\n<StorageServiceProperties>\n   <Logging>\n      <Version>1.0</Version>\n      <Read>true</Read>\n      <Write>true</Write>\n      <Delete>true</Delete>\n      <RetentionPolicy>\n         <Enabled>true</Enabled>\n         <Days>7</Days>\n      </RetentionPolicy>\n   </Logging>\n   <HourMetrics>\n....\n</StorageServiceProperties>\n```\n\nIn this example, `Read`, `Write` and `Delete` are set to `true`, which means logging is enabled for these operations. The `RetentionPolicy` is also enabled and set to retain logs for 7 days."
-  x-kaytu-noncompliance-cost:
-  - |-
-    Non-compliance to Azure's Table storage control essentially means not implementing or maintaining storage logging. This could result in:
-
-    1. **Potential Data Breaches:** Without storage logging, it would be difficult to monitor who is accessing the data and what operations they're performing. This could leave the data susceptible to unauthorized changes or data breaches.
-
-    2. **Limited Auditability:** If things go wrong, especially in the case of a security incident like unauthorized access or data breach, logs are essential for forensic investigations. Without comprehensive logging, it would be impossible to conduct a thorough and accurate audit of actions.
-
-    3. **Lack of Performance Insight:** Storage logging provides key details about the performance of read, write, and delete operations against tables (e.g. timing information and server latency). Non-compliance to the control would mean lacking these valuable insights, potentially impacting service optimization and performance improvement efforts.
-
-    4. **Non-Compliance with Regulation:** Depending on the nature of the data being stored and processed, not implementing storage logging could also represent non-compliance with regulations like GDPR, HIPAA, etc. that require certain levels of data handling and processing logs.
-
-    The cost of non-compliance could hence include financial loss from data breaches, regulatory penalties, and missed opportunities for performance optimization.
-  x-kaytu-usefulness-example:
-  - |-
-    ```
-    An example of the usefulness of Azure Table Storage with Storage Logging can be a Supply Chain Management System. The system can leverage Azure Table Storage's NoSQL functionality to store a variety of data like order details, shipping details, customer details, etc. Data stored can be in the form of key/value pairs which can efficiently handle the different types of data.
-
-    Since supply chain operations are critical, the system needs to track each operation for audit purposes. This is where Storage Logging can be extremely useful. For instance, a deletion operation on an Order must be tracked with who performed the operation, what was the time of the operation, how much time it took, and what were the size of request and response. 
-
-    In case of any discrepancies or disputes, these logs can then be accessed and analyzed. Any signs of a security breach or operational concern can be identified through these storage logs. 
-
-    Here is a sample in markup format illustrating how this can look like:
-
-    ```xml
-    <Entry>
-      <RequestStart>2016-10-24T18:08:36.0242320Z</RequestStart>
-      <OperationType>DeleteEntity</OperationType>
-      <RequestStatus>Succeeded</RequestStatus>
-      <HttpStatusCode>204</HttpStatusCode>
-      <E2ELatency>23.2528</E2ELatency>
-      <ServerLatency>21.2251</ServerLatency>
-      <AuthenticationType>SAS</AuthenticationType>
-      <RequestPacketSize>395</RequestPacketSize>
-      <ResponsePacketSize>0</ResponsePacketSize>
-      <UserAgent>Python+azure-storage/0.32.0-0.33.0+(Python+CPython+3.5.2;+Windows+10)</UserAgent>
-      <UserObjectId>userId</UserObjectId>
-      <TableName>orders</TableName>
-      <ClientIp>192.0.2.1:12345</ClientIp>
-    </Entry>
-    ```
-    Above XML snippet provides detail about a `DeleteEntity` operation on `orders` table and other related information.
-    ```
-Title: "Ensure Storage Logging is Enabled for Table Service for 'Read', 'Write', and 'Delete' Requests "
+Managed: true

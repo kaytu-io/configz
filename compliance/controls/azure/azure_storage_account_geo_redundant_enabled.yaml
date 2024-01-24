@@ -1,14 +1,8 @@
-Description: Use geo-redundancy to create highly available applications.
 ID: azure_storage_account_geo_redundant_enabled
-Managed: true
-ManualVerification: false
+Title: Geo-redundant storage should be enabled for Storage Accounts
+Description: Use geo-redundancy to create highly available applications.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_storage_account
-  - azure_subscription
-  PrimaryTable: azure_storage_account
   QueryToExecute: |
     select
       s.id as resource,
@@ -30,10 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/Storage
-Title: Geo-redundant storage should be enabled for Storage Accounts
+Managed: true

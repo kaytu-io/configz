@@ -1,14 +1,8 @@
-Description: Checks if Amazon FSx File Systems are protected by a backup plan. The rule is non compliant if the Amazon FSx File System is not covered by a backup plan.
 ID: aws_fsx_file_system_protected_by_backup_plan
-Managed: true
-ManualVerification: false
+Title: FSx file system should be protected by backup plan
+Description: Checks if Amazon FSx File Systems are protected by a backup plan. The rule is non compliant if the Amazon FSx File System is not covered by a backup plan.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_backup_protected_resource
-  - aws_fsx_file_system
-  PrimaryTable: aws_fsx_file_system
   QueryToExecute: |
     with backup_protected_fsx_file_system as (
       select
@@ -35,6 +29,12 @@ Query:
     from
       aws_fsx_file_system as f
       left join backup_protected_fsx_file_system as b on f.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_fsx_file_system
+  ListOfTables:
+  - aws_backup_protected_resource
+  - aws_fsx_file_system
+ManualVerification: false
 Severity: ""
 Tags:
   cisa_cyber_essentials:
@@ -61,4 +61,4 @@ Tags:
   - AWS/FSx
   soc_2:
   - "true"
-Title: FSx file system should be protected by backup plan
+Managed: true

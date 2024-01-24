@@ -1,13 +1,8 @@
-Description: This control checks whether an Amazon Simple Notification Service notification is integrated with a CloudFormation stack. The control fails for a CloudFormation stack if there is no SNS notification associated with it.
 ID: aws_cloudformation_stack_notifications_enabled
-Managed: true
-ManualVerification: false
+Title: CloudFormation stacks should be integrated with Simple Notification Service (SNS)
+Description: This control checks whether an Amazon Simple Notification Service notification is integrated with a CloudFormation stack. The control fails for a CloudFormation stack if there is no SNS notification associated with it.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudformation_stack
-  PrimaryTable: aws_cloudformation_stack
   QueryToExecute: |
     select
       id as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_cloudformation_stack;
+  Connector: AWS
+  PrimaryTable: aws_cloudformation_stack
+  ListOfTables:
+  - aws_cloudformation_stack
+ManualVerification: false
 Severity: low
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFormation
-Title: CloudFormation stacks should be integrated with Simple Notification Service (SNS)
+Managed: true

@@ -1,13 +1,8 @@
-Description: This control checks whether OpenSearch domains have audit logging enabled. This control fails if an OpenSearch domain does not have audit logging enabled.
 ID: aws_opensearch_domain_audit_logging_enabled
-Managed: true
-ManualVerification: false
+Title: OpenSearch domains should have audit logging enabled
+Description: This control checks whether OpenSearch domains have audit logging enabled. This control fails if an OpenSearch domain does not have audit logging enabled.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_opensearch_domain
-  PrimaryTable: aws_opensearch_domain
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_opensearch_domain;
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+  - aws_opensearch_domain
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/OpenSearch
-Title: OpenSearch domains should have audit logging enabled
+Managed: true

@@ -1,14 +1,8 @@
-Description: Azure Private Link lets you connect your virtual networks to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Cognitive Services, you'll reduce the potential for data leakage.
 ID: azure_cognitive_account_private_link_used
-Managed: true
-ManualVerification: false
+Title: Cognitive Services should use private link
+Description: Azure Private Link lets you connect your virtual networks to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Cognitive Services, you'll reduce the potential for data leakage.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_cognitive_account
-  - azure_subscription
-  PrimaryTable: azure_cognitive_account
   QueryToExecute: |
     with cognitive_account as (
       select
@@ -52,10 +46,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = b.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_cognitive_account
+  ListOfTables:
+  - azure_cognitive_account
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/CognitiveServices
-Title: Cognitive Services should use private link
+Managed: true

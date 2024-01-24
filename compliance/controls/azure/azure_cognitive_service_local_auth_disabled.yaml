@@ -1,14 +1,8 @@
-Description: Disabling local authentication methods improves security by ensuring that Cognitive Services accounts require Azure Active Directory identities exclusively for authentication.
 ID: azure_cognitive_service_local_auth_disabled
-Managed: true
-ManualVerification: false
+Title: Cognitive Services accounts should have local authentication methods disabled
+Description: Disabling local authentication methods improves security by ensuring that Cognitive Services accounts require Azure Active Directory identities exclusively for authentication.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_cognitive_account
-  - azure_subscription
-  PrimaryTable: azure_cognitive_account
   QueryToExecute: |
     select
       a.id as resource,
@@ -28,10 +22,16 @@ Query:
     from
       azure_cognitive_account a,
       azure_subscription sub;
+  Connector: Azure
+  PrimaryTable: azure_cognitive_account
+  ListOfTables:
+  - azure_cognitive_account
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/CognitiveServices
-Title: Cognitive Services accounts should have local authentication methods disabled
+Managed: true

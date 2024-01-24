@@ -1,13 +1,8 @@
-Description: Checks if EBS volumes are attached to EC2 instances.
 ID: aws_ebs_volume_unused
-Managed: true
-ManualVerification: false
+Title: EBS volumes should be attached to EC2 instances
+Description: Checks if EBS volumes are attached to EC2 instances.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ebs_volume
-  PrimaryTable: aws_ebs_volume
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_ebs_volume;
+  Connector: AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+  - aws_ebs_volume
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -51,4 +51,4 @@ Tags:
   - aws
   service:
   - AWS/EBS
-Title: EBS volumes should be attached to EC2 instances
+Managed: true

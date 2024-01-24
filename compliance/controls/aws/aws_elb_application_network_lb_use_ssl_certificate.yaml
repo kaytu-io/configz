@@ -1,15 +1,8 @@
-Description: Ensure if Application Load Balancers and Network Load Balancers are configured to use certificates from AWS Certificate Manager (ACM). This rule is compliant if at least 1 load balancer is configured without a certificate from ACM.
 ID: aws_elb_application_network_lb_use_ssl_certificate
-Managed: true
-ManualVerification: false
+Title: ELB application and network load balancers should only use SSL or HTTPS listeners
+Description: Ensure if Application Load Balancers and Network Load Balancers are configured to use certificates from AWS Certificate Manager (ACM). This rule is compliant if at least 1 load balancer is configured without a certificate from ACM.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_application_load_balancer
-  - aws_ec2_load_balancer_listener
-  - aws_ec2_network_load_balancer
-  PrimaryTable: null
   QueryToExecute: |
     with listeners_without_certificate as (
       select
@@ -64,6 +57,13 @@ Query:
     from
       all_application_network_load_balacer as a
       left join listeners_without_certificate as b on a.arn = b.load_balancer_arn;
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  - aws_ec2_load_balancer_listener
+  - aws_ec2_network_load_balancer
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -92,4 +92,4 @@ Tags:
   - "true"
   service:
   - AWS/ELB
-Title: ELB application and network load balancers should only use SSL or HTTPS listeners
+Managed: true

@@ -1,14 +1,8 @@
-Description: Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for Function apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.
 ID: azure_appservice_function_app_latest_tls_version
-Managed: true
-ManualVerification: false
+Title: Function apps should use the latest TLS version
+Description: Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for Function apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_function_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_function_app
   QueryToExecute: |
     select
       app.id as resource,
@@ -30,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = app.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_function_app
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -38,4 +38,4 @@ Tags:
   - "true"
   service:
   - Azure/AppService
-Title: Function apps should use the latest TLS version
+Managed: true

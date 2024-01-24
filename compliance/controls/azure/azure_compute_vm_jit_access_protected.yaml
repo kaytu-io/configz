@@ -1,15 +1,8 @@
-Description: Possible network Just In Time (JIT) access will be monitored by Azure Security Center as recommendations
 ID: azure_compute_vm_jit_access_protected
-Managed: true
-ManualVerification: false
+Title: Management ports of virtual machines should be protected with just-in-time network access control
+Description: Possible network Just In Time (JIT) access will be monitored by Azure Security Center as recommendations
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_security_center_jit_network_access_policy
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     with compute as (
       select
@@ -47,6 +40,13 @@ Query:
       left join compute on true
     where
       jit.subscription_id = sub.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_security_center_jit_network_access_policy
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -55,4 +55,4 @@ Tags:
   - "true"
   service:
   - Azure/Compute
-Title: Management ports of virtual machines should be protected with just-in-time network access control
+Managed: true

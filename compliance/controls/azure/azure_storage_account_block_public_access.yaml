@@ -1,14 +1,8 @@
-Description: Anonymous public read access to containers and blobs in Azure Storage is a convenient way to share data but might present security risks. To prevent data breaches caused by undesired anonymous access, Microsoft recommends preventing public access to a storage account unless your scenario requires it.
 ID: azure_storage_account_block_public_access
-Managed: true
-ManualVerification: false
+Title: Storage account public access should be disallowed
+Description: Anonymous public read access to containers and blobs in Azure Storage is a convenient way to share data but might present security risks. To prevent data breaches caused by undesired anonymous access, Microsoft recommends preventing public access to a storage account unless your scenario requires it.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_storage_account
-  - azure_subscription
-  PrimaryTable: azure_storage_account
   QueryToExecute: |
     select
       sa.id as resource,
@@ -36,10 +30,16 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = sa.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/Storage
-Title: Storage account public access should be disallowed
+Managed: true

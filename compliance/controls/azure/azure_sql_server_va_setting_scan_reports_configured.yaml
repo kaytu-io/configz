@@ -1,15 +1,8 @@
-Description: Configure 'Send scan reports to' with email ids of concerned data owners/stakeholders for a critical SQL servers.
-DocumentURI: ""
 ID: azure_sql_server_va_setting_scan_reports_configured
-Managed: true
-ManualVerification: false
+Title: Ensure that VA setting Send scan reports to is configured for a SQL server
+Description: Configure 'Send scan reports to' with email ids of concerned data owners/stakeholders for a critical SQL servers.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_server
-  - azure_subscription
-  PrimaryTable: azure_sql_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -49,6 +42,12 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -69,30 +68,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  x-kaytu-explanation:
-  - "Markdown is a lightweight markup language used to format text. It includes a simple syntax for things like headers, emphasis, links, and more.\n\nIf you want to put that Azure control into a Markdown format, you can create a heading, paragraph or even a list item that looks something like this:\n\n# Azure Control \n\n**Action:** Configure 'Send scan reports to' with email ids of concerned data owners/stakeholders. \n\n**Details:** This action is critical for SQL servers, as it ensures that vital information regarding data is promptly sent and received by the appropriate parties. To implement this, follow these steps:\n\n1. Go to 'SQL server'\n2. Navigate to 'Security'\n3. Look for 'Vulnerability Assessment' settings\n4. Configure the 'Send scan reports to' field with the email addresses of the concerned data owners/stakeholders.\n\nEnsure the email addresses are correct to avoid any miscommunication.\n\nThis mockup provides concise information in a markdown format and explains the action, details, and steps needed to successfully implement this Azure Control."
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance to the control of configuring to send scan reports to data owners or stakeholders for critical SQL servers in Azure can have significant cost implications. \n\n- **Financial costs**: Failing to scan databases and report any vulnerabilities can result in data breaches. The costs associated with data breaches, including penalties, loss of customer trust, and customers switching to competitors, are substantial. According to IBM's 2020 Cost of a Data Breach Report, the average cost of a data breach is $3.86 million globally. \n\n- **Operational costs**: Without regular scans and timely reports, you may have failing or underperforming systems that could impact your business processes and productivity. This can lead to increased operational costs and potential loss of revenue.\n\n- **Reputational costs**: Breaches can severely damage your company's reputation. The time, effort, and money required to rebuild your company's image and regain customer trust can be significant.\n\n- **Legal and regulatory costs**: Depending on the sector your business operates in, there may be legal and regulatory implications for non-compliance. This could include penalties, fines, or legal action.\n\nData is a key asset for businesses, and protection of this data should be a top priority. Therefore, non-compliance with controls like sending scan reports to specific personnel for preventing any untoward incidents can be costly.\n\nFor example in markup format:\n```\n- **Financial costs**: Non-compliance can result in data breaches with substantial financial implications.\n\n- **Operational costs**: Failing systems or underperforming applications can increase operational costs and potential loss of revenue.\n\n- **Reputational costs**: Breaches can severely damage your company's reputation, requiring significant time, effort, and money to rebuild.\n\n- **Legal and regulatory costs**: Legal and regulatory penalties, fines, or action may occur depending on your business sector.\n```"
-  x-kaytu-usefulness-example:
-  - |
-    ```markdown
-    **Azure SQL Vulnerability Assessment**
-
-    In a cloud-based organization, SQL servers often contain sensitive business information making them a critical part of the company's infrastructure. Regular vulnerability assessment scans are recommended to identify and mitigate potential threats.
-
-    Azure provides `SQL Vulnerability Assessment` (VA) which is a service that provides visibility into your security state and includes actionable steps to resolve security issues and enhance your database fortifications.
-
-    **Use Case**
-
-    Organization XYZ has critical SQL servers that it uses to store crucial business and customer data. It now wants to set up vulnerability assessments but they need to ensure that these scan reports are sent to the appropriate data owners and stakeholders, such as system administrators, server managers, and compliance officers etc.
-
-    To configure this, they would use Azure's 'Send scan reports to' feature as follows:
-
-    1. In the Azure portal, they would go to SQL servers > Security > Vulnerability Assessment.
-    2. In the Vulnerability Assessment dashboard, they will select the 'Periodic Recurring Scans' settings.
-    3. Here, they can configure the option 'Send scan reports to' by adding the relevant email ids of the stakeholder(s).
-    4. Finally, by clicking `save`, the scan reports will automatically get emailed to the provided email addresses.
-
-    Now, whenever a vulnerability assessment scan is complete, a detailed report will be sent to these stakeholders, keeping them informed about the security posture of the SQL servers and allowing timely containment and correction of vulnerabilities.
-    ```
-Title: Ensure that VA setting Send scan reports to is configured for a SQL server
+Managed: true

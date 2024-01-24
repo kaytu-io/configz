@@ -1,13 +1,8 @@
-Description: "AWS Identity and Access Management (IAM) can help you incorporate the principles of least privilege and separation of duties with access permissions and authorizations, restricting policies from containing 'Effect': 'Allow' with 'Action': '*' over 'Resource': '*'."
 ID: aws_iam_policy_custom_no_star_star
-Managed: true
-ManualVerification: false
+Title: IAM policy should not have statements with admin access
+Description: "AWS Identity and Access Management (IAM) can help you incorporate the principles of least privilege and separation of duties with access permissions and authorizations, restricting policies from containing 'Effect': 'Allow' with 'Action': '*' over 'Resource': '*'."
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_policy
-  PrimaryTable: aws_iam_policy
   QueryToExecute: |
     with bad_policies as (
       select
@@ -47,6 +42,11 @@ Query:
       left join bad_policies as bad on p.arn = bad.arn
     where
       not p.is_aws_managed;
+  Connector: AWS
+  PrimaryTable: aws_iam_policy
+  ListOfTables:
+  - aws_iam_policy
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -87,4 +87,4 @@ Tags:
   - AWS/IAM
   soc_2:
   - "true"
-Title: IAM policy should not have statements with admin access
+Managed: true

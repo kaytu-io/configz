@@ -1,14 +1,8 @@
-Description: This policy audits any Azure SQL Database with long-term geo-redundant backup not enabled.
 ID: azure_sql_database_long_term_geo_redundant_backup_enabled
-Managed: true
-ManualVerification: false
+Title: Long-term geo-redundant backup should be enabled for Azure SQL Databases
+Description: This policy audits any Azure SQL Database with long-term geo-redundant backup not enabled.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_database
-  - azure_subscription
-  PrimaryTable: azure_sql_database
   QueryToExecute: |
     select
       s.database_id resource,
@@ -37,6 +31,12 @@ Query:
     where
       sub.subscription_id = s.subscription_id
       and s.name <> 'master';
+  Connector: Azure
+  PrimaryTable: azure_sql_database
+  ListOfTables:
+  - azure_sql_database
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -45,4 +45,4 @@ Tags:
   - "true"
   service:
   - Azure/SQL
-Title: Long-term geo-redundant backup should be enabled for Azure SQL Databases
+Managed: true

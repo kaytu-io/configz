@@ -1,13 +1,8 @@
-Description: Enable this rule to check that information has been backed up. It also maintains the backups by ensuring that point-in-time recovery is enabled in Amazon DynamoDB.
 ID: aws_dynamodb_table_point_in_time_recovery_enabled
-Managed: true
-ManualVerification: false
+Title: DynamoDB table point-in-time recovery should be enabled
+Description: Enable this rule to check that information has been backed up. It also maintains the backups by ensuring that point-in-time recovery is enabled in Amazon DynamoDB.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_dynamodb_table
-  PrimaryTable: aws_dynamodb_table
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_dynamodb_table;
+  Connector: AWS
+  PrimaryTable: aws_dynamodb_table
+  ListOfTables:
+  - aws_dynamodb_table
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -65,4 +65,4 @@ Tags:
   - AWS/DynamoDB
   soc_2:
   - "true"
-Title: DynamoDB table point-in-time recovery should be enabled
+Managed: true
