@@ -1,0 +1,59 @@
+ID: aws_vpc_security_group_restricted_telnet_ports
+Title: Security groups should not allow unrestricted access to Telnet ports
+Description: This control checks whether unrestricted incoming traffic for the security groups is accessible to the Telnet ports. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 for those ports.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with ingress_ssh_rules as (
+      select
+        group_id,
+        count(*) as num_ssh_rules
+      from
+        aws_vpc_security_group_rule
+      where
+        type = 'ingress'
+        and cidr_ipv4 = '0.0.0.0/0'
+        and (
+            (
+                ip_protocol = 6 
+                and from_port >= 23
+                and to_port <= 23
+            )
+        )
+      group by
+        group_id
+    )
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when ingress_ssh_rules.group_id is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when ingress_ssh_rules.group_id is null then sg.group_id || ' ingress restricted for Telnet ports from 0.0.0.0/0..'
+        else sg.group_id || ' contains ' || ingress_ssh_rules.num_ssh_rules || ' ingress rule(s) allowing access for Telnet ports from 0.0.0.0/0.'
+      end as reason
+      
+      , sg.region, sg.account_id
+    from
+      aws_vpc_security_group as sg
+      left join ingress_ssh_rules on ingress_ssh_rules.group_id = sg.group_id;
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+ManualVerification: false
+Severity: medium
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/EC2
+  soc_2:
+    - "true"
+Managed: true
