@@ -1,0 +1,27 @@
+ID: aws_soc_2_legacy_cc_4
+Title: CC4 Monitoring Activities
+DisplayCode: ""
+Connector: AWS
+Description: The criteria relevant to how the entity (i) conducts ongoing and/or separate evaluations, and (ii) evaluates and communicates deficiencies.
+Children:
+- aws_soc_2_legacy_cc_4_2
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+  soc_2_legacy:
+  - "true"
+  soc_2_legacy_section_id:
+  - cc4
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

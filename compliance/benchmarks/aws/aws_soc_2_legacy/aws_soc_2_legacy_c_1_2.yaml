@@ -1,0 +1,32 @@
+ID: aws_soc_2_legacy_c_1_2
+Title: C1.2 The entity disposes of confidential information to meet the entity’s objectives related to confidentiality
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/S3
+  soc_2_legacy:
+  - "true"
+  soc_2_legacy_item_id:
+  - c1.2
+  soc_2_legacy_section_id:
+  - c1
+  soc_2_legacy_type:
+  - automated
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_s3_bucket_lifecycle_policy_enabled
+- aws_s3_bucket_versioning_enabled

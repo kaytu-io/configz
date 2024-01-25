@@ -1,0 +1,27 @@
+ID: aws_soc_2_legacy_cc_2
+Title: CC2 Common Criteria Related to Communication and Information
+DisplayCode: ""
+Connector: AWS
+Description: The criteria relevant to how the entity (i) uses relevant information, (ii) communicates internally, and (iii) communicates externally.
+Children:
+- aws_soc_2_legacy_cc_2_1
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+  soc_2_legacy:
+  - "true"
+  soc_2_legacy_section_id:
+  - cc2
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

@@ -1,0 +1,29 @@
+ID: aws_soc_2_legacy_cc_3
+Title: CC3 Common Criteria Related to Risk Assessment
+DisplayCode: ""
+Connector: AWS
+Description: The criteria relevant to how the entity (i) specifies suitable objectives, (ii) identifies and analyzes risk, and (iii) assess fraud risk.
+Children:
+- aws_soc_2_legacy_cc_3_1
+- aws_soc_2_legacy_cc_3_2
+- aws_soc_2_legacy_cc_3_4
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+  soc_2_legacy:
+  - "true"
+  soc_2_legacy_section_id:
+  - cc3
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []
