@@ -10,7 +10,13 @@ Query:
     - aws_iam_user
   PrimaryTable: aws_iam_user
   QueryToExecute: |
-    select name as user_name, split_part(attachments, '/', 2) as attached_policies, aws_iam_user.account_id, aws_iam_user.kaytu_account_id, aws_iam_user.kaytu_resource_id
+    select
+      name as user_name,
+      split_part(attachments, '/', 2) as attached_policies,
+      aws_iam_user.account_id,
+      aws_iam_user.kaytu_account_id,
+      aws_iam_user.kaytu_resource_id,
+      'alarm' as status,
       from
         aws_iam_user
         cross join jsonb_array_elements_text(attached_policy_arns) as attachments
