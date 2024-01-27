@@ -3,8 +3,9 @@ with cognito_access as (
         count(*) as num_cognito_access
     from aws_iam_role,
         jsonb_array_elements(assume_role_policy->'Statement') as stmt
-    where stmt->'Principal'->>'Service' = 'cognito-identity.amazonaws.com'
+    where stmt->'Principal'->>'Federated' = 'cognito-identity.amazonaws.com'
     group by role_id
+    having count(*) > 0
 )
 select role.arn as resource,
     role.kaytu_account_id as kaytu_account_id,
