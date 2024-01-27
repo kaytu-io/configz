@@ -15,7 +15,7 @@ select role.arn as resource,
         else 'alarm'
     end as status,
     case
-        when cognito_access.role_id is null then cognito_access.role_id || ' has cognito access'
+        when cognito_access.role_id is null then role.role_id || ' does not have cognito access'
         else role.role_id || ' contains ' || cognito_access.num_cognito_access || ' cognito access'
     end as reason,
     role.region,
