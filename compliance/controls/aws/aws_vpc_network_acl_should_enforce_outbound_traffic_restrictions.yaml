@@ -1,5 +1,5 @@
 Description: ""
-ID: aws_vpc_network_acl_should_enforce_inbound_traffic_restrictions
+ID: aws_vpc_network_acl_should_enforce_outbound_traffic_restrictions
 Managed: true
 ManualVerification: false
 Query:
@@ -14,7 +14,7 @@ Query:
             count(*) as num_bad_rules
         from aws_vpc_network_acl,
             jsonb_array_elements(entries) as att
-        where att->>'Egress' = 'false' -- as per aws egress = false indicates the ingress
+        where att->>'Egress' = 'true' -- as per aws egress = false indicates the ingress
             and (
                 att->>'CidrBlock' = '0.0.0.0/0'
                 or att->>'Ipv6CidrBlock' = '::/0'
@@ -53,4 +53,4 @@ Tags:
     - aws
   service:
     - AWS/VPC
-Title: Network ACLs should enforce inbound traffic restrictions.
+Title: Network ACLs should enforce outbound traffic restrictions.
