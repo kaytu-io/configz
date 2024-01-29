@@ -1,15 +1,8 @@
-Description: AWS CloudTrail is a web service that records AWS API calls for your account and delivers log files to you. The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by the AWS service. CloudTrail provides a history of AWS API calls for an account, including API calls made via the Management Console, SDKs, command line tools, and higher-level AWS services (such as CloudFormation).
-DocumentURI: ""
 ID: aws_cloudtrail_multi_region_read_write_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure CloudTrail is enabled in all regions
+Description: AWS CloudTrail is a web service that records AWS API calls for your account and delivers log files to you. The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by the AWS service. CloudTrail provides a history of AWS API calls for an account, including API calls made via the Management Console, SDKs, command line tools, and higher-level AWS services (such as CloudFormation).
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_account
-  - aws_cloudtrail_trail
-  PrimaryTable: aws_account
   QueryToExecute: |
     with event_selectors_trail_details as (
       select
@@ -48,6 +41,12 @@ Query:
       aws_account as a
       left join event_selectors_trail_details as d on d.account_id = a.account_id
       left join advanced_event_selectors_trail_details as ad on ad.account_id = a.account_id;
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+  - aws_account
+  - aws_cloudtrail_trail
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -68,17 +67,4 @@ Tags:
   - aws
   service:
   - AWS/CloudTrail
-  x-kaytu-explanation:
-  - "# AWS CloudTrail\n\nAWS CloudTrail is a web service that enables you to record your AWS API calls and deliver log files to you. This feature allows you to have a history of API calls for your account and it includes API calls made through different sources such as the Management Console, SDKs, command line tools and higher-level AWS services such as CloudFormation.\n\nThe following information are recorded:\n\n- The identity of the API caller\n- The time of the API call\n- The source IP address of the API caller\n- The request parameters\n- The response elements returned by the AWS service\n\nThis feature is essential for security analysis, resource change tracking, and troubleshooting."
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance to the AWS CloudTrail control can open up an organization to a number of risks and associated costs. \n\n1. **Security Risks**: Without AWS CloudTrail, organizations lose visibility into activity within their AWS environment. This includes not being able to track modifications to resources or identify potentially unauthorized or malicious activity, which could lead to data breaches or loss.\n  \n2. **Regulatory Compliance Penalties**: Many regulatory frameworks like GDPR, HIPAA, and PCI DSS require logging and monitoring of system activity involving sensitive data. Non-compliance with such regulatory controls can lead to heavy fines and legal penalties.\n   \n3. **Audit Failures**: Without proper logging and monitoring as provided by CloudTrail, organizations may fail audits. Audits are often required to win or keep business in certain sectors, and audit failures can result in financial loss, reputation damage, and losing customer trust.\n\n4. **Operational Issues and Debugging Challenges**: CloudTrail logs can be indispensable for debugging application issues and for operational troubleshooting. A lack of detailed CloudTrail logs may increase time and cost for problem resolution. \n\nThus, in a nutshell, not implementing AWS CloudTrail could significantly increase the operational, security, legal and reputational cost for an organization."
-  x-kaytu-usefulness-example:
-  - |-
-    For example, an AWS user might want to track changes made to their IT environment or perform security analyses and compliance audits. 
-
-    With AWS CloudTrail, they can monitor, log, and store all API calls made on their AWS account. The information recorded by CloudTrail can be utilized for auditing and compliance purposes to track changes made to AWS resources and verify that AWS services are being accessed in line with organizational policies. 
-
-    When an anomaly is detected — for instance, an unusual API call or a substantial increase in data traffic — CloudTrail logs can be analyzed to identify the source of the problem and establish further preventative measures against such occurrences. 
-
-    Through these detailed logs, a deeper understanding of the user actions within the AWS environment can be reached, and CloudTrail can therefore play a significant role in ensuring that environments are secure, appropriately provisioned, well-managed, and in compliance with policies.
-Title: Ensure CloudTrail is enabled in all regions
+Managed: true

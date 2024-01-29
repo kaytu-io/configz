@@ -1,14 +1,8 @@
-Description: Periodically, newer versions are released for HTTP either due to security flaws or to include additional functionality. Using the latest HTTP version for web apps to take advantage of security fixes, if any, and/or new functionalities of the newer version. Currently, this policy only applies to Linux web apps.
 ID: azure_appservice_function_app_latest_http_version
-Managed: true
-ManualVerification: false
+Title: Ensure that 'HTTP Version' is the latest, if used to run the Function app
+Description: Periodically, newer versions are released for HTTP either due to security flaws or to include additional functionality. Using the latest HTTP version for web apps to take advantage of security fixes, if any, and/or new functionalities of the newer version. Currently, this policy only applies to Linux web apps.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_function_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_function_app
   QueryToExecute: |
     with all_function_app as (
       select
@@ -55,10 +49,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_function_app
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/AppService
-Title: Ensure that 'HTTP Version' is the latest, if used to run the Function app
+Managed: true

@@ -1,14 +1,8 @@
-Description: Missing security system updates on your servers will be monitored by Azure Security Center as recommendations.
 ID: azure_compute_vm_system_updates_installed
-Managed: true
-ManualVerification: false
+Title: System updates should be installed on your machines
+Description: Missing security system updates on your servers will be monitored by Azure Security Center as recommendations.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     select
       vm.vm_id as resource,
@@ -30,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = vm.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -38,4 +38,4 @@ Tags:
   - "true"
   service:
   - Azure/Compute
-Title: System updates should be installed on your machines
+Managed: true

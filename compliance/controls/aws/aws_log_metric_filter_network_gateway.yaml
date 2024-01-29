@@ -1,19 +1,18 @@
-Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. Network gateways are required to send/receive traffic to a destination outside of a VPC. It is recommended that a metric filter and alarm be established for changes to network gateways.
-DocumentURI: ""
 ID: aws_log_metric_filter_network_gateway
-Managed: true
-ManualVerification: false
+Title: Ensure a log metric filter and alarm exist for changes to network gateways
+Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. Network gateways are required to send/receive traffic to a destination outside of a VPC. It is recommended that a metric filter and alarm be established for changes to network gateways.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
+  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    alarm.name as alarm_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventName\\s*=\\s*CreateCustomerGateway.+\\$\\.eventName\\s*=\\s*DeleteCustomerGateway.+\\$\\.eventName\\s*=\\s*AttachInternetGateway.+\\$\\.eventName\\s*=\\s*CreateInternetGateway.+\\$\\.eventName\\s*=\\s*DeleteInternetGateway.+\\$\\.eventName\\s*=\\s*DetachInternetGateway'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for changes to network gateways.'\n    else filter_name || ' forwards events for changes to network gateways.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+  Connector: AWS
+  PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_cloudtrail_trail
   - aws_cloudwatch_alarm
   - aws_cloudwatch_log_metric_filter
   - aws_sns_topic_subscription
-  PrimaryTable: aws_account
-  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    alarm.name as alarm_name,\n    subscription.subscription_arn,\n    filter.filter_pattern\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n    and filter.filter_pattern ~ '\\s*\\$\\.eventName\\s*=\\s*CreateCustomerGateway.+\\$\\.eventName\\s*=\\s*DeleteCustomerGateway.+\\$\\.eventName\\s*=\\s*AttachInternetGateway.+\\$\\.eventName\\s*=\\s*CreateInternetGateway.+\\$\\.eventName\\s*=\\s*DeleteInternetGateway.+\\$\\.eventName\\s*=\\s*DetachInternetGateway'\n    and alarm.metric_name = filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for changes to network gateways.'\n    else filter_name || ' forwards events for changes to network gateways.'\n  end as reason\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -34,21 +33,4 @@ Tags:
   - aws
   service:
   - AWS/CloudWatch
-  x-kaytu-explanation:
-  - "In markup format, the description would look something like this:\n\n```\n# AWS Control Guidance\n\n## Real-time API Call Monitoring\nReal-time monitoring of API calls in AWS can be achieved by making use of **CloudTrail Logs** and **CloudWatch Logs**. By directing the CloudTrail Logs to CloudWatch Logs, you can establish **metric filters** and **alarms** to track and notify you about the real-time changes and patterns.\n\n## Network Gateway Monitoring\nNetwork gateways act as the conduit to send and receive traffic to a location outside of a Virtual Private Cloud (VPC). In order to maintain the integrity and security of your network, it is advised that a **metric filter** and **alarm** be set up for monitoring changes to the network gateways.\nThis would allow for quick detection and response to any unauthorised changes, enhancing security of the system.\n\n```\n\nThis format provides basic structural and visual enhancements to the text making it easier to read and understand. The **bolded words** are used to highlight key concepts and technical terminologies. \"#\", \"##\" are used to create headers and sub-headers to organize the content."
-  x-kaytu-noncompliance-cost:
-  - "The cost of non-compliance to this AWS control could be potentially high and might include aspects such as:\n\n1. **Security Breach Cost**: Without monitoring of API calls, malicious activities can go under the radar, leading to potential data breaches and unauthorized access to your AWS resources. The direct financial cost of such breaches could be enormous depending on the extent of the data loss and the indirect cost could include loss of customer trust.\n\n2. **Operational Cost**: If changes to network gateways are not tracked and alarmed, unintended network configurations could remain undetected leading to potential downtime and business disruption. This could cause substantial operational cost in terms of loss of business and productivity.\n\n3. **Audit and Compliance Cost**: If your organization is subject to regulatory compliance, audit and governance standards (like SOX, HIPAA etc.), not being compliant with the mentioned AWS control could lead to hefty fines and penalties.\n\n4. **Deviated Resources**: Without alerts to detect changes, your team could spend unnecessary time in troubleshooting and resolving operational issues arising from unexpected changes to the network gateways.\n\n5. **Reputation Loss**: If a data breach occurs due to non-compliance, apart from the financial costs, the reputation damage could result in a substantial decline in business and loss of customers.  \n\n6. **Forensic Cost**: In case of a cyber-attack or unusual activity, the organization might need to hire external experts to analyze the event and determine the expanse of the breach.\n\n\n    Note: The cost of non-compliance would vary based on the organization's size, the nature of its business, and the severity of the security breach.\n"
-  x-kaytu-usefulness-example:
-  - |-
-    Example:
-
-    Let's say you manage an e-commerce application hosted on AWS that handles high volumes of customer transactions every day. One day, you notice a significant drop in incoming transactions and receive numerous customer complaints about system failures.
-
-    By enabling real-time monitoring of API calls using CloudTrail Logs directed to CloudWatch Logs with corresponding metric filters and alarms, you could have been alerted about API call failures and other suspicious activities as soon they occur, enabling you to swiftly troubleshoot the issue and avoid subsequent business loss.
-
-    Similarly, changes in network gateways, such as an accidental deletion or unauthorized modification, could affect the communication between your internal systems and the external world, disrupting your service.
-
-    To avoid such scenarios, you could establish a metric filter and alarm for changes to network gateways. Whenever a change is detected, an immediate alert would allow you to investigate, correct any unauthorized or inadvertent changes, and keep the communication flow optimized. 
-
-    These AWS controls thus help you maintain system performance and security by providing real-time visibility into system activities, alerting you promptly to any potential issues.
-Title: Ensure a log metric filter and alarm exist for changes to network gateways
+Managed: true

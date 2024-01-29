@@ -1,13 +1,8 @@
-Description: "Amazon GuardDuty helps you understand the impact of an incident by classifying findings by severity: low, medium, and high."
 ID: aws_guardduty_finding_archived
-Managed: true
-ManualVerification: false
+Title: GuardDuty findings should be archived
+Description: "Amazon GuardDuty helps you understand the impact of an incident by classifying findings by severity: low, medium, and high."
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_guardduty_finding
-  PrimaryTable: aws_guardduty_finding
   QueryToExecute: |
     select
       arn as resource,
@@ -24,6 +19,11 @@ Query:
       , region, account_id
     from
       aws_guardduty_finding;
+  Connector: AWS
+  PrimaryTable: aws_guardduty_finding
+  ListOfTables:
+  - aws_guardduty_finding
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -58,4 +58,4 @@ Tags:
   - AWS/GuardDuty
   soc_2:
   - "true"
-Title: GuardDuty findings should be archived
+Managed: true

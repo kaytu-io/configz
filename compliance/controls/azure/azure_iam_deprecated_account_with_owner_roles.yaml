@@ -1,16 +1,8 @@
-Description: Deprecated accounts with owner permissions should be removed from your subscription. Deprecated accounts are accounts that have been blocked from signing in.
 ID: azure_iam_deprecated_account_with_owner_roles
-Managed: true
-ManualVerification: false
+Title: Blocked accounts with owner permissions on Azure resources should be removed
+Description: Deprecated accounts with owner permissions should be removed from your subscription. Deprecated accounts are accounts that have been blocked from signing in.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_role_assignment
-  - azure_role_definition
-  - azure_tenant
-  - azuread_user
-  PrimaryTable: azuread_user
   QueryToExecute: |
     select
       distinct u.user_principal_name as resource,
@@ -33,6 +25,14 @@ Query:
       left join azure_role_definition as d on d.id = a.role_definition_id
       -- Query checks the users with only Owner role
       where d.role_name = 'Owner';
+  Connector: Azure
+  PrimaryTable: azuread_user
+  ListOfTables:
+  - azure_role_assignment
+  - azure_role_definition
+  - azure_tenant
+  - azuread_user
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -43,4 +43,4 @@ Tags:
   - "true"
   service:
   - Azure/ActiveDirectory
-Title: Blocked accounts with owner permissions on Azure resources should be removed
+Managed: true

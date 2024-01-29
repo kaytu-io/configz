@@ -1,14 +1,8 @@
-Description: Enabling double encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. When double encryption has been enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level, using two different encryption algorithms and two different keys.
 ID: azure_kusto_cluster_double_encryption_enabled
-Managed: true
-ManualVerification: false
+Title: Double encryption should be enabled on Azure Data Explorer
+Description: Enabling double encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. When double encryption has been enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level, using two different encryption algorithms and two different keys.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_kusto_cluster
-  - azure_subscription
-  PrimaryTable: azure_kusto_cluster
   QueryToExecute: |
     select
       kv.id as resource,
@@ -30,10 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = kv.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_kusto_cluster
+  ListOfTables:
+  - azure_kusto_cluster
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/DataExplorer
-Title: Double encryption should be enabled on Azure Data Explorer
+Managed: true

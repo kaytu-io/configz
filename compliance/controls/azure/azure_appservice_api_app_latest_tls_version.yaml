@@ -1,14 +1,8 @@
-Description: Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for App Service apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.
 ID: azure_appservice_api_app_latest_tls_version
-Managed: true
-ManualVerification: false
+Title: App Service apps should use the latest TLS version
+Description: Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for App Service apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_web_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_web_app
   QueryToExecute: |
     with all_api_app as (
       select
@@ -47,6 +41,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_web_app
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -55,4 +55,4 @@ Tags:
   - "true"
   service:
   - Azure/AppService
-Title: App Service apps should use the latest TLS version
+Managed: true

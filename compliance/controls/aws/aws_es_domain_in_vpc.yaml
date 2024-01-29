@@ -1,13 +1,8 @@
-Description: Manage access to the AWS Cloud by ensuring Amazon Elasticsearch Service (Amazon ES) Domains are within an Amazon Virtual Private Cloud (Amazon VPC).
 ID: aws_es_domain_in_vpc
-Managed: true
-ManualVerification: false
+Title: ES domains should be in a VPC
+Description: Manage access to the AWS Cloud by ensuring Amazon Elasticsearch Service (Amazon ES) Domains are within an Amazon Virtual Private Cloud (Amazon VPC).
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_elasticsearch_domain
-  PrimaryTable: aws_elasticsearch_domain
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_elasticsearch_domain;
+  Connector: AWS
+  PrimaryTable: aws_elasticsearch_domain
+  ListOfTables:
+  - aws_elasticsearch_domain
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -63,4 +63,4 @@ Tags:
   - AWS/ES
   soc_2:
   - "true"
-Title: ES domains should be in a VPC
+Managed: true

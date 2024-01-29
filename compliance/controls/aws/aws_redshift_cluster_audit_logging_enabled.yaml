@@ -1,13 +1,8 @@
-Description: This control ensures if redshift clusters are logging audits to a specific bucket. The rule is no compliant if audit logging is not enabled for a redshift cluster or if the 'bucketNames' parameter is provided but the audit logging destination does not match.
 ID: aws_redshift_cluster_audit_logging_enabled
-Managed: true
-ManualVerification: false
+Title: Amazon Redshift audit logging should be enabled
+Description: This control ensures if redshift clusters are logging audits to a specific bucket. The rule is no compliant if audit logging is not enabled for a redshift cluster or if the 'bucketNames' parameter is provided but the audit logging destination does not match.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_redshift_cluster
-  PrimaryTable: aws_redshift_cluster
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_redshift_cluster;
+  Connector: AWS
+  PrimaryTable: aws_redshift_cluster
+  ListOfTables:
+  - aws_redshift_cluster
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -41,4 +41,4 @@ Tags:
   - AWS/Redshift
   soc_2:
   - "true"
-Title: Amazon Redshift audit logging should be enabled
+Managed: true

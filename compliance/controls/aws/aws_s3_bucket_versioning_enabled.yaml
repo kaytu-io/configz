@@ -1,13 +1,8 @@
-Description: Amazon Simple Storage Service (Amazon S3) bucket versioning helps keep multiple variants of an object in the same Amazon S3 bucket.
 ID: aws_s3_bucket_versioning_enabled
-Managed: true
-ManualVerification: false
+Title: S3 bucket versioning should be enabled
+Description: Amazon Simple Storage Service (Amazon S3) bucket versioning helps keep multiple variants of an object in the same Amazon S3 bucket.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_s3_bucket;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: ""
 Tags:
   audit_manager_control_tower:
@@ -67,4 +67,4 @@ Tags:
   - AWS/S3
   soc_2:
   - "true"
-Title: S3 bucket versioning should be enabled
+Managed: true

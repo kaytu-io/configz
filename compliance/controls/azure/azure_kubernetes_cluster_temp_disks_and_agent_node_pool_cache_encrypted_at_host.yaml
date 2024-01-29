@@ -1,14 +1,8 @@
-Description: To enhance data security, the data stored on the virtual machine (VM) host of your Azure Kubernetes Service nodes VMs should be encrypted at rest. This is a common requirement in many regulatory and industry compliance standards.
 ID: azure_kubernetes_cluster_temp_disks_and_agent_node_pool_cache_encrypted_at_host
-Managed: true
-ManualVerification: false
+Title: Temp disks and cache for agent node pools in Azure Kubernetes Service clusters should be encrypted at host
+Description: To enhance data security, the data stored on the virtual machine (VM) host of your Azure Kubernetes Service nodes VMs should be encrypted at rest. This is a common requirement in many regulatory and industry compliance standards.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_kubernetes_cluster
-  - azure_subscription
-  PrimaryTable: azure_kubernetes_cluster
   QueryToExecute: |
     with kubernetes_cluster as(
       select
@@ -43,10 +37,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+  - azure_kubernetes_cluster
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/KubernetesService
-Title: Temp disks and cache for agent node pools in Azure Kubernetes Service clusters should be encrypted at host
+Managed: true

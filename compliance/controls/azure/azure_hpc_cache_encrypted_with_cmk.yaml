@@ -1,14 +1,8 @@
-Description: Manage encryption at rest of Azure HPC Cache with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
 ID: azure_hpc_cache_encrypted_with_cmk
-Managed: true
-ManualVerification: false
+Title: HPC Cache accounts should use customer-managed key for encryption
+Description: Manage encryption at rest of Azure HPC Cache with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_hpc_cache
-  - azure_subscription
-  PrimaryTable: azure_hpc_cache
   QueryToExecute: |
     select
       a.id as resource,
@@ -34,10 +28,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_hpc_cache
+  ListOfTables:
+  - azure_hpc_cache
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/HPCCache
-Title: HPC Cache accounts should use customer-managed key for encryption
+Managed: true

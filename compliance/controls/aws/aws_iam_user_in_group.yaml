@@ -1,13 +1,8 @@
-Description: AWS Identity and Access Management (IAM) can help you restrict access permissions and authorizations, by ensuring IAM users are members of at least one group.
 ID: aws_iam_user_in_group
-Managed: true
-ManualVerification: false
+Title: IAM users should be in at least one group
+Description: AWS Identity and Access Management (IAM) can help you restrict access permissions and authorizations, by ensuring IAM users are members of at least one group.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_user
-  PrimaryTable: aws_iam_user
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , account_id
     from
       aws_iam_user;
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+  - aws_iam_user
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -57,4 +57,4 @@ Tags:
   - AWS/IAM
   soc_2:
   - "true"
-Title: IAM users should be in at least one group
+Managed: true

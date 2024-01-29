@@ -1,13 +1,8 @@
-Description: This rule helps ensure the use of AWS recommended security best practices for AWS CloudTrail, by checking for the enablement of multiple settings. These include the use of log encryption, log validation, and enabling AWS CloudTrail in multiple regions.
 ID: aws_cloudtrail_security_trail_enabled
-Managed: true
-ManualVerification: false
+Title: At least one trail should be enabled with security best practices
+Description: This rule helps ensure the use of AWS recommended security best practices for AWS CloudTrail, by checking for the enablement of multiple settings. These include the use of log encryption, log validation, and enabling AWS CloudTrail in multiple regions.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudtrail_trail
-  PrimaryTable: aws_cloudtrail_trail
   QueryToExecute: |
     with trails_enabled as (
         select
@@ -84,6 +79,11 @@ Query:
       , region, account_id
     from
       all_trails;
+  Connector: AWS
+  PrimaryTable: aws_cloudtrail_trail
+  ListOfTables:
+  - aws_cloudtrail_trail
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -108,4 +108,4 @@ Tags:
   - AWS/CloudTrail
   soc_2:
   - "true"
-Title: At least one trail should be enabled with security best practices
+Managed: true

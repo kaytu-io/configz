@@ -1,14 +1,8 @@
-Description: This control checks whether a service endpoint for Amazon EC2 is created for each VPC. The control fails if a VPC does not have a VPC endpoint created for the Amazon EC2 service.
 ID: aws_vpc_configured_to_use_vpc_endpoints
-Managed: true
-ManualVerification: false
+Title: Amazon EC2 should be configured to use VPC endpoints
+Description: This control checks whether a service endpoint for Amazon EC2 is created for each VPC. The control fails if a VPC does not have a VPC endpoint created for the Amazon EC2 service.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_vpc
-  - aws_vpc_endpoint
-  PrimaryTable: aws_vpc
   QueryToExecute: |
     select
       arn as resource,
@@ -40,6 +34,12 @@ Query:
       , region, account_id
     from
       aws_vpc;
+  Connector: AWS
+  PrimaryTable: aws_vpc
+  ListOfTables:
+  - aws_vpc
+  - aws_vpc_endpoint
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -54,4 +54,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: Amazon EC2 should be configured to use VPC endpoints
+Managed: true

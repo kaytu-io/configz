@@ -1,13 +1,8 @@
-Description: Amazon Simple Storage Service (Amazon S3) Cross-Region Replication (CRR) supports maintaining adequate capacity and availability.
 ID: aws_s3_bucket_cross_region_replication_enabled
-Managed: true
-ManualVerification: false
+Title: S3 bucket cross-region replication should be enabled
+Description: Amazon Simple Storage Service (Amazon S3) Cross-Region Replication (CRR) supports maintaining adequate capacity and availability.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     with bucket_with_replication as (
       select
@@ -34,6 +29,11 @@ Query:
     from
       aws_s3_bucket b
       left join bucket_with_replication r on b.name = r.name;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -74,4 +74,4 @@ Tags:
   - AWS/S3
   soc_2:
   - "true"
-Title: S3 bucket cross-region replication should be enabled
+Managed: true

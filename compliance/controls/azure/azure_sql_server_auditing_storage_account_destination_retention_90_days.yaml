@@ -1,14 +1,8 @@
-Description: For incident investigation purposes, we recommend setting the data retention for your SQL Server' auditing to storage account destination to at least 90 days. Confirm that you are meeting the necessary retention rules for the regions in which you are operating. This is sometimes required for compliance with regulatory standards.
 ID: azure_sql_server_auditing_storage_account_destination_retention_90_days
-Managed: true
-ManualVerification: false
+Title: SQL servers with auditing to storage account destination should be configured with 90 days retention or higher
+Description: For incident investigation purposes, we recommend setting the data retention for your SQL Server' auditing to storage account destination to at least 90 days. Confirm that you are meeting the necessary retention rules for the regions in which you are operating. This is sometimes required for compliance with regulatory standards.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_server
-  - azure_subscription
-  PrimaryTable: azure_sql_server
   QueryToExecute: |
     with sql_server as(
       select
@@ -50,10 +44,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/SQL
-Title: SQL servers with auditing to storage account destination should be configured with 90 days retention or higher
+Managed: true

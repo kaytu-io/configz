@@ -1,14 +1,8 @@
-Description: It is recommended to enable Logs so that activity trail can be recreated when investigations are required in the event of an incident or a compromise.
 ID: azure_compute_vm_scale_set_logging_enabled
-Managed: true
-ManualVerification: false
+Title: Resource logs in Virtual Machine Scale Sets should be enabled
+Description: It is recommended to enable Logs so that activity trail can be recreated when investigations are required in the event of an incident or a compromise.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     with malware_agent_installed_vm as (
       select
@@ -44,6 +38,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -52,4 +52,4 @@ Tags:
   - "true"
   service:
   - Azure/Compute
-Title: Resource logs in Virtual Machine Scale Sets should be enabled
+Managed: true

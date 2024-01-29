@@ -1,15 +1,8 @@
-Description: This control checks whether an Elastic Load Balancer V2 (Application, Network, or Gateway Load Balancer) has registered instances from multiple Availability Zones. The control fails if an Elastic Load Balancer V2 has instances registered in fewer than two Availability Zones.
 ID: aws_elb_application_gateway_network_lb_multiple_az_configured
-Managed: true
-ManualVerification: false
+Title: Application, Network, and Gateway Load Balancers should span multiple Availability Zones
+Description: This control checks whether an Elastic Load Balancer V2 (Application, Network, or Gateway Load Balancer) has registered instances from multiple Availability Zones. The control fails if an Elastic Load Balancer V2 has instances registered in fewer than two Availability Zones.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_application_load_balancer
-  - aws_ec2_gateway_load_balancer
-  - aws_ec2_network_load_balancer
-  PrimaryTable: null
   QueryToExecute: |
     select
       arn as resource,
@@ -55,6 +48,13 @@ Query:
       , region, account_id
     from
       aws_ec2_gateway_load_balancer;
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  - aws_ec2_gateway_load_balancer
+  - aws_ec2_network_load_balancer
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -69,4 +69,4 @@ Tags:
   - aws
   service:
   - AWS/ELB
-Title: Application, Network, and Gateway Load Balancers should span multiple Availability Zones
+Managed: true

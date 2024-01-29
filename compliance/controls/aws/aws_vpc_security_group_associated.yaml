@@ -1,14 +1,8 @@
-Description: This control helps you maintain an accurate asset inventory of needed security groups in your cardholder data environment (CDE). It does so by checking that security groups are attached to Amazon EC2 instances or to an ENI. A failed finding indicates you may have unused Amazon EC2 security groups.
 ID: aws_vpc_security_group_associated
-Managed: true
-ManualVerification: false
+Title: Unused EC2 security groups should be removed
+Description: This control helps you maintain an accurate asset inventory of needed security groups in your cardholder data environment (CDE). It does so by checking that security groups are attached to Amazon EC2 instances or to an ENI. A failed finding indicates you may have unused Amazon EC2 security groups.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_vpc_security_group
-  - aws_ec2_network_interface
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with associated_sg as (
       select
@@ -35,6 +29,12 @@ Query:
     from
       aws_vpc_security_group s
       left join associated_sg a on s.group_id = a.secgrp_id;
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_ec2_network_interface
+ManualVerification: false
 Severity: low
 Tags:
   pci:
@@ -49,4 +49,4 @@ Tags:
   - aws
   service:
   - ec2
-Title: Unused EC2 security groups should be removed
+Managed: true

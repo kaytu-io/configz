@@ -1,13 +1,8 @@
-Description: Checks if AWS Identity and Access Management (IAM) policies grant permissions to all actions on individual AWS resources. The rule is non compliant if the managed IAM policy allows full access to at least 1 AWS service.
 ID: aws_iam_policy_custom_no_service_wildcard
-Managed: true
-ManualVerification: false
+Title: Ensure IAM policy should not grant full access to service
+Description: Checks if AWS Identity and Access Management (IAM) policies grant permissions to all actions on individual AWS resources. The rule is non compliant if the managed IAM policy allows full access to at least 1 AWS service.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_policy
-  PrimaryTable: aws_iam_policy
   QueryToExecute: |
     with wildcard_action_policies as (
       select
@@ -46,6 +41,11 @@ Query:
       left join wildcard_action_policies as w on p.arn = w.arn
     where
       not p.is_aws_managed;
+  Connector: AWS
+  PrimaryTable: aws_iam_policy
+  ListOfTables:
+  - aws_iam_policy
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -76,4 +76,4 @@ Tags:
   - "true"
   service:
   - AWS/IAM
-Title: Ensure IAM policy should not grant full access to service
+Managed: true

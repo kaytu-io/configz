@@ -1,13 +1,8 @@
-Description: Ensure node-to-node encryption for Amazon Elasticsearch Service is enabled. Node-to-node encryption enables TLS 1.2 encryption for all communications within the Amazon Virtual Private Cloud (Amazon VPC).
 ID: aws_es_domain_node_to_node_encryption_enabled
-Managed: true
-ManualVerification: false
+Title: Elasticsearch domain node-to-node encryption should be enabled
+Description: Ensure node-to-node encryption for Amazon Elasticsearch Service is enabled. Node-to-node encryption enables TLS 1.2 encryption for all communications within the Amazon Virtual Private Cloud (Amazon VPC).
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_elasticsearch_domain
-  PrimaryTable: aws_elasticsearch_domain
   QueryToExecute: |
     select
       arn as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_elasticsearch_domain;
+  Connector: AWS
+  PrimaryTable: aws_elasticsearch_domain
+  ListOfTables:
+  - aws_elasticsearch_domain
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -65,4 +65,4 @@ Tags:
   - AWS/ES
   soc_2:
   - "true"
-Title: Elasticsearch domain node-to-node encryption should be enabled
+Managed: true

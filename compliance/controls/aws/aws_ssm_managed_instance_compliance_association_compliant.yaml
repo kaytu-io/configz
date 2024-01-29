@@ -1,14 +1,8 @@
-Description: Use AWS Systems Manager Associations to help with inventory of software platforms and applications within an organization.
 ID: aws_ssm_managed_instance_compliance_association_compliant
-Managed: true
-ManualVerification: false
+Title: SSM managed instance associations should be compliant
+Description: Use AWS Systems Manager Associations to help with inventory of software platforms and applications within an organization.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ssm_managed_instance
-  - aws_ssm_managed_instance_compliance
-  PrimaryTable: aws_ssm_managed_instance_compliance
   QueryToExecute: |
     select
       c.id as resource,
@@ -30,6 +24,12 @@ Query:
     where
       c.resource_id = i.instance_id
       and c.compliance_type = 'Association';
+  Connector: AWS
+  PrimaryTable: aws_ssm_managed_instance_compliance
+  ListOfTables:
+  - aws_ssm_managed_instance
+  - aws_ssm_managed_instance_compliance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -68,4 +68,4 @@ Tags:
   - AWS/SSM
   soc_2:
   - "true"
-Title: SSM managed instance associations should be compliant
+Managed: true

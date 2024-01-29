@@ -1,15 +1,8 @@
-Description: Azure Web Apps allows sites to run under both HTTP and HTTPS by default. Web apps can be accessed by anyone using non-secure HTTP links by default. Non-secure HTTP requests can be restricted and all HTTP requests redirected to the secure HTTPS port. It is recommended to enforce HTTPS-only traffic.
-DocumentURI: ""
 ID: azure_appservice_web_app_use_https
-Managed: true
-ManualVerification: false
+Title: Ensure web app redirects all HTTP traffic to HTTPS in Azure App Service
+Description: Azure Web Apps allows sites to run under both HTTP and HTTPS by default. Web apps can be accessed by anyone using non-secure HTTP links by default. Non-secure HTTP requests can be restricted and all HTTP requests redirected to the secure HTTPS port. It is recommended to enforce HTTPS-only traffic.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_web_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_web_app
   QueryToExecute: |
     select
       app.id as resource,
@@ -31,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = app.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_web_app
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -51,55 +50,4 @@ Tags:
   - azure
   service:
   - Azure/AppService
-  x-kaytu-explanation:
-  - |-
-    Azure Web Apps is a service offered by Microsoft Azure that allows developers to host their web applications in the Azure environment. By default, these web apps can be accessed using both HTTP and HTTPS. HTTP stands for Hyper Text Transfer Protocol and HTTPS stands for Hyper Text Transfer Protocol Secure. The main difference is that HTTPS uses SSL (Secure Sockets Layer) to encrypt all the data that is being transferred, which provides an additional layer of security.
-
-    Despite both of these protocols being available by default, you can make it so only HTTPS is allowed. This means that if a user tries to access your web app using a non-secure HTTP link, they will automatically be redirected to a secure HTTPS link. This enforces HTTPS-only traffic.
-
-    The feature restricting non-secure HTTP requests and redirecting all HTTP requests to the secure HTTPS port is added for enhanced security. Unauthorized access and data leakage can be prevented by enforcing HTTPS connections. 
-
-    Markup language represents the format in which the settings are written. Here is a sample redirection rule in XML format:
-
-    ```xml
-    <rewrite>
-      <rules>
-        <rule name="Force HTTPS" stopProcessing="true">
-          <match url="(.*)" />
-          <conditions>
-            <add input="{HTTPS}" pattern="^OFF$" />
-          </conditions>
-          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" redirectType="SeeOther" />
-        </rule>
-      </rules>
-    </rewrite>
-    ```
-    The above rule will redirect all HTTP traffic to HTTPS. 
-
-    To ensure the enforcement of HTTPS-only traffic, in the Azure portal, go to your web app's settings and set the "HTTPS only" setting to 'On'. 
-
-    Overall, it is generally a good practice to enforce HTTPS-only traffic for your web apps hosted on Azure for increased security.
-  x-kaytu-noncompliance-cost:
-  - |-
-    Non-compliance to this Azure control can actually result in several costs that can have serious impacts on your business operations. Here is the explanation for these costs using the markup format:
-
-    1. **Data Security**
-        - Non-compliance means data being transferred over HTTP, a non-secure protocol, which significantly increases the risk of data being intercepted, tampered with, or stolen by attackers.
-
-    2. **Reputation Damage**
-        - If a data breach occurs due to non-compliance, it could lead to severe reputation damage, damaging customer trust and possibly resulting in loss of business.
-
-    3. **Financial Penalties**
-        - Depending on the regulatory environment your business operates in, non-compliance could result in heavy fines or penalties. For instance, businesses handling personal data of EU citizens must abide by GDPR, which mandates the use of appropriate data protection measures like HTTPS. Non-compliance could lead to fines of up to 4% of global annual turnover.
-
-    4. **Loss of Opportunities**
-        - Many modern systems and APIs require HTTPS for communication. Non-compliance could mean losing out on the chance to integrate with these systems, limiting your business opportunities.
-
-    5. **Poor Search Engine Optimization (SEO)**
-        - Search engines like Google rank HTTPS-enabled websites higher in search results. Not enforcing HTTPS-only traffic could negatively affect your website's SEO.
-
-    6. **User Experience**
-        - Web browsers increasingly warn users when websites are not secure (not using HTTPS). This could deter potential visitors or customers from using your website, impacting user experience and potential revenue.
-  x-kaytu-usefulness-example:
-  - "### Example\n\nThe XYZ Corporation is hosting its business website on Azure Web Apps. The company handles sensitive customer information and recognizes the need to ensure the security of its data during transactions. \n\nTo enhance security, the company decides to enforce HTTPS-only traffic hence they restrict non-secure HTTP requests, ensuring that all HTTP requests are redirected to the secure HTTPS port. This way, XYZ Corporation can prevent potential data breaches and protect sensitive customer information during transactions.\n\n```markup\n<webApps>\n   <properties>\n      <httpsOnly>true</httpsOnly>\n   </properties>\n</webApps>\n```\nWith this setting, every time a user tries to access the website using HTTP, Azure will automatically redirect the request to HTTPS. This ensures secure connections and eliminates the risk of sensitive information being intercepted during transmission."
-Title: Ensure web app redirects all HTTP traffic to HTTPS in Azure App Service
+Managed: true

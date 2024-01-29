@@ -1,15 +1,8 @@
-Description: AWS CloudShell is a convenient way of running CLI commands against AWS services; a managed IAM policy ('AWSCloudShellFullAccess') provides full access to CloudShell, which allows file upload and download capability between a user's local system and the CloudShell environment. Within the CloudShell environment a user has sudo permissions, and can access the internet. So it is feasible to install file transfer software (for example) and move data from CloudShell to external internet servers.
 ID: aws_aws_iam_user_group_role_cloudshell_fullaccess_restricted
-Managed: true
-ManualVerification: false
+Title: Ensure access to AWSCloudShellFullAccess is restricted
+Description: AWS CloudShell is a convenient way of running CLI commands against AWS services; a managed IAM policy ('AWSCloudShellFullAccess') provides full access to CloudShell, which allows file upload and download capability between a user's local system and the CloudShell environment. Within the CloudShell environment a user has sudo permissions, and can access the internet. So it is feasible to install file transfer software (for example) and move data from CloudShell to external internet servers.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_user
-  - aws_iam_role
-  - aws_iam_group
-  PrimaryTable: null
   QueryToExecute: |
     select
       arn as resource,
@@ -61,6 +54,13 @@ Query:
       , account_id
     from
       aws_iam_group;
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_iam_user
+  - aws_iam_role
+  - aws_iam_group
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -81,21 +81,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
-  x-kaytu-explanation:
-  - "```\n# AWS CloudShell\n\n[AWS CloudShell](https://aws.amazon.com/cloudshell/) is a browser-based shell that you can use to run commands and work with AWS services. It provides you with command-line access to your AWS resources directly from your browser. It comes pre-installed with AWS CLI `v2.0`.\n\n## Full Access with Managed IAM Policy\n\nAWS provides a managed IAM policy, 'AWSCloudShellFullAccess', which gives full access priviliges to CloudShell. This allows users to upload and download files between their local system and the CloudShell environment. \n\n## Sudo Permissions and Internet Access\n\nUsers in the CloudShell environment have 'sudo' permissions, which means that they can act as the 'root' user and have administrative level control over the environment. Additionally, users can access the internet from within the CloudShell environment. \n\nThis opens up possibilities for running a wide range of commands and even installing new software. For instance, you can install a file transfer software like `scp` or `rsync` and transfer data to/from external internet servers.\n\n**Note:** Exercise caution while installing third-party software or transferring data to/from external servers as it might have implications on security and compliance.\n```"
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance to the AWS Control referring to the use of AWS CloudShell could lead to severe implications in terms of cost, including potential financial loss, regulatory penalties and reputational damage. Here's an explanation:\n\n1. **Data Breaches**: Unauthorized users may gain access to sensitive corporate or customer information if any malicious software or trojans are installed unnoticed. This could result in identity theft or violation of privacy laws. The associated cost of a data breach can be significant, including incident response, legal fees, penalties, and potential payouts to affected individuals.\n\n2. **Regulatory Compliance Violations**: Not having a control mechanism over data transfer from AWSCloudShell to external servers might lead to non-compliance with various data protection regulations and standards (such as GDPR, HIPAA, CCPA, SOX, PCI-DSS etc.). These violations could result in severe penalties and fines, and increased scrutiny from regulatory bodies.\n\n3. **System's Compromise**: Since users have sudo permissions within the CloudShell environment, any potential misuse could lead to a compromised system – a breach that could, in the worst case scenario, provide root access to an adversary. The costs associated with system compromises can be substantial and could involve expenses related to detection, response, mitigation, system hardening, and other remediation efforts.\n\n4. **Reputational Damage**: Any sort of data breach or system compromise can significantly damage a company's reputation, leading to potential loss of business, decreased customer trust and potentially leading to loss of competitive edge.\n\n5. **Increased Operational Costs**: Without limiting and monitoring access to AWS CloudShell, organizations may face increased costs in terms of managing security incidents, dealing with complex threat landscapes, performance troubleshooting, and system maintenance.\n\nThus, implementing proper controls around the use of AWS CloudShell, including restricting full access to essential personnel, monitoring activity, and taking a proactive approach to security best practices can help mitigate these potential costs."
-  x-kaytu-usefulness-example:
-  - |-
-    For example, consider a scenario where a developer is tasked with analyzing a large dataset that resides in an Amazon S3 bucket. Their local machine doesn't have enough resources to handle such a large amount of data and they need a practical solution to extract insights from the data.
-
-    In this case, the developer can use AWS CloudShell to access the S3 bucket using AWS CLI commands. They can then install the necessary data processing libraries, say Python pandas, using the sudo privilege available in the shell. 
-
-    It is also possible to transform or pre-process the data within CloudShell and save the cross-processed data back into the S3 bucket for future use. 
-
-    Post data preprocessing, they can use python libraries like matplotlib or seaborn to extract insights or visualize the data. 
-
-    Additionally, if the data needs to be shared with an external team, the developer can install secure file transfer protocol (SFTP or SCP) tools and transfer the preprocessed data to the external servers from the CloudShell environment.
-
-    AWS CloudShell provides a powerful and flexible environment to interact with AWS services as well as external servers, which enhances the developer's productivity and eradicates the necessity of additional local resources for heavy computational tasks.
-Title: Ensure access to AWSCloudShellFullAccess is restricted
+Managed: true

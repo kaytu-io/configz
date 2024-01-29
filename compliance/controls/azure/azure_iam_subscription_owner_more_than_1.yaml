@@ -1,15 +1,8 @@
-Description: It is recommended to designate more than one subscription owner in order to have administrator access redundancy.
 ID: azure_iam_subscription_owner_more_than_1
-Managed: true
-ManualVerification: false
+Title: There should be more than one owner assigned to your subscription
+Description: It is recommended to designate more than one subscription owner in order to have administrator access redundancy.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_role_assignment
-  - azure_role_definition
-  - azure_subscription
-  PrimaryTable: azure_subscription
   QueryToExecute: |
     with owner_roles as (
       select
@@ -49,6 +42,13 @@ Query:
       owner.kaytu_resource_id,
       owner._ctx,
       sub.display_name;
+  Connector: Azure
+  PrimaryTable: azure_subscription
+  ListOfTables:
+  - azure_role_assignment
+  - azure_role_definition
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -57,4 +57,4 @@ Tags:
   - "true"
   service:
   - Azure/ActiveDirectory
-Title: There should be more than one owner assigned to your subscription
+Managed: true

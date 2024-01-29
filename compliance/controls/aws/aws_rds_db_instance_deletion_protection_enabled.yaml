@@ -1,13 +1,8 @@
-Description: Ensure Amazon Relational Database Service (Amazon RDS) instances have deletion protection enabled.
 ID: aws_rds_db_instance_deletion_protection_enabled
-Managed: true
-ManualVerification: false
+Title: RDS DB instances should have deletion protection enabled
+Description: Ensure Amazon Relational Database Service (Amazon RDS) instances have deletion protection enabled.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_rds_db_instance;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -57,4 +57,4 @@ Tags:
   - AWS/RDS
   soc_2:
   - "true"
-Title: RDS DB instances should have deletion protection enabled
+Managed: true

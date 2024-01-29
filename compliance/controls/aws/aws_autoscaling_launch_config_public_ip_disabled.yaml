@@ -1,13 +1,8 @@
-Description: Ensure if Amazon EC2 Auto Scaling groups have public IP addresses enabled through Launch Configurations. This rule is non compliant if the Launch Configuration for an Auto Scaling group has AssociatePublicIpAddress set to 'true'.
 ID: aws_autoscaling_launch_config_public_ip_disabled
-Managed: true
-ManualVerification: false
+Title: Auto Scaling launch config public IP should be disabled
+Description: Ensure if Amazon EC2 Auto Scaling groups have public IP addresses enabled through Launch Configurations. This rule is non compliant if the Launch Configuration for an Auto Scaling group has AssociatePublicIpAddress set to 'true'.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_launch_configuration
-  PrimaryTable: aws_ec2_launch_configuration
   QueryToExecute: |
     select
       launch_configuration_arn as resource,
@@ -24,6 +19,11 @@ Query:
       , region, account_id
     from
       aws_ec2_launch_configuration;
+  Connector: AWS
+  PrimaryTable: aws_ec2_launch_configuration
+  ListOfTables:
+  - aws_ec2_launch_configuration
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -56,4 +56,4 @@ Tags:
   - "true"
   service:
   - AWS/AutoScaling
-Title: Auto Scaling launch config public IP should be disabled
+Managed: true

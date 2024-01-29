@@ -1,15 +1,8 @@
-Description: DDoS protection standard should be enabled for all virtual networks with a subnet that is part of an application gateway with a public IP.
 ID: azure_network_ddos_enabled
-Managed: true
-ManualVerification: false
+Title: Azure DDoS Protection Standard should be enabled
+Description: DDoS protection standard should be enabled for all virtual networks with a subnet that is part of an application gateway with a public IP.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_application_gateway
-  - azure_subscription
-  - azure_virtual_network
-  PrimaryTable: azure_virtual_network
   QueryToExecute: |
     with application_gateway_subnet as (
       select
@@ -39,10 +32,17 @@ Query:
       azure_virtual_network as a
       left join application_gateway_subnet as b on a.name = b.vn_name
       join azure_subscription sub on sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_virtual_network
+  ListOfTables:
+  - azure_application_gateway
+  - azure_subscription
+  - azure_virtual_network
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/Network
-Title: Azure DDoS Protection Standard should be enabled
+Managed: true

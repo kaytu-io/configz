@@ -1,14 +1,8 @@
-Description: "Use new Azure Resource Manager for your virtual machines to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management."
 ID: azure_compute_vm_uses_azure_resource_manager
-Managed: true
-ManualVerification: false
+Title: Virtual machines should be migrated to new Azure Resource Manager resources
+Description: "Use new Azure Resource Manager for your virtual machines to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management."
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     select
       vm.vm_id as resource,
@@ -30,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = vm.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -40,4 +40,4 @@ Tags:
   - "true"
   service:
   - Azure/Compute
-Title: Virtual machines should be migrated to new Azure Resource Manager resources
+Managed: true

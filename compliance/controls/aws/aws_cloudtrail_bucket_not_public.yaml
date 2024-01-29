@@ -1,15 +1,8 @@
-Description: CloudTrail logs a record of every API call made in your AWS account. These logs file are stored in an S3 bucket. It is recommended that the bucket policy, or access control list (ACL), applied to the S3 bucket that CloudTrail logs to prevents public access to the CloudTrail logs.
-DocumentURI: ""
 ID: aws_cloudtrail_bucket_not_public
-Managed: true
-ManualVerification: false
+Title: Ensure the S3 bucket used to store CloudTrail logs is not publicly accessible
+Description: CloudTrail logs a record of every API call made in your AWS account. These logs file are stored in an S3 bucket. It is recommended that the bucket policy, or access control list (ACL), applied to the S3 bucket that CloudTrail logs to prevents public access to the CloudTrail logs.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudtrail_trail
-  - aws_s3_bucket
-  PrimaryTable: aws_cloudtrail_trail
   QueryToExecute: |
     with public_bucket_data as (
     -- note the counts are not exactly CORRECT because of the jsonb_array_elements joins,
@@ -67,6 +60,12 @@ Query:
       , region, account_id
     from
       public_bucket_data;
+  Connector: AWS
+  PrimaryTable: aws_cloudtrail_trail
+  ListOfTables:
+  - aws_cloudtrail_trail
+  - aws_s3_bucket
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -87,19 +86,4 @@ Tags:
   - aws
   service:
   - AWS/CloudTrail
-  x-kaytu-explanation:
-  - "```markdown\n# Amazon Web Service (AWS) Control: CloudTrail Logs\n\n**CloudTrail** on AWS records every **API call** made in your AWS account. These records are stored as __log files__ in an **Amazon S3 Bucket**. \n\nRecommended control for CloudTrail is to implement a __bucket policy__ or __access control list (ACL)__. These security measures aim to prevent public access to the CloudTrail logs. Public access could reveal sensitive information about your AWS environment. Thus, an appropriately configured bucket policy or access control list is a key component to securing your CloudTrail logs. \n\nIt's important to review bucket policies regularly and adjust as necessary to maintain a high level of security.\n```"
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance with this AWS control can result in the following potential costs:\n\n1. **Security Vulnerabilities**: If the S3 bucket that stores CloudTrail logs is publicly accessible, bad actors could gain unwarranted access to sensitive information about your AWS environment. This includes details about the API calls made, the source IP addresses, and the identities of API callers, among other things. \n\n2. **Data Breach**: Confidential log data could be leaked on the internet, potentially leading to substantial financial penalties, loss of customer trust, and reputational damage. \n\n3. **Unauthorized changes or Deletion**: A public S3 bucket can be manipulated by anyone having its URL. An unauthorized user can delete important logs files or alter them, causing loss of audit trail and accountability. \n\n4. **Violation of Compliance Requirements**: Depending on the industry and the jurisdiction of operation, non-compliance with strict data access and storage controls can lead to violations of various compliance requirements such as GDPR, HIPAA, etc. Substantial fines and penalties can be a result of such violations. \n\n5. **Operational Disruption**: Unauthorized access to the AWS CloudTrail logs may can lead to false trail records or disruption in the logging service, giving rise to operational inefficiencies. \n\nIt's advisable to ensure that the bucket policy or ACL restricts public access to your S3 bucket where CloudTrail logs are stored to avoid these potential issues."
-  x-kaytu-usefulness-example:
-  - |-
-    For example, you run a healthcare tech company that uses AWS services for hosting and managing patient data. You have certain applications running in your AWS account, where your developers or admins use AWS APIs to execute actions. 
-
-    To ensure the security and privacy of patient data, you need to monitor who's accessing your AWS resources, when and how. By using AWS CloudTrail, you can keep track of all the API calls made in your AWS account. 
-
-    With these log files stored in an S3 bucket, safeguarding access to this bucket is crucial. To accomplish this, you would configure your S3 bucket policy or ACL to prevent public access to your CloudTrail logs. This safeguards your logs which carry vital information about your infrastructure's interaction. If these logs fell into the wrong hands, malicious actors could scope out potential vulnerabilities in your system, leading to breaches or data loss.
-
-    AWS S3 bucket policies helps you manage this access control. By rejecting public access to your logs, you are ensuring that only designated stakeholders (e.g., system administrators or security analysts) can access these logs. This preventative control greatly minimizes the risk of unauthorized access to critical system info. 
-
-    So in this case, the AWS control to regulate public access to the S3 bucket storing your CloudTrail logs is extremely useful in enhancing the security posture of your AWS infrastructure. Without it, your logs, and the valuable insights it brings about your system, could become accessible to individuals who should not have access to them.
-Title: Ensure the S3 bucket used to store CloudTrail logs is not publicly accessible
+Managed: true

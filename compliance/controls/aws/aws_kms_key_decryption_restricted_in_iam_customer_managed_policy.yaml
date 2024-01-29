@@ -1,13 +1,8 @@
-Description: Checks whether the default version of IAM customer managed policies allow principals to use the AWS KMS decryption actions on all resources. This control uses Zelkova, an automated reasoning engine, to validate and warn you about policies that may grant broad access to your secrets across AWS accounts. This control fails if the kms:Decrypt or kms:ReEncryptFrom actions are allowed on all KMS keys. The control evaluates both attached and unattached customer managed policies. It does not check inline policies or AWS managed policies.
 ID: aws_kms_key_decryption_restricted_in_iam_customer_managed_policy
-Managed: true
-ManualVerification: false
+Title: IAM customer managed policies should not allow decryption actions on all KMS keys
+Description: Checks whether the default version of IAM customer managed policies allow principals to use the AWS KMS decryption actions on all resources. This control uses Zelkova, an automated reasoning engine, to validate and warn you about policies that may grant broad access to your secrets across AWS accounts. This control fails if the kms:Decrypt or kms:ReEncryptFrom actions are allowed on all KMS keys. The control evaluates both attached and unattached customer managed policies. It does not check inline policies or AWS managed policies.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_policy
-  PrimaryTable: aws_iam_policy
   QueryToExecute: |
     with policy_with_decrypt_grant as (
       select
@@ -40,6 +35,11 @@ Query:
     left join policy_with_decrypt_grant d on i.arn = d.arn
     where
       not is_aws_managed;
+  Connector: AWS
+  PrimaryTable: aws_iam_policy
+  ListOfTables:
+  - aws_iam_policy
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -54,4 +54,4 @@ Tags:
   - aws
   service:
   - AWS/KMS
-Title: IAM customer managed policies should not allow decryption actions on all KMS keys
+Managed: true

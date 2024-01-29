@@ -1,13 +1,8 @@
-Description: This control checks whether CloudTrail is enabled in your AWS account. However, some AWS services do not enable logging of all APIs and events. You should implement any additional audit trails other than CloudTrail and review the documentation for each service.
 ID: aws_cloudtrail_enabled_all_regions
-Managed: true
-ManualVerification: false
+Title: CloudTrail should be enabled
+Description: This control checks whether CloudTrail is enabled in your AWS account. However, some AWS services do not enable logging of all APIs and events. You should implement any additional audit trails other than CloudTrail and review the documentation for each service.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudtrail_trail
-  PrimaryTable: aws_cloudtrail_trail
   QueryToExecute: |
     with trail_details as (
       select
@@ -46,6 +41,11 @@ Query:
       account_id
     from
       trail_details
+  Connector: AWS
+  PrimaryTable: aws_cloudtrail_trail
+  ListOfTables:
+  - aws_cloudtrail_trail
+ManualVerification: false
 Severity: low
 Tags:
   pci:
@@ -60,4 +60,4 @@ Tags:
   - aws
   service:
   - cloudtrail
-Title: CloudTrail should be enabled
+Managed: true

@@ -1,13 +1,8 @@
-Description: This control checks whether an RDS instance is deployed in a VPC (EC2-VPC).
 ID: aws_rds_db_instance_in_vpc
-Managed: true
-ManualVerification: false
+Title: RDS instances should be deployed in a VPC
+Description: This control checks whether an RDS instance is deployed in a VPC (EC2-VPC).
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_rds_db_instance;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/RDS
-Title: RDS instances should be deployed in a VPC
+Managed: true

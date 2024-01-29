@@ -1,13 +1,8 @@
-Description: This control checks whether Amazon EFS access points are configured to enforce a user identity. This control fails if a POSIX user identity is not defined while creating the EFS access point.
 ID: aws_efs_access_point_enforce_user_identity
-Managed: true
-ManualVerification: false
+Title: EFS access points should enforce a user identity
+Description: This control checks whether Amazon EFS access points are configured to enforce a user identity. This control fails if a POSIX user identity is not defined while creating the EFS access point.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_efs_access_point
-  PrimaryTable: aws_efs_access_point
   QueryToExecute: |
     select
       access_point_arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_efs_access_point;
+  Connector: AWS
+  PrimaryTable: aws_efs_access_point
+  ListOfTables:
+  - aws_efs_access_point
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/EFS
-Title: EFS access points should enforce a user identity
+Managed: true

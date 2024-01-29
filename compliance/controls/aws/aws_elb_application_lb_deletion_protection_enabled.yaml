@@ -1,14 +1,14 @@
-Description: This rule ensures that Elastic Load Balancing has deletion protection enabled.
 ID: aws_elb_application_lb_deletion_protection_enabled
-Managed: true
-ManualVerification: false
+Title: ELB application load balancer deletion protection should be enabled
+Description: This rule ensures that Elastic Load Balancing has deletion protection enabled.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
+  QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then title || ' deletion protection enabled.'\n    else title || ' deletion protection disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_application_load_balancer;\n"
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
   - aws_ec2_application_load_balancer
-  PrimaryTable: aws_ec2_application_load_balancer
-  QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then title || ' deletion protection enabled.'\n    else title || ' deletion protection disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_application_load_balancer;\n"
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/ELB
-Title: ELB application load balancer deletion protection should be enabled
+Managed: true

@@ -1,14 +1,8 @@
-Description: This control checks whether users of your AWS account require a multi-factor authentication (MFA) device to sign in with root user credentials. It does not check whether you are using hardware MFA.
 ID: aws_iam_root_user_virtual_mfa
-Managed: true
-ManualVerification: false
+Title: Virtual MFA should be enabled for the root user
+Description: This control checks whether users of your AWS account require a multi-factor authentication (MFA) device to sign in with root user credentials. It does not check whether you are using hardware MFA.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_account_summary
-  - aws_iam_virtual_mfa_device
-  PrimaryTable: aws_iam_account_summary
   QueryToExecute: |
     select
       'arn:' || s.partition || ':::' || s.account_id as resource,
@@ -27,6 +21,12 @@ Query:
     from
       aws_iam_account_summary as s
       left join aws_iam_virtual_mfa_device on serial_number = 'arn:' || s.partition || ':iam::' || s.account_id || ':mfa/root-account-mfa-device';
+  Connector: AWS
+  PrimaryTable: aws_iam_account_summary
+  ListOfTables:
+  - aws_iam_account_summary
+  - aws_iam_virtual_mfa_device
+ManualVerification: false
 Severity: low
 Tags:
   pci:
@@ -41,4 +41,4 @@ Tags:
   - aws
   service:
   - iam
-Title: Virtual MFA should be enabled for the root user
+Managed: true

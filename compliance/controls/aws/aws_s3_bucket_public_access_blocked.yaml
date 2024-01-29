@@ -1,13 +1,8 @@
-Description: This control checks whether S3 buckets have bucket-level public access blocks applied.
 ID: aws_s3_bucket_public_access_blocked
-Managed: true
-ManualVerification: false
+Title: S3 Block Public Access setting should be enabled at the bucket level
+Description: This control checks whether S3 buckets have bucket-level public access blocks applied.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     select
       arn as resource,
@@ -37,6 +32,11 @@ Query:
       , region, account_id
     from
       aws_s3_bucket;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -51,4 +51,4 @@ Tags:
   - aws
   service:
   - AWS/S3
-Title: S3 Block Public Access setting should be enabled at the bucket level
+Managed: true

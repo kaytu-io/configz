@@ -1,13 +1,8 @@
-Description: This control checks whether the virtualization type of an EC2 instance is paravirtual. The control fails if the virtualizationType of the EC2 instance is set to paravirtual.
 ID: aws_ec2_instance_virtualization_type_no_paravirtual
-Managed: true
-ManualVerification: false
+Title: Paravirtual EC2 instance types should not be used
+Description: This control checks whether the virtualization type of an EC2 instance is paravirtual. The control fails if the virtualizationType of the EC2 instance is set to paravirtual.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  PrimaryTable: aws_ec2_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -22,6 +17,11 @@ Query:
       , region, account_id
     from
       aws_ec2_instance;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+  - aws_ec2_instance
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -36,4 +36,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: Paravirtual EC2 instance types should not be used
+Managed: true

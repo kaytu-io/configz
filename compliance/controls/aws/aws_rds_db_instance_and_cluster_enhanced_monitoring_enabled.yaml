@@ -1,14 +1,8 @@
-Description: Enable Amazon Relational Database Service (Amazon RDS) to help monitor Amazon RDS availability. This provides detailed visibility into the health of your Amazon RDS database instances.
 ID: aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
-Managed: true
-ManualVerification: false
+Title: RDS DB instance and cluster enhanced monitoring should be enabled
+Description: Enable Amazon Relational Database Service (Amazon RDS) to help monitor Amazon RDS availability. This provides detailed visibility into the health of your Amazon RDS database instances.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_cluster
-  - aws_rds_db_instance
-  PrimaryTable: null
   QueryToExecute: |
     (
     select
@@ -51,6 +45,12 @@ Query:
     from
       aws_rds_db_instance
     );
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_rds_db_cluster
+  - aws_rds_db_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -77,4 +77,4 @@ Tags:
   - aws
   service:
   - AWS/RDS
-Title: RDS DB instance and cluster enhanced monitoring should be enabled
+Managed: true

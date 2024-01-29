@@ -1,14 +1,8 @@
-Description: This rule ensures AWS Identity and Access Management (IAM) policies are attached only to groups or roles to control access to systems and assets.
-DocumentURI: ""
 ID: aws_iam_user_no_inline_attached_policies
-Managed: true
-ManualVerification: false
+Title: IAM user should not have any inline or attached policies
+Description: This rule ensures AWS Identity and Access Management (IAM) policies are attached only to groups or roles to control access to systems and assets.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_user
-  PrimaryTable: aws_iam_user
   QueryToExecute: |
     select
       arn as resource,
@@ -24,6 +18,11 @@ Query:
       , account_id
     from
       aws_iam_user;
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+  - aws_iam_user
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -64,10 +63,4 @@ Tags:
   - AWS/IAM
   soc_2:
   - "true"
-  x-kaytu-explanation:
-  - "# AWS Control: IAM Policies Attachment\n\nThis AWS Control is a security measure aimed at managing and controlling access to systems and assets in the Amazon Web Services (AWS) environment. It dictates that AWS Identity and Access Management (IAM) policies should only be attached to groups or roles rather than to individual users.\n\n## Overview\n\nIAM is a feature of your AWS account that provides secure access control to your AWS resources. IAM policies denote permissions that dictate what actions are allowed or denied on which AWS resources.\n\nThis control ensures that all the permissions are managed centrally, reducing the risk of accidental or inappropriate granting of access to sensitive resources.\n\n## Details\n\nThe control is designed to encourage best practice in IAM usage:\n\n* **Groups** are collections of IAM users. You can attach an IAM policy to a group. All users in that group automatically inherit the permissions granted by the policy.\n* **Roles** are AWS IAM identities with specific permissions policies that determine what the role can and cannot do. Unlike user policies that are attached directly to a single person, roles are assumable and can be shared between users.\n\nBy attaching policies to groups or roles, it's easier for admins to manage permissions and to ensure they’re applied consistently, even as your team or project evolves.\n\n## Benefits\n\n* Improves security \n* Simplifies permissions management\n* Encourages least privilege principle\n* Provides better tracking and auditing of access rights\n\nApplying this control helps to avoid human errors and potential vulnerabilities associated with assigning policies to individual users, making your AWS environment safer and easier to manage."
-  x-kaytu-noncompliance-cost:
-  - "The cost of non-compliance to this AWS control rule can be significant and multi-faceted:\n\n1. **Security Risk**: By not attaching policies to groups or roles, individual IAM users could have excessive or inappropriate permissions, potentially leading to unauthorized access to sensitive resources. This poses a significant security risk, possibly exposing your infrastructure to both internal and external threats.\n\n2. **Operational Inefficiency**: Managing policies attached to individual users can quickly become cumbersome as your organization scales up. It is much more efficient to define roles and groups which can be applied to many users, achieving consistency of access control and making it easier to modify as per needs.\n\n3. **Compliance Violations**: If your organization needs to adhere to certain standards or regulations such as HIPAA or GDPR, non-compliance with this rule can lead to breaches, substantial fines or penalties.\n\n4. **Increased Audit Complexity**: Non-compliance with this rule would make audits more complex as it would be harder to track which individual users have access to what resources. Guidelines recommend utilizing IAM roles and groups for ease of audit.\n\n5. **Difficulty in Troubleshooting**: If a user encounters a permissions issue, it could take a significantly longer time to isolate and resolve the problem. With proper groups and roles, such permissions can be fixed at one place and applied to all concerning users.\n\n6. **Cost Impact**: If not managed properly, individual users with inappropriate access level might accidentally or intentionally spin up resources that incur costs, leading to unexpected AWS charges.\n\nBy complying with this rule, organizations can avoid these pitfalls and ensure a more secure, cost-effective, and efficient control over their AWS resources access and management."
-  x-kaytu-usefulness-example:
-  - "For example, consider a scenario of a large organization having hundreds of employees with different job roles and departments using the AWS system. There could be high potential risk of unauthorized access or accidental access to critical data and system controls if IAM policies are attached to individual users.\n\nBy using this control, the IT department of the organization can thoroughly manage and control the access to the systems and resources. The departmental heads will be assigned to IAM roles or groups, and the IAM policies can be attached to these roles or groups rather than individual employees. This will ensure that only authorized personnel can have access to specific systems or resources based on their group or role.\n\nThis not only enhances the security of the system but also minimizes the human error of incorrect assignment of IAM policies:\n\n```markup\nOrganization Name: ABC Corporation\nDepartment: IT department\nApplication: AWS System\n\nControls: \n1. Create separate IAM groups for different job roles (e.g., Admins, Developers, Testers).\n2. Attach IAM policies to these groups to provide necessary access to resources.\n3. Add users to these groups based on their job role.\n\nBenefits: \n1. Enhanced security by controlling access based on role or group.\n2. Minimized risk of unauthorized or accidental access to systems and assets.\n3. Reduced human error in IAM policy assignment.\n```"
-Title: IAM user should not have any inline or attached policies
+Managed: true

@@ -1,14 +1,8 @@
-Description: Azure Virtual Network deployment provides enhanced security, isolation and allows you to place your API Management service in a non-internet routable network that you control access to. These networks can then be connected to your on-premises networks using various VPN technologies, which enables access to your backend services within the network and/or on-premises. The developer portal and API gateway, can be configured to be accessible either from the Internet or only within the virtual network.
 ID: azure_apimanagement_service_with_virtual_network
-Managed: true
-ManualVerification: false
+Title: API Management services should use a virtual network
+Description: Azure Virtual Network deployment provides enhanced security, isolation and allows you to place your API Management service in a non-internet routable network that you control access to. These networks can then be connected to your on-premises networks using various VPN technologies, which enables access to your backend services within the network and/or on-premises. The developer portal and API gateway, can be configured to be accessible either from the Internet or only within the virtual network.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_api_management
-  - azure_subscription
-  PrimaryTable: azure_api_management
   QueryToExecute: |
     select
       a.id as resource,
@@ -25,10 +19,16 @@ Query:
     from
       azure_api_management a,
       azure_subscription sub;
+  Connector: Azure
+  PrimaryTable: azure_api_management
+  ListOfTables:
+  - azure_api_management
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/APIManagement
-Title: API Management services should use a virtual network
+Managed: true

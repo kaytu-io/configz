@@ -1,15 +1,8 @@
-Description: Turning on Azure Defender enables threat detection for App Service, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
-DocumentURI: ""
 ID: azure_securitycenter_azure_defender_on_for_appservice
-Managed: true
-ManualVerification: false
+Title: Ensure that Azure Defender is set to On for App Service
+Description: Turning on Azure Defender enables threat detection for App Service, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
-  PrimaryTable: azure_security_center_subscription_pricing
   QueryToExecute: |
     select
       sub_pricing.id as resource,
@@ -30,6 +23,12 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       name = 'AppServices';
+  Connector: Azure
+  PrimaryTable: azure_security_center_subscription_pricing
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+ManualVerification: false
 Severity: low
 Tags:
   category:
@@ -50,34 +49,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-  x-kaytu-explanation:
-  - "```markdown\n# Azure Defender for App Service\n\nAzure Defender is a cloud-based security feature in Azure Security Center that provides extensive threat protection capabilities for Azure services. When it is specifically enabled for Azure App Service, it provides:\n\n- **Threat Intelligence**: Identifies potential threats to your web apps by correlating threat data with your app's activities and detecting any suspicious behavior.\n\n- **Anomaly Detection**: Uses advanced analytics and machine learning to identify activities that differ significantly from the normal behavior, indicating potential security threats.\n\n- **Behavior Analytics**: Continuously monitors your web app's behavior and identifies any unusual behavior patterns, which might signal potential security risk.\n\nBy turning on Azure Defender, you're effectively augmenting your App Service's security, making it harder for bad actors to compromise your application. With its continuous security health monitoring and enhanced threat protection, it significantly improves your application's security posture.\n```"
-  x-kaytu-noncompliance-cost:
-  - |-
-    Non-compliance with specific security measures, such as Azure Shield or Azure GuardDuty, could result in the following costs:
-
-    **Financial Costs:**
-
-    1. **Data Breaches:** Without adequate threat detection, systems are vulnerable to hacking, which can lead to data breaches. The average cost of a data breach globally is $3.86 million, according to a report by IBM Security.
-
-    2. **System Downtime:** Cyberattacks can lead to system downtime, which breeches business operation and results in lost revenue.
-
-    **Reputation Costs:**
-
-    3. **Customer Trust:** Data breaches can severely damage a company's reputation, leading to loss of customers.
-
-    4. **Regulatory Fines and Penalties:** In today’s world of strict privacy regulations (such as GDPR), a data breach due to non-compliance with recommended security controls can result in substantial regulatory fines.
-
-    5. **Legal Costs:** Organizations may face lawsuits from customers and partners in the case of a data breach.
-
-    All these could lead to substantial immediate and future costs that are often far higher than the cost of deploying a threat detection system. Therefore, ensuring adequate security measures is extremely critical. 
-
-    However, it's essential to mention that each organization would need a tailored approach towards cloud security since the threats and risks vary in nature and severity depending on the organization's size, industry, and the nature of the data it handles.
-  x-kaytu-usefulness-example:
-  - |-
-    An eCommerce company wants to ensure the security of its customer's data. They launch a web application on Microsoft Azure. To enhance security and safeguard their application from threats, they turn on Azure Defender. This service, which is highly integrated with Azure Security Center, provides threat intelligence and anomaly detection. 
-
-    For instance, Azure Defender detected an unusual attempted login from an unknown IP address. This behavior was flagged as an anomaly and an alert was triggered in Azure Security Center. Upon receiving the alert, the built-in incident response systems were triggered, successfully mitigating the threat. This averted a potential data breach, saving the company from potential revenue loss and damage to their reputation.
-
-    Hence, by using Azure Defender, the eCommerce company was able to add an additional layer of protection to their Azure App Service, providing greater confidence in their overall cloud security posture.
-Title: Ensure that Azure Defender is set to On for App Service
+Managed: true

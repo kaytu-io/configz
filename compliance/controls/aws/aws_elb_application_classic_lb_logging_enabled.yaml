@@ -1,15 +1,15 @@
-Description: Elastic Load Balancing activity is a central point of communication within an environment.
 ID: aws_elb_application_classic_lb_logging_enabled
-Managed: true
-ManualVerification: false
+Title: ELB application and classic load balancer logging should be enabled
+Description: Elastic Load Balancing activity is a central point of communication within an environment.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
+  QueryToExecute: "(\n  select\n    arn as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_application_load_balancer' as kaytu_table_name,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_application_load_balancer\n)\nunion\n(\n  select\n    'arn:' || partition || ':elasticloadbalancing:' || region || ':' || account_id || ':loadbalancer/' || title as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_classic_load_balancer' as kaytu_table_name,\n    case\n      when access_log_enabled = 'true' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when access_log_enabled = 'true' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_classic_load_balancer\n);\n"
+  Connector: AWS
+  PrimaryTable: null
   ListOfTables:
   - aws_ec2_application_load_balancer
   - aws_ec2_classic_load_balancer
-  PrimaryTable: null
-  QueryToExecute: "(\n  select\n    arn as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_application_load_balancer' as kaytu_table_name,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_application_load_balancer\n)\nunion\n(\n  select\n    'arn:' || partition || ':elasticloadbalancing:' || region || ':' || account_id || ':loadbalancer/' || title as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_classic_load_balancer' as kaytu_table_name,\n    case\n      when access_log_enabled = 'true' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when access_log_enabled = 'true' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_classic_load_balancer\n);\n"
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -50,4 +50,4 @@ Tags:
   - AWS/ELB
   soc_2:
   - "true"
-Title: ELB application and classic load balancer logging should be enabled
+Managed: true

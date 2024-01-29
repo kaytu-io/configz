@@ -1,14 +1,8 @@
-Description: Amazon DynamoDB auto scaling uses the AWS Application Auto Scaling service to adjust provisioned throughput capacity that automatically responds to actual traffic patterns.
 ID: aws_dynamodb_table_auto_scaling_enabled
-Managed: true
-ManualVerification: false
+Title: DynamoDB table auto scaling should be enabled
+Description: Amazon DynamoDB auto scaling uses the AWS Application Auto Scaling service to adjust provisioned throughput capacity that automatically responds to actual traffic patterns.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_appautoscaling_target
-  - aws_dynamodb_table
-  PrimaryTable: aws_dynamodb_table
   QueryToExecute: |
     with table_with_autocaling as (
       select
@@ -39,6 +33,12 @@ Query:
     from
       aws_dynamodb_table as d
       left join table_with_autocaling as t on concat('table/', d.name) = t.resource_id;
+  Connector: AWS
+  PrimaryTable: aws_dynamodb_table
+  ListOfTables:
+  - aws_appautoscaling_target
+  - aws_dynamodb_table
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -69,4 +69,4 @@ Tags:
   - aws
   service:
   - AWS/DynamoDB
-Title: DynamoDB table auto scaling should be enabled
+Managed: true

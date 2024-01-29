@@ -1,15 +1,8 @@
-Description: Enabling IP forwarding on a virtual machine's NIC allows the machine to receive traffic addressed to other destinations. IP forwarding is rarely required (e.g., when using the VM as a network virtual appliance), and therefore, this should be reviewed by the network security team.
 ID: azure_network_interface_ip_forwarding_disabled
-Managed: true
-ManualVerification: false
+Title: IP Forwarding on your virtual machine should be disabled
+Description: Enabling IP forwarding on a virtual machine's NIC allows the machine to receive traffic addressed to other destinations. IP forwarding is rarely required (e.g., when using the VM as a network virtual appliance), and therefore, this should be reviewed by the network security team.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_network_interface
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     with vm_using_nic as (
       select
@@ -45,10 +38,17 @@ Query:
       azure_subscription as sub,
       vm_using_nic as v
       left join azure_network_interface as i on i.id = v.nic_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_network_interface
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/Compute
-Title: IP Forwarding on your virtual machine should be disabled
+Managed: true

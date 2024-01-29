@@ -1,13 +1,8 @@
-Description: Ensure if an AWS account is part of AWS Organizations. The rule is non compliant if an AWS account is not part of AWS Organizations or AWS Organizations master account ID does not match rule parameter MasterAccountId.
 ID: aws_account_part_of_organizations
-Managed: true
-ManualVerification: false
+Title: AWS account should be part of AWS Organizations
+Description: Ensure if an AWS account is part of AWS Organizations. The rule is non compliant if an AWS account is not part of AWS Organizations or AWS Organizations master account ID does not match rule parameter MasterAccountId.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_account
-  PrimaryTable: aws_account
   QueryToExecute: |
     select
       arn as resource,
@@ -24,6 +19,11 @@ Query:
       , region, account_id
     from
       aws_account;
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+  - aws_account
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -40,4 +40,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
-Title: AWS account should be part of AWS Organizations
+Managed: true

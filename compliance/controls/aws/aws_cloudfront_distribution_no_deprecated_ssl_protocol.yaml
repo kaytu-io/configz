@@ -1,13 +1,8 @@
-Description: This control checks if Amazon CloudFront distributions are using deprecated SSL protocols for HTTPS communication between CloudFront edge locations and your custom origins. This control fails if a CloudFront distribution has a CustomOriginConfig where OriginSslProtocols includes SSLv3.
 ID: aws_cloudfront_distribution_no_deprecated_ssl_protocol
-Managed: true
-ManualVerification: false
+Title: CloudFront distributions should not use deprecated SSL protocols between edge locations and custom origins
+Description: This control checks if Amazon CloudFront distributions are using deprecated SSL protocols for HTTPS communication between CloudFront edge locations and your custom origins. This control fails if a CloudFront distribution has a CustomOriginConfig where OriginSslProtocols includes SSLv3.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudfront_distribution
-  PrimaryTable: aws_cloudfront_distribution
   QueryToExecute: |
     with origin_ssl_protocols as (
       select
@@ -36,6 +31,11 @@ Query:
     from
       aws_cloudfront_distribution as b
       left join origin_ssl_protocols as o on b.arn = o.arn;
+  Connector: AWS
+  PrimaryTable: aws_cloudfront_distribution
+  ListOfTables:
+  - aws_cloudfront_distribution
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -50,4 +50,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFront
-Title: CloudFront distributions should not use deprecated SSL protocols between edge locations and custom origins
+Managed: true

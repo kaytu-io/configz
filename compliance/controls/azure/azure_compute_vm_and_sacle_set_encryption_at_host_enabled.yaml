@@ -1,15 +1,8 @@
-Description: Use encryption at host to get end-to-end encryption for your virtual machine and virtual machine scale set data. Encryption at host enables encryption at rest for your temporary disk and OS/data disk caches. Temporary and ephemeral OS disks are encrypted with platform-managed keys when encryption at host is enabled. OS/data disk caches are encrypted at rest with either customer-managed or platform-managed key, depending on the encryption type selected on the disk.
 ID: azure_compute_vm_and_sacle_set_encryption_at_host_enabled
-Managed: true
-ManualVerification: false
+Title: Virtual machines and virtual machine scale sets should have encryption at host enabled
+Description: Use encryption at host to get end-to-end encryption for your virtual machine and virtual machine scale set data. Encryption at host enables encryption at rest for your temporary disk and OS/data disk caches. Temporary and ephemeral OS disks are encrypted with platform-managed keys when encryption at host is enabled. OS/data disk caches are encrypted at rest with either customer-managed or platform-managed key, depending on the encryption type selected on the disk.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_compute_virtual_machine_scale_set
-  - azure_subscription
-  PrimaryTable: null
   QueryToExecute: |
     (
       select
@@ -58,10 +51,17 @@ Query:
       where
         sub.subscription_id = a.subscription_id
     )
+  Connector: Azure
+  PrimaryTable: null
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_compute_virtual_machine_scale_set
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/Compute
-Title: Virtual machines and virtual machine scale sets should have encryption at host enabled
+Managed: true

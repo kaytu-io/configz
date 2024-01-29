@@ -1,13 +1,8 @@
-Description: This control checks if the privileged parameter in the container definition of Amazon ECS Task Definitions is set to true. The control fails if this parameter is equal to true.
 ID: aws_ecs_task_definition_container_non_privileged
-Managed: true
-ManualVerification: false
+Title: ECS containers should run as non-privileged
+Description: This control checks if the privileged parameter in the container definition of Amazon ECS Task Definitions is set to true. The control fails if this parameter is equal to true.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ecs_task_definition
-  PrimaryTable: aws_ecs_task_definition
   QueryToExecute: |
     with privileged_container_definition as (
       select
@@ -35,6 +30,11 @@ Query:
     from
       aws_ecs_task_definition as d
       left join privileged_container_definition as c on d.task_definition_arn = c.arn;
+  Connector: AWS
+  PrimaryTable: aws_ecs_task_definition
+  ListOfTables:
+  - aws_ecs_task_definition
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -49,4 +49,4 @@ Tags:
   - aws
   service:
   - AWS/ECS
-Title: ECS containers should run as non-privileged
+Managed: true

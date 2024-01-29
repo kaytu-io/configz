@@ -1,13 +1,8 @@
-Description: This control checks if Amazon CloudFront distributions are encrypting traffic to custom origins. This control fails for a CloudFront distribution whose origin protocol policy allows 'http-only'. This control also fails if the distribution's origin protocol policy is 'match-viewer' while the viewer protocol policy is 'allow-all'.
 ID: aws_cloudfront_distribution_custom_origins_encryption_in_transit_enabled
-Managed: true
-ManualVerification: false
+Title: CloudFront distributions should encrypt traffic to custom origins
+Description: This control checks if Amazon CloudFront distributions are encrypting traffic to custom origins. This control fails for a CloudFront distribution whose origin protocol policy allows 'http-only'. This control also fails if the distribution's origin protocol policy is 'match-viewer' while the viewer protocol policy is 'allow-all'.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudfront_distribution
-  PrimaryTable: aws_cloudfront_distribution
   QueryToExecute: |
     with viewer_protocol_policy_value as (
       select
@@ -53,6 +48,11 @@ Query:
       aws_cloudfront_distribution as b
       left join origin_protocol_policy_value as o on b.arn = o.arn
       left join viewer_protocol_policy_value as v on b.arn = v.arn;
+  Connector: AWS
+  PrimaryTable: aws_cloudfront_distribution
+  ListOfTables:
+  - aws_cloudfront_distribution
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -67,4 +67,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFront
-Title: CloudFront distributions should encrypt traffic to custom origins
+Managed: true

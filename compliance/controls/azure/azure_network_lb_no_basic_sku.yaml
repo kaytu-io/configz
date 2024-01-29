@@ -1,15 +1,8 @@
-Description: The use of Basic or Free SKUs in Azure whilst cost effective have significant limitations in terms of what can be monitored and what support can be realized from Microsoft. Typically, these SKU’s do not have a service SLA and Microsoft will usually refuse to provide support for them. Consequently Basic/Free SKUs should never be used for production workloads.
-DocumentURI: ""
 ID: azure_network_lb_no_basic_sku
-Managed: true
-ManualVerification: false
+Title: Network load balancers should use standard SKUs as a minimum
+Description: The use of Basic or Free SKUs in Azure whilst cost effective have significant limitations in terms of what can be monitored and what support can be realized from Microsoft. Typically, these SKU’s do not have a service SLA and Microsoft will usually refuse to provide support for them. Consequently Basic/Free SKUs should never be used for production workloads.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_lb
-  - azure_subscription
-  PrimaryTable: azure_lb
   QueryToExecute: |
     select
       l.id as resource,
@@ -31,32 +24,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = l.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_lb
+  ListOfTables:
+  - azure_lb
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   cis:
   - "true"
   service:
   - Azure/Network
-  x-kaytu-explanation:
-  - "Azure is a cloud computing service from Microsoft that offers numerous resources or SKUs (stock keeping units) to run your services. SKUs in Azure defines the bundle of resources available for you including storage, computing power etc. Two of them are Basic (entry-level performance tier) and Free.\n\nHere are some important points mentioned in the text in the markup format:\n\n- **Basic/Free SKUs**: These are resource bundles that are cost-effective but have significant limitations. For beginners or testing purposes, these SKUs can be used.\n\n- **Limitations**: The limitations mainly refer to the level of monitoring available and the amount of support available from Microsoft. So, while these SKUs are affordable, they do not provide comprehensive access to Azure services and support.\n\n- **Service Level Agreement (SLA) and Microsoft Support**: Basic/Free SKUs generally do not come with a service SLA, which would typically outline the level of service expected from the provider. In these cases, Microsoft usually does not provide support for these SKUs. This could be an important aspect to consider before choosing these SKUs as you wouldn't have much assistance if something goes wrong.\n\n- **Use in Production Environments**: Due to the limitations and lack of support, it's generally recommended that Basic/Free SKUs should not be used for production workflows or in situations where full functionality and support are expected. Otherwise, it could result in serious service disruptions or inefficiency.\n\nIn conclusion, when making a decision about which SKU to use for your Azure cloud services, it is crucial to take into consideration monitoring capabilities, Microsoft support, service level agreement, and suitability for production environments. Consider upgrading to paid SKUs if these are a concern."
-  x-kaytu-noncompliance-cost:
-  - |-
-    Non-compliance with this Azure Control can result in several costs both directly and indirectly. 
-
-    1. **Lack of Support from Microsoft:** The Basic/Free SKUs don't typically come with a service Service-Level Agreement (SLA) meaning Microsoft may not provide support for issues arising in these services. With no support, troubleshooting and resolving issues can be highly troublesome and time-consuming. This not only results in operational inefficiency but could also lead to potential business losses if crucial services are affected.
-
-    2. **Limited Capabilities:** These SKU's have significant limitations on their capabilities. For instance, the resources provided might be significantly less, certain advanced features may not be available and scalability might be a complex task to achieve. This can lead to operational inefficiencies and can severely limit the growth and capability of the services.
-
-    3. **Service Availability and Reliability Risks:** Microsoft does not guarantee any service availability on Basic/Free SKU's. This means, in the event of an outage or disruption, Microsoft is not obligated to ensure your services are back up running within a certain time period. This can not only result in interruption of services, which can lead to loss of business but can also damage the reputation of the service/brand. 
-
-    4. **Data Loss risk:** Since Microsoft does not provide a SLA for these SKU's, there is also a risk of data loss. In the event of a catastrophic event, there might not be any backups or mechanisms for data recovery. This could be highly costly if it involves loss of sensitive or important business data. 
-
-    Therefore, while initially, Basic/Free SKUs might seem cost-effective, non-compliance with this control could significantly increase operational, financial, and reputational risk. It is, therefore, advisable to always choose the SKU as per the workload requirement ensuring service reliability, availability, and adequate support commitment from Microsoft.
-  x-kaytu-usefulness-example:
-  - |-
-    Example Instance:
-
-    Given a scenario where a small start-up is looking to make use of Azure's services for the development and initial testing of their web application, Azure's Basic or Free SKU's may prove to be very helpful. The company can utilize this to build servers, develop their software, and perform initial testing without having to spend much on the resources. This can significantly cut costs during the initial phase of their product development.
-
-    However, the startup needs to be cognizant of the fact that Basic or Free SKU's come with limited capabilities and lack of Microsoft support. Once their application moves into a production environment where performance, stability, and uptime becomes a paramount concern, they would need to switch to a higher SKU to ensure that they are covered by a service SLA and are eligible for support from Microsoft. Using Basic/Free SKUs for production workloads would not be ideal due to these limitations.
-Title: Network load balancers should use standard SKUs as a minimum
+Managed: true

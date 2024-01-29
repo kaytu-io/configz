@@ -1,13 +1,8 @@
-Description: This control checks if a CodeBuild project has encryption enabled for all of its artifacts. The rule is non compliant if 'encryptionDisabled' is set to 'true' for any primary or secondary (if present) artifact configurations.
 ID: aws_codebuild_project_artifact_encryption_enabled
-Managed: true
-ManualVerification: false
+Title: CodeBuild project artifact encryption should be enabled
+Description: This control checks if a CodeBuild project has encryption enabled for all of its artifacts. The rule is non compliant if 'encryptionDisabled' is set to 'true' for any primary or secondary (if present) artifact configurations.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_codebuild_project
-  PrimaryTable: aws_codebuild_project
   QueryToExecute: |
     with secondary_artifact as (
       select
@@ -37,6 +32,11 @@ Query:
     from
       aws_codebuild_project as p
       left join secondary_artifact as a on a.arn = p.arn;
+  Connector: AWS
+  PrimaryTable: aws_codebuild_project
+  ListOfTables:
+  - aws_codebuild_project
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -53,4 +53,4 @@ Tags:
   - aws
   service:
   - AWS/CodeBuild
-Title: CodeBuild project artifact encryption should be enabled
+Managed: true

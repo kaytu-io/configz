@@ -1,15 +1,8 @@
-Description: This policy audits any Container Registry not configured to use a virtual network service endpoint.
 ID: azure_container_registry_use_virtual_service_endpoint
-Managed: true
-ManualVerification: false
+Title: Container Registry should use a virtual network service endpoint
+Description: This policy audits any Container Registry not configured to use a virtual network service endpoint.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_container_registry
-  - azure_subnet
-  - azure_subscription
-  PrimaryTable: azure_container_registry
   QueryToExecute: |
     with container_registry_subnet as (
       select
@@ -43,10 +36,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_container_registry
+  ListOfTables:
+  - azure_container_registry
+  - azure_subnet
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
   - "true"
   service:
   - Azure/ContainerRegistry
-Title: Container Registry should use a virtual network service endpoint
+Managed: true

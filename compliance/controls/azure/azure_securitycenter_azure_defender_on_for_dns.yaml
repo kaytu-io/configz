@@ -1,15 +1,8 @@
-Description: Microsoft Defender for DNS scans all network traffic exiting from within a subscription.
-DocumentURI: ""
 ID: azure_securitycenter_azure_defender_on_for_dns
-Managed: true
-ManualVerification: false
+Title: Ensure That Microsoft Defender for DNS Is Set To 'On'
+Description: Microsoft Defender for DNS scans all network traffic exiting from within a subscription.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
-  PrimaryTable: azure_security_center_subscription_pricing
   QueryToExecute: |
     select
       sub_pricing.id as resource,
@@ -30,6 +23,12 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       name = 'Dns';
+  Connector: Azure
+  PrimaryTable: azure_security_center_subscription_pricing
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -50,13 +49,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-  x-kaytu-explanation:
-  - "AzureControl:\n  Name: Microsoft Defender for DNS\n  Description: Scans all network traffic exiting from within a subscription.\n"
-  x-kaytu-noncompliance-cost:
-  - |+
-    The cost of non-compliance with Microsoft Defender for DNS could include potential security breaches, data loss, and compromised network integrity. The exact financial impact would depend on the severity and scale of the security incidents that might occur due to inadequate DNS protection.
-
-  x-kaytu-usefulness-example:
-  - |
-    Imagine a scenario where a malicious actor attempts to exfiltrate sensitive data from your organization by exploiting DNS vulnerabilities. Microsoft Defender for DNS, by scanning all network traffic exiting from within a subscription, can detect and prevent such unauthorized data transfers. This ensures the security and integrity of your network, safeguarding against potential data breaches and unauthorized access.
-Title: Ensure That Microsoft Defender for DNS Is Set To 'On'
+Managed: true

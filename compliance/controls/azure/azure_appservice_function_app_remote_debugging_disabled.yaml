@@ -1,14 +1,8 @@
-Description: Remote debugging requires inbound ports to be opened on function apps. Remote debugging should be turned off.
 ID: azure_appservice_function_app_remote_debugging_disabled
-Managed: true
-ManualVerification: false
+Title: Function apps should have remote debugging turned off
+Description: Remote debugging requires inbound ports to be opened on function apps. Remote debugging should be turned off.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_function_app
-  - azure_subscription
-  PrimaryTable: azure_app_service_function_app
   QueryToExecute: |
     select
       app.id as resource,
@@ -30,6 +24,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = app.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_function_app
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -38,4 +38,4 @@ Tags:
   - "true"
   service:
   - Azure/AppService
-Title: Function apps should have remote debugging turned off
+Managed: true

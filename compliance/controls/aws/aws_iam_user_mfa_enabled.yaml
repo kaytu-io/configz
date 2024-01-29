@@ -1,13 +1,8 @@
-Description: Enable this rule to restrict access to resources in the AWS Cloud.
 ID: aws_iam_user_mfa_enabled
-Managed: true
-ManualVerification: false
+Title: IAM user MFA should be enabled
+Description: Enable this rule to restrict access to resources in the AWS Cloud.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_iam_credential_report
-  PrimaryTable: aws_iam_credential_report
   QueryToExecute: |
     select
       user_arn as resource,
@@ -24,6 +19,11 @@ Query:
       , account_id
     from
       aws_iam_credential_report;
+  Connector: AWS
+  PrimaryTable: aws_iam_credential_report
+  ListOfTables:
+  - aws_iam_credential_report
+ManualVerification: false
 Severity: ""
 Tags:
   audit_manager_control_tower:
@@ -62,4 +62,4 @@ Tags:
   - AWS/IAM
   soc_2:
   - "true"
-Title: IAM user MFA should be enabled
+Managed: true

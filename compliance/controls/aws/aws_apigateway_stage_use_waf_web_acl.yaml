@@ -1,13 +1,8 @@
-Description: Ensure if an Amazon API Gateway API stage is using a WAF Web ACL. This rule is non compliant if an AWS WAF Web ACL is not used.
 ID: aws_apigateway_stage_use_waf_web_acl
-Managed: true
-ManualVerification: false
+Title: API Gateway stage should be associated with waf
+Description: Ensure if an Amazon API Gateway API stage is using a WAF Web ACL. This rule is non compliant if an AWS WAF Web ACL is not used.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_api_gateway_stage
-  PrimaryTable: aws_api_gateway_stage
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_api_gateway_stage;
+  Connector: AWS
+  PrimaryTable: aws_api_gateway_stage
+  ListOfTables:
+  - aws_api_gateway_stage
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -53,4 +53,4 @@ Tags:
   - "true"
   service:
   - AWS/APIGateway
-Title: API Gateway stage should be associated with waf
+Managed: true

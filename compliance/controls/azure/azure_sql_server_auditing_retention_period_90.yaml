@@ -1,15 +1,8 @@
-Description: SQL Server Audit Retention should be configured to be greater than 90 days.
-DocumentURI: ""
 ID: azure_sql_server_auditing_retention_period_90
-Managed: true
-ManualVerification: false
+Title: Ensure that 'Auditing' Retention is 'greater than 90 days'
+Description: SQL Server Audit Retention should be configured to be greater than 90 days.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_server
-  - azure_subscription
-  PrimaryTable: azure_sql_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -34,6 +27,12 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+ManualVerification: false
 Severity: medium
 Tags:
   category:
@@ -54,40 +53,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  x-kaytu-explanation:
-  - |-
-    Azure provides an auditing feature for SQL servers, which collects database events and writes them to an audit log in your Azure storage account. The log contains entries which have passed a filtering process on events, which are determined by the particular audit configuration.
-
-    The control in question here suggests that the retention policy for these audit logs should be configured to be greater than 90 days. This means that audit logs from the last 90 days should be kept available for review. After this 90-day period, the logs can be deleted or archived based on your organization's data policies.
-
-    This is particularly useful for maintaining data compliance, identifying discrepancies and anomalies, and performing investigations in case of security incidents. In some industries, maintaining audit records for a certain period may be a regulatory requirement.
-
-    Here is an example of how to configure this in markup format:
-
-    ```xml
-    <retentionPolicy enabled="true">
-        <days>90</days>
-    </retentionPolicy>
-    ```
-
-    In this example, a retention policy has been enabled and is set to retain audit logs for a period of 90 days.
-  x-kaytu-noncompliance-cost:
-  - |-
-    Non-compliance to this Azure control regarding SQL Server Audit Retention can result in several considerable costs:
-
-    1. **Security Risks:** 
-       If audit logs are not retained for more than 90 days, you may lose crucial data that can aid in the investigation of any security incident or attempt. The inability to conduct a thorough security investigation can lead to continued vulnerability and potential losses from security breaches.
-       
-    2. **Regulatory Non-Compliance Penalties:** 
-       Many industries, such as finance and healthcare, are regulated by laws demanding certain data retention periods. Not complying with a 90-day audit retention could result in severe fines and penalties. For instance, GDPR and HIPAA can impose substantial fines for not keeping audit logs for the stipulated periods.
-       
-    3. **Operational Inefficiency:** 
-       Audit logs are essential for understanding system activities and for debugging purposes. If audit logs are deleted after a short period, critical information for system optimization could be lost, affecting operational efficiency and potentially increasing operation costs.
-       
-    4. **Loss of Customer Trust:** 
-       If a security breach happens and your organization cannot fully explain or understand the breach due to insufficient log data, it may result in loss of customer trust and potentially lead to a loss of business.
-
-    Therefore, it is highly recommended to comply with this Azure control to avoid these potential costs and risks.
-  x-kaytu-usefulness-example:
-  - "Microsoft Azure SQL Server Audit Retention allows you to monitor, review and retain records of data-related activities. By configuring it to be greater than 90 days, you can reduce risks associated with accidental data loss or misuse of data within your organization. \n\nFor instance, suppose there is a security breach and unauthorized data access is detected in your organization's system. With SQL Server Audit Retention set for over 90 days, you have sufficient duration to investigate the issue. You can trace back to the activities and transactions carried out over a more extended period, which might be crucial in identifying the breach's origin. It can help your cybersecurity team to understand the attack better and develop adequate countermeasures. \n\nMoreover, storing audit logs for more than 90 days can also be beneficial for regulatory compliance. Various regulations like HIPAA or GDPR require businesses to retain access logs for a specific period for audit purposes. Hence, setting your log retention period to be more considerable than 90 days can ensure you meet these legal requirements.\n\nHere is an example in markup format:\n\n```\n{\n  \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\n  \"contentVersion\": \"1.0.0.0\",\n  \"parameters\": {\n    \"serverName\": {\n      \"type\": \"string\"\n    },\n    \"auditName\": {\n      \"type\": \"string\"\n    },\n    \"storageAccountName\": {\n      \"type\": \"string\"\n    },\n    \"storageAccountAccessKey\": {\n      \"type\": \"string\"\n    }\n  },\n  \"resources\": [\n    {\n      \"name\": \"[concat(parameters('serverName'), '/', parameters('auditName'))]\",\n      \"type\": \"Microsoft.Sql/servers/auditingSettings\",\n      \"apiVersion\": \"2017-03-01-preview\",\n      \"properties\": {\n        \"state\": \"Enabled\",\n        \"storageAccountAccessKey\": \"[parameters('storageAccountAccessKey')]\",\n        \"storageEndpoint\": \"[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]\",\n        \"retentionDays\": 95\n      }\n    }\n  ]\n}\n```\nIn the above script, SQL Server Audit Settings are defined for server specified and audit log retention is set to 95 days."
-Title: Ensure that 'Auditing' Retention is 'greater than 90 days'
+Managed: true

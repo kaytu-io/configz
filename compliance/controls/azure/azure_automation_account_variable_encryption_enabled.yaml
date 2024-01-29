@@ -1,14 +1,8 @@
-Description: It is important to enable encryption of Automation account variable assets when storing sensitive data
 ID: azure_automation_account_variable_encryption_enabled
-Managed: true
-ManualVerification: false
+Title: Automation account variables should be encrypted
+Description: It is important to enable encryption of Automation account variable assets when storing sensitive data
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_automation_variable
-  - azure_subscription
-  PrimaryTable: azure_automation_variable
   QueryToExecute: |
     select
       a.id as resource,
@@ -27,10 +21,16 @@ Query:
     from
       azure_automation_variable as a,
       azure_subscription as sub;
+  Connector: Azure
+  PrimaryTable: azure_automation_variable
+  ListOfTables:
+  - azure_automation_variable
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   pci_dss_v321:
   - "true"
   service:
   - Azure/Automation
-Title: Automation account variables should be encrypted
+Managed: true

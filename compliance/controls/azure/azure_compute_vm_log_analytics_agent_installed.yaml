@@ -1,14 +1,8 @@
-Description: This policy audits any Windows/Linux virtual machines if the Log Analytics extension is not installed.
 ID: azure_compute_vm_log_analytics_agent_installed
-Managed: true
-ManualVerification: false
+Title: Virtual machines should have the Log Analytics extension installed
+Description: This policy audits any Windows/Linux virtual machines if the Log Analytics extension is not installed.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     with agent_installed_vm as (
       select
@@ -43,6 +37,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -51,4 +51,4 @@ Tags:
   - "true"
   service:
   - Azure/Compute
-Title: Virtual machines should have the Log Analytics extension installed
+Managed: true

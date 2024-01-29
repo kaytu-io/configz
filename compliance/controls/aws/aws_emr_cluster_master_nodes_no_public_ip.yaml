@@ -1,14 +1,8 @@
-Description: Manage access to the AWS Cloud by ensuring Amazon EMR cluster master nodes cannot be publicly accessed.
 ID: aws_emr_cluster_master_nodes_no_public_ip
-Managed: true
-ManualVerification: false
+Title: EMR cluster master nodes should not have public IP addresses
+Description: Manage access to the AWS Cloud by ensuring Amazon EMR cluster master nodes cannot be publicly accessed.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_emr_cluster
-  - aws_vpc_subnet
-  PrimaryTable: aws_emr_cluster
   QueryToExecute: |
     select
       c.cluster_arn as resource,
@@ -29,6 +23,12 @@ Query:
     from
       aws_emr_cluster as c
       left join aws_vpc_subnet as s on c.ec2_instance_attributes ->> 'Ec2SubnetId' = s.subnet_id;
+  Connector: AWS
+  PrimaryTable: aws_emr_cluster
+  ListOfTables:
+  - aws_emr_cluster
+  - aws_vpc_subnet
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -67,4 +67,4 @@ Tags:
   - AWS/EMR
   soc_2:
   - "true"
-Title: EMR cluster master nodes should not have public IP addresses
+Managed: true

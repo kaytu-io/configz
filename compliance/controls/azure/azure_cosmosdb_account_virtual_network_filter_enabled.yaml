@@ -1,15 +1,8 @@
-Description: ""
-DocumentURI: ""
 ID: azure_cosmosdb_account_virtual_network_filter_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure That 'Firewalls & Networks' Is Limited to Use Selected Networks Instead of All Networks
+Description: ""
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_cosmosdb_account
-  - azure_subscription
-  PrimaryTable: azure_cosmosdb_account
   QueryToExecute: |
     select
       a.id as resource,
@@ -33,6 +26,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_cosmosdb_account
+  ListOfTables:
+  - azure_cosmosdb_account
+  - azure_subscription
+ManualVerification: false
 Severity: critical
 Tags:
   category:
@@ -53,10 +52,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  x-kaytu-explanation:
-  - "## Azure Control: Firewalls & Networks Configuration\n\nEnsure that 'Firewalls & Networks' is limited to use selected networks instead of all networks.\n\n### Instructions:\n\n1. Navigate to the Azure Portal.\n2. Go to the settings or configuration section for the relevant resource (e.g., Azure SQL Database, Azure Storage Account).\n3. Locate the 'Firewalls & Networks' or similar security configuration.\n4. Update the settings to restrict access to only selected networks.\n5. Save and apply the changes.\n\n### Rationale:\n\nBy limiting access to selected networks, you enhance the security of your Azure resources, reducing the attack surface and mitigating potential risks associated with unauthorized access.\n"
-  x-kaytu-noncompliance-cost:
-  - "| Cost of Non-Compliance |\n|------------------------|\n| **Financial Impact**   |\n| - Increased risk of unauthorized access          |\n| - Potential data breaches and loss of sensitive information |\n| - Regulatory fines and legal consequences         |\n\n| **Operational Impact**  |\n| - Disruption to business operations               |\n| - Increased workload for incident response and mitigation  |\n| - Damage to reputation and customer trust         |\n\n| **Security Impact**     |\n| - Weakened security posture                       |\n| - Exposure to cyber threats and attacks           |\n| - Compromised confidentiality, integrity, and availability of data |\n\n| **Compliance Impact**   |\n| - Failure to meet regulatory requirements         |\n| - Audit failures and potential loss of certifications |\n| - Increased scrutiny from regulatory bodies      |\n"
-  x-kaytu-usefulness-example:
-  - "To ensure that \"Firewalls & Networks\" is limited to use selected networks instead of all networks in Azure, you can use Azure Policy to enforce this control. Azure Policy is a service in Azure that you can use to create, assign, and manage policies.\n\nHere's an example of how you might define an Azure Policy in markup format to enforce this control:\n\njson\nCopy code\n{\n  \"mode\": \"All\",\n  \"policyRule\": {\n    \"if\": {\n      \"field\": \"type\",\n      \"equals\": \"Microsoft.Network/networkSecurityGroups\"\n    },\n    \"then\": {\n      \"effect\": \"deny\",\n      \"details\": {\n        \"type\": \"Microsoft.Network/networkSecurityGroups\",\n        \"existenceCondition\": {\n          \"field\": \"Microsoft.Network/networkSecurityGroups/securityRules[*].access\",\n          \"equals\": \"Allow\"\n        }\n      }\n    }\n  },\n  \"parameters\": {}\n}\nExplanation:\n\nmode: Specifies the scope of the policy. In this case, \"All\" means the policy is applied to all resource types.\n\npolicyRule: Defines the conditions and actions of the policy.\n\nif: Specifies the condition for the policy to be applied. In this example, it checks if the resource type is \"Microsoft.Network/networkSecurityGroups\".\n\nthen: Specifies the action to be taken if the condition is met. In this case, it denies the creation of network security groups that have security rules with \"Allow\" access.\n\nparameters: Allows you to define any parameters needed for the policy. In this example, no parameters are used.\n\nThis policy ensures that network security groups with rules allowing traffic are denied, effectively limiting the use of selected networks. You can then assign this policy to your Azure subscriptions or resource groups as needed. Adjustments may be necessary based on the specific details of your networking setup and requirements."
-Title: Ensure That 'Firewalls & Networks' Is Limited to Use Selected Networks Instead of All Networks
+Managed: true

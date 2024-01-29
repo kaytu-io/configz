@@ -1,14 +1,8 @@
-Description: Security groups provide stateful filtering of ingress/egress network traffic to AWS resources. It is recommended that no security group allows unrestricted ingress access to port 3389.
 ID: aws_vpc_security_group_restrict_ingress_rdp_all
-Managed: true
-ManualVerification: false
+Title: Ensure no security groups allow ingress from 0.0.0.0/0 to port 3389
+Description: Security groups provide stateful filtering of ingress/egress network traffic to AWS resources. It is recommended that no security group allows unrestricted ingress access to port 3389.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_vpc_security_group
-  - aws_vpc_security_group_rule
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with ingress_rdp_rules as (
       select
@@ -48,6 +42,12 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_rdp_rules on ingress_rdp_rules.group_id = sg.group_id;
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -68,4 +68,4 @@ Tags:
   - aws
   service:
   - AWS/VPC
-Title: Ensure no security groups allow ingress from 0.0.0.0/0 to port 3389
+Managed: true

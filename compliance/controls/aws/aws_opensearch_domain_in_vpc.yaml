@@ -1,14 +1,8 @@
-Description: This control checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access.
 ID: aws_opensearch_domain_in_vpc
-Managed: true
-ManualVerification: false
+Title: OpenSearch domains should be in a VPC
+Description: This control checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_opensearch_domain
-  - aws_vpc_route_table
-  PrimaryTable: aws_opensearch_domain
   QueryToExecute: |
     with public_subnets as (
       select
@@ -48,6 +42,12 @@ Query:
     from
       aws_opensearch_domain as d
       left join opensearch_domain_with_public_subnet as p on d.arn = p.arn;
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+  - aws_opensearch_domain
+  - aws_vpc_route_table
+ManualVerification: false
 Severity: critical
 Tags:
   aws_foundational_security:
@@ -62,4 +62,4 @@ Tags:
   - aws
   service:
   - AWS/OpenSearch
-Title: OpenSearch domains should be in a VPC
+Managed: true

@@ -1,14 +1,8 @@
-Description: To help with data back-up processes, ensure your Amazon Relational Database Service (Amazon RDS) instances are a part of an AWS Backup plan.
 ID: aws_rds_db_instance_in_backup_plan
-Managed: true
-ManualVerification: false
+Title: RDS DB instances should be in a backup plan
+Description: To help with data back-up processes, ensure your Amazon Relational Database Service (Amazon RDS) instances are a part of an AWS Backup plan.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_backup_selection
-  - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |
     with mapped_with_id as (
       select
@@ -56,6 +50,12 @@ Query:
     from
       aws_rds_db_instance as i
       left join backed_up_instance as b on i.db_instance_identifier = b.db_instance_identifier;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_backup_selection
+  - aws_rds_db_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -94,4 +94,4 @@ Tags:
   - AWS/RDS
   soc_2:
   - "true"
-Title: RDS DB instances should be in a backup plan
+Managed: true

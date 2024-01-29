@@ -1,14 +1,8 @@
-Description: Ensure if Amazon Elastic Block Store (Amazon EBS) volumes are protected by a backup plan. The rule is non compliant if the Amazon EBS volume is not covered by a backup plan.
 ID: aws_ebs_volume_protected_by_backup_plan
-Managed: true
-ManualVerification: false
+Title: EBS volumes should be protected by a backup plan
+Description: Ensure if Amazon Elastic Block Store (Amazon EBS) volumes are protected by a backup plan. The rule is non compliant if the Amazon EBS volume is not covered by a backup plan.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_backup_protected_resource
-  - aws_ebs_volume
-  PrimaryTable: aws_ebs_volume
   QueryToExecute: |
     with backup_protected_volume as (
       select
@@ -35,6 +29,12 @@ Query:
     from
       aws_ebs_volume as v
       left join backup_protected_volume as b on v.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+  - aws_backup_protected_resource
+  - aws_ebs_volume
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -65,4 +65,4 @@ Tags:
   - AWS/EBS
   soc_2:
   - "true"
-Title: EBS volumes should be protected by a backup plan
+Managed: true

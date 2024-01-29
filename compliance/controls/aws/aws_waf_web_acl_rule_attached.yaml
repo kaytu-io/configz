@@ -1,13 +1,8 @@
-Description: This control checks whether an AWS WAF global web ACL contains at least one WAF rule or WAF rule group. The control fails if a web ACL does not contain any WAF rules or rule groups.
 ID: aws_waf_web_acl_rule_attached
-Managed: true
-ManualVerification: false
+Title: A WAF global web ACL should have at least one rule or rule group
+Description: This control checks whether an AWS WAF global web ACL contains at least one WAF rule or WAF rule group. The control fails if a web ACL does not contain any WAF rules or rule groups.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_waf_web_acl
-  PrimaryTable: aws_waf_web_acl
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_waf_web_acl;
+  Connector: AWS
+  PrimaryTable: aws_waf_web_acl
+  ListOfTables:
+  - aws_waf_web_acl
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/WAF
-Title: A WAF global web ACL should have at least one rule or rule group
+Managed: true

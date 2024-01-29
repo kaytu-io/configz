@@ -1,13 +1,8 @@
-Description: Ensure that your Elastic Load Balancers (ELBs) are configured with SSL or HTTPS listeners. Because sensitive data can exist, enable encryption in transit to help protect that data.
 ID: aws_elb_classic_lb_use_tls_https_listeners
-Managed: true
-ManualVerification: false
+Title: ELB classic load balancers should only use SSL or HTTPS listeners
+Description: Ensure that your Elastic Load Balancers (ELBs) are configured with SSL or HTTPS listeners. Because sensitive data can exist, enable encryption in transit to help protect that data.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_classic_load_balancer
-  PrimaryTable: aws_ec2_classic_load_balancer
   QueryToExecute: |
     select
       'arn:' || partition || ':elasticloadbalancing:' || region || ':' || account_id || ':loadbalancer/' || title as resource,
@@ -27,6 +22,11 @@ Query:
     from
       aws_ec2_classic_load_balancer,
       jsonb_array_elements(listener_descriptions) as listener_description;
+  Connector: AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+  - aws_ec2_classic_load_balancer
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -65,4 +65,4 @@ Tags:
   - AWS/ELB
   soc_2:
   - "true"
-Title: ELB classic load balancers should only use SSL or HTTPS listeners
+Managed: true

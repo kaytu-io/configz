@@ -1,14 +1,8 @@
-Description: Ensure if Amazon Relational Database Service (Amazon RDS) instances are protected by a backup plan. The rule is non compliant if the Amazon RDS Database instance is not covered by a backup plan.
 ID: aws_rds_db_instance_protected_by_backup_plan
-Managed: true
-ManualVerification: false
+Title: RDS DB instance should be protected by backup plan
+Description: Ensure if Amazon Relational Database Service (Amazon RDS) instances are protected by a backup plan. The rule is non compliant if the Amazon RDS Database instance is not covered by a backup plan.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_backup_protected_resource
-  - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |
     with backup_protected_rds_isntance as (
       select
@@ -35,6 +29,12 @@ Query:
     from
       aws_rds_db_instance as r
       left join backup_protected_rds_isntance as b on r.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_backup_protected_resource
+  - aws_rds_db_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -67,4 +67,4 @@ Tags:
   - AWS/RDS
   soc_2:
   - "true"
-Title: RDS DB instance should be protected by backup plan
+Managed: true

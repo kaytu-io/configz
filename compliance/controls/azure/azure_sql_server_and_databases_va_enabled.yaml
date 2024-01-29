@@ -1,15 +1,8 @@
-Description: Enable Vulnerability Assessment (VA) service scans for critical SQL servers and corresponding SQL databases.
-DocumentURI: ""
 ID: azure_sql_server_and_databases_va_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure that Vulnerability Assessment (VA) is enabled on a SQL server by setting a Storage Account
+Description: Enable Vulnerability Assessment (VA) service scans for critical SQL servers and corresponding SQL databases.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_server
-  - azure_subscription
-  PrimaryTable: azure_sql_server
   QueryToExecute: |
     select
       s.id as resource,
@@ -33,6 +26,12 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -53,10 +52,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  x-kaytu-explanation:
-  - "Azure Control is defined with the help of Azure Policy's JSON-based Markup language format. If you want to enable Vulnerability Assessment (VA) service scans for critical SQL servers and corresponding databases, you'd define a policy similar to the one presented below:\n\n```json\n{\n    \"properties\": {\n        \"displayName\": \"Enable Vulnerability Assessment for SQL servers and databases\",\n        \"policyType\": \"Custom\",\n        \"mode\": \"Indexed\",\n        \"description\": \"Enforce Vulnerability Assessment (VA) service scans on SQL servers and databases.\",\n        \"metadata\": {\n            \"version\": \"1.0.0\",\n            \"category\": \"SQL\"\n        },\n        \"parameters\": {\n            \"effect\": {\n                \"type\": \"String\",\n                \"metadata\": {\n                    \"displayName\": \"Effect\",\n                    \"description\": \"Enable or disable the execution of the policy\"\n                },\n                \"allowedValues\": [\"AuditIfNotExists\", \"Disabled\"],\n                \"defaultValue\": \"AuditIfNotExists\"\n            }\n        },\n        \"policyRule\": {\n            \"if\": {\n                \"allOf\": [\n                    {\n                        \"field\": \"type\",\n                        \"equals\": \"Microsoft.Sql/servers/databases\"\n                    },\n                    {\n                        \"field\": \"Microsoft.Sql/servers/auditingSettings/state\",\n                        \"equals\": \"Disabled\"\n                    }\n                ]\n            },\n            \"then\": {\n                \"effect\": \"[parameters('effect')]\",\n                \"details\": {\n                    \"type\": \"Microsoft.Sql/servers/databases/auditingSettings\",\n                    \"existenceCondition\": {\n                        \"allOf\": [\n                            {\n                                \"field\": \"Microsoft.Sql/servers/databases/auditingSettings/state\",\n                                \"equals\": \"Enabled\"\n                            },\n                            {\n                                \"field\": \"Microsoft.Sql/servers/databases/auditingSettings/isAzureMonitorTargetEnabled\",\n                                \"equals\": \"true\"\n                            }\n                        ]\n                    }\n                }\n            }\n        }\n    }\n}\n```\n\nThis policy checks SQL Server and Database resources for existence of enabled Vulnerability Assessment (VA) service scans and raises an alert if they are not set. When applied, the policy flags the servers and databases which lack the VA service scans."
-  x-kaytu-noncompliance-cost:
-  - "Non-compliance with the Azure Control to enable Vulnerability Assessment (VA) service scans for critical SQL servers and corresponding databases can lead to several potential costs. Here's a breakdown:\n\n1. **Security Risks**: Not conducting regular vulnerability scans puts your SQL servers and databases at significant risk. Attackers could easily exploit existing or potential vulnerabilities, leading to data breaches or system failures.\n\n2. **Financial Loss**: A data breach could cost a company in terms of penalties, reputation damage, loss of customer trust, and potential lawsuits, which could result in substantial financial loss.\n\n3. **Regulatory Fines**: Depending on the nature of your business, not scanning for vulnerabilities could mean non-compliance with certain regulatory standards (such as GDPR, HIPAA, or SOX), resulting in hefty fines and penalties.\n\n4. **System Downtime**: Exploitation of vulnerabilities could cause severe system crashes or slow performance, leading to service interruption and loss of business operations.\n\n5. **Loss of Competitive Advantage**: Lost or stolen sensitive data could end up with competitors, leading to a loss of competitive advantage.\n\n6. **Operational Costs**: If vulnerabilities lead to a successful cyber attack, the costs of recovery, including system repair, data recovery, and strengthening security measures, can be considerable.\n\nTherefore, enabling VA scans on Azure SQL servers and databases is a critical control that not only strengthens the security posture but also is a sound financial decision, reducing the risk of the associated costs of non-compliance."
-  x-kaytu-usefulness-example:
-  - "This Azure control is useful in a scenario where a large corporation has critical data stored on their Azure SQL servers. They have a huge customer base and regularly process and store sensitive data such as personal identification information, credit card details, purchasing habits, and more.\n\nThe company faces constant threats from cybercriminals who try to exploit any vulnerability in their database system. As such, they set up the Azure Vulnerability Assessment (VA) service to scan their SQL servers and the corresponding databases.\n\n```\n# Enable Vulnerability Assessment on the SQL Server\naz sql server va policy show --name MyPolicy --resource-group MyResourceGroup --server MyServer\n\n# Enable Vulnerability Assessment on the SQL Database\naz sql db va policy show --name MyPolicy --resource-group MyResourceGroup --server MyServer --database MyDatabase\n```\n\nBy implementing the Azure VA, the corporation can detect and fix any vulnerabilities within their SQL infrastructure. The system provides clear action items and recommendations to rectify the discovered vulnerabilities, thereby helping them improve their security posture, stay compliant with data security regulations, and ensure the trust of their customers."
-Title: Ensure that Vulnerability Assessment (VA) is enabled on a SQL server by setting a Storage Account
+Managed: true

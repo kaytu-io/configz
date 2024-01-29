@@ -1,14 +1,8 @@
-Description: To ensure the relevant people in your organization are notified when there is a potential security breach in one of your subscriptions, set a security contact to receive email notifications from Security Center.
 ID: azure_securitycenter_email_configured
-Managed: true
-ManualVerification: false
+Title: Subscriptions should have a contact email address for security issues
+Description: To ensure the relevant people in your organization are notified when there is a potential security breach in one of your subscriptions, set a security contact to receive email notifications from Security Center.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_contact
-  - azure_subscription
-  PrimaryTable: azure_security_center_contact
   QueryToExecute: |
     with contact_info as (
       select
@@ -41,10 +35,16 @@ Query:
     from
       azure_subscription sub
       left join contact_info ci on sub.subscription_id = ci.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_security_center_contact
+  ListOfTables:
+  - azure_security_center_contact
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/SecurityCenter
-Title: Subscriptions should have a contact email address for security issues
+Managed: true

@@ -1,13 +1,8 @@
-Description: Manage access to resources in the AWS Cloud by only allowing authorized users, processes, and devices access to Amazon Simple Storage Service (Amazon S3) buckets.
 ID: aws_s3_bucket_restrict_public_read_access
-Managed: true
-ManualVerification: false
+Title: S3 buckets should prohibit public read access
+Description: Manage access to resources in the AWS Cloud by only allowing authorized users, processes, and devices access to Amazon Simple Storage Service (Amazon S3) buckets.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     with public_acl as (
       select
@@ -66,6 +61,11 @@ Query:
       aws_s3_bucket as b
       left join public_acl as a on b.name = a.name
       left join read_access_policy as p on b.name = p.name;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: ""
 Tags:
   audit_manager_control_tower:
@@ -106,4 +106,4 @@ Tags:
   - AWS/S3
   soc_2:
   - "true"
-Title: S3 buckets should prohibit public read access
+Managed: true

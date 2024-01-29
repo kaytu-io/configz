@@ -1,14 +1,8 @@
-Description: This control checks if Amazon EC2 launch templates are configured to assign public IP addresses to network interfaces upon launch. The control fails if an EC2 launch template is configured to assign a public IP address to network interfaces or if there is at least one network interface that has a public IP address.
 ID: aws_ec2_launch_template_not_publicly_accessible
-Managed: true
-ManualVerification: false
+Title: Amazon EC2 launch templates should not assign public IPs to network interfaces
+Description: This control checks if Amazon EC2 launch templates are configured to assign public IP addresses to network interfaces upon launch. The control fails if an EC2 launch template is configured to assign a public IP address to network interfaces or if there is at least one network interface that has a public IP address.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  - aws_ec2_launch_template
-  PrimaryTable: aws_ec2_launch_template
   QueryToExecute: |
     with public_launch_templates as (
       select
@@ -44,6 +38,12 @@ Query:
     from
       aws_ec2_launch_template as t
       left join launch_templates_associated_instance as i on i.launch_template_id = t.launch_template_id;
+  Connector: AWS
+  PrimaryTable: aws_ec2_launch_template
+  ListOfTables:
+  - aws_ec2_instance
+  - aws_ec2_launch_template
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -58,4 +58,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: Amazon EC2 launch templates should not assign public IPs to network interfaces
+Managed: true

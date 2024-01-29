@@ -1,14 +1,8 @@
-Description: High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption.
 ID: azure_compute_os_and_data_disk_encrypted_with_cmk_and_platform_managed
-Managed: true
-ManualVerification: false
+Title: Managed disks should be double encrypted with both platform-managed and customer-managed keys
+Description: High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_disk
-  - azure_subscription
-  PrimaryTable: azure_compute_disk
   QueryToExecute: |
     select
       disk.id as resource,
@@ -31,10 +25,16 @@ Query:
     where
       disk_state = 'Attached'
       and sub.subscription_id = disk.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_disk
+  ListOfTables:
+  - azure_compute_disk
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/Compute
-Title: Managed disks should be double encrypted with both platform-managed and customer-managed keys
+Managed: true

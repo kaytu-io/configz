@@ -1,15 +1,15 @@
-Description: Audit built-in roles such as 'Owner, Contributor, Reader' instead of custom RBAC roles, which are error prone. Using custom roles is treated as an exception and requires a rigorous review and threat modeling.
 ID: azure_iam_no_custom_role
-Managed: true
-ManualVerification: false
+Title: Audit usage of custom RBAC roles
+Description: Audit built-in roles such as 'Owner, Contributor, Reader' instead of custom RBAC roles, which are error prone. Using custom roles is treated as an exception and requires a rigorous review and threat modeling.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
+  QueryToExecute: "with custom_roles as (\n  select\n    role_name,\n    role_type,\n    subscription_id,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    _ctx\n  from\n    azure_role_definition\n  where\n    role_type = 'CustomRole'\n)\nselect\n  cr.subscription_id as resource,\n  cr.kaytu_account_id as kaytu_account_id,\n  cr.kaytu_resource_id as kaytu_resource_id,\n  case\n    when count(*) > 0 then 'alarm'\n    else 'ok'\n  end as status,\n  'There are ' || count(*) || ' custom roles.' as reason\n  \n  , sub.display_name as subscription\nfrom\n  custom_roles as cr,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = cr.subscription_id\ngroup by\n  cr.subscription_id,\n  cr._ctx,\n  sub.display_name,\n  cr.kaytu_account_id,\n  cr.kaytu_resource_id "
+  Connector: Azure
+  PrimaryTable: azure_subscription
   ListOfTables:
   - azure_role_definition
   - azure_subscription
-  PrimaryTable: azure_subscription
-  QueryToExecute: "with custom_roles as (\n  select\n    role_name,\n    role_type,\n    subscription_id,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    _ctx\n  from\n    azure_role_definition\n  where\n    role_type = 'CustomRole'\n)\nselect\n  cr.subscription_id as resource,\n  cr.kaytu_account_id as kaytu_account_id,\n  cr.kaytu_resource_id as kaytu_resource_id,\n  case\n    when count(*) > 0 then 'alarm'\n    else 'ok'\n  end as status,\n  'There are ' || count(*) || ' custom roles.' as reason\n  \n  , sub.display_name as subscription\nfrom\n  custom_roles as cr,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = cr.subscription_id\ngroup by\n  cr.subscription_id,\n  cr._ctx,\n  sub.display_name,\n  cr.kaytu_account_id,\n  cr.kaytu_resource_id "
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -20,4 +20,4 @@ Tags:
   - "true"
   service:
   - Azure/ActiveDirectory
-Title: Audit usage of custom RBAC roles
+Managed: true

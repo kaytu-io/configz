@@ -1,14 +1,8 @@
-Description: This control checks whether the security groups that are in use allow unrestricted incoming traffic. Optionally the rule checks whether the port numbers are listed in the authorizedTcpPorts parameter. The default values for authorizedTcpPorts are 80 and 443.
 ID: aws_vpc_security_group_allows_ingress_authorized_ports
-Managed: true
-ManualVerification: false
+Title: Security groups should only allow unrestricted incoming traffic for authorized ports
+Description: This control checks whether the security groups that are in use allow unrestricted incoming traffic. Optionally the rule checks whether the port numbers are listed in the authorizedTcpPorts parameter. The default values for authorizedTcpPorts are 80 and 443.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_vpc_security_group
-  - aws_vpc_security_group_rule
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with ingress_unauthorized_ports as (
       select
@@ -40,6 +34,12 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_unauthorized_ports on ingress_unauthorized_ports.group_id = sg.group_id;
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -54,4 +54,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Title: Security groups should only allow unrestricted incoming traffic for authorized ports
+Managed: true

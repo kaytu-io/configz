@@ -1,13 +1,8 @@
-Description: This control checks whether an Amazon EKS cluster is running on a supported Kubernetes version. The control fails if the EKS cluster is running on an unsupported version. If your application doesn't require a specific version of Kubernetes, we recommend that you use the latest available Kubernetes version that's supported by EKS for your clusters.
 ID: aws_eks_cluster_with_latest_kubernetes_version
-Managed: true
-ManualVerification: false
+Title: EKS clusters should run on a supported Kubernetes version
+Description: This control checks whether an Amazon EKS cluster is running on a supported Kubernetes version. The control fails if the EKS cluster is running on an unsupported version. If your application doesn't require a specific version of Kubernetes, we recommend that you use the latest available Kubernetes version that's supported by EKS for your clusters.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_eks_cluster
-  PrimaryTable: aws_eks_cluster
   QueryToExecute: |
     select
       arn as resource,
@@ -26,6 +21,11 @@ Query:
       , region, account_id
     from
       aws_eks_cluster;
+  Connector: AWS
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+ManualVerification: false
 Severity: high
 Tags:
   aws_foundational_security:
@@ -40,4 +40,4 @@ Tags:
   - aws
   service:
   - AWS/EKS
-Title: EKS clusters should run on a supported Kubernetes version
+Managed: true

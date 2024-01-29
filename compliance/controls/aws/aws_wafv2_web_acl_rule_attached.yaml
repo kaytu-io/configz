@@ -1,13 +1,8 @@
-Description: This control checks whether a WAFV2 web access control list (web ACL) contains at least one WAF rule or WAF rule group. The control fails if a web ACL does not contain any WAF rules or rule groups.
 ID: aws_wafv2_web_acl_rule_attached
-Managed: true
-ManualVerification: false
+Title: A WAFV2 web ACL should have at least one rule or rule group
+Description: This control checks whether a WAFV2 web access control list (web ACL) contains at least one WAF rule or WAF rule group. The control fails if a web ACL does not contain any WAF rules or rule groups.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_wafv2_web_acl
-  PrimaryTable: aws_wafv2_web_acl
   QueryToExecute: |
     with rule_group_count as (
       select
@@ -38,6 +33,11 @@ Query:
     from
       aws_wafv2_web_acl as a
       left join rule_group_count as c on c.arn = a.arn;
+  Connector: AWS
+  PrimaryTable: aws_wafv2_web_acl
+  ListOfTables:
+  - aws_wafv2_web_acl
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -52,4 +52,4 @@ Tags:
   - aws
   service:
   - AWS/WAF
-Title: A WAFV2 web ACL should have at least one rule or rule group
+Managed: true

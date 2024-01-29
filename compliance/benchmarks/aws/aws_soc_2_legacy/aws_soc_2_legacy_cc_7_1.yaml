@@ -1,0 +1,34 @@
+ID: aws_soc_2_legacy_cc_7_1
+Title: CC7.1 To meet its objectives, the entity uses detection and monitoring procedures to identify (1) changes to configurations that result in the introduction of new vulnerabilities, and (2) susceptibilities to newly discovered vulnerabilities
+DisplayCode: ""
+Connector: AWS
+Description: ""
+Children: []
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+  soc_2_legacy:
+  - "true"
+  soc_2_legacy_item_id:
+  - "7.1"
+  soc_2_legacy_section_id:
+  - cc7
+  soc_2_legacy_type:
+  - automated
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls:
+- aws_ec2_instance_ssm_managed
+- aws_guardduty_enabled
+- aws_securityhub_enabled
+- aws_ssm_managed_instance_compliance_association_compliant

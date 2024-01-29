@@ -1,13 +1,8 @@
-Description: Manage access to the AWS Cloud by ensuring Amazon Elastic Compute Cloud (Amazon EC2) instances cannot be publicly accessed.
 ID: aws_ec2_instance_not_publicly_accessible
-Managed: true
-ManualVerification: false
+Title: EC2 instances should not have a public IP address
+Description: Manage access to the AWS Cloud by ensuring Amazon Elastic Compute Cloud (Amazon EC2) instances cannot be publicly accessed.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ec2_instance
-  PrimaryTable: aws_ec2_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_ec2_instance;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+  - aws_ec2_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -63,4 +63,4 @@ Tags:
   - AWS/EC2
   soc_2:
   - "true"
-Title: EC2 instances should not have a public IP address
+Managed: true

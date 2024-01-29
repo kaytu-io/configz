@@ -1,14 +1,8 @@
-Description: Audit SQL servers without Advanced Data Security.
 ID: azure_sql_server_azure_defender_enabled
-Managed: true
-ManualVerification: false
+Title: Azure Defender for SQL should be enabled for unprotected Azure SQL servers
+Description: Audit SQL servers without Advanced Data Security.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_sql_server
-  - azure_subscription
-  PrimaryTable: azure_sql_server
   QueryToExecute: |
     with sql_server_policy as (
       select
@@ -43,10 +37,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/SQL
-Title: Azure Defender for SQL should be enabled for unprotected Azure SQL servers
+Managed: true

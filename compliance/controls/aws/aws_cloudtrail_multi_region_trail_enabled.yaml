@@ -1,14 +1,8 @@
-Description: AWS CloudTrail records AWS Management Console actions and API calls. You can identify which users and accounts called AWS, the source IP address from where the calls were made, and when the calls occurred. CloudTrail will deliver log files from all AWS Regions to your S3 bucket if MULTI_REGION_CLOUD_TRAIL_ENABLED is enabled.
 ID: aws_cloudtrail_multi_region_trail_enabled
-Managed: true
-ManualVerification: false
+Title: At least one multi-region AWS CloudTrail should be present in an account
+Description: AWS CloudTrail records AWS Management Console actions and API calls. You can identify which users and accounts called AWS, the source IP address from where the calls were made, and when the calls occurred. CloudTrail will deliver log files from all AWS Regions to your S3 bucket if MULTI_REGION_CLOUD_TRAIL_ENABLED is enabled.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_account
-  - aws_cloudtrail_trail
-  PrimaryTable: aws_account
   QueryToExecute: |
     with multi_region_trails as (
       select
@@ -55,6 +49,12 @@ Query:
       aws_account as a
       left join multi_region_trails as b on a.account_id = b.account_id
       left join organization_trails as o on a.account_id = o.account_id;
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+  - aws_account
+  - aws_cloudtrail_trail
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -95,4 +95,4 @@ Tags:
   - AWS/CloudTrail
   soc_2:
   - "true"
-Title: At least one multi-region AWS CloudTrail should be present in an account
+Managed: true

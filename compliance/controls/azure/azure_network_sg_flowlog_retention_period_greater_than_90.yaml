@@ -1,16 +1,8 @@
-Description: Network Security Group Flow Logs should be enabled and the retention period is set to greater than or equal to 90 days.
-DocumentURI: ""
 ID: azure_network_sg_flowlog_retention_period_greater_than_90
-Managed: true
-ManualVerification: false
+Title: Ensure that Network Security Group Flow Log retention period is 'greater than 90 days'
+Description: Network Security Group Flow Logs should be enabled and the retention period is set to greater than or equal to 90 days.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_network_security_group
-  - azure_network_watcher_flow_log
-  - azure_subscription
-  PrimaryTable: azure_network_security_group
   QueryToExecute: |
     select
       sg.id resource,
@@ -34,6 +26,13 @@ Query:
       azure_network_security_group sg
       left join azure_network_watcher_flow_log fl on sg.id = fl.target_resource_id
       join azure_subscription sub on sub.subscription_id = sg.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_network_security_group
+  ListOfTables:
+  - azure_network_security_group
+  - azure_network_watcher_flow_log
+  - azure_subscription
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -54,10 +53,4 @@ Tags:
   - azure
   service:
   - Azure/Network
-  x-kaytu-explanation:
-  - "To define the Azure Control in markup format, you can use Azure Policy definitions. Here's an example in Azure Policy Definition Markup Language (JSON):\n\njson\n\n{\n  \"mode\": \"All\",\n  \"policyRule\": {\n    \"if\": {\n      \"allOf\": [\n        {\n          \"field\": \"type\",\n          \"equals\": \"Microsoft.Network/networkSecurityGroups\"\n        },\n        {\n          \"not\": {\n            \"field\": \"Microsoft.Network/networkSecurityGroups/flowLogs.retentionDays\",\n            \"greaterOrEquals\": 90\n          }\n        }\n      ]\n    },\n    \"then\": {\n      \"effect\": \"audit\"\n    }\n  },\n  \"parameters\": {}\n}\nThis example represents an Azure Policy that ensures Network Security Group Flow Logs have a retention period greater than or equal to 90 days. The mode specifies the enforcement mode, and the policyRule defines the conditions and actions."
-  x-kaytu-noncompliance-cost:
-  - The cost of non-compliance with the specified Azure Control could include potential security vulnerabilities, regulatory fines, and reputational damage. Failing to enable Network Security Group Flow Logs or maintaining a retention period less than 90 days may lead to inadequate monitoring and forensic capabilities, making it harder to detect and respond to security incidents. Additionally, non-compliance with industry or organizational regulations could result in financial penalties and a tarnished business image.
-  x-kaytu-usefulness-example:
-  - Consider a scenario where an organization experiences a security incident involving a compromised system. With Network Security Group Flow Logs enabled and a retention period of at least 90 days, the security team can thoroughly investigate the incident. They can trace network traffic, identify the source and impact of the compromise, and determine the extent of unauthorized access. This detailed historical data is crucial for forensic analysis, aiding in the development of effective response strategies and mitigating future security risks.
-Title: Ensure that Network Security Group Flow Log retention period is 'greater than 90 days'
+Managed: true

@@ -1,14 +1,8 @@
-Description: Once MFA Delete is enabled on your sensitive and classified S3 bucket it requires the user to have two forms of authentication.
-DocumentURI: ""
 ID: aws_s3_bucket_mfa_delete_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure MFA Delete is enabled on S3 buckets
+Description: Once MFA Delete is enabled on your sensitive and classified S3 bucket it requires the user to have two forms of authentication.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     select
       arn as resource,
@@ -26,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_s3_bucket;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -46,27 +45,4 @@ Tags:
   - aws
   service:
   - AWS/S3
-  x-kaytu-explanation:
-  - "`MFA Delete` is a security feature of AWS S3 that helps to safeguard your S3 objects against accidental deletion. This option enhances the existing protection mechanisms AWS has in place for data corruption or deletion. \n\nIn addition to having the necessary permissions to delete an object, MFA Delete requires that the `user` provides two forms of authentication: \n\n1. Your AWS account `credentials`\n2. A `six-digit code` from a device in your possession. \n\nYou use this same number when you delete the S3 bucket versioning configuration. \n\nThe commitment to `MFA Delete` prevents any user, including the root account, from changing the versioning state or deleting an object version unless they have the MFA token, enhancing the implementation of your security measures. \n\nTo use the 'MFA Delete', the MFA device must be `associated` with the AWS account's `root credentials` or an IAM user with `full permissions.` \n\nPlease note, once enabled, MFA Delete adds an extra step for any `PUT`, `POST`, or `DELETE` request and a `LIST MFA Delete request`. \n\n Please ensure to enable it on sensitive and classified S3 bucket where high-level security is required."
-  x-kaytu-noncompliance-cost:
-  - "The cost of non-compliance to the AWS control of enabling MFA Delete on your sensitive and classified S3 bucket can have both financial and reputational impacts.\n\n1. __Data Breach__: Non-compliance can lead to unauthorized access to your S3 buckets. An unauthorized user could potentially delete critical data. If this data is sensitive or classified, the implications are more serious as it could be a target for hackers or malicious insiders. A data breach can result in huge financial losses due to regulatory fines, potential lawsuits, and loss of revenue from downtime.\n\n2. __Data Recovery Cost__: If critical data is deleted either maliciously or accidentally, there could be significant costs associated with data recovery. In some cases, it may not even be possible to fully recover the deleted data, leading to permanent loss of important information.\n\n3. __Reputation Damage__: Suffering a data breach can lead to a loss of trust from customers and stakeholders, especially if the data is sensitive or classified. This can significantly damage your organization's reputation, and rebuilding this trust can take significant time and resources.\n\n4. __Regulatory Penalties__: Depending on the nature of the data and the industry in which your organization operates, non-compliance could lead to regulatory penalties. This could include fines and other sanctions from regulatory bodies.\n\nBy making use of the MFA Delete capability, your organization can reduce the risk of unauthorized data deletion, providing an extra layer of security for your AWS S3 buckets."
-  x-kaytu-usefulness-example:
-  - |-
-    Let's imagine you're working in a healthcare organization and maintaining an S3 bucket that contains highly sensitive patient health records. The appropriate security measures are absolutely vital in this scenario not only to ensure compliance with laws like HIPAA, but also to protect the privacy of the individuals whose information you're handling.
-
-    Enabling MFA Delete on this S3 bucket provides an additional layer of security. For instance, even if an authenticated user with the necessary permissions tries to delete an object, they would need to provide another form of authentication — either through a hardware MFA device or a virtual one tied to a specific mobile device.
-
-    Here's an example situation:
-
-    A disgruntled employee, who has the necessary permissions, decides to delete these essential health records out of spite or for revenge. 
-
-    Without MFA Delete:
-
-    He goes into the AWS Management Console, navigates to the relevant S3 bucket, selects the objects, and hits Delete. Just like that, your sensitive data is gone.
-
-    With MFA Delete:
-
-    The same employee navigates to the S3 bucket and tries to delete the objects. However, this time, he's prompted for two types of authentication. He might have his password (something he knows), but he doesn't have your mobile device (something he has) that receives the uniquely generated code. Therefore, he fails to delete the files, and your data is safe.
-
-    In summary, enabling the MFA Delete feature on a critical S3 bucket helps you maintain the utmost security, ensuring that the deletion of a file object is a deliberate act by an authorized individual. This keeps your sensitive data safer.
-Title: Ensure MFA Delete is enabled on S3 buckets
+Managed: true

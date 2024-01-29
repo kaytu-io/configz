@@ -1,13 +1,8 @@
-Description: To help with logging and monitoring within your environment, ensure Amazon Relational Database Service (Amazon RDS) logging is enabled.
 ID: aws_rds_db_instance_logging_enabled
-Managed: true
-ManualVerification: false
+Title: Database logging should be enabled
+Description: To help with logging and monitoring within your environment, ensure Amazon Relational Database Service (Amazon RDS) logging is enabled.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |
     select
       arn as resource,
@@ -40,6 +35,11 @@ Query:
       , region, account_id
     from
       aws_rds_db_instance;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -80,4 +80,4 @@ Tags:
   - AWS/RDS
   soc_2:
   - "true"
-Title: Database logging should be enabled
+Managed: true

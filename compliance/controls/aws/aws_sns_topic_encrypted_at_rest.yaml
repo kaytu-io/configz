@@ -1,13 +1,8 @@
-Description: To help protect data at rest, ensure that your Amazon Simple Notification Service (Amazon SNS) topics require encryption using AWS Key Management Service (AWS KMS).
 ID: aws_sns_topic_encrypted_at_rest
-Managed: true
-ManualVerification: false
+Title: SNS topics should be encrypted at rest
+Description: To help protect data at rest, ensure that your Amazon Simple Notification Service (Amazon SNS) topics require encryption using AWS Key Management Service (AWS KMS).
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_sns_topic
-  PrimaryTable: aws_sns_topic
   QueryToExecute: |
     select
       topic_arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_sns_topic;
+  Connector: AWS
+  PrimaryTable: aws_sns_topic
+  ListOfTables:
+  - aws_sns_topic
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -61,4 +61,4 @@ Tags:
   - AWS/SNS
   soc_2:
   - "true"
-Title: SNS topics should be encrypted at rest
+Managed: true

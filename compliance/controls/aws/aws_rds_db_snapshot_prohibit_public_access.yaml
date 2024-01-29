@@ -1,14 +1,8 @@
-Description: Manage access to resources in the AWS Cloud by ensuring that Amazon Relational Database Service (Amazon RDS) instances are not public.
 ID: aws_rds_db_snapshot_prohibit_public_access
-Managed: true
-ManualVerification: false
+Title: RDS snapshots should prohibit public access
+Description: Manage access to resources in the AWS Cloud by ensuring that Amazon Relational Database Service (Amazon RDS) instances are not public.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_rds_db_cluster_snapshot
-  - aws_rds_db_snapshot
-  PrimaryTable: null
   QueryToExecute: |
     (
     select
@@ -51,6 +45,12 @@ Query:
       aws_rds_db_snapshot,
       jsonb_array_elements(db_snapshot_attributes) as database_snapshot
     );
+  Connector: AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_rds_db_cluster_snapshot
+  - aws_rds_db_snapshot
+ManualVerification: false
 Severity: ""
 Tags:
   audit_manager_control_tower:
@@ -91,4 +91,4 @@ Tags:
   - AWS/RDS
   soc_2:
   - "true"
-Title: RDS snapshots should prohibit public access
+Managed: true

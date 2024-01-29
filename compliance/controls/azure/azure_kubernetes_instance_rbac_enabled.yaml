@@ -1,14 +1,8 @@
-Description: To provide granular filtering on the actions that users can perform, use Role-Based Access Control (RBAC) to manage permissions in Kubernetes Service Clusters and configure relevant authorization policies.
 ID: azure_kubernetes_instance_rbac_enabled
-Managed: true
-ManualVerification: false
+Title: Role-Based Access Control (RBAC) should be used on Kubernetes Services
+Description: To provide granular filtering on the actions that users can perform, use Role-Based Access Control (RBAC) to manage permissions in Kubernetes Service Clusters and configure relevant authorization policies.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_kubernetes_cluster
-  - azure_subscription
-  PrimaryTable: azure_kubernetes_cluster
   QueryToExecute: |
     select
       kc.id as resource,
@@ -31,6 +25,12 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = kc.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+  - azure_kubernetes_cluster
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
@@ -39,4 +39,4 @@ Tags:
   - "true"
   service:
   - Azure/KubernetesService
-Title: Role-Based Access Control (RBAC) should be used on Kubernetes Services
+Managed: true

@@ -1,14 +1,8 @@
-Description: Setting InternalEncryption to true encrypts the pagefile, worker disks, and internal network traffic between the front ends and workers in an App Service Environment.
 ID: azure_app_service_environment_internal_encryption_enabled
-Managed: true
-ManualVerification: false
+Title: App Service Environment should enable internal encryption
+Description: Setting InternalEncryption to true encrypts the pagefile, worker disks, and internal network traffic between the front ends and workers in an App Service Environment.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_app_service_environment
-  - azure_subscription
-  PrimaryTable: azure_app_service_environment
   QueryToExecute: |
     with app_service_environment as (
       select
@@ -41,10 +35,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_app_service_environment
+  ListOfTables:
+  - azure_app_service_environment
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/AppService
-Title: App Service Environment should enable internal encryption
+Managed: true

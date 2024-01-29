@@ -1,13 +1,8 @@
-Description: This control checks whether the S3 bucket policy prevents principals from other AWS accounts from performing denied actions on resources in the S3 bucket.
 ID: aws_s3_bucket_policy_restricts_cross_account_permission_changes
-Managed: true
-ManualVerification: false
+Title: Amazon S3 permissions granted to other AWS accounts in bucket policies should be restricted
+Description: This control checks whether the S3 bucket policy prevents principals from other AWS accounts from performing denied actions on resources in the S3 bucket.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
   QueryToExecute: |
     with cross_account_buckets as (
       select
@@ -49,6 +44,11 @@ Query:
     from
       aws_s3_bucket a
       left join cross_account_buckets b on a.arn = b.arn;
+  Connector: AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -61,4 +61,4 @@ Tags:
   - aws
   service:
   - AWS/S3
-Title: Amazon S3 permissions granted to other AWS accounts in bucket policies should be restricted
+Managed: true

@@ -1,14 +1,8 @@
-Description: This policy deploys the Windows Guest Configuration extension to Windows virtual machines hosted in Azure that are supported by Guest Configuration. The Windows Guest Configuration extension is a prerequisite for all Windows Guest Configuration assignments and must be deployed to machines before using any Windows Guest Configuration policy definition.
 ID: azure_compute_vm_guest_configuration_installed_windows
-Managed: true
-ManualVerification: false
+Title: Deploy the Windows Guest Configuration extension to enable Guest Configuration assignments on Windows VMs
+Description: This policy deploys the Windows Guest Configuration extension to Windows virtual machines hosted in Azure that are supported by Guest Configuration. The Windows Guest Configuration extension is a prerequisite for all Windows Guest Configuration assignments and must be deployed to machines before using any Windows Guest Configuration policy definition.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     with agent_installed_vm as (
       select
@@ -45,6 +39,12 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
@@ -53,4 +53,4 @@ Tags:
   - "true"
   service:
   - Azure/Compute
-Title: Deploy the Windows Guest Configuration extension to enable Guest Configuration assignments on Windows VMs
+Managed: true

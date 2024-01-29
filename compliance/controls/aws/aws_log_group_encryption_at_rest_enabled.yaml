@@ -1,13 +1,8 @@
-Description: To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Group
 ID: aws_log_group_encryption_at_rest_enabled
-Managed: true
-ManualVerification: false
+Title: Log group encryption at rest should be enabled
+Description: To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Group
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudwatch_log_group
-  PrimaryTable: aws_cloudwatch_log_group
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_cloudwatch_log_group;
+  Connector: AWS
+  PrimaryTable: aws_cloudwatch_log_group
+  ListOfTables:
+  - aws_cloudwatch_log_group
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -63,4 +63,4 @@ Tags:
   - AWS/CloudWatch
   soc_2:
   - "true"
-Title: Log group encryption at rest should be enabled
+Managed: true

@@ -1,15 +1,8 @@
-Description: This policy audits any virtual machine connected to a virtual network that is not approved.
 ID: azure_compute_vm_attached_with_network
-Managed: true
-ManualVerification: false
+Title: Virtual machines should be connected to an approved virtual network
+Description: This policy audits any virtual machine connected to a virtual network that is not approved.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_network_interface
-  - azure_subscription
-  PrimaryTable: azure_compute_virtual_machine
   QueryToExecute: |
     with vm_with_network_interfaces as (
       select
@@ -57,10 +50,17 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_network_interface
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   hipaa_hitrust_v92:
   - "true"
   service:
   - Azure/Compute
-Title: Virtual machines should be connected to an approved virtual network
+Managed: true

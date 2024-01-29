@@ -1,13 +1,8 @@
-Description: This control checks whether CloudFront distributions are associated with either AWS WAF or AWS WAFv2 web ACLs. The control fails if the distribution is not associated with a web ACL.
 ID: aws_cloudfront_distribution_waf_enabled
-Managed: true
-ManualVerification: false
+Title: CloudFront distributions should have AWS WAF enabled
+Description: This control checks whether CloudFront distributions are associated with either AWS WAF or AWS WAFv2 web ACLs. The control fails if the distribution is not associated with a web ACL.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_cloudfront_distribution
-  PrimaryTable: aws_cloudfront_distribution
   QueryToExecute: |
     select
       arn as resource,
@@ -25,6 +20,11 @@ Query:
       , region, account_id
     from
       aws_cloudfront_distribution;
+  Connector: AWS
+  PrimaryTable: aws_cloudfront_distribution
+  ListOfTables:
+  - aws_cloudfront_distribution
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -39,4 +39,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFront
-Title: CloudFront distributions should have AWS WAF enabled
+Managed: true

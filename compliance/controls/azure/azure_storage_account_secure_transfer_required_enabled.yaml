@@ -1,15 +1,8 @@
-Description: Enable data encryption in transit.
-DocumentURI: ""
 ID: azure_storage_account_secure_transfer_required_enabled
-Managed: true
-ManualVerification: false
+Title: Ensure that 'Secure transfer required' is set to 'Enabled'
+Description: Enable data encryption in transit.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_storage_account
-  - azure_subscription
-  PrimaryTable: azure_storage_account
   QueryToExecute: |
     select
       sa.id as resource,
@@ -31,6 +24,12 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = sa.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+ManualVerification: false
 Severity: high
 Tags:
   category:
@@ -51,42 +50,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
-  x-kaytu-explanation:
-  - "Azure provides a way to ensure your data is secure while it is being transmitted from one location to another with the function of data encryption in transit. It involves employing security measures to protect data during its movement in-between different networks or while it is going from host to host. \n\nThis feature can be enabled by using a simple markup language in the Azure portal. The specific markup code may differ depending on the specific service you want to secure like Azure Storage, Azure SQL Database, Azure Web App etc.  \n\nHere is a basic example of how it would look in a Azure Resource Manager (ARM) template JSON file when enabling HTTPS only traffic for an Azure Storage account. \n\n```json\n{\n  \"type\": \"Microsoft.Storage/storageAccounts\",\n  \"apiVersion\": \"2021-01-01\",\n  \"name\": \"[parameters('storageName')]\",\n  \"location\": \"[parameters('location')]\",\n  \"properties\": {\n    \"supportsHttpsTrafficOnly\": true,\n    \"encryption\": {\n      \"services\": {\n        \"blob\": {\n          \"enabled\": true\n        },\n        \"file\": {\n          \"enabled\": true\n        }\n      },\n      \"keySource\": \"Microsoft.Storage\"\n    }\n  }\n}\n```\n\nThis specific section enables data encryption in transit: \n```json\n\"supportsHttpsTrafficOnly\": true,\n```\nThis code indicates that only encrypted (HTTPS) connections are allowed for transferring data into or out of the Azure Storage account, hence ensuring data encryption in transit.\n\nPlease note that this is just one way to secure data in Azure and there are other options available depending on the services used and specific business needs and scenarios."
-  x-kaytu-noncompliance-cost:
-  - |-
-    Non-compliance with the Azure control of enabling data encryption in transit can lead to a range of costs that include the following:
-
-    1. **Security Risks:** Unencrypted data is easier for malicious parties to intercept and exploit. This could lead to unauthorized access of user data or potentially even damaging server attacks.
-
-    2. **Financial Losses:** Data breaches often come with significant monetary costs. These may include damage repairs, system updates, refunds to affected users, and potentially even fines or lawsuits.
-
-    3. **Regulatory Fines:** Various industries and regions are subject to certain regulations (like GDPR) that require certain levels of data protection. Non-compliance can lead to substantial fines or sanctions.
-
-    4. **Reputation Damage:** If customers and clients find out that their data has been compromised due to a lack of encryption in transit, this can greatly harm a company's reputation.
-
-    5. **Loss of Trust:** A breach in security could lead to a loss of trust from clients, customers, or business partners who may choose to take their business elsewhere.
-
-    In summary, enabling data encryption in transit is a necessary measure to protect user data and avoid potential security threats, financial losses, regulatory penalties, and loss of trust.
-  x-kaytu-usefulness-example:
-  - |-
-    For example, if an organization is hosting a confidential business application on Azure. This application stores sensitive information like business data, customer details, financial transactions, etc. 
-
-    It is crucial to ensure that this sensitive data remains secure when it is being transmitted over the network from the application to the user, between Azure services, etc. 
-
-    By enabling data encryption in transit, the organization can add an extra layer of security to the data transmission. Any data that is transmitted will be encrypted using industry-standard encryption protocols, making it unreadable to anyone who might intercept it.
-
-    ```markup
-    <transitEncryption>
-       <enabled>true</enabled>
-       <requireSecureTransfer>true</requireSecureTransfer>
-       <serviceURI>https://myapp.azurewebsites.net</serviceURI>
-       <certificate>
-          <thumbprint>ABCD1234EFGH5678IJKL9012MNOP3456QRSTUV78</thumbprint>
-          <thumbprintAlgorithm>sha256</thumbprintAlgorithm>
-       </certificate>
-    </transitEncryption>
-    ```
-
-    In this markup, `enabled` is set to `true`, signifying that data encryption in transit is enabled. `requireSecureTransfer` is also on, ensuring that all data transfers occur over a secure connection. The `serviceURI` specifies the URI of the service where the data transfer is happening. `Thumbprint` and `thumbprintAlgorithm` are used to specify the certificate details used for the encryption.
-Title: Ensure that 'Secure transfer required' is set to 'Enabled'
+Managed: true

@@ -1,13 +1,8 @@
-Description: This control checks if Amazon ECS Fargate services are running the latest Fargate platform version. This control fails if the platform version is not the latest.
 ID: aws_ecs_service_fargate_using_latest_platform_version
-Managed: true
-ManualVerification: false
+Title: Fargate services should run on the latest Fargate platform version
+Description: This control checks if Amazon ECS Fargate services are running the latest Fargate platform version. This control fails if the platform version is not the latest.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - aws_ecs_service
-  PrimaryTable: aws_ecs_service
   QueryToExecute: |
     select
       arn as resource,
@@ -27,6 +22,11 @@ Query:
       , region, account_id
     from
       aws_ecs_service;
+  Connector: AWS
+  PrimaryTable: aws_ecs_service
+  ListOfTables:
+  - aws_ecs_service
+ManualVerification: false
 Severity: medium
 Tags:
   aws_foundational_security:
@@ -41,4 +41,4 @@ Tags:
   - aws
   service:
   - AWS/ECS
-Title: Fargate services should run on the latest Fargate platform version
+Managed: true

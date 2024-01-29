@@ -1,15 +1,8 @@
-Description: For designated users, they will be prompted to use their multi-factor authentication(MFA) process on logins.
-DocumentURI: ""
 ID: azure_iam_conditional_access_mfa_enabled
-Managed: true
-ManualVerification: true
+Title: Ensure Multi-factor Authentication is Required for Azure Management
+Description: For designated users, they will be prompted to use their multi-factor authentication(MFA) process on logins.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_tenant
-  - azuread_conditional_access_policy
-  PrimaryTable: azuread_conditional_access_policy
   QueryToExecute: |
     select
       p.id as resource,
@@ -28,6 +21,12 @@ Query:
     from
       azure_tenant as t,
       azuread_conditional_access_policy as p;
+  Connector: Azure
+  PrimaryTable: azuread_conditional_access_policy
+  ListOfTables:
+  - azure_tenant
+  - azuread_conditional_access_policy
+ManualVerification: true
 Severity: medium
 Tags:
   category:
@@ -48,41 +47,4 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
-  x-kaytu-explanation:
-  - "Markup format for a text describing Azure's multi-factor authentication (MFA) control might look like this in Markdown, one of the most popular markup languages:\n\n```markdown\n# Azure Control for Multi-factor Authentication (MFA)\n\nAzure's Multi-factor Authentication (MFA) provides an additional layer of security for user logins. This control requires designated users to validate their identities using multiple methods during the login process. \n\nOnce this control is enabled for specific users, it prompts them to authenticate their logins through the MFA process. This process includes two or more independent credentials: what the user knows (password), what the user has (security token), and what the user is (biometric verification).\n\nThis MFA control significantly increases security by making it difficult for unauthorized users to break into the account, even if they have acquired the user's password.\n```\nFor XML, another markup language used primarily in document encoding:\n\n```xml\n<control>\n  <name>Azure Multi-factor Authentication (MFA)</name>\n  <description>Azure's MFA is a control that provides an additional layer of security by requiring designated users to validate their identities using multiple methods during the login process.</description>\n  <prompt>Once this control is enabled for specific users, they will be prompted to authenticate their logins through an MFA process. This process includes at least two independent credentials such as something the user knows (password), something the user has (security token) or something the user is (biometric verification).</prompt>\n  <securityBenefit>This control significantly increases the level of security by making it difficult for unauthorized users to break into the account, even if they are in possession of the user's password.</securityBenefit>\n</control>\n``` \n\nKeep in mind that actual Azure control configurations are usually done through the Azure portal or Azure CLI, and not via markup languages. These are just text representations."
-  x-kaytu-noncompliance-cost:
-  - |-
-    Non-compliance to the Azure Multi-Factor Authentication (MFA) control can have significant costs to businesses. 
-
-    1. **Security Breaches:** One of the major costs of non-compliance with MFA is the increased risk of security breaches. Cyber attackers could potentially get unauthorized access to secured resources, sensitive data, or even user profiles. This not only compromises security but could also expose the company to significant financial losses. 
-
-        For example, according to a report by Ponemon Institute, the average cost of a data breach in 2020 was $3.86 million.
-
-    2. **Regulatory Fines:** Compliance with security protocols, including MFA, is required for many industries. Failing to meet these standards can result in hefty fines from regulatory bodies. 
-
-        As an example, under GDPR, companies can be fined up to 4% of their annual global turnover for non-compliance.
-
-    3. **Reputation Damage:** If any security breach happens due to non-compliance with MFA, it can severely damage the reputation of a company. This can lead to a loss in the trust of customers and potential future businesses.
-
-    4. **Interruption of Business Operations:** In the case of a security breach, business operations can be severely disrupted, leading to loss of productivity and revenue.
-
-    5. **Response Costs:** In case of a data breach, organizations have to bear incident response costs to investigate the breach, restore systems, communicate with affected parties, etc. This could include hiring external expertise, buying new tools, or implementing more robust security measures in the future. 
-
-    Therefore, it's imperative for organizations to adhere to Azure controls, like MFA, to minimize the potential damage and costs associated with security breaches.
-  x-kaytu-usefulness-example:
-  - |-
-    ```
-    <authentication>
-      <identity>
-        <enableMFA>true</enableMFA>
-        <userLogin>
-          <username>user@domain.com</username>
-          <password>password123</password>
-          <requireMFA>true</requireMFA>
-        </userLogin>
-      </identity>
-    </authentication>
-    ```
-
-    In this example, when the user with the username `user@domain.com` tries to log in, they are prompted to go through a multi-factor authentication process, such as entering a verification code sent to their mobile phone or email. This enhances the security of the login process, especially for users with elevated access privileges, making it much more difficult for unauthorized individuals to gain access to the system.
-Title: Ensure Multi-factor Authentication is Required for Azure Management
+Managed: true

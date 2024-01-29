@@ -1,14 +1,8 @@
-Description: Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your container registries instead of the entire service, you'll also be protected against data leakage risks.
 ID: azure_container_registry_uses_private_link
-Managed: true
-ManualVerification: false
+Title: Container registries should use private link
+Description: Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your container registries instead of the entire service, you'll also be protected against data leakage risks.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_container_registry
-  - azure_subscription
-  PrimaryTable: azure_container_registry
   QueryToExecute: |
     with container_registry_private_connection as (
       select
@@ -40,10 +34,16 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_container_registry
+  ListOfTables:
+  - azure_container_registry
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   nist_sp_800_53_rev_5:
   - "true"
   service:
   - Azure/ContainerRegistry
-Title: Container registries should use private link
+Managed: true

@@ -1,14 +1,8 @@
-Description: Turning on Azure Defender enables threat detection for Kubernetes, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
 ID: azure_securitycenter_azure_defender_on_for_k8s
-Managed: true
-ManualVerification: false
+Title: Ensure that Azure Defender is set to On for Kubernetes
+Description: Turning on Azure Defender enables threat detection for Kubernetes, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
-  PrimaryTable: azure_security_center_subscription_pricing
   QueryToExecute: |
     select
       sub_pricing.id as resource,
@@ -29,6 +23,12 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       name = 'KubernetesService';
+  Connector: Azure
+  PrimaryTable: azure_security_center_subscription_pricing
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+ManualVerification: false
 Severity: ""
 Tags:
   category:
@@ -49,4 +49,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-Title: Ensure that Azure Defender is set to On for Kubernetes
+Managed: true
