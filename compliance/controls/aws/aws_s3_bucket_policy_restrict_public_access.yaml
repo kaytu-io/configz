@@ -5,58 +5,59 @@ Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with public_buckets as (
-      select
-        distinct arn as arn
-      from
-        aws_s3_bucket,
-        jsonb_array_elements(policy_std -> 'Statement') as s,
-        jsonb_array_elements_text(s -> 'Principal' -> 'AWS') as p
-      where
-        p = '*'
-        and s ->> 'Effect' = 'Allow'
+        select distinct arn as arn
+        from aws_s3_bucket
+        where not block_public_acls
+        union all
+        select arn as arn
+        from aws_s3_bucket,
+            jsonb_array_elements(policy_std->'Statement') as s,
+            jsonb_array_elements_text(s->'Principal'->'AWS') as p
+        where (
+                p = '*'
+                and s->>'Effect' = 'Allow'
+            )
     )
-    select
-      b.arn as resource,
-      b.kaytu_account_id as kaytu_account_id,
-      b.kaytu_resource_id as kaytu_resource_id,
-      case
-        when b.policy_std is null then 'info'
-        when p.arn is not null then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when b.policy_std is null then title || ' does not have defined policy or insufficient access to the policy.'
-        when p.arn is not null then title || ' publicly accessible.'
-        else title || ' not publicly accessible.'
-      end as reason
-      
-      , region, account_id
-    from
-      aws_s3_bucket as b
-      left join public_buckets as p on p.arn = b.arn;
+    select b.arn as resource,
+        b.kaytu_account_id as kaytu_account_id,
+        b.kaytu_resource_id as kaytu_resource_id,
+        case
+            when b.policy_std is null then 'info'
+            when p.arn is not null then 'alarm'
+            else 'ok'
+        end as status,
+        case
+            when b.policy_std is null then title || ' does not have defined policy or insufficient access to the policy.'
+            when p.arn is not null then title || ' publicly accessible.'
+            else title || ' not publicly accessible.'
+        end as reason,
+        region,
+        account_id
+    from aws_s3_bucket as b
+        left join public_buckets as p on p.arn = b.arn;
   Connector: AWS
   PrimaryTable: aws_s3_bucket
   ListOfTables:
-  - aws_s3_bucket
+    - aws_s3_bucket
 ManualVerification: false
 Severity: ""
 Tags:
   category:
-  - Compliance
+    - Compliance
   gxp_21_cfr_part_11:
-  - "true"
+    - "true"
   hipaa_final_omnibus_security_rule_2013:
-  - "true"
+    - "true"
   hipaa_security_rule_2003:
-  - "true"
+    - "true"
   nist_800_171_rev_2:
-  - "true"
+    - "true"
   nist_csf:
-  - "true"
+    - "true"
   plugin:
-  - aws
+    - aws
   service:
-  - AWS/S3
+    - AWS/S3
   soc_2:
-  - "true"
+    - "true"
 Managed: true
