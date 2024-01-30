@@ -3,6 +3,9 @@ Title: CloudTrail trail logs should be encrypted with KMS CMK
 Description: To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Groups.
 Query:
   Engine: odysseus-v0.0.1
+  ListOfTables:
+    - aws_cloudtrail_trail
+  PrimaryTable: aws_cloudtrail_trail
   QueryToExecute: |
     select
       arn as resource,
@@ -16,55 +19,66 @@ Query:
         when kms_key_id is null then title || ' logs are not encrypted at rest.'
         else title || ' logs are encrypted at rest.'
       end as reason
-      
       , region, account_id
     from
       aws_cloudtrail_trail
     where
       region = home_region;
-  Connector: AWS
-  PrimaryTable: aws_cloudtrail_trail
-  ListOfTables:
-  - aws_cloudtrail_trail
-ManualVerification: false
-Severity: high
+Severity: medium
 Tags:
   category:
-  - Compliance
+    - Compliance
   cis_controls_v8_ig1:
-  - "true"
+    - "true"
   cisa_cyber_essentials:
-  - "true"
+    - "true"
   fedramp_low_rev_4:
-  - "true"
+    - "true"
   fedramp_moderate_rev_4:
-  - "true"
+    - "true"
   gdpr:
-  - "true"
+    - "true"
   gxp_21_cfr_part_11:
-  - "true"
+    - "true"
   gxp_eu_annex_11:
-  - "true"
+    - "true"
   hipaa_final_omnibus_security_rule_2013:
-  - "true"
+    - "true"
   hipaa_security_rule_2003:
-  - "true"
+    - "true"
   nist_800_171_rev_2:
-  - "true"
+    - "true"
   nist_800_53_rev_4:
-  - "true"
+    - "true"
   nist_800_53_rev_5:
-  - "true"
+    - "true"
   nist_csf:
-  - "true"
+    - "true"
   pci_dss_v321:
-  - "true"
+    - "true"
   plugin:
-  - aws
+    - aws
   rbi_cyber_security:
-  - "true"
+    - "true"
   service:
-  - AWS/CloudTrail
+    - AWS/CloudTrail
   soc_2:
-  - "true"
-Managed: true
+    - "true"
+  x-kaytu-explanation:
+    - "# Amazon CloudWatch Log Groups Encryption\n\nAmazon Web Services (AWS) allows users to monitor, store, and access their log files from Amazon Elastic Compute Cloud (EC2) instances, AWS CloudTrail, and other sources through CloudWatch. It's essential to enable encryption for these log groups to protect sensitive data at rest.\n\n```markdown\n\n## Why is Encryption Important?\n\nEncryption transforms data into a format that can only be read with a secret key or password. This can prevent unauthorized access to your data, reducing the potential risk of data breaches. For instance, when CloudWatch Log Groups are encrypted, it safeguards your log data, adding an extra layer of security to your data at rest.\n\n## Enabling Encryption for CloudWatch Log Groups\n\nTo enable encryption for your Amazon CloudWatch Log Groups, take the following steps:\n\n1. **Open AWS Management Console**: Login to your AWS account.\n\n2. **Navigate to CloudWatch**: Under Management and Governance, choose CloudWatch.\n\n3. **Log groups**: In the navigation pane, choose `Log groups`.\n\n4. **Choose a log group**: Select the log group you want to encrypt.\n\n5. **Edit log group**: Choose `Actions`, `Edit log group`.\n\n6. **Enable Encryption**: Under `Encryption`, choose `Enable`. Select your Key Management Service (KMS) key to be used for encryption.\n\n7. **Save Changes**: Choose `Save changes`.\n\n```\nThese steps will ensure that the selected Log Group data is encrypted, helping reduce the risk of unauthorized access to sensitive information. However, it's important to manage your encryption keys appropriately to continually safeguard your data.\n```\n\n## Conclusion\n\nIn conclusion, enabling encryption for your Amazon CloudWatch Log Groups is a critical step towards ensuring the security and privacy of your sensitive data at rest. It’s vital to apply this and other AWS security best practices to maintain the integrity and safety of your information.\n```"
+  x-kaytu-noncompliance-cost:
+    - "Non-compliance to the AWS control requiring encryption for Amazon CloudWatch Log Groups may result in various costs and potential risks, including but not limited to:\n\n1. **Security Risk**: The major cost is the security risk involved. Sensitive and unencrypted data can be accessed illegitimately, which can lead to data breaches and loss of confidential information. If your log data contains sensitive information such as Personally Identifiable Information (PII), it is essential to encrypt this data to prevent unauthorized access.\n\n2. **Financial Cost**: In case of a data breach, the company may face significant financial penalties. These penalties can be imposed by regulatory bodies. Furthermore, businesses may also have to bear the cost of forensic investigation, legal fees, public relations efforts to restore reputation, compensation to affected customers and potential loss of business.\n\n3. **Regulatory Non-Compliance**: You could be in violation of various data protection laws and guidelines (like GDPR, HIPAA, etc.), depending on the nature and use of the unencrypted data at rest. This non-compliance could result in hefty fines and legal requirements.\n\n4. **Loss of Trust**: Non-compliance can also result in the erosion of trust among your customers and stakeholders if they perceive that their data is not being adequately protected. This can hurt your reputation and result in potential loss of business.\n\nIn conclusion, it is highly recommended to use encryption for your Amazon CloudWatch Log Groups to avoid these potential costs of non-compliance. Encrypting data at rest can maintain data confidentiality, integrity, and help protect against unauthorized access."
+  x-kaytu-usefulness-example:
+    - |-
+      Instance:
+
+      AWS Control - Amazon CloudWatch Log Group Encryption
+
+      Having your AWS CloudWatch Log Group encryption enabled is very important. For example, if you run a medical data management platform in which user data, disease tracking information, or other sensitive medical data is regularly transferred and stored, it is absolutely crucial that you ensure data privacy and protect sensitive information.
+
+      Without encrypting your Amazon CloudWatch log groups, this sensitive data can potentially be exposed and make your system vulnerable to breaches. On the other hand, enabling the encryption for the AWS CloudWatch logs ensures that the sensitive information is secure during storage.
+
+      This helps to comply with the Health Insurance Portability and Accountability Act (HIPAA), which requires maintaining appropriate security and privacy measures for any health information stored electronically. Encrypting your CloudWatch log groups can therefore assist your platform in remaining up-to-date on compliance measures and can lead towards building a safer, more reliable application on AWS. 
+
+      Overall, by using AWS control to encrypt your Amazon CloudWatch Log Groups, you can smoothly run your operations knowing that your critical and sensitive log data is encrypted and secure.
+Title: CloudTrail trail logs should be encrypted with KMS CMK
