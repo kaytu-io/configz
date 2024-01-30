@@ -3,6 +3,9 @@ Title: CloudTrail trail log file validation should be enabled
 Description: "Utilize AWS CloudTrail log file validation to check the integrity of CloudTrail logs. Log file validation helps determine if a log file was modified or deleted or unchanged after CloudTrail delivered it. This feature is built using industry standard algorithms: SHA-256 for hashing and SHA-256 with RSA for digital signing. This makes it computationally infeasible to modify, delete or forge CloudTrail log files without detection."
 Query:
   Engine: odysseus-v0.0.1
+  ListOfTables:
+    - aws_cloudtrail_trail
+  PrimaryTable: aws_cloudtrail_trail
   QueryToExecute: |
     select
       arn as resource,
@@ -16,51 +19,58 @@ Query:
         when log_file_validation_enabled then title || ' log file validation enabled.'
         else title || ' log file validation disabled.'
       end as reason
-      
       , region, account_id
     from
       aws_cloudtrail_trail
     where
       region = home_region;
-  Connector: AWS
-  PrimaryTable: aws_cloudtrail_trail
-  ListOfTables:
-  - aws_cloudtrail_trail
-ManualVerification: false
-Severity: high
+Severity: ""
 Tags:
   category:
-  - Compliance
+    - Compliance
   cis_controls_v8_ig1:
-  - "true"
+    - "true"
   cisa_cyber_essentials:
-  - "true"
+    - "true"
   fedramp_low_rev_4:
-  - "true"
+    - "true"
   fedramp_moderate_rev_4:
-  - "true"
+    - "true"
   gdpr:
-  - "true"
+    - "true"
   gxp_21_cfr_part_11:
-  - "true"
+    - "true"
   hipaa_final_omnibus_security_rule_2013:
-  - "true"
+    - "true"
   hipaa_security_rule_2003:
-  - "true"
+    - "true"
   nist_800_171_rev_2:
-  - "true"
+    - "true"
   nist_800_53_rev_4:
-  - "true"
+    - "true"
   nist_800_53_rev_5:
-  - "true"
+    - "true"
   nist_csf:
-  - "true"
+    - "true"
   pci_dss_v321:
-  - "true"
+    - "true"
   plugin:
-  - aws
+    - aws
   service:
-  - AWS/CloudTrail
+    - AWS/CloudTrail
   soc_2:
-  - "true"
-Managed: true
+    - "true"
+  x-kaytu-explanation:
+    - "```markup\n\n# AWS CloudTrail Log File Validation\n\nThe **AWS CloudTrail log file validation** is a feature that confirms the integrity and authenticity of your CloudTrail logs. It checks if a log file has remained unchanged, was modified, or deleted after it was delivered by CloudTrail.\n\n## Workings of CloudTrail Log File Validation\n\nThe log validation feature uses industry-standard algorithms: \n\n- **SHA-256 for hashing:** It converts input data of any size into a fixed-length set of characters. \n\n- **SHA-256 with RSA for digital signing:** It guarantees the identity of the signer and confirms that the information has not been altered after it was signed.\n\nThese algorithms make it practically impossible to alter, delete, or counterfeit CloudTrail log files without detection.\n\n## Importance of Log File Validation\n\nLog file validation helps in enhancing the security of your AWS services as:\n\n- It provides a mechanism to verify the integrity and authenticity of log files.\n- It enables tracking of unauthorized changes on your AWS resources via CloudTrail logs.\n- It helps in meeting compliance requirements for digital record retention.\n\n```\n"
+  x-kaytu-noncompliance-cost:
+    - "Non-compliance to the AWS control of utilizing AWS CloudTrail log file validation to check the integrity of CloudTrail logs can result in the following costs:\n\n1. **Security Risks**: If logs are tampered with, it could enable malicious activity to go unnoticed. Threat actors may erase their tracks or inject fraudulent entries, leading to data breaches, system compromises, and other security incidents.\n\n2. **Operational Costs**: Issues with your CloudTrail logs may not be detected for a prolonged period without validation. Consequently, there might be increased operational costs due to unnecessary troubleshooting and investigation time spent in identifying and resolving these issues.\n\n3. **Regulatory Fines**: For regulated industries or organizations subject to specific compliance standards (e.g., GDPR, HIPAA), failure to implement control measures like log validation may be a violation of these standards. This may attract regulatory fines and penalties.\n\n4. **Loss of Customer Trust**: Data breaches and security incidents caused due to manipulated log files can lead to a loss of customer trust. This could result in reputational damage, loss of clients, and hence, a significant impact on your business's bottom-line.\n\n5. **Legal Costs**: In the event of a serious data breach or compromise resulting from non-compliance with AWS Control, there may be significant legal costs. Legal fees and potential settlements arising from lawsuits can be devastating for a business.\n\n6. **Forensic Costs**: If logs are manipulated or deleted, and an incident does occur, you could face significant forensic costs to understand the breach extent and the weakness in your logs.\n\nIn conclusion, failure to utilize AWS CloudTrail log file validation can have severe financial, operational, and reputational repercussions and it is instrumental for businesses to ensure they comply with this control."
+  x-kaytu-usefulness-example:
+    - |-
+      For example, consider a scenario in a software company where an application hosted on AWS is experiencing unexpected crashes and issues. The technical team, while trying to locate the cause of these issues, decides to check the AWS CloudTrail logs for any suspicious activities. 
+
+      They enable CloudTrail log file validation to verify the integrity of the logs. Checking the CloudTrail logs can help them detect any unauthorized changes made by an insider or a hacker who might have access to the system.
+
+      By leveraging log file validation, they can confirm if the original logs have been tampered with. This allows them to identify any unauthorized activity such as the insertion of malicious code, unexpected network activities, unusual API calls, or attempts to stop logging, all of which might be the cause of the application issues.
+
+      By doing so, the team can establish a chain of evidence to identify what events transpired, who initiated them, and from where, helping them quickly and effectively resolve the issues causing the application crashes.
+Title: CloudTrail trail log file validation should be enabled

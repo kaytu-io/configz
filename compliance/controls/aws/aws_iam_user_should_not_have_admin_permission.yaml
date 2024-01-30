@@ -1,0 +1,33 @@
+Description: ""
+DocumentURI: ""
+ID: aws_iam_user_should_not_have_admin_permission
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+    - aws_iam_user
+  PrimaryTable: aws_iam_user
+  QueryToExecute: |
+    select name as user_name, split_part(attachments, '/', 2) as attached_policies, aws_iam_user.account_id, aws_iam_user.kaytu_account_id, aws_iam_user.kaytu_resource_id
+      from
+        aws_iam_user
+        cross join jsonb_array_elements_text(attached_policy_arns) as attachments
+      where
+        split_part(attachments, '/', 2) = 'AdministratorAccess';
+Severity: high
+Tags:
+  category: []
+  cis: []
+  cis_item_id: []
+  cis_level: []
+  cis_section_id: []
+  cis_type: []
+  cis_version: []
+  plugin: []
+  service: []
+  x-kaytu-explanation: []
+  x-kaytu-noncompliance-cost: []
+  x-kaytu-usefulness-example: []
+Title: An IAM privileged user should not have admin permissions in AWS
