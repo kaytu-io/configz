@@ -1,0 +1,8 @@
+ID: aws_soc_2_c1
+Children:
+  - aws_soc_2_c1_1
+Connector: AWS
+Controls: null
+ReferenceCode: C1
+Description:
+Title: Confidentiality
