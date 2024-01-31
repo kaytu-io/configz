@@ -31,4 +31,3 @@ Tags:
   - "true"
   service:
   - Azure/APIManagement
-Managed: true

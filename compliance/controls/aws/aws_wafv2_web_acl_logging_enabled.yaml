@@ -65,4 +65,3 @@ Tags:
   - AWS/WAFv2
   soc_2:
   - "true"
-Managed: true

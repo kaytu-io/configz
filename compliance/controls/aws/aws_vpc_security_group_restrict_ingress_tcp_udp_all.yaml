@@ -79,4 +79,3 @@ Tags:
     - AWS/VPC
   soc_2:
     - "true"
-Title: VPC security groups should restrict ingress TCP and UDP access from 0.0.0.0/0

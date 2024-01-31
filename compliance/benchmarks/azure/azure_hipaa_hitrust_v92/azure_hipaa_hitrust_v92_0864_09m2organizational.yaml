@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/CosmosDB
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_cosmosdb_use_virtual_service_endpoint

@@ -13,14 +13,9 @@ Tags:
   - aws
   service:
   - AWS/NetworkFirewall
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_networkfirewall_firewall_policy_rule_group_not_empty
 - aws_networkfirewall_firewall_policy_default_stateless_action_check_full_packets

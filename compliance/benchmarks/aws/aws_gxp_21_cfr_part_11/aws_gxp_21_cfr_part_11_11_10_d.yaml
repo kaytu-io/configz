@@ -13,14 +13,9 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_account_part_of_organizations
 - aws_dms_replication_instance_not_publicly_accessible

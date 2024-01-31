@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/Monitor
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_monitor_log_profile_enabled_for_all_categories

@@ -1,0 +1,23 @@
+ID: aws_soc_2_cc7_2
+Children: null
+Connector: AWS
+Controls:
+  - aws_cloudtrail_bucket_not_public
+  - aws_log_metric_filter_route_table
+  - aws_log_metric_filter_security_group
+  - aws_log_metric_filter_vpc
+  - aws_log_metric_filter_config_configuration
+  - aws_log_metric_filter_organization
+  - aws_log_metric_filter_cloudtrail_configuration
+  - aws_log_metric_filter_console_authentication_failure
+  - aws_log_metric_filter_console_login_mfa
+  - aws_log_metric_filter_disable_or_delete_cmk
+  - aws_log_metric_filter_iam_policy
+  - aws_log_metric_filter_network_acl
+  - aws_log_metric_filter_root_login
+  - aws_log_metric_filter_bucket_policy
+  - aws_log_metric_filter_unauthorized_api
+  - aws_cloudtrail_s3_logging_enabled
+ReferenceCode: 2
+Description:
+Title: Security Event and Anomaly Detection

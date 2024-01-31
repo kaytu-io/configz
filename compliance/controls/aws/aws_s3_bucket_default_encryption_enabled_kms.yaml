@@ -68,4 +68,3 @@ Tags:
     - "true"
   service:
     - AWS/S3
-Title: S3 bucket default encryption should be enabled with KMS

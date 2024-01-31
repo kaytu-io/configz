@@ -65,4 +65,3 @@ Tags:
   - AWS/ElastiCache
   soc_2:
   - "true"
-Managed: true

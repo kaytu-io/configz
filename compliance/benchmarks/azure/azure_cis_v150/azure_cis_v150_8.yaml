@@ -17,14 +17,9 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_keyvault_with_rbac_key_expiration_set
 - azure_keyvault_with_non_rbac_key_expiration_set

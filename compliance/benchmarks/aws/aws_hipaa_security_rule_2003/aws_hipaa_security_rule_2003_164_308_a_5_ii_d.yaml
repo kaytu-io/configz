@@ -17,14 +17,9 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_iam_account_password_policy_strong_min_reuse_24
 - aws_iam_user_access_key_age_90

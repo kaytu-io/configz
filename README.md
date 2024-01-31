@@ -204,7 +204,6 @@ Each control must contain these fields:
 ```yaml
 Description: Ensure if an Amazon API Gateway API stage is using a WAF Web ACL. This rule is non compliant if an AWS WAF Web ACL is not used.
 ID: aws_apigateway_stage_use_waf_web_acl
-Managed: true
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1
@@ -303,14 +302,9 @@ Tags:
     - aws
   service:
     - AWS
-  source_git:
-    - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
     - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
   - aws_cloudtrail_multi_region_read_write_enabled
   - aws_cloudtrail_trail_validation_enabled

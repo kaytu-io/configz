@@ -24,4 +24,3 @@ Tags:
   - aws
   service:
   - AWS/ElastiCache
-Managed: true

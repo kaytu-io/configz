@@ -33,4 +33,3 @@ Tags:
   - aws
   service:
   - AWS/CloudWatch
-Managed: true

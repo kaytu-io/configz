@@ -38,4 +38,3 @@ Tags:
   - aws
   service:
   - AWS/WAF
-Managed: true

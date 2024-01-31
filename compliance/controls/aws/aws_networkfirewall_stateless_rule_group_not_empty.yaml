@@ -40,4 +40,3 @@ Tags:
   - aws
   service:
   - AWS/NetworkFirewall
-Managed: true

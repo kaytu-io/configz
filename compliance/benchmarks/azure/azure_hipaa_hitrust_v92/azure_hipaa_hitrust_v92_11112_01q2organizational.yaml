@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/IAM
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_iam_subscription_owner_max_3

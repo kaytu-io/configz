@@ -58,4 +58,3 @@ Tags:
   - "true"
   service:
   - Azure/CognitiveServices
-Managed: true

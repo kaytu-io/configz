@@ -13,10 +13,7 @@ Tags:
   - aws
   service:
   - lambda
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_lambda_function_restrict_public_access
 - aws_lambda_function_in_vpc

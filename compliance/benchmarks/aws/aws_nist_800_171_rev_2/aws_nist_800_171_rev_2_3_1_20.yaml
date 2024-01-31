@@ -13,14 +13,9 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_s3_bucket_policy_restrict_public_access
 - aws_s3_public_access_block_account

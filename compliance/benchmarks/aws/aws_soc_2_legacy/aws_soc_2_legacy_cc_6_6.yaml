@@ -19,14 +19,9 @@ Tags:
   - cc6
   soc_2_legacy_type:
   - automated
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

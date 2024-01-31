@@ -42,4 +42,3 @@ Tags:
   - "true"
   service:
   - Azure/Storage
-Managed: true

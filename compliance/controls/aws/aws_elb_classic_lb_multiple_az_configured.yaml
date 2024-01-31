@@ -36,4 +36,3 @@ Tags:
   - aws
   service:
   - AWS/ELB
-Managed: true

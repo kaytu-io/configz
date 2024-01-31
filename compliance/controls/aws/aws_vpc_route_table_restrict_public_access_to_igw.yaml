@@ -71,4 +71,3 @@ Tags:
   - "true"
   service:
   - AWS/VPC
-Managed: true

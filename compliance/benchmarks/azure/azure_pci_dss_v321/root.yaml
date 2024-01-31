@@ -1,5 +1,3 @@
-AutoAssign: false
-Baseline: true
 Children:
 - azure_pci_dss_v321_requirement_1
 - azure_pci_dss_v321_requirement_3
@@ -15,7 +13,6 @@ Controls: null
 Description: The PCI DSS applies to all entities that store, process, and/or transmit cardholder data. It covers technical and operational system components included in or connected to cardholder data. If you accept or process payment cards, PCI DSS applies to you.
 Enabled: true
 ID: azure_pci_dss_v321
-Managed: true
 Tags:
   category:
   - Compliance
@@ -29,8 +26,6 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
 Title: PCI DSS 3.2.1 for Azure

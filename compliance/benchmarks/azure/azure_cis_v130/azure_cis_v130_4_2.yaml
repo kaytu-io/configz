@@ -17,14 +17,9 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_sql_server_atp_enabled
 - azure_sql_server_and_databases_va_enabled

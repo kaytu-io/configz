@@ -19,14 +19,9 @@ Tags:
   - a1
   soc_2_legacy_type:
   - automated
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_backup_plan_min_retention_35_days

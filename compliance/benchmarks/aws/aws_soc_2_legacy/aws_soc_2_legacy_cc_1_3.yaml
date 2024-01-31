@@ -19,14 +19,9 @@ Tags:
   - cc1
   soc_2_legacy_type:
   - automated
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_iam_group_not_empty
 - aws_iam_group_user_role_no_inline_policies

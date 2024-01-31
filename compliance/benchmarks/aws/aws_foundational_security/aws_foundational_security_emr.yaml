@@ -13,13 +13,8 @@ Tags:
   - aws
   service:
   - AWS/EMR
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_emr_cluster_master_nodes_no_public_ip

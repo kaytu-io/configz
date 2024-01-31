@@ -1,0 +1,8 @@
+ID: aws_soc_2_cc8
+Children:
+  - aws_soc_2_cc8_1
+Connector: AWS
+Controls: null
+ReferenceCode: CC8
+Description:
+Title: Change Management

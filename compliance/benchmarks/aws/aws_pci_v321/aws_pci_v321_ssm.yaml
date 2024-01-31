@@ -13,10 +13,7 @@ Tags:
   - aws
   service:
   - ssm
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_ssm_managed_instance_compliance_patch_compliant
 - aws_ssm_managed_instance_compliance_association_compliant

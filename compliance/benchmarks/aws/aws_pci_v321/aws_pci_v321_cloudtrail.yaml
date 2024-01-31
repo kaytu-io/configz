@@ -13,10 +13,7 @@ Tags:
   - aws
   service:
   - cloudtrail
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_cloudtrail_enabled_all_regions

@@ -1,0 +1,10 @@
+ID: aws_soc_2_c1_1
+Children: null
+Connector: AWS
+Controls:
+  - aws_kms_cmk_rotation_enabled
+  - aws_s3_bucket_mfa_delete_enabled
+  - aws_s3_bucket_enforces_ssl
+ReferenceCode: 1
+Description:
+Title: Secondary Access Controls

@@ -62,4 +62,3 @@ Tags:
   - aws
   service:
   - AWS/OpenSearch
-Managed: true

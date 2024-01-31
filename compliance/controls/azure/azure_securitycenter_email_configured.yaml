@@ -47,4 +47,3 @@ Tags:
   - "true"
   service:
   - Azure/SecurityCenter
-Managed: true

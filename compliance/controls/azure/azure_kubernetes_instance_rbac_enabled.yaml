@@ -39,4 +39,3 @@ Tags:
   - "true"
   service:
   - Azure/KubernetesService
-Managed: true

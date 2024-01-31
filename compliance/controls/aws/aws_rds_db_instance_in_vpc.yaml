@@ -39,4 +39,3 @@ Tags:
   - aws
   service:
   - AWS/RDS
-Managed: true

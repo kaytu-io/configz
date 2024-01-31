@@ -72,4 +72,3 @@ Tags:
   - AWS/GuardDuty
   soc_2:
   - "true"
-Managed: true

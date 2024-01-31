@@ -1,5 +1,3 @@
-AutoAssign: false
-Baseline: true
 Children:
 - aws_hipaa_final_omnibus_security_rule_2013_164_308
 - aws_hipaa_final_omnibus_security_rule_2013_164_310
@@ -10,7 +8,6 @@ Controls: null
 Description: The HIPAA Security Rule establishes national standards to protect individuals electronic personal health information that is created, received, used, or maintained by a business associate and covered entity. The Final Omnibus Rule provides additional guidance to the 2003 Security Rule and implements a number of provisions of the HITECH Act to strengthen the privacy and security protections for health information established under HIPAA.
 Enabled: true
 ID: aws_hipaa_final_omnibus_security_rule_2013
-Managed: true
 Tags:
   category:
   - Compliance
@@ -25,8 +22,6 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
 Title: HIPAA Final Omnibus Security Rule 2013 for AWS

@@ -1,0 +1,8 @@
+ID: aws_soc_2_cc7_5
+Children: null
+Connector: AWS
+Controls:
+  - aws_lambda_function_use_latest_runtime
+ReferenceCode: 5
+Description:
+Title: Improves Response and Recovery Procedures

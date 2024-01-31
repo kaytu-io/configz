@@ -13,9 +13,6 @@ Tags:
   - aws
   service:
   - redshift
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_redshift_cluster_prohibit_public_access

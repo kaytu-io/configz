@@ -23,12 +23,7 @@ Tags:
   - azure
   service:
   - Azure/Monitor
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_network_lb_no_basic_sku
 - azure_network_public_ip_no_basic_sku

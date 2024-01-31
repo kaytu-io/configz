@@ -17,14 +17,9 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_stage_cache_encryption_at_rest_enabled

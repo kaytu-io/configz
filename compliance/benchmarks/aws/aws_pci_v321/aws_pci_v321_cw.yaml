@@ -13,9 +13,6 @@ Tags:
   - aws
   service:
   - cloudwatch
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_log_metric_filter_root_login

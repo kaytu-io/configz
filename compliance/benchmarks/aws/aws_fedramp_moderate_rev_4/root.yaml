@@ -1,5 +1,3 @@
-AutoAssign: false
-Baseline: true
 Children:
 - aws_fedramp_moderate_rev_4_ac
 - aws_fedramp_moderate_rev_4_au
@@ -17,7 +15,6 @@ Controls: null
 Description: The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that delivers a standard approach to the security assessment, authorization, and continuous monitoring for cloud products and services.
 Enabled: true
 ID: aws_fedramp_moderate_rev_4
-Managed: true
 Tags:
   category:
   - Compliance
@@ -31,8 +28,6 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
 Title: FedRAMP Moderate Revision 4 for AWS

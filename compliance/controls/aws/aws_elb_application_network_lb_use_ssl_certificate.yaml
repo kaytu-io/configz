@@ -92,4 +92,3 @@ Tags:
   - "true"
   service:
   - AWS/ELB
-Managed: true

@@ -43,4 +43,3 @@ Tags:
   - "true"
   service:
   - AWS/EBS
-Managed: true

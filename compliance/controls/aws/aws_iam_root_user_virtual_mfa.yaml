@@ -41,4 +41,3 @@ Tags:
   - aws
   service:
   - iam
-Managed: true

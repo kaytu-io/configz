@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/Compute
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_compute_vm_network_traffic_data_collection_windows_agent_installed

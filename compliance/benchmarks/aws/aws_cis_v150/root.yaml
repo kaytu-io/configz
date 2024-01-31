@@ -1,5 +1,3 @@
-AutoAssign: false
-Baseline: true
 Children:
 - aws_cis_v150_1
 - aws_cis_v150_2
@@ -11,7 +9,6 @@ Controls: null
 Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
 Enabled: true
 ID: aws_cis_v150
-Managed: true
 Tags:
   category:
   - Compliance
@@ -27,8 +24,6 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
 Title: CIS v1.5.0 for AWS

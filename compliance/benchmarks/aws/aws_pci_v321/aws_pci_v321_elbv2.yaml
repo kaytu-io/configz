@@ -13,9 +13,6 @@ Tags:
   - aws
   service:
   - elbv2
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_elb_application_lb_redirect_http_request_to_https

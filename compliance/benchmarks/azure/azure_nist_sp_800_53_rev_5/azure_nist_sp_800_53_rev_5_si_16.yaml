@@ -13,14 +13,9 @@ Tags:
   - azure
   service:
   - Azure/Compute
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_compute_vm_azure_defender_enabled
 - azure_compute_vm_windows_defender_exploit_guard_enabled

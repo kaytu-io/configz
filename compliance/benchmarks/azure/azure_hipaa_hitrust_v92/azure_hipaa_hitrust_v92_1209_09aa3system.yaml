@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/AppService
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_appservice_web_app_diagnostic_logs_enabled

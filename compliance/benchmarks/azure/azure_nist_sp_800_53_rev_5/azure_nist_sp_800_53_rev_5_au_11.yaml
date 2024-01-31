@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_sql_server_auditing_storage_account_destination_retention_90_days

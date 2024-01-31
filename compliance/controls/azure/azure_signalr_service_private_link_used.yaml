@@ -48,4 +48,3 @@ Tags:
   - "true"
   service:
   - Azure/SignalRService
-Managed: true

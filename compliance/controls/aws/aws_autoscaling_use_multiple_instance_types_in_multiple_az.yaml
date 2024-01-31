@@ -66,4 +66,3 @@ Tags:
   - aws
   service:
   - AWS/AutoScaling
-Managed: true

@@ -35,4 +35,3 @@ Tags:
   - "true"
   service:
   - Azure/Network
-Managed: true

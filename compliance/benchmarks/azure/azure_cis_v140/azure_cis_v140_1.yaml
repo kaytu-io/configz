@@ -17,14 +17,9 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_ad_guest_user_reviewed_monthly
 - azure_iam_no_custom_subscription_owner_roles_created

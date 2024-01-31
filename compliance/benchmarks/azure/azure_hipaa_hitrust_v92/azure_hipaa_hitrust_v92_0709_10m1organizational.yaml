@@ -13,14 +13,9 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_compute_vm_vulnerability_assessment_solution_enabled
 - azure_mssql_managed_instance_vulnerability_assessment_enabled

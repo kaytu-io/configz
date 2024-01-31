@@ -16,4 +16,3 @@ Tags:
   - "true"
   service:
   - Azure/MySQL
-Managed: true

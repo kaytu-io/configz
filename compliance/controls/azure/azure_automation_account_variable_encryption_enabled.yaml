@@ -33,4 +33,3 @@ Tags:
   - "true"
   service:
   - Azure/Automation
-Managed: true
