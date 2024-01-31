@@ -16,51 +16,50 @@ Query:
         when logging -> 'TargetBucket' is null then title || ' logging disabled.'
         else title || ' logging enabled.'
       end as reason
-      
       , region, account_id
     from
       aws_s3_bucket;
   Connector: AWS
   PrimaryTable: aws_s3_bucket
   ListOfTables:
-  - aws_s3_bucket
+    - aws_s3_bucket
 ManualVerification: false
 Severity: ""
 Tags:
   category:
-  - Compliance
+    - Compliance
   cis_controls_v8_ig1:
-  - "true"
+    - "true"
   cisa_cyber_essentials:
-  - "true"
+    - "true"
   fedramp_low_rev_4:
-  - "true"
+    - "true"
   fedramp_moderate_rev_4:
-  - "true"
+    - "true"
   ffiec:
-  - "true"
+    - "true"
   gxp_21_cfr_part_11:
-  - "true"
+    - "true"
   hipaa_final_omnibus_security_rule_2013:
-  - "true"
+    - "true"
   hipaa_security_rule_2003:
-  - "true"
+    - "true"
   nist_800_171_rev_2:
-  - "true"
+    - "true"
   nist_800_53_rev_4:
-  - "true"
+    - "true"
   nist_800_53_rev_5:
-  - "true"
+    - "true"
   nist_csf:
-  - "true"
+    - "true"
   pci_dss_v321:
-  - "true"
+    - "true"
   plugin:
-  - aws
+    - aws
   rbi_cyber_security:
-  - "true"
+    - "true"
   service:
-  - AWS/S3
+    - AWS/S3
   soc_2:
-  - "true"
+    - "true"
 Managed: true
