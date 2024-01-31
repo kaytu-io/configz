@@ -30,6 +30,6 @@ Tags:
   - AWS
   soc_2_legacy:
   - "true"
-    type:
+  type:
   - Benchmark
-Title: SOC 2 for AWS
+Title: SOC 2 for AWS - Legacy
