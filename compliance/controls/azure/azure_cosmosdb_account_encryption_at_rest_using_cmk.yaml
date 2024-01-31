@@ -36,4 +36,3 @@ Tags:
   - "true"
   service:
   - Azure/CosmosDB
-Managed: true

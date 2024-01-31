@@ -73,4 +73,3 @@ Tags:
   - aws
   service:
   - AWS/ECS
-Managed: true

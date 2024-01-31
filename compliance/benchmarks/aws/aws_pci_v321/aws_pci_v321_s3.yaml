@@ -13,10 +13,7 @@ Tags:
   - aws
   service:
   - s3
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_s3_bucket_restrict_public_write_access
 - aws_s3_bucket_restrict_public_read_access

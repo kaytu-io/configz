@@ -76,4 +76,3 @@ Tags:
   - "true"
   service:
   - AWS/IAM
-Managed: true

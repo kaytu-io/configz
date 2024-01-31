@@ -42,4 +42,3 @@ Tags:
   - aws
   service:
   - AWS/ES
-Managed: true

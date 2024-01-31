@@ -15,14 +15,9 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_cloudwatch_alarm_action_enabled

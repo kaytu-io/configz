@@ -39,4 +39,3 @@ Tags:
   - aws
   service:
   - AWS/APIGateway
-Managed: true

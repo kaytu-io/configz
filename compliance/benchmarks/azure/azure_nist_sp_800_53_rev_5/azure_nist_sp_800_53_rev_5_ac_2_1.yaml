@@ -13,14 +13,9 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_cognitive_service_local_auth_disabled
 - azure_servicefabric_cluster_active_directory_authentication_enabled

@@ -13,10 +13,7 @@ Tags:
   - aws
   service:
   - ec2
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_ebs_snapshot_not_publicly_restorable
 - aws_vpc_default_security_group_restricts_all_traffic

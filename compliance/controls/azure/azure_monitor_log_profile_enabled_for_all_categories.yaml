@@ -34,4 +34,3 @@ Tags:
   - "true"
   service:
   - Azure/Monitor
-Managed: true

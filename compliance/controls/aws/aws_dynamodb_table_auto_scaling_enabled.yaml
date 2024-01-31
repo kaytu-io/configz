@@ -69,4 +69,3 @@ Tags:
   - aws
   service:
   - AWS/DynamoDB
-Managed: true

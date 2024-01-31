@@ -17,14 +17,9 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_securitycenter_mcas_integration
 - azure_securitycenter_wdatp_integration

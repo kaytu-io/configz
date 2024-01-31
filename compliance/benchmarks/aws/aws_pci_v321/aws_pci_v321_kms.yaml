@@ -13,9 +13,6 @@ Tags:
   - aws
   service:
   - kms
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_kms_cmk_rotation_enabled

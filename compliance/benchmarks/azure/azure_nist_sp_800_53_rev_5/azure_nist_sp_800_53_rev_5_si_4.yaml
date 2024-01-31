@@ -14,14 +14,9 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_appservice_azure_defender_enabled
 - azure_arc_compute_machine_linux_log_analytics_agent_installed

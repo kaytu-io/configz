@@ -50,4 +50,3 @@ Tags:
   - aws
   service:
   - AWS/CloudFront
-Managed: true

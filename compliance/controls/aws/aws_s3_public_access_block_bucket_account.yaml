@@ -29,4 +29,3 @@ Tags:
   - aws
   service:
   - AWS/S3
-Managed: true

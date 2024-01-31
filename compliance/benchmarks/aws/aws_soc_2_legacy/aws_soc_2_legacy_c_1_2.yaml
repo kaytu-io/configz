@@ -19,14 +19,9 @@ Tags:
   - c1
   soc_2_legacy_type:
   - automated
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_s3_bucket_lifecycle_policy_enabled
 - aws_s3_bucket_versioning_enabled

@@ -40,4 +40,3 @@ Tags:
   - "true"
   service:
   - Azure/Compute
-Managed: true

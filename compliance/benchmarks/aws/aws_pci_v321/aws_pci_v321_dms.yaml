@@ -13,9 +13,6 @@ Tags:
   - aws
   service:
   - dms
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible

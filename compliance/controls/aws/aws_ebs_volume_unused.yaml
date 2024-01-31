@@ -51,4 +51,3 @@ Tags:
   - aws
   service:
   - AWS/EBS
-Managed: true

@@ -41,4 +41,3 @@ Tags:
   - aws
   service:
   - AWS/CodeBuild
-Managed: true

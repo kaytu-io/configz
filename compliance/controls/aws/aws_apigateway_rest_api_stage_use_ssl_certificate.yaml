@@ -51,4 +51,3 @@ Tags:
   - "true"
   service:
   - AWS/APIGateway
-Managed: true

@@ -44,4 +44,3 @@ Tags:
   - "true"
   service:
   - Azure/DataExplorer
-Managed: true

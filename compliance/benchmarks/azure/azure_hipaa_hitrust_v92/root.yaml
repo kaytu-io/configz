@@ -1,5 +1,3 @@
-AutoAssign: false
-Baseline: true
 Children:
 - azure_hipaa_hitrust_v92_privilege_management
 - azure_hipaa_hitrust_v92_user_authentication_for_external_connections
@@ -25,7 +23,6 @@ Controls: null
 Description: The HIPAA HITRUST 9.2 provides a combined set of predefined compliance and security best-practice checks for Health Insurance Portability and Accountability Act.
 Enabled: true
 ID: azure_hipaa_hitrust_v92
-Managed: true
 Tags:
   category:
   - Compliance
@@ -41,8 +38,6 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
 Title: HIPAA HITRUST 9.2 for Azure

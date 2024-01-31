@@ -1,5 +1,3 @@
-AutoAssign: false
-Baseline: true
 Children:
 - azure_cis_v140_1
 - azure_cis_v140_2
@@ -15,7 +13,6 @@ Controls: null
 Description: The CIS Microsoft Azure Foundations Security Benchmark provides prescriptive guidance for establishing a secure baseline configuration for Microsoft Azure.
 Enabled: true
 ID: azure_cis_v140
-Managed: true
 Tags:
   category:
   - Compliance
@@ -31,8 +28,6 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
 Title: CIS v1.4.0 for Azure

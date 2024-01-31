@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/Storage
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_storage_account_use_virtual_service_endpoint

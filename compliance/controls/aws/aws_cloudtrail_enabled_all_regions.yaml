@@ -60,4 +60,3 @@ Tags:
   - aws
   service:
   - cloudtrail
-Managed: true

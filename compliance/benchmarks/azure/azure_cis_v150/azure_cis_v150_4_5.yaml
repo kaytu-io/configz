@@ -17,14 +17,9 @@ Tags:
   - azure
   service:
   - Azure/SQL
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_cosmosdb_account_virtual_network_filter_enabled
 - azure_cosmosdb_account_uses_private_link

@@ -57,4 +57,3 @@ Tags:
   - "true"
   service:
   - AWS/DynamoDB
-Managed: true

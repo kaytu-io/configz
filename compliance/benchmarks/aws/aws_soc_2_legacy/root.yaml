@@ -1,5 +1,3 @@
-AutoAssign: false
-Baseline: true
 Children:
 - aws_soc_2_legacy_cc_1
 - aws_soc_2_legacy_cc_2
@@ -15,7 +13,6 @@ Controls: null
 Description: System and Organization Controls (SOC) 2 is an auditing procedure that ensures a company's data is securely managed. AWS Audit Manager provides a prebuilt framework that supports SOC 2 to assist you with your audit preparation.
 Enabled: true
 ID: aws_soc_2_legacy
-Managed: true
 Tags:
   category:
   - Compliance

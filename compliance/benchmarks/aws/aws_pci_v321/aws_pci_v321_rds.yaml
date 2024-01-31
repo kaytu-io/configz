@@ -13,10 +13,7 @@ Tags:
   - aws
   service:
   - rds
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_rds_db_snapshot_prohibit_public_access
 - aws_rds_db_instance_prohibit_public_access

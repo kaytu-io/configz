@@ -13,13 +13,8 @@ Tags:
   - azure
   service:
   - Azure/Logic
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_logic_app_workflow_logging_enabled

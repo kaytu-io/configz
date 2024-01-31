@@ -38,4 +38,3 @@ Tags:
   - "true"
   service:
   - Azure/KeyVault
-Managed: true

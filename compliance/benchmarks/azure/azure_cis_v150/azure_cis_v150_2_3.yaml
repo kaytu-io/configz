@@ -17,14 +17,9 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_securitycenter_security_alerts_to_owner_enabled
 - azure_securitycenter_additional_email_configured

@@ -13,13 +13,8 @@ Tags:
   - aws
   service:
   - AWS/IAM
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_iam_root_user_no_access_keys

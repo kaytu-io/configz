@@ -45,4 +45,3 @@ Tags:
   - "true"
   service:
   - Azure/SQL
-Managed: true

@@ -13,9 +13,6 @@ Tags:
   - aws
   service:
   - config
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_config_enabled_all_regions

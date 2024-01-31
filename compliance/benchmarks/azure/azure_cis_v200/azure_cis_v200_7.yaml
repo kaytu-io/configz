@@ -17,14 +17,9 @@ Tags:
   - azure
   service:
   - Azure/Compute
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
   type:
   - Benchmark
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - azure_network_bastion_host_min_1
 - azure_compute_vm_utilizing_managed_disk

@@ -13,10 +13,7 @@ Tags:
   - aws
   service:
   - iam
-Managed: true
 Enabled: true
-AutoAssign: false
-Baseline: true
 Controls:
 - aws_iam_root_user_no_access_keys
 - aws_iam_user_no_inline_attached_policies

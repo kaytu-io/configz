@@ -20,4 +20,3 @@ Tags:
   - "true"
   service:
   - Azure/ActiveDirectory
-Managed: true

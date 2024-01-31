@@ -61,4 +61,3 @@ Tags:
   - "true"
   service:
   - Azure/AppService
-Managed: true

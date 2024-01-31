@@ -46,4 +46,3 @@ Tags:
   - "true"
   service:
   - Azure/CognitiveSearch
-Managed: true

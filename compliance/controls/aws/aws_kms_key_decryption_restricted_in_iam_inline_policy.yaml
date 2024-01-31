@@ -118,4 +118,3 @@ Tags:
   - aws
   service:
   - AWS/KMS
-Managed: true

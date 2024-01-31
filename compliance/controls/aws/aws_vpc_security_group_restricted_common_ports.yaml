@@ -134,4 +134,3 @@ Tags:
   - aws
   service:
   - AWS/EC2
-Managed: true
