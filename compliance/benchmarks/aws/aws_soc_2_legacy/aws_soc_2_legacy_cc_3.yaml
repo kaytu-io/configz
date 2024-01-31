@@ -18,9 +18,7 @@ Tags:
   - "true"
   soc_2_legacy_section_id:
   - cc3
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
-  type:
+    type:
   - Benchmark
 Managed: true
 Enabled: true

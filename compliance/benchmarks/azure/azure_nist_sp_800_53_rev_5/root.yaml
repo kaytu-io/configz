@@ -29,8 +29,6 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
-  type:
+    type:
   - Benchmark
 Title: NIST SP 800-53 Revision 5 for Azure

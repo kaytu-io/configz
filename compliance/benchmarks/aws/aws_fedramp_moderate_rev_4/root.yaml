@@ -31,8 +31,6 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
-  type:
+    type:
   - Benchmark
 Title: FedRAMP Moderate Revision 4 for AWS

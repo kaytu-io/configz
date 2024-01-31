@@ -58,8 +58,6 @@ Tags:
   - aws
   service:
   - AWS
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
-  type:
+    type:
   - Benchmark
 Title: AWS Foundational Security Best Practices

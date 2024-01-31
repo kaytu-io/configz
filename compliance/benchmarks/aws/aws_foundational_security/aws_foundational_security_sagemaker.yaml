@@ -13,9 +13,7 @@ Tags:
   - aws
   service:
   - AWS/SageMaker
-  source_git:
-  - https://github.com/turbot/steampipe-mod-aws-compliance.git
-  type:
+    type:
   - Benchmark
 Managed: true
 Enabled: true

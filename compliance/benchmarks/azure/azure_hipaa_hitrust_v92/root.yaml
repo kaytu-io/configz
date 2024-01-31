@@ -41,8 +41,6 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
-  type:
+    type:
   - Benchmark
 Title: HIPAA HITRUST 9.2 for Azure

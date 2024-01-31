@@ -32,8 +32,6 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
-  type:
+    type:
   - Benchmark
 Title: CIS v2.0.0 for Azure

@@ -13,9 +13,7 @@ Tags:
   - azure
   service:
   - Azure/KubernetesService
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
-  type:
+    type:
   - Benchmark
 Managed: true
 Enabled: true

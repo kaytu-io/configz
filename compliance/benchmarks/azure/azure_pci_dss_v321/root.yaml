@@ -29,8 +29,6 @@ Tags:
   - azure
   service:
   - Azure
-  source_git:
-  - https://github.com/turbot/steampipe-mod-azure-compliance.git
-  type:
+    type:
   - Benchmark
 Title: PCI DSS 3.2.1 for Azure
