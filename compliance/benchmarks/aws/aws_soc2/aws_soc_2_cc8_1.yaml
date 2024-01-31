@@ -1,7 +1,11 @@
 ID: aws_soc_2_cc8_1
 Children: null
 Connector: AWS
-Controls: null
+Controls:
+  - aws_ebs_attached_volume_encryption_enabled
+  - aws_s3_bucket_default_encryption_enabled_kms
+  - aws_ec2_instance_uses_imdsv2
+  - aws_lambda_function_use_latest_runtime
 ReferenceCode: 1
 Description:
 Title: Protect Confidential Information
