@@ -24,6 +24,8 @@ Tags:
   - aws
   service:
   - AWS
-    type:
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
   - Benchmark
 Title: GxP 21 CFR Part 11 for AWS

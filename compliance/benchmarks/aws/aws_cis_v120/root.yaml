@@ -26,6 +26,8 @@ Tags:
   - aws
   service:
   - AWS
-    type:
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
   - Benchmark
 Title: CIS v1.2.0 for AWS

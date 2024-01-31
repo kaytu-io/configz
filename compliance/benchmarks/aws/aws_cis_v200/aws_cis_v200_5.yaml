@@ -17,7 +17,9 @@ Tags:
   - aws
   service:
   - AWS/VPC
-    type:
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
   - Benchmark
 Managed: true
 Enabled: true

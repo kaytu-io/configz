@@ -26,6 +26,8 @@ Tags:
   - aws
   service:
   - AWS
-    type:
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
   - Benchmark
 Title: NIST Cybersecurity Framework (CSF) v1.1 for AWS

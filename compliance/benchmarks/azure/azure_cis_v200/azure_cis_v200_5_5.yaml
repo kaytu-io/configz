@@ -23,7 +23,9 @@ Tags:
   - azure
   service:
   - Azure/Monitor
-  Managed: true
+  source_git:
+  - https://github.com/turbot/steampipe-mod-azure-compliance.git
+Managed: true
 Enabled: true
 AutoAssign: false
 Baseline: true

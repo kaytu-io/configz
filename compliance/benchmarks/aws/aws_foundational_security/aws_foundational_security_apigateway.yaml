@@ -13,7 +13,9 @@ Tags:
   - aws
   service:
   - AWS/APIGateway
-    type:
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
   - Benchmark
 Managed: true
 Enabled: true

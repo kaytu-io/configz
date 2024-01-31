@@ -25,6 +25,8 @@ Tags:
   - aws
   service:
   - AWS
-    type:
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
   - Benchmark
 Title: HIPAA Security Rule 2003 for AWS
