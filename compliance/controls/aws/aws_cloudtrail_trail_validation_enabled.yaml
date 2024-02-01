@@ -6,6 +6,7 @@ Query:
   ListOfTables:
     - aws_cloudtrail_trail
   PrimaryTable: aws_cloudtrail_trail
+  Connector: AWS
   QueryToExecute: |
     select
       arn as resource,
@@ -24,7 +25,7 @@ Query:
       aws_cloudtrail_trail
     where
       region = home_region;
-Severity: ""
+Severity: high
 Tags:
   category:
     - Compliance

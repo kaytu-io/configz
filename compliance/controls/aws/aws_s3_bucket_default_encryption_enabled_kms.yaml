@@ -6,6 +6,7 @@ Query:
   ListOfTables:
     - aws_s3_bucket
   PrimaryTable: aws_s3_bucket
+  Connector: AWS
   QueryToExecute: |
     with data as (
       select

@@ -7,6 +7,7 @@ Query:
     - aws_vpc_security_group
     - aws_vpc_security_group_rule
   PrimaryTable: aws_vpc_security_group
+  Connector: AWS
   QueryToExecute: |
     with bad_rules as (
       select

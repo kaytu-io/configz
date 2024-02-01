@@ -3,6 +3,7 @@ Title: CloudTrail trail logs should be encrypted with KMS CMK
 Description: To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Groups.
 Query:
   Engine: odysseus-v0.0.1
+  Connector: AWS
   ListOfTables:
     - aws_cloudtrail_trail
   PrimaryTable: aws_cloudtrail_trail
