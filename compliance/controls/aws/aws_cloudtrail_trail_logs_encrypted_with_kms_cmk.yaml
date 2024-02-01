@@ -3,6 +3,9 @@ Title: CloudTrail trail logs should be encrypted with KMS CMK
 Description: To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Groups.
 Query:
   Engine: odysseus-v0.0.1
+  ListOfTables:
+    - aws_cloudtrail_trail
+  PrimaryTable: aws_cloudtrail_trail
   QueryToExecute: |
     select
       arn as resource,
@@ -16,54 +19,48 @@ Query:
         when kms_key_id is null then title || ' logs are not encrypted at rest.'
         else title || ' logs are encrypted at rest.'
       end as reason
-      
       , region, account_id
     from
       aws_cloudtrail_trail
     where
       region = home_region;
-  Connector: AWS
-  PrimaryTable: aws_cloudtrail_trail
-  ListOfTables:
-  - aws_cloudtrail_trail
-ManualVerification: false
-Severity: high
+Severity: medium
 Tags:
   category:
-  - Compliance
+    - Compliance
   cis_controls_v8_ig1:
-  - "true"
+    - "true"
   cisa_cyber_essentials:
-  - "true"
+    - "true"
   fedramp_low_rev_4:
-  - "true"
+    - "true"
   fedramp_moderate_rev_4:
-  - "true"
+    - "true"
   gdpr:
-  - "true"
+    - "true"
   gxp_21_cfr_part_11:
-  - "true"
+    - "true"
   gxp_eu_annex_11:
-  - "true"
+    - "true"
   hipaa_final_omnibus_security_rule_2013:
-  - "true"
+    - "true"
   hipaa_security_rule_2003:
-  - "true"
+    - "true"
   nist_800_171_rev_2:
-  - "true"
+    - "true"
   nist_800_53_rev_4:
-  - "true"
+    - "true"
   nist_800_53_rev_5:
-  - "true"
+    - "true"
   nist_csf:
-  - "true"
+    - "true"
   pci_dss_v321:
-  - "true"
+    - "true"
   plugin:
-  - aws
+    - aws
   rbi_cyber_security:
-  - "true"
+    - "true"
   service:
-  - AWS/CloudTrail
+    - AWS/CloudTrail
   soc_2:
-  - "true"
+    - "true"
