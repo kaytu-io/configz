@@ -18,10 +18,12 @@ Tags:
   kaytu_category:
     - Certifications and Attestations
     - Best Practices
+  plugin:
+    - aws
   service:
     - AWS
   soc_2:
     - "true"
   type:
     - Benchmark
-Title: SOC 2 for AWS - Legacy
+Title: SOC 2 for AWS
