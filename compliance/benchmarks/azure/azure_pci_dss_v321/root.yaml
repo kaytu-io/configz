@@ -1,18 +1,7 @@
-Children:
-- azure_pci_dss_v321_requirement_1
-- azure_pci_dss_v321_requirement_3
-- azure_pci_dss_v321_requirement_4
-- azure_pci_dss_v321_requirement_5
-- azure_pci_dss_v321_requirement_6
-- azure_pci_dss_v321_requirement_7
-- azure_pci_dss_v321_requirement_8
-- azure_pci_dss_v321_requirement_10
-- azure_pci_dss_v321_requirement_11
 Connector: Azure
-Controls: null
-Description: The PCI DSS applies to all entities that store, process, and/or transmit cardholder data. It covers technical and operational system components included in or connected to cardholder data. If you accept or process payment cards, PCI DSS applies to you.
-Enabled: true
 ID: azure_pci_dss_v321
+Title: PCI DSS 3.2.1 for Azure
+Description: The PCI DSS applies to all entities that store, process, and/or transmit cardholder data. It covers technical and operational system components included in or connected to cardholder data. If you accept or process payment cards, PCI DSS applies to you.
 Tags:
   category:
   - Compliance
@@ -28,4 +17,15 @@ Tags:
   - Azure
   type:
   - Benchmark
-Title: PCI DSS 3.2.1 for Azure
+Children:
+- azure_pci_dss_v321_requirement_1
+- azure_pci_dss_v321_requirement_3
+- azure_pci_dss_v321_requirement_4
+- azure_pci_dss_v321_requirement_5
+- azure_pci_dss_v321_requirement_6
+- azure_pci_dss_v321_requirement_7
+- azure_pci_dss_v321_requirement_8
+- azure_pci_dss_v321_requirement_10
+- azure_pci_dss_v321_requirement_11
+Enabled: true
+Controls: null
