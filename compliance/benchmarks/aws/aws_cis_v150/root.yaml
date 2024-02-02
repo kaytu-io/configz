@@ -20,6 +20,8 @@ Tags:
   - compliance
   kaytu_category:
   - Best Practices
+  kaytu_logo:
+    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
   plugin:
   - aws
   service:

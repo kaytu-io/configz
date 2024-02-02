@@ -21,6 +21,8 @@ Tags:
   kaytu_category:
   - Certifications and Attestations
   - Best Practices
+  kaytu_logo:
+    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/soc2_large.svg
   plugin:
   - aws
   service:

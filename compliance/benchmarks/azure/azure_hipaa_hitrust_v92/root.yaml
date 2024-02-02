@@ -34,6 +34,8 @@ Tags:
   - Laws & Regulations
   - Frameworks
   - Privacy
+  kaytu_logo:
+    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/hipaa_large.svg
   plugin:
   - azure
   service:
