@@ -1,0 +1,38 @@
+ID: aws_networkfirewall_logging_enabled
+Title: Network Firewall logging should be enabled
+Description: This control checks whether a Network Firewall has logging enabled or not.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select 
+      resource_id as resource,
+      connection_id as kaytu_account_id,
+      resource_id as kaytu_resource_id,
+      case
+        when jsonb_array_length(description -> 'LoggingConfiguration' -> 'LoggingConfiguration' -> 'LogDestinationConfigs') = 0 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when jsonb_array_length(description -> 'LoggingConfiguration' -> 'LoggingConfiguration' -> 'LogDestinationConfigs') = 0 then 'logging is not enabled for network firewall.'
+        else 'logging is enabled for network firewall.'
+      end as reason
+    from kaytu_resources where resource_type = 'aws::networkfirewall::firewall';
+  Connector: AWS
+  PrimaryTable: aws_networkfirewall_firewall
+  ListOfTables:
+  - aws_networkfirewall_firewall
+ManualVerification: false
+Severity: medium
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  foundational_security_category:
+  - secure_network_configuration
+  foundational_security_item_id:
+  - networkfirewall_2
+  plugin:
+  - aws
+  service:
+  - AWS/NetworkFirewall
