@@ -10,7 +10,13 @@ Query:
         count(*) as statements_num
       from
         aws_lambda_function,
-        jsonb_array_elements(policy_std -> 'Statement') as s
+        jsonb_array_elements(
+          case jsonb_typeof(policy_std -> 'Statement') 
+            when 'array' 
+            then policy_std -> 'Statement' 
+            else '[]' 
+          end
+        ) as s
       where
         s ->> 'Effect' = 'Allow'
         and (
