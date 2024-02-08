@@ -27,7 +27,7 @@ Query:
   ListOfTables:
   - aws_ebs_volume
 ManualVerification: false
-Severity: ""
+Severity: "high"
 Tags:
   audit_manager_control_tower:
   - "true"
