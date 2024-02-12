@@ -13,7 +13,6 @@ Query:
       from
         aws_cloudtrail_trail,
         jsonb_array_elements(event_selectors) as event_selector,
-        jsonb_array_elements(event_selectors) as event_selector,
         jsonb_array_elements(case jsonb_typeof(event_selector -> 'DataResources') 
         when 'array' then event_selector -> 'DataResources'
         else '[]' end) as data_resource,
