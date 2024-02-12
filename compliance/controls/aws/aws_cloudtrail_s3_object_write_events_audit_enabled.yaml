@@ -46,8 +46,8 @@ Query:
       aws_s3_bucket as b
       left join
         s3_selectors
-        on bucket_selector::json::text like (b.arn || '%')
-        or bucket_selector::json::text = 'arn:aws:s3'
+        on bucket_selector::json::text like ('%' || b.arn || '%')
+        or bucket_selector::json::text = '"arn:aws:s3"'
     group by
       b.kaytu_account_id, b.kaytu_resource_id, b.account_id, b.region, b.arn, b.name, b.tags, b._ctx;
   Connector: AWS
