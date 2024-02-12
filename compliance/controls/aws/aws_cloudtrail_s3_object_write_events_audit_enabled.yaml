@@ -13,8 +13,13 @@ Query:
       from
         aws_cloudtrail_trail,
         jsonb_array_elements(event_selectors) as event_selector,
-        jsonb_array_elements(event_selector -> 'DataResources') as data_resource,
-        jsonb_array_elements_text(data_resource -> 'Values') as bucket_selector
+        jsonb_array_elements(event_selectors) as event_selector,
+        jsonb_array_elements(case jsonb_typeof(event_selector -> 'DataResources') 
+        when 'array' then event_selector -> 'DataResources'
+        else '[]' end) as data_resource,
+        jsonb_array_elements(case jsonb_typeof(data_resource -> 'Values') 
+        when 'array' then data_resource -> 'Values'
+        else '[]' end) as bucket_selector
       where
         is_multi_region_trail
         and data_resource ->> 'Type' = 'AWS::S3::Object'
