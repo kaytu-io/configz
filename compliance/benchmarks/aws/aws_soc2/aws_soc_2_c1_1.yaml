@@ -5,6 +5,7 @@ Controls:
   - aws_kms_cmk_rotation_enabled
   - aws_s3_bucket_mfa_delete_enabled
   - aws_s3_bucket_enforces_ssl
+  - aws_iam_role_should_not_have_trust_to_cognito_full_access
 ReferenceCode: 1
 Description:
 Title: Secondary Access Controls
