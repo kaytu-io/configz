@@ -30,7 +30,7 @@ Query:
         and trail.log_group_arn is not null
         and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)
         and filter.filter_pattern ~ '\s*\$\.eventName\s*=\s*CreateRoute.+\$\.eventName\s*=\s*CreateRouteTable.+\$\.eventName\s*=\s*ReplaceRoute.+\$\.eventName\s*=\s*ReplaceRouteTableAssociation.+\$\.eventName\s*=\s*DeleteRouteTable.+\$\.eventName\s*=\s*DeleteRoute.+\$\.eventName\s*=\s*DisassociateRouteTable'
-        and alarm.metric_name = filter.metric_transformation_name
+        and alarm.metric_name LIKE filter.metric_transformation_name
         and subscription.topic_arn = action_arn
     )
     select

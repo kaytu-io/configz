@@ -30,7 +30,7 @@ Query:
         and trail.log_group_arn is not null
         and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)
         and filter.filter_pattern ~ '\s*\$\.eventName\s*=\s*CreateVpc.+\$\.eventName\s*=\s*DeleteVpc.+\$\.eventName\s*=\s*ModifyVpcAttribute.+\$\.eventName\s*=\s*AcceptVpcPeeringConnection.+\$\.eventName\s*=\s*CreateVpcPeeringConnection.+\$\.eventName\s*=\s*DeleteVpcPeeringConnection.+\$\.eventName\s*=\s*RejectVpcPeeringConnection.+\$\.eventName\s*=\s*AttachClassicLinkVpc.+\$\.eventName\s*=\s*DetachClassicLinkVpc.+\$\.eventName\s*=\s*DisableVpcClassicLink.+\$\.eventName\s*=\s*EnableVpcClassicLink'
-        and alarm.metric_name = filter.metric_transformation_name
+        and alarm.metric_name LIKE filter.metric_transformation_name
         and subscription.topic_arn = action_arn
     )
     select
