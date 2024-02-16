@@ -21,14 +21,7 @@ Query:
         and (
           (
             alert.condition -> 'allOf' @> '[{"equals":"Security","field":"category"}]'
-            and alert.condition -> 'allOf' @> '[{"field": "resourceType", "equals": "microsoft.security/securitysolutions"}]'
             and alert.condition -> 'allOf' @> '[{"field": "operationName", "equals": "Microsoft.Security/securitySolutions/delete"}]'
-          )
-          or
-          (
-            alert.condition -> 'allOf' @> '[{"equals":"Security","field":"category"}]'
-            and alert.condition -> 'allOf' @> '[{"field": "resourceType", "equals": "microsoft.security/securitysolutions"}]'
-            and jsonb_array_length(alert.condition -> 'allOf') = 2
           )
         )
       limit 1
