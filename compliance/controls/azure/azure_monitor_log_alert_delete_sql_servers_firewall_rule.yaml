@@ -21,14 +21,7 @@ Query:
         and
         (
           ( alert.condition -> 'allOf' @> '[{"equals":"Administrative","field":"category"}]'
-          and alert.condition -> 'allOf' @> '[{"field": "resourceType", "equals": "microsoft.sql/servers/firewallrules"}]'
           and alert.condition -> 'allOf' @> '[{"field": "operationName", "equals": "Microsoft.Sql/servers/firewallRules/delete"}]' )
-          or
-          (
-            alert.condition -> 'allOf' @> '[{"equals":"Administrative","field":"category"}]'
-            and alert.condition -> 'allOf' @> '[{"field": "resourceType", "equals": "microsoft.sql/servers/firewallrules"}]'
-            and jsonb_array_length(alert.condition -> 'allOf') = 2
-          )
         )
         limit 1
     )
