@@ -11,7 +11,7 @@ Query:
       from
         azure_security_center_subscription_pricing
       where
-        name = any(ARRAY ['CosmosDbs', 'OpenSourceRelationalDatabases', 'SqlServerVirtualMachines', 'SqlServers'])
+        title = any(ARRAY ['CosmosDbs', 'OpenSourceRelationalDatabases', 'SqlServerVirtualMachines', 'SqlServers'])
       group by
         subscription_id
     )
