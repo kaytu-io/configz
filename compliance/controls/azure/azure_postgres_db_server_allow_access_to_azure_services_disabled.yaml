@@ -11,8 +11,8 @@ Query:
         azure_postgresql_server,
         jsonb_array_elements(firewall_rules) as r
       where
-        r -> 'FirewallRuleProperties' ->> 'endIpAddress' = '255.255.255.255'
-        and r -> 'FirewallRuleProperties' ->> 'startIpAddress' = '0.0.0.0'
+        r -> 'properties' ->> 'endIpAddress' = '255.255.255.255'
+        and r -> 'properties' ->> 'startIpAddress' = '0.0.0.0'
     )
     select
       s.id as resource,
