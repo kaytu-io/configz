@@ -16,13 +16,13 @@ Query:
         when pricing_tier = 'Standard' then 'Azure Defender on for Cosmos DB.'
         else 'Azure Defender off for Cosmos DB.'
       end as reason
-      
+    
       , sub.display_name as subscription
     from
       azure_security_center_subscription_pricing sub_pricing
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
-      name = 'CosmosDbs';
+      sub_pricing.title = 'CosmosDbs';
   Connector: Azure
   PrimaryTable: azure_security_center_subscription_pricing
   ListOfTables:
