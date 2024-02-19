@@ -43,3 +43,6 @@ Description: The Center for Internet Security (CIS) is a nonprofit entity whose 
 Enabled: true
 ID: CISv1_1_0
 Title: CIS Microsoft Azure Foundations Benchmark v1.1.0
+Tags:
+  kaytu_benchmark_type:
+  - compliance

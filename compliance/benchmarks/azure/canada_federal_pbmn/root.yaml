@@ -56,3 +56,6 @@ Description: This initiative includes policies that address a subset of Canada F
 Enabled: true
 ID: CanadaFederalPBMM_audit
 Title: Canada Federal PBMM
+Tags:
+  kaytu_benchmark_type:
+  - compliance
