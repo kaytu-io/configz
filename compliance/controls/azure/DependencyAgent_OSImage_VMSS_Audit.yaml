@@ -1,0 +1,38 @@
+Description: Reports virtual machine scale sets as non-compliant if the virtual machine
+  image is not in the list defined and the agent is not installed. The list of OS
+  images is updated over time as support is updated.
+ID: dependency_agent_should_be_enabled_in_virtual_machine_scale_sets_for_listed_virtual_machine_images
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT name, sku_name, kaytu_description\nFROM azure_compute_virtual_machine_scale_set\n\
+    WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'\nAND (\n    (sku_name\
+    \ IN ('2008-R2-SP1', '2008-R2-SP1-smalldisk', '2012-Datacenter', '2012-Datacenter-smalldisk',\
+    \ '2012-R2-Datacenter', '2012-R2-Datacenter-smalldisk', '2016-Datacenter', '2016-Datacenter-Server-Core',\
+    \ '2016-Datacenter-Server-Core-smalldisk', '2016-Datacenter-smalldisk', '2016-Datacenter-with-Containers',\
+    \ '2016-Datacenter-with-RDSH', '2019-Datacenter', '2019-Datacenter-Core', '2019-Datacenter-Core-smalldisk',\
+    \ '2019-Datacenter-Core-with-Containers', '2019-Datacenter-Core-with-Containers-smalldisk',\
+    \ '2019-Datacenter-smalldisk', '2019-Datacenter-with-Containers', '2019-Datacenter-with-Containers-smalldisk',\
+    \ '2019-Datacenter-zhcn'))\n    OR (sku_name IN ('Datacenter-Core-1709-smalldisk',\
+    \ 'Datacenter-Core-1709-with-Containers-smalldisk', 'Datacenter-Core-1803-with-Containers-smalldisk')\
+    \ AND sku_tier = 'WindowsServerSemiAnnual')\n    OR (sku_name IN ('WindowsServerHPCPack')\
+    \ AND sku_tier = 'WindowsServerHPCPack')\n    OR (sku_name LIKE '%-WS2016' OR\
+    \ sku_name LIKE '%-WS2016-BYOL' OR sku_name LIKE '%-WS2012R2' OR sku_name LIKE\
+    \ '%-WS2012R2-BYOL')\n    OR (sku_name IN ('MLServer-WS2016') AND sku_tier = 'MicrosoftRServer')\n\
+    \    OR (sku_name IN ('VisualStudio', 'Windows') AND sku_tier = 'MicrosoftVisualStudio')\n\
+    \    OR (sku_name = 'Pre-Req-AX7-Onebox-U8' AND sku_tier = 'MicrosoftDynamicsAX'\
+    \ AND sku_capacity = 1)\n    OR (sku_name = 'Pre-Req-AX7-Onebox-V4' AND sku_tier\
+    \ = 'MicrosoftDynamicsAX' AND sku_capacity = 1)\n    OR (sku_name = 'windows-data-science-vm'\
+    \ AND sku_tier = 'microsoft-ads')\n    OR (sku_name = 'Windows-10' AND sku_tier\
+    \ = 'MicrosoftWindowsDesktop')\n    OR (sku_name IN ('RHEL', 'RHEL-SAP-HANA')\
+    \ AND (sku_tier LIKE '6.%' OR sku_tier LIKE '7%'))\n    OR (sku_name IN ('SLES',\
+    \ 'SLES-HPC', 'SLES-HPC-Priority', 'SLES-SAP', 'SLES-SAP-BYOS', 'SLES-Priority',\
+    \ 'SLES-BYOS', 'SLES-SAPCAL', 'SLES-Standard') AND (sku_tier = '12-SP2' OR sku_tier\
+    \ = '12-SP3' OR sku_tier = '12-SP4'))\n    OR (sku_name IN ('UbuntuServer') AND\
+    \ (sku_tier IN ('14.04.0-LTS', '14.04.1-LTS', '14.04.5-LTS') OR sku_tier IN ('16.04-LTS',\
+    \ '16.04.0-LTS') OR sku_tier = '18.04-LTS'))\n    OR (sku_name IN ('Centos', 'Centos-LVM',\
+    \ 'CentOS-SRIOV') AND (sku_tier LIKE '6.%' OR sku_tier LIKE '7%'))\n    OR (sku_name\
+    \ = 'cloudera-centos-os' AND sku_tier LIKE '7%')\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: Dependency agent should be enabled in virtual machine scale sets for listed
+  virtual machine images

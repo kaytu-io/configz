@@ -1,0 +1,26 @@
+Description: Periodically, newer versions are released for Python software either
+  due to security flaws or to include additional functionality. Using the latest Python
+  version for App Service apps is recommended in order to take advantage of security
+  fixes, if any, and/or new functionalities of the latest version. This policy only
+  applies to Linux apps. This policy requires you to specify a Python version that
+  meets your requirements.
+ID: app_service_app_slots_that_use_python_should_use_a_specified_'_python_version'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_app_service_function_app
+
+    WHERE type = ''Microsoft.Web/sites/slots''
+
+    AND (kind NOT LIKE ''%functionapp%'' AND kind LIKE ''%linux%'')
+
+    AND (config->>''web.linuxFxVersion'' NOT LIKE ''%PYTHON%'' OR config->>''web.linuxFxVersion''
+    = ''PYTHON|LinuxPythonVersion'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: App Service app slots that use Python should use a specified 'Python version'

@@ -1,0 +1,11 @@
+Description: 'To ensure periodic assessments for missing system updates are triggered
+  automatically every 24 hours, the AssessmentMode property should be set to ''AutomaticByPlatform''.
+  Learn more about AssessmentMode property for Windows: https://aka.ms/computevm-windowspatchassessmentmode,
+  for Linux: https://aka.ms/computevm-linuxpatchassessmentmode.'
+ID: machines_should_be_configured_to_periodically_check_for_missing_system_updates
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Machines should be configured to periodically check for missing system updates

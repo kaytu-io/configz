@@ -1,0 +1,12 @@
+Description: Resolve endpoint protection health issues on your virtual machines to
+  protect them from latest threats and vulnerabilities. Azure Security Center supported
+  endpoint protection solutions are documented here - https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions.
+  Endpoint protection assessment is documented here - https://docs.microsoft.com/azure/security-center/security-center-endpoint-protection.
+ID: '[_deprecated]:_endpoint_protection_health_issues_should_be_resolved_on_your_machines'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: '[Deprecated]: Endpoint protection health issues should be resolved on your
+  machines'

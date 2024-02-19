@@ -4,7 +4,8 @@ ID: log_analytics_extension_should_be_enabled_in_virtual_machine_scale_sets_for_
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT name, id, kaytu_description\nFROM azure_compute_virtual_machine_scale_set\n\
+  QueryToExecute: "SELECT name, id, provisioning_state, type, location, sku_name,\
+    \ sku_capacity, sku_tier, kaytu_description\nFROM azure_compute_virtual_machine_scale_set\n\
     WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'\nAND (\n    (kaytu_description\
     \ -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile'\
     \ -> 'ImageReference' ->> 'ID' IN [parameters('listOfImageIdToInclude_windows')])\
@@ -71,7 +72,7 @@ Query:
     \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
     \ ->> 'Publisher' = 'MicrosoftWindowsDesktop' AND kaytu_description -> 'VirtualMachineScaleSet'\
     \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
-    \ ->> 'Offer' = 'Windows-10') OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ ->> 'Offer' = 'Windows-10')) OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
     \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
     \ ->> 'Publisher' = 'RedHat' AND kaytu_description -> 'VirtualMachineScaleSet'\
     \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\

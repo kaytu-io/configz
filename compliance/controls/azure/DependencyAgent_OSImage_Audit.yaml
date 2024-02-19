@@ -1,0 +1,10 @@
+Description: Reports virtual machines as non-compliant if the virtual machine image
+  is not in the list defined and the agent is not installed. The list of OS images
+  is updated over time as support is updated.
+ID: dependency_agent_should_be_enabled_for_listed_virtual_machine_images
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Dependency agent should be enabled for listed virtual machine images

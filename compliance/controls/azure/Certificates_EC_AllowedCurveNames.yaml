@@ -1,0 +1,9 @@
+Description: Manage the allowed elliptic curve names for ECC Certificates stored in
+  key vault. More information can be found at https://aka.ms/akvpolicy.
+ID: certificates_using_elliptic_curve_cryptography_should_have_allowed_curve_names
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Certificates using elliptic curve cryptography should have allowed curve names

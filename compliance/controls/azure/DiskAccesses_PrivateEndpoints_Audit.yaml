@@ -1,0 +1,23 @@
+Description: 'Azure Private Link lets you connect your virtual network to Azure services
+  without a public IP address at the source or destination. The Private Link platform
+  handles the connectivity between the consumer and services over the Azure backbone
+  network. By mapping private endpoints to diskAccesses, data leakage risks are reduced.
+  Learn more about private links at: https://aka.ms/disksprivatelinksdoc. '
+ID: disk_access_resources_should_use_private_link
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_compute_disk_access
+
+    WHERE type = ''Microsoft.Compute/diskAccesses''
+
+    AND kaytu_description -> ''$.definitions.ComputeDiskAccessDescription.definitions.DiskAccessProperties.properties.PrivateEndpointConnections.items.properties.PrivateLinkServiceConnectionState.properties.Status''
+    = ''Approved''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Disk access resources should use private link

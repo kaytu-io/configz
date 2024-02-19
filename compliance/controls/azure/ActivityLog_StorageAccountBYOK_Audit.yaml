@@ -23,6 +23,6 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Storage account containing the container with activity logs must be encrypted
   with BYOK

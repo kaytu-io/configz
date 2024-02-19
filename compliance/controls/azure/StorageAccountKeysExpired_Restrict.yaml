@@ -1,0 +1,17 @@
+Description: Ensure the user storage account keys are not expired when key expiration
+  policy is set, for improving security of account keys by taking action when the
+  keys are expired.
+ID: storage_account_keys_should_not_be_expired
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT * \nFROM azure_storage_account\nWHERE type = 'Microsoft.Storage/storageAccounts'\n\
+    AND (\n    (\n        (\n            COALESCE(keyCreationTime.key1, '') <> ''\
+    \ \n            AND COALESCE(keyPolicy.keyExpirationPeriodInDays, '')::INT <>\
+    \ ''\n        )\n        AND (keyCreationTime.key1 + INTERVAL '1 DAY' * keyPolicy.keyExpirationPeriodInDays)\
+    \ > CURRENT_TIMESTAMP\n    )\n    OR\n    (\n        (\n            COALESCE(keyCreationTime.key2,\
+    \ '') <> '' \n            AND COALESCE(keyPolicy.keyExpirationPeriodInDays, '')::INT\
+    \ <> ''\n        )\n        AND (keyCreationTime.key2 + INTERVAL '1 DAY' * keyPolicy.keyExpirationPeriodInDays)\
+    \ > CURRENT_TIMESTAMP\n    )\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: Storage account keys should not be expired

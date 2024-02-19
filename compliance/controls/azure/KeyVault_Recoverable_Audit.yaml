@@ -22,5 +22,5 @@ Query:
     \ -> 'Vault' -> 'properties' -> 'properties' ->> 'enableSoftDelete') IS NOT NULL\n\
     \        AND (kaytu_description -> 'definitions' -> 'Vault' -> 'properties' ->\
     \ 'properties' ->> 'enableSoftDelete') = 'false'\n    )\n)\nLIMIT 5;;\n"
-Severity: medium
+Severity: ''
 Title: Key vaults should have deletion protection enabled

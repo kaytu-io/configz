@@ -21,5 +21,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: SQL managed instances should use customer-managed keys to encrypt data at rest

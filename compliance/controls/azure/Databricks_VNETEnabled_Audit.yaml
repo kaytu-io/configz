@@ -1,0 +1,15 @@
+Description: 'Azure Virtual Networks provide enhanced security and isolation for your
+  Azure Databricks Workspaces, as well as subnets, access control policies, and other
+  features to further restrict access. Learn more at: https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.'
+ID: azure_databricks_workspaces_should_be_in_a_virtual_network
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_databricks_workspaces\nWHERE kaytu_account_id\
+    \ = 'account_id'\nAND kaytu_metadata ->> 'type' = 'Microsoft.Databricks/workspaces'\n\
+    AND (\n    kaytu_metadata -> 'Microsoft.Databricks/workspaces/parameters.customPublicSubnetName.value'\
+    \ IS NULL\n    OR kaytu_metadata -> 'Microsoft.Databricks/workspaces/parameters.customPrivateSubnetName.value'\
+    \ IS NULL\n    OR kaytu_metadata -> 'Microsoft.Databricks/workspaces/parameters.customVirtualNetworkId.value'\
+    \ IS NULL\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: Azure Databricks Workspaces should be in a virtual network

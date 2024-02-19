@@ -1,0 +1,21 @@
+Description: This policy audits any Windows/Linux Virtual Machine Scale Sets if the
+  Log Analytics extension is not installed.
+ID: the_log_analytics_extension_should_be_installed_on_virtual_machine_scale_sets
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT name, type, kaytu_description->''VirtualMachineScaleSetExtensionProfile''->''Extensions''->>0->>''Type''
+    AS extension_type, kaytu_description->''VirtualMachineScaleSetExtensionProfile''->''Extensions''->>0->>''Publisher''
+    AS extension_publisher, kaytu_description->''VirtualMachineScaleSetExtensionProfile''->''Extensions''->>0->''Settings''->>''workspaceId''
+    AS workspace_id, kaytu_description->''VirtualMachineScaleSetExtensionProfile''->''Extensions''->>0->>''ProvisioningState''
+    AS provisioning_state
+
+    FROM azure_compute_virtual_machine_scale_set
+
+    WHERE type = ''Microsoft.Compute/virtualMachineScaleSets''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: The Log Analytics extension should be installed on Virtual Machine Scale Sets

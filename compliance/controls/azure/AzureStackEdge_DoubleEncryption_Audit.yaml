@@ -1,0 +1,26 @@
+Description: 'To secure the data at rest on the device, ensure it''s double-encrypted,
+  the access to data is controlled, and once the device is deactivated, the data is
+  securely erased off the data disks. Double encryption is the use of two layers of
+  encryption: BitLocker XTS-AES 256-bit encryption on the data volumes and built-in
+  encryption of the hard drives. Learn more in the security overview documentation
+  for the specific Stack Edge device.'
+ID: azure_stack_edge_devices_should_use_double_encryption
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_databox_edge_device
+
+    WHERE type = ''Microsoft.DataBoxEdge/DataBoxEdgeDevices''
+
+    AND (kaytu_description->''DataboxEdgeDeviceDescription''->''Device''->''sku''->>''name''
+    NOT IN (''TEA_1Node'', ''TEA_1Node_UPS'', ''TEA_1Node_Heater'', ''TEA_1Node_UPS_Heater'',
+    ''TEA_4Node_Heater'', ''TEA_4Node_UPS_Heater'', ''TMA'', ''EdgePR_Base'', ''EdgePR_Base_UPS'',
+    ''EdgeMR_Mini''))
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure Stack Edge devices should use double-encryption

@@ -18,6 +18,6 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Email notification to subscription owner for high severity alerts should be
   enabled

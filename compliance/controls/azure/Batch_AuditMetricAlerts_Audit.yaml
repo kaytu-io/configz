@@ -1,0 +1,27 @@
+Description: Audit configuration of metric alert rules on Batch account to enable
+  the required metric
+ID: metric_alert_rules_should_be_configured_on_batch_accounts
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_batch_account
+
+    WHERE type = ''Microsoft.Batch/batchAccounts''
+
+    AND kaytu_description ->> ''$.Account.Properties.AllowedAuthenticationModes''
+    = ''true''
+
+    AND kaytu_description ->> ''$.Account.Properties.AutoStorage.AuthenticationMode''
+    = ''[parameters(''''metricName'''')]''
+
+    AND kaytu_description ->> ''$.Account.Properties.AutoStorage.NodeIdentityReference''
+    = concat(''/subscriptions/'', account_id, ''/resourcegroups/'', resource_group,
+    ''/providers/Microsoft.Batch/batchAccounts/'', name)
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Metric alert rules should be configured on Batch accounts

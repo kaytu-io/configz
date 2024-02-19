@@ -17,6 +17,9 @@ Query:
 
     WHERE type = ''Microsoft.Compute/virtualMachineScaleSets''
 
+    AND (kaytu_description -> ''$.definitions.VirtualMachineScaleSetVMProfile.properties.SecurityProfile.properties.UefiSettings.properties.VTpmEnabled'')::boolean
+    IN (false, true)
+
     LIMIT 5;;
 
     '

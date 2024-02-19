@@ -1,0 +1,20 @@
+Description: Use virtual network service endpoints to restrict access to your app
+  from selected subnets from an Azure virtual network. To learn more about App Service
+  service endpoints, visit https://aka.ms/appservice-vnet-service-endpoint.
+ID: app_service_apps_should_use_a_virtual_network_service_endpoint
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_app_service_function_app
+
+    WHERE type = ''Microsoft.Web/sites''
+
+    AND (kind IS NULL OR kind NOT LIKE ''%functionapp%'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: App Service apps should use a virtual network service endpoint

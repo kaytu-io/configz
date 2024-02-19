@@ -1,0 +1,23 @@
+Description: 'Azure Defender for Resource Manager automatically monitors the resource
+  management operations in your organization. Azure Defender detects threats and alerts
+  you about suspicious activity. Learn more about the capabilities of Azure Defender
+  for Resource Manager at https://aka.ms/defender-for-resource-manager . Enabling
+  this Azure Defender plan results in charges. Learn about the pricing details per
+  region on Security Center''s pricing page: https://aka.ms/pricing-security-center
+  .'
+ID: azure_defender_for_resource_manager_should_be_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/pricings/pricingTier''
+    = ''Standard''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure Defender for Resource Manager should be enabled

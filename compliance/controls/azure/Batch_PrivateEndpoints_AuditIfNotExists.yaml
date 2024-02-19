@@ -1,0 +1,21 @@
+Description: Private endpoint connections allow secure communication by enabling private
+  connectivity to Batch accounts without a need for public IP addresses at the source
+  or destination. Learn more about private endpoints in Batch at https://docs.microsoft.com/azure/batch/private-connectivity.
+ID: private_endpoint_connections_on_batch_accounts_should_be_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_batch_account
+
+    WHERE type = ''Microsoft.Batch/batchAccounts''
+
+    AND kaytu_description -> ''$.Account.Properties.PrivateEndpointConnections[*].Properties.PrivateLinkServiceConnectionState.Status''
+    = ''Approved''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Private endpoint connections on Batch accounts should be enabled

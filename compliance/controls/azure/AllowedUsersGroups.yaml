@@ -1,0 +1,12 @@
+Description: Control the user, primary group, supplemental group and file system group
+  IDs that pods and containers can use to run in a Kubernetes Cluster. This policy
+  is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled
+  Kubernetes. For more information, see https://aka.ms/kubepolicydoc.
+ID: kubernetes_cluster_pods_and_containers_should_only_run_with_approved_user_and_group_i_ds
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Kubernetes cluster pods and containers should only run with approved user and
+  group IDs

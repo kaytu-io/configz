@@ -1,0 +1,26 @@
+Description: Deploys the diagnostic settings for Data Lake Analytics to stream to
+  a regional Event Hub when any Data Lake Analytics which is missing this diagnostic
+  settings is created or updated.
+ID: deploy_diagnostic_settings_for_data_lake_analytics_to_event_hub
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT account_id, kaytu_description
+
+    FROM azure_data_lake_analytics_account
+
+    WHERE type = ''Microsoft.DataLakeAnalytics/accounts''
+
+    AND (kaytu_description ->> ''DiagnosticSettingsResource'')::jsonb @> ''[{"Properties":
+    {"Metrics": [{"Enabled": "true"}]}}]''
+
+    AND (kaytu_description ->> ''DiagnosticSettingsResource'')::jsonb @> ''[{"Properties":
+    {"Logs": [{"Enabled": "true"}]}}]''
+
+    AND (kaytu_description ->> ''DataLakeAnalyticsAccount.Location'') = ''[parameters(''eventHubLocation'')]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Deploy Diagnostic Settings for Data Lake Analytics to Event Hub

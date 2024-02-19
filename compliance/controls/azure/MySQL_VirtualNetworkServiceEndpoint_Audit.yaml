@@ -1,0 +1,15 @@
+Description: Virtual network based firewall rules are used to enable traffic from
+  a specific subnet to Azure Database for MySQL while ensuring the traffic stays within
+  the Azure boundary. This policy provides a way to audit if the Azure Database for
+  MySQL has virtual network service endpoint being used.
+ID: my_sql_server_should_use_a_virtual_network_service_endpoint
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_mysql_server\nWHERE type = 'Microsoft.DBforMySQL/servers'\n\
+    AND kaytu_description -> 'Configurations' @> '[{\"Properties\":{\"Source\":\"\
+    virtualNetworkRules\"}}]'\nAND (azure_mysql_server.virtual_network_subnet_id IS\
+    \ NOT NULL OR \n     kaytu_description -> 'Configurations' -> 'Properties' ->\
+    \ 'Value' ->> 'virtualNetworkSubnetId' IS NOT NULL)\nLIMIT 5;;\n"
+Severity: ''
+Title: MySQL server should use a virtual network service endpoint

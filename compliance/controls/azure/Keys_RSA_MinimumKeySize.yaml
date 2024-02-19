@@ -1,0 +1,10 @@
+Description: Set the minimum allowed key size for use with your key vaults. Use of
+  RSA keys with small key sizes is not a secure practice and doesn't meet many industry
+  certification requirements.
+ID: keys_using_rsa_cryptography_should_have_a_specified_minimum_key_size
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Keys using RSA cryptography should have a specified minimum key size

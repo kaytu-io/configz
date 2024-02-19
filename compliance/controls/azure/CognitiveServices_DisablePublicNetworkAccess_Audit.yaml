@@ -1,0 +1,26 @@
+Description: To improve the security of Cognitive Services accounts, ensure that it
+  isn't exposed to the public internet and can only be accessed from a private endpoint.
+  Disable the public network access property as described in https://go.microsoft.com/fwlink/?linkid=2129800.
+  This option disables access from any public address space outside the Azure IP range,
+  and denies all logins that match IP or virtual network-based firewall rules. This
+  reduces data leakage risks.
+ID: cognitive_services_accounts_should_disable_public_network_access
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_cognitive_account
+
+    WHERE type = ''Microsoft.CognitiveServices/accounts''
+
+    AND (public_network_access IS NOT NULL AND public_network_access != ''Disabled''
+
+    OR kaytu_description -> ''Account'' -> ''Properties'' ->> ''PublicNetworkAccess''
+    != ''Disabled'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Cognitive Services accounts should disable public network access

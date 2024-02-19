@@ -1,0 +1,18 @@
+Description: Customer-managed keys are commonly required to meet regulatory compliance
+  standards. Customer-managed keys enable the data stored in Cognitive Services to
+  be encrypted with an Azure Key Vault key created and owned by you. You have full
+  control and responsibility for the key lifecycle, including rotation and management.
+  Learn more about customer-managed keys at https://go.microsoft.com/fwlink/?linkid=2121321.
+ID: cognitive_services_accounts_should_enable_data_encryption_with_a_customer_managed_key
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_cognitive_account\nWHERE type = 'Microsoft.CognitiveServices/accounts'\n\
+    AND (\n    (encryption ->> 'keySource' IS NULL AND kaytu_description -> 'Account'\
+    \ -> 'Properties' -> 'Encryption' ->> 'KeySource' IS NULL)\n    OR (encryption\
+    \ ->> 'keySource' IS NOT NULL AND encryption ->> 'keySource' != 'Microsoft.KeyVault')\n\
+    )\nAND kind NOT IN (SELECT unnest(parameters -> 'excludedKinds'::text[]) FROM\
+    \ azure_policy)\nLIMIT 5;;\n"
+Severity: ''
+Title: Cognitive Services accounts should enable data encryption with a customer-managed
+  key

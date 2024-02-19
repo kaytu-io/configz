@@ -1,0 +1,21 @@
+Description: 'Azure Private Link lets you connect your virtual network to Azure services
+  without a public IP address at the source or destination. The Private Link platform
+  handles the connectivity between the consumer and services over the Azure backbone
+  network. By mapping private endpoints to your CosmosDB account, data leakage risks
+  are reduced. Learn more about private links at: https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints.'
+ID: cosmos_db_accounts_should_use_private_link
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_cosmosdb_account
+
+    WHERE kaytu_description -> ''DatabaseAccountGetResults'' ->> ''PrivateEndpointConnections''
+    IS NOT NULL
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: CosmosDB accounts should use private link

@@ -1,0 +1,18 @@
+Description: Protect your storage accounts from potential threats using virtual network
+  rules as a preferred method instead of IP-based filtering. Disabling IP-based filtering
+  prevents public IPs from accessing your storage accounts.
+ID: storage_accounts_should_restrict_network_access_using_virtual_network_rules
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_storage_account\nWHERE type = 'Microsoft.Storage/storageAccounts'\n\
+    AND (\n  (network_rule_default_action IS NOT NULL AND network_rule_default_action\
+    \ != 'Deny')\n  OR\n  (kaytu_description -> 'Account' -> 'Properties' -> 'NetworkRuleSet'\
+    \ ->> 'DefaultAction' IS NOT NULL AND kaytu_description -> 'Account' -> 'Properties'\
+    \ -> 'NetworkRuleSet' ->> 'DefaultAction' != 'Deny')\n)\nAND (\n  (network_ip_rules\
+    \ IS NOT NULL AND jsonb_array_length(network_ip_rules) >= 1)\n  OR\n  (kaytu_description\
+    \ -> 'Account' -> 'Properties' -> 'NetworkRuleSet' -> 'IPRules' IS NOT NULL AND\
+    \ jsonb_array_length(kaytu_description -> 'Account' -> 'Properties' -> 'NetworkRuleSet'\
+    \ -> 'IPRules') >= 1)\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: Storage accounts should restrict network access using virtual network rules

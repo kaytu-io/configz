@@ -18,6 +18,6 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: SQL servers with auditing to storage account destination should be configured
   with 90 days retention or higher

@@ -1,0 +1,12 @@
+Description: Setup the 'time.windows.com' as the default NTP Server for all Windows
+  machines to ensure logs across all systems have system clocks that are all in sync.
+  This policy requires that the Guest Configuration prerequisites have been deployed
+  to the policy assignment scope. For more information on Guest Configuration, visit
+  https://aka.ms/gcpol.
+ID: windows_machines_should_use_the_default_ntp_server
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Windows machines should use the default NTP server

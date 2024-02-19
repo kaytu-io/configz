@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Adopt biometric authentication mechanisms

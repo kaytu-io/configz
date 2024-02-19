@@ -1,0 +1,24 @@
+Description: Deploys the diagnostic settings for Stream Analytics to stream to a regional
+  Log Analytics workspace when any Stream Analytics which is missing this diagnostic
+  settings is created or updated.
+ID: deploy_diagnostic_settings_for_stream_analytics_to_log_analytics_workspace
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_stream_analytics_job
+
+    WHERE type = ''Microsoft.StreamAnalytics/streamingjobs''
+
+    AND kaytu_description -> ''definitions'' -> ''DiagnosticSettings'' -> ''properties''
+    -> ''Logs'' -> ''items'' -> ''properties'' ->> ''Enabled'' = ''true''
+
+    AND kaytu_description -> ''definitions'' -> ''DiagnosticSettings'' -> ''properties''
+    -> ''Metrics'' -> ''items'' -> ''properties'' ->> ''Enabled'' = ''true''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Deploy Diagnostic Settings for Stream Analytics to Log Analytics workspace

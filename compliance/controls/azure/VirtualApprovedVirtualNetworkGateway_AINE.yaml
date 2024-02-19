@@ -1,0 +1,21 @@
+Description: This policy audits any virtual network if the default route does not
+  point to the specified virtual network gateway.
+ID: virtual_networks_should_use_specified_virtual_network_gateway
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT name, id, provisioning_state, resource_group
+
+    FROM azure_virtual_network
+
+    WHERE type = ''Microsoft.Network/virtualNetworks''
+
+    AND kaytu_description -> ''VirtualNetwork'' -> ''properties'' -> ''subnets'' @>
+    ''[{"properties": {"ipConfigurations": [{"id": "[concat(parameters(''virtualNetworkGatewayId''),
+    ''/'')]" }]}}]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Virtual networks should use specified virtual network gateway

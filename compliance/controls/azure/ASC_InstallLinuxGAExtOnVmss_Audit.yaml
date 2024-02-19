@@ -1,0 +1,29 @@
+Description: Install Guest Attestation extension on supported Linux virtual machines
+  scale sets to allow Azure Security Center to proactively attest and monitor the
+  boot integrity. Once installed, boot integrity will be attested via Remote Attestation.  This
+  assessment applies to Trusted Launch and Confidential Linux virtual machine scale
+  sets.
+ID: '[_preview]:_guest_attestation_extension_should_be_installed_on_supported_linux_virtual_machines_scale_sets'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT name, sku_name, sku_tier\nFROM azure_compute_virtual_machine_scale_set\n\
+    WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'\nAND (\n    (sku_name\
+    \ = '18_04-lts-gen2' AND sku_tier = 'Canonical') OR\n    (sku_name = '20_04-lts-gen2'\
+    \ AND sku_tier = 'Canonical') OR\n    (sku_name = '20_04-lts-cvm' AND sku_tier\
+    \ = 'Canonical') OR\n    (sku_name = '83-gen2' AND sku_tier = 'RedHat') OR\n \
+    \   (sku_name = 'gen2' AND sku_tier = 'SUSE') OR\n    (sku_name = '8_3-gen2' AND\
+    \ sku_tier = 'OpenLogic') OR\n    (sku_name = 'ol83-lvm-gen2' AND sku_tier = 'Oracle')\
+    \ OR\n    (sku_name = '1-gen2' AND sku_tier = 'microsoftcblmariner') OR\n    (sku_name\
+    \ = '11-gen2' AND sku_tier = 'debian')\n)\nAND (\n    (virtual_machine_security_profile->'uefiSettings'->>'vTpmEnabled'\
+    \ = 'true' AND virtual_machine_security_profile->'uefiSettings'->>'secureBootEnabled'\
+    \ = 'true') OR\n    (kaytu_description->'VirtualMachineScaleSet'->'VirtualMachineProfile'->'SecurityProfile'->'UefiSettings'->>'VTpmEnabled'\
+    \ = 'true' AND kaytu_description->'VirtualMachineScaleSet'->'VirtualMachineProfile'->'SecurityProfile'->'UefiSettings'->>'SecureBootEnabled'\
+    \ = 'true')\n)\nAND (\n    (extensions->'publisher' @> '[{\"equals\": \"Microsoft.Azure.Security.LinuxAttestation\"\
+    }]' AND extensions->'type' @> '[{\"equals\": \"GuestAttestation\"}]') OR\n   \
+    \ (kaytu_description->'VirtualMachineScaleSet'->'VirtualMachineProfile'->'ExtensionProfile'->'Extensions'\
+    \ @> '[{\"Publisher\": \"Microsoft.Azure.Security.LinuxAttestation\", \"Type\"\
+    : \"GuestAttestation\"}]')\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: '[Preview]: Guest Attestation extension should be installed on supported Linux
+  virtual machines scale sets'

@@ -1,0 +1,10 @@
+Description: Deploys the diagnostic settings for SQL Databases to stream resource
+  logs to a Log Analytics workspace when any SQL Database which is missing this diagnostic
+  settings is created or updated.
+ID: deploy_configure_diagnostic_settings_for_sql_databases_to_log_analytics_workspace
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Deploy - Configure diagnostic settings for SQL Databases to Log Analytics workspace

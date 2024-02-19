@@ -15,5 +15,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Subscriptions should have a contact email address for security issues

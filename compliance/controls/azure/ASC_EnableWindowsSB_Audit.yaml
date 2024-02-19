@@ -1,0 +1,11 @@
+Description: Enable Secure Boot on supported Windows virtual machines to mitigate
+  against malicious and unauthorized changes to the boot chain. Once enabled, only
+  trusted bootloaders, kernel and kernel drivers will be allowed to run. This assessment
+  applies to Trusted Launch and Confidential Windows virtual machines.
+ID: '[_preview]:_secure_boot_should_be_enabled_on_supported_windows_virtual_machines'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: '[Preview]: Secure Boot should be enabled on supported Windows virtual machines'

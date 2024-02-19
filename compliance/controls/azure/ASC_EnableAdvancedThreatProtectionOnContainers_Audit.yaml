@@ -14,5 +14,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Microsoft Defender for Containers should be enabled

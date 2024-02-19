@@ -1,0 +1,26 @@
+Description: 'Azure Private Link lets you connect your virtual network to Azure services
+  without a public IP address at the source or destination. The Private Link platform
+  handles the connectivity between the consumer and services over the Azure backbone
+  network. By mapping private endpoints to Azure Synapse workspace, data leakage risks
+  are reduced. Learn more about private links at: https://docs.microsoft.com/azure/synapse-analytics/security/how-to-connect-to-workspace-with-private-links.'
+ID: azure_synapse_workspaces_should_use_private_link
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_synapse_workspace
+
+    WHERE type = ''Microsoft.Synapse/workspaces''
+
+    AND kaytu_description -> ''Workspace'' -> ''Properties'' ->> ''PrivateEndpointConnections''
+    IS NOT NULL
+
+    AND kaytu_description -> ''Workspace'' -> ''Properties'' ->> ''PrivateEndpointConnections''::jsonb
+    ->> ''privateLinkServiceConnectionState'' ->> ''status'' = ''Approved''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure Synapse workspaces should use private link

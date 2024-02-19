@@ -1,0 +1,32 @@
+Children: []
+Connector: Azure
+Controls:
+- azure_firewall_premium_should_configure_a_valid_intermediate_certificate_to_enable_tls_inspection
+- firewall_policy_premium_should_enable_the_intrusion_detection_and_prevention_system_(_idps)
+- linux_virtual_machines_should_have_azure_monitor_agent_installed
+- azure_synapse_analytics_dedicated_sql_pools_should_enable_encryption
+- firewall_policy_premium_should_enable_all_idps_signature_rules_to_monitor_all_inbound_and_outbound_traffic_flows
+- azure_sql_database_should_be_running_tls_version_1.2_or_newer
+- vulnerability_assessment_should_be_enabled_on_your_synapse_workspaces
+- app_service_environment_should_have_tls_1.0_and_1.1_disabled
+- storage_accounts_should_have_the_specified_minimum_tls_version
+- web_application_firewall_(_waf)_should_use_the_specified_mode_for_application_gateway
+- windows_machines_should_use_the_default_ntp_server
+- bypass_list_of_intrusion_detection_and_prevention_system_(_idps)_should_be_empty_in_firewall_policy_premium
+- windows_machines_should_enable_windows_defender_real_time_protection
+- web_application_firewall_(_waf)_should_enable_all_firewall_rules_for_application_gateway
+- sql_managed_instance_should_have_the_minimal_tls_version_of_1.2
+- windows_virtual_machines_should_have_azure_monitor_agent_installed
+- disk_encryption_should_be_enabled_on_azure_data_explorer
+- windows_machines_should_schedule_windows_defender_to_perform_a_scheduled_scan_every_day
+- subscription_should_configure_the_azure_firewall_premium_to_provide_additional_layer_of_protection
+- windows_machines_should_configure_windows_defender_to_update_protection_signatures_within_one_day
+Description: App Compliance Automation Tool for Microsoft 365 (ACAT) simplifies the
+  process to achieve Microsoft 365 Certification, see https://aka.ms/acat. This certification
+  ensures that apps have strong security and compliance practices in place to protect
+  customer data, security, and privacy. This initiative includes policies that address
+  a subset of the Microsoft 365 Certification controls. Additional policies will be
+  added in upcoming releases.
+Enabled: true
+ID: ACAT_M365_Cert
+Title: ACAT for Microsoft 365 Certification

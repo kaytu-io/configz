@@ -4,16 +4,16 @@ ID: transparent_data_encryption_on_sql_databases_should_be_enabled
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, kaytu_description->''Database''->>0->>''properties''->''TransparentDataEncryption''->>0->>''state''
-    AS state, kaytu_description->''Database''->>0->>''properties''->''TransparentDataEncryption''->>0->>''status''
-    AS status
-
-    FROM azure_sql_database
-
-    WHERE type = ''Microsoft.Sql/servers/databases'' AND name != ''master''
-
-    LIMIT 5;;
-
-    '
+  QueryToExecute: "SELECT \n    CASE \n        WHEN azure_sql_database.name IS NOT\
+    \ NULL THEN azure_sql_database.name\n        ELSE kaytu_description->>'name'\n\
+    \    END AS database_name,\n    CASE \n        WHEN azure_sql_database.transparent_data_encryption->>'status'\
+    \ IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'status'\n\
+    \        ELSE kaytu_description->'Microsoft.Sql/transparentDataEncryption.status'->>'$.TransparentDataEncryption[*].properties.state'\n\
+    \    END AS encryption_status,\n    CASE \n        WHEN azure_sql_database.transparent_data_encryption->>'state'\
+    \ IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'state'\n\
+    \        ELSE kaytu_description->'transparentDataEncryption/state'->>'$.TransparentDataEncryption[*].properties.state'\n\
+    \    END AS encryption_state\nFROM \n    azure_sql_database\nWHERE \n    azure_sql_database.type\
+    \ = 'Microsoft.Sql/servers/databases'\n    AND azure_sql_database.name != 'master'\n\
+    LIMIT 5;;\n"
 Severity: ''
 Title: Transparent Data Encryption on SQL databases should be enabled

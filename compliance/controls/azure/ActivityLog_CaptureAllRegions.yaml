@@ -8,5 +8,5 @@ Query:
     \ '$.Subscription.subscriptionPolicies.locationPlacementId' IN ('usgovarizona',\
     \ 'usgoviowa', 'usgovtexas', 'usgovvirginia', 'global')\n  AND kaytu_description\
     \ ->> '$.type' = 'Microsoft.Resources/subscriptions'\nLIMIT 5;;\n"
-Severity: medium
+Severity: ''
 Title: Azure Monitor should collect activity logs from all regions

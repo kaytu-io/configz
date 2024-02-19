@@ -1,0 +1,24 @@
+Description: Use customer-managed keys to manage the encryption at rest of your Azure
+  Data Factory. By default, customer data is encrypted with service-managed keys,
+  but customer-managed keys are commonly required to meet regulatory compliance standards.
+  Customer-managed keys enable the data to be encrypted with an Azure Key Vault key
+  created and owned by you. You have full control and responsibility for the key lifecycle,
+  including rotation and management. Learn more at https://aka.ms/adf-cmk.
+ID: azure_data_factories_should_be_encrypted_with_a_customer_managed_key
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT name, id, type, kaytu_description
+
+    FROM azure_data_factory
+
+    WHERE type = ''Microsoft.DataFactory/factories''
+
+    AND (encryption->>''vaultBaseUrl'' IS NULL OR kaytu_description->''definitions''->''EncryptionConfiguration''->''properties''->>''vaultBaseUrl''
+    IS NULL)
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure data factories should be encrypted with a customer-managed key

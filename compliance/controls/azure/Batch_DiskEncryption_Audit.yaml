@@ -1,0 +1,21 @@
+Description: Enabling Azure Batch disk encryption ensures that data is always encrypted
+  at rest on your Azure Batch compute node. Learn more about disk encryption in Batch
+  at https://docs.microsoft.com/azure/batch/disk-encryption.
+ID: azure_batch_pools_should_have_disk_encryption_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_batch_account
+
+    WHERE type = ''Microsoft.Batch/batchAccounts/pools''
+
+    AND kaytu_description -> ''Account'' -> ''Properties'' -> ''Encryption'' -> ''KeyVaultProperties''
+    ->> ''KeyIdentifier'' IS NOT NULL
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure Batch pools should have disk encryption enabled

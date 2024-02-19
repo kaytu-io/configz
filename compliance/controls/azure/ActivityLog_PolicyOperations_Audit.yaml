@@ -26,5 +26,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: An activity log alert should exist for specific Policy operations

@@ -15,5 +15,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Azure Defender for SQL servers on machines should be enabled

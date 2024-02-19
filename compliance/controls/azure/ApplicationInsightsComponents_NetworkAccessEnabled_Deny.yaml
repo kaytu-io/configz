@@ -1,0 +1,11 @@
+Description: Improve Application Insights security by blocking log ingestion and querying
+  from public networks. Only private-link connected networks will be able to ingest
+  and query logs of this component. Learn more at https://aka.ms/AzMonPrivateLink#configure-application-insights.
+ID: application_insights_components_should_block_log_ingestion_and_querying_from_public_networks
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Application Insights components should block log ingestion and querying from
+  public networks

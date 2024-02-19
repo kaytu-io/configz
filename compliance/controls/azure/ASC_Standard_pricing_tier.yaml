@@ -1,0 +1,24 @@
+Description: The standard pricing tier enables threat detection for networks and virtual
+  machines, providing threat intelligence, anomaly detection, and behavior analytics
+  in Azure Security Center
+ID: security_center_standard_pricing_tier_should_be_selected
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_security_center_subscription_pricing
+
+    WHERE type = ''Microsoft.Security/pricings''
+
+    AND (kaytu_description ->> ''Deprecated'') IS NULL
+
+    AND (kaytu_description ->> ''PricingTier'') IS NOT NULL
+
+    AND (kaytu_description ->> ''PricingTier'') != ''Standard''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Security Center standard pricing tier should be selected

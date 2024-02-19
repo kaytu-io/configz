@@ -1,0 +1,15 @@
+Description: This policy audits any Container Registry not configured to use a virtual
+  network service endpoint.
+ID: '[_preview]:_container_registry_should_use_a_virtual_network_service_endpoint'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT name, kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.DefaultAction'\
+    \ AS default_action, kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.IPRules.items.properties.Action'\
+    \ AS virtual_network_action\nFROM azure_container_registry\nWHERE type = 'Microsoft.ContainerRegistry/registries'\n\
+    AND (\n    (kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.DefaultAction'\
+    \ IS NOT NULL AND kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.DefaultAction'\
+    \ != 'Deny')\n    OR\n    (kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.IPRules.items.properties.Action'\
+    \ IS NULL)\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: '[Preview]: Container Registry should use a virtual network service endpoint'

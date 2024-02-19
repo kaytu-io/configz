@@ -22,5 +22,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Storage accounts should allow access from trusted Microsoft services

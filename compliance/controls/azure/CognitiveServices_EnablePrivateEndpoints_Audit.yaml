@@ -1,0 +1,16 @@
+Description: 'Azure Private Link lets you connect your virtual networks to Azure services
+  without a public IP address at the source or destination. The Private Link platform
+  handles the connectivity between the consumer and services over the Azure backbone
+  network. By mapping private endpoints to Cognitive Services, you''ll reduce the
+  potential for data leakage. Learn more about private links at: https://go.microsoft.com/fwlink/?linkid=2129800.'
+ID: cognitive_services_should_use_private_link
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_cognitive_account\nWHERE type = 'Microsoft.CognitiveServices/accounts'\n\
+    AND (\n    EXISTS (\n        SELECT 1\n        FROM jsonb_array_elements(kaytu_description->'Account'->'Properties'->'PrivateEndpointConnections')\
+    \ AS pec\n        WHERE pec->'privateLinkServiceConnectionState'->>'status' =\
+    \ 'Approved'\n    )\n    OR NOT EXISTS (\n        SELECT 1\n        FROM jsonb_array_elements(kaytu_description->'Account'->'Properties'->'PrivateEndpointConnections')\
+    \ AS pec\n    )\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: Cognitive Services should use private link

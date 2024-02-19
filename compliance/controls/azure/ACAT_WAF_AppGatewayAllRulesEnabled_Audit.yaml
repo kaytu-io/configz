@@ -1,0 +1,22 @@
+Description: Enabling all Web Application Firewall (WAF) rules strengthens your application
+  security and protects your web applications against common vulnerabilities. To learn
+  more about Web Application Firewall (WAF) with Application Gateway, visit https://aka.ms/waf-ag
+ID: web_application_firewall_(_waf)_should_enable_all_firewall_rules_for_application_gateway
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_application_gateway
+
+    WHERE type = ''Microsoft.Network/applicationGateways''
+
+    AND kaytu_description ->> ''$.webApplicationFirewallConfiguration.disabledRuleGroups''
+    IS NOT NULL
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Web Application Firewall (WAF) should enable all firewall rules for Application
+  Gateway
