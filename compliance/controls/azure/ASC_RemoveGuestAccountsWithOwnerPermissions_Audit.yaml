@@ -1,0 +1,18 @@
+Description: External accounts with owner permissions should be removed from your
+  subscription in order to prevent unmonitored access.
+ID: guest_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code''
+    IN (''NotApplicable'', ''Healthy'')
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Guest accounts with owner permissions on Azure resources should be removed

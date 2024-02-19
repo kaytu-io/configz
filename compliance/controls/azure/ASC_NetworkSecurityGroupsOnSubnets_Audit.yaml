@@ -1,0 +1,20 @@
+Description: Protect your subnet from potential threats by restricting access to it
+  with a Network Security Group (NSG). NSGs contain a list of Access Control List
+  (ACL) rules that allow or deny network traffic to your subnet.
+ID: subnets_should_be_associated_with_a_network_security_group
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_virtual_network
+
+    WHERE kaytu_description -> ''properties'' -> ''VirtualNetwork'' -> ''properties''
+    -> ''dhcpOptions'' -> ''properties'' -> ''dnsServers'' ->> ''items'' IN (''NotApplicable'',
+    ''Healthy'')
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Subnets should be associated with a Network Security Group

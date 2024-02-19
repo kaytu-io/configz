@@ -1,0 +1,19 @@
+Description: Azure Defender for SQL provides functionality for surfacing and mitigating
+  potential database vulnerabilities, detecting anomalous activities that could indicate
+  threats to SQL databases, and discovering and classifying sensitive data.
+ID: azure_defender_for_sql_servers_on_machines_should_be_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/pricings/pricingTier''
+    = ''Standard''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Azure Defender for SQL servers on machines should be enabled

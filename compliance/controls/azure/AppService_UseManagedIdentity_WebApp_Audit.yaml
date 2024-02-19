@@ -1,0 +1,25 @@
+Description: Use a managed identity for enhanced authentication security
+ID: app_service_apps_should_use_managed_identity
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_app_service_function_app
+
+    WHERE type = ''Microsoft.Web/sites''
+
+    AND (kind NOT LIKE ''%functionapp%''
+
+    OR kaytu_description ->> ''kind'' NOT LIKE ''%functionapp%'')
+
+    AND (kaytu_description -> ''config'' ->> ''xmanagedServiceIdentityId'' IS NOT
+    NULL
+
+    OR kaytu_description -> ''config'' ->> ''managedServiceIdentityId'' IS NOT NULL)
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: App Service apps should use managed identity

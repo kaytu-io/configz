@@ -1,0 +1,30 @@
+Description: This policy audits specific Policy operations with no activity log alerts
+  configured.
+ID: an_activity_log_alert_should_exist_for_specific_policy_operations
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
+    ->> ''enabled'' = ''true''
+
+    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
+    -> ''condition.allOf'' ->> ''field'' = ''category''
+
+    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
+    -> ''condition.allOf'' ->> ''equals'' = ''Administrative''
+
+    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
+    -> ''condition.allOf'' ->> ''field'' = ''operationName''
+
+    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
+    -> ''condition.allOf'' ->> ''equals'' = ''[parameters(''operationName'')]''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: An activity log alert should exist for specific Policy operations

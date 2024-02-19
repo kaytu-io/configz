@@ -1,0 +1,10 @@
+Description: Possible network Just In Time (JIT) access will be monitored by Azure
+  Security Center as recommendations
+ID: management_ports_of_virtual_machines_should_be_protected_with_just_in_time_network_access_control
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: medium
+Title: Management ports of virtual machines should be protected with just-in-time
+  network access control

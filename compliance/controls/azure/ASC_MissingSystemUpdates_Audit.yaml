@@ -1,0 +1,9 @@
+Description: Missing security system updates on your servers will be monitored by
+  Azure Security Center as recommendations
+ID: system_updates_should_be_installed_on_your_machines
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: medium
+Title: System updates should be installed on your machines

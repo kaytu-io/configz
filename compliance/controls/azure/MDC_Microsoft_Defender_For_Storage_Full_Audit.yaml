@@ -1,0 +1,29 @@
+Description: 'Microsoft Defender for Storage detects potential threats to your storage
+  accounts. It helps prevent the three major impacts on your data and workload: malicious
+  file uploads, sensitive data exfiltration, and data corruption. The new Defender
+  for Storage plan includes Malware Scanning and Sensitive Data Threat Detection.
+  This plan also provides a predictable pricing structure (per storage account) for
+  control over coverage and costs.'
+ID: microsoft_defender_for_storage_should_be_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description ->> ''$.Subscription.SubscriptionPolicies.extensions.Microsoft.Security/pricings/subPlan''
+    = ''DefenderForStorageV2''
+
+    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.extensions.Microsoft.Security/pricings/pricingTier''
+    = ''Standard''
+
+    AND (kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''extensions''
+    -> ''Microsoft.Security/pricings/extensions'')::jsonb @> ''[{"name": "OnUploadMalwareScanning",
+    "isEnabled": "true"}, {"name": "SensitiveDataDiscovery", "isEnabled": "true"}]''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Microsoft Defender for Storage should be enabled

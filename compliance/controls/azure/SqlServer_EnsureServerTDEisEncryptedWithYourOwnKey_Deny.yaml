@@ -1,0 +1,19 @@
+Description: Implementing Transparent Data Encryption (TDE) with your own key provides
+  increased transparency and control over the TDE Protector, increased security with
+  an HSM-backed external service, and promotion of separation of duties. This recommendation
+  applies to organizations with a related compliance requirement.
+ID: sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_sql_server\nWHERE type = 'Microsoft.Sql/servers'\n\
+    AND (\n    (\n        type = 'Microsoft.Sql/servers'\n        AND '[resourcegroup().managedBy]'\
+    \ NOT LIKE '%/providers/Microsoft.Synapse/%'\n        AND (\n            \"Microsoft.Sql/servers/keyid\"\
+    \ IS NULL\n            OR \"Microsoft.Sql/servers/keyid\" = ''\n        )\n  \
+    \  )\n    OR (\n        type = 'Microsoft.Sql/servers/encryptionProtector'\n \
+    \       AND '[resourcegroup().managedBy]' NOT LIKE '%/providers/Microsoft.Synapse/%'\n\
+    \        AND (\n            \"Microsoft.Sql/servers/encryptionProtector/serverKeyType\"\
+    \ IS NULL\n            OR \"Microsoft.Sql/servers/encryptionProtector/serverKeyType\"\
+    \ != 'AzureKeyVault'\n        )\n    )\n)\nLIMIT 5;;\n"
+Severity: medium
+Title: SQL servers should use customer-managed keys to encrypt data at rest

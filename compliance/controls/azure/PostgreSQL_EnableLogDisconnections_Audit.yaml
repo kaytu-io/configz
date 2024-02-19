@@ -1,0 +1,19 @@
+Description: This policy helps audit any PostgreSQL databases in your environment
+  without log_disconnections enabled.
+ID: disconnections_should_be_logged_for_postgre_sql_database_servers.
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_postgresql_server
+
+    WHERE type = ''Microsoft.DBforPostgreSQL/servers''
+
+    AND kaytu_description -> ''$.Configurations[*].Properties.Value'' = ''ON''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Disconnections should be logged for PostgreSQL database servers.

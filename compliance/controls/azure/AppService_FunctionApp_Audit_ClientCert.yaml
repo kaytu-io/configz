@@ -1,0 +1,14 @@
+Description: Client certificates allow for the app to request a certificate for incoming
+  requests. Only clients with valid certificates will be able to reach the app. This
+  policy has been replaced by a new policy with the same name because Http 2.0 doesn't
+  support client certificates.
+ID: '[_deprecated]:_function_apps_should_have_''_client_certificates_(_incoming_client_certificates)''_enabled'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_app_service_function_app\nWHERE type = 'Microsoft.Web/sites'\n\
+    \  AND (kind LIKE '%functionapp%' AND kind NOT LIKE '%workflowapp%')\n  AND (client_cert_enabled\
+    \ = false OR client_cert_enabled IS NULL)\nLIMIT 5;;\n"
+Severity: low
+Title: '[Deprecated]: Function apps should have ''Client Certificates (Incoming client
+  certificates)'' enabled'
