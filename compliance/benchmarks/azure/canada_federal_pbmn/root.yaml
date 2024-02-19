@@ -59,3 +59,7 @@ Title: Canada Federal PBMM
 Tags:
   kaytu_benchmark_type:
   - compliance
+  plugin:
+    - azure
+  service:
+    - Azure
