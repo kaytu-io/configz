@@ -463,3 +463,10 @@ Description: The International Organization for Standardization (ISO) 27001 stan
 Enabled: true
 ID: ISO27001_2013_audit
 Title: ISO 27001:2013
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

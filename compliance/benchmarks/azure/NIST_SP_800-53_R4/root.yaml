@@ -738,3 +738,10 @@ Description: National Institute of Standards and Technology (NIST) SP 800-53 R4 
 Enabled: true
 ID: NIST_SP_800-53_R4
 Title: NIST SP 800-53 Rev. 4
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

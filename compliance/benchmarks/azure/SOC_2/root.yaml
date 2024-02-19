@@ -328,3 +328,10 @@ Description: 'A System and Organization Controls (SOC) 2 is a report based on th
 Enabled: true
 ID: SOC_2
 Title: SOC 2 Type 2
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

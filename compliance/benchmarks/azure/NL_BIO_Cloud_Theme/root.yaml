@@ -249,3 +249,10 @@ Description: This initiative includes policies that address the Dutch Baseline I
 Enabled: true
 ID: NL_BIO_Cloud_Theme
 Title: NL BIO Cloud Theme
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

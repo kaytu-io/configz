@@ -21,3 +21,10 @@ Description: 'The Microsoft Cloud for Sovereignty recommends confidential polici
 Enabled: true
 ID: MCfS_Sovereignty_Baseline_Confidential_Policies
 Title: '[Preview]: Sovereignty Baseline - Confidential Policies'
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

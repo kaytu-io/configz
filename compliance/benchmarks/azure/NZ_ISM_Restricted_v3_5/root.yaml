@@ -170,3 +170,10 @@ Description: 'This initiative includes policies that address a subset of New Zea
 Enabled: true
 ID: NZ_ISM_Restricted_v3_5
 Title: New Zealand ISM Restricted v3.5
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

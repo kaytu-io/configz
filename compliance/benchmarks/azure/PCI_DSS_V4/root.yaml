@@ -282,3 +282,10 @@ Description: The Payment Card Industry (PCI) Data Security Standards (DSS) is a 
 Enabled: true
 ID: PCI_DSS_V4.0
 Title: PCI DSS v4
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

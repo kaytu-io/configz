@@ -602,3 +602,10 @@ Description: Health Information Trust Alliance (HITRUST) helps organizations fro
 Enabled: true
 ID: HIPAA_HITRUST_audit
 Title: HITRUST/HIPAA
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

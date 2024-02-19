@@ -59,3 +59,10 @@ Description: This initiative includes policies that address a subset of IRS1075 
 Enabled: true
 ID: IRS1075_audit
 Title: IRS1075 September 2016
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure
