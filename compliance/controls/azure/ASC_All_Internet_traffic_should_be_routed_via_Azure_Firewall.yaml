@@ -1,0 +1,11 @@
+Description: Azure Security Center has identified that some of your subnets aren't
+  protected with a next generation firewall. Protect your subnets from potential threats
+  by restricting access to them with Azure Firewall or a supported next generation
+  firewall
+ID: '[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: '[Preview]: All Internet traffic should be routed via your deployed Azure Firewall'

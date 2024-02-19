@@ -17,5 +17,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Azure Role-Based Access Control (RBAC) should be used on Kubernetes Services

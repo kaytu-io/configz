@@ -1,0 +1,15 @@
+Description: 'Enable the key vault firewall so that the key vault is not accessible
+  by default to any public IPs. Optionally, you can configure specific IP ranges to
+  limit access to those networks. Learn more at: https://docs.microsoft.com/azure/key-vault/general/network-security'
+ID: azure_key_vault_should_have_firewall_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_key_vault\nWHERE type = 'Microsoft.KeyVault/vaults'\n\
+    AND (create_mode IS NOT NULL AND create_mode != 'recover')\nAND (\n    (network_acls->'defaultAction'\
+    \ IS NOT NULL AND network_acls->>'defaultAction' != 'Deny')\n    OR\n    (\n \
+    \       kaytu_description->'definitions'->'KeyVaultDescription'->'definitions'->'Vault'->'properties'->'networkAcls'->'properties'->'defaultAction'\
+    \ IS NOT NULL\n        AND\n        kaytu_description->'definitions'->'KeyVaultDescription'->'definitions'->'Vault'->'properties'->'networkAcls'->'properties'->>'defaultAction'\
+    \ != 'Deny'\n    )\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: Azure Key Vault should have firewall enabled

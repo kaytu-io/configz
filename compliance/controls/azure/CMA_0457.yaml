@@ -1,0 +1,20 @@
+Description: CMA_0457 - Review access control policies and procedures
+ID: review_access_control_policies_and_procedures
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE title = ''Microsoft.Resources/subscriptions''
+
+    AND kaytu_metadata ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
+
+    AND kaytu_metadata -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Review access control policies and procedures

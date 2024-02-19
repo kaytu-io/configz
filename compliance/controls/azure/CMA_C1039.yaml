@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Review user privileges

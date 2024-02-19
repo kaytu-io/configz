@@ -11,7 +11,7 @@ Query:
     sku_name, ssl_port, subnet_id, static_ip, replicas_per_master, shard_count, access_keys,
     linked_servers, instances, private_endpoint_connections, redis_configuration,
     tenant_settings, zones, title, tags, akas, region, resource_group, cloud_environment,
-    kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
+    subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
 
     FROM azure_redis_cache
 

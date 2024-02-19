@@ -1,0 +1,12 @@
+Description: Security Center uses the Microsoft Dependency agent to collect network
+  traffic data from your Azure virtual machines to enable advanced network protection
+  features such as traffic visualization on the network map, network hardening recommendations
+  and specific network threats.
+ID: '[_preview]:_network_traffic_data_collection_agent_should_be_installed_on_linux_virtual_machines'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: '[Preview]: Network traffic data collection agent should be installed on Linux
+  virtual machines'

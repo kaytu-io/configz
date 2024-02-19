@@ -1,0 +1,21 @@
+Description: CMA_0386 - Perform a business impact assessment and application criticality
+  assessment
+ID: perform_a_business_impact_assessment_and_application_criticality_assessment
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE title = ''Microsoft.Resources/subscriptions''
+
+    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
+
+    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Perform a business impact assessment and application criticality assessment

@@ -1,0 +1,20 @@
+Description: This policy audits any SQL Server not configured to use a virtual network
+  service endpoint.
+ID: sql_server_should_use_a_virtual_network_service_endpoint
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_sql_server
+
+    WHERE type = ''Microsoft.Sql/servers''
+
+    AND kaytu_description -> ''$.VirtualNetworkRules[*].properties.virtualNetworkSubnetId''
+    IS NOT NULL
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: SQL Server should use a virtual network service endpoint

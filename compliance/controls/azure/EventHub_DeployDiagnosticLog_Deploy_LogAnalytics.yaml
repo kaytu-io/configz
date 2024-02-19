@@ -1,0 +1,18 @@
+Description: Deploys the diagnostic settings for Event Hub to stream to a regional
+  Log Analytics workspace when any Event Hub which is missing this diagnostic settings
+  is created or updated.
+ID: deploy_diagnostic_settings_for_event_hub_to_log_analytics_workspace
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_eventhub_namespace
+
+    WHERE type = ''Microsoft.EventHub/namespaces''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Deploy Diagnostic Settings for Event Hub to Log Analytics workspace

@@ -1,0 +1,26 @@
+Description: 'Azure Private Link lets you connect your virtual network to Azure services
+  without a public IP address at the source or destination. The Private Link platform
+  handles the connectivity between the consumer and services over the Azure backbone
+  network. By mapping private endpoints to Azure Cognitive Search, data leakage risks
+  are reduced. Learn more about private links at: https://aka.ms/azure-cognitive-search/inbound-private-endpoints.'
+ID: azure_cognitive_search_services_should_use_private_link
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_search_service
+
+    WHERE type = ''Microsoft.Search/searchServices''
+
+    AND kaytu_description -> ''Service'' -> ''properties'' ->> ''privateEndpointConnections''
+    IS NOT NULL
+
+    AND kaytu_description -> ''Service'' -> ''properties'' ->> ''privateEndpointConnections''
+    ->> ''[*].privateLinkServiceConnectionState.status'' = ''Approved''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure Cognitive Search services should use private link

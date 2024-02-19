@@ -1,0 +1,21 @@
+Description: 'Disabling local authentication methods improves security by ensuring
+  that Machine Learning Computes require Azure Active Directory identities exclusively
+  for authentication. Learn more at: https://aka.ms/azure-ml-aad-policy.'
+ID: azure_machine_learning_computes_should_have_local_authentication_methods_disabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_machine_learning_workspace
+
+    WHERE type = ''Microsoft.MachineLearningServices/workspaces/computes''
+
+    AND (disableLocalAuth = false OR kaytu_description->''Workspace''->''properties''->>''allowPublicAccessWhenBehindVnet''
+    != ''true'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure Machine Learning Computes should have local authentication methods disabled

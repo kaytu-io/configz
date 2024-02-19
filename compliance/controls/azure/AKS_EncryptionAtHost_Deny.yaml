@@ -1,0 +1,22 @@
+Description: To enhance data security, the data stored on the virtual machine (VM)
+  host of your Azure Kubernetes Service nodes VMs should be encrypted at rest. This
+  is a common requirement in many regulatory and industry compliance standards.
+ID: temp_disks_and_cache_for_agent_node_pools_in_azure_kubernetes_service_clusters_should_be_encrypted_at_host
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_kubernetes_cluster
+
+    WHERE type = ''Microsoft.ContainerService/managedClusters''
+
+    AND kaytu_description ->> ''$.definitions.ManagedClusterAgentPoolProfile'' IS
+    NOT NULL
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Temp disks and cache for agent node pools in Azure Kubernetes Service clusters
+  should be encrypted at host

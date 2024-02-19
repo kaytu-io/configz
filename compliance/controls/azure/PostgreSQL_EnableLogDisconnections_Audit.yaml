@@ -15,5 +15,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Disconnections should be logged for PostgreSQL database servers.

@@ -1,0 +1,9 @@
+Description: Manage your organizational compliance requirements by specifying the
+  maximum amount of time that a certificate can be valid within your key vault.
+ID: '[_preview]:_certificates_should_have_the_specified_maximum_validity_period'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: '[Preview]: Certificates should have the specified maximum validity period'

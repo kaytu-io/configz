@@ -1,0 +1,23 @@
+Description: High security sensitive customers who are concerned of the risk associated
+  with any particular encryption algorithm, implementation, or key being compromised
+  can opt for additional layer of encryption using a different encryption algorithm/mode
+  at the infrastructure layer using platform managed encryption keys. The disk encryption
+  sets are required to use double encryption. Learn more at https://aka.ms/disks-doubleEncryption.
+ID: managed_disks_should_be_double_encrypted_with_both_platform_managed_and_customer_managed_keys
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT name, id, encryption_type
+
+    FROM azure_compute_disk_encryption_set
+
+    WHERE type = ''Microsoft.Compute/diskEncryptionSets''
+
+    AND (encryption_type IS NOT NULL AND encryption_type != ''EncryptionAtRestWithPlatformAndCustomerKeys'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Managed disks should be double encrypted with both platform-managed and customer-managed
+  keys

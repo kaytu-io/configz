@@ -1,0 +1,14 @@
+Description: Deploy into Integration Service Environment to manage encryption at rest
+  of Logic Apps data using customer-managed keys. By default, customer data is encrypted
+  with service-managed keys, but customer-managed keys are commonly required to meet
+  regulatory compliance standards. Customer-managed keys enable the data to be encrypted
+  with an Azure Key Vault key created and owned by you. You have full control and
+  responsibility for the key lifecycle, including rotation and management.
+ID: logic_apps_integration_service_environment_should_be_encrypted_with_customer_managed_keys
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Logic Apps Integration Service Environment should be encrypted with customer-managed
+  keys

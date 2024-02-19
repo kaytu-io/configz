@@ -1,0 +1,21 @@
+Description: Audit built-in roles such as 'Owner, Contributer, Reader' instead of
+  custom RBAC roles, which are error prone. Using custom roles is treated as an exception
+  and requires a rigorous review and threat modeling
+ID: audit_usage_of_custom_rbac_roles
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT role_type, description
+
+    FROM azure_role_definition
+
+    WHERE type = ''Microsoft.Authorization/roleDefinitions''
+
+    AND kaytu_description -> ''$.RoleDefinitionDescription.RoleDefinition.Properties.RoleType''
+    = ''CustomRole''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Audit usage of custom RBAC roles

@@ -1,0 +1,20 @@
+Description: This policy audits any virtual machine connected to a virtual network
+  that is not approved.
+ID: virtual_machines_should_be_connected_to_an_approved_virtual_network
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_network_interface
+
+    WHERE type = ''Microsoft.Network/networkInterfaces''
+
+    AND kaytu_description -> ''$.Interface.properties.ipConfigurations[*].subnet.id''
+    NOT LIKE concat(parameters(''virtualNetworkId''), ''/*'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Virtual machines should be connected to an approved virtual network

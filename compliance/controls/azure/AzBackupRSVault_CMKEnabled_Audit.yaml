@@ -1,0 +1,19 @@
+Description: Use customer-managed keys to manage the encryption at rest of your backup
+  data. By default, customer data is encrypted with service-managed keys, but customer-managed
+  keys are commonly required to meet regulatory compliance standards. Customer-managed
+  keys enable the data to be encrypted with an Azure Key Vault key created and owned
+  by you. You have full control and responsibility for the key lifecycle, including
+  rotation and management. Learn more at https://aka.ms/AB-CmkEncryption.
+ID: '[_preview]:_azure_recovery_services_vaults_should_use_customer_managed_keys_for_encrypting_backup_data'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_recovery_services_vault\nWHERE type = 'Microsoft.RecoveryServices/vaults'\n\
+    AND (\n  (\n    \"Microsoft.RecoveryServices/vaults/encryption.keyVaultProperties.keyUri\"\
+    \ IS NULL\n    OR \"Microsoft.RecoveryServices/vaults/encryption.keyVaultProperties.keyUri\"\
+    \ = ''\n  )\n  OR (\n    \"Microsoft.RecoveryServices/vaults/encryption.infrastructureEncryption\"\
+    \ IS NOT NULL\n    AND \"Microsoft.RecoveryServices/vaults/encryption.infrastructureEncryption\"\
+    \ != 'Enabled'\n  )\n)\nLIMIT 5;;\n"
+Severity: ''
+Title: '[Preview]: Azure Recovery Services vaults should use customer-managed keys
+  for encrypting backup data'

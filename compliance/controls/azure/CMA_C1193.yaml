@@ -1,0 +1,20 @@
+Description: CMA_C1193 - Automate process to highlight unreviewed change proposals
+ID: automate_process_to_highlight_unreviewed_change_proposals
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE title = ''Microsoft.Resources/subscriptions''
+
+    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
+
+    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Automate process to highlight unreviewed change proposals

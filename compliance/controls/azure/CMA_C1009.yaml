@@ -1,0 +1,20 @@
+Description: CMA_C1009 - Notify Account Managers of customer controlled accounts
+ID: notify_account_managers_of_customer_controlled_accounts
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE title = ''Microsoft.Resources/subscriptions''
+
+    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
+
+    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Notify Account Managers of customer controlled accounts

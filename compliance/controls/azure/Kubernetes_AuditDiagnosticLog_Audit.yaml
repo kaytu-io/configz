@@ -1,0 +1,18 @@
+Description: Azure Kubernetes Service's resource logs can help recreate activity trails
+  when investigating security incidents. Enable it to make sure the logs will exist
+  when needed
+ID: resource_logs_in_azure_kubernetes_service_should_be_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_kubernetes_cluster
+
+    WHERE type = ''Microsoft.ContainerService/managedClusters''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Resource logs in Azure Kubernetes Service should be enabled

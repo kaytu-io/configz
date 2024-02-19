@@ -1,0 +1,23 @@
+Description: Azure Firewall Premium provides advanced threat protection that meets
+  the needs of highly sensitive and regulated environments. Deploy Azure Firewall
+  Premium to your subscription and make sure all the service traffic are protected
+  by Azure Firewall Premium. To learn more about Azure Firewall Premium, visit https://aka.ms/fw-premium
+ID: subscription_should_configure_the_azure_firewall_premium_to_provide_additional_layer_of_protection
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description ->> ''$.Subscription.SubscriptionPolicies.locationPlacementId''
+    = ''Microsoft.Network/azureFirewalls/sku.tier''
+
+    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.quotaId'' = ''Microsoft.Network/azureFirewalls/sku.name''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Subscription should configure the Azure Firewall Premium to provide additional
+  layer of protection

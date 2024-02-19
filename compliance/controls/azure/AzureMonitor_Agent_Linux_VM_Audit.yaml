@@ -1,0 +1,11 @@
+Description: 'Linux virtual machines should be monitored and secured through the deployed
+  Azure Monitor Agent. The Azure Monitor Agent collects telemetry data from the guest
+  OS. This policy will audit virtual machines with supported OS images in supported
+  regions. Learn more: https://aka.ms/AMAOverview.'
+ID: linux_virtual_machines_should_have_azure_monitor_agent_installed
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Linux virtual machines should have Azure Monitor Agent installed

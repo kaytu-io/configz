@@ -1,0 +1,20 @@
+Description: This policy audits any Azure SQL Database with long-term geo-redundant
+  backup not enabled.
+ID: long_term_geo_redundant_backup_should_be_enabled_for_azure_sql_databases
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT name, kaytu_description->''Database''->''properties''->''backupLongTermRetentionPolicies''->>''weeklyRetention''
+    AS weeklyRetention, kaytu_description->''Database''->''properties''->''backupLongTermRetentionPolicies''->>''monthlyRetention''
+    AS monthlyRetention, kaytu_description->''Database''->''properties''->''backupLongTermRetentionPolicies''->>''yearlyRetention''
+    AS yearlyRetention
+
+    FROM azure_sql_database
+
+    WHERE type = ''Microsoft.Sql/servers/databases'' AND name != ''master''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Long-term geo-redundant backup should be enabled for Azure SQL Databases

@@ -1,0 +1,20 @@
+Description: CMA_0351 - Maintain data breach records
+ID: maintain_data_breach_records
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE title = ''Microsoft.Resources/subscriptions''
+
+    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
+
+    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Maintain data breach records

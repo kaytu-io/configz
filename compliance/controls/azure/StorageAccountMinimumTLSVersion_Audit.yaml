@@ -1,0 +1,21 @@
+Description: Configure a minimum TLS version for secure communication between the
+  client application and the storage account. To minimize security risk, the recommended
+  minimum TLS version is the latest released version, which is currently TLS 1.2.
+ID: storage_accounts_should_have_the_specified_minimum_tls_version
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT name, id, type, minimum_tls_version
+
+    FROM azure_storage_account
+
+    WHERE type = ''Microsoft.Storage/storageAccounts''
+
+    AND (minimum_tls_version != ''[parameters(''''minimumTlsVersion'''')]'' OR kaytu_description->''Account''->''Properties''->>''MinimumTLSVersion''
+    IS NULL)
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Storage accounts should have the specified minimum TLS version

@@ -17,5 +17,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Review user groups and applications with access to sensitive data

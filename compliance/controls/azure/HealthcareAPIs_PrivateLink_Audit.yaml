@@ -1,0 +1,20 @@
+Description: 'Azure API for FHIR should have at least one approved private endpoint
+  connection. Clients in a virtual network can securely access resources that have
+  private endpoint connections through private links. For more information, visit:
+  https://aka.ms/fhir-privatelink.'
+ID: azure_api_for_fhir_should_use_private_link
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_healthcare_service
+
+    WHERE kaytu_description -> ''$.DiagnosticSettingsResources[*].Properties.PrivateEndpointConnections''
+    IS NOT NULL
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Azure API for FHIR should use private link

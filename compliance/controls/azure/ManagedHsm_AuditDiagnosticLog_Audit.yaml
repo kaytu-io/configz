@@ -14,5 +14,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Resource logs in Azure Key Vault Managed HSM should be enabled

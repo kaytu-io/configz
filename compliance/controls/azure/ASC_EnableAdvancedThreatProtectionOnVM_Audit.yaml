@@ -15,5 +15,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Azure Defender for servers should be enabled

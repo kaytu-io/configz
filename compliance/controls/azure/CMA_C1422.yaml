@@ -1,0 +1,21 @@
+Description: CMA_C1422 - Designate personnel to supervise unauthorized maintenance
+  activities
+ID: designate_personnel_to_supervise_unauthorized_maintenance_activities
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE title = ''Microsoft.Resources/subscriptions''
+
+    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
+
+    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Designate personnel to supervise unauthorized maintenance activities

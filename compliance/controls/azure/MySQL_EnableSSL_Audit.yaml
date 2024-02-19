@@ -29,5 +29,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Enforce SSL connection should be enabled for MySQL database servers

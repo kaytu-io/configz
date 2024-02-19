@@ -1,0 +1,11 @@
+Description: Enable virtual TPM device on supported virtual machines to facilitate
+  Measured Boot and other OS security features that require a TPM. Once enabled, vTPM
+  can be used to attest boot integrity. This assessment only applies to trusted launch
+  enabled virtual machines.
+ID: '[_preview]:_v_tpm_should_be_enabled_on_supported_virtual_machines'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: '[Preview]: vTPM should be enabled on supported virtual machines'

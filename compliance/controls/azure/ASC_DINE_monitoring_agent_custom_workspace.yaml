@@ -1,0 +1,10 @@
+Description: Allow Security Center to auto provision the Log Analytics agent on your
+  subscriptions to monitor and collect security data using a custom workspace.
+ID: enable_security_center's_auto_provisioning_of_the_log_analytics_agent_on_your_subscriptions_with_custom_workspace.
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Enable Security Center's auto provisioning of the Log Analytics agent on your
+  subscriptions with custom workspace.

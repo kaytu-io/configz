@@ -1,0 +1,24 @@
+Description: Microsoft Defender for Cloud extension for Azure Arc provides threat
+  protection for your Arc enabled Kubernetes clusters. The extension collects data
+  from all nodes in the cluster and sends it to the Azure Defender for Kubernetes
+  backend in the cloud for further analysis. Learn more in https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-enable?pivots=defender-for-container-arc.
+ID: '[_preview]:_azure_arc_enabled_kubernetes_clusters_should_have_microsoft_defender_for_cloud_extension_installed'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_hybrid_kubernetes_connected_cluster
+
+    WHERE type = ''Microsoft.Kubernetes/connectedClusters''
+
+    AND distribution NOT IN (''aks'', ''aks_management'', ''eks'', ''gke'')
+
+    AND connectivity_status = ''connected''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: '[Preview]: Azure Arc enabled Kubernetes clusters should have Microsoft Defender
+  for Cloud extension installed'

@@ -15,5 +15,5 @@ Query:
     \        AND (\n            \"Microsoft.Sql/servers/encryptionProtector/serverKeyType\"\
     \ IS NULL\n            OR \"Microsoft.Sql/servers/encryptionProtector/serverKeyType\"\
     \ != 'AzureKeyVault'\n        )\n    )\n)\nLIMIT 5;;\n"
-Severity: medium
+Severity: ''
 Title: SQL servers should use customer-managed keys to encrypt data at rest

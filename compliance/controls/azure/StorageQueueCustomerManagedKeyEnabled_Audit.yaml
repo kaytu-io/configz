@@ -1,0 +1,29 @@
+Description: Secure your queue storage with greater flexibility using customer-managed
+  keys. When you specify a customer-managed key, that key is used to protect and control
+  access to the key that encrypts your data. Using customer-managed keys provides
+  additional capabilities to control rotation of the key encryption key or cryptographically
+  erase data.
+ID: queue_storage_should_use_customer_managed_key_for_encryption
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_storage_account
+
+    WHERE type = ''Microsoft.Storage/storageAccounts''
+
+    AND (encryption_key_source = ''Microsoft.Keyvault''
+
+    OR kaytu_description->''Account''->''Properties''->''Encryption''->>''KeySource''
+    = ''Microsoft.Keyvault'')
+
+    AND (encryption_services->''queue''->>''keyType'' IS NULL
+
+    OR encryption_services->''queue''->>''keyType'' != ''Account'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Queue Storage should use customer-managed key for encryption

@@ -17,5 +17,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Email notification for high severity alerts should be enabled

@@ -19,5 +19,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Function apps should use latest 'HTTP Version'

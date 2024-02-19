@@ -1,0 +1,12 @@
+Description: The Guest Configuration extension requires a system assigned managed
+  identity. Azure virtual machines in the scope of this policy will be non-compliant
+  when they have the Guest Configuration extension installed but do not have a system
+  assigned managed identity. Learn more at https://aka.ms/gcpol
+ID: virtual_machines'_guest_configuration_extension_should_be_deployed_with_system_assigned_managed_identity
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Virtual machines' Guest Configuration extension should be deployed with system-assigned
+  managed identity

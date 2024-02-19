@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Block untrusted and unsigned processes that run from USB

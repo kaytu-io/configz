@@ -1,0 +1,9 @@
+Description: Manage your organizational compliance requirements by specifying a minimum
+  key size for RSA certificates stored in your key vault.
+ID: certificates_using_rsa_cryptography_should_have_the_specified_minimum_key_size
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Certificates using RSA cryptography should have the specified minimum key size

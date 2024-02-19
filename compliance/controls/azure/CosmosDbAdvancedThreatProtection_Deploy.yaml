@@ -1,0 +1,17 @@
+Description: This policy enables Advanced Threat Protection across Cosmos DB accounts.
+ID: deploy_advanced_threat_protection_for_cosmos_db_accounts
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_cosmosdb_account
+
+    WHERE kaytu_description ->> ''$.DatabaseAccountGetResults.Properties.AdvancedThreatProtectionSettings.IsEnabled''
+    = ''true''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Deploy Advanced Threat Protection for Cosmos DB Accounts

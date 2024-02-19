@@ -1,0 +1,10 @@
+Description: Mandates the use of 'Detection' or 'Prevention' mode to be active on
+  all Web Application Firewall policies for Azure Front Door Service.
+ID: web_application_firewall_(_waf)_should_use_the_specified_mode_for_azure_front_door_service
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: Web Application Firewall (WAF) should use the specified mode for Azure Front
+  Door Service
