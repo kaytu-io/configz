@@ -1,6 +1,6 @@
-Description: External accounts with write privileges should be removed from your subscription
-  in order to prevent unmonitored access.
-ID: guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+Description: It is recommended to designate more than one subscription owner in order
+  to have administrator access redundancy.
+ID: there_should_be_more_than_one_owner_assigned_to_your_subscription
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
@@ -15,4 +15,4 @@ Query:
 
     '
 Severity: ''
-Title: Guest accounts with write permissions on Azure resources should be removed
+Title: There should be more than one owner assigned to your subscription

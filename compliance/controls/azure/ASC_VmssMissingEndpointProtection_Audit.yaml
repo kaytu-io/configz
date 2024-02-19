@@ -1,0 +1,20 @@
+Description: Audit the existence and health of an endpoint protection solution on
+  your virtual machines scale sets, to protect them from threats and vulnerabilities.
+ID: endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_compute_virtual_machine_scale_set
+
+    WHERE type = ''Microsoft.Compute/virtualMachineScaleSets''
+
+    AND (kaytu_description -> ''$.definitions.VirtualMachineScaleSetVMProfile.properties.SecurityProfile.properties.UefiSettings.properties.VTpmEnabled'')::text
+    IN (''NotApplicable'', ''Healthy'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Endpoint protection solution should be installed on virtual machine scale sets

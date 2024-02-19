@@ -1,6 +1,6 @@
 Description: Use of HTTPS ensures server/service authentication and protects data
   in transit from network layer eavesdropping attacks.
-ID: app_service_apps_should_only_be_accessible_over_https
+ID: function_apps_should_only_be_accessible_over_https
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
@@ -10,12 +10,12 @@ Query:
 
     WHERE type = ''Microsoft.Web/sites''
 
-    AND (kind IS NULL OR kind NOT LIKE ''%functionapp%'')
+    AND (kind LIKE ''%functionapp%'' AND kind NOT LIKE ''%workflowapp%'')
 
-    AND (https_only IS NULL OR https_only = false)
+    AND (https_only = false OR https_only IS NULL)
 
     LIMIT 5;;
 
     '
 Severity: ''
-Title: App Service apps should only be accessible over HTTPS
+Title: Function apps should only be accessible over HTTPS

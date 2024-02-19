@@ -5,5 +5,5 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: ''
-Severity: medium
+Severity: ''
 Title: Monitor missing Endpoint Protection in Azure Security Center

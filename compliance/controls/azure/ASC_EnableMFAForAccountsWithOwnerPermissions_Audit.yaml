@@ -8,11 +8,11 @@ Query:
 
     FROM azure_subscription
 
-    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code''
+    WHERE kaytu_description ->> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code''
     IN (''NotApplicable'', ''Healthy'')
 
     LIMIT 5;;
 
     '
-Severity: high
+Severity: ''
 Title: Accounts with owner permissions on Azure resources should be MFA enabled

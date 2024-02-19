@@ -14,5 +14,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: high
+Severity: ''
 Title: Accounts with write permissions on Azure resources should be MFA enabled
