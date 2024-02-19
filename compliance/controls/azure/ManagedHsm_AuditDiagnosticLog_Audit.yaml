@@ -1,0 +1,18 @@
+Description: 'To recreate activity trails for investigation purposes when a security
+  incident occurs or when your network is compromised, you may want to audit by enabling
+  resource logs on Managed HSMs. Please follow the instructions here: https://docs.microsoft.com/azure/key-vault/managed-hsm/logging.'
+ID: resource_logs_in_azure_key_vault_managed_hsm_should_be_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_key_vault_managed_hardware_security_module
+
+    WHERE type = ''Microsoft.KeyVault/managedHsms''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Resource logs in Azure Key Vault Managed HSM should be enabled

@@ -1,0 +1,11 @@
+Description: Cryptographic keys should have a defined expiration date and not be permanent.
+  Keys that are valid forever provide a potential attacker with more time to compromise
+  the key. It is a recommended security practice to set expiration dates on cryptographic
+  keys.
+ID: key_vault_keys_should_have_an_expiration_date
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: medium
+Title: Key Vault keys should have an expiration date

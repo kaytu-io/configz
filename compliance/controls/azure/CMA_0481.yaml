@@ -1,0 +1,21 @@
+Description: CMA_0481 - Review user groups and applications with access to sensitive
+  data
+ID: review_user_groups_and_applications_with_access_to_sensitive_data
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE title = ''Microsoft.Resources/subscriptions''
+
+    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
+
+    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Review user groups and applications with access to sensitive data

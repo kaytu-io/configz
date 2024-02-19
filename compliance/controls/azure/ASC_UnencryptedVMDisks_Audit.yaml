@@ -1,0 +1,14 @@
+Description: 'By default, a virtual machine''s OS and data disks are encrypted-at-rest
+  using platform-managed keys. Temp disks, data caches and data flowing between compute
+  and storage aren''t encrypted. Disregard this recommendation if: 1. using encryption-at-host,
+  or 2. server-side encryption on Managed Disks meets your security requirements.
+  Learn more in: Server-side encryption of Azure Disk Storage: https://aka.ms/disksse,
+  Different disk encryption offerings: https://aka.ms/diskencryptioncomparison'
+ID: virtual_machines_should_encrypt_temp_disks,_caches,_and_data_flows_between_compute_and_storage_resources
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: medium
+Title: Virtual machines should encrypt temp disks, caches, and data flows between
+  Compute and Storage resources

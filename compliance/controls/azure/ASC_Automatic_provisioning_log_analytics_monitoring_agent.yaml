@@ -1,0 +1,25 @@
+Description: To monitor for security vulnerabilities and threats, Azure Security Center
+  collects data from your Azure virtual machines. Data is collected by the Log Analytics
+  agent, formerly known as the Microsoft Monitoring Agent (MMA), which reads various
+  security-related configurations and event logs from the machine and copies the data
+  to your Log Analytics workspace for analysis. We recommend enabling auto provisioning
+  to automatically deploy the agent to all supported Azure VMs and any new ones that
+  are created.
+ID: auto_provisioning_of_the_log_analytics_agent_should_be_enabled_on_your_subscription
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/autoProvisioningSettings/autoProvision''
+    = ''On''
+
+    AND title = ''Microsoft.Resources/subscriptions''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Auto provisioning of the Log Analytics agent should be enabled on your subscription

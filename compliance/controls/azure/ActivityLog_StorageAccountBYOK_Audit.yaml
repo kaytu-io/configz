@@ -1,0 +1,28 @@
+Description: 'This policy audits if the Storage account containing the container with
+  activity logs is encrypted with BYOK. The policy works only if the storage account
+  lies on the same subscription as activity logs by design. More information on Azure
+  Storage encryption at rest can be found here https://aka.ms/azurestoragebyok. '
+ID: storage_account_containing_the_container_with_activity_logs_must_be_encrypted_with_byok
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT name, storage_account_id, kaytu_description->>''Microsoft.Storage/storageAccounts/encryption.keySource''
+    AS encryption_key_source
+
+    FROM azure_log_profile
+
+    WHERE type = ''Microsoft.Insights/logProfiles''
+
+    AND kaytu_description->>''name'' = ''Microsoft.Insights/logProfiles''
+
+    AND kaytu_description->>''storageAccountId'' IS NOT NULL
+
+    AND kaytu_description->>''Microsoft.Storage/storageAccounts/encryption.keySource''
+    = ''Microsoft.Keyvault''
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: Storage account containing the container with activity logs must be encrypted
+  with BYOK

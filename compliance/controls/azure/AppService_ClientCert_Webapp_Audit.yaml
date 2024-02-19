@@ -1,0 +1,29 @@
+Description: Client certificates allow for the app to request a certificate for incoming
+  requests. Only clients that have a valid certificate will be able to reach the app.
+  This policy applies to apps with Http version set to 1.1.
+ID: app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT azure_app_service_function_app.name, azure_app_service_function_app.kind,
+    azure_app_service_function_app.client_cert_enabled, azure_app_service_function_app.site_config->''web''->>''http20Enabled''
+
+    FROM azure_app_service_function_app
+
+    WHERE azure_app_service_function_app.type = ''Microsoft.Web/sites''
+
+    AND (azure_app_service_function_app.kind NOT LIKE ''%functionapp%''
+
+    AND (azure_app_service_function_app.client_cert_enabled IS NULL OR azure_app_service_function_app.client_cert_enabled
+    = false)
+
+    OR (azure_app_service_function_app.site_config->''web''->>''http20Enabled'' IS
+    NOT NULL AND azure_app_service_function_app.site_config->''web''->>''http20Enabled''
+    = ''true''))
+
+    LIMIT 5;;
+
+    '
+Severity: medium
+Title: App Service apps should have Client Certificates (Incoming client certificates)
+  enabled
