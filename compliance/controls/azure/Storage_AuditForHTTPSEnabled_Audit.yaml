@@ -12,5 +12,5 @@ Query:
     \ = 'false')\n    OR\n    (kaytu_description -> 'Account' -> 'Properties' ? 'EnableHTTPSTrafficOnly'\
     \ AND kaytu_description -> 'Account' -> 'Properties' ->> 'EnableHTTPSTrafficOnly'\
     \ IS NULL)\n)\nLIMIT 5;;\n"
-Severity: medium
+Severity: ''
 Title: Secure transfer to storage accounts should be enabled

@@ -8,6 +8,6 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: ''
-Severity: medium
+Severity: ''
 Title: Adaptive application controls for defining safe applications should be enabled
   on your machines

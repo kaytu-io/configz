@@ -1,0 +1,11 @@
+Description: Azure Security Center has identified some of your network security groups'
+  inbound rules to be too permissive. Inbound rules should not allow access from 'Any'
+  or 'Internet' ranges. This can potentially enable attackers to target your resources.
+ID: all_network_ports_should_be_restricted_on_network_security_groups_associated_to_your_virtual_machine
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ''
+Severity: ''
+Title: All network ports should be restricted on network security groups associated
+  to your virtual machine

@@ -19,5 +19,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: An Azure Active Directory administrator should be provisioned for SQL servers

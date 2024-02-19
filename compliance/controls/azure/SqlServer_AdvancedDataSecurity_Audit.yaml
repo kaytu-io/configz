@@ -3,20 +3,9 @@ ID: azure_defender_for_sql_should_be_enabled_for_unprotected_azure_sql_servers
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, kind, kaytu_description->>''securityAlertPolicies/state''
-    AS security_alert_state
-
-    FROM azure_sql_server
-
-    WHERE type = ''Microsoft.Sql/servers''
-
-    AND (kind IS NULL OR kind NOT LIKE ''%analytics%'')
-
-    AND (kaytu_description->>''securityAlertPolicies/state'' = ''Enabled'' OR kaytu_description->''ServerSecurityAlertPolicies''->0->''properties''->>''state''
-    = ''Enabled'')
-
-    LIMIT 5;;
-
-    '
-Severity: medium
+  QueryToExecute: "SELECT name, kind, server_security_alert_policy\nFROM azure_sql_server\n\
+    WHERE type = 'Microsoft.Sql/servers'\nAND kind NOT LIKE '%analytics%'\nAND (server_security_alert_policy\
+    \ ->> 'state' = 'Enabled'\n     OR kaytu_description -> '$.ServerSecurityAlertPolicies[*].properties.state'\
+    \ = 'Enabled')\nLIMIT 5;;\n"
+Severity: ''
 Title: Azure Defender for SQL should be enabled for unprotected Azure SQL servers

@@ -1,0 +1,22 @@
+Description: Remote debugging requires inbound ports to be opened on Function apps.
+  Remote debugging should be turned off.
+ID: function_apps_should_have_remote_debugging_turned_off
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_app_service_function_app
+
+    WHERE type = ''Microsoft.Web/sites''
+
+    AND (kind LIKE ''%functionapp%'' AND kind NOT LIKE ''%workflowapp%'')
+
+    AND (site_config -> ''properties'' ->> ''remoteDebuggingEnabled'')::boolean =
+    false
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: Function apps should have remote debugging turned off

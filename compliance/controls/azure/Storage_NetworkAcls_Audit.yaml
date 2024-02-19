@@ -20,5 +20,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: medium
+Severity: ''
 Title: Storage accounts should restrict network access
