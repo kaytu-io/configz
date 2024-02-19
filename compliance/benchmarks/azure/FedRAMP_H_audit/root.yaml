@@ -737,3 +737,10 @@ Description: FedRAMP is a US government-wide program that provides a standardize
 Enabled: true
 ID: FedRAMP_H_audit
 Title: FedRAMP High
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

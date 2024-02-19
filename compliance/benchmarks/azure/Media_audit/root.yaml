@@ -34,3 +34,10 @@ Description: This initiative includes audit and virtual machine extension deploy
 Enabled: true
 ID: Media_audit
 Title: '[Preview]: Motion Picture Association of America (MPAA)'
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

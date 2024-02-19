@@ -251,3 +251,10 @@ Description: This initiative includes policies that address a subset of CMMC 2.0
 Enabled: true
 ID: CMMC_2_0_L2
 Title: '[Preview]: CMMC 2.0 Level 2'
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

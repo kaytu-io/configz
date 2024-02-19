@@ -78,3 +78,10 @@ Description: This initiative includes policies that address a subset of DoD Impa
 Enabled: true
 ID: DOD_IL4_audit
 Title: '[Deprecated]: DoD Impact Level 4'
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

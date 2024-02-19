@@ -467,3 +467,10 @@ Description: The US National Institute of Standards and Technology (NIST) promot
 Enabled: true
 ID: NIST_SP_800-171_R2
 Title: NIST SP 800-171 Rev. 2
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

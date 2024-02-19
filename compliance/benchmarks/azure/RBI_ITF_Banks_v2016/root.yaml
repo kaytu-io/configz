@@ -179,3 +179,10 @@ Description: This initiative includes policies that address a subset of Reserve 
 Enabled: true
 ID: RBI_ITF_Banks_v2016
 Title: '[Preview]: Reserve Bank of India - IT Framework for Banks'
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

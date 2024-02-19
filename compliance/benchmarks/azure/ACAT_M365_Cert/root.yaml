@@ -30,3 +30,10 @@ Description: App Compliance Automation Tool for Microsoft 365 (ACAT) simplifies 
 Enabled: true
 ID: ACAT_M365_Cert
 Title: ACAT for Microsoft 365 Certification
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure
