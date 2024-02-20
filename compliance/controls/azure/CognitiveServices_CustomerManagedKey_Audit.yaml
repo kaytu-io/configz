@@ -8,11 +8,14 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_cognitive_account\nWHERE type = 'Microsoft.CognitiveServices/accounts'\n\
-    AND (\n    (encryption ->> 'keySource' IS NULL AND kaytu_description -> 'Account'\
-    \ -> 'Properties' -> 'Encryption' ->> 'KeySource' IS NULL)\n    OR (encryption\
-    \ ->> 'keySource' IS NOT NULL AND encryption ->> 'keySource' != 'Microsoft.KeyVault')\n\
-    )\nAND kind NOT IN (SELECT unnest(parameters -> 'excludedKinds'::text[]) FROM\
-    \ azure_policy)\nLIMIT 5;;\n"
+    AND (\n  (encryption ->> 'keySource' IS NOT NULL AND encryption ->> 'keySource'\
+    \ != 'Microsoft.KeyVault')\n  OR (kaytu_description -> 'Account' -> 'Properties'\
+    \ -> 'Encryption' ->> 'KeySource' IS NOT NULL AND kaytu_description -> 'Account'\
+    \ -> 'Properties' -> 'Encryption' ->> 'KeySource' != 'Microsoft.KeyVault')\n)\n\
+    AND (\n  kind NOT IN (SELECT unnest(string_to_array('[parameters(''excludedKinds'')]','','')))\n\
+    \  OR (kaytu_description -> 'Account' ->> 'Kind' IS NOT NULL AND kaytu_description\
+    \ -> 'Account' ->> 'Kind' NOT IN (SELECT unnest(string_to_array('[parameters(''excludedKinds'')]','',''))))\n\
+    )\nLIMIT 5;;\n"
 Severity: ''
 Title: Cognitive Services accounts should enable data encryption with a customer-managed
   key

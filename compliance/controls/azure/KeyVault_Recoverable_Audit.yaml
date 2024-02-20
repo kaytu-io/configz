@@ -11,18 +11,10 @@ Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_key_vault\nWHERE type = 'Microsoft.KeyVault/vaults'\n\
     AND (create_mode IS NOT NULL AND create_mode != 'recover')\nAND (\n    (\n   \
-    \     (kaytu_description -> 'Vault' -> 'properties' ->> 'createMode') IS NOT NULL\n\
-    \        AND (kaytu_description -> 'Vault' -> 'properties' ->> 'createMode') !=\
-    \ 'recover'\n    )\n    OR\n    (\n        (kaytu_description -> 'Vault' -> 'properties'\
-    \ ->> 'enableSoftDelete') IS NOT NULL\n        AND (kaytu_description -> 'Vault'\
-    \ -> 'properties' ->> 'enableSoftDelete') = 'false'\n    )\n    OR\n    (\n  \
-    \      (kaytu_description -> 'Vault' -> 'properties' ->> 'enableSoftDelete') IS\
-    \ NULL\n        AND (kaytu_description -> 'Vault' -> 'properties' ->> 'enableSoftDelete')\
-    \ IS NULL\n    )\n    OR\n    (\n        (kaytu_description -> 'Vault' -> 'properties'\
-    \ ->> 'enablePurgeProtection') IS NULL\n        AND (kaytu_description -> 'Vault'\
-    \ -> 'properties' ->> 'enablePurgeProtection') = 'false'\n    )\n    OR\n    (\n\
-    \        (kaytu_description -> 'Vault' -> 'properties' ->> 'enablePurgeProtection')\
-    \ IS NULL\n        AND (kaytu_description -> 'Vault' -> 'properties' ->> 'enablePurgeProtection')\
-    \ IS NULL\n    )\n)\nLIMIT 5;;\n"
+    \     (kaytu_description -> 'Vault' -> 'properties' ->> 'enableSoftDelete')::BOOLEAN\
+    \ = false\n        OR NOT kaytu_description ? 'Vault' -> 'properties' -> 'enableSoftDelete'\n\
+    \    )\n    AND (\n        (kaytu_description -> 'Vault' -> 'properties' ->> 'enablePurgeProtection')::BOOLEAN\
+    \ = false\n        OR NOT kaytu_description ? 'Vault' -> 'properties' -> 'enablePurgeProtection'\n\
+    \    )\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: Key vaults should have deletion protection enabled

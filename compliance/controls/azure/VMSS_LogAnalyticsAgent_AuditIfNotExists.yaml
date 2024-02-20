@@ -4,28 +4,23 @@ ID: the_log_analytics_extension_should_be_installed_on_virtual_machine_scale_set
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, type, provisioning_state, extensions->''publisher''
-    AS publisher, extensions->''settings''->''workspaceId'' AS workspace_id, extensions->''type''
-    AS extension_type, extensions->''provisioningState'' AS provisioning_state
+  QueryToExecute: 'SELECT name, provisioning_state, kaytu_description->''VirtualMachineScaleSetExtension''->>0->>''ProvisioningState''
+    AS extensions_provisioning_state, kaytu_description->''VirtualMachineScaleSetExtension''->>0->>''Publisher''
+    AS extensions_publisher, kaytu_description->''VirtualMachineScaleSetExtension''->>0->''Settings''->>''workspaceId''
+    AS extensions_workspace_id, kaytu_description->''VirtualMachineScaleSetExtension''->>0->>''Type''
+    AS extensions_type
 
     FROM azure_compute_virtual_machine_scale_set
 
     WHERE type = ''Microsoft.Compute/virtualMachineScaleSets''
 
-    AND (extensions->''publisher'' = ''Microsoft.EnterpriseCloud.Monitoring'' OR kaytu_description->''extensions''->''publisher''
-    @> ''[{"VirtualMachineScaleSetExtension": [{"Publisher": "Microsoft.EnterpriseCloud.Monitoring"}]}]'')
+    AND (provisioning_state IS NOT NULL OR kaytu_description->''VirtualMachineScaleSetExtension''->>0->>''ProvisioningState''
+    IS NOT NULL)
 
-    AND (extensions->''type'' IN (''MicrosoftMonitoringAgent'', ''OmsAgentForLinux'')
-    OR kaytu_description->''extensions''->''type'' @> ''[{"VirtualMachineScaleSetExtension":
-    [{"Type": "MicrosoftMonitoringAgent"}, {"Type": "OmsAgentForLinux"}]}]'')
-
-    AND (extensions->''provisioningState'' = ''Succeeded'' OR kaytu_description->''extensions''->''provisioningState''
-    @> ''[{"VirtualMachineScaleSetExtension": [{"Properties": {"ProvisioningState":
-    "Succeeded"}}]}]'')
-
-    AND (extensions->''settings''->''workspaceId'' IS NOT NULL OR kaytu_description->''extensions''->''settings''->''workspaceId''
-    @> ''[{"VirtualMachineScaleSetExtension": [{"Properties": {"Settings": {"workspaceId":
-    {"$exists": true}}}}]}]'')
+    AND (kaytu_description->''VirtualMachineScaleSetExtension''->>0->>''Publisher''
+    IS NOT NULL OR kaytu_description->''VirtualMachineScaleSetExtension''->>0->''Settings''->>''workspaceId''
+    IS NOT NULL OR kaytu_description->''VirtualMachineScaleSetExtension''->>0->>''Type''
+    IS NOT NULL)
 
     LIMIT 5;;
 

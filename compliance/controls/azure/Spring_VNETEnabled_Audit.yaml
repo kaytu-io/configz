@@ -7,19 +7,16 @@ ID: azure_spring_cloud_should_use_network_injection
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, sku_tier, network_profile
+  QueryToExecute: 'SELECT name, sku_tier, kaytu_description
 
     FROM azure_spring_cloud_service
 
     WHERE type = ''Microsoft.AppPlatform/Spring''
 
-    AND (sku_tier IN [parameters(''evaluatedSkuNames'')]
+    AND (sku_tier IN ([parameters(''evaluatedSkuNames'')]) OR kaytu_description->''ServiceResource''->''SKU''->>''tier''
+    IN ([parameters(''evaluatedSkuNames'')]))
 
-    OR kaytu_description->''ServiceResource''->''SKU''->>''Tier'' IN [parameters(''evaluatedSkuNames'')])
-
-    AND (network_profile->''serviceRuntimeSubnetId'' IS NULL
-
-    OR kaytu_description->''ServiceResource''->''Properties''->''networkProfile''->>''serviceRuntimeSubnetId''
+    AND (network_profile->>''serviceRuntimeSubnetId'' IS NULL OR kaytu_description->''ServiceResource''->''Properties''->''networkProfile''->>''serviceRuntimeSubnetId''
     IS NULL)
 
     LIMIT 5;;

@@ -9,7 +9,7 @@ Query:
 
     WHERE type = ''Microsoft.Web/sites''
 
-    AND (kind NOT LIKE ''%functionapp%'')
+    AND kind NOT LIKE ''%functionapp%''
 
     LIMIT 5;;
 

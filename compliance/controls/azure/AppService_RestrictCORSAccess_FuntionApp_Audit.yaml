@@ -5,20 +5,16 @@ ID: function_apps_should_not_have_cors_configured_to_allow_every_resource_to_acc
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT azure_app_service_function_app.name, azure_app_service_function_app.kind,
-    azure_app_service_function_app.kaytu_description->''config''->''web''->''cors''->>''allowedOrigins''
+  QueryToExecute: 'SELECT *
 
     FROM azure_app_service_function_app
 
-    WHERE azure_app_service_function_app.type = ''Microsoft.Web/sites''
+    WHERE type = ''Microsoft.Web/sites''
 
-    AND (azure_app_service_function_app.kind LIKE ''%functionapp%'' AND azure_app_service_function_app.kind
-    NOT LIKE ''%workflowapp%'')
+    AND (kind LIKE ''%functionapp%'' AND kind NOT LIKE ''%workflowapp%'')
 
-    AND (azure_app_service_function_app.kaytu_description->''config''->''web''->''cors''->>''allowedOrigins''
-    IS NOT NULL
-
-    OR azure_app_service_function_app.kaytu_description->''kind'' IS NOT NULL)
+    AND (config->''web''->''cors''->>''allowedOrigins'' IS NOT NULL AND config->''web''->''cors''->>''allowedOrigins''
+    != ''*'')
 
     LIMIT 5;;
 

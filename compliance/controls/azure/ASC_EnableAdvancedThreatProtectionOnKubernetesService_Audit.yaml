@@ -1,0 +1,18 @@
+Description: Azure Defender for Kubernetes provides real-time threat protection for
+  containerized environments and generates alerts for suspicious activities.
+ID: '[_deprecated]:_azure_defender_for_kubernetes_should_be_enabled'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT *
+
+    FROM azure_subscription
+
+    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/pricings/pricingTier''
+    = ''Standard''
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: '[Deprecated]: Azure Defender for Kubernetes should be enabled'

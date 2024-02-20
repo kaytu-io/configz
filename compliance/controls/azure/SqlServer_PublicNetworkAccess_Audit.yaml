@@ -10,8 +10,8 @@ Query:
     fully_qualified_domain_name, server_audit_policy, server_security_alert_policy,
     server_azure_ad_administrator, server_vulnerability_assessment, firewall_rules,
     encryption_protector, private_endpoint_connections, tags_src, virtual_network_rules,
-    title, tags, akas, region, resource_group, cloud_environment, kaytu_account_id,
-    kaytu_resource_id, kaytu_metadata, kaytu_description
+    title, tags, akas, region, resource_group, cloud_environment, subscription_id,
+    kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
 
     FROM azure_sql_server
 

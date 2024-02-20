@@ -6,19 +6,18 @@ ID: sql_servers_with_auditing_to_storage_account_destination_should_be_configure
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT name, kind, fully_qualified_domain_name, server_audit_policy\n\
-    FROM azure_sql_server\nWHERE type = 'Microsoft.Sql/servers'\nAND (kind NOT LIKE\
-    \ '%analytics%' OR kind IS NULL)\nAND (\n    (kind IS NOT NULL AND kind NOT LIKE\
-    \ '%analytics%')\n    OR (kaytu_description ->> 'kind')::TEXT NOT LIKE '%analytics%'\n\
-    )\nAND (\n    (server_audit_policy -> 'properties' ->> 'storageEndpoint')::TEXT\
-    \ = ''\n    OR (kaytu_description -> 'ServerBlobAuditingPolicies' -> 0 -> 'properties'\
-    \ ->> 'storageEndpoint')::TEXT = ''\n)\nAND (\n    (server_audit_policy -> 'properties'\
-    \ ->> 'retentionDays')::INT = 0\n    OR (kaytu_description -> 'ServerBlobAuditingPolicies'\
-    \ -> 0 -> 'properties' ->> 'retentionDays')::INT = 0\n    OR (kaytu_description\
-    \ -> 'ServerBlobAuditingPolicies' -> 0 -> 'properties' ->> 'retentionDays')::INT\
-    \ >= 90\n)\nAND (\n    (server_audit_policy -> 'properties' ->> 'isAzureMonitorTargetEnabled')::BOOLEAN\
-    \ = TRUE\n    OR (kaytu_description -> 'ServerBlobAuditingPolicies' -> 0 -> 'properties'\
-    \ ->> 'isAzureMonitorTargetEnabled')::BOOLEAN = TRUE\n)\nLIMIT 5;;\n"
+  QueryToExecute: 'SELECT name, kind, kaytu_description->''ServerBlobAuditingPolicies''->0->''properties''->>''retentionDays''
+    AS retention_days, kaytu_description->''ServerBlobAuditingPolicies''->0->''properties''->>''storageEndpoint''
+    AS storage_endpoint, kaytu_description->''ServerBlobAuditingPolicies''->0->''properties''->>''isAzureMonitorTargetEnabled''
+    AS is_azure_monitor_enabled
+
+    FROM azure_sql_server
+
+    WHERE type = ''Microsoft.Sql/servers'' AND kind NOT LIKE ''%analytics%''
+
+    LIMIT 5;;
+
+    '
 Severity: ''
 Title: SQL servers with auditing to storage account destination should be configured
   with 90 days retention or higher

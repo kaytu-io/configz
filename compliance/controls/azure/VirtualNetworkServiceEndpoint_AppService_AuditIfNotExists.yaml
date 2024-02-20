@@ -11,7 +11,7 @@ Query:
 
     WHERE type = ''Microsoft.Web/sites''
 
-    AND (kind IS NULL OR kind NOT LIKE ''%functionapp%'')
+    AND (kind NOT LIKE ''%functionapp%'' OR kind IS NULL)
 
     LIMIT 5;;
 

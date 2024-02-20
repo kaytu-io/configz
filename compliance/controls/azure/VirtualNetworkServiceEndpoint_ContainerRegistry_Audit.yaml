@@ -4,12 +4,11 @@ ID: '[_preview]:_container_registry_should_use_a_virtual_network_service_endpoin
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT name, kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.DefaultAction'\
-    \ AS default_action, kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.IPRules.items.properties.Action'\
+  QueryToExecute: "SELECT name, kaytu_description->'definitions'->'ContainerRegistryDescription'->'properties'->'RegistryProperties'->'NetworkRuleSet'->>'DefaultAction'\
+    \ AS default_action, kaytu_description->'definitions'->'ContainerRegistryDescription'->'properties'->'RegistryProperties'->'NetworkRuleSet'->'IPRules'->>0->>'Action'\
     \ AS virtual_network_action\nFROM azure_container_registry\nWHERE type = 'Microsoft.ContainerRegistry/registries'\n\
-    AND (\n    (kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.DefaultAction'\
-    \ IS NOT NULL AND kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.DefaultAction'\
-    \ != 'Deny')\n    OR\n    (kaytu_description->'$.definitions.RegistryProperties.properties.NetworkRuleSet.properties.IPRules.items.properties.Action'\
-    \ IS NULL)\n)\nLIMIT 5;;\n"
+    AND (\n    (network_rule_set->>'defaultAction' IS NOT NULL AND network_rule_set->>'defaultAction'\
+    \ != 'Deny')\n    OR\n    (network_rule_set->'virtualNetworkRules' IS NULL OR\
+    \ jsonb_array_length(network_rule_set->'virtualNetworkRules') = 0)\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: '[Preview]: Container Registry should use a virtual network service endpoint'

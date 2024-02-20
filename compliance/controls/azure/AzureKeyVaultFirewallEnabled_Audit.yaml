@@ -6,10 +6,10 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_key_vault\nWHERE type = 'Microsoft.KeyVault/vaults'\n\
-    AND (create_mode = 'default' OR kaytu_description->>'createMode' = 'default')\n\
-    AND (network_acls->>'defaultAction' != 'Deny' OR kaytu_description->>'networkAcls.defaultAction'\
-    \ != 'Deny')\nAND (\n    (array_length(network_acls->'ipRules', 1) > 0 AND jsonb_array_length(kaytu_description->'networkAcls.ipRules')\
-    \ > 0)\n    OR\n    (array_length(network_acls->'ipRules', 1) = 0 AND jsonb_array_length(kaytu_description->'networkAcls.ipRules')\
-    \ = 0)\n)\nLIMIT 5;;\n"
+    AND (create_mode IS NOT NULL AND create_mode != 'recover')\nAND (\n    (network_acls->'defaultAction'\
+    \ IS NOT NULL AND network_acls->>'defaultAction' != 'Deny')\n    OR\n    (\n \
+    \       kaytu_description->'definitions'->'KeyVaultDescription'->'definitions'->'Vault'->'properties'->'networkAcls'->'properties'->'defaultAction'\
+    \ IS NOT NULL\n        AND\n        kaytu_description->'definitions'->'KeyVaultDescription'->'definitions'->'Vault'->'properties'->'networkAcls'->'properties'->>'defaultAction'\
+    \ != 'Deny'\n    )\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: Azure Key Vault should have firewall enabled

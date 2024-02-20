@@ -5,12 +5,7 @@ ID: service_fabric_clusters_should_have_the_cluster_protection_level_property_se
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT name, kaytu_description->'Cluster'->'properties'->'fabricSettings'\
-    \ AS fabric_settings\nFROM azure_service_fabric_cluster\nWHERE type = 'Microsoft.ServiceFabric/clusters'\n\
-    AND (\n    (fabric_settings->'name' IS NOT NULL AND fabric_settings->'name' !=\
-    \ 'Security')\n    OR (fabric_settings->'parameters' IS NOT NULL AND fabric_settings->'parameters'->>'name'\
-    \ != 'ClusterProtectionLevel')\n    OR (fabric_settings->'parameters' IS NOT NULL\
-    \ AND fabric_settings->'parameters'->>'value' != 'EncryptAndSign')\n)\nLIMIT 5;;\n"
+  QueryToExecute: ''
 Severity: ''
 Title: Service Fabric clusters should have the ClusterProtectionLevel property set
   to EncryptAndSign

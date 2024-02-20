@@ -7,11 +7,20 @@ ID: azure_event_grid_topics_should_use_private_link
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT *\nFROM azure_eventgrid_topic\nWHERE type = 'Microsoft.EventGrid/topics'\n\
-    AND (kind = 'AzureArc' OR kaytu_description->>'kind' = 'AzureArc')\nAND (\n  \
-    \  (private_endpoint_connections IS NOT NULL AND private_endpoint_connections->>'privateLinkServiceConnectionState'->>'status'\
-    \ = 'Approved')\n    OR\n    (kaytu_description->'privateEndpointConnections'->'$.Topic.PrivateEndpointConnections'\
-    \ IS NOT NULL AND kaytu_description->'privateEndpointConnections'->>'$.Topic.PrivateEndpointConnections'->'privateLinkServiceConnectionState'->>'status'\
-    \ = 'Approved')\n)\nLIMIT 5;;\n"
+  QueryToExecute: 'SELECT *
+
+    FROM azure_eventgrid_topic
+
+    WHERE type = ''Microsoft.EventGrid/topics''
+
+    AND (kind = ''AzureArc'' OR kaytu_description->>''kind'' = ''AzureArc'')
+
+    AND (kaytu_description->>''privateEndpointConnections'' IS NULL OR kaytu_description->>''privateEndpointConnections''
+    = ''[]'' OR kaytu_description->>''privateEndpointConnections'' = ''null'' OR kaytu_description->>''privateEndpointConnections''
+    = '''')
+
+    LIMIT 5;;
+
+    '
 Severity: ''
 Title: Azure Event Grid topics should use private link

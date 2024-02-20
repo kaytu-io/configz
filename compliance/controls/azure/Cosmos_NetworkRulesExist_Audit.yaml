@@ -6,13 +6,10 @@ ID: azure_cosmos_db_accounts_should_have_firewall_rules
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT kaytu_description->'DatabaseAccountGetProperties'->'IPRules'\
-    \ AS ip_rules,\n       kaytu_description->'DatabaseAccountGetProperties'->>'IPRangeFilter'\
-    \ AS ip_range_filter,\n       azure_cosmosdb_account.is_virtual_network_filter_enabled,\n\
-    \       azure_cosmosdb_account.public_network_access\nFROM azure_cosmosdb_account\n\
-    WHERE azure_cosmosdb_account.type = 'Microsoft.DocumentDB/databaseAccounts'\n\
-    \  AND (azure_cosmosdb_account.ip_rules IS NOT NULL OR\n       jsonb_array_length(kaytu_description->'DatabaseAccountGetProperties'->'IPRules')\
-    \ = 0)\n  AND (azure_cosmosdb_account.ip_range_filter IS NOT NULL OR\n       kaytu_description->'DatabaseAccountGetProperties'->>'IPRangeFilter'\
-    \ = '')\nLIMIT 5;;\n"
+  QueryToExecute: "SELECT *\nFROM azure_cosmosdb_account\nWHERE kind = 'Microsoft.DocumentDB/databaseAccounts'\n\
+    AND (\n    (public_network_access = 'Enabled' OR public_network_access IS NULL)\n\
+    \    OR (is_virtual_network_filter_enabled = false OR is_virtual_network_filter_enabled\
+    \ IS NULL)\n    OR (ip_rules IS NULL OR jsonb_array_length(ip_rules) = 0)\n  \
+    \  OR (ip_range_filter = '')\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: Azure Cosmos DB accounts should have firewall rules

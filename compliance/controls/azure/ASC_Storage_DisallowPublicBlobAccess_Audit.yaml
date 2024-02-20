@@ -15,8 +15,7 @@ Query:
     AND NOT (id LIKE ''%/resourceGroups/aro-%'' AND (name LIKE ''cluster%'' OR name
     LIKE ''imageregistry%''))
 
-    AND (allow_blob_public_access = true OR kaytu_description->''Account''->''Properties''->>''AllowBlobPublicAccess''
-    = ''true'')
+    AND NOT allow_blob_public_access = false
 
     LIMIT 5;;
 

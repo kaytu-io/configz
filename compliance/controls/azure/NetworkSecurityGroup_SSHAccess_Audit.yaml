@@ -1,0 +1,21 @@
+Description: This policy is deprecated. This policy audits any network security rule
+  that allows SSH access from Internet
+ID: '[_deprecated]:_ssh_access_from_the_internet_should_be_blocked'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT kaytu_description->'SecurityRulePropertiesFormat'->'destinationPortRanges'\
+    \ AS destinationPortRanges,\n       kaytu_description->'SecurityRulePropertiesFormat'->'sourceAddressPrefix'\
+    \ AS sourceAddressPrefix,\n       kaytu_description->'SecurityRulePropertiesFormat'->'access'\
+    \ AS access,\n       kaytu_description->'SecurityRulePropertiesFormat'->'destinationPortRange'\
+    \ AS destinationPortRange,\n       kaytu_description->'SecurityRulePropertiesFormat'->'direction'\
+    \ AS direction,\n       kaytu_description->'SecurityRulePropertiesFormat'->'sourceAddressPrefixes'\
+    \ AS sourceAddressPrefixes\nFROM azure_network_security_group\nWHERE kaytu_description->'SecurityRulePropertiesFormat'->>'destinationPortRanges'\
+    \ IS NOT NULL\n   OR kaytu_description->'SecurityRulePropertiesFormat'->>'sourceAddressPrefix'\
+    \ IS NOT NULL\n   OR kaytu_description->'SecurityRulePropertiesFormat'->>'access'\
+    \ IS NOT NULL\n   OR kaytu_description->'SecurityRulePropertiesFormat'->>'destinationPortRange'\
+    \ IS NOT NULL\n   OR kaytu_description->'SecurityRulePropertiesFormat'->>'direction'\
+    \ IS NOT NULL\n   OR kaytu_description->'SecurityRulePropertiesFormat'->>'sourceAddressPrefixes'\
+    \ IS NOT NULL\nLIMIT 5;;\n"
+Severity: ''
+Title: '[Deprecated]: SSH access from the Internet should be blocked'

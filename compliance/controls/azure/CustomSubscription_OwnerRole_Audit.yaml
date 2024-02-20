@@ -1,0 +1,25 @@
+Description: This policy is deprecated.
+ID: '[_deprecated]:_custom_subscription_owner_roles_should_not_exist'
+Query:
+  Connector: Azure
+  Engine: odysseus-v0.0.1
+  QueryToExecute: 'SELECT role_name, role_type, assignable_scopes, permissions
+
+    FROM azure_role_definition
+
+    WHERE role_type = ''Microsoft.Authorization/roleDefinitions''
+
+    AND kaytu_description ->> ''type'' = ''CustomRole''
+
+    AND (kaytu_description -> ''permissions'' -> ''actions'' IS NOT NULL OR kaytu_description
+    -> ''permissions'' -> ''actions'' != ''[]'')
+
+    AND (kaytu_description -> ''assignableScopes'' ?| array[''[concat(subscription().id,''/'')]'',
+    ''[subscription().id]'', ''/''] OR kaytu_description ->> ''assignableScopes''
+    LIKE ''/providers/Microsoft.Management/%'')
+
+    LIMIT 5;;
+
+    '
+Severity: ''
+Title: '[Deprecated]: Custom subscription owner roles should not exist'

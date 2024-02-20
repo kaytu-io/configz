@@ -10,9 +10,8 @@ Query:
 
     WHERE type = ''Microsoft.Network/virtualNetworks''
 
-    AND kaytu_description -> ''VirtualNetwork'' -> ''properties'' -> ''subnets'' @>
-    ''[{"properties": {"ipConfigurations": [{"id": "[concat(parameters(''virtualNetworkGatewayId''),
-    ''/'')]" }]}}]''
+    AND kaytu_description -> ''$.VirtualNetwork.properties.subnets[*].properties.ipConfigurations[*].id''
+    @> ''["GatewaySubnet"]''
 
     LIMIT 5;;
 

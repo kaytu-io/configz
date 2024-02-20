@@ -12,11 +12,12 @@ Query:
 
     WHERE type = ''Microsoft.Sql/managedInstances''
 
-    AND (encryption_protectors->>''serverKeyType'' IS NULL OR encryption_protectors->>''serverKeyType''
+    AND (encryption_protectors->''serverKeyType'' IS NULL OR encryption_protectors->>''serverKeyType''
     != ''AzureKeyVault'')
 
-    AND (kaytu_description->''ManagedInstance''->''properties''->>''keyId'' IS NULL
-    OR kaytu_description->''ManagedInstance''->''properties''->>''keyId'' = '''')
+    AND (kaytu_description->''ManagedInstance''->''ManagedInstanceProperties''->>''keyId''
+    IS NULL OR kaytu_description->''ManagedInstance''->''ManagedInstanceProperties''->>''keyId''
+    = '''')
 
     LIMIT 5;;
 

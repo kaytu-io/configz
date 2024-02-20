@@ -12,9 +12,7 @@ Query:
 
     WHERE type = ''Microsoft.Sql/servers''
 
-    AND kaytu_metadata ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Sql/servers"}''
-
-    AND kaytu_metadata -> ''then'' ->> ''details'' ->> ''type'' = ''Microsoft.Sql/servers/administrators''
+    AND kaytu_account_id = ''account_id''
 
     LIMIT 5;;
 

@@ -4,20 +4,9 @@ ID: app_service_apps_should_have_remote_debugging_turned_off
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_app_service_function_app
-
-    WHERE type = ''Microsoft.Web/sites''
-
-    AND (kind IS NULL OR kind NOT LIKE ''%functionapp%'')
-
-    AND (site_config -> ''properties'' ->> ''remoteDebuggingEnabled'' = ''false''
-    OR kaytu_description -> ''SiteConfig'' -> ''properties'' ->> ''remoteDebuggingEnabled''
-    = ''false'')
-
-    LIMIT 5;;
-
-    '
+  QueryToExecute: "SELECT *\nFROM azure_app_service_function_app\nWHERE type = 'Microsoft.Web/sites'\n\
+    AND kind NOT LIKE '%functionapp%'\nAND (site_config -> 'properties' ->> 'remoteDebuggingEnabled'\
+    \ = 'false'\n     OR kaytu_description -> 'SiteConfig' -> 'properties' ->> 'remoteDebuggingEnabled'\
+    \ = 'false')\nLIMIT 5;;\n"
 Severity: ''
 Title: App Service apps should have remote debugging turned off

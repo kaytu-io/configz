@@ -11,7 +11,8 @@ Query:
 
     WHERE type = ''Microsoft.Logic/workflows''
 
-    AND kaytu_description ->> ''$.DiagnosticSettings.Logs'' IS NOT NULL
+    AND kaytu_description -> ''$.DiagnosticSettingsResources[*].Properties.Logs''
+    IS NOT NULL
 
     LIMIT 5;;
 
