@@ -6,6 +6,21 @@ ID: '[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_f
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: ''
+  QueryToExecute: 'SELECT *
+
+    FROM azure_virtual_network
+
+    WHERE type = ''Microsoft.Network/virtualNetworks''
+
+    AND jsonb_array_length(kaytu_description->''VirtualNetwork''->''properties''->''subnets'')
+    >= 2
+
+    AND NOT (kaytu_description->''VirtualNetwork''->''properties''->''subnets'' @>
+    ''[{"name": "AzureBastionSubnet"}]'' OR kaytu_description->''VirtualNetwork''->''properties''->''subnets''
+    @> ''[{"name": "GatewaySubnet"}]'')
+
+    LIMIT 5;;
+
+    '
 Severity: ''
 Title: '[Preview]: All Internet traffic should be routed via your deployed Azure Firewall'

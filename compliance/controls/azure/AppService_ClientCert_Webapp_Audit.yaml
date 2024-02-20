@@ -5,25 +5,13 @@ ID: app_service_apps_should_have_client_certificates_(_incoming_client_certifica
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT azure_app_service_function_app.name, azure_app_service_function_app.kind,
-    azure_app_service_function_app.client_cert_enabled, azure_app_service_function_app.site_config->''web''->>''http20Enabled''
-
-    FROM azure_app_service_function_app
-
-    WHERE azure_app_service_function_app.type = ''Microsoft.Web/sites''
-
-    AND (azure_app_service_function_app.kind NOT LIKE ''%functionapp%''
-
-    AND (azure_app_service_function_app.client_cert_enabled IS NULL OR azure_app_service_function_app.client_cert_enabled
-    = false)
-
-    OR (azure_app_service_function_app.site_config->''web''->>''http20Enabled'' IS
-    NOT NULL AND azure_app_service_function_app.site_config->''web''->>''http20Enabled''
-    = ''true''))
-
-    LIMIT 5;;
-
-    '
+  QueryToExecute: "SELECT *\nFROM azure_app_service_function_app\nWHERE type = 'Microsoft.Web/sites'\n\
+    AND (kind IS NULL OR kind NOT LIKE '%functionapp%')\nAND (client_cert_enabled\
+    \ IS NULL OR client_cert_enabled != true)\nAND (site_config -> 'web' ->> 'http20Enabled'\
+    \ = 'true'\n     OR kaytu_description -> 'SiteConfig' -> 'properties' ->> 'http20Enabled'\
+    \ = 'true')\nAND (kaytu_description -> 'Site' -> 'properties' ->> 'clientCertEnabled'\
+    \ IS NULL\n     OR kaytu_description -> 'Site' -> 'properties' ->> 'clientCertEnabled'\
+    \ != 'true')\nLIMIT 5;;\n"
 Severity: ''
 Title: App Service apps should have Client Certificates (Incoming client certificates)
   enabled

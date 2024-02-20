@@ -6,5 +6,5 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: ''
-Severity: ''
+Severity: medium
 Title: Keys using RSA cryptography should have a specified minimum key size

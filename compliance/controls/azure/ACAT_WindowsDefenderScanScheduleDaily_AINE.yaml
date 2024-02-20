@@ -9,6 +9,6 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: ''
-Severity: ''
+Severity: medium
 Title: Windows machines should schedule Windows Defender to perform a scheduled scan
   every day

@@ -10,8 +10,8 @@ Query:
 
     WHERE type = ''microsoft.network/virtualNetworks''
 
-    AND kaytu_description -> ''$.properties.VirtualNetwork.properties.dhcpOptions.properties.dnsServers.items''
-    IN (''NotApplicable'', ''Healthy'')
+    AND kaytu_description ->> ''$.Microsoft.Security/assessments/status.code'' IN
+    (''NotApplicable'', ''Healthy'')
 
     LIMIT 5;;
 

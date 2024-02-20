@@ -7,8 +7,8 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_network_watcher\nWHERE type = 'Microsoft.Network/networkWatchers/flowLogs'\n\
-    AND (\n    (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled\
-    \ = False)\n    OR\n    (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval\
+    AND (\n  (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled\
+    \ = False)\n  OR\n  (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval\
     \ NOT IN ('10', '60'))\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: Network Watcher flow logs should have traffic analytics enabled

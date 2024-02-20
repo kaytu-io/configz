@@ -12,8 +12,10 @@ Query:
 
     FROM azure_virtualmachineimages_imagetemplates
 
-    WHERE kaytu_description->''ImageTemplate''->''Properties''->''VMProfile''->>''VnetConfig''
-    IS NULL
+    WHERE kaytu_account_id = ''account_id''
+
+    AND kaytu_description -> ''ImageTemplate'' -> ''Properties'' -> ''VMProfile''
+    -> ''VnetConfig'' IS NULL
 
     LIMIT 5;;
 

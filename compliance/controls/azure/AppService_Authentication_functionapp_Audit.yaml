@@ -5,19 +5,9 @@ ID: function_apps_should_have_authentication_enabled
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_app_service_function_app
-
-    WHERE type = ''Microsoft.Web/sites''
-
-    AND (kind LIKE ''%functionapp%'' AND kind NOT LIKE ''%workflowapp%'')
-
-    AND (site_config ->> ''siteAuthEnabled'' = ''true'' OR kaytu_description -> ''SiteAuthSettings''
-    ->> ''properties'' ->> ''enabled'' = ''true'')
-
-    LIMIT 5;;
-
-    '
+  QueryToExecute: "SELECT *\nFROM azure_app_service_function_app\nWHERE type = 'Microsoft.Web/sites'\n\
+    \    AND kind LIKE '%functionapp%'\n    AND kind NOT LIKE '%workflowapp%'\n  \
+    \  AND (site_config->'properties'->>'enabled' = 'true' OR kaytu_description->'SiteConfig'->'properties'->>'enabled'\
+    \ = 'true')\nLIMIT 5;;\n"
 Severity: ''
 Title: Function apps should have authentication enabled

@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Remove or redact any PII

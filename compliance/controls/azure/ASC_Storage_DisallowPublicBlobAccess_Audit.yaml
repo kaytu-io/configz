@@ -6,7 +6,7 @@ ID: '[_preview]:_storage_account_public_access_should_be_disallowed'
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, allow_blob_public_access, id
+  QueryToExecute: 'SELECT name, id, allow_blob_public_access
 
     FROM azure_storage_account
 
@@ -15,7 +15,8 @@ Query:
     AND NOT (id LIKE ''%/resourceGroups/aro-%'' AND (name LIKE ''cluster%'' OR name
     LIKE ''imageregistry%''))
 
-    AND NOT allow_blob_public_access = false
+    AND (allow_blob_public_access = true OR kaytu_description->''Account''->''Properties''->>''AllowBlobPublicAccess''
+    = ''true'')
 
     LIMIT 5;;
 

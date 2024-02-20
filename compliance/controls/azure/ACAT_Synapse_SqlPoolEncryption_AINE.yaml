@@ -18,5 +18,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Azure Synapse Analytics dedicated SQL pools should enable encryption

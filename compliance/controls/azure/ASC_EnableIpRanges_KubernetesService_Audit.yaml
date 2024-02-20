@@ -7,10 +7,15 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_kubernetes_cluster\nWHERE type = 'Microsoft.ContainerService/managedClusters'\n\
-    AND (\n  (api_server_access_profile->>'authorizedIPRanges' IS NULL AND kaytu_description->'definitions'->'ManagedClusterAPIServerAccessProfile'->'properties'->'authorizedIPRanges'\
-    \ IS NOT NULL)\n  OR (api_server_access_profile->>'enablePrivateCluster' IS NULL\
-    \ AND kaytu_description->'definitions'->'ManagedClusterAPIServerAccessProfile'->'properties'->'enablePrivateCluster'\
-    \ IS NOT NULL)\n  OR (api_server_access_profile->>'enablePrivateCluster' = 'false')\n\
+    AND (\n  (api_server_access_profile ->> 'enablePrivateCluster' = 'false' OR NOT\
+    \ api_server_access_profile ? 'enablePrivateCluster')\n  AND (api_server_access_profile\
+    \ ->> 'authorizedIPRanges' IS NULL OR NOT api_server_access_profile ? 'authorizedIPRanges')\n\
+    \  OR (kaytu_description -> 'definitions' -> 'ManagedClusterAPIServerAccessProfile'\
+    \ -> 'properties' ->> 'enablePrivateCluster' = 'false' OR NOT kaytu_description\
+    \ ? 'definitions.ManagedClusterAPIServerAccessProfile.properties.enablePrivateCluster')\n\
+    \  AND (kaytu_description -> 'definitions' -> 'ManagedClusterAPIServerAccessProfile'\
+    \ -> 'properties' ->> 'authorizedIPRanges' IS NULL OR NOT kaytu_description ?\
+    \ 'definitions.ManagedClusterAPIServerAccessProfile.properties.authorizedIPRanges')\n\
     )\nLIMIT 5;;\n"
 Severity: ''
 Title: Authorized IP ranges should be defined on Kubernetes Services

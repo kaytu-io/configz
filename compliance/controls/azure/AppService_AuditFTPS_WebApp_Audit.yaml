@@ -9,10 +9,10 @@ Query:
 
     WHERE type = ''Microsoft.Web/sites''
 
-    AND kind NOT LIKE ''%functionapp%''
+    AND (kind IS NULL OR kind NOT LIKE ''%functionapp%'')
 
-    AND (site_config ->> ''ftpsState'' IN (''FtpsOnly'', ''Disabled'') OR kaytu_description
-    -> ''SiteConfig'' ->> ''ftpsState'' IN (''FtpsOnly'', ''Disabled''))
+    AND (site_config -> ''properties'' ->> ''ftpsState'' = ''FtpsOnly'' OR site_config
+    -> ''properties'' ->> ''ftpsState'' = ''Disabled'')
 
     LIMIT 5;;
 

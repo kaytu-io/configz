@@ -17,5 +17,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: CORS should not allow every domain to access your API for FHIR

@@ -14,17 +14,23 @@ Query:
 
     WHERE type = ''Microsoft.Compute/virtualMachineScaleSets''
 
-    AND kaytu_description ->> ''$.VirtualMachineScaleSetVMProfile.StorageProfile.ImageReference.Offer''
-    LIKE ''windows%''
+    AND kaytu_description ->> ''virtualMachineProfile'' -> ''storageProfile'' -> ''imageReference''
+    ->> ''offer'' LIKE ''windows%''
 
-    AND kaytu_description ->> ''$.VirtualMachineScaleSetVMProfile.SecurityProfile.SecurityType''
-    IN (''TrustedLaunch'', ''ConfidentialVM'')
+    AND kaytu_description ->> ''virtualMachineProfile'' -> ''securityProfile'' ->>
+    ''securityType'' IN (''TrustedLaunch'', ''ConfidentialVM'')
 
-    AND kaytu_description ->> ''$.VirtualMachineScaleSetVMProfile.SecurityProfile.UefiSettings.VTpmEnabled''
-    = ''true''
+    AND kaytu_description -> ''virtualMachineProfile'' -> ''securityProfile'' -> ''uefiSettings''
+    ? ''vTpmEnabled''
 
-    AND kaytu_description ->> ''$.VirtualMachineScaleSetVMProfile.SecurityProfile.UefiSettings.SecureBootEnabled''
-    = ''true''
+    AND kaytu_description -> ''virtualMachineProfile'' -> ''securityProfile'' -> ''uefiSettings''
+    ->> ''vTpmEnabled'' = ''true''
+
+    AND kaytu_description -> ''virtualMachineProfile'' -> ''securityProfile'' -> ''uefiSettings''
+    ? ''secureBootEnabled''
+
+    AND kaytu_description -> ''virtualMachineProfile'' -> ''securityProfile'' -> ''uefiSettings''
+    ->> ''secureBootEnabled'' = ''true''
 
     LIMIT 5;;
 

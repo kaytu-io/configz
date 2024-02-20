@@ -5,34 +5,117 @@ ID: dependency_agent_should_be_enabled_in_virtual_machine_scale_sets_for_listed_
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT name, sku_name, kaytu_description\nFROM azure_compute_virtual_machine_scale_set\n\
-    WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'\nAND (\n    (sku_name\
-    \ IN ('2008-R2-SP1', '2008-R2-SP1-smalldisk', '2012-Datacenter', '2012-Datacenter-smalldisk',\
-    \ '2012-R2-Datacenter', '2012-R2-Datacenter-smalldisk', '2016-Datacenter', '2016-Datacenter-Server-Core',\
-    \ '2016-Datacenter-Server-Core-smalldisk', '2016-Datacenter-smalldisk', '2016-Datacenter-with-Containers',\
-    \ '2016-Datacenter-with-RDSH', '2019-Datacenter', '2019-Datacenter-Core', '2019-Datacenter-Core-smalldisk',\
+  QueryToExecute: "SELECT name, id, provisioning_state, type, location, sku_name\n\
+    FROM azure_compute_virtual_machine_scale_set\nWHERE type = 'Microsoft.Compute/virtualMachineScaleSets'\n\
+    AND (\n    (kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile'\
+    \ -> 'StorageProfile' -> 'ImageReference' ->> 'ID' IN [parameters('listOfImageIdToInclude_windows')])\
+    \ OR\n    (kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile'\
+    \ -> 'StorageProfile' -> 'ImageReference' ->> 'ID' IN [parameters('listOfImageIdToInclude_linux')])\
+    \ OR\n    (kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile'\
+    \ -> 'StorageProfile' -> 'ImageReference' ->> 'Publisher' = 'MicrosoftWindowsServer'\
+    \ AND kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile'\
+    \ -> 'StorageProfile' -> 'ImageReference' ->> 'Offer' = 'WindowsServer' AND kaytu_description\
+    \ -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile'\
+    \ -> 'ImageReference' ->> 'SKU' IN ['2008-R2-SP1', '2008-R2-SP1-smalldisk', '2012-Datacenter',\
+    \ '2012-Datacenter-smalldisk', '2012-R2-Datacenter', '2012-R2-Datacenter-smalldisk',\
+    \ '2016-Datacenter', '2016-Datacenter-Server-Core', '2016-Datacenter-Server-Core-smalldisk',\
+    \ '2016-Datacenter-smalldisk', '2016-Datacenter-with-Containers', '2016-Datacenter-with-RDSH',\
+    \ '2019-Datacenter', '2019-Datacenter-Core', '2019-Datacenter-Core-smalldisk',\
     \ '2019-Datacenter-Core-with-Containers', '2019-Datacenter-Core-with-Containers-smalldisk',\
     \ '2019-Datacenter-smalldisk', '2019-Datacenter-with-Containers', '2019-Datacenter-with-Containers-smalldisk',\
-    \ '2019-Datacenter-zhcn'))\n    OR (sku_name IN ('Datacenter-Core-1709-smalldisk',\
-    \ 'Datacenter-Core-1709-with-Containers-smalldisk', 'Datacenter-Core-1803-with-Containers-smalldisk')\
-    \ AND sku_tier = 'WindowsServerSemiAnnual')\n    OR (sku_name IN ('WindowsServerHPCPack')\
-    \ AND sku_tier = 'WindowsServerHPCPack')\n    OR (sku_name LIKE '%-WS2016' OR\
-    \ sku_name LIKE '%-WS2016-BYOL' OR sku_name LIKE '%-WS2012R2' OR sku_name LIKE\
-    \ '%-WS2012R2-BYOL')\n    OR (sku_name IN ('MLServer-WS2016') AND sku_tier = 'MicrosoftRServer')\n\
-    \    OR (sku_name IN ('VisualStudio', 'Windows') AND sku_tier = 'MicrosoftVisualStudio')\n\
-    \    OR (sku_name = 'Pre-Req-AX7-Onebox-U8' AND sku_tier = 'MicrosoftDynamicsAX'\
-    \ AND sku_capacity = 1)\n    OR (sku_name = 'Pre-Req-AX7-Onebox-V4' AND sku_tier\
-    \ = 'MicrosoftDynamicsAX' AND sku_capacity = 1)\n    OR (sku_name = 'windows-data-science-vm'\
-    \ AND sku_tier = 'microsoft-ads')\n    OR (sku_name = 'Windows-10' AND sku_tier\
-    \ = 'MicrosoftWindowsDesktop')\n    OR (sku_name IN ('RHEL', 'RHEL-SAP-HANA')\
-    \ AND (sku_tier LIKE '6.%' OR sku_tier LIKE '7%'))\n    OR (sku_name IN ('SLES',\
-    \ 'SLES-HPC', 'SLES-HPC-Priority', 'SLES-SAP', 'SLES-SAP-BYOS', 'SLES-Priority',\
-    \ 'SLES-BYOS', 'SLES-SAPCAL', 'SLES-Standard') AND (sku_tier = '12-SP2' OR sku_tier\
-    \ = '12-SP3' OR sku_tier = '12-SP4'))\n    OR (sku_name IN ('UbuntuServer') AND\
-    \ (sku_tier IN ('14.04.0-LTS', '14.04.1-LTS', '14.04.5-LTS') OR sku_tier IN ('16.04-LTS',\
-    \ '16.04.0-LTS') OR sku_tier = '18.04-LTS'))\n    OR (sku_name IN ('Centos', 'Centos-LVM',\
-    \ 'CentOS-SRIOV') AND (sku_tier LIKE '6.%' OR sku_tier LIKE '7%'))\n    OR (sku_name\
-    \ = 'cloudera-centos-os' AND sku_tier LIKE '7%')\n)\nLIMIT 5;;\n"
+    \ '2019-Datacenter-zhcn']) OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'MicrosoftWindowsServer' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' = 'WindowsServerSemiAnnual' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' IN ['Datacenter-Core-1709-smalldisk', 'Datacenter-Core-1709-with-Containers-smalldisk',\
+    \ 'Datacenter-Core-1803-with-Containers-smalldisk']) OR\n    (kaytu_description\
+    \ -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile'\
+    \ -> 'ImageReference' ->> 'Publisher' = 'MicrosoftWindowsServerHPCPack' AND kaytu_description\
+    \ -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile'\
+    \ -> 'ImageReference' ->> 'Offer' = 'WindowsServerHPCPack') OR\n    (kaytu_description\
+    \ -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile'\
+    \ -> 'ImageReference' ->> 'Publisher' = 'MicrosoftSQLServer' AND (kaytu_description\
+    \ -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile'\
+    \ -> 'ImageReference' ->> 'Offer' LIKE '%-WS2016' OR kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' LIKE '%-WS2016-BYOL' OR kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' LIKE '%-WS2012R2' OR kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' LIKE '%-WS2012R2-BYOL')) OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'MicrosoftRServer' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' = 'MLServer-WS2016') OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'MicrosoftVisualStudio' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' IN ['VisualStudio', 'Windows']) OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'MicrosoftDynamicsAX' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' = 'Dynamics' AND kaytu_description -> 'VirtualMachineScaleSet' ->\
+    \ 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' = 'Pre-Req-AX7-Onebox-U8') OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'MicrosoftDynamicsAX' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' = 'Dynamics' AND kaytu_description -> 'VirtualMachineScaleSet' ->\
+    \ 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' = 'Pre-Req-AX7-Onebox-V4') OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'microsoft-ads' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' = 'windows-data-science-vm') OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'MicrosoftWindowsDesktop' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' = 'Windows-10') OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'RedHat' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' IN ['RHEL', 'RHEL-SAP-HANA'] AND (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' LIKE '6.%' OR kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties'\
+    \ -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'SKU'\
+    \ LIKE '7%')) OR\n    (kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties'\
+    \ -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'Publisher'\
+    \ = 'SUSE' AND kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties' ->\
+    \ 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'Offer'\
+    \ IN ['SLES', 'SLES-HPC', 'SLES-HPC-Priority', 'SLES-SAP', 'SLES-SAP-BYOS', 'SLES-Priority',\
+    \ 'SLES-BYOS', 'SLES-SAPCAL', 'SLES-Standard'] AND (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' = '12-SP2' OR kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties'\
+    \ -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'SKU'\
+    \ = '12-SP3' OR kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties'\
+    \ -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'SKU'\
+    \ = '12-SP4')) OR\n    (kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties'\
+    \ -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'Publisher'\
+    \ = 'Canonical' AND kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties'\
+    \ -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'Offer'\
+    \ = 'UbuntuServer' AND (kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties'\
+    \ -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference' ->> 'SKU'\
+    \ IN ['14.04.0-LTS', '14.04.1-LTS', '14.04.5-LTS'] OR kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' IN ['16.04-LTS', '16.04.0-LTS'] OR kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' = '18.04-LTS'))) OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'OpenLogic' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' IN ['Centos', 'Centos-LVM', 'CentOS-SRIOV'] AND (kaytu_description\
+    \ -> 'VirtualMachineScaleSet' -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile'\
+    \ -> 'ImageReference' ->> 'SKU' LIKE '6.%' OR kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' LIKE '7%')) OR\n    (kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Publisher' = 'cloudera' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'Offer' = 'cloudera-centos-os' AND kaytu_description -> 'VirtualMachineScaleSet'\
+    \ -> 'Properties' -> 'VirtualMachineProfile' -> 'StorageProfile' -> 'ImageReference'\
+    \ ->> 'SKU' LIKE '7%')\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: Dependency agent should be enabled in virtual machine scale sets for listed
   virtual machine images

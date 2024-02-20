@@ -17,7 +17,7 @@ Query:
     IS NOT NULL
 
     AND kaytu_description -> ''Service'' -> ''properties'' ->> ''privateEndpointConnections''
-    ->> ''[*].privateLinkServiceConnectionState.status'' = ''Approved''
+    ->> ''privateLinkServiceConnectionState'' ->> ''status'' = ''Approved''
 
     LIMIT 5;;
 

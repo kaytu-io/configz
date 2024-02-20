@@ -11,14 +11,15 @@ Query:
 
     FROM azure_dbforpostgresql_flexibleservers
 
-    WHERE kaytu_description->''definitions''->''PostgresqlFlexibleServerDescription''->''properties''->''Server''->''properties''->''properties''->''network''->>''delegatedSubnetResourceId''
-    IS NULL
+    WHERE kaytu_account_id = ''account_id''
 
-    AND kaytu_description->''definitions''->''PostgresqlFlexibleServerDescription''->''properties''->''Server''->''properties''->''properties''->''network''->>''privateDnsZoneArmResourceId''
-    IS NULL
+    AND kaytu_description->>''createMode'' = ''Update''
 
-    AND kaytu_description->''definitions''->''PostgresqlFlexibleServerDescription''->''properties''->''Server''->''properties''->>''createMode''
-    != ''Update''
+    AND (kaytu_description->>''network.privateDnsZoneArmResourceId'' IS NULL OR kaytu_description->>''network.privateDnsZoneArmResourceId''
+    = '''')
+
+    AND (kaytu_description->>''network.delegatedSubnetResourceId'' IS NULL OR kaytu_description->>''network.delegatedSubnetResourceId''
+    = '''')
 
     LIMIT 5;;
 

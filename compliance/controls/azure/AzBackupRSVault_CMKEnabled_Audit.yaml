@@ -9,11 +9,10 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_recovery_services_vault\nWHERE type = 'Microsoft.RecoveryServices/vaults'\n\
-    AND (\n  (\n    \"Microsoft.RecoveryServices/vaults/encryption.keyVaultProperties.keyUri\"\
-    \ IS NULL\n    OR \"Microsoft.RecoveryServices/vaults/encryption.keyVaultProperties.keyUri\"\
-    \ = ''\n  )\n  OR (\n    \"Microsoft.RecoveryServices/vaults/encryption.infrastructureEncryption\"\
-    \ IS NOT NULL\n    AND \"Microsoft.RecoveryServices/vaults/encryption.infrastructureEncryption\"\
-    \ != 'Enabled'\n  )\n)\nLIMIT 5;;\n"
+    AND (\n  (encryption.keyVaultProperties.keyUri IS NULL)\n  OR (\n    (encryption.keyVaultProperties.keyUri\
+    \ IS NOT NULL)\n    AND (\n      (encryption.infrastructureEncryption != 'Enabled')\n\
+    \      OR (encryption.infrastructureEncryption IS NULL)\n    )\n  )\n)\nLIMIT\
+    \ 5;;\n"
 Severity: ''
 Title: '[Preview]: Azure Recovery Services vaults should use customer-managed keys
   for encrypting backup data'

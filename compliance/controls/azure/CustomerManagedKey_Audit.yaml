@@ -1,9 +1,10 @@
-Description: Customer-managed keys are commonly required to meet regulatory compliance
-  standards. Customer-managed keys enable the data stored in Cognitive Services to
-  be encrypted with an Azure Key Vault key created and owned by you. You have full
-  control and responsibility for the key lifecycle, including rotation and management.
-  Learn more about customer-managed keys at https://go.microsoft.com/fwlink/?linkid=2121321.
-ID: cognitive_services_accounts_should_enable_data_encryption_with_a_customer_managed_key
+Description: Use customer-managed keys (CMK) to manage the encryption at rest of the
+  data of your healthbots. By default, the data is encrypted at rest with service-managed
+  keys, but CMK are commonly required to meet regulatory compliance standards. CMK
+  enable the data to be encrypted with an Azure Key Vault key created and owned by
+  you. You have full control and responsibility for the key lifecycle, including rotation
+  and management. Learn more at https://docs.microsoft.com/azure/health-bot/cmk
+ID: azure_health_bots_should_use_customer_managed_keys_to_encrypt_data_at_rest
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
@@ -22,5 +23,4 @@ Query:
 
     '
 Severity: ''
-Title: Cognitive Services accounts should enable data encryption with a customer-managed
-  key
+Title: Azure Health Bots should use customer-managed keys to encrypt data at rest

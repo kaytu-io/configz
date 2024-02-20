@@ -6,9 +6,9 @@ ID: azure_data_explorer_encryption_at_rest_should_use_a_customer_managed_key
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT name, kaytu_description\nFROM azure_kusto_cluster\nWHERE\
-    \ type = 'Microsoft.Kusto/Clusters'\nAND (\n    (key_vault_properties IS NULL)\n\
-    \    OR (key_vault_properties->>'keyName' IS NULL)\n    OR (key_vault_properties->>'keyVersion'\
-    \ IS NULL)\n    OR (key_vault_properties->>'keyVaultUri' IS NULL)\n)\nLIMIT 5;;\n"
+  QueryToExecute: "SELECT *\nFROM azure_kusto_cluster\nWHERE type = 'Microsoft.Kusto/Clusters'\n\
+    AND (\n    (key_vault_properties IS NULL)\n    OR (key_vault_properties ->> 'keyName'\
+    \ IS NULL)\n    OR (key_vault_properties ->> 'keyVersion' IS NULL)\n    OR (key_vault_properties\
+    \ ->> 'keyVaultUri' IS NULL)\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: Azure Data Explorer encryption at rest should use a customer-managed key

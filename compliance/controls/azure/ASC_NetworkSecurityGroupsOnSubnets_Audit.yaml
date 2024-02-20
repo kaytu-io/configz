@@ -9,9 +9,8 @@ Query:
 
     FROM azure_virtual_network
 
-    WHERE kaytu_description -> ''properties'' -> ''VirtualNetwork'' -> ''properties''
-    -> ''dhcpOptions'' -> ''properties'' -> ''dnsServers'' ->> ''items'' IN (''NotApplicable'',
-    ''Healthy'')
+    WHERE kaytu_description ->> ''$.Microsoft.Security/assessments/status.code'' IN
+    (''NotApplicable'', ''Healthy'')
 
     LIMIT 5;;
 

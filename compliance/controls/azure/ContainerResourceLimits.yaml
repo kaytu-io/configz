@@ -1,12 +1,11 @@
-Description: Enforce container CPU and memory resource limits to prevent resource
-  exhaustion attacks in a Kubernetes cluster. This policy is generally available for
-  Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes. For more
-  information, see https://aka.ms/kubepolicydoc.
-ID: kubernetes_cluster_containers_cpu_and_memory_resource_limits_should_not_exceed_the_specified_limits
+Description: Windows container resource requests should be less or equal to the resource
+  limit or unspecified to avoid overcommit. If Windows memory is over-provisioned
+  it will process pages in disk - which can slow down performance - instead of terminating
+  the container with out-of-memory
+ID: kubernetes_cluster_windows_containers_should_not_overcommit_cpu_and_memory
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: ''
 Severity: ''
-Title: Kubernetes cluster containers CPU and memory resource limits should not exceed
-  the specified limits
+Title: Kubernetes cluster Windows containers should not overcommit cpu and memory

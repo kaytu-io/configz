@@ -22,6 +22,6 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Firewall Policy Premium should enable the Intrusion Detection and Prevention
   System (IDPS)

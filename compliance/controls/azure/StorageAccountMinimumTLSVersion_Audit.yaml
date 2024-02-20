@@ -17,5 +17,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Storage accounts should have the specified minimum TLS version

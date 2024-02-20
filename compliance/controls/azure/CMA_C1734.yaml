@@ -17,5 +17,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Ensure capital planning and investment requests include necessary resources

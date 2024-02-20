@@ -6,14 +6,22 @@ ID: sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT *\nFROM azure_sql_server\nWHERE type = 'Microsoft.Sql/servers'\n\
-    AND (\n    (\n        type = 'Microsoft.Sql/servers'\n        AND '[resourcegroup().managedBy]'\
-    \ NOT LIKE '%/providers/Microsoft.Synapse/%'\n        AND (\n            \"Microsoft.Sql/servers/keyid\"\
-    \ IS NULL\n            OR \"Microsoft.Sql/servers/keyid\" = ''\n        )\n  \
-    \  )\n    OR (\n        type = 'Microsoft.Sql/servers/encryptionProtector'\n \
-    \       AND '[resourcegroup().managedBy]' NOT LIKE '%/providers/Microsoft.Synapse/%'\n\
-    \        AND (\n            \"Microsoft.Sql/servers/encryptionProtector/serverKeyType\"\
-    \ IS NULL\n            OR \"Microsoft.Sql/servers/encryptionProtector/serverKeyType\"\
-    \ != 'AzureKeyVault'\n        )\n    )\n)\nLIMIT 5;;\n"
+  QueryToExecute: 'SELECT *
+
+    FROM azure_sql_server
+
+    WHERE type = ''Microsoft.Sql/servers''
+
+    AND (kaytu_description -> ''Server'' -> ''properties'' ->> ''keyId'' IS NULL OR
+    kaytu_description -> ''Server'' -> ''properties'' ->> ''keyId'' = '''')
+
+    AND (kaytu_description -> ''Server'' -> ''properties'' -> ''EncryptionProtectors''
+    -> 0 -> ''properties'' ->> ''serverKeyType'' IS NULL OR kaytu_description -> ''Server''
+    -> ''properties'' -> ''EncryptionProtectors'' -> 0 -> ''properties'' ->> ''serverKeyType''
+    != ''AzureKeyVault'')
+
+    LIMIT 5;;
+
+    '
 Severity: ''
 Title: SQL servers should use customer-managed keys to encrypt data at rest

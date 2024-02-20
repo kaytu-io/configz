@@ -10,13 +10,13 @@ Query:
 
     WHERE type = ''Microsoft.HybridCompute/machines''
 
-    AND kaytu_description -> ''extensions/type'' @> ''"MicrosoftMonitoringAgent"''
+    AND kaytu_description -> ''Microsoft.HybridCompute/imageOffer'' LIKE ''windows%''
 
-    AND kaytu_description -> ''extensions/publisher'' @> ''"Microsoft.EnterpriseCloud.Monitoring"''
+    AND (extensions ->> ''publisher'' = ''Microsoft.EnterpriseCloud.Monitoring''
 
-    AND kaytu_description -> ''Microsoft.HybridCompute/imageOffer'' @> ''"windows*"''
+    AND extensions ->> ''provisioningState'' = ''Succeeded''
 
-    AND kaytu_description -> ''extensions/provisioningState'' @> ''"Succeeded"''
+    AND extensions ->> ''type'' = ''MicrosoftMonitoringAgent'')
 
     LIMIT 5;;
 

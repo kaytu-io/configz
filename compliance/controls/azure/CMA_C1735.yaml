@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Employ business case to record the resources required

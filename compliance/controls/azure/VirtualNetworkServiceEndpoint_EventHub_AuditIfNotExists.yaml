@@ -4,7 +4,12 @@ ID: event_hub_should_use_a_virtual_network_service_endpoint
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
+  QueryToExecute: 'SELECT name, id, type, provisioning_state, created_at, cluster_arm_id,
+    is_auto_inflate_enabled, kafka_enabled, maximum_throughput_units, metric_id, service_bus_endpoint,
+    sku_capacity, sku_name, sku_tier, updated_at, zone_redundant, diagnostic_settings,
+    encryption, identity, network_rule_set, private_endpoint_connections, title, tags,
+    akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id,
+    kaytu_resource_id, kaytu_metadata, kaytu_description
 
     FROM azure_eventhub_namespace
 

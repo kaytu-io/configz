@@ -6,7 +6,7 @@ ID: managed_disks_should_use_a_specific_set_of_disk_encryption_sets_for_the_cust
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, type, managed_by, encryption_disk_encryption_set_id
+  QueryToExecute: 'SELECT *
 
     FROM azure_compute_disk
 
@@ -14,7 +14,8 @@ Query:
 
     AND (managed_by IS NULL OR managed_by = '''')
 
-    AND encryption_disk_encryption_set_id NOT IN (''allowedEncryptionSets'')
+    AND (encryption_disk_encryption_set_id NOT IN (''allowedEncryptionSets'') OR encryption_disk_encryption_set_id
+    IS NULL)
 
     LIMIT 5;;
 

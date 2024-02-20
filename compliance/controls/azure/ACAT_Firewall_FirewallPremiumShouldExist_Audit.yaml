@@ -18,6 +18,6 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Subscription should configure the Azure Firewall Premium to provide additional
   layer of protection

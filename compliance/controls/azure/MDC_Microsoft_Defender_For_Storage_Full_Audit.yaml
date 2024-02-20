@@ -12,15 +12,13 @@ Query:
 
     FROM azure_subscription
 
-    WHERE kaytu_description ->> ''$.Subscription.SubscriptionPolicies.extensions.Microsoft.Security/pricings/subPlan''
-    = ''DefenderForStorageV2''
+    WHERE kaytu_description ->> ''$.Subscription.SubscriptionPolicies.locationPlacementId''
+    = ''Microsoft.Security/pricings/extensions''
 
-    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.extensions.Microsoft.Security/pricings/pricingTier''
-    = ''Standard''
+    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.quotaId'' = ''Microsoft.Security/pricings/pricingTier''
 
-    AND (kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''extensions''
-    -> ''Microsoft.Security/pricings/extensions'')::jsonb @> ''[{"name": "OnUploadMalwareScanning",
-    "isEnabled": "true"}, {"name": "SensitiveDataDiscovery", "isEnabled": "true"}]''
+    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.spendingLimit''
+    = ''Microsoft.Security/pricings/subPlan''
 
     LIMIT 5;;
 

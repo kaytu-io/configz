@@ -20,5 +20,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Cosmos DB database accounts should have local authentication methods disabled

@@ -8,14 +8,22 @@ ID: web_application_firewall_(_waf)_should_be_enabled_for_application_gateway
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
+  QueryToExecute: 'SELECT name, id, provisioning_state, type, enable_fips, enable_http2,
+    etag, force_firewall_policy_association, operational_state, resource_guid, authentication_certificates,
+    autoscale_configuration, backend_address_pools, backend_http_settings_collection,
+    custom_error_configurations, diagnostic_settings, firewall_policy, frontend_ip_configurations,
+    frontend_ports, gateway_ip_configurations, http_listeners, identity, private_endpoint_connections,
+    private_link_configurations, probes, redirect_configurations, request_routing_rules,
+    rewrite_rule_sets, sku, ssl_certificates, ssl_policy, ssl_profiles, trusted_client_certificates,
+    trusted_root_certificates, url_path_maps, web_application_firewall_configuration,
+    zones, title, tags, akas, region, resource_group, cloud_environment, subscription_id,
+    kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description, _ctx
 
     FROM azure_application_gateway
 
     WHERE type = ''Microsoft.Network/applicationGateways''
 
-    AND (web_application_firewall_configuration IS NULL OR web_application_firewall_configuration->>''firewallPolicy''
-    IS NULL)
+    AND (web_application_firewall_configuration IS NULL OR firewall_policy IS NULL)
 
     LIMIT 5;;
 

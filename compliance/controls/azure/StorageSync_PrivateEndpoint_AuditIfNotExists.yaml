@@ -13,11 +13,14 @@ Query:
 
     WHERE type = ''Microsoft.StorageSync/storageSyncServices''
 
-    AND kaytu_description ->> ''$.Service.Properties.PrivateEndpointConnections[*].PrivateLinkServiceConnectionState.Status''
-    = ''Approved''
+    AND kaytu_description -> ''Service'' -> ''Properties'' -> ''PrivateEndpointConnections''
+    -> 0 ->> ''ProvisioningState'' = ''Succeeded''
 
-    AND (kaytu_description ->> ''$.Service.Properties.PrivateEndpointConnections[*].ProvisioningState''
-    = ''Succeeded'' OR provisioning_state = ''Succeeded'')
+    AND kaytu_description -> ''Service'' -> ''Properties'' -> ''PrivateEndpointConnections''
+    -> 0 -> ''PrivateEndpoint'' IS NOT NULL
+
+    AND kaytu_description -> ''Service'' -> ''Properties'' -> ''PrivateEndpointConnections''
+    -> 0 -> ''PrivateLinkServiceConnectionState'' ->> ''status'' = ''Approved''
 
     LIMIT 5;;
 

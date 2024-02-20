@@ -30,5 +30,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Function app slots that use Java should use a specified 'Java version'

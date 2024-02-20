@@ -6,44 +6,6 @@ ID: kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_versio
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_kubernetes_cluster
-
-    WHERE type = ''Microsoft.ContainerService/managedClusters''
-
-    AND (kubernetes_version IN (''1.13.4'', ''1.13.3'', ''1.13.2'', ''1.13.1'', ''1.13.0'')
-
-    OR kubernetes_version IN (''1.12.6'', ''1.12.5'', ''1.12.4'', ''1.12.3'', ''1.12.2'',
-    ''1.12.1'', ''1.12.0'')
-
-    OR kubernetes_version IN (''1.11.8'', ''1.11.7'', ''1.11.6'', ''1.11.5'', ''1.11.4'',
-    ''1.11.3'', ''1.11.2'', ''1.11.1'', ''1.11.0'')
-
-    OR kubernetes_version LIKE ''1.10.%''
-
-    OR kubernetes_version LIKE ''1.9.%''
-
-    OR kubernetes_version LIKE ''1.8.%''
-
-    OR kubernetes_version LIKE ''1.7.%''
-
-    OR kubernetes_version LIKE ''1.6.%''
-
-    OR kubernetes_version LIKE ''1.5.%''
-
-    OR kubernetes_version LIKE ''1.4.%''
-
-    OR kubernetes_version LIKE ''1.3.%''
-
-    OR kubernetes_version LIKE ''1.2.%''
-
-    OR kubernetes_version LIKE ''1.1.%''
-
-    OR kubernetes_version LIKE ''1.0.%'')
-
-    LIMIT 5;;
-
-    '
+  QueryToExecute: ''
 Severity: ''
 Title: Kubernetes Services should be upgraded to a non-vulnerable Kubernetes version

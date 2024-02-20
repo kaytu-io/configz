@@ -8,20 +8,13 @@ Query:
 
     FROM azure_subscription
 
-    WHERE kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
-    ->> ''enabled'' = ''true''
+    WHERE kaytu_description ->> ''$.Subscription.SubscriptionPolicies.locationPlacementId''
+    = ''Microsoft.Resources/subscriptions''
 
-    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
-    -> ''condition.allOf'' ->> ''field'' = ''category''
+    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.quotaId'' = ''Microsoft.Insights/ActivityLogAlerts/condition.allOf''
 
-    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
-    -> ''condition.allOf'' ->> ''equals'' = ''Administrative''
-
-    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
-    -> ''condition.allOf'' ->> ''field'' = ''operationName''
-
-    AND kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts''
-    -> ''condition.allOf'' ->> ''equals'' = ''[parameters(''operationName'')]''
+    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.spendingLimit''
+    = ''true''
 
     LIMIT 5;;
 

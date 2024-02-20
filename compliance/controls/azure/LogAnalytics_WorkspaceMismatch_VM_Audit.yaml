@@ -5,5 +5,5 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: ''
-Severity: ''
+Severity: medium
 Title: Virtual machines should be connected to a specified workspace

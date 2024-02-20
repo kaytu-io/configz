@@ -5,6 +5,6 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: ''
-Severity: ''
+Severity: medium
 Title: Keys should have a rotation policy ensuring that their rotation is scheduled
   within the specified number of days after creation.

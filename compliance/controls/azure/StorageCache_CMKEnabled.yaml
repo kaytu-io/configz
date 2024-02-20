@@ -9,11 +9,8 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_hpc_cache\nWHERE type = 'Microsoft.StorageCache/caches'\n\
-    AND (\n    (identity->>'type' IS NULL)\n    OR (kaytu_description->'Cache'->'identity'->>'type'\
-    \ IS NULL)\n)\nAND (\n    (encryption_settings->'keyEncryptionKey'->>'keyUrl'\
-    \ IS NULL)\n    OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->>'keyUrl'\
-    \ IS NULL)\n)\nAND (\n    (encryption_settings->'keyEncryptionKey'->'sourceVault'->>'Id'\
-    \ IS NULL)\n    OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->'sourceVault'->>'Id'\
+    AND (\n    (identity->>'type' IS NULL)\n    OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->>'keyUrl'\
+    \ IS NULL)\n    OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->'sourceVault'->>'id'\
     \ IS NULL)\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: HPC Cache accounts should use customer-managed key for encryption

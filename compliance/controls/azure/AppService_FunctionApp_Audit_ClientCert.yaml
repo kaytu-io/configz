@@ -7,8 +7,9 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_app_service_function_app\nWHERE type = 'Microsoft.Web/sites'\n\
-    \  AND (kind LIKE '%functionapp%' AND kind NOT LIKE '%workflowapp%')\n  AND (client_cert_enabled\
-    \ = false OR client_cert_enabled IS NULL)\nLIMIT 5;;\n"
+    \  AND kind LIKE '%functionapp%'\n  AND kind NOT LIKE '%workflowapp%'\n  AND (client_cert_enabled\
+    \ = false OR kaytu_description->'Site'->'SiteAuthSettings'->'properties'->>'clientCertEnabled'\
+    \ = 'false')\nLIMIT 5;;\n"
 Severity: ''
 Title: '[Deprecated]: Function apps should have ''Client Certificates (Incoming client
   certificates)'' enabled'

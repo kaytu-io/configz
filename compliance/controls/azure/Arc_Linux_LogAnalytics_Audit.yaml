@@ -10,13 +10,16 @@ Query:
 
     WHERE type = ''Microsoft.HybridCompute/machines''
 
-    AND kaytu_description -> ''Machine.Properties.DetectedProperties.Microsoft.HybridCompute.imageOffer''
+    AND kaytu_description -> ''extensions/type: $.MachineExtensions[*].Type'' = ''OmsAgentForLinux''
+
+    AND kaytu_description -> ''extensions/provisioningState: $.MachineExtensions[*].Properties.ProvisioningState''
+    = ''Succeeded''
+
+    AND kaytu_description -> ''extensions/publisher: $.MachineExtensions[*].Properties.Publisher''
+    = ''Microsoft.EnterpriseCloud.Monitoring''
+
+    AND kaytu_description -> ''Microsoft.HybridCompute/imageOffer: $.Machine.Properties.DetectedProperties.Microsoft.HybridCompute.imageOffer''
     LIKE ''linux%''
-
-    AND (provisioning_state = ''Succeeded''
-
-    OR kaytu_description -> ''MachineExtensions[*].Properties.ProvisioningState''
-    ? ''Succeeded'')
 
     LIMIT 5;;
 

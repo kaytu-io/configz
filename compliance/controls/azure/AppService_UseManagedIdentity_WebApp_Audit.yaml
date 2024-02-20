@@ -9,14 +9,7 @@ Query:
 
     WHERE type = ''Microsoft.Web/sites''
 
-    AND (kind NOT LIKE ''%functionapp%''
-
-    OR kaytu_description ->> ''kind'' NOT LIKE ''%functionapp%'')
-
-    AND (kaytu_description -> ''config'' ->> ''xmanagedServiceIdentityId'' IS NOT
-    NULL
-
-    OR kaytu_description -> ''config'' ->> ''managedServiceIdentityId'' IS NOT NULL)
+    AND (kind NOT LIKE ''%functionapp%'')
 
     LIMIT 5;;
 

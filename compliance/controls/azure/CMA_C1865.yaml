@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: low
 Title: Make SORNs available publicly

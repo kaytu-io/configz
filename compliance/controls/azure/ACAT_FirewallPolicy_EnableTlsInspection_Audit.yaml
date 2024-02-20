@@ -20,6 +20,6 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Azure Firewall Premium should configure a valid intermediate certificate to
   enable TLS inspection

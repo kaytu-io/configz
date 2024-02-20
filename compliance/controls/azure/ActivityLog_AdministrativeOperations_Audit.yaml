@@ -8,7 +8,8 @@ Query:
 
     FROM azure_subscription
 
-    WHERE kaytu_description ->> ''$.SubscriptionDescription.Subscription'' = ''Microsoft.Insights/ActivityLogAlerts/condition.allOf''
+    WHERE kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/ActivityLogAlerts/condition.allOf''
+    IS NOT NULL
 
     LIMIT 5;;
 

@@ -9,18 +9,17 @@ ID: api_management_services_should_use_a_virtual_network
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, sku_name, virtual_network_type
+  QueryToExecute: 'SELECT *
 
     FROM azure_api_management
 
     WHERE type = ''Microsoft.ApiManagement/service''
 
-    AND (sku_name IN (''<evaluatedSkuNames>'')
+    AND (sku_name IN ([parameters(''evaluatedSkuNames'')]) OR kaytu_description->''APIManagement''->>''SKU''->>''Name''
+    IN ([parameters(''evaluatedSkuNames'')]))
 
-    OR kaytu_description -> ''APIManagement'' -> ''properties'' -> ''SKU'' ->> ''Name''
-    IN (''<evaluatedSkuNames>''))
-
-    AND (virtual_network_type IS NULL OR virtual_network_type = ''None'')
+    AND (virtual_network_type IS NULL OR virtual_network_type = ''None'' OR kaytu_description->''APIManagement''->>''VirtualNetworkType''
+    IS NULL)
 
     LIMIT 5;;
 

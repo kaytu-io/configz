@@ -25,5 +25,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Queue Storage should use customer-managed key for encryption

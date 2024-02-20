@@ -11,8 +11,8 @@ Query:
 
     WHERE type = ''Microsoft.Authorization/roleDefinitions''
 
-    AND kaytu_description -> ''$.RoleDefinitionDescription.RoleDefinition.Properties.RoleType''
-    = ''CustomRole''
+    AND kaytu_description -> ''RoleDefinitionDescription'' -> ''RoleDefinition'' ->
+    ''Properties'' ->> ''RoleType'' = ''CustomRole''
 
     LIMIT 5;;
 

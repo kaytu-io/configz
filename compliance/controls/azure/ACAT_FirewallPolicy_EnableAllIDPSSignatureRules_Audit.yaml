@@ -26,6 +26,6 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Firewall Policy Premium should enable all IDPS signature rules to monitor all
   inbound and outbound traffic flows

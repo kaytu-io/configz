@@ -8,28 +8,23 @@ ID: event_hub_namespaces_should_use_a_customer_managed_key_for_encryption
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT azure_eventhub_namespace.name, azure_eventhub_namespace.id,\
-    \ azure_eventhub_namespace.type, azure_eventhub_namespace.provisioning_state,\
-    \ azure_eventhub_namespace.created_at, azure_eventhub_namespace.cluster_arm_id,\
-    \ azure_eventhub_namespace.is_auto_inflate_enabled, azure_eventhub_namespace.kafka_enabled,\
-    \ azure_eventhub_namespace.maximum_throughput_units, azure_eventhub_namespace.metric_id,\
-    \ azure_eventhub_namespace.service_bus_endpoint, azure_eventhub_namespace.sku_capacity,\
-    \ azure_eventhub_namespace.sku_name, azure_eventhub_namespace.sku_tier, azure_eventhub_namespace.updated_at,\
-    \ azure_eventhub_namespace.zone_redundant, azure_eventhub_namespace.diagnostic_settings,\
-    \ azure_eventhub_namespace.encryption, azure_eventhub_namespace.identity, azure_eventhub_namespace.network_rule_set,\
-    \ azure_eventhub_namespace.private_endpoint_connections, azure_eventhub_namespace.title,\
-    \ azure_eventhub_namespace.tags, azure_eventhub_namespace.akas, azure_eventhub_namespace.region,\
-    \ azure_eventhub_namespace.resource_group, azure_eventhub_namespace.cloud_environment,\
-    \ azure_eventhub_namespace.subscription_id, azure_eventhub_namespace.kaytu_account_id,\
-    \ azure_eventhub_namespace.kaytu_resource_id, azure_eventhub_namespace.kaytu_metadata,\
-    \ azure_eventhub_namespace.kaytu_description, azure_eventhub_namespace._ctx\n\
-    FROM azure_eventhub_namespace\nWHERE azure_eventhub_namespace.type = 'Microsoft.EventHub/namespaces'\n\
-    AND (\n  azure_eventhub_namespace.cluster_arm_id IS NOT NULL\n  OR json_extract_path_text(azure_eventhub_namespace.kaytu_description,\
-    \ '$.definitions.EHNamespaceProperties.properties.ClusterArmID') IS NOT NULL\n\
-    )\nAND (\n  json_extract_path_text(azure_eventhub_namespace.kaytu_description,\
-    \ '$.definitions.EHNamespaceProperties.properties.Encryption.properties.KeySource')\
-    \ IS NULL\n  OR json_extract_path_text(azure_eventhub_namespace.kaytu_description,\
-    \ '$.definitions.EHNamespaceProperties.properties.Encryption.properties.KeySource')\
-    \ != 'Microsoft.Keyvault'\n)\nLIMIT 5;;\n"
+  QueryToExecute: 'SELECT azure_eventhub_namespace.name, azure_eventhub_namespace.cluster_arm_id,
+    azure_eventhub_namespace.encryption
+
+    FROM azure_eventhub_namespace
+
+    WHERE azure_eventhub_namespace.type = ''Microsoft.EventHub/namespaces''
+
+    AND (azure_eventhub_namespace.cluster_arm_id IS NOT NULL OR json_extract_path_text(azure_eventhub_namespace.kaytu_description,
+    ''clusterArmId: $.defs.EHNamespaceProperties.properties.ClusterArmID'') IS NOT
+    NULL)
+
+    AND (azure_eventhub_namespace.encryption->>''keySource'' IS NULL OR json_extract_path_text(azure_eventhub_namespace.kaytu_description,
+    ''encryption.keySource: $.defs.EHNamespaceProperties.properties.Encryption.properties.KeySource'')
+    IS NULL)
+
+    LIMIT 5;;
+
+    '
 Severity: ''
 Title: Event Hub namespaces should use a customer-managed key for encryption

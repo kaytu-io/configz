@@ -9,7 +9,7 @@ Query:
 
     FROM azure_subscription
 
-    WHERE kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' ->> ''Microsoft.Insights/logProfiles/categories''
+    WHERE kaytu_description -> ''Subscription'' -> ''SubscriptionPolicies'' -> ''Microsoft.Insights/logProfiles/categories''
     IS NOT NULL
 
     LIMIT 5;;

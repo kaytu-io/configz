@@ -22,5 +22,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: App Service app slots that use PHP should use a specified 'PHP version'

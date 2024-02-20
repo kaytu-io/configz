@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Employ FICAM-approved resources to accept third-party credentials

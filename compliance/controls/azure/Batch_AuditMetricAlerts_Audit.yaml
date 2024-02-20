@@ -23,5 +23,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Metric alert rules should be configured on Batch accounts

@@ -10,8 +10,8 @@ Query:
 
     WHERE type = ''Microsoft.Network/networkInterfaces''
 
-    AND kaytu_description -> ''$.Interface.properties.ipConfigurations[*].subnet.id''
-    NOT LIKE concat(parameters(''virtualNetworkId''), ''/*'')
+    AND kaytu_description->''Interface''->''properties''->''ipConfigurations''->0->''subnet''->>''id''
+    NOT LIKE concat(''%'', parameters(''virtualNetworkId''), ''/%'')
 
     LIMIT 5;;
 

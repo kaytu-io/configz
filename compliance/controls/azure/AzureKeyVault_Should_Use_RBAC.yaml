@@ -16,5 +16,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: '[Preview]: Azure Key Vault should use RBAC permission model'

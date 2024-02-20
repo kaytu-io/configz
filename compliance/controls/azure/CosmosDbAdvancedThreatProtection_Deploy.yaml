@@ -13,5 +13,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Deploy Advanced Threat Protection for Cosmos DB Accounts

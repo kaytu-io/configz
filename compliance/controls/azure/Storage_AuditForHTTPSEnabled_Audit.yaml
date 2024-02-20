@@ -8,9 +8,7 @@ Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_storage_account\nWHERE type = 'Microsoft.Storage/storageAccounts'\n\
-    AND (\n    (kaytu_description -> 'Account' -> 'Properties' ->> 'EnableHTTPSTrafficOnly'\
-    \ = 'false')\n    OR\n    (kaytu_description -> 'Account' -> 'Properties' ? 'EnableHTTPSTrafficOnly'\
-    \ AND kaytu_description -> 'Account' -> 'Properties' ->> 'EnableHTTPSTrafficOnly'\
-    \ IS NULL)\n)\nLIMIT 5;;\n"
+    AND (\n    (requestContext->>'apiVersion' < '2019-04-01' AND supports_https_traffic_only\
+    \ = false)\n    OR supports_https_traffic_only = false\n)\nLIMIT 5;;\n"
 Severity: ''
 Title: Secure transfer to storage accounts should be enabled

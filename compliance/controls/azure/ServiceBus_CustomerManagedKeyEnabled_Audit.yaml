@@ -8,7 +8,7 @@ ID: service_bus_premium_namespaces_should_use_a_customer_managed_key_for_encrypt
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, sku_tier, kaytu_description
+  QueryToExecute: 'SELECT name, type, sku_tier, encryption
 
     FROM azure_servicebus_namespace
 
@@ -16,7 +16,7 @@ Query:
 
     AND sku_tier = ''Premium''
 
-    AND (encryption -> ''keySource'') IS DISTINCT FROM ''Microsoft.Keyvault''
+    AND (encryption->>''keySource'' IS NULL OR encryption->>''keySource'' != ''Microsoft.Keyvault'')
 
     LIMIT 5;;
 

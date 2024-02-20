@@ -20,5 +20,5 @@ Query:
     LIMIT 5;;
 
     '
-Severity: ''
+Severity: medium
 Title: Security Center standard pricing tier should be selected

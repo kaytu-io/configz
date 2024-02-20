@@ -14,14 +14,11 @@ Query:
 
     WHERE type = ''Microsoft.Web/sites''
 
-    AND (kind ILIKE ''%functionapp%'' AND kind NOT ILIKE ''%workflowapp%'' AND kind
-    ILIKE ''%linux%'')
+    AND (kind LIKE ''%functionapp%'' AND kind NOT LIKE ''%workflowapp%'' AND kind
+    LIKE ''%linux%'')
 
-    AND (kaytu_description ->> ''$.SiteConfig.properties.linuxFxVersion'' NOT ILIKE
-    ''%JAVA%''
-
-    OR kaytu_description ->> ''$.SiteConfig.properties.linuxFxVersion'' = CONCAT(''JAVA|'',
-    ''[parameters(''LinuxJavaVersion'')]''))
+    AND (kaytu_description ->> ''config/web.linuxFxVersion'' NOT LIKE ''%JAVA%'' OR
+    kaytu_description ->> ''config/web.linuxFxVersion'' = CONCAT(''JAVA|'', ''LinuxJavaVersion''))
 
     LIMIT 5;;
 
