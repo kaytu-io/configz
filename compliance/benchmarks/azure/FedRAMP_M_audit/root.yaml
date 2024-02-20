@@ -669,3 +669,10 @@ Description: FedRAMP is a U.S. government-wide program that provides a standardi
 Enabled: true
 ID: FedRAMP_M_audit
 Title: FedRAMP Moderate
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

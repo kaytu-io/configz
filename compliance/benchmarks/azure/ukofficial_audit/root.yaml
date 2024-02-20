@@ -58,3 +58,10 @@ Description: This initiative includes audit and virtual machine extension deploy
 Enabled: true
 ID: ukofficial_audit
 Title: UK OFFICIAL and UK NHS
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

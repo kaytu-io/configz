@@ -128,3 +128,10 @@ Description: This initiative includes policies that address a subset of New Zeal
 Enabled: true
 ID: nz_ism
 Title: New Zealand ISM Restricted
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

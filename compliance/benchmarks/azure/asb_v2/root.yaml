@@ -166,3 +166,10 @@ Description: This initiative has been deprecated. The Azure Security Benchmark v
 Enabled: true
 ID: asb_v2
 Title: '[Deprecated]: Azure Security Benchmark v2'
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

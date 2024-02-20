@@ -137,3 +137,10 @@ Description: This initiative includes policies that address a subset of the SWIF
 Enabled: true
 ID: SWIFT_CSP-CSCF_v2021
 Title: '[Preview]: SWIFT CSP-CSCF v2021'
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure

@@ -345,3 +345,10 @@ Description: SWIFT's Customer Security Programme (CSP) helps financial instituti
 Enabled: true
 ID: SWIFT_CSP-CSCF_v2022
 Title: SWIFT CSP-CSCF v2022
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+    - azure
+  service:
+    - Azure
