@@ -1,0 +1,44 @@
+ID: aws_ec2_last_backup_recovery_point_created
+Title: Amazon Elastic Compute Cloud (Amazon EC2) instances should have a recovery point created
+Description: Checks if a recovery point was created for Amazon Elastic Compute Cloud (Amazon EC2) instances. The rule is ALARM if the Amazon EC2 instance does not have a corresponding recovery point created within the specified time period.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH valid_points AS (
+      SELECT
+        recovery_point_arn,
+        creation_date::timestamp,
+        resource_arn
+      FROM 
+        aws_backup_recovery_point
+      WHERE 
+        resource_type = 'EC2' AND
+        creation_date::timestamp > NOW() - INTERVAL '7 days'
+      ),
+      instance_recovery_count AS (
+        SELECT 
+          instance_id, kaytu_resource_id, kaytu_account_id, COUNT(recovery_point_arn) as recovery_count
+        FROM aws_ec2_instance LEFT JOIN valid_points ON aws_ec2_instance.arn = valid_points.resource_arn
+        GROUP BY instance_id, kaytu_resource_id, kaytu_account_id
+      )
+    SELECT 
+      instance_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN recovery_count > 0 THEN 'ok'
+        ELSE 'alarm'
+      END as status,
+      CASE
+        WHEN recovery_count > 0 THEN instance_id || ' has ' || recovery_count || ' recovery points in the timeframe'
+        ELSE instance_id || ' has no recovery points in the timeframe'
+      END as reason
+    FROM instance_recovery_count
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+    - aws_backup_recovery_point
+
+ManualVerification: false
+Severity: low

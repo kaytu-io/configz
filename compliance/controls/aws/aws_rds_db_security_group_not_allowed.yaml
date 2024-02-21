@@ -1,0 +1,28 @@
+ID: aws_rds_db_security_group_not_allowed
+Title: Amazon Relational Database Service (Amazon RDS) DB security groups should be the default DB security group
+Description: Checks if there are any Amazon Relational Database Service (Amazon RDS) DB security groups that are not the default DB security group. The rule is ALARM if there are any DB security groups that are not the default DB security group.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      db_instance_identifier as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN jsonb_array_length(db_security_groups) = 0 THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN jsonb_array_length(db_security_groups) = 0 THEN db_instance_identifier || ' does not have db security group configured'
+        ELSE db_instance_identifier || ' has db security group configured'
+      END AS reason
+    FROM 
+      aws_rds_db_instance
+
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+    - aws_rds_db_instance
+
+ManualVerification: false
+Severity: low

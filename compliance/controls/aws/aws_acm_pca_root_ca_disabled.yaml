@@ -1,0 +1,28 @@
+ID: aws_acm_pca_root_ca_disabled
+Title: ACM PCA root CA should be disabled
+Description: Checks if AWS Private Certificate Authority (AWS Private CA) has a root CA that is disabled. The rule is ALARM for root CAs with status that is not DISABLED.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT
+      kaytu_description -> 'CertificateAuthority' ->> 'Arn' as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN kaytu_description -> 'CertificateAuthority' ->> 'Status' = 'ACTIVE' AND kaytu_description -> 'CertificateAuthority' ->> 'Type' = 'ROOT' THEN 'alarm'
+        ELSE 'ok'
+      END as status,
+      CASE
+        WHEN kaytu_description -> 'CertificateAuthority' ->> 'Status' = 'ACTIVE' AND kaytu_description -> 'CertificateAuthority' ->> 'Type' = 'ROOT' THEN kaytu_description -> 'CertificateAuthority' ->> 'Arn' || 'is an active root certificate'
+        WHEN kaytu_description -> 'CertificateAuthority' ->> 'Status' != 'ACTIVE' AND kaytu_description -> 'CertificateAuthority' ->> 'Type' = 'ROOT' THEN kaytu_description -> 'CertificateAuthority' ->> 'Arn' || 'is an inactive root certificate' 
+        ELSE kaytu_description -> 'CertificateAuthority' ->> 'Arn' || 'is not a root certificate' 
+      END as reason
+    FROM 
+      aws_acmpca_certificate_authority
+  Connector: AWS
+  PrimaryTable: aws_acmpca_certificate_authority
+  ListOfTables:
+    - aws_acmpca_certificate_authority
+
+ManualVerification: false
+Severity: low

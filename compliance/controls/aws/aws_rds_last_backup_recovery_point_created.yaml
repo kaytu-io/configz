@@ -1,0 +1,50 @@
+ID: aws_rds_last_backup_recovery_point_created
+Title: Amazon Relational Database Service (Amazon RDS) instances should have a recovery point created
+Description: Checks if a recovery point was created for Amazon Relational Database Service (Amazon RDS). The rule is ALARM if the Amazon RDS instance does not have a corresponding recovery point created within the specified time period.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH valid_points AS (
+      SELECT
+        recovery_point_arn,
+        creation_date::timestamp,
+        resource_arn
+      FROM 
+        aws_backup_recovery_point
+      WHERE 
+        resource_type = 'RDS' AND
+        creation_date::timestamp > NOW() - INTERVAL '70 days'
+    ),
+    db_recovery_count AS (
+      SELECT 
+        db_instance_identifier as db_id, 'aws_rds_db_instance' as kaytu_table_name, kaytu_resource_id, kaytu_account_id, COUNT(recovery_point_arn) as recovery_count
+      FROM aws_rds_db_instance LEFT JOIN valid_points ON aws_rds_db_instance.arn = valid_points.resource_arn
+      GROUP BY db_id, kaytu_resource_id, kaytu_account_id
+      UNION
+      SELECT 
+        db_cluster_identifier as db_id, 'aws_rds_db_cluster' as kaytu_table_name, kaytu_resource_id, kaytu_account_id, COUNT(recovery_point_arn) as recovery_count
+      FROM aws_rds_db_cluster LEFT JOIN valid_points ON aws_rds_db_cluster.arn = valid_points.resource_arn
+      GROUP BY db_id, kaytu_resource_id, kaytu_account_id
+    )
+    SELECT 
+      db_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      kaytu_table_name,
+      CASE
+        WHEN recovery_count > 0 THEN 'ok'
+        ELSE 'alarm'
+      END as status,
+      CASE
+        WHEN recovery_count > 0 THEN db_id || ' has ' || recovery_count || ' recovery points in the timeframe'
+        ELSE db_id || ' has no recovery points in the timeframe'
+      END as reason
+    FROM db_recovery_count
+  Connector: AWS
+  ListOfTables:
+    - aws_rds_db_instance
+    - aws_rds_db_cluster
+    - aws_backup_recovery_point
+
+ManualVerification: false
+Severity: low

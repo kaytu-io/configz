@@ -1,0 +1,27 @@
+ID: aws_wafv2_rule_group_rule_attached
+Title: A WAF rule group should have rules attached
+Description: Checks if AWS WAFv2 rule groups have rules attached. The rule is ALARM if the rule group does not have any rules attached.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when rules is null or jsonb_array_length(rules) = 0 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when rules is null or jsonb_array_length(rules) = 0 then name || ' has no attached rules.'
+        else name || ' has ' || jsonb_array_length(rules) || ' rule(s) attached.'
+      end as reason
+      , region, account_id
+    from
+      aws_wafv2_rule_group;
+  Connector: AWS
+  PrimaryTable: aws_wafv2_rule_group
+  ListOfTables:
+  - aws_wafv2_rule_group
+ManualVerification: false
+Severity: medium

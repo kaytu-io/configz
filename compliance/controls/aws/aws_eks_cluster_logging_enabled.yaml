@@ -1,0 +1,30 @@
+ID: aws_eks_cluster_logging_enabled
+Title: Amazon Elastic Kubernetes Service (Amazon EKS) clusters should have logging enabled
+Description: Checks if an Amazon Elastic Kubernetes Service (Amazon EKS) cluster is configured with logging enabled. The rule is ALARM if logging for Amazon EKS clusters is not enabled for all log types.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN 'true' = ANY(array_agg(log_status ->> 'Enabled')) THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN 'true' = ANY(array_agg(log_status ->> 'Enabled')) THEN name || ' has logging enabled'
+        ELSE name || ' does not have logging enabled'
+      END AS reason
+    FROM 
+      aws_eks_cluster,
+      jsonb_array_elements(logging -> 'ClusterLogging') as log_status
+    GROUP BY name,kaytu_resource_id,kaytu_account_id
+
+  Connector: AWS
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+    - aws_eks_cluster
+
+ManualVerification: false
+Severity: low

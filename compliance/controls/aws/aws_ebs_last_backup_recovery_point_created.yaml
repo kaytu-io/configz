@@ -1,0 +1,44 @@
+ID: aws_ebs_last_backup_recovery_point_created
+Title: Amazon Elastic Block Store (Amazon EBS) volumes should have a recovery point created
+Description: Checks if a recovery point was created for Amazon Elastic Block Store (Amazon EBS). The rule is ALARM if the Amazon EBS volume does not have a corresponding recovery point created within the specified time period.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH valid_points AS (
+      SELECT
+        recovery_point_arn,
+        creation_date::timestamp,
+        resource_arn
+      FROM 
+        aws_backup_recovery_point
+      WHERE 
+        resource_type = 'EBS' AND
+        creation_date::timestamp > NOW() - INTERVAL '7 days'
+    ),
+    volume_recovery_count AS (
+      SELECT 
+        volume_id, kaytu_resource_id, kaytu_account_id, COUNT(recovery_point_arn) as recovery_count
+      FROM aws_ebs_volume LEFT JOIN valid_points ON aws_ebs_volume.arn = valid_points.resource_arn
+      GROUP BY volume_id, kaytu_resource_id, kaytu_account_id
+    )
+    SELECT 
+      volume_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN recovery_count > 0 THEN 'ok'
+        ELSE 'alarm'
+      END as status,
+      CASE
+        WHEN recovery_count > 0 THEN volume_id || ' has ' || recovery_count || ' recovery points in the timeframe'
+        ELSE volume_id || ' has no recovery points in the timeframe'
+      END as reason
+    FROM volume_recovery_count
+  Connector: AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+    - aws_ebs_volume
+    - aws_backup_recovery_point
+
+ManualVerification: false
+Severity: low
