@@ -22,7 +22,7 @@ Query:
       azure_security_center_setting sc_sett
       right join azure_subscription sub on sc_sett.subscription_id = sub.subscription_id
     where
-      name = 'WDATP';
+      sc_sett.title = 'WDATP';
   Connector: Azure
   PrimaryTable: azure_security_center_setting
   ListOfTables:

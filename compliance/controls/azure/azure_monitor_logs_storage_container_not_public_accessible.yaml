@@ -23,7 +23,7 @@ Query:
       azure_storage_container sc,
       azure_subscription sub
     where
-      name = 'insights-operational-logs'
+      name LIKE 'insight%logs%'
       and sub.subscription_id = sc.subscription_id;
   Connector: Azure
   PrimaryTable: azure_storage_container
