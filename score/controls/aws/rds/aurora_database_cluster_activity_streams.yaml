@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure that Amazon Aurora clusters are configured to use database activity streams.
+RiskLevel: Medium
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

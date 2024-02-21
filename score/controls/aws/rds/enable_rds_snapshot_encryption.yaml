@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure that AWS RDS snapshots are encrypted to meet security and compliance requirements.
+RiskLevel: Medium
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

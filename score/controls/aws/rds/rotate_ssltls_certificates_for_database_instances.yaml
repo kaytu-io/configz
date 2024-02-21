@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure that SSL/TLS certificates for RDS database instances are rotated according to the AWS schedule.
+RiskLevel: High
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

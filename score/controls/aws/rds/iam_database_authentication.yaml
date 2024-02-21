@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Enable IAM Database Authentication.
+RiskLevel: Medium
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

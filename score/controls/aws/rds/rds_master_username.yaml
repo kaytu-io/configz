@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure AWS RDS instances are using secure and unique master usernames for their databases.
+RiskLevel: High
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure that Amazon Backup service is used to manage AWS RDS database snapshots.
+RiskLevel: Low
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

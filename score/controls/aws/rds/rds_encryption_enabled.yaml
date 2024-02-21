@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure encryption is setup for RDS instances to fulfill compliance requirements for data-at-rest encryption.
+RiskLevel: High
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

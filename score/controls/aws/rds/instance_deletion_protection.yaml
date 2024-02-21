@@ -1,0 +1,38 @@
+Connector: AWS
+Description: Enable AWS RDS Instance Deletion Protection.
+Enabled: true
+ID: 5.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Enable AWS RDS Instance Deletion Protection.
+RiskLevel: Medium
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID:
+  ListOfTables:
+    - aws_rds_db_instance
+  PrimaryTable: aws_rds_db_instance
+  QueryToExecute: |-
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when engine like any(array [ 'aurora%', 'docdb', 'neptune' ]) then 'skip'
+        when deletion_protection then 'ok'
+        else 'alarm'
+      end status,
+      case
+        when engine like any(array [ 'aurora%', 'docdb', 'neptune' ]) then title || ' has engine ' || engine || ' cluster, deletion protection is set at cluster level.'
+        when deletion_protection then title || ' deletion protection enabled.'
+        else title || ' deletion protection not enabled.'
+      end reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance;
+ShortTitle: Instance Deletion Protection
+Tags:
+  category:

@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure automated backups are enabled for RDS instances. This feature of Amazon RDS enables point-in-time recovery of your database instance.
+RiskLevel: High
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1

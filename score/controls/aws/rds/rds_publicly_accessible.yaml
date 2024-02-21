@@ -6,6 +6,7 @@ Internal: false
 Links: null
 LogoURL: ""
 LongTitle: Ensure RDS instances aren't public facing to minimise security risks.
+RiskLevel: Very High
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1
