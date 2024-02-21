@@ -16,7 +16,7 @@ Query:
   PrimaryTable: aws_rds_db_instance
   QueryToExecute: |-
     select
-      arn as resource,
+      db_instance_identifier as resource,
       kaytu_account_id as kaytu_account_id,
       kaytu_resource_id as kaytu_resource_id,
       case

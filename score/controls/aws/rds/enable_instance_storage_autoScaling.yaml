@@ -17,7 +17,6 @@ Query:
   QueryToExecute: |-
     select
       db_instance_identifier as resource,
-      engine,
       kaytu_account_id as kaytu_account_id,
       kaytu_resource_id as kaytu_resource_id,
       case
