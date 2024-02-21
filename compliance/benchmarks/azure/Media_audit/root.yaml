@@ -1,43 +1,31 @@
-Children: []
-Connector: Azure
-Controls:
-- azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
-- all_authorization_rules_except_root_manage_shared_access_key_should_be_removed_from_service_bus_namespace
-- windows_machines_should_meet_requirements_for_'_security_options_system_settings'
-- audit_linux_machines_that_don't_have_the_specified_applications_installed
-- resource_logs_in_search_services_should_be_enabled
-- windows_machines_should_meet_requirements_for_'_windows_firewall_properties'
-- transparent_data_encryption_on_sql_databases_should_be_enabled
-- sql_databases_should_have_vulnerability_findings_resolved
-- windows_machines_should_meet_requirements_for_'_security_options_accounts'
-- windows_machines_should_meet_requirements_for_'_user_rights_assignment'
-- a_vulnerability_assessment_solution_should_be_enabled_on_your_virtual_machines
-- storage_accounts_should_restrict_network_access
-- virtual_machines_should_encrypt_temp_disks,_caches,_and_data_flows_between_compute_and_storage_resources
-- guest_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-- system_updates_should_be_installed_on_your_machines
-- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-- audit_windows_machines_that_do_not_restrict_the_minimum_password_length_to_specified_number_of_characters
-- audit_linux_machines_that_allow_remote_connections_from_accounts_without_passwords
-- accounts_with_write_permissions_on_azure_resources_should_be_mfa_enabled
-- sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
-- windows_machines_should_meet_requirements_for_'_security_options_recovery_console'
-- ip_forwarding_on_your_virtual_machine_should_be_disabled
-- metric_alert_rules_should_be_configured_on_batch_accounts
-- windows_machines_should_meet_requirements_for_'_security_options_microsoft_network_client'
-- resource_logs_in_logic_apps_should_be_enabled
-- windows_machines_should_meet_requirements_for_'_security_options_network_access'
-Description: This initiative includes audit and virtual machine extension deployment
-  policies that address a subset of Motion Picture Association of America (MPAA) security
-  and guidelines controls. Additional policies will be added in upcoming releases.
-  For more information, visit https://aka.ms/mpaa-init.
-Enabled: true
 ID: Media_audit
 Title: '[Preview]: Motion Picture Association of America (MPAA)'
+ReferenceCode: ""
+Description: This initiative includes audit and virtual machine extension deployment policies that address a subset of Motion Picture Association of America (MPAA) security and guidelines controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/mpaa-init.
+LogoURI: ""
+Category: ""
+DocumentURI: ""
+Enabled: true
+Managed: false
+AutoAssign: false
+Baseline: false
 Tags:
-  kaytu_benchmark_type:
-  - compliance
-  plugin:
-    - azure
-  service:
-    - Azure
+    kaytu_benchmark_type:
+        - compliance
+    plugin:
+        - azure
+    service:
+        - Azure
+Connector: Azure
+Children: []
+Controls:
+    - azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
+    - all_authorization_rules_except_root_manage_shared_access_key_should_be_removed_from_service_bus_namespace
+    - resource_logs_in_search_services_should_be_enabled
+    - transparent_data_encryption_on_sql_databases_should_be_enabled
+    - storage_accounts_should_restrict_network_access
+    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+    - sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
+    - resource_logs_in_logic_apps_should_be_enabled
+CreatedAt: 0001-01-01T00:00:00Z
+UpdatedAt: 0001-01-01T00:00:00Z

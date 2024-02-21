@@ -1,174 +1,140 @@
-Children: []
-Connector: Azure
-Controls:
-- azure_defender_for_sql_should_be_enabled_for_unprotected_sql_managed_instances
-- enforce_logical_access
-- authorize_and_manage_access
-- authorize_access_to_security_functions_and_information
-- log_checkpoints_should_be_enabled_for_postgre_sql_database_servers
-- azure_subscriptions_should_have_a_log_profile_for_activity_log
-- protect_passwords_with_encryption
-- protect_special_information
-- email_notification_for_high_severity_alerts_should_be_enabled
-- define_a_physical_key_management_process
-- issue_public_key_certificates
-- define_cryptographic_use
-- review_malware_detections_report_weekly
-- disable_authenticators_upon_termination
-- azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
-- accounts_with_owner_permissions_on_azure_resources_should_be_mfa_enabled
-- vulnerabilities_in_security_configuration_on_your_machines_should_be_remediated
-- monitor_privileged_role_assignment
-- azure_monitor_should_collect_activity_logs_from_all_regions
-- verify_software,_firmware_and_information_integrity
-- an_activity_log_alert_should_exist_for_specific_policy_operations
-- subnets_should_be_associated_with_a_network_security_group
-- protect_data_in_transit_using_encryption
-- app_service_apps_should_use_managed_identity
-- govern_and_monitor_audit_processing_activities
-- management_ports_of_virtual_machines_should_be_protected_with_just_in_time_network_access_control
-- azure_monitor_log_profile_should_collect_logs_for_categories_'write,'_'delete,'_and_'action'
-- azure_defender_for_sql_should_be_enabled_for_unprotected_azure_sql_servers
-- document_mobility_training
-- update_antivirus_definitions
-- employ_flow_control_mechanisms_of_encrypted_information
-- app_service_apps_should_have_authentication_enabled
-- maintain_availability_of_information
-- determine_assertion_requirements
-- determine_auditable_events
-- satisfy_token_quality_requirements
-- azure_defender_for_sql_servers_on_machines_should_be_enabled
-- provide_privacy_training
-- reassign_or_remove_user_privileges_as_needed
-- establish_a_data_leakage_management_procedure
-- maintain_integrity_of_audit_system
-- verify_security_functions
-- implement_controls_to_secure_all_media
-- implement_controls_to_secure_alternate_work_sites
-- remediate_information_system_flaws
-- subscriptions_should_have_a_contact_email_address_for_security_issues
-- document_remote_access_guidelines
-- manage_gateways
-- azure_key_vault_managed_hsm_should_have_purge_protection_enabled
-- transparent_data_encryption_on_sql_databases_should_be_enabled
-- key_vaults_should_have_deletion_protection_enabled
-- internet_facing_virtual_machines_should_be_protected_with_network_security_groups
-- azure_defender_for_azure_sql_database_servers_should_be_enabled
-- auditing_on_sql_server_should_be_enabled
-- function_apps_should_use_the_latest_tls_version
-- review_user_accounts
-- review_user_groups_and_applications_with_access_to_sensitive_data
-- adaptive_application_controls_for_defining_safe_applications_should_be_enabled_on_your_machines
-- manage_system_and_admin_accounts
-- azure_defender_for_servers_should_be_enabled
-- alert_personnel_of_information_spillage
-- app_service_apps_should_only_be_accessible_over_https
-- identify_and_manage_downstream_information_exchanges
-- require_approval_for_account_creation
-- review_threat_protection_status_weekly
-- authorize_remote_access
-- support_personal_verification_credentials_issued_by_legal_authorities
-- connection_throttling_should_be_enabled_for_postgre_sql_database_servers
-- a_vulnerability_assessment_solution_should_be_enabled_on_your_virtual_machines
-- storage_account_containing_the_container_with_activity_logs_must_be_encrypted_with_byok
-- restrict_access_to_privileged_accounts
-- guest_accounts_with_read_permissions_on_azure_resources_should_be_removed
-- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-- secure_transfer_to_storage_accounts_should_be_enabled
-- use_privileged_identity_management
-- an_activity_log_alert_should_exist_for_specific_security_operations
-- sql_auditing_settings_should_have_action_groups_configured_to_capture_critical_activities
-- microsoft_defender_for_storage_should_be_enabled
-- employ_least_privilege_access
-- perform_a_trend_analysis_on_threats
-- function_apps_should_use_latest_'_http_version'
-- review_account_provisioning_logs
-- azure_defender_for_key_vault_should_be_enabled
-- app_service_apps_should_use_latest_'_http_version'
-- storage_accounts_should_restrict_network_access
-- app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
-- establish_and_document_change_control_processes
-- disconnections_should_be_logged_for_postgre_sql_database_servers.
-- enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
-- sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
-- enforce_user_uniqueness
-- notify_when_account_is_not_needed
-- retain_terminated_user_data
-- retain_security_policies_and_procedures
-- storage_accounts_should_allow_access_from_trusted_microsoft_services
-- manage_symmetric_cryptographic_keys
-- activity_log_should_be_retained_for_at_least_one_year
-- virtual_machines_should_encrypt_temp_disks,_caches,_and_data_flows_between_compute_and_storage_resources
-- enable_dual_or_joint_authorization
-- configure_azure_audit_capabilities
-- turn_on_sensors_for_endpoint_security_solution
-- define_organizational_requirements_for_cryptographic_key_management
-- guest_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-- monitor_missing_endpoint_protection_in_azure_security_center
-- identify_and_authenticate_network_devices
-- terminate_user_session_automatically
-- establish_firewall_and_router_configuration_standards
-- establish_network_segmentation_for_card_holder_data_environment
-- protect_audit_information
-- system_updates_should_be_installed_on_your_machines
-- email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
-- enforce_mandatory_and_discretionary_access_control_policies
-- audit_user_account_status
-- authenticate_to_cryptographic_module
-- app_service_apps_should_use_the_latest_tls_version
-- design_an_access_control_model
-- '[_preview]:_storage_account_public_access_should_be_disallowed'
-- key_vault_secrets_should_have_an_expiration_date
-- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-- network_watcher_should_be_enabled
-- microsoft_defender_for_containers_should_be_enabled
-- auto_provisioning_of_the_log_analytics_agent_should_be_enabled_on_your_subscription
-- function_apps_should_have_authentication_enabled
-- sql_managed_instances_should_use_customer_managed_keys_to_encrypt_data_at_rest
-- log_connections_should_be_enabled_for_postgre_sql_database_servers
-- function_apps_should_use_managed_identity
-- accounts_with_write_permissions_on_azure_resources_should_be_mfa_enabled
-- document_security_operations
-- sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
-- set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
-- resource_logs_in_azure_key_vault_managed_hsm_should_be_enabled
-- perform_vulnerability_scans
-- automate_account_management
-- resource_logs_in_key_vault_should_be_enabled
-- block_untrusted_and_unsigned_processes_that_run_from_usb
-- restrict_access_to_private_keys
-- monitor_access_across_the_organization
-- audit_privileged_functions
-- detect_network_services_that_have_not_been_authorized_or_approved
-- configure_workstations_to_check_for_digital_certificates
-- '[_deprecated]:_function_apps_should_have_''_client_certificates_(_incoming_client_certificates)''_enabled'
-- review_audit_data
-- azure_defender_for_app_service_should_be_enabled
-- '[_preview]:_azure_key_vault_managed_hsm_keys_should_have_an_expiration_date'
-- develop_an_incident_response_plan
-- revoke_privileged_roles_as_appropriate
-- adaptive_network_hardening_recommendations_should_be_applied_on_internet_facing_virtual_machines
-- adhere_to_retention_periods_defined
-- adopt_biometric_authentication_mechanisms
-- control_information_flow
-- review_user_privileges
-- accounts_with_read_permissions_on_azure_resources_should_be_mfa_enabled
-- an_activity_log_alert_should_exist_for_specific_administrative_operations
-- only_approved_vm_extensions_should_be_installed
-- enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
-- implement_training_for_protecting_authenticators
-Description: The Center for Internet Security (CIS) is a nonprofit entity whose mission
-  is to 'identify, develop, validate, promote, and sustain best practice solutions
-  for cyberdefense.' CIS benchmarks are configuration baselines and best practices
-  for securely configuring a system. These policies address a subset of CIS Microsoft
-  Azure Foundations Benchmark v1.1.0 controls. For more information, visit https://aka.ms/cisazure110-initiative
-Enabled: true
 ID: CISv1_1_0
 Title: CIS Microsoft Azure Foundations Benchmark v1.1.0
+ReferenceCode: ""
+Description: The Center for Internet Security (CIS) is a nonprofit entity whose mission is to 'identify, develop, validate, promote, and sustain best practice solutions for cyberdefense.' CIS benchmarks are configuration baselines and best practices for securely configuring a system. These policies address a subset of CIS Microsoft Azure Foundations Benchmark v1.1.0 controls. For more information, visit https://aka.ms/cisazure110-initiative
+LogoURI: ""
+Category: ""
+DocumentURI: ""
+Enabled: true
+Managed: false
+AutoAssign: false
+Baseline: false
 Tags:
-  kaytu_benchmark_type:
-  - compliance
-  plugin:
-    - azure
-  service:
-    - Azure
+    kaytu_benchmark_type:
+        - compliance
+    plugin:
+        - azure
+    service:
+        - Azure
+Connector: Azure
+Children: []
+Controls:
+    - enforce_logical_access
+    - authorize_and_manage_access
+    - authorize_access_to_security_functions_and_information
+    - azure_subscriptions_should_have_a_log_profile_for_activity_log
+    - protect_passwords_with_encryption
+    - protect_special_information
+    - define_a_physical_key_management_process
+    - issue_public_key_certificates
+    - define_cryptographic_use
+    - review_malware_detections_report_weekly
+    - disable_authenticators_upon_termination
+    - azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
+    - monitor_privileged_role_assignment
+    - azure_monitor_should_collect_activity_logs_from_all_regions
+    - verify_software,_firmware_and_information_integrity
+    - an_activity_log_alert_should_exist_for_specific_policy_operations
+    - subnets_should_be_associated_with_a_network_security_group
+    - protect_data_in_transit_using_encryption
+    - app_service_apps_should_use_managed_identity
+    - govern_and_monitor_audit_processing_activities
+    - document_mobility_training
+    - update_antivirus_definitions
+    - employ_flow_control_mechanisms_of_encrypted_information
+    - app_service_apps_should_have_authentication_enabled
+    - maintain_availability_of_information
+    - determine_assertion_requirements
+    - determine_auditable_events
+    - satisfy_token_quality_requirements
+    - reassign_or_remove_user_privileges_as_needed
+    - establish_a_data_leakage_management_procedure
+    - verify_security_functions
+    - implement_controls_to_secure_all_media
+    - implement_controls_to_secure_alternate_work_sites
+    - remediate_information_system_flaws
+    - subscriptions_should_have_a_contact_email_address_for_security_issues
+    - document_remote_access_guidelines
+    - manage_gateways
+    - azure_key_vault_managed_hsm_should_have_purge_protection_enabled
+    - transparent_data_encryption_on_sql_databases_should_be_enabled
+    - auditing_on_sql_server_should_be_enabled
+    - function_apps_should_use_the_latest_tls_version
+    - review_user_accounts
+    - review_user_groups_and_applications_with_access_to_sensitive_data
+    - manage_system_and_admin_accounts
+    - alert_personnel_of_information_spillage
+    - app_service_apps_should_only_be_accessible_over_https
+    - identify_and_manage_downstream_information_exchanges
+    - require_approval_for_account_creation
+    - review_threat_protection_status_weekly
+    - authorize_remote_access
+    - support_personal_verification_credentials_issued_by_legal_authorities
+    - storage_account_containing_the_container_with_activity_logs_must_be_encrypted_with_byok
+    - restrict_access_to_privileged_accounts
+    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+    - secure_transfer_to_storage_accounts_should_be_enabled
+    - use_privileged_identity_management
+    - an_activity_log_alert_should_exist_for_specific_security_operations
+    - sql_auditing_settings_should_have_action_groups_configured_to_capture_critical_activities
+    - microsoft_defender_for_storage_should_be_enabled
+    - employ_least_privilege_access
+    - perform_a_trend_analysis_on_threats
+    - function_apps_should_use_latest_'_http_version'
+    - review_account_provisioning_logs
+    - app_service_apps_should_use_latest_'_http_version'
+    - storage_accounts_should_restrict_network_access
+    - app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
+    - establish_and_document_change_control_processes
+    - enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
+    - enforce_user_uniqueness
+    - notify_when_account_is_not_needed
+    - retain_terminated_user_data
+    - retain_security_policies_and_procedures
+    - storage_accounts_should_allow_access_from_trusted_microsoft_services
+    - manage_symmetric_cryptographic_keys
+    - activity_log_should_be_retained_for_at_least_one_year
+    - enable_dual_or_joint_authorization
+    - turn_on_sensors_for_endpoint_security_solution
+    - define_organizational_requirements_for_cryptographic_key_management
+    - identify_and_authenticate_network_devices
+    - terminate_user_session_automatically
+    - establish_firewall_and_router_configuration_standards
+    - establish_network_segmentation_for_card_holder_data_environment
+    - email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
+    - enforce_mandatory_and_discretionary_access_control_policies
+    - audit_user_account_status
+    - authenticate_to_cryptographic_module
+    - app_service_apps_should_use_the_latest_tls_version
+    - design_an_access_control_model
+    - '[_preview]:_storage_account_public_access_should_be_disallowed'
+    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+    - function_apps_should_have_authentication_enabled
+    - sql_managed_instances_should_use_customer_managed_keys_to_encrypt_data_at_rest
+    - function_apps_should_use_managed_identity
+    - document_security_operations
+    - sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
+    - set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
+    - resource_logs_in_azure_key_vault_managed_hsm_should_be_enabled
+    - perform_vulnerability_scans
+    - automate_account_management
+    - resource_logs_in_key_vault_should_be_enabled
+    - block_untrusted_and_unsigned_processes_that_run_from_usb
+    - restrict_access_to_private_keys
+    - monitor_access_across_the_organization
+    - audit_privileged_functions
+    - detect_network_services_that_have_not_been_authorized_or_approved
+    - configure_workstations_to_check_for_digital_certificates
+    - '[_deprecated]:_function_apps_should_have_''_client_certificates_(_incoming_client_certificates)''_enabled'
+    - review_audit_data
+    - '[_preview]:_azure_key_vault_managed_hsm_keys_should_have_an_expiration_date'
+    - develop_an_incident_response_plan
+    - revoke_privileged_roles_as_appropriate
+    - adopt_biometric_authentication_mechanisms
+    - control_information_flow
+    - review_user_privileges
+    - an_activity_log_alert_should_exist_for_specific_administrative_operations
+    - enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
+    - implement_training_for_protecting_authenticators
+CreatedAt: 0001-01-01T00:00:00Z
+UpdatedAt: 0001-01-01T00:00:00Z

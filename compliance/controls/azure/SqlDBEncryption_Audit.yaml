@@ -4,6 +4,20 @@ ID: transparent_data_encryption_on_sql_databases_should_be_enabled
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: ''
+  QueryToExecute: |
+    SELECT kaytu_description->>'$.name' AS name, 
+      CASE 
+          WHEN azure_sql_database.transparent_data_encryption IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'$.TransparentDataEncryption[*].status'
+          ELSE kaytu_description->>'$.TransparentDataEncryption[*].status'
+      END AS status,
+      CASE 
+          WHEN azure_sql_database.transparent_data_encryption IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'$.TransparentDataEncryption[*].state'
+          ELSE kaytu_description->>'$.TransparentDataEncryption[*].state'
+      END AS state
+    FROM azure_sql_database
+    WHERE azure_sql_database.type = 'Microsoft.Sql/servers/databases'
+    AND azure_sql_database.name != 'master'
+    LIMIT 5;;
+
 Severity: ''
 Title: Transparent Data Encryption on SQL databases should be enabled

@@ -6,6 +6,10 @@ ID: infrastructure_encryption_should_be_enabled_for_azure_database_for_my_sql_se
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: ''
+  QueryToExecute: |
+    SELECT * FROM azure_mysql_server 
+    WHERE type = 'Microsoft.DBforMySQL/servers' AND (infrastructure_encryption IS NULL OR infrastructure_encryption != 'Enabled')
+    LIMIT 5;;              
+
 Severity: ''
 Title: Infrastructure encryption should be enabled for Azure Database for MySQL servers

@@ -8,6 +8,13 @@ ID: azure_stack_edge_devices_should_use_double_encryption
 Query:
   Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: ''
+  QueryToExecute: |
+    SELECT *
+    FROM azure_databox_edge_device
+    WHERE type = 'Microsoft.DataBoxEdge/DataBoxEdgeDevices'
+    AND (sku_name NOT IN ('TEA_1Node', 'TEA_1Node_UPS', 'TEA_1Node_Heater', 'TEA_1Node_UPS_Heater', 'TEA_4Node_Heater', 'TEA_4Node_UPS_Heater', 'TMA', 'EdgePR_Base', 'EdgePR_Base_UPS', 'EdgeMR_Mini')
+    OR kaytu_description->'DataboxEdgeDeviceDescription'->'Device'->'sku'->>'name' NOT IN ('TEA_1Node', 'TEA_1Node_UPS', 'TEA_1Node_Heater', 'TEA_1Node_UPS_Heater', 'TEA_4Node_Heater', 'TEA_4Node_UPS_Heater', 'TMA', 'EdgePR_Base', 'EdgePR_Base_UPS', 'EdgeMR_Mini'))
+    LIMIT 5;;
+
 Severity: medium
 Title: Azure Stack Edge devices should use double-encryption
