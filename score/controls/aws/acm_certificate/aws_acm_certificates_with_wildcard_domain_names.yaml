@@ -1,0 +1,28 @@
+ID: aws_acm_certificates_with_wildcard_domain_names
+Title: AWS ACM Certificates with Wildcard Domain Names
+Description: Ensure that wildcard certificates issued by Amazon Certificate Manager (ACM) or imported to ACM are not in use.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      certificate_arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN domain_name LIKE '*%' then 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN domain_name LIKE '*%' then 'wildcard domain name certificate is used'
+        ELSE 'single domain name certificate is used'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_acm_certificate
+  Connector: AWS
+  PrimaryTable: aws_acm_certificate
+  ListOfTables:
+    - aws_acm_certificate
+ManualVerification: false
+Severity: high

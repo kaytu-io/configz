@@ -1,0 +1,30 @@
+ID: aws_opensearch_slow_logs
+Title: AWS OpenSearch Slow Logs
+Description: Ensure that your AWS OpenSearch domains publish slow logs to AWS CloudWatch Logs.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN (COALESCE((log_publishing_options -> 'INDEX_SLOW_LOGS' ->> 'Enabled')::bool, false)::bool and
+        COALESCE((log_publishing_options -> 'SEARCH_SLOW_LOGS' ->> 'Enabled')::bool, false)::bool) THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN (COALESCE((log_publishing_options -> 'INDEX_SLOW_LOGS' ->> 'Enabled')::bool, false)::bool and
+        COALESCE((log_publishing_options -> 'SEARCH_SLOW_LOGS' ->> 'Enabled')::bool, false)::bool) THEN domain_name || ' Slow Logs feature is enabled' 
+        ELSE domain_name || ' Slow Logs feature is not enabled'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+ManualVerification: false
+Severity: medium

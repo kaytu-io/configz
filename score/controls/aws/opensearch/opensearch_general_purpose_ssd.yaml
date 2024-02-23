@@ -1,0 +1,28 @@
+ID: opensearch_general_purpose_ssd
+Title: OpenSearch General Purpose SSD
+Description: Ensure OpenSearch nodes are using General Purpose SSD storage instead of Provisioned IOPS SSD storage to optimize the service costs.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN (ebs_options ->> 'VolumeType') = 'io1' THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN (ebs_options ->> 'VolumeType') = 'io1' THEN domain_name || ' data nodes are not using General Purpose SSD volumes' 
+        ELSE domain_name || ' data nodes are using General Purpose SSD volumes'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+ManualVerification: false
+Severity: high

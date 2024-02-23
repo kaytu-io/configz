@@ -1,0 +1,36 @@
+ID: opensearch_domain_exposed
+Title: OpenSearch Domain Exposed
+Description: Ensure Amazon OpenSearch domains aren't exposed to everyone.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s
+          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
+          (s ->> 'Principal')::text = '{"AWS": "*"}')
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s
+          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
+          (s ->> 'Principal')::text = '{"AWS": "*"}')
+        ) THEN domain_name || ' is publicly accessible' 
+        ELSE domain_name || ' is not publicly accessible'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+ManualVerification: false
+Severity: high

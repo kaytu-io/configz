@@ -1,0 +1,49 @@
+ID: opensearch_accessible_only_from_safelisted_ip_addresses
+Title: Opensearch Accessible Only From Safelisted IP Addresses
+Description: Ensure only safelisted IP addresses can access your Amazon OpenSearch domains.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') AS statement
+              WHERE statement ->> 'Condition' = NULL
+          ) THEN 'alarm'
+          WHEN EXISTS (SELECT 1
+            FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') AS statement,
+                 jsonb_array_elements((statement -> 'Condition' -> 'IpAddress' ->> 'aws:SourceIp')::jsonb) AS ip
+            WHERE '{{.awsSafelistedIPs}}' like '%' || ip.value::text || '%') THEN 'ok'
+          WHERE '{{.awsSafelistedIPs}}' = '' THEN 'ok'
+          ELSE 'alarm'
+      END AS status,
+      CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') AS statement
+              WHERE statement ->> 'Condition' = NULL
+          ) THEN domain_name || ' does not include specific IP addresses'
+          WHEN EXISTS (SELECT 1
+            FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') AS statement,
+                 jsonb_array_elements((statement -> 'Condition' -> 'IpAddress' ->> 'aws:SourceIp')::jsonb) AS ip
+            WHERE '{{.awsSafelistedIPs}}' like '%' || ip.value::text || '%') THEN domain_name || ' includes approved specific IP addresses'
+          WHERE '{{.awsSafelistedIPs}}' = '' THEN ' approved IP addresses not defined'
+          ELSE domain_name || ' includes not approved specific IP addresses'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+        aws_opensearch_domain;
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+  Parameters:
+    - Key: awsSafelistedIPs
+      Required: false
+ManualVerification: false
+Severity: very high

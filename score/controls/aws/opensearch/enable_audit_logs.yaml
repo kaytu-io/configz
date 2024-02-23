@@ -1,0 +1,28 @@
+ID: enable_audit_logs
+Title: Enable Audit Logs
+Description: Ensure that audit logging is enabled for all your Amazon OpenSearch domains.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN log_publishing_options ->> 'AUDIT_LOGS' is not null THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN log_publishing_options ->> 'AUDIT_LOGS' is not null THEN domain_name || ' CloudWatch Logs are enabled.' 
+        ELSE domain_name || ' CloudWatch Logs are not enabled.'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+ManualVerification: false
+Severity: medium

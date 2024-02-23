@@ -1,0 +1,29 @@
+ID: aws_acm_certificates_renewal_30_days_before_expiration
+Title: AWS ACM Certificates Renewal (30 days before expiration)
+Description: Ensure Amazon Certificate Manager (ACM) certificates are renewed before their expiration.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      certificate_arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN not_after - '30 days'::interval < now() THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN not_after < now() THEN 'certificate has been expired'
+        WHEN not_after - '30 days'::interval < now() THEN 'certificate is about to expire in ' || not_after 
+        ELSE 'certificate is not going to expire soon'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_acm_certificate
+  Connector: AWS
+  PrimaryTable: aws_acm_certificate
+  ListOfTables:
+    - aws_acm_certificate
+ManualVerification: false
+Severity: medium
