@@ -9,12 +9,12 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       CASE
-        WHEN endpoint_configuration_types ? '{{.apiGatewayValidEndpointConfigurationTypes}}' THEN 'ok'
+        WHEN endpoint_configuration_types ? '{{.awsApiGatewayValidEndpointConfigurationTypes}}' THEN 'ok'
         ELSE 'alarm'
       END as status,
       CASE
-        WHEN endpoint_configuration_types ? '{{.apiGatewayValidEndpointConfigurationTypes}}' THEN name || ' endpoint configuration type is ' || '{{.apiGatewayValidEndpointConfigurationTypes}}' 
-        ELSE name || ' endpoint configuration type does not have ' || '{{.apiGatewayValidEndpointConfigurationTypes}}' 
+        WHEN endpoint_configuration_types ? '{{.awsApiGatewayValidEndpointConfigurationTypes}}' THEN name || ' endpoint configuration type is ' || '{{.awsApiGatewayValidEndpointConfigurationTypes}}' 
+        ELSE name || ' endpoint configuration type does not have ' || '{{.awsApiGatewayValidEndpointConfigurationTypes}}' 
       END as reason
     FROM aws_api_gateway_rest_api;
   Connector: AWS
@@ -22,7 +22,7 @@ Query:
   ListOfTables:
     - aws_api_gateway_rest_api
   Parameters:
-    - Key: apiGatewayValidEndpointConfigurationTypes
+    - Key: awsApiGatewayValidEndpointConfigurationTypes
       Required: true
 ManualVerification: false
 Severity: low

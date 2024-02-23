@@ -9,12 +9,12 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       CASE
-        WHEN version::float > {{.eksClusterOldestVersionSupported}} THEN 'ok'
+        WHEN version::float > {{.awsEksClusterOldestVersionSupported}} THEN 'ok'
         ELSE 'alarm'
       END AS status,
       CASE
-        WHEN version::float > {{.eksClusterOldestVersionSupported}} THEN name || 'is running ' || version || ' which is supported' 
-        ELSE name || 'is running ' || version || ' which is equal to or lower than lowest supported version ' || {{.eksClusterOldestVersionSupported}}
+        WHEN version::float > {{.awsEksClusterOldestVersionSupported}} THEN name || 'is running ' || version || ' which is supported' 
+        ELSE name || 'is running ' || version || ' which is equal to or lower than lowest supported version ' || {{.awsEksClusterOldestVersionSupported}}
       END AS reason
     FROM 
       aws_eks_cluster
@@ -23,7 +23,7 @@ Query:
   ListOfTables:
     - aws_eks_cluster
   Parameters:
-    - Key: eksClusterOldestVersionSupported
+    - Key: awsEksClusterOldestVersionSupported
       Required: true
 ManualVerification: false
 Severity: low

@@ -1,0 +1,42 @@
+ID: aws_elb_custom_security_policy_ssl_check
+Title: Classic Load Balancer SSL listeners should use a custom policy
+Description: Checks whether your Classic Load Balancer SSL listeners are using a custom policy. The rule is only applicable if there are SSL listeners for the Classic Load Balancer.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH lb_pn AS (
+      SELECT
+        name,
+        arn,
+        kaytu_account_id,
+        kaytu_resource_id,
+        jsonb_agg(pnn) as policy_names
+      FROM
+        aws_ec2_classic_load_balancer,
+        jsonb_array_elements(listener_descriptions) as pn,
+        jsonb_array_elements(pn -> 'PolicyNames') as pnn
+      WHERE pn -> 'Listener' ->> 'Protocol' IN ('SSL', 'HTTPS')
+      GROUP BY name, arn, kaytu_account_id, kaytu_resource_id
+    )
+    SELECT
+      lb.name as resource,
+      lb.kaytu_account_id,
+      lb.kaytu_resource_id,
+      CASE
+        WHEN (lb_pn.policy_names IS NULL) or (jsonb_array_length(lb_pn.policy_names) > 0) THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN (lb_pn.policy_names IS NULL) THEN lb.name || ' does not have an SSL listener'
+        WHEN jsonb_array_length(lb_pn.policy_names) > 0 THEN lb.name || ' ssl listeners have custom policy attached'
+        ELSE lb.name || ' listeners do not have custom policy attached'
+      END AS reason
+    FROM
+      aws_ec2_classic_load_balancer AS lb LEFT JOIN lb_pn ON lb.arn = lb_pn.arn
+
+  Connector: AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+    - aws_ec2_classic_load_balancer
+ManualVerification: false
+Severity: low
