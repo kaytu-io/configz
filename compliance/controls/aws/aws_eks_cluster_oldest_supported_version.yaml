@@ -1,0 +1,29 @@
+ID: aws_eks_cluster_oldest_supported_version
+Title:
+Description:
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN version::float > {{.awsEksClusterOldestVersionSupported}} THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN version::float > {{.awsEksClusterOldestVersionSupported}} THEN name || 'is running ' || version || ' which is supported' 
+        ELSE name || 'is running ' || version || ' which is equal to or lower than lowest supported version ' || {{.awsEksClusterOldestVersionSupported}}
+      END AS reason
+    FROM 
+      aws_eks_cluster
+  Connector: AWS
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+    - aws_eks_cluster
+  Parameters:
+    - Key: awsEksClusterOldestVersionSupported
+      Required: true
+ManualVerification: false
+Severity: low

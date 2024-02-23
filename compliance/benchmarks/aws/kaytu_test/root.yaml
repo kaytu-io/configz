@@ -1,0 +1,16 @@
+Connector: AWS
+Controls:
+  - aws_eks_cluster_oldest_supported_version
+ReferenceCode: kaytu_test_aws
+Description: Test Benchmark for AWS
+ID: kaytu_test_aws
+Tags:
+  category:
+    - Compliance
+  kaytu_benchmark_type:
+    - compliance
+  plugin:
+    - aws
+  service:
+    - AWS
+Title: Kaytu Test for AWS
