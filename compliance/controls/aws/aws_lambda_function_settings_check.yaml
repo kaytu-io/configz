@@ -1,0 +1,50 @@
+ID: aws_lambda_function_settings_check
+Title:
+Description:
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT
+      name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN (package_type = 'Image') THEN 'skip'
+        WHEN 
+          '{{.awsLambdaFunctionAllowedRuntimes}}' ? runtime AND
+          ('{{.awsLambdaFunctionAllowedRoles}}' = '' OR  '{{.awsLambdaFunctionAllowedRoles}}' ? role) AND
+          ('{{.awsLambdaFunctionAllowedTimeouts}}' = '' OR  '{{.awsLambdaFunctionAllowedTimeouts}}' ? timeout::text) AND
+          ('{{.awsLambdaFunctionAllowedMemorySizes}}' = '' OR  '{{.awsLambdaFunctionAllowedMemorySizes}}' ? memory_size::text)
+        THEN 'ok'
+        ELSE 'alarm'
+      END as status,
+      CASE
+        WHEN (package_type = 'Image') THEN name || ' is using image package type' 
+        WHEN (
+          '{{.awsLambdaFunctionAllowedRuntimes}}' ? runtime AND
+          ('{{.awsLambdaFunctionAllowedRoles}}' = '' OR  '{{.awsLambdaFunctionAllowedRoles}}' ? role) AND
+          ('{{.awsLambdaFunctionAllowedTimeouts}}' = '' OR  '{{.awsLambdaFunctionAllowedTimeouts}}' ? timeout::text) AND
+          ('{{.awsLambdaFunctionAllowedMemorySizes}}' = '' OR  '{{.awsLambdaFunctionAllowedMemorySizes}}' ? memory_size::text))
+        THEN name || ' matches all the criteria'
+        WHEN NOT '{{.awsLambdaFunctionAllowedRuntimes}}' ? runtime THEN name || ' is using ' || runtime || ' runtime which is not allowed'
+        WHEN NOT ('{{.awsLambdaFunctionAllowedRoles}}' = '' OR  '{{.awsLambdaFunctionAllowedRoles}}' ? role::text) THEN name || ' is using ' || role || ' role which is not allowed'
+        WHEN NOT ('{{.awsLambdaFunctionAllowedTimeouts}}' = '' OR  '{{.awsLambdaFunctionAllowedTimeouts}}' ? timeout::text) THEN name || ' is using ' || timeout || ' timeout which is not allowed'
+        WHEN NOT ('{{.awsLambdaFunctionAllowedMemorySizes}}' = '' OR  '{{.awsLambdaFunctionAllowedMemorySizes}}' ? memory_size::text) THEN name || ' is using ' || memory_size || ' memory_size which is not allowed'
+      END as reason
+    FROM 
+      aws_lambda_function
+  Connector: AWS
+  PrimaryTable: aws_lambda_function
+  ListOfTables:
+    - aws_lambda_function
+  Parameters:
+    - Key: awsLambdaFunctionAllowedRuntimes
+      Required: true
+    - Key: awsLambdaFunctionAllowedRoles
+      Required: false
+    - Key: awsLambdaFunctionAllowedTimeouts
+      Required: false
+    - Key: awsLambdaFunctionAllowedMemorySizes
+      Required: false
+ManualVerification: false
+Severity: low
