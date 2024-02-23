@@ -1,0 +1,28 @@
+ID: opensearch_node_to_node_encryption
+Title: OpenSearch Node To Node Encryption
+Description: Ensure that your Amazon OpenSearch clusters are using node to node encryption in order to meet security and compliance requirements.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN not node_to_node_encryption_options_enabled THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN not node_to_node_encryption_options_enabled THEN domain_name || ' node-to-node encryption is not enabled' 
+        ELSE domain_name || ' node-to-node encryption is enabled'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+ManualVerification: false
+Severity: high

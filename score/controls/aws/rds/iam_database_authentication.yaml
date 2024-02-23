@@ -1,0 +1,36 @@
+Connector: AWS
+Description: Enable IAM Database Authentication.
+Enabled: true
+ID: 5.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Enable IAM Database Authentication.
+RiskLevel: Medium
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID:
+  ListOfTables:
+    - aws_rds_db_instance
+  PrimaryTable: aws_rds_db_instance
+  QueryToExecute: |-
+    select
+      db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when iam_database_authentication_enabled then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when iam_database_authentication_enabled then title || ' IAM authentication enabled.'
+        else title || ' IAM authentication not enabled.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance;
+ShortTitle: IAM Database Authentication
+Tags:
+  category:

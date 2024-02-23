@@ -1,0 +1,37 @@
+Connector: AWS
+Description: Ensure that SSL/TLS certificates for RDS database instances are rotated according to the AWS schedule.
+Enabled: true
+ID: 5.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Ensure that SSL/TLS certificates for RDS database instances are rotated according to the AWS schedule.
+RiskLevel: High
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID:
+  ListOfTables:
+    - aws_rds_db_instance
+  PrimaryTable: aws_rds_db_instance
+  QueryToExecute: |-
+        select
+            db_instance_identifier as resource,
+            kaytu_account_id as kaytu_account_id,
+            kaytu_resource_id as kaytu_resource_id,
+          case
+            when ((c ->> 'ValidTill')::DATE - CURRENT_DATE)::INT < 15 then 'alarm'
+            else 'ok'
+          end as status,
+          case
+            when ((c ->> 'ValidTill')::DATE - CURRENT_DATE)::INT < 15 then title || ' certificate is going to expire in ' || ((c ->> 'ValidTill')::DATE - CURRENT_DATE)::TEXT || ' days'
+            else title || ' certificate is ok' || master_user_name
+          end as reason,
+          region,
+          account_id
+        from
+          aws_rds_db_instance,
+          json_array_elements(certificate::json) as c;
+ShortTitle: Rotate SSL/TLS Certificates for Database Instances
+Tags:
+  category:

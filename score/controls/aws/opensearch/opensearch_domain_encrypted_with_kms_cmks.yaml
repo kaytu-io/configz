@@ -1,0 +1,32 @@
+ID: opensearch_domain_encrypted_with_kms_cmks
+Title: OpenSearch Domain Encrypted with KMS CMKs
+Description: Ensure that OpenSearch domains are encrypted with KMS Customer Master Keys (CMKs).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN kms.key_manager is NULL THEN 'alarm'
+        WHEN kms.key_manager = 'AWS' THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN kms.key_manager is NULL THEN domain_name || ' encryption with kms key not enabled' 
+        WHEN kms.key_manager = 'AWS' THEN domain_name || ' is not encrypted with CMK' 
+        ELSE domain_name || ' is encrypted with CMK'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+      left join (select arn, key_manager from aws_kms_key) kms on (encryption_at_rest_options ->> 'KmsKeyId') = kms.arn
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+    - aws_kms_key
+ManualVerification: false
+Severity: high

@@ -1,0 +1,38 @@
+Connector: AWS
+Description: Enable AWS RDS Log Exports.
+Enabled: true
+ID: 5.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Enable AWS RDS Log Exports.
+RiskLevel: Low
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID:
+  ListOfTables:
+    - aws_rds_db_instance
+  PrimaryTable: aws_rds_db_instance
+  QueryToExecute: |- 
+    select
+      db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when enabled_cloudwatch_logs_exports is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when enabled_cloudwatch_logs_exports is null then title || ' Log Exports feature is not enabled'
+        else title || ' Log Exports feature is enabled'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance
+    where
+     engine = 'mysql' or engine = 'mariadb'
+ShortTitle: Log Exports
+Tags:
+  category:

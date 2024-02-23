@@ -1,0 +1,36 @@
+Connector: AWS
+Description: Ensure RDS instances are using General Purpose SSD storage instead of Provisioned IOPS SSD storage to optimize the RDS service costs.
+Enabled: true
+ID: 5.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Ensure RDS instances are using General Purpose SSD storage instead of Provisioned IOPS SSD storage to optimize the RDS service costs.
+RiskLevel: Medium
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID:
+  ListOfTables:
+    - aws_rds_db_instance
+  PrimaryTable: aws_rds_db_instance
+  QueryToExecute: |-
+    select
+      db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when storage_type = 'io1' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when storage_type = 'io1' then title || ' is not using the most cost-effective storage type available'
+        else title || ' is using the most cost-effective storage type available'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance
+ShortTitle: RDS General Purpose SSD
+Tags:
+  category:

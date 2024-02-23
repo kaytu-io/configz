@@ -1,0 +1,45 @@
+Connector: AWS
+Description: Ensure that Amazon Backup service is used to manage AWS RDS database snapshots.
+Enabled: true
+ID: 5.0
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Ensure that Amazon Backup service is used to manage AWS RDS database snapshots.
+RiskLevel: Low
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ID:
+  ListOfTables:
+    - aws_rds_db_instance
+    - aws_rds_db_snapshot
+  PrimaryTable: aws_rds_db_instance
+  QueryToExecute: |-
+    with snapshots as (
+      select distinct
+        db_instance_identifier
+      from
+        aws_rds_db_snapshot
+      where type = 'awsbackup'
+    )
+    select
+      r.db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.db_instance_identifier is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.db_instance_identifier is not null then r.title || ' has RDS database instance snapshots.'
+        else r.title || ' has no RDS database instance snapshots.'
+      end as reason,
+      r.region,
+      r.account_id
+    from
+      aws_rds_db_instance as r
+      left join snapshots as b on r.db_instance_identifier = b.db_instance_identifier;
+ShortTitle: Use AWS Backup Service in Use for Amazon RDS
+Tags:
+  category:
