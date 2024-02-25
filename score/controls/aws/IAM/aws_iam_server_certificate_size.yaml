@@ -1,0 +1,28 @@
+ID: aws_iam_server_certificate_size
+Title: AWS IAM Server Certificate Size
+Description: Ensure that all your SSL/TLS certificates are using either 2048 or 4096 bit RSA keys instead of 1024-bit keys.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      snapshot_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN start_time + '30 days'::interval < now() THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN start_time + '30 days'::interval < now() THEN snapshot_id || ' SSL/TLS certificate is insecure, deprecated and prone to hacking or decryption.' 
+        ELSE snapshot_id || ' SSL/TLS certificate is secure.'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_ebs_snapshot
+  Connector: AWS
+  PrimaryTable: aws_iam_server_certificate
+  ListOfTables:
+    - aws_iam_server_certificate
+ManualVerification: false
+Severity: high
