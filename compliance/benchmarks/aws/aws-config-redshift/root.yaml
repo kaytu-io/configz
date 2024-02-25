@@ -1,0 +1,26 @@
+ID: aws-config-redshift
+Title: AWS Config Redshift
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Redshift
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_redshift_cluster_maintenance_settings_check
+- aws_redshift_cluster_enhanced_vpc_routing_enabled
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_redshift_cluster_no_default_admin_name
+- aws_redshift_cluster_no_default_database_name
+- aws_rds_db_instance_backup_enabled
+- aws_redshift_cluster_kms_enabled

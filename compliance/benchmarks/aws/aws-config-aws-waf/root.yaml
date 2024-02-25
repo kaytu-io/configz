@@ -1,0 +1,22 @@
+ID: aws-config-aws-waf
+Title: AWS Config AWS WAF
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config AWS WAF
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_waf_regional_web_acl_rule_attached
+- aws_elb_application_lb_waf_enabled
+- aws_apigateway_stage_use_waf_web_acl
+- aws_waf_regional_rule_group_rule_attached

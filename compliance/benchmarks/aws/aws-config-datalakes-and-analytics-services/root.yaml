@@ -1,0 +1,45 @@
+ID: aws-config-datalakes-and-analytics-services
+Title: AWS Config Datalakes and Analytics Services
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Datalakes and Analytics Services
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_s3_bucket_object_lock_enabled
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_es_domain_in_vpc
+- aws_s3_public_access_block_account
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_s3_bucket_public_access_blocked
+- aws_s3_bucket_restrict_public_write_access
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_es_domain_logs_to_cloudwatch
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_redshift_cluster_kms_enabled
+- aws_s3_bucket_logging_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_versioning_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_emr_cluster_kerberos_enabled
+- aws_rds_db_instance_backup_enabled
+- aws_s3_bucket_default_encryption_enabled
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_redshift_cluster_maintenance_settings_check
+- aws_redshift_cluster_enhanced_vpc_routing_enabled
+- aws_s3_bucket_restrict_public_read_access

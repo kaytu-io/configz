@@ -1,0 +1,38 @@
+ID: aws-config-cis-aws-fb-v1.3-level1
+Title: AWS Config CIS AWS FB v1.3 Level1
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config CIS AWS FB v1.3 Level1
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_iam_user_in_group
+- aws_iam_root_user_mfa_enabled
+- aws_s3_public_access_block_account
+- aws_ebs_attached_volume_encryption_enabled
+- aws_iam_policy_custom_no_star_star
+- aws_iam_user_console_access_mfa_enabled
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_ebs_volume_encryption_at_rest_enabled
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_bucket_logging_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_iam_account_password_policy_strong
+- aws_s3_bucket_default_encryption_enabled
+- aws_iam_user_access_key_age_90
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_user_no_policies
+- aws_iam_user_unused_credentials_45
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_s3_bucket_restrict_public_read_access
+- aws_iam_root_user_no_access_keys

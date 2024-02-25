@@ -1,0 +1,25 @@
+ID: aws-config-cloudtrail
+Title: AWS Config CloudTrail
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config CloudTrail
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_cloudtrail_trail_validation_enabled
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_cloudtrail_security_trail_enabled

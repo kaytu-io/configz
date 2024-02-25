@@ -1,0 +1,77 @@
+ID: aws-config-gramm-leach-bliley-act
+Title: AWS Config Gramm Leach Bliley Act
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Gramm Leach Bliley Act
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_iam_user_in_group
+- aws_opensearch_domain_node_to_node_encryption_enabled
+- aws_rds_db_instance_prohibit_public_access
+- aws_vpc_subnet_auto_assign_public_ip_disabled
+- aws_vpc_igw_attached_to_authorized_vpc
+- aws_iam_user_unused_credentials_45
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_iam_user_access_key_age_90
+- aws_secretsmanager_secret_automatic_rotation_enabled
+- aws_sns_topic_encrypted_at_rest
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_efs_file_system_encrypted_with_cmk
+- aws_ebs_volume_encryption_at_rest_enabled
+- aws_guardduty_enabled
+- aws_opensearch_domain_fine_grained_access_enabled
+- aws_vpc_security_group_allows_ingress_authorized_ports
+- aws_apigateway_stage_cache_encryption_at_rest_enabled
+- aws_codebuild_project_s3_logs_encryption_enabled
+- aws_efs_access_point_enforce_user_identity
+- aws_iam_policy_custom_no_star_star
+- aws_opensearch_domain_in_vpc
+- aws_s3_bucket_restrict_public_read_access
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_backup_recovery_point_encryption_enabled
+- aws_iam_root_user_no_access_keys
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_s3_bucket_public_access_blocked
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_iam_policy_custom_no_star_star
+- aws_ec2_instance_not_publicly_accessible
+- aws_lambda_function_in_vpc
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_ebs_attached_volume_encryption_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_default_encryption_enabled
+- aws_ssm_document_prohibit_public_access
+- aws_iam_user_no_policies
+- aws_es_domain_in_vpc
+- aws_iam_group_not_empty
+- aws_ec2_instance_in_vpc
+- aws_iam_user_console_access_mfa_enabled
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_efs_access_point_enforce_root_directory
+- aws_ecs_task_definition_container_readonly_root_filesystem
+- aws_lambda_function_restrict_public_access
+- aws_iam_account_password_policy_strong
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_securityhub_enabled
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_dynamodb_table_encrypted_with_kms
+- aws_s3_public_access_block_account
+- aws_autoscaling_launch_config_public_ip_disabled
+- aws_kinesis_stream_server_side_encryption_enabled
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

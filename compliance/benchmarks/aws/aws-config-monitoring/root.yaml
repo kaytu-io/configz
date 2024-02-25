@@ -1,0 +1,33 @@
+ID: aws-config-monitoring
+Title: AWS Config Monitoring
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Monitoring
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudwatch_alarm_action_enabled
+- aws_cloudwatch_alarm_action_enabled_check
+- aws_ecs_cluster_container_insights_enabled
+- aws_lambda_function_dead_letter_queue_configured
+- aws_apigateway_rest_api_stage_xray_tracing_enabled
+- aws_elastic_beanstalk_enhanced_health_reporting_enabled
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_guardduty_enabled
+- aws_lambda_function_concurrent_execution_limit_configured
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_securityhub_enabled
+- aws_guardduty_finding_archived
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_s3_bucket_event_notifications_enabled

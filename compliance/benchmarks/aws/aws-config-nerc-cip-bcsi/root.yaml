@@ -1,0 +1,77 @@
+ID: aws-config-nerc-cip-bcsi
+Title: AWS Config NERC CIP BCSI
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config NERC CIP BCSI
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_rds_db_instance_no_default_admin_name
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_emr_cluster_kerberos_enabled
+- aws_ebs_volume_encryption_at_rest_enabled
+- aws_rds_db_cluster_no_default_admin_name
+- aws_iam_group_not_empty
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_kinesis_stream_server_side_encryption_enabled
+- aws_opensearch_domain_in_vpc
+- aws_s3_bucket_lifecycle_policy_enabled
+- aws_dynamodb_table_encrypted_with_kms
+- aws_efs_file_system_encrypted_with_cmk
+- aws_opensearch_domain_logs_to_cloudwatch
+- aws_kms_cmk_rotation_enabled
+- aws_ecr_repository_tag_immutability_enabled
+- aws_opensearch_domain_fine_grained_access_enabled
+- aws_redshift_cluster_no_default_admin_name
+- aws_acm_certificate_expires_30_days
+- aws_opensearch_domain_node_to_node_encryption_enabled
+- aws_s3_public_access_block_account
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_opensearch_domain_https_required
+- aws_iam_policy_custom_no_star_star
+- aws_s3_bucket_enforces_ssl
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_redshift_cluster_prohibit_public_access
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_elb_application_lb_drop_http_headers
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_iam_user_no_policies
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_sns_topic_encrypted_at_rest
+- aws_opensearch_domain_encryption_at_rest_enabled
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_iam_root_user_no_access_keys
+- aws_opensearch_domain_audit_logging_enabled
+- aws_ecr_repository_image_scan_on_push_enabled
+- aws_iam_user_in_group
+- aws_iam_user_unused_credentials_45
+- aws_kms_key_not_pending_deletion
+- aws_s3_bucket_default_encryption_enabled
+- aws_s3_bucket_event_notifications_enabled
+- aws_lambda_function_restrict_public_access
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_s3_bucket_restrict_public_read_access
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_apigateway_stage_cache_encryption_at_rest_enabled
+- aws_ecs_task_definition_container_readonly_root_filesystem
+- aws_s3_bucket_acl_prohibit_public_write_access
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_rds_db_instance_prohibit_public_access
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_s3_bucket_restrict_public_write_access
+- aws_ebs_attached_volume_encryption_enabled
+- aws_redshift_cluster_audit_logging_enabled
+- aws_redshift_cluster_encryption_in_transit_enabled

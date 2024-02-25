@@ -1,0 +1,36 @@
+ID: aws-config-devops
+Title: AWS Config DevOps
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config DevOps
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_codebuild_project_environment_privileged_mode_disabled
+- aws_ecr_repository_image_scan_on_push_enabled
+- aws_ecs_task_definition_no_host_pid_mode
+- aws_codebuild_project_s3_logs_encryption_enabled
+- aws_ecs_task_definition_container_readonly_root_filesystem
+- aws_apigateway_rest_api_stage_xray_tracing_enabled
+- aws_elastic_beanstalk_enhanced_health_reporting_enabled
+- aws_codebuild_project_logging_enabled
+- aws_ecs_service_fargate_using_latest_platform_version
+- aws_ecr_repository_lifecycle_policy_configured
+- aws_ecr_repository_tag_immutability_enabled
+- aws_cloudformation_stack_notifications_enabled
+- aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
+- aws_ecs_task_definition_container_non_privileged
+- aws_ecs_task_definition_user_for_host_mode_check
+- aws_eks_cluster_endpoint_restrict_public_access
+- aws_eks_caluster_secrets_encrypted
+- aws_ecs_cluster_container_insights_enabled

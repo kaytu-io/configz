@@ -1,0 +1,18 @@
+ID: aws-config-amazon-s3-with-remediation
+Title: AWS Config Amazon S3 with Remediation
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Amazon S3 with Remediation
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

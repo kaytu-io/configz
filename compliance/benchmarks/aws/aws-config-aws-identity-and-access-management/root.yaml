@@ -1,0 +1,35 @@
+ID: aws-config-aws-identity-and-access-management
+Title: AWS Config AWS Identity and Access Management
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config AWS Identity and Access Management
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_iam_user_in_group
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_iam_user_access_key_age_90
+- aws_iam_group_not_empty
+- aws_iam_policy_inline_no_blocked_kms_actions
+- aws_account_part_of_organizations
+- aws_iam_policy_custom_no_blocked_kms_actions
+- aws_iam_policy_custom_no_star_star
+- aws_iam_user_unused_credentials_45
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_account_password_policy_strong
+- aws_iam_policy_custom_no_star_star
+- aws_iam_root_user_no_access_keys
+- aws_iam_user_mfa_enabled
+- aws_iam_user_no_policies

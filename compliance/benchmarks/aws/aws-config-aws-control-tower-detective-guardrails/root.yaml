@@ -1,0 +1,48 @@
+ID: aws-config-aws-control-tower-detective-guardrails
+Title: AWS Config AWS Control Tower Detective Guardrails
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config AWS Control Tower Detective Guardrails
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_ec2_instance_not_publicly_accessible
+- aws_eks_cluster_endpoint_restrict_public_access
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_vpc_subnet_auto_assign_public_ip_disabled
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_lambda_function_restrict_public_access
+- aws_s3_bucket_versioning_enabled
+- aws_autoscaling_launch_config_public_ip_disabled
+- aws_rds_db_instance_prohibit_public_access
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_s3_public_access_block_account
+- aws_s3_bucket_restrict_public_read_access
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_ebs_volume_unused
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_ssm_document_prohibit_public_access
+- aws_ec2_instance_ebs_optimized
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_vpc_route_table_restrict_public_access_to_igw
+- aws_redshift_cluster_prohibit_public_access
+- aws_iam_root_user_mfa_enabled
+- aws_es_domain_in_vpc
+- aws_ebs_volume_encryption_at_rest_enabled
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_user_mfa_enabled

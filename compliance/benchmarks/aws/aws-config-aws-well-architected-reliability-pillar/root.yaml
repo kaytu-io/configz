@@ -1,0 +1,84 @@
+ID: aws-config-aws-well-architected-reliability-pillar
+Title: AWS Config AWS Well Architected Reliability Pillar
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config AWS Well Architected Reliability Pillar
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_efs_in_backup_plan
+- aws_lambda_function_multiple_az_configured
+- aws_rds_db_instance_logging_enabled
+- aws_rds_db_instance_backup_enabled
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_securityhub_enabled
+- aws_vpc_flow_logs_enabled
+- aws_opensearch_domain_logs_to_cloudwatch
+- aws_redshift_cluster_kms_enabled
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_default_encryption_enabled
+- aws_lambda_function_concurrent_execution_limit_configured
+- aws_wafv2_web_acl_logging_enabled
+- aws_elastic_beanstalk_enhanced_health_reporting_enabled
+- aws_cloudwatch_alarm_action_enabled
+- aws_ebs_volume_in_backup_plan
+- aws_fsx_file_system_protected_by_backup_plan
+- aws_s3_bucket_versioning_enabled
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_opensearch_domain_data_node_fault_tolerance
+- aws_redshift_cluster_enhanced_vpc_routing_enabled
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_s3_bucket_object_lock_enabled
+- aws_vpc_vpn_tunnel_up
+- aws_apigateway_rest_api_stage_xray_tracing_enabled
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_backup_recovery_point_min_retention_35_days
+- aws_rds_db_instance_backup_enabled
+- aws_efs_file_system_encrypted_with_cmk
+- aws_elb_application_gateway_network_lb_multiple_az_configured
+- aws_rds_db_cluster_aurora_protected_by_backup_plan
+- aws_elasticache_redis_cluster_automatic_backup_retention_15_days
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_guardduty_enabled
+- aws_dynamodb_table_encrypted_with_kms
+- aws_ec2_instance_protected_by_backup_plan
+- aws_ebs_volume_encryption_at_rest_enabled
+- aws_rds_db_instance_deletion_protection_enabled
+- aws_ec2_instance_in_vpc
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_redshift_cluster_maintenance_settings_check
+- aws_s3_bucket_logging_enabled
+- aws_apigateway_stage_logging_enabled
+- aws_ec2_instance_ebs_optimized
+- aws_ssm_managed_instance_compliance_patch_compliant
+- aws_elb_application_classic_lb_logging_enabled
+- aws_backup_plan_min_retention_35_days
+- aws_backup_recovery_point_encryption_enabled
+- aws_elb_classic_lb_multiple_az_configured
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_dynamodb_table_in_backup_plan
+- aws_elb_classic_lb_cross_zone_load_balancing_enabled
+- aws_elb_application_lb_deletion_protection_enabled
+- aws_ebs_attached_volume_encryption_enabled
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+- aws_ecs_cluster_container_insights_enabled
+- aws_es_domain_logs_to_cloudwatch
+- aws_lambda_function_dead_letter_queue_configured
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_rds_db_instance_multiple_az_enabled

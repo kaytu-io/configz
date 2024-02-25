@@ -1,0 +1,22 @@
+ID: aws-config-codebuild
+Title: AWS Config CodeBuild
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config CodeBuild
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_codebuild_project_environment_privileged_mode_disabled
+- aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
+- aws_codebuild_project_logging_enabled
+- aws_codebuild_project_s3_logs_encryption_enabled

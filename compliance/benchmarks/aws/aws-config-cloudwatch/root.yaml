@@ -1,0 +1,20 @@
+ID: aws-config-cloudwatch
+Title: AWS Config CloudWatch
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config CloudWatch
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudwatch_alarm_action_enabled
+- aws_cloudwatch_alarm_action_enabled_check
