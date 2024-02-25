@@ -10,4 +10,6 @@ ID: cost_optimization
 Tags:
   type:
     - SCORE
+  score_category:
+    - cost_optimization
 Title: Cost Optimization

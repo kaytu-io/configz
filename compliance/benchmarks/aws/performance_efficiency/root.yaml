@@ -10,4 +10,6 @@ ID: performance_efficiency
 Tags:
   type:
     - SCORE
+  score_category:
+    - performance_efficiency
 Title: Performance Efficiency

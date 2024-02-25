@@ -10,4 +10,6 @@ ID: security
 Tags:
   type:
     - SCORE
+  score_category:
+    - security
 Title: Security

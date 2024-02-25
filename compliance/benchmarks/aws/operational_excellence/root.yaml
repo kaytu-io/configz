@@ -10,4 +10,6 @@ ID: operational_excellence
 Tags:
   type:
     - SCORE
+  score_category:
+    - operational_excellence
 Title: Operational Excellence
