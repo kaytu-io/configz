@@ -7,6 +7,7 @@ Controls:
 ReferenceCode: reliability
 Description: Reliability Description
 ID: reliability
+AutoAssign: true
 Tags:
   type:
     - SCORE

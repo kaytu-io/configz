@@ -7,6 +7,7 @@ Controls:
 ReferenceCode: cost_optimization
 Description: Cost Optimization Description
 ID: cost_optimization
+AutoAssign: true
 Tags:
   type:
     - SCORE
