@@ -1,0 +1,28 @@
+ID: pre_heartbleed_server_certificates
+Title: Pre-Heartbleed Server Certificates
+Description: Ensure that your server certificates are not vulnerable to Heartbleed security bug.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN upload_date < '2014-04-01' THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN upload_date < '2014-04-01' THEN name || ' is vulnerable to Heartbleed security bug.' 
+        ELSE name || ' is vulnerable to Heartbleed security bug.'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_iam_server_certificate
+  Connector: AWS
+  PrimaryTable: aws_iam_server_certificate
+  ListOfTables:
+    - aws_iam_server_certificate
+ManualVerification: false
+Severity: high
