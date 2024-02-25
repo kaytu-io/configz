@@ -1,0 +1,13 @@
+Connector: AWS
+Controls:
+  - aws_cloudtrail_bucket_not_public
+  - aws_log_metric_filter_route_table
+  - aws_log_metric_filter_security_group
+  - aws_log_metric_filter_vpc
+ReferenceCode: security
+Description: Security Description
+ID: security
+Tags:
+  type:
+    - SCORE
+Title: Security

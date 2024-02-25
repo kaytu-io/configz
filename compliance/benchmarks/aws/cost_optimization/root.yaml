@@ -1,0 +1,13 @@
+Connector: AWS
+Controls:
+  - aws_cloudtrail_bucket_not_public
+  - aws_log_metric_filter_route_table
+  - aws_log_metric_filter_security_group
+  - aws_log_metric_filter_vpc
+ReferenceCode: cost_optimization
+Description: Cost Optimization Description
+ID: cost_optimization
+Tags:
+  type:
+    - SCORE
+Title: Cost Optimization
