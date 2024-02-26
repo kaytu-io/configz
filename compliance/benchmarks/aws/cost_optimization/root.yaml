@@ -1,8 +1,8 @@
 Connector: AWS
 Controls:
-  - ebs_volumes_too_old_snapshots
-  - acm_certificate_expired
-  - aws_acm_certificates_renewal_45_days_before_expiration
+  - aws_ebs_volumes_too_old_snapshots
+  - aws_acm_certificates_validity
+  - aws_acm_certificates_renewal_7_days_before_expiration
 ReferenceCode: cost_optimization
 Description: Cost Optimization Description
 ID: cost_optimization
