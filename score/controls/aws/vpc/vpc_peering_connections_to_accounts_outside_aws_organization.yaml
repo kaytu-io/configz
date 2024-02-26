@@ -23,14 +23,13 @@ Query:
       c.id as resource,
       kaytu_resource_id,
       kaytu_account_id,
-      accepter_org.org,
       CASE
         WHEN accepter_org.org = requester_org.org THEN 'ok'
         ELSE 'alarm'
       END AS status,
       CASE
-        WHEN accepter_org.org = requester_org.org THEN c.id || '  there are no Amazon VPC endpoints deployed'
-        ELSE c.id || ' has VPC endpoints'
+        WHEN accepter_org.org = requester_org.org THEN c.id || ' connections are ok'
+        ELSE c.id || ' connects to accounts outside organization'
       END AS reason,
       region,
       account_id
