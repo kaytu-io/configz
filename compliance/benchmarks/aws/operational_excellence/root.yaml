@@ -1,9 +1,7 @@
 Connector: AWS
 Controls:
-  - aws_cloudtrail_bucket_not_public
-  - aws_log_metric_filter_route_table
-  - aws_log_metric_filter_security_group
-  - aws_log_metric_filter_vpc
+  - aws_ec2_instance_naming_conventions
+  - aws_unused_elastic_network_interfaces
 ReferenceCode: operational_excellence
 Description: Operational Excellence Description
 ID: operational_excellence

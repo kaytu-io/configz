@@ -1,9 +1,7 @@
 Connector: AWS
 Controls:
-  - aws_cloudtrail_bucket_not_public
-  - aws_log_metric_filter_route_table
-  - aws_log_metric_filter_security_group
-  - aws_log_metric_filter_vpc
+  - aws_rds_db_instance_no_public_subnet
+  - aws_opensearch_domain_in_vpc
 ReferenceCode: reliability
 Description: Reliability Description
 ID: reliability

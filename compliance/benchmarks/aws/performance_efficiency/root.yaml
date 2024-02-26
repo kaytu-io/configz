@@ -1,9 +1,6 @@
 Connector: AWS
 Controls:
-  - aws_cloudtrail_bucket_not_public
-  - aws_log_metric_filter_route_table
-  - aws_log_metric_filter_security_group
-  - aws_log_metric_filter_vpc
+  - aws_app_tier_ec2_instance_using_iam_roles
 ReferenceCode: performance_efficiency
 Description: Performance Efficiency Description
 ID: performance_efficiency

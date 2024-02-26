@@ -1,9 +1,8 @@
 Connector: AWS
 Controls:
-  - aws_cloudtrail_bucket_not_public
-  - aws_log_metric_filter_route_table
-  - aws_log_metric_filter_security_group
-  - aws_log_metric_filter_vpc
+  - aws_unrestricted_inbound_traffic_on_remote_server_administration_ports
+  - aws_check_for_unrestricted_memcached_access
+  - aws_iam_users_with_administrative_privileges
 ReferenceCode: security
 Description: Security Description
 ID: security
