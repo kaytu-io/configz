@@ -1,9 +1,8 @@
 Connector: AWS
 Controls:
-  - aws_cloudtrail_bucket_not_public
-  - aws_log_metric_filter_route_table
-  - aws_log_metric_filter_security_group
-  - aws_log_metric_filter_vpc
+  - ebs_volumes_too_old_snapshots
+  - acm_certificate_expired
+  - aws_acm_certificates_renewal_45_days_before_expiration
 ReferenceCode: cost_optimization
 Description: Cost Optimization Description
 ID: cost_optimization
