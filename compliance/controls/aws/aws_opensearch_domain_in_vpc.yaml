@@ -36,9 +36,7 @@ Query:
         when vpc_options ->> 'VPCId' is null then title || ' not in VPC.'
         when d.vpc_options ->> 'VPCId' is not null and p.arn is not null then title || ' attached to public subnet.'
         else title || ' in VPC ' || (vpc_options ->> 'VPCId') || '.'
-      end reason
-      
-      , d.region, d.account_id
+      end reason, d.region, d.account_id
     from
       aws_opensearch_domain as d
       left join opensearch_domain_with_public_subnet as p on d.arn = p.arn;
