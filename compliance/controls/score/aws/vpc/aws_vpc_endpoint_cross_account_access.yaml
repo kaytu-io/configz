@@ -1,0 +1,46 @@
+ID: aws_vpc_endpoint_cross_account_access
+Title: VPC Endpoint Cross Account Access
+Description: Ensure Amazon VPC endpoints don't allow unknown cross account access.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      vpc_endpoint_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(policy::jsonb -> 'Statement') as s
+          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
+          (s ->> 'Principal')::text = '{"AWS": "*"}')
+        ) THEN 'alarm'
+        WHEN '{{.awsTrustedAccounts}}' = '' THEN 'ok'
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(policy::jsonb -> 'Statement') as s
+          WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s ->> 'Principal')::text) || '%'))
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(policy::jsonb -> 'Statement') as s
+          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
+          (s ->> 'Principal')::text = '{"AWS": "*"}')
+        ) THEN vpc_endpoint_id || ' is publicly accessible' 
+        WHEN '{{.awsTrustedAccounts}}' = '' THEN 'trusted AWS accounts are not defined'
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(policy::jsonb -> 'Statement') as s
+          WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s ->> 'Principal')::text) || '%'))
+        ) THEN vpc_endpoint_id || ' is not configured to allow access only to trusted AWS accounts'
+        ELSE vpc_endpoint_id || ' is configured to allow access only to trusted AWS accounts'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+    aws_vpc_endpoint
+  Connector: AWS
+  PrimaryTable: aws_vpc_endpoint
+  ListOfTables:
+    - aws_vpc_endpoint
+ManualVerification: false
+Severity: medium

@@ -1,0 +1,36 @@
+ID: aws_web_tier_ec2_instance_using_iam_roles
+Title: Web-Tier EC2 Instance Using IAM Roles
+Description: Ensure that your web-tier EC2 instances are using IAM roles to grant permissions to applications running on these instances.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when iam_instance_profile_arn is null then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when iam_instance_profile_arn is null then title || ' has assumed roles.'
+        else title || ' does not have any assume role.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ec2_instance
+    where
+      tags::text like '%' || REPLACE(REPLACE((
+          SELECT jsonb_object_agg(key, value)::text
+          FROM jsonb_each_text('{{.awsWebTierTags}}'::jsonb)
+        ), '{', ''), '}', '') || '%'
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+  Parameters:
+    - Key: awsWebTierTags
+      Required: true
+ManualVerification: false
+Severity: medium

@@ -1,0 +1,28 @@
+ID: aws_enable_in_transit_encryption
+Title: Enable In-Transit Encryption
+Description: Ensure that in-transit encryption is enabled for your Amazon OpenSearch domains.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN (cluster_config ->> 'DedicatedMasterEnabled')::bool THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN (cluster_config ->> 'DedicatedMasterEnabled')::bool THEN domain_name || ' is configured to use dedicated mater nodes.' 
+        ELSE domain_name || ' is not configured to use dedicated mater nodes'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+ManualVerification: false
+Severity: medium

@@ -1,0 +1,28 @@
+ID: aws_enable_in_transit_encryption
+Title: Enable In-Transit Encryption
+Description: Ensure that in-transit encryption is enabled for your Amazon OpenSearch domains.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      domain_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN (domain_endpoint_options ->> 'EnforceHTTPS')::bool THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN (domain_endpoint_options ->> 'EnforceHTTPS')::bool THEN domain_name || ' in-transit encryption is enabled.' 
+        ELSE domain_name || ' in-transit encryption is not enabled'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_opensearch_domain
+  Connector: AWS
+  PrimaryTable: aws_opensearch_domain
+  ListOfTables:
+    - aws_opensearch_domain
+ManualVerification: false
+Severity: high

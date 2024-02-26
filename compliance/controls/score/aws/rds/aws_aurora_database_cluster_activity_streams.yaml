@@ -1,0 +1,47 @@
+Connector: AWS
+Description: Ensure that Amazon Aurora clusters are configured to use database activity streams.
+Enabled: true
+ID: aws_aurora_database_cluster_activity_streams
+Internal: false
+Links: null
+LogoURL: ""
+LongTitle: Ensure that Amazon Aurora clusters are configured to use database activity streams.
+RiskLevel: Medium
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+    - aws_rds_db_cluster
+  PrimaryTable: aws_rds_db_cluster
+  QueryToExecute: |-
+    with access_count as (
+      select
+        db_cluster_identifier, count(db_cluster_identifier)
+      from
+        aws_rds_db_instance
+      group by
+        db_cluster_identifier, publicly_accessible
+      )
+
+    select
+          c.db_cluster_identifier as resource,
+          kaytu_account_id as kaytu_account_id,
+          kaytu_resource_id as kaytu_resource_id,
+          case
+            when a.count = 2 then 'alarm'
+            else 'ok'
+          end as status,
+          case
+            when a.count = 2 then title || ' cluster database instances dont have the same accessibility'
+            else title || ' cluster database instances have the same accessibility'
+          end as reason,
+          region,
+          account_id
+        from
+          aws_rds_db_cluster c
+          left join access_count as a on c.db_cluster_identifier = a.db_cluster_identifier
+        where
+          c.engine = 'aurora-mysql' or c.engine = 'aurora-postgresql'
+ShortTitle: Aurora Database Cluster Activity Streams
+Tags:
+  category:

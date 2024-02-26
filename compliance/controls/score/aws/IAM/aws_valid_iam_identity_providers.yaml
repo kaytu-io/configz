@@ -1,0 +1,42 @@
+ID: aws_valid_iam_identity_providers
+Title: Valid IAM Identity Providers
+Description: Ensure valid IAM Identity Providers are used within your AWS account for secure user authentication and authorization.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with locations AS (
+      SELECT
+        arn, unnest(xpath('/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleLogoutService/@Location', unnest(xpath('/md:EntityDescriptor', saml_metadata_document::xml, ARRAY[ARRAY['md', 'urn:oasis:names:tc:SAML:2.0:metadata']])), ARRAY[ARRAY['md', 'urn:oasis:names:tc:SAML:2.0:metadata']]))::text as location
+      FROM aws_iam_saml_provider
+    )
+    SELECT 
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN '{{.awsTrustedEndpoints}}' = '' THEN 'ok'
+        WHEN EXISTS (
+          select 1 from locations as l where l.arn = p.arn and '{{.awsTrustedEndpoints}}' not like '%' || l.location || '%'
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN '{{.awsTrustedEndpoints}}' = '' THEN 'trusted endpoints not provided'
+        WHEN EXISTS (
+          select 1 from locations as l where l.arn = p.arn and '{{.awsTrustedEndpoints}}' not like '%' || l.location || '%'
+        ) THEN 'location is not inside trusted endpoints'
+        ELSE 'is inside trusted endpoints'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_iam_saml_provider AS p
+  Connector: AWS
+  PrimaryTable: aws_iam_saml_provider
+  ListOfTables:
+    - aws_iam_saml_provider
+  Parameters:
+    - Key: awsTrustedEndpoints
+      Required: false
+ManualVerification: false
+Severity: high
