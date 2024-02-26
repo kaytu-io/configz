@@ -2,19 +2,12 @@ Connector: AWS
 Description: Ensure RDS instances are launched into Multi-AZ.
 Enabled: true
 ID: aws_rds_multi_az
-Internal: false
-Links: null
-LogoURL: ""
 LongTitle: Ensure RDS instances are launched into Multi-AZ.
 RiskLevel: Medium
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - 
-  PrimaryTable: 
-  QueryToExecute: |- 
+  QueryToExecute: |
     select
       db_instance_identifier as resource,
       kaytu_account_id as kaytu_account_id,
@@ -32,5 +25,3 @@ Query:
     from
       aws_rds_db_instance
 ShortTitle: RDS Multi-AZ
-Tags:
-  category:
