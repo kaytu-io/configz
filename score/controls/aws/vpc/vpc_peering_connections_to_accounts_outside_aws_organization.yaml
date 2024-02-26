@@ -1,0 +1,50 @@
+ID: vpc_peering_connections_to_accounts_outside_aws_organization
+Title: VPC Peering Connections To Accounts Outside AWS Organization
+Description: Ensure VPC peering communication is only between AWS accounts, members of the same AWS Organization.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH account_org AS (
+      SELECT 
+        kaytu_account_id,
+        organization_id
+      FROM
+        aws_account
+    ), vpc_org AS (
+      SELECT
+        vpc.vpc_id,
+        ao.organization_id as org
+      FROM
+        aws_vpc AS vpc
+        LEFT JOIN account_org AS ao ON ao.kaytu_account_id = vpc.kaytu_account_id
+    )
+
+    SELECT 
+      c.id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      accepter_org.org,
+      CASE
+        WHEN accepter_org.org = requester_org.org THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN accepter_org.org = requester_org.org THEN c.id || '  there are no Amazon VPC endpoints deployed'
+        ELSE c.id || ' has VPC endpoints'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_vpc_peering_connection AS c
+      LEFT JOIN vpc_org AS accepter_org ON c.accepter_vpc_id = accepter_org.vpc_id
+      LEFT JOIN vpc_org AS requester_org ON c.requester_vpc_id = accepter_org.vpc_id
+    WHERE
+      status_code = 'active'
+  Connector: AWS
+  PrimaryTable: aws_vpc_peering_connection
+  ListOfTables:
+    - aws_vpc_peering_connection
+    - aws_vpc
+    - aws_account
+ManualVerification: false
+Severity: medium

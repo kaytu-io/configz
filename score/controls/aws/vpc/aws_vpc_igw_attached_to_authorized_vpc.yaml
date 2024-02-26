@@ -1,0 +1,32 @@
+ID: aws_vpc_igw_attached_to_authorized_vpc
+Title: Unused VPC Internet Gateways
+Description: Ensure unused VPC Internet Gateways and Egress-Only Internet Gateways are removed to follow best practices.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      'arn:' || partition || ':ec2:' || region || ':' || account_id || ':internet-gateway/' || title as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when jsonb_array_length(attachments) = 0 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when jsonb_array_length(attachments) = 0 then title || ' not attached to VPC.'
+        else title || ' attached to ' || split_part(
+          substring(attachments :: text, 3, length(attachments :: text) -6),
+          '"VpcId": "',
+          2
+        ) || '.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_vpc_internet_gateway;
+  Connector: AWS
+  PrimaryTable: aws_vpc_internet_gateway
+  ListOfTables:
+    - aws_vpc_internet_gateway
+ManualVerification: false
+Severity: low
