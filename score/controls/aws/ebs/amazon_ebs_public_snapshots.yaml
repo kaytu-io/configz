@@ -1,0 +1,28 @@
+ID: amazon_ebs_public_snapshots
+Title: Amazon EBS Public Snapshots
+Description: Ensure that your Amazon EBS volume snapshots are not accessible to all AWS accounts.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      'arn:' || partition || ':ec2:' || region || ':' || account_id || ':snapshot/' || snapshot_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when create_volume_permissions @> '[{"Group": "all", "UserId": null}]' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when create_volume_permissions @> '[{"Group": "all", "UserId": null}]' then title || ' is publicly restorable.'
+        else title || ' is not publicly restorable.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ebs_snapshot;
+  Connector: AWS
+  PrimaryTable: aws_ebs_snapshot
+  ListOfTables:
+    - aws_ebs_snapshot
+ManualVerification: false
+Severity: high

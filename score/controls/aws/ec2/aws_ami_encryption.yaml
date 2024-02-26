@@ -1,0 +1,32 @@
+ID: aws_ami_encryption
+Title: AWS AMI Encryption
+Description: Ensure that your existing AMIs are encrypted to meet security and compliance requirements.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(block_device_mappings) AS b WHERE (b -> 'Ebs' ->> 'Encrypted')::bool = False
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(block_device_mappings) AS b WHERE (b -> 'Ebs' ->> 'Encrypted')::bool = False
+        ) THEN name || ' has unencrypted data' 
+        ELSE name || ' data is encrypted'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_ec2_ami
+  Connector: AWS
+  PrimaryTable: aws_ec2_ami
+  ListOfTables:
+    - aws_ec2_ami
+ManualVerification: false
+Severity: high
