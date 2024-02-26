@@ -1,0 +1,26 @@
+ID: aws_multi_account_centralized_management
+Title: AWS Multi-Account Centralized Management
+Description: Set up, organize and manage your AWS accounts for optimal security and manageability.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      organization_id as resource,
+      CASE
+        WHEN count(*) = 1 THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN count(*) = 1 THEN organization_id || ' only has one account' 
+        ELSE organization_id || ' has multiple accounts'
+      END AS reason
+    FROM 
+      aws_account
+    GROUP BY
+      organization_id;
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+    - aws_account
+ManualVerification: false
+Severity: high
