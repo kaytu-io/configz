@@ -1,4 +1,4 @@
-ID: app_tier_ebs_encrypted
+ID: aws_app_tier_ebs_encrypted
 Title: App-Tier EBS Encrypted
 Description: Ensure app-tier Amazon Elastic Block Store (EBS) volumes are encrypted.
 Query:

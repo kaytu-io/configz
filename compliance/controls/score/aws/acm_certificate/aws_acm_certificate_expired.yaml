@@ -1,4 +1,4 @@
-ID: acm_certificate_expired
+ID: aws_acm_certificate_expired
 Title: ACM Certificate Expired
 Description: Ensure expired SSL/TLS certificates are removed from AWS Certificate Manager (ACM).
 Query:
