@@ -1,0 +1,32 @@
+ID: azure_check_for_publicly_accessible_sql_servers
+Title: Check for Publicly Accessible SQL Servers
+Description: Ensure that Azure SQL database servers are accessible via private endpoints only.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.name as resource,
+      a.kaytu_resource_id,
+      a.kaytu_account_id,
+      case
+        when public_network_access != 'Disabled' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when public_network_access != 'Disabled' then a.name || ' not uses private link.'
+        else a.name || ' uses private link.'
+      end as reason,
+      a.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_sql_server as a,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+ManualVerification: false
+Severity: high

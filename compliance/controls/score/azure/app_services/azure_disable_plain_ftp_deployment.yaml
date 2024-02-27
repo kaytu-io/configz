@@ -1,0 +1,30 @@
+ID: azure_disable_plain_ftp_deployment
+Title: Disable Plain FTP Deployment
+Description: Ensure that FTP access is disabled for your Azure App Services web applications.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      wa.name as resource,
+      wa.kaytu_resource_id,
+      wa.kaytu_account_id,
+      case
+        when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when configuration -> 'properties' ->> 'ftpsState' = 'AllAllowed' then name || ' default FTP deployment is not disabled'
+        else name || ' default FTP deployment is disabled'
+      end as reason,
+      wa.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_app_service_web_app as wa
+      left join azure_subscription as sub on wa.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_app_service_web_app
+  ListOfTables:
+    - azure_app_service_web_app
+    - azure_subscription
+ManualVerification: false
+Severity: medium
