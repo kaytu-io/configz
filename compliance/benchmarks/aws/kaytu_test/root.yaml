@@ -1,6 +1,6 @@
 Connector: AWS
 Controls:
-  - aws_eks_cluster_oldest_supported_version
+  - aws_cost_optimization_test
 ReferenceCode: kaytu_test_aws
 Description: Test Benchmark for AWS
 ID: kaytu_test_aws
