@@ -1,0 +1,30 @@
+ID: azure_restrict_default_network_access_for_azure_key_vaults
+Title: Restrict Default Network Access for Azure Key Vaults
+Description: Ensure that default network access (i.e. public access) rule is set to "Deny" within your Azure Key Vaults configuration.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      v.kaytu_resource_id,
+      v.kaytu_account_id,
+      case
+        when network_acls is null or network_acls ->> 'defaultAction' = 'Allow' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when network_acls is null or network_acls ->> 'defaultAction' = 'Allow' then name || ' access configuration is not compliant'
+        else name || ' access configuration is compliant'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault as v
+      left join azure_subscription as sub on v.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_key_vault
+  ListOfTables:
+    - azure_key_vault
+    - azure_subscription
+ManualVerification: false
+Severity: medium

@@ -1,0 +1,30 @@
+ID: azure_monitor_log_all_activities
+Title: Azure Monitor Log All Activities
+Description: Ensure audit profile captures all the activities.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      p.id as resource,
+      p.kaytu_resource_id,
+      p.kaytu_account_id,
+      case
+        when p.categories @> '["Write", "Delete", "Action"]' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when p.categories @> '["Write", "Delete", "Action"]' then p.name || ' collect activity logs from all activities.'
+        else p.name || ' not collect activity logs from all activities.'
+      end as reason,
+      p.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_log_profile as p
+      left join azure_subscription sub on sub.subscription_id = p.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_log_profile
+  ListOfTables:
+    - azure_log_profile
+    - azure_subscription
+ManualVerification: false
+Severity: medium

@@ -1,0 +1,30 @@
+ID: azure_restrict_default_network_access_for_azure_cosmos_db_accounts
+Title: Restrict Default Network Access for Azure Cosmos DB Accounts
+Description: Ensure that default network access (i.e. public access) is denied within your Azure Cosmos DB account configuration.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      a.kaytu_resource_id,
+      a.kaytu_account_id,
+      case
+        when not is_virtual_network_filter_enabled and ip_rules is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when not is_virtual_network_filter_enabled and ip_rules is null then 'all networks can access'
+        else name || 'network access is filtered'
+      end as reason,
+      a.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_cosmosdb_account as a
+      left join azure_subscription as sub on a.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_cosmosdb_account
+  ListOfTables:
+    - azure_cosmosdb_account
+    - azure_subscription
+ManualVerification: false
+Severity: medium

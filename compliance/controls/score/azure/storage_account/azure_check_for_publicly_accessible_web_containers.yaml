@@ -1,0 +1,34 @@
+ID: azure_check_for_publicly_accessible_web_containers
+Title: Check for Publicly Accessible Web Containers
+Description: Ensure that Azure Storage containers aren't publicly accessible.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      container.id as resource,
+      container.kaytu_resource_id,
+      container.kaytu_account_id,
+      case
+        when not account.allow_blob_public_access
+        and container.public_access = 'None' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when not account.allow_blob_public_access
+        and container.public_access = 'None' then account.name || ' container ' || container.name || ' doesn''t allow anonymous access.'
+        else account.name || ' container ' || container.name || ' allows anonymous access.'
+      end as reason,
+      container.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_storage_container container
+      join azure_storage_account account on container.account_name = account.name
+      join azure_subscription sub on sub.subscription_id = account.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+    - azure_storage_account
+    - azure_storage_container
+    - azure_subscription
+ManualVerification: false
+Severity: high

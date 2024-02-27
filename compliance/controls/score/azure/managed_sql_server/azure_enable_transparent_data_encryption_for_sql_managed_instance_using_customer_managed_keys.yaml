@@ -1,0 +1,33 @@
+ID: azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
+Title: Enable Transparent Data Encryption for SQL Managed Instance using Customer-Managed Keys
+Description: Ensure that Azure SQL managed instances are encrypted at rest using Customer-Managed Keys (CMKs).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when encryption ->> 'kind' = 'servicemanaged' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when encryption ->> 'kind' = 'servicemanaged' then s.name || ' TDE protector not encrypted with CMK.'
+        else s.name || ' TDE protector encrypted with CMK.'
+      end as reason,
+      s.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_sql_server s,
+      jsonb_array_elements(encryption_protector) encryption,
+      azure_subscription sub
+    where
+      sub.subscription_id = s.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+ManualVerification: false
+Severity: medium
