@@ -1,0 +1,30 @@
+ID: azure_enable_defender_for_cloud_for_aks_clusters
+Title: Enable Defender for Cloud for AKS Clusters
+Description: Ensure that Microsoft Defender for Cloud is enabled for AKS clusters.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      case
+        when (addon_profiles -> 'omsagent' ->> 'enabled')::bool then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when (addon_profiles -> 'omsagent' ->> 'enabled')::bool then 'Microsoft Defender is enabled for this resource'
+        else 'Microsoft Defender is not enabled for this resource'
+      end as reason,
+      c.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_kubernetes_cluster as c
+      left join azure_subscription as sub on c.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+ManualVerification: false
+Severity: high

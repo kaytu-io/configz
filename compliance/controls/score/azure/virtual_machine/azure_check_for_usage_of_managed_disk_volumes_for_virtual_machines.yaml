@@ -1,0 +1,34 @@
+ID: azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
+Title: Check for usage of Managed Disk Volumes for Virtual Machines
+Description: Ensure that your Microsoft Azure virtual machines are using managed disk volumes.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.name as resource,
+      vm.kaytu_resource_id,
+      vm.kaytu_account_id,
+      case
+        when (vm.managed_disk_id is null and not exists (
+          select 1 from jsonb_array_elements(data_disks) as d where d ->> 'managedDisk' is not null
+        )) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (vm.managed_disk_id is null and not exists (
+          select 1 from jsonb_array_elements(data_disks) as d where d ->> 'managedDisk' is not null
+        )) then vm.name || ' is not using managed disks.'
+        else vm.name || ' is using managed disks.'
+      end as reason,
+      vm.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_compute_virtual_machine as vm
+      left join azure_subscription as sub on vm.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+ManualVerification: false
+Severity: medium
