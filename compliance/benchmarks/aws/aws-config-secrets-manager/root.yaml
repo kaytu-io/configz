@@ -1,0 +1,23 @@
+ID: aws-config-secrets-manager
+Title: AWS Config Secrets Manager
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Secrets Manager
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_secretsmanager_secret_automatic_rotation_enabled
+- aws_secretsmanager_secret_unused_90_day
+- aws_secretsmanager_secret_encrypted_with_kms_cmk
+- aws_secretsmanager_secret_automatic_rotation_enabled
+- aws_secretsmanager_secret_rotated_as_scheduled

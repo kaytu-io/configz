@@ -1,0 +1,21 @@
+ID: aws-config-eks
+Title: AWS Config EKS
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config EKS
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_eks_cluster_with_latest_kubernetes_version
+- aws_eks_cluster_endpoint_restrict_public_access
+- aws_eks_caluster_secrets_encrypted

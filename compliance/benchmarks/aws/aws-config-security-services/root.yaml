@@ -1,0 +1,62 @@
+ID: aws-config-security-services
+Title: AWS Config Security Services
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Security Services
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_user_in_group
+- aws_iam_user_no_policies
+- aws_securityhub_enabled
+- aws_vpc_security_group_allows_ingress_authorized_ports
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_cloudwatch_alarm_action_enabled
+- aws_elb_application_classic_lb_logging_enabled
+- aws_guardduty_finding_archived
+- aws_rds_db_instance_logging_enabled
+- aws_elb_application_lb_waf_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudtrail_security_trail_enabled
+- aws_iam_account_password_policy_strong
+- aws_iam_root_user_no_access_keys
+- aws_s3_bucket_logging_enabled
+- aws_wafv2_web_acl_logging_enabled
+- aws_iam_user_access_key_age_90
+- aws_acm_certificate_expires_30_days
+- aws_iam_user_mfa_enabled
+- aws_iam_user_unused_credentials_45
+- aws_iam_user_console_access_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_secretsmanager_secret_rotated_as_scheduled
+- aws_cloudtrail_trail_validation_enabled
+- aws_iam_policy_inline_no_blocked_kms_actions
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_iam_group_not_empty
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_iam_policy_custom_no_star_star
+- aws_kms_key_not_pending_deletion
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_account_part_of_organizations
+- aws_guardduty_enabled
+- aws_iam_policy_custom_no_star_star
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_s3_public_access_block_account
+- aws_apigateway_stage_logging_enabled
+- aws_kms_cmk_rotation_enabled
+- aws_secretsmanager_secret_automatic_rotation_enabled
+- aws_apigateway_stage_use_waf_web_acl
+- aws_iam_policy_custom_no_blocked_kms_actions

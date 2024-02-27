@@ -1,0 +1,25 @@
+ID: aws-config-api-gateway
+Title: AWS Config API Gateway
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config API Gateway
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_apigateway_stage_use_waf_web_acl
+- aws_apigateway_stage_cache_encryption_at_rest_enabled
+- aws_apigateway_stage_logging_enabled
+- aws_apigateway_rest_api_stage_use_ssl_certificate
+- aws_apigateway_rest_api_stage_xray_tracing_enabled

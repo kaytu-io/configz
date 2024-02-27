@@ -1,0 +1,18 @@
+ID: aws-config-cis
+Title: AWS Config CIS
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config CIS
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

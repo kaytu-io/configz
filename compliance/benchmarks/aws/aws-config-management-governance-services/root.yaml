@@ -1,0 +1,35 @@
+ID: aws-config-management-governance-services
+Title: AWS Config Management Governance Services
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Management Governance Services
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_cloudtrail_trail_validation_enabled
+- aws_cloudwatch_alarm_action_enabled
+- aws_ssm_managed_instance_compliance_patch_compliant
+- aws_guardduty_finding_archived
+- aws_cloudtrail_security_trail_enabled
+- aws_ec2_instance_managed_by_systems_manager
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_securityhub_enabled
+- aws_account_part_of_organizations
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_cloudwatch_alarm_action_enabled_check
+- aws_cloudwatch_log_group_retention_period_365
+- aws_guardduty_enabled
+- aws_cloudtrail_multi_region_trail_enabled

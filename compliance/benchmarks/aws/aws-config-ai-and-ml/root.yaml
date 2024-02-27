@@ -1,0 +1,50 @@
+ID: aws-config-ai-and-ml
+Title: AWS Config AI and ML
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config AI and ML
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_ecs_task_definition_container_non_privileged
+- aws_eks_cluster_with_latest_kubernetes_version
+- aws_eks_cluster_endpoint_restrict_public_access
+- aws_s3_bucket_default_encryption_enabled
+- aws_ecs_service_fargate_using_latest_platform_version
+- aws_emr_cluster_kerberos_enabled
+- aws_s3_bucket_logging_enabled
+- aws_ecs_task_definition_no_host_pid_mode
+- aws_s3_bucket_acl_prohibit_public_write_access
+- aws_s3_bucket_restrict_public_read_access
+- aws_ecs_cluster_container_insights_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_versioning_enabled
+- aws_ecs_task_definition_user_for_host_mode_check
+- aws_efs_access_point_enforce_root_directory
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_s3_bucket_object_lock_enabled
+- aws_eks_caluster_secrets_encrypted
+- aws_s3_public_access_block_account
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_ecs_task_definition_container_environment_no_secret
+- aws_efs_in_backup_plan
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_ecs_task_definition_container_readonly_root_filesystem
+- aws_efs_access_point_enforce_user_identity
+- aws_efs_file_system_encrypted_with_cmk
+- aws_s3_bucket_public_access_blocked

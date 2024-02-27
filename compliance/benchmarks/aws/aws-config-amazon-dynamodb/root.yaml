@@ -1,0 +1,24 @@
+ID: aws-config-amazon-dynamodb
+Title: AWS Config Amazon DynamoDB
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Amazon DynamoDB
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_dax_cluster_encryption_at_rest_enabled
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_dynamodb_table_encrypted_with_kms
+- aws_vpc_configured_to_use_vpc_endpoints

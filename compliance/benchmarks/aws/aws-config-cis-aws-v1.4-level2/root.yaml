@@ -1,0 +1,54 @@
+ID: aws-config-cis-aws-v1.4-level2
+Title: AWS Config CIS AWS v1.4 Level2
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config CIS AWS v1.4 Level2
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_ebs_attached_volume_encryption_enabled
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_vpc_flow_logs_enabled
+- aws_ec2_instance_iam_profile_attached
+- aws_iam_user_access_key_age_90
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_iam_root_user_mfa_enabled
+- aws_s3_bucket_default_encryption_enabled
+- aws_kms_cmk_rotation_enabled
+- aws_iam_user_no_policies
+- aws_iam_user_console_access_mfa_enabled
+- aws_s3_bucket_restrict_public_read_access
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_iam_user_in_group
+- aws_s3_bucket_logging_enabled
+- aws_cloudtrail_trail_validation_enabled
+- aws_iam_policy_custom_no_star_star
+- aws_iam_user_unused_credentials_45
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_s3_bucket_versioning_enabled
+- aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
+- aws_s3_bucket_public_access_blocked
+- aws_s3_bucket_enforces_ssl
+- aws_ebs_volume_encryption_at_rest_enabled
+- aws_iam_root_user_no_access_keys
+- aws_iam_policy_unused
+- aws_iam_group_user_role_no_inline_policies
+- aws_account_part_of_organizations
+- aws_iam_account_password_policy_strong
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_s3_public_access_block_account
+- aws_s3_bucket_restrict_public_write_access

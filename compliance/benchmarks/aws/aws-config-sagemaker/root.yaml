@@ -1,0 +1,21 @@
+ID: aws-config-sagemaker
+Title: AWS Config SageMaker
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config SageMaker
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_sagemaker_notebook_instance_encryption_at_rest_enabled
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_sagemaker_endpoint_configuration_encryption_at_rest_enabled

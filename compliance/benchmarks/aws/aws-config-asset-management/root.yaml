@@ -1,0 +1,27 @@
+ID: aws-config-asset-management
+Title: AWS Config Asset Management
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Asset Management
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_ssm_managed_instance_compliance_patch_compliant
+- aws_ec2_stopped_instance_30_days
+- aws_ebs_volume_unused
+- aws_vpc_eip_associated
+- aws_iam_user_unused_credentials_45
+- aws_account_part_of_organizations
+- aws_ec2_instance_managed_by_systems_manager
+- aws_vpc_network_acl_unused

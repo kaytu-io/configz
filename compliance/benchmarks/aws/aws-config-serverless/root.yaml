@@ -1,0 +1,33 @@
+ID: aws-config-serverless
+Title: AWS Config Serverless
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Serverless
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_lambda_function_multiple_az_configured
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_dynamodb_table_in_backup_plan
+- aws_lambda_function_concurrent_execution_limit_configured
+- aws_apigateway_rest_api_stage_use_ssl_certificate
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_lambda_function_dead_letter_queue_configured
+- aws_apigateway_stage_cache_encryption_at_rest_enabled
+- aws_vpc_configured_to_use_vpc_endpoints
+- aws_dynamodb_table_encrypted_with_kms
+- aws_lambda_function_restrict_public_access
+- aws_lambda_function_in_vpc
+- aws_apigateway_stage_use_waf_web_acl
+- aws_apigateway_stage_logging_enabled
+- aws_apigateway_rest_api_stage_xray_tracing_enabled

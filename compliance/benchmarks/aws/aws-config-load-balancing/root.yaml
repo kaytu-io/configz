@@ -1,0 +1,32 @@
+ID: aws-config-load-balancing
+Title: AWS Config Load Balancing
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Load Balancing
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_elb_application_lb_desync_mitigation_mode
+- aws_elb_application_lb_waf_enabled
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_elb_classic_lb_cross_zone_load_balancing_enabled
+- aws_elb_application_lb_deletion_protection_enabled
+- aws_elb_application_network_lb_use_ssl_certificate
+- aws_elb_application_gateway_network_lb_multiple_az_configured
+- aws_elb_application_lb_drop_http_headers
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_autoscaling_group_with_lb_use_health_check
+- aws_elb_classic_lb_desync_mitigation_mode
+- aws_elb_classic_lb_multiple_az_configured
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_elb_application_classic_lb_logging_enabled

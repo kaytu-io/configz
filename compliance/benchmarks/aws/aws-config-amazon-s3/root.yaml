@@ -1,0 +1,31 @@
+ID: aws-config-amazon-s3
+Title: AWS Config Amazon S3
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Amazon S3
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_s3_bucket_object_lock_enabled
+- aws_s3_bucket_default_encryption_enabled_kms
+- aws_s3_public_access_block_account
+- aws_s3_bucket_public_access_blocked
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_lifecycle_policy_enabled
+- aws_s3_bucket_acl_prohibit_public_write_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_bucket_versioning_enabled
+- aws_s3_bucket_logging_enabled
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_event_notifications_enabled

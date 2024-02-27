@@ -1,0 +1,26 @@
+ID: aws-config-amazon-opensearch-service
+Title: AWS Config Amazon OpenSearch Service
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Amazon OpenSearch Service
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_opensearch_domain_https_required
+- aws_opensearch_domain_in_vpc
+- aws_opensearch_domain_logs_to_cloudwatch
+- aws_opensearch_domain_node_to_node_encryption_enabled
+- aws_opensearch_domain_fine_grained_access_enabled
+- aws_opensearch_domain_audit_logging_enabled
+- aws_opensearch_domain_data_node_fault_tolerance
+- aws_opensearch_domain_encryption_at_rest_enabled

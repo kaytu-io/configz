@@ -1,0 +1,18 @@
+ID: aws-config-amazon-dynamodb-with-remediation
+Title: AWS Config Amazon DynamoDB with Remediation
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Amazon DynamoDB with Remediation
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

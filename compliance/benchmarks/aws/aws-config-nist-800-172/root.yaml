@@ -1,0 +1,81 @@
+ID: aws-config-nist-800-172
+Title: AWS Config NIST 800 172
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config NIST 800 172
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+- aws_ssm_document_prohibit_public_access
+- aws_apigateway_rest_api_stage_use_ssl_certificate
+- aws_ec2_instance_managed_by_systems_manager
+- aws_es_domain_in_vpc
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_autoscaling_launch_config_hop_limit
+- aws_opensearch_domain_in_vpc
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_vpc_security_group_allows_ingress_authorized_ports
+- aws_iam_account_password_policy_strong
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_security_group_restrict_ingress_rdp_all| aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_s3_bucket_public_access_blocked
+- aws_s3_bucket_restrict_public_read_access
+- aws_autoscaling_launch_config_public_ip_disabled
+- aws_elb_classic_lb_desync_mitigation_mode
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_opensearch_domain_node_to_node_encryption_enabled
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_vpc_eip_associated
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_vpc_route_table_restrict_public_access_to_igw
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_cloudtrail_trail_validation_enabled
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_s3_bucket_restrict_public_write_access
+- aws_secretsmanager_secret_automatic_rotation_enabled
+- aws_vpc_network_acl_unused
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_ec2_stopped_instance_30_days
+- aws_ebs_volume_unused
+- aws_securityhub_enabled
+- aws_ec2_instance_detailed_monitoring_enabled
+- aws_ecs_service_fargate_using_latest_platform_version
+- aws_ssm_managed_instance_compliance_patch_compliant
+- aws_ecr_repository_image_scan_on_push_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_secretsmanager_secret_rotated_as_scheduled
+- aws_elb_application_lb_drop_http_headers
+- aws_guardduty_enabled
+- aws_ec2_instance_in_vpc
+- aws_ec2_instance_not_publicly_accessible
+- aws_s3_public_access_block_account
+- aws_vpc_subnet_auto_assign_public_ip_disabled
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_vpc_flow_logs_enabled
+- aws_rds_db_instance_prohibit_public_access
+- aws_redshift_cluster_maintenance_settings_check
+- aws_cloudwatch_alarm_action_enabled
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_elb_application_lb_desync_mitigation_mode
+- aws_elb_application_network_lb_use_ssl_certificate
+- aws_s3_bucket_enforces_ssl
+- aws_opensearch_domain_https_required
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_redshift_cluster_enhanced_vpc_routing_enabled
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_lambda_function_restrict_public_access
+- aws_lambda_function_in_vpc

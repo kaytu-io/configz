@@ -1,0 +1,28 @@
+ID: aws_acm_certificate_expired
+Title: ACM Certificate Expired
+Description: Ensure expired SSL/TLS certificates are removed from AWS Certificate Manager (ACM).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      certificate_arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN status = 'EXPIRED' THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN status = 'EXPIRED' THEN 'certificate has been expired' 
+        ELSE 'certificate not expired'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_acm_certificate
+  Connector: AWS
+  PrimaryTable: aws_acm_certificate
+  ListOfTables:
+    - aws_acm_certificate
+ManualVerification: false
+Severity: high

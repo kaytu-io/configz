@@ -1,0 +1,39 @@
+ID: aws-config-ec2
+Title: AWS Config EC2
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config EC2
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_ebs_attached_volume_encryption_enabled
+- aws_ec2_instance_uses_imdsv2
+- aws_ec2_instance_managed_by_systems_manager
+- aws_autoscaling_launch_config_hop_limit
+- aws_ebs_volume_unused
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_ec2_instance_ebs_optimized
+- aws_ebs_volume_in_backup_plan
+- aws_vpc_configured_to_use_vpc_endpoints
+- aws_ssm_managed_instance_compliance_patch_compliant
+- aws_ec2_instance_no_amazon_key_pair
+- aws_ec2_instance_not_publicly_accessible
+- aws_ec2_instance_protected_by_backup_plan
+- aws_ec2_stopped_instance_30_days
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_ssm_managed_instance_compliance_association_compliant
+- aws_ec2_instance_not_use_multiple_enis
+- aws_ec2_instance_iam_profile_attached
+- aws_vpc_eip_associated
+- aws_ebs_volume_encryption_at_rest_enabled
+- aws_ec2_instance_detailed_monitoring_enabled

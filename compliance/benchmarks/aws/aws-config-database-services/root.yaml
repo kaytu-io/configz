@@ -1,0 +1,45 @@
+ID: aws-config-database-services
+Title: AWS Config Database Services
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Database Services
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_rds_db_cluster_aurora_protected_by_backup_plan
+- aws_dynamodb_table_in_backup_plan
+- aws_dynamodb_table_encrypted_with_kms
+- aws_rds_db_instance_automatic_minor_version_upgrade_enabled
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_in_backup_plan
+- aws_rds_db_instance_prohibit_public_access
+- aws_rds_db_instance_multiple_az_enabled
+- aws_redshift_cluster_maintenance_settings_check
+- aws_redshift_cluster_no_default_admin_name
+- aws_rds_db_instance_deletion_protection_enabled
+- aws_redshift_cluster_kms_enabled
+- aws_redshift_cluster_enhanced_vpc_routing_enabled
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_rds_db_snapshot_encrypted_at_rest
+- aws_dynamodb_table_point_in_time_recovery_enabled
+- aws_rds_db_instance_no_default_admin_name
+- aws_rds_db_instance_backup_enabled
+- aws_rds_db_instance_logging_enabled
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_rds_db_instance_encryption_at_rest_enabled
+- aws_redshift_cluster_prohibit_public_access
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_dynamodb_table_auto_scaling_enabled
+- aws_rds_db_instance_and_cluster_enhanced_monitoring_enabled
+- aws_redshift_cluster_audit_logging_enabled
+- aws_redshift_cluster_no_default_database_name

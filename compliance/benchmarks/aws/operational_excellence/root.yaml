@@ -1,0 +1,16 @@
+Connector: AWS
+Controls:
+  - aws_ec2_instance_naming_conventions
+  - aws_unused_elastic_network_interfaces
+  - aws_multi_account_centralized_management
+  - azure_keyvault_logging_enabled
+ReferenceCode: operational_excellence
+Description: Operational Excellence Description
+ID: operational_excellence
+AutoAssign: true
+Tags:
+  type:
+    - SCORE
+  score_category:
+    - operational_excellence
+Title: Operational Excellence

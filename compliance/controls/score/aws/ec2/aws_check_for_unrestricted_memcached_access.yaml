@@ -1,0 +1,49 @@
+ID: aws_check_for_unrestricted_memcached_access
+Title: Check for Unrestricted Memcached Access
+Description: Ensure that no security group allows unrestricted inbound access on TCP/UDP port 11211 (Memcached).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH open_sg AS (
+      SELECT group_id
+      FROM aws_vpc_security_group 
+      WHERE EXISTS (
+        SELECT 1 
+        FROM jsonb_array_elements(ip_permissions) as p 
+        WHERE (p ->> 'FromPort')::int = 11211 and 
+        (p ->> 'ToPort')::int = 11211 and
+        (p ->> 'cidr') = '0.0.0.0/0'
+      )
+    )
+
+    select
+      instance_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(security_groups) as sg
+          where sg ->> 'GroupId' IN (select group_id from open_sg)
+        ) then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(security_groups) as sg
+          where sg ->> 'GroupId' IN (select group_id from open_sg)
+        ) then instance_id || ' security groups allow unrestricted traffic on TCP and/or UDP port 11211.'
+        else instance_id || ' is secured through port 11211.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ec2_instance
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+    - aws_vpc_security_group
+ManualVerification: false
+Severity: very high

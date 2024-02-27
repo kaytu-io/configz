@@ -1,0 +1,44 @@
+ID: aws-config-storage-services
+Title: AWS Config Storage Services
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Storage Services
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_backup_recovery_point_min_retention_35_days
+- aws_s3_bucket_acl_prohibit_public_write_access
+- aws_s3_bucket_lifecycle_policy_enabled
+- aws_backup_recovery_point_encryption_enabled
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_s3_bucket_object_lock_enabled
+- aws_s3_bucket_public_access_blocked
+- aws_efs_file_system_protected_by_backup_plan
+- aws_ebs_volume_in_backup_plan
+- aws_fsx_file_system_protected_by_backup_plan
+- aws_s3_public_access_block_account
+- aws_backup_plan_min_retention_35_days
+- aws_s3_bucket_default_encryption_enabled
+- aws_backup_recovery_point_manual_deletion_disabled
+- aws_ec2_instance_ebs_optimized
+- aws_ebs_attached_volume_encryption_enabled
+- aws_s3_bucket_cross_region_replication_enabled
+- aws_s3_bucket_versioning_enabled
+- aws_s3_bucket_event_notifications_enabled
+- aws_efs_file_system_encrypted_with_cmk
+- aws_s3_bucket_logging_enabled
+- aws_s3_bucket_restrict_public_read_access
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_bucket_enforces_ssl
+- aws_s3_bucket_default_encryption_enabled_kms

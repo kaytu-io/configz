@@ -1,0 +1,87 @@
+ID: aws-config-cmmc-2.0-level-1
+Title: AWS Config CMMC 2.0 Level 1
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config CMMC 2.0 Level 1
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_cloudwatch_alarm_action_enabled
+- aws_iam_root_user_no_access_keys
+- aws_iam_user_mfa_enabled
+- aws_ec2_instance_in_vpc
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_rds_db_instance_prohibit_public_access
+- aws_s3_public_access_block_account
+- aws_cloudtrail_trail_integrated_with_logs
+- aws_iam_policy_custom_no_blocked_kms_actions
+- aws_iam_policy_custom_no_star_star
+- aws_iam_policy_custom_no_star_star
+- aws_iam_user_no_policies
+- aws_cloudtrail_multi_region_trail_enabled
+- aws_vpc_route_table_restrict_public_access_to_igw
+- aws_redshift_cluster_encryption_in_transit_enabled
+- aws_iam_root_user_hardware_mfa_enabled
+- aws_autoscaling_launch_config_public_ip_disabled
+- aws_ec2_instance_iam_profile_attached
+- aws_elb_application_classic_lb_logging_enabled
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_rds_db_snapshot_prohibit_public_access
+- aws_vpc_security_group_allows_ingress_authorized_ports
+- aws_iam_user_access_key_age_90
+- aws_apigateway_stage_use_waf_web_acl
+- aws_iam_user_console_access_mfa_enabled
+- aws_rds_db_instance_logging_enabled
+- aws_elb_application_lb_waf_enabled
+- aws_iam_group_user_role_no_inline_policies
+- aws_iam_user_unused_credentials_45
+- aws_iam_root_user_mfa_enabled
+- aws_es_domain_in_vpc
+- aws_guardduty_enabled
+- aws_opensearch_domain_node_to_node_encryption_enabled
+- aws_vpc_default_security_group_restricts_all_traffic
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_emr_cluster_kerberos_enabled
+- aws_vpc_security_group_restrict_ingress_common_ports_all
+- aws_s3_bucket_restrict_public_write_access
+- aws_s3_bucket_enforces_ssl
+- aws_dms_replication_instance_not_publicly_accessible
+- aws_ecr_repository_image_scan_on_push_enabled
+- aws_s3_bucket_logging_enabled
+- aws_ec2_instance_not_publicly_accessible
+- aws_iam_account_password_policy_strong
+- aws_vpc_security_group_restrict_ingress_ssh_all
+- aws_vpc_igw_attached_to_authorized_vpc
+- aws_secretsmanager_secret_automatic_rotation_enabled
+- aws_secretsmanager_secret_rotated_as_scheduled
+- aws_wafv2_web_acl_logging_enabled
+- aws_sagemaker_notebook_instance_direct_internet_access_disabled
+- aws_elb_application_lb_drop_http_headers
+- aws_ebs_snapshot_not_publicly_restorable
+- aws_iam_group_not_empty
+- aws_s3_bucket_restrict_public_read_access
+- aws_securityhub_enabled
+- aws_apigateway_stage_logging_enabled
+- aws_es_domain_node_to_node_encryption_enabled
+- aws_lambda_function_in_vpc
+- aws_redshift_cluster_prohibit_public_access
+- aws_vpc_subnet_auto_assign_public_ip_disabled
+- aws_cloudtrail_s3_object_write_events_audit_enabled aws_cloudtrail_s3_object_read_events_audit_enabled
+- aws_iam_user_in_group
+- aws_ssm_document_prohibit_public_access
+- aws_ec2_instance_uses_imdsv2
+- aws_emr_cluster_master_nodes_no_public_ip
+- aws_iam_policy_inline_no_blocked_kms_actions
+- aws_lambda_function_restrict_public_access
+- aws_opensearch_domain_in_vpc
+- aws_s3_bucket_public_access_blocked

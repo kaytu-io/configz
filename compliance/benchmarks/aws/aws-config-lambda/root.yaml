@@ -1,0 +1,21 @@
+ID: aws-config-lambda
+Title: AWS Config Lambda
+ReferenceCode: ""
+Connector: AWS
+Description: AWS Config Lambda
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - aws
+  service:
+  - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_lambda_function_in_vpc
+- aws_lambda_function_multiple_az_configured
+- aws_lambda_function_dead_letter_queue_configured
