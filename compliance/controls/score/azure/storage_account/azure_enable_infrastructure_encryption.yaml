@@ -1,4 +1,4 @@
-ID: enable_infrastructure_encryption
+ID: azure_enable_infrastructure_encryption
 Title: Enable Infrastructure Encryption
 Description: Ensure that infrastructure encryption is enabled for Microsoft Azure Storage accounts.
 Query:

@@ -1,6 +1,6 @@
-ID: secure_access_to_kubernetes_api_server_using_authorized_ip_address_ranges
-Title: Secure Access to Kubernetes API Server Using Authorized IP Address Ranges
-Description: Ensure that Kubernetes Role-Based Access Control is enabled for Azure Kubernetes clusters.
+ID: azure_use_system_assigned_managed_identities_for_aks_clusters
+Title: Use System-Assigned Managed Identities for AKS Clusters
+Description: Ensure that AKS clusters are using system-assigned managed identities.
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -10,12 +10,12 @@ Query:
       c.kaytu_account_id,
       kubernetes_version,
       case
-        when api_server_access_profile is null then 'alarm'
+        when identity ->> 'type' = 'UserAssigned' then 'alarm'
         else 'ok'
       end as status,
       case
-        when api_server_access_profile is null then c.name || '  is not configured to secure access to the Kubernetes API server'
-        else c.name || '  is configured to secure access to the Kubernetes API server'
+        when identity ->> 'type' = 'UserAssigned' then c.name || ' is not using a system-assigned managed identity'
+        else c.name || ' is using a system-assigned managed identity'
       end as reason,
       c.resource_group as resource_group,
       sub.display_name as subscription

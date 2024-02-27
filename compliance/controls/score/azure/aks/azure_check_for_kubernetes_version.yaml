@@ -1,6 +1,6 @@
-ID: use_system_assigned_managed_identities_for_aks_clusters
-Title: Use System-Assigned Managed Identities for AKS Clusters
-Description: Ensure that AKS clusters are using system-assigned managed identities.
+ID: azure_check_for_kubernetes_version
+Title: Check for Kubernetes Version
+Description: Ensure that AKS clusters are using the latest available version of Kubernetes software.
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -8,14 +8,13 @@ Query:
       c.name as resource,
       c.kaytu_resource_id,
       c.kaytu_account_id,
-      kubernetes_version,
       case
-        when identity ->> 'type' = 'UserAssigned' then 'alarm'
+        when kubernetes_version < '{{.azureAksLatestVersion}}' then 'alarm'
         else 'ok'
       end as status,
       case
-        when identity ->> 'type' = 'UserAssigned' then c.name || ' is not using a system-assigned managed identity'
-        else c.name || ' is using a system-assigned managed identity'
+        when kubernetes_version < '{{.azureAksLatestVersion}}' then c.name || ' is not using the latest available version of Kubernetes software'
+        else c.name || ' is using the latest available version of Kubernetes software'
       end as reason,
       c.resource_group as resource_group,
       sub.display_name as subscription
@@ -27,5 +26,8 @@ Query:
   ListOfTables:
     - azure_kubernetes_cluster
     - azure_subscription
+  Parameters:
+    - Key: azureAksLatestVersion
+      Required: true
 ManualVerification: false
-Severity: medium
+Severity: low

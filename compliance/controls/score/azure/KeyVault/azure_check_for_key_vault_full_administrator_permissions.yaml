@@ -1,4 +1,4 @@
-ID: check_for_key_vault_full_administrator_permissions
+ID: azure_check_for_key_vault_full_administrator_permissions
 Title: Check for Key Vault Full Administrator Permissions
 Description: Ensure that no Azure user, group or application has full permissions to access and manage Key Vaults.
 Query:

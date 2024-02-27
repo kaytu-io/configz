@@ -1,4 +1,4 @@
-ID: enable_auditevent_logging_for_azure_key_vaults
+ID: azure_enable_auditevent_logging_for_azure_key_vaults
 Title: Enable AuditEvent Logging for Azure Key Vaults
 Description: Ensure that logging for Azure KeyVault is 'Enabled'
 Query:

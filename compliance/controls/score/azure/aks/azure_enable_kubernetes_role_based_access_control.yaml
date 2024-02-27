@@ -1,4 +1,4 @@
-ID: enable_kubernetes_role_based_access_control
+ID: azure_enable_kubernetes_role_based_access_control
 Title: Enable Kubernetes Role-Based Access Control
 Description: Ensure that Kubernetes Role-Based Access Control is enabled for Azure Kubernetes clusters.
 Query:
