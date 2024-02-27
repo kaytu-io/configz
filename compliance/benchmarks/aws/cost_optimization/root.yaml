@@ -3,6 +3,9 @@ Controls:
   - aws_ebs_volumes_too_old_snapshots
   - aws_acm_certificates_validity
   - aws_acm_certificates_renewal_7_days_before_expiration
+  - aws_unassociated_elastic_ip_addresses
+  - aws_unused_elastic_network_interfaces
+  - aws_vpc_igw_attached_to_authorized_vpc
 ReferenceCode: cost_optimization
 Description: Cost Optimization Description
 ID: cost_optimization

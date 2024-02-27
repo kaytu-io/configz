@@ -3,6 +3,43 @@ Controls:
   - aws_unrestricted_inbound_traffic_on_remote_server_administration_ports
   - aws_check_for_unrestricted_memcached_access
   - aws_iam_users_with_administrative_privileges
+  - aws_ami_encryption
+  - aws_app_tier_ec2_instance_using_iam_roles
+  - aws_app_tier_publicly_shared_ami
+  - aws_ec2_instance_not_in_public_subnet
+  - aws_ebs_public_snapshots
+  - aws_app_tier_ebs_encrypted
+  - aws_ebs_encrypted
+  - aws_encryption_at_rest
+  - aws_opensearch_accessible_only_from_safelisted_ip_addresses
+  - aws_opensearch_domain_encrypted_with_kms_cmks
+  - aws_opensearch_domain_exposed
+  - aws_opensearch_domain_in_vpc
+  - aws_opensearch_node_to_node_encryption
+  - aws_tls_security_policy_version
+  - aws_rds_public_snapshots
+  - aws_iam_database_authentication
+  - aws_rds_encryption_enabled
+  - aws_rds_db_instance_no_public_subnet
+  - aws_rds_master_username
+  - aws_rotate_ssltls_certificates_for_database_instances
+  - aws_acm_certificates_validity
+  - aws_acm_certificate_expired
+  - aws_acm_certificates_with_wildcard_domain_names
+  - aws_pre_heartbleed_server_certificates
+  - aws_iam_server_certificate_size
+  - aws_multi_account_centralized_management
+  - aws_attach_policy_to_iam_roles_associated_with_web_tier_ec2_instances
+  - aws_check_for_untrusted_cross_account_iam_roles
+  - aws_iam_user_no_policies
+  - aws_ssl_tls_certificate_expiry_30_days
+  - aws_unnecessary_ssh_public_keys
+  - aws_valid_iam_identity_providers
+  - aws_vpc_igw_attached_to_authorized_vpc
+  - aws_vpc_endpoint_cross_account_access
+  - aws_vpc_endpoints_in_use
+  - aws_vpc_peering_connections_to_accounts_outside_aws_organization
+  - azure_keyvault_logging_enabled
 ReferenceCode: security
 Description: Security Description
 ID: security
