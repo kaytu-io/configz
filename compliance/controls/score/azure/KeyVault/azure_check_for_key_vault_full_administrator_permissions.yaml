@@ -1,0 +1,59 @@
+ID: azure_check_for_key_vault_full_administrator_permissions
+Title: Check for Key Vault Full Administrator Permissions
+Description: Ensure that no Azure user, group or application has full permissions to access and manage Key Vaults.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH secrets AS (
+      SELECT unnest(ARRAY ['Get','List','Set','Delete','Recover','Backup','Restore','Purge']) AS s
+    ), keys AS (
+      SELECT unnest(ARRAY ['Get','List','Update','Create','Import','Delete','Recover','Backup','Restore','Decrypt',
+      'Encrypt','UnwrapKey','WrapKey','Verify','Sign','Purge']) AS k
+    ), certificates AS (
+      SELECT unnest(ARRAY ['Get','List',
+        'Update','Create','Import','Delete','Recover','Backup','Restore','ManageContacts',
+        'ManageIssuers','GetIssuers','ListIssuers','SetIssuers','DeleteIssuers','Purge']) AS c
+    )
+
+    select
+      v.name as resource,
+      v.kaytu_resource_id,
+      v.kaytu_account_id,
+      case
+        when EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies) as p
+          WHERE (SELECT COUNT(*) FROM secrets AS s WHERE lower(p ->> 'permissionsSecrets') ILIKE '%' || lower(s.s) || '%') = (SELECT COUNT(*) FROM secrets)
+        ) and EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies) as p
+          WHERE (SELECT COUNT(*) FROM keys AS k WHERE lower(p ->> 'permissionsKeys') ILIKE '%' || lower(k.k) || '%') = (SELECT COUNT(*) FROM keys)
+        ) and EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies) as p
+          WHERE (SELECT COUNT(*) FROM certificates AS c WHERE lower(p ->> 'permissionsCertificates') ILIKE '%' || lower(c.c) || '%') = (SELECT COUNT(*) FROM certificates)
+        ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies) as p
+          WHERE (SELECT COUNT(*) FROM secrets AS s WHERE lower(p ->> 'permissionsSecrets') ILIKE '%' || lower(s.s) || '%') = (SELECT COUNT(*) FROM secrets)
+        ) and EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies) as p
+          WHERE (SELECT COUNT(*) FROM keys AS k WHERE lower(p ->> 'permissionsKeys') ILIKE '%' || lower(k.k) || '%') = (SELECT COUNT(*) FROM keys)
+        ) and EXISTS (
+          SELECT 1 FROM jsonb_array_elements(access_policies) as p
+          WHERE (SELECT COUNT(*) FROM certificates AS c WHERE lower(p ->> 'permissionsCertificates') ILIKE '%' || lower(c.c) || '%') = (SELECT COUNT(*) FROM certificates)
+        ) then v.name || ' has full permissions to access and manage the selected Azure Key Vault.'
+        else v.name || ' does not have full permissions to access and manage the selected Azure Key Vault.'
+      end as reason,
+      v.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault as v
+      left join azure_subscription as sub on v.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_key_vault
+  ListOfTables:
+    - azure_key_vault
+    - azure_subscription
+ManualVerification: false
+Severity: high

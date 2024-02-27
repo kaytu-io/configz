@@ -1,6 +1,6 @@
 ID: aws_web_tier_ec2_instance_using_iam_roles
 Title: Web-Tier EC2 Instance Using IAM Roles
-Description: Ensure that your web-tier EC2 instances are using IAM roles to grant permissions to applications running on these instances.
+Description: Ensure web-tier IAM instance roles are used for AWS resource access from instances.
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |

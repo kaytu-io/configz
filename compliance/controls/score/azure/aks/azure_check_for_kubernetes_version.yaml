@@ -1,0 +1,33 @@
+ID: azure_check_for_kubernetes_version
+Title: Check for Kubernetes Version
+Description: Ensure that AKS clusters are using the latest available version of Kubernetes software.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      case
+        when kubernetes_version < '{{.azureAksLatestVersion}}' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when kubernetes_version < '{{.azureAksLatestVersion}}' then c.name || ' is not using the latest available version of Kubernetes software'
+        else c.name || ' is using the latest available version of Kubernetes software'
+      end as reason,
+      c.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_kubernetes_cluster as c
+      left join azure_subscription as sub on c.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+    - azure_kubernetes_cluster
+    - azure_subscription
+  Parameters:
+    - Key: azureAksLatestVersion
+      Required: true
+ManualVerification: false
+Severity: low
