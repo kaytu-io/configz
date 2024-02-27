@@ -1,0 +1,31 @@
+ID: secure_access_to_kubernetes_api_server_using_authorized_ip_address_ranges
+Title: Secure Access to Kubernetes API Server Using Authorized IP Address Ranges
+Description: Ensure that Kubernetes Role-Based Access Control is enabled for Azure Kubernetes clusters.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      kubernetes_version,
+      case
+        when api_server_access_profile is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when api_server_access_profile is null then c.name || '  is not configured to secure access to the Kubernetes API server'
+        else c.name || '  is configured to secure access to the Kubernetes API server'
+      end as reason,
+      c.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_kubernetes_cluster as c
+      left join azure_subscription as sub on c.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+    - azure_kubernetes_cluster
+    - azure_subscription
+ManualVerification: false
+Severity: medium

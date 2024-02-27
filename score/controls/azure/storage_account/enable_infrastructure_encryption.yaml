@@ -1,0 +1,30 @@
+ID: enable_infrastructure_encryption
+Title: Enable Infrastructure Encryption
+Description: Ensure that infrastructure encryption is enabled for Microsoft Azure Storage accounts.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.name as resource,
+      a.kaytu_resource_id,
+      a.kaytu_account_id,
+      case
+        when require_infrastructure_encryption is null or require_infrastructure_encryption = 'false' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when require_infrastructure_encryption is null or require_infrastructure_encryption = 'false' then a.name || ' Infrastructure Encryption feature is not enabled.'
+        else a.name || ' Infrastructure Encryption feature is not enabled.'
+      end as reason,
+      a.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_storage_account as a
+      left join azure_subscription as sub on a.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+    - azure_storage_account
+    - azure_subscription
+ManualVerification: false
+Severity: medium
