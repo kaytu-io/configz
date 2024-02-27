@@ -1,0 +1,37 @@
+ID: azure_check_for_unused_load_balancers
+Title: Check for Unused Load Balancers
+Description: Identify and remove unused load balancers from your Microsoft Azure cloud account.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      lb.name as resource,
+      lb.kaytu_resource_id,
+      lb.kaytu_account_id,
+      backend_address_pools,
+      case
+        when EXISTS (
+          SELECT 1 FROM jsonb_array_elements(backend_address_pools) AS p
+          WHERE p -> 'properties' ->> 'backendIPConfigurations' is not null
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when EXISTS (
+              SELECT 1 FROM jsonb_array_elements(backend_address_pools) AS p
+              WHERE p -> 'properties' ->> 'backendIPConfigurations' is not null
+            ) then lb.name || ' is used.'
+        else lb.name || ' is unused.'
+      end as reason,
+      lb.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_lb as lb
+      left join azure_subscription as sub on lb.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_lb
+  ListOfTables:
+    - azure_lb
+    - azure_subscription
+ManualVerification: false
+Severity: low
