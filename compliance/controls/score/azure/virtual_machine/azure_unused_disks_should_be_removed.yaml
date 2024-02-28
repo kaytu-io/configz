@@ -1,0 +1,35 @@
+ID: azure_unused_disks_should_be_removed
+Title: Unused disks should be removed
+Description: Unattached disks are charged by Azure, they should be removed unless there is a business need to retain them.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      disk.id as resource,
+      disk.kaytu_resource_id,
+      disk.kaytu_account_id,
+      case
+        when disk.disk_state = 'Unattached' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when disk.disk_state = 'Unattached' then disk.title || ' has no attachments.'
+        else disk.title || ' has attachments.'
+      end as reason,
+      disk.resource_group,
+      display_name as subscription
+    from
+      azure_compute_disk as disk,
+      azure_subscription as sub
+    where
+      sub.subscription_id = disk.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_disk
+  ListOfTables:
+    - azure_compute_disk
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure/Compute

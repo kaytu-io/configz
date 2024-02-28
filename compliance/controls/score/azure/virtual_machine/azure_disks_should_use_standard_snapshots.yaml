@@ -1,0 +1,35 @@
+ID: azure_disks_should_use_standard_snapshots
+Title: Disks should use standard snapshots
+Description: Use standard storage instead of premium storage for managed disk snapshots to save 60% on costs.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      ss.id as resource,
+      ss.kaytu_resource_id,
+      ss.kaytu_account_id,
+      case
+        when ss.sku_tier = 'Standard' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when ss.sku_tier = 'Standard' then ss.title || ' has storage type ' || ss.sku_tier || '.'
+        else ss.title || ' has storage type ' || ss.sku_tier || '.'
+      end as reason,
+      ss.resource_group,
+      display_name as subscription
+    from
+      azure_compute_snapshot as ss,
+      azure_subscription as sub
+    where
+      ss.subscription_id = sub.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_snapshot
+  ListOfTables:
+    - azure_compute_snapshot
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure/Compute

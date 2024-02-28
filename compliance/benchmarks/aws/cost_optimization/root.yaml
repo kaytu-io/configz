@@ -22,6 +22,7 @@ Controls:
   - aws_rds_reserved_db_instance_lease_expiration_in_the_next_30_days
   - aws_rds_reserved_db_instance_payment_failed
   - aws_rds_reserved_db_instance_payment_pending
+  - aws_redundant_cloud_trail
 ReferenceCode: cost_optimization
 Description: Cost Optimization Description
 ID: cost_optimization
