@@ -5,4 +5,4 @@ query: select connection_id, region, count(*) from kaytu_lookup where resource_t
 status: active
 tags:
   category:
-  - Networking
+  - Network
