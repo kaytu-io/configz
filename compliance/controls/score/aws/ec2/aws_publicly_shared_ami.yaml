@@ -1,0 +1,31 @@
+ID: aws_publicly_shared_ami
+Title: Publicly Shared AMI
+Description: Ensure AMIs aren't publicly shared to avoid exposing sensitive data.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      title as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when public then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when public then title || ' publicly accessible.'
+        else title || ' not publicly accessible.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ec2_ami;
+  Connector: AWS
+  PrimaryTable: aws_ec2_ami
+  ListOfTables:
+    - aws_ec2_ami
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EC2

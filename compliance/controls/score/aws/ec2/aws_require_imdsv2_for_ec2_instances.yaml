@@ -1,0 +1,31 @@
+ID: aws_require_imdsv2_for_ec2_instances
+Title: Require IMDSv2 for EC2 Instances
+Description: Ensure that all the Amazon EC2 instances require the use of Instance Metadata Service Version 2 (IMDSv2).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when metadata_options ->> 'HttpTokens' = 'optional' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when metadata_options ->> 'HttpTokens' = 'optional' then title || ' not configured to use Instance Metadata Service Version 2 (IMDSv2).'
+        else title || ' configured to use Instance Metadata Service Version 2 (IMDSv2).'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ec2_instance;
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EC2

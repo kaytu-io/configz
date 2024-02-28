@@ -26,3 +26,6 @@ Query:
     - aws_ec2_network_interface
 ManualVerification: false
 Severity: low
+Tags:
+  score_service_name:
+  - AWS/EC2

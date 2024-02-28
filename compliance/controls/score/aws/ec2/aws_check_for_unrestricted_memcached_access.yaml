@@ -47,3 +47,6 @@ Query:
     - aws_vpc_security_group
 ManualVerification: false
 Severity: very high
+Tags:
+  score_service_name:
+  - AWS/EC2

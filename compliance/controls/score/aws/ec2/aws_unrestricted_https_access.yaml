@@ -1,0 +1,49 @@
+ID: aws_unrestricted_https_access
+Title: Unrestricted HTTPS Access
+Description: Ensure no security group allows unrestricted inbound access to TCP port 443 (HTTPS).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with ingress_sg as (
+      select
+        group_id
+      from
+        aws_vpc_security_group_rule
+      where
+        (
+          cidr_ipv4 = '0.0.0.0/0'
+          or cidr_ipv6 = '::/0'
+        )
+        and ip_protocol <> 'icmp'
+        and from_port = 443
+        and to_port = 443
+        and not is_egress
+      group by
+        group_id
+    )
+    select
+      sg.group_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when isg.group_id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when isg.group_id is null then sg.group_id || ' allows unrestricted HTTPS access'
+        else sg.group_id || ' does not allow unrestricted HTTPS access'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_vpc_security_group as sg
+      left join ingress_sg as isg on sg.group_id = isg.group_id
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EC2
