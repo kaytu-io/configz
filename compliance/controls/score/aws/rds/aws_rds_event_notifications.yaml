@@ -28,9 +28,9 @@ Query:
   ListOfTables:
   - aws_account
   - aws_rds_db_event_subscription
-  Parameters: []
 ManualVerification: false
 Severity: high
-Tags:
-  category: []
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

@@ -4,6 +4,18 @@ Controls:
   - aws_unused_elastic_network_interfaces
   - aws_multi_account_centralized_management
   - azure_keyvault_logging_enabled
+  - aws_acm_certificate_expired
+  - aws_acm_certificates_validity
+  - aws_acm_certificates_with_wildcard_domain_names
+  - aws_ebs_volumes_attached_to_stopped_ec2_instances
+  - aws_unused_aws_ec2_key_pairs
+  - aws_opensearch_slow_logs
+  - aws_enable_aurora_cluster_copy_tags_to_snapshots
+  - aws_enable_serverless_log_exports
+  - aws_instance_level_events_subscriptions
+  - aws_log_exports
+  - aws_performance_insights
+  - aws_security_groups_events_subscriptions
 ReferenceCode: operational_excellence
 Description: Operational Excellence Description
 ID: operational_excellence

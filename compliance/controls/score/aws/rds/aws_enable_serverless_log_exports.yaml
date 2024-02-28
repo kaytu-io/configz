@@ -27,9 +27,9 @@ Query:
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
   - aws_rds_db_cluster
-  Parameters: []
 ManualVerification: false
 Severity: low
-Tags:
-  category: []
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

@@ -63,3 +63,6 @@ Query:
       Required: true
 ManualVerification: false
 Severity: high
+Tags:
+  score_service_name:
+  - AWS/VPC

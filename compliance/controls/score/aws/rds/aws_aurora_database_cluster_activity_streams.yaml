@@ -40,3 +40,6 @@ Query:
 ManualVerification: false
 Severity: medium
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

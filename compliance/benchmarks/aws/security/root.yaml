@@ -8,8 +8,10 @@ Controls:
   - aws_app_tier_publicly_shared_ami
   - aws_ec2_instance_not_in_public_subnet
   - aws_ebs_public_snapshots
+  - aws_ebs_snapshot_encrypted
   - aws_app_tier_ebs_encrypted
   - aws_ebs_encrypted
+  - aws_ebs_encrypted_with_kms_customer_master_keys
   - aws_encryption_at_rest
   - aws_opensearch_accessible_only_from_safelisted_ip_addresses
   - aws_opensearch_domain_encrypted_with_kms_cmks
@@ -40,6 +42,49 @@ Controls:
   - aws_vpc_endpoints_in_use
   - aws_vpc_peering_connections_to_accounts_outside_aws_organization
   - azure_keyvault_logging_enabled
+  - aws_acm_certificates_renewal_7_days_before_expiration
+  - aws_acm_certificates_renewal_30_days_before_expiration
+  - aws_acm_certificates_renewal_45_days_before_expiration
+  - aws_ebs_volume_unused
+  - aws_default_security_group_unrestricted
+  - aws_default_security_groups_in_use
+  - aws_disable_public_ip_address_assignment_for_ec2_instances
+  - aws_ec2_ami_too_old
+  - aws_ec2_desired_instance_type
+  - aws_ec2_instance_in_vpc
+  - aws_ec2_instance_naming_conventions
+  - aws_ec2_instance_too_old
+  - aws_publicly_shared_ami
+  - aws_require_imdsv2_for_ec2_instances
+  - aws_security_group_name_prefixed_with_launch_wizard
+  - aws_security_group_port_range
+  - aws_unrestricted_dns_access
+  - aws_unrestricted_ftp_access
+  - aws_unrestricted_https_access
+  - aws_unrestricted_security_group_egress
+  - aws_unrestricted_ssh_access
+  - aws_unused_aws_ec2_key_pairs
+  - aws_web_tier_ec2_instance_using_iam_roles
+  - aws_check_for_ip_based_access
+  - aws_desired_instance_types
+  - aws_enable_audit_logs
+  - aws_enable_in_transit_encryption
+  - aws_encryption_at_rest
+  - aws_opensearch_cross_account_access
+  - aws_opensearch_version
+  - aws_total_number_of_cluster_nodes
+  - aws_aurora_database_cluster_activity_streams
+  - aws_cluster_deletion_protection
+  - aws_enable_aws_rds_transport_encryption
+  - aws_enable_deletion_protection_for_aurora_serverless_clusters
+  - aws_enable_rds_snapshot_encryption
+  - aws_enable_serverless_log_exports
+  - aws_instance_deletion_protection
+  - aws_rds_event_notifications
+  - aws_rds_default_port
+  - aws_rds_instance_counts
+  - aws_log_exports
+  - aws_rds_publicly_accessible
 ReferenceCode: security
 Description: Security Description
 ID: security

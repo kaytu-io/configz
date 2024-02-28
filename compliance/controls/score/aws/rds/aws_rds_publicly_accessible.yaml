@@ -1,5 +1,5 @@
 ID: aws_rds_publicly_accessible
-Title: ""
+Title: RDS Publicly Accessible
 Description: Ensure RDS instances aren't public facing to minimise security risks.
 Query:
   Engine: odysseus-v0.0.1
@@ -24,8 +24,9 @@ Query:
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
-  Parameters: []
 ManualVerification: false
-Severity: ""
-Tags: {}
+Severity: medium
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS
