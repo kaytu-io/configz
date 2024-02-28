@@ -1,19 +1,9 @@
-Connector: AWS
-Description: Ensure encryption is setup for RDS instances to fulfill compliance requirements for data-at-rest encryption.
-Enabled: true
 ID: aws_rds_encryption_enabled
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure encryption is setup for RDS instances to fulfill compliance requirements for data-at-rest encryption.
-RiskLevel: High
+Title: RDS Encryption Enabled
+Description: Ensure encryption is setup for RDS instances to fulfill compliance requirements
+  for data-at-rest encryption.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |-
     select
       db_instance_identifier as resource,
@@ -31,6 +21,13 @@ Query:
       account_id
     from
       aws_rds_db_instance;
-ShortTitle: RDS Encryption Enabled
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: high
 Tags:
-  category:
+  category: []
+Managed: false

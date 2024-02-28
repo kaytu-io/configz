@@ -1,35 +1,37 @@
-Connector: AWS
-Description: Enable Event Subscriptions for DB Security Groups Events.
-Enabled: true
 ID: aws_security_groups_events_subscriptions
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Enable Event Subscriptions for DB Security Groups Events.
-RiskLevel: High
+Title: Security Groups Events Subscriptions
+Description: Enable Event Subscriptions for DB Security Groups Events.
 Query:
-  Connector: AWS
+  ID: ""
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_account
-    - aws_rds_db_event_subscription
-  PrimaryTable: aws_account
-  QueryToExecute: |- 
+  QueryToExecute: |
     select distinct
       a.kaytu_account_id,
       case
-        when s.arn is null then 'alarm'
+        when s.arn
+        is null then 'alarm'
         else 'ok'
       end status,
       case
-        when s.arn is null then 'Event subscription is not enabled for database security groups'
-        else 'Event subscription is enabled for database security groups'
+        when s.arn is
+        null then 'Event subscription is not enabled for database security groups'
+        else
+        'Event subscription is enabled for database security groups'
       end reason,
-      a.account_id
+
+        a.account_id
     from 
       aws_account a
-      left join (select * from aws_rds_db_event_subscription where source_type = 'db-security-group') s on s.kaytu_account_id = a.kaytu_account_id
-ShortTitle: Security Groups Events Subscriptions
+      left join (select * from aws_rds_db_event_subscription
+        where source_type = 'db-security-group') s on s.kaytu_account_id = a.kaytu_account_id
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+  - aws_account
+  - aws_rds_db_event_subscription
+  Parameters: []
+ManualVerification: false
+Severity: high
 Tags:
-  category:
+  category: []
+Managed: false

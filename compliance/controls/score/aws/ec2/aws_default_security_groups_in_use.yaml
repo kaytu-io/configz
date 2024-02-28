@@ -1,0 +1,37 @@
+ID: aws_default_security_groups_in_use
+Title: Default Security Groups In Use
+Description: Ensure default security groups aren't in use. Instead create unique security groups to better adhere to the principle of least privilege.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      instance_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(security_groups) as sg
+          WHERE sg ->> 'GroupName' = 'default'
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(security_groups) as sg
+          WHERE sg ->> 'GroupName' = 'default'
+        ) THEN instance_id || ' is using default security group' 
+        ELSE instance_id || ' is not using default security group'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_ec2_instance
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EC2

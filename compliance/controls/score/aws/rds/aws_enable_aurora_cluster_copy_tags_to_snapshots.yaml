@@ -1,19 +1,9 @@
-Connector: AWS
-Description: Ensure that Amazon Aurora clusters have Copy Tags to Snapshots feature enabled.
-Enabled: true
 ID: aws_enable_aurora_cluster_copy_tags_to_snapshots
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure that Amazon Aurora clusters have Copy Tags to Snapshots feature enabled.
-RiskLevel: High
+Title: Enable Aurora Cluster Copy Tags to Snapshots
+Description: Ensure that Amazon Aurora clusters have Copy Tags to Snapshots feature
+  enabled.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_cluster
-  PrimaryTable: aws_rds_db_cluster
   QueryToExecute: |-
     select
       db_cluster_identifier as resource,
@@ -33,6 +23,13 @@ Query:
       aws_rds_db_cluster
     where
      engine = 'aurora-mysql' or engine = 'aurora-postgresql'
-ShortTitle: Enable Aurora Cluster Copy Tags to Snapshots
+  Connector: AWS
+  PrimaryTable: aws_rds_db_cluster
+  ListOfTables:
+  - aws_rds_db_cluster
+  Parameters: []
+ManualVerification: false
+Severity: high
 Tags:
-  category:
+  category: []
+Managed: false

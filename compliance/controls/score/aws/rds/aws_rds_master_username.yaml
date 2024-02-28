@@ -1,19 +1,9 @@
-Connector: AWS
-Description: Ensure AWS RDS instances are using secure and unique master usernames for their databases.
-Enabled: true
 ID: aws_rds_master_username
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure AWS RDS instances are using secure and unique master usernames for their databases.
-RiskLevel: High
+Title: RDS Master Username
+Description: Ensure AWS RDS instances are using secure and unique master usernames
+  for their databases.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |-
     select
         db_instance_identifier as resource,
@@ -31,6 +21,13 @@ Query:
       account_id
     from
       aws_rds_db_instance;
-ShortTitle: RDS Master Username
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: high
 Tags:
-  category:
+  category: []
+Managed: false

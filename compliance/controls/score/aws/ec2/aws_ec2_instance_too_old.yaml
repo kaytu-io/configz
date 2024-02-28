@@ -26,3 +26,6 @@ Query:
     - aws_ec2_instance
 ManualVerification: false
 Severity: high
+Tags:
+  score_service_name:
+  - AWS/EC2

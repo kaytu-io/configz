@@ -1,20 +1,9 @@
-Connector: AWS
-Description: Ensure that AWS RDS snapshots are encrypted to meet security and compliance requirements.
-Enabled: true
 ID: aws_enable_rds_snapshot_encryption
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure that AWS RDS snapshots are encrypted to meet security and compliance requirements.
-RiskLevel: Medium
+Title: Enable RDS Snapshot Encryption
+Description: Ensure that AWS RDS snapshots are encrypted to meet security and compliance
+  requirements.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_instance
-    - aws_rds_db_snapshot
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |-
     with snapshots as (
           select distinct
@@ -42,6 +31,14 @@ Query:
         from
           aws_rds_db_instance as r
           left join snapshots as b on r.db_instance_identifier = b.db_instance_identifier;
-ShortTitle: Enable RDS Snapshot Encryption
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  - aws_rds_db_snapshot
+  Parameters: []
+ManualVerification: false
+Severity: medium
 Tags:
-  category:
+  category: []
+Managed: false

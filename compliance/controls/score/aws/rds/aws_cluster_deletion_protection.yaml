@@ -1,19 +1,8 @@
-Connector: AWS
-Description: Enable AWS RDS Cluster Deletion Protection.
-Enabled: true
 ID: aws_cluster_deletion_protection
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Enable AWS RDS Cluster Deletion Protection.
-RiskLevel: Medium
+Title: Cluster Deletion Protection
+Description: Enable AWS RDS Cluster Deletion Protection.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_cluster
-  PrimaryTable: aws_rds_db_cluster
   QueryToExecute: |-
     select
       db_cluster_identifier as resource,
@@ -33,6 +22,13 @@ Query:
       aws_rds_db_cluster
     where
      engine = 'aurora-mysql' or engine = 'aurora-postgresql'
-ShortTitle: Cluster Deletion Protection
+  Connector: AWS
+  PrimaryTable: aws_rds_db_cluster
+  ListOfTables:
+  - aws_rds_db_cluster
+  Parameters: []
+ManualVerification: false
+Severity: medium
 Tags:
-  category:
+  category: []
+Managed: false

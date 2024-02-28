@@ -1,20 +1,10 @@
-Connector: AWS
-Description: Ensure Auto Minor Version Upgrade is enabled for RDS to automatically receive minor engine upgrades during the maintenance window.
-Enabled: true
 ID: aws_rds_auto_minor_version_upgrade
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure Auto Minor Version Upgrade is enabled for RDS to automatically receive minor engine upgrades during the maintenance window.
-RiskLevel: Medium
+Title: RDS Auto Minor Version Upgrade
+Description: Ensure Auto Minor Version Upgrade is enabled for RDS to automatically
+  receive minor engine upgrades during the maintenance window.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
-  QueryToExecute: |- 
+  QueryToExecute: |-
     select
       db_instance_identifier as resource,
       kaytu_account_id as kaytu_account_id,
@@ -31,6 +21,13 @@ Query:
       account_id
     from
       aws_rds_db_instance
-ShortTitle: RDS Auto Minor Version Upgrade
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: medium
 Tags:
-  category:
+  category: []
+Managed: false

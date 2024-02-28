@@ -1,0 +1,41 @@
+ID: aws_default_security_group_unrestricted
+Title: Default Security Group Unrestricted
+Description: Ensure the default security group of every VPC restricts all traffic.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      group_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(ip_permissions) AS p
+          WHERE EXISTS (SELECT 1 FROM jsonb_array_elements((p -> 'IpRanges')::jsonb) as r
+          WHERE r ->> 'CidrIp' = '0.0.0.0/0')
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN EXISTS (
+          SELECT 1 FROM jsonb_array_elements(ip_permissions) AS p
+          WHERE EXISTS (SELECT 1 FROM jsonb_array_elements((p -> 'IpRanges')::jsonb) as r
+          WHERE r ->> 'CidrIp' = '0.0.0.0/0')
+        ) THEN group_id || ' is not secure and compliant' 
+        ELSE group_id || ' is secure and compliant'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_vpc_security_group
+    WHERE
+      group_name = 'default'
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+    - aws_vpc_security_group
+ManualVerification: false
+Severity: low
+Tags:
+  score_service_name:
+  - AWS/EC2

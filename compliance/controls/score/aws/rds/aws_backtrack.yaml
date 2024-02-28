@@ -1,18 +1,8 @@
-Connector: AWS
-Description: Enable Amazon Aurora Backtrack.
-Enabled: true
 ID: aws_backtrack
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Enable Amazon Aurora Backtrack.
-RiskLevel: Low
+Title: Backtrack
+Description: Enable Amazon Aurora Backtrack.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_rds_db_cluster
-  PrimaryTable: aws_rds_db_cluster
   QueryToExecute: |-
     select
       db_cluster_identifier as resource,
@@ -32,6 +22,10 @@ Query:
       aws_rds_db_cluster
     where
       engine = 'aurora-mysql' or engine = 'aurora-postgresql'
-ShortTitle: Backtrack
-Tags:
-  category:
+  Connector: AWS
+  PrimaryTable: aws_rds_db_cluster
+  ListOfTables:
+  - aws_rds_db_cluster
+ManualVerification: false
+Severity: low
+Managed: false

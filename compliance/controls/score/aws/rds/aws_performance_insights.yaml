@@ -1,20 +1,9 @@
-Connector: AWS
-Description: Enable AWS RDS Performance Insights.
-Enabled: true
 ID: aws_performance_insights
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Enable AWS RDS Performance Insights.
-RiskLevel: Low
+Title: Performance Insights
+Description: Enable AWS RDS Performance Insights.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
-  QueryToExecute: |- 
+  QueryToExecute: |-
     select
       db_instance_identifier as resource,
       kaytu_account_id as kaytu_account_id,
@@ -33,6 +22,13 @@ Query:
       aws_rds_db_instance
     where
      engine = 'aurora-mysql' or engine = 'aurora-postgresql' or engine = 'mysql' or engine = 'postgres'
-ShortTitle: Performance Insights
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: low
 Tags:
-  category:
+  category: []
+Managed: false

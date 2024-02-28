@@ -1,0 +1,31 @@
+ID: aws_ec2_ami_too_old
+Title: EC2 AMI Too Old
+Description: Ensure EC2 Amazon Machine Images (AMIs) aren't too old
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      image_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN now() - (creation_date)::timestamp > '180 days'::interval THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN now() - (creation_date)::timestamp > '180 days'::interval THEN name || ' needs to be restarted' 
+        ELSE name || ' launch time was not much time ago'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_ec2_ami
+  Connector: AWS
+  PrimaryTable: aws_ec2_ami
+  ListOfTables:
+    - aws_ec2_ami
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS/EC2

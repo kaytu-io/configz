@@ -1,19 +1,8 @@
-Connector: AWS
-Description: Ensure Amazon RDS Reserved Instances (RI) are renewed before expiration.
-Enabled: true
 ID: aws_rds_reserved_db_instance_lease_expiration_in_the_next_30_days
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure Amazon RDS Reserved Instances (RI) are renewed before expiration.
-RiskLevel: Medium
+Title: RDS Reserved DB Instance Lease Expiration In The Next 30 Days
+Description: Ensure Amazon RDS Reserved Instances (RI) are renewed before expiration.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_reserved_db_instance
-  PrimaryTable: aws_rds_reserved_db_instance
   QueryToExecute: |-
     select
       reserved_db_instance_id as resource,
@@ -33,6 +22,13 @@ Query:
       account_id
     from
       aws_rds_reserved_db_instance
-ShortTitle: RDS Reserved DB Instance Lease Expiration In The Next 30 Days
+  Connector: AWS
+  PrimaryTable: aws_rds_reserved_db_instance
+  ListOfTables:
+  - aws_rds_reserved_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: medium
 Tags:
-  category:
+  category: []
+Managed: false

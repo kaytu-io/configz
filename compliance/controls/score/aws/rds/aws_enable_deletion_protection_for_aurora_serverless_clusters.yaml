@@ -1,19 +1,9 @@
-Connector: AWS
-Description: Ensure that the Deletion Protection feature is enabled for your Aurora Serverless clusters.
-Enabled: true
 ID: aws_enable_deletion_protection_for_aurora_serverless_clusters
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure that the Deletion Protection feature is enabled for your Aurora Serverless clusters.
-RiskLevel: Medium
+Title: Enable Deletion Protection for Aurora Serverless Clusters
+Description: Ensure that the Deletion Protection feature is enabled for your Aurora
+  Serverless clusters.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_cluster
-  PrimaryTable: aws_rds_db_cluster
   QueryToExecute: |-
     select
       db_cluster_identifier as resource,
@@ -33,6 +23,13 @@ Query:
       aws_rds_db_cluster
     where
       engine_mode = 'serverless'
-ShortTitle: Enable Deletion Protection for Aurora Serverless Clusters
+  Connector: AWS
+  PrimaryTable: aws_rds_db_cluster
+  ListOfTables:
+  - aws_rds_db_cluster
+  Parameters: []
+ManualVerification: false
+Severity: medium
 Tags:
-  category:
+  category: []
+Managed: false

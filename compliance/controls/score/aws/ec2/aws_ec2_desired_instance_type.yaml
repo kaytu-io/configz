@@ -31,3 +31,6 @@ Query:
       Required: false
 ManualVerification: false
 Severity: high
+Tags:
+  score_service_name:
+  - AWS/EC2

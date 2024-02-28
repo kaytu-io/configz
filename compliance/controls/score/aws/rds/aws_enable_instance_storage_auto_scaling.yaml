@@ -1,19 +1,9 @@
-Connector: AWS
-Description: Ensure that the Storage AutoScaling feature is enabled to support unpredictable database workload.
-Enabled: true
 ID: aws_enable_instance_storage_auto_scaling
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure that the Storage AutoScaling feature is enabled to support unpredictable database workload.
-RiskLevel: Medium
+Title: Enable Instance Storage AutoScaling
+Description: Ensure that the Storage AutoScaling feature is enabled to support unpredictable
+  database workload.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
   QueryToExecute: |-
     select
       db_instance_identifier as resource,
@@ -33,6 +23,13 @@ Query:
       aws_rds_db_instance
     where
      engine = 'mysql' or engine = 'postgres'
-ShortTitle: Enable Instance Storage AutoScaling
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: medium
 Tags:
-  category:
+  category: []
+Managed: false

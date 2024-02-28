@@ -1,19 +1,9 @@
-Connector: AWS
-Description: Ensure AWS RDS SQL Server and Postgre instances have Transport Encryption feature enabled.
-Enabled: true
 ID: aws_enable_aws_rds_transport_encryption
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure AWS RDS SQL Server and Postgre instances have Transport Encryption feature enabled.
-RiskLevel: High
+Title: Enable AWS RDS Transport Encryption
+Description: Ensure AWS RDS SQL Server and Postgre instances have Transport Encryption
+  feature enabled.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_db_snapshot
-  PrimaryTable: aws_rds_db_snapshot
   QueryToExecute: |-
     with instance_pg as (
       select
@@ -61,6 +51,13 @@ Query:
     from
       instance_pg as i
       left join pg_with_ssl_enabled as p on p.name = i.pg_name
-ShortTitle: Enable AWS RDS Transport Encryption
+  Connector: AWS
+  PrimaryTable: aws_rds_db_snapshot
+  ListOfTables:
+  - aws_rds_db_snapshot
+  Parameters: []
+ManualVerification: false
+Severity: high
 Tags:
-  category:
+  category: []
+Managed: false

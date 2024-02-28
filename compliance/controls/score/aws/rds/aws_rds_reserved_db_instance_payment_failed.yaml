@@ -1,19 +1,8 @@
-Connector: AWS
-Description: Ensure AWS RDS Reserved Instance purchases have not failed.
-Enabled: true
 ID: aws_rds_reserved_db_instance_payment_failed
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Ensure AWS RDS Reserved Instance purchases have not failed.
-RiskLevel: High
+Title: RDS Reserved DB Instance Payment Failed
+Description: Ensure AWS RDS Reserved Instance purchases have not failed.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ID:
-  ListOfTables:
-    - aws_rds_reserved_db_instance
-  PrimaryTable: aws_rds_reserved_db_instance
   QueryToExecute: |-
     select
       reserved_db_instance_id as resource,
@@ -31,6 +20,13 @@ Query:
       account_id
     from
       aws_rds_reserved_db_instance
-ShortTitle: RDS Reserved DB Instance Payment Failed
+  Connector: AWS
+  PrimaryTable: aws_rds_reserved_db_instance
+  ListOfTables:
+  - aws_rds_reserved_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: high
 Tags:
-  category:
+  category: []
+Managed: false
