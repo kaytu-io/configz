@@ -1,0 +1,43 @@
+ID: aws_aurora_database_instance_accessibility
+Title: Aurora Database Instance Accessibility
+Description: Ensure that all database instances within an Amazon Aurora cluster have
+  the same accessibility.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    with access_count as (
+    select
+      db_cluster_identifier, count(db_cluster_identifier)
+    from
+      aws_rds_db_instance
+    group by
+      db_cluster_identifier, publicly_accessible
+    )
+
+    select
+      c.db_cluster_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when a.count = 2 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when a.count = 2 then title || ' cluster database instances dont have the same accessibility'
+        else title || ' cluster database instances have the same accessibility'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_cluster c
+      left join access_count as a on c.db_cluster_identifier = a.db_cluster_identifier
+    where
+      c.engine = 'aurora-mysql' or c.engine = 'aurora-postgresql'
+  Connector: AWS
+  PrimaryTable: aws_rds_db_cluster
+  ListOfTables:
+  - aws_rds_db_cluster
+  - aws_rds_db_instance
+ManualVerification: false
+Severity: medium
+Managed: false

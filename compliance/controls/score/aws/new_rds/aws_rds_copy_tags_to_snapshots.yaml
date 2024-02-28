@@ -1,0 +1,34 @@
+ID: aws_rds_copy_tags_to_snapshots
+Title: RDS Copy Tags to Snapshots
+Description: Enable RDS Copy Tags to Snapshots.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    select
+      db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when not copy_tags_to_snapshot then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when not copy_tags_to_snapshot then title || ' copy Tags to Snapshots feature is not enabled.'
+        else title || ' copy Tags to Snapshots feature is enabled.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance
+    where
+      engine = 'mysql' or engine = 'postgres'
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: low
+Tags:
+  category: []
+Managed: false

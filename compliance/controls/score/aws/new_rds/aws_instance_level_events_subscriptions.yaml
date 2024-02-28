@@ -1,0 +1,37 @@
+ID: aws_instance_level_events_subscriptions
+Title: Instance Level Events Subscriptions
+Description: Enable Event Subscriptions for Instance Level Events.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select distinct
+      a.kaytu_account_id,
+      case
+        when s.arn
+        is null then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when s.arn is
+        null then 'Event notifications is not enabled for Amazon RDS instance level events'
+
+          else 'Event notifications is enabled for Amazon RDS instance level events'
+
+        end reason,
+      a.account_id
+    from 
+      aws_account a
+      left join (select * from
+        aws_rds_db_event_subscription where source_type = 'db-instance') s on s.kaytu_account_id
+        = a.kaytu_account_id
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+  - aws_account
+  - aws_rds_db_event_subscription
+  Parameters: []
+ManualVerification: false
+Severity: high
+Tags:
+  category: []
+Managed: false

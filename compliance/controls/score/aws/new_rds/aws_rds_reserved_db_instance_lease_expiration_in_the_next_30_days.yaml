@@ -1,0 +1,34 @@
+ID: aws_rds_reserved_db_instance_lease_expiration_in_the_next_30_days
+Title: RDS Reserved DB Instance Lease Expiration In The Next 30 Days
+Description: Ensure Amazon RDS Reserved Instances (RI) are renewed before expiration.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    select
+      reserved_db_instance_id as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when start_time + (duration || ' seconds')::interval < now() then 'alarm'
+        when start_time + (duration || ' seconds')::interval - '30 days'::interval < now() then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when start_time + (duration || ' seconds')::interval < now() then title || ' has been expired on ' || start_time + (duration || ' seconds')::interval
+        when start_time + (duration || ' seconds')::interval - '30 days'::interval < now() then title || ' is about to expire on ' || start_time + (duration || ' seconds')::interval
+        else title || ' is not going to expire soon'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_reserved_db_instance
+  Connector: AWS
+  PrimaryTable: aws_rds_reserved_db_instance
+  ListOfTables:
+  - aws_rds_reserved_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: medium
+Tags:
+  category: []
+Managed: false

@@ -1,0 +1,32 @@
+ID: aws_iam_database_authentication
+Title: IAM Database Authentication
+Description: Enable IAM Database Authentication.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    select
+      db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when iam_database_authentication_enabled then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when iam_database_authentication_enabled then title || ' IAM authentication enabled.'
+        else title || ' IAM authentication not enabled.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: medium
+Tags:
+  category: []
+Managed: false

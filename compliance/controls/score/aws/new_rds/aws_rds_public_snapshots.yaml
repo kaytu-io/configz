@@ -1,0 +1,53 @@
+ID: aws_rds_public_snapshots
+Title: Amazon RDS Public Snapshots
+Description: Ensure that your Amazon RDS database snapshots are not accessible to
+  all AWS accounts.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH restore_values AS (
+      SELECT 
+        db_snapshot_identifier,
+        
+        attr ->> 'AttributeValues' AS attrValues 
+      FROM 
+        aws_rds_db_snapshot,
+        
+        jsonb_array_elements(db_snapshot_attributes) attr 
+      WHERE 
+        attr ->>
+        'AttributeName' = 'restore'
+    )
+    SELECT 
+      s.db_snapshot_identifier AS resource,
+
+        s.kaytu_account_id AS kaytu_account_id,
+      s.kaytu_resource_id AS kaytu_resource_id,
+
+        CASE
+        WHEN rv.attrValues LIKE '%all%'
+          THEN 'alarm'
+        ELSE 'ok'
+
+        END AS status,
+      CASE
+        WHEN rv.attrValues LIKE '%all%'
+          THEN s.db_snapshot_identifier
+        || ' is open to all accounts'
+        ELSE s.db_snapshot_identifier || ' is not open
+        to all accounts'
+      END AS reason
+    FROM
+      aws_rds_db_snapshot AS s
+      LEFT JOIN
+        restore_values AS rv ON s.db_snapshot_identifier = rv.db_snapshot_identifier
+  Connector: AWS
+  PrimaryTable: aws_rds_db_snapshot
+  ListOfTables:
+  - aws_rds_db_snapshot
+  Parameters: []
+ManualVerification: false
+Severity: high
+Tags:
+  category: []
+Managed: false

@@ -1,0 +1,34 @@
+ID: aws_rds_automated_backups_enabled
+Title: RDS Automated Backups Enabled
+Description: Ensure automated backups are enabled for RDS instances. This feature
+  of Amazon RDS enables point-in-time recovery of your database instance.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    select
+      db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when backup_retention_period < 1 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when backup_retention_period < 1 then title || ' backups not enabled.'
+        else title || ' backups enabled.'
+      end as reason,
+      region,
+      account_id,
+      backup_retention_period
+    from
+      aws_rds_db_instance;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+ManualVerification: false
+Severity: high
+Tags:
+  category: []
+Managed: false

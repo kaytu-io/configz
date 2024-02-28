@@ -1,0 +1,44 @@
+ID: aws_enable_rds_snapshot_encryption
+Title: Enable RDS Snapshot Encryption
+Description: Ensure that AWS RDS snapshots are encrypted to meet security and compliance
+  requirements.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    with snapshots as (
+          select distinct
+            db_instance_identifier, encrypted
+          from
+            aws_rds_db_snapshot
+          where type = 'awsbackup'
+        )
+        select
+          r.db_instance_identifier as resource,
+          kaytu_account_id as kaytu_account_id,
+          kaytu_resource_id as kaytu_resource_id,
+          case
+            when b.db_instance_identifier is null then 'skip'
+            when not b.encrypted then 'alarm'
+            else 'ok'
+          end as status,
+          case
+            when b.db_instance_identifier is null then r.title || ' has no RDS database instance snapshots.'
+            when not b.encrypted then r.title || ' snapshots not encrypted.'
+            else r.title || ' snapshots encrypted.'
+          end as reason,
+          r.region,
+          r.account_id
+        from
+          aws_rds_db_instance as r
+          left join snapshots as b on r.db_instance_identifier = b.db_instance_identifier;
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  - aws_rds_db_snapshot
+  Parameters: []
+ManualVerification: false
+Severity: medium
+Tags:
+  category: []
+Managed: false

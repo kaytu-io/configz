@@ -1,0 +1,35 @@
+ID: aws_enable_serverless_log_exports
+Title: Enable Serverless Log Exports
+Description: Ensure Log Exports feature is enabled for your Amazon Aurora Serverless
+  databases.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    select
+      db_cluster_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when enabled_cloudwatch_logs_exports is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when enabled_cloudwatch_logs_exports is null then title || ' Log Exports feature is not enabled'
+        else title || ' Log Exports feature is enabled'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_cluster
+    where
+      engine_mode = 'serverless'
+  Connector: AWS
+  PrimaryTable: aws_rds_db_cluster
+  ListOfTables:
+  - aws_rds_db_cluster
+  Parameters: []
+ManualVerification: false
+Severity: low
+Tags:
+  category: []
+Managed: false
