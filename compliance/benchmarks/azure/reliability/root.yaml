@@ -1,0 +1,15 @@
+Connector: Azure
+Controls:
+  - azure_check_for_kubernetes_version
+  - azure_disable_plain_ftp_deployment
+  - azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
+ReferenceCode: reliability
+Description: Reliability Description
+ID: reliability
+AutoAssign: true
+Tags:
+  type:
+    - SCORE
+  score_category:
+    - reliability
+Title: Reliability

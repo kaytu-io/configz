@@ -35,3 +35,6 @@ Query:
     - azure_subscription
 ManualVerification: false
 Severity: low
+Tags:
+  score_service_name:
+  - Azure/Network
