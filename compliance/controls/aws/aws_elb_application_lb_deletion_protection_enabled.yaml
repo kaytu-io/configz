@@ -2,40 +2,43 @@ ID: aws_elb_application_lb_deletion_protection_enabled
 Title: ELB application load balancer deletion protection should be enabled
 Description: This rule ensures that Elastic Load Balancing has deletion protection enabled.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then title || ' deletion protection enabled.'\n    else title || ' deletion protection disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_application_load_balancer;\n"
-  Connector: AWS
-  PrimaryTable: aws_ec2_application_load_balancer
-  ListOfTables:
-  - aws_ec2_application_load_balancer
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when load_balancer_attributes @> '[{\"Key\": \"deletion_protection.enabled\", \"Value\": \"true\"}]' then title || ' deletion protection enabled.'\n    else title || ' deletion protection disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ec2_application_load_balancer;\n"
+    Connector: AWS
+    PrimaryTable: aws_ec2_application_load_balancer
+    ListOfTables:
+        - aws_ec2_application_load_balancer
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  category:
-  - Compliance
-  cisa_cyber_essentials:
-  - "true"
-  fedramp_low_rev_4:
-  - "true"
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  gxp_21_cfr_part_11:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_800_53_rev_4:
-  - "true"
-  nist_800_53_rev_5:
-  - "true"
-  nist_csf:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/ELB
+    category:
+        - Compliance
+    cisa_cyber_essentials:
+        - "true"
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_53_rev_4:
+        - "true"
+    nist_800_53_rev_5:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/ELB
+Managed: false

@@ -1,24 +1,20 @@
-Description: Deploy Azure Web Application Firewall (WAF) in front of public facing
-  web applications for additional inspection of incoming traffic. Web Application
-  Firewall (WAF) provides centralized protection of your web applications from common
-  exploits and vulnerabilities such as SQL injections, Cross-Site Scripting, local
-  and remote file executions. You can also restrict access to your web applications
-  by countries, IP address ranges, and other http(s) parameters via custom rules.
 ID: web_application_firewall_(_waf)_should_be_enabled_for_application_gateway
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_application_gateway
-
-    WHERE type = ''Microsoft.Network/applicationGateways''
-
-    AND (web_application_firewall_configuration IS NULL OR web_application_firewall_configuration->>''firewallPolicy''
-    IS NULL)
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Web Application Firewall (WAF) should be enabled for Application Gateway
+Description: Deploy Azure Web Application Firewall (WAF) in front of public facing web applications for additional inspection of incoming traffic. Web Application Firewall (WAF) provides centralized protection of your web applications from common exploits and vulnerabilities such as SQL injections, Cross-Site Scripting, local and remote file executions. You can also restrict access to your web applications by countries, IP address ranges, and other http(s) parameters via custom rules.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_application_gateway
+        WHERE type = 'Microsoft.Network/applicationGateways'
+        AND (web_application_firewall_configuration IS NULL OR web_application_firewall_configuration->>'firewallPolicy' IS NULL)
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

@@ -1,14 +1,24 @@
-Description: Traffic analytics analyzes flow logs to provide insights into traffic
-  flow in your Azure cloud. It can be used to visualize network activity across your
-  Azure subscriptions and identify hot spots, identify security threats, understand
-  traffic flow patterns, pinpoint network misconfigurations and more.
 ID: network_watcher_flow_logs_should_have_traffic_analytics_enabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT *\nFROM azure_network_watcher\nWHERE type = 'Microsoft.Network/networkWatchers/flowLogs'\n\
-    AND (\n  (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled\
-    \ = False)\n  OR\n  (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval\
-    \ NOT IN ('10', '60'))\n)\nLIMIT 5;;\n"
-Severity: ''
 Title: Network Watcher flow logs should have traffic analytics enabled
+Description: Traffic analytics analyzes flow logs to provide insights into traffic flow in your Azure cloud. It can be used to visualize network activity across your Azure subscriptions and identify hot spots, identify security threats, understand traffic flow patterns, pinpoint network misconfigurations and more.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_network_watcher
+        WHERE type = 'Microsoft.Network/networkWatchers/flowLogs'
+        AND (
+          (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled = False)
+          OR
+          (flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval NOT IN ('10', '60'))
+        )
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

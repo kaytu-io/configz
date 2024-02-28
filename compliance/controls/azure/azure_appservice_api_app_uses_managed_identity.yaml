@@ -2,61 +2,22 @@ ID: azure_appservice_api_app_uses_managed_identity
 Title: Managed identity should be used in your API App
 Description: Use a managed identity for enhanced authentication security.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with all_api_app as (
-      select
-        id
-      from
-        azure_app_service_web_app
-      where
-        exists (
-          select
-          from
-            unnest(regexp_split_to_array(kind, ',')) elem
-          where
-            elem like '%api'
-      )
-    )
-    select
-      a.id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when b.id is null then 'skip'
-        when
-          configuration -> 'properties' ->> 'xManagedServiceIdentityId' is not null
-          or configuration -> 'properties' ->> 'managedServiceIdentityId' is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when b.id is null then a.title || ' is ' || a.kind || ' kind.'
-        when
-          configuration -> 'properties' ->> 'xManagedServiceIdentityId' is not null
-          or configuration -> 'properties' ->> 'managedServiceIdentityId' is not null
-          then a.name || ' uses managed identity.'
-        else a.name || ' not uses managed identity'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_app_service_web_app as a
-      left join all_api_app as b on a.id = b.id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_app_service_web_app
-  ListOfTables:
-  - azure_app_service_web_app
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with all_api_app as (\n  select\n    id\n  from\n    azure_app_service_web_app\n  where\n    exists (\n      select\n      from\n        unnest(regexp_split_to_array(kind, ',')) elem\n      where\n        elem like '%api'\n  )\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.id is null then 'skip'\n    when\n      configuration -> 'properties' ->> 'xManagedServiceIdentityId' is not null\n      or configuration -> 'properties' ->> 'managedServiceIdentityId' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.id is null then a.title || ' is ' || a.kind || ' kind.'\n    when\n      configuration -> 'properties' ->> 'xManagedServiceIdentityId' is not null\n      or configuration -> 'properties' ->> 'managedServiceIdentityId' is not null\n      then a.name || ' uses managed identity.'\n    else a.name || ' not uses managed identity'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as a\n  left join all_api_app as b on a.id = b.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_app_service_web_app
+    ListOfTables:
+        - azure_app_service_web_app
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  hipaa_hitrust_v92:
-  - "true"
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/AppService
+    hipaa_hitrust_v92:
+        - "true"
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/AppService
+Managed: false

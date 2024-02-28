@@ -2,53 +2,20 @@ ID: azure_arc_compute_machine_windows_log_analytics_agent_installed
 Title: Log Analytics agent should be installed on your Windows Azure Arc machines
 Description: This policy audits Windows Azure Arc machines if the Log Analytics agent is not installed.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with compute_machine as(
-      select
-        id,
-        name,
-        subscription_id,
-        resource_group
-      from
-        azure_hybrid_compute_machine,
-        jsonb_array_elements(extensions) as e
-      where
-      e ->> 'name' = 'MicrosoftMonitoringAgent'
-      and e ->> 'provisioningState' = 'Succeeded'
-    )
-    select
-      a.id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when a.os_name <> 'windows' then 'skip'
-        when m.id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when a.os_name <> 'windows' then a.name || ' is of ' || a.os_name || ' operating system.'
-        when m.id is not null then a.name || ' log analytics extension installed.'
-        else a.name || ' log analytics extension not installed.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-    azure_hybrid_compute_machine as a
-    left join compute_machine as m on m.id = a.id,
-    azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_hybrid_compute_machine
-  ListOfTables:
-  - azure_hybrid_compute_machine
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with compute_machine as(\n  select\n    id,\n    name,\n    subscription_id,\n    resource_group\n  from\n    azure_hybrid_compute_machine,\n    jsonb_array_elements(extensions) as e\n  where\n  e ->> 'name' = 'MicrosoftMonitoringAgent'\n  and e ->> 'provisioningState' = 'Succeeded'\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.os_name <> 'windows' then 'skip'\n    when m.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.os_name <> 'windows' then a.name || ' is of ' || a.os_name || ' operating system.'\n    when m.id is not null then a.name || ' log analytics extension installed.'\n    else a.name || ' log analytics extension not installed.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\nazure_hybrid_compute_machine as a\nleft join compute_machine as m on m.id = a.id,\nazure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_hybrid_compute_machine
+    ListOfTables:
+        - azure_hybrid_compute_machine
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/Compute
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/Compute
+Managed: false

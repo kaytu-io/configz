@@ -1,26 +1,21 @@
-Description: 'Azure Private Link lets you connect your virtual network to Azure services
-  without a public IP address at the source or destination. The Private Link platform
-  handles the connectivity between the consumer and services over the Azure backbone
-  network. By mapping private endpoints to your Event Grid topic instead of the entire
-  service, you''ll also be protected against data leakage risks. Learn more at: https://aka.ms/privateendpoints.'
 ID: azure_event_grid_topics_should_use_private_link
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_eventgrid_topic
-
-    WHERE type = ''Microsoft.EventGrid/topics''
-
-    AND (kind = ''AzureArc'' OR kaytu_description->>''kind'' = ''AzureArc'')
-
-    AND (kaytu_description->>''privateEndpointConnections'' IS NULL OR kaytu_description->>''privateEndpointConnections''
-    = ''[]'' OR kaytu_description->>''privateEndpointConnections'' = ''null'' OR kaytu_description->>''privateEndpointConnections''
-    = '''')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Azure Event Grid topics should use private link
+Description: 'Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Event Grid topic instead of the entire service, you''ll also be protected against data leakage risks. Learn more at: https://aka.ms/privateendpoints.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_eventgrid_topic
+        WHERE type = 'Microsoft.EventGrid/topics'
+        AND (kind = 'AzureArc' OR kaytu_description->>'kind' = 'AzureArc')
+        AND (kaytu_description->>'privateEndpointConnections' IS NULL OR kaytu_description->>'privateEndpointConnections' = '[]' OR kaytu_description->>'privateEndpointConnections' = 'null' OR kaytu_description->>'privateEndpointConnections' = '')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

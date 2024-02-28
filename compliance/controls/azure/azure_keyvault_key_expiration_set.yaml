@@ -2,53 +2,34 @@ ID: azure_keyvault_key_expiration_set
 Title: Ensure that the expiration date is set on all keys
 Description: Ensure that all keys in Azure Key Vault have an expiration time set.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      kvk.id as resource,
-      kvk.kaytu_account_id as kaytu_account_id,
-      kvk.kaytu_resource_id as kaytu_resource_id,
-      case
-        when enabled and expires_at is null then 'alarm'
-        else 'ok'
-      end as status,
-      vault_name || ' key ' || name ||
-      case
-        when enabled and expires_at is null then ' expiration date not set.'
-        when not enabled then ' disabled.'
-        else ' expiration date set to ' || to_char(expires_at, 'DD-Mon-YYYY') || '.'
-      end as reason
-      
-      , kvk.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_key_vault_key kvk,
-      azure_subscription sub
-    where
-      sub.subscription_id = kvk.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_key_vault_key
-  ListOfTables:
-  - azure_key_vault_key
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  kvk.id as resource,\n  kvk.kaytu_account_id as kaytu_account_id,\n  kvk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when enabled and expires_at is null then 'alarm'\n    else 'ok'\n  end as status,\n  vault_name || ' key ' || name ||\n  case\n    when enabled and expires_at is null then ' expiration date not set.'\n    when not enabled then ' disabled.'\n    else ' expiration date set to ' || to_char(expires_at, 'DD-Mon-YYYY') || '.'\n  end as reason\n  \n  , kvk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_key kvk,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kvk.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_key_vault_key
+    ListOfTables:
+        - azure_key_vault_key
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  category:
-  - Compliance
-  cis:
-  - "true"
-  cis_item_id:
-  - "8.1"
-  cis_level:
-  - "1"
-  cis_section_id:
-  - "8"
-  cis_type:
-  - automated
-  cis_version:
-  - v1.3.0
-  plugin:
-  - azure
-  service:
-  - Azure/KeyVault
+    category:
+        - Compliance
+    cis:
+        - "true"
+    cis_item_id:
+        - "8.1"
+    cis_level:
+        - "1"
+    cis_section_id:
+        - "8"
+    cis_type:
+        - automated
+    cis_version:
+        - v1.3.0
+    plugin:
+        - azure
+    service:
+        - Azure/KeyVault
+Managed: false

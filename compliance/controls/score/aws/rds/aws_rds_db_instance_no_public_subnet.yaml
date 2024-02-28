@@ -1,7 +1,8 @@
 ID: aws_rds_db_instance_no_public_subnet
 Title: RDS Instance Not In Public Subnet
-Description: Ensure that no AWS RDS database instances are provisioned inside VPC
-  public subnets.
+Description: Ensure that no AWS RDS database instances are provisioned inside VPC public subnets.
+
+
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -53,19 +54,11 @@ Query:
         case
           when s.subnet_id in (
             select
-              all_sub
+              SubnetId
             from
-              subnets_with_explicit_route
-            where
-              all_sub not in (
-                select
-                  SubnetId
-                from
-                  public_subnets_with_explicit_route
-              )
+              public_subnets_with_explicit_route
           ) then 'private'
-          when p.SubnetId is not null
-          or s.vpc_id in (
+          when p.SubnetId is not null or s.vpc_id in (
             select
               vpc_id
             from
@@ -74,8 +67,8 @@ Query:
           else 'private'
         end as access
       from
-        aws_vpc_subnet as s
-        left join public_subnets_with_explicit_route as p on p.SubnetId = s.subnet_id
+      aws_vpc_subnet as s
+      left join public_subnets_with_explicit_route as p on p.SubnetId = s.subnet_id
     ),
     cluster_public_subnet as (
       select
@@ -105,6 +98,7 @@ Query:
     from
       aws_rds_db_instance as c
       left join cluster_public_subnet as s on s.subnet_group_name = c.db_subnet_group_name;
+
   Connector: AWS
   PrimaryTable: aws_rds_db_instance
   ListOfTables:

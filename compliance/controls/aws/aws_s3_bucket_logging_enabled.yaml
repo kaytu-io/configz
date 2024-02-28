@@ -2,63 +2,66 @@ ID: aws_s3_bucket_logging_enabled
 Title: S3 bucket logging should be enabled
 Description: Amazon Simple Storage Service (Amazon S3) server access logging provides a method to monitor the network for potential cybersecurity events.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      case
-        when logging -> 'TargetBucket' is null then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when logging -> 'TargetBucket' is null then title || ' logging disabled.'
-        else title || ' logging enabled.'
-      end as reason
-      , region, account_id
-    from
-      aws_s3_bucket;
-  Connector: AWS
-  PrimaryTable: aws_s3_bucket
-  ListOfTables:
-    - aws_s3_bucket
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        select
+          arn as resource,
+          kaytu_account_id as kaytu_account_id,
+          kaytu_resource_id as kaytu_resource_id,
+          case
+            when logging -> 'TargetBucket' is null then 'alarm'
+            else 'ok'
+          end as status,
+          case
+            when logging -> 'TargetBucket' is null then title || ' logging disabled.'
+            else title || ' logging enabled.'
+          end as reason
+          , region, account_id
+        from
+          aws_s3_bucket;
+    Connector: AWS
+    PrimaryTable: aws_s3_bucket
+    ListOfTables:
+        - aws_s3_bucket
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: low
 Tags:
-  category:
-    - Compliance
-  cis_controls_v8_ig1:
-    - "true"
-  cisa_cyber_essentials:
-    - "true"
-  fedramp_low_rev_4:
-    - "true"
-  fedramp_moderate_rev_4:
-    - "true"
-  ffiec:
-    - "true"
-  gxp_21_cfr_part_11:
-    - "true"
-  hipaa_final_omnibus_security_rule_2013:
-    - "true"
-  hipaa_security_rule_2003:
-    - "true"
-  nist_800_171_rev_2:
-    - "true"
-  nist_800_53_rev_4:
-    - "true"
-  nist_800_53_rev_5:
-    - "true"
-  nist_csf:
-    - "true"
-  pci_dss_v321:
-    - "true"
-  plugin:
-    - aws
-  rbi_cyber_security:
-    - "true"
-  service:
-    - AWS/S3
-  soc_2:
-    - "true"
+    category:
+        - Compliance
+    cis_controls_v8_ig1:
+        - "true"
+    cisa_cyber_essentials:
+        - "true"
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_53_rev_4:
+        - "true"
+    nist_800_53_rev_5:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    rbi_cyber_security:
+        - "true"
+    service:
+        - AWS/S3
+    soc_2:
+        - "true"
+Managed: false

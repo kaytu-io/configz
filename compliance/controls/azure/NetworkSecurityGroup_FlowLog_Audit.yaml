@@ -1,20 +1,19 @@
-Description: Audit for network security groups to verify if flow logs are configured.
-  Enabling flow logs allows to log information about IP traffic flowing through network
-  security group. It can be used for optimizing network flows, monitoring throughput,
-  verifying compliance, detecting intrusions and more.
 ID: flow_logs_should_be_configured_for_every_network_security_group
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, kaytu_description
-
-    FROM azure_network_security_group
-
-    WHERE kaytu_description->''NetworkSecurityGroupDescription''->''SecurityGroup''->''Properties''->''flowLogs''
-    IS NULL
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Flow logs should be configured for every network security group
+Description: Audit for network security groups to verify if flow logs are configured. Enabling flow logs allows to log information about IP traffic flowing through network security group. It can be used for optimizing network flows, monitoring throughput, verifying compliance, detecting intrusions and more.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, id, kaytu_description
+        FROM azure_network_security_group
+        WHERE kaytu_description->'NetworkSecurityGroupDescription'->'SecurityGroup'->'Properties'->'flowLogs' IS NULL
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

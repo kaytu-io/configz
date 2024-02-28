@@ -1,24 +1,21 @@
-Description: Deploys the diagnostic settings for Service Bus to stream to a regional
-  Log Analytics workspace when any Service Bus which is missing this diagnostic settings
-  is created or updated.
 ID: deploy_diagnostic_settings_for_service_bus_to_log_analytics_workspace
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, type, provisioning_state, created_at, updated_at
-
-    FROM azure_servicebus_namespace
-
-    WHERE type = ''Microsoft.ServiceBus/namespaces''
-
-    AND kaytu_description -> ''$.DiagnosticSettingsResources[*].Properties.Logs[*].Enabled''
-    = ''true''
-
-    AND kaytu_description -> ''$.DiagnosticSettingsResources[*].Properties.Metrics[*].Enabled''
-    = ''true''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Deploy Diagnostic Settings for Service Bus to Log Analytics workspace
+Description: Deploys the diagnostic settings for Service Bus to stream to a regional Log Analytics workspace when any Service Bus which is missing this diagnostic settings is created or updated.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, type, provisioning_state, created_at, updated_at
+        FROM azure_servicebus_namespace
+        WHERE type = 'Microsoft.ServiceBus/namespaces'
+        AND kaytu_description -> '$.DiagnosticSettingsResources[*].Properties.Logs[*].Enabled' = 'true'
+        AND kaytu_description -> '$.DiagnosticSettingsResources[*].Properties.Metrics[*].Enabled' = 'true'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

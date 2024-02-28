@@ -1,23 +1,20 @@
-Description: Azure Database for MariaDB allows you to choose the redundancy option
-  for your database server. It can be set to a geo-redundant backup storage in which
-  the data is not only stored within the region in which your server is hosted, but
-  is also replicated to a paired region to provide recovery option in case of a region
-  failure. Configuring geo-redundant storage for backup is only allowed during server
-  create.
 ID: geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_mariadb_server
-
-    WHERE type = ''Microsoft.DBforMariaDB/servers''
-
-    AND (geo_redundant_backup_enabled IS NULL OR geo_redundant_backup_enabled != ''Enabled'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Geo-redundant backup should be enabled for Azure Database for MariaDB
+Description: Azure Database for MariaDB allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data is not only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option in case of a region failure. Configuring geo-redundant storage for backup is only allowed during server create.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_mariadb_server
+        WHERE type = 'Microsoft.DBforMariaDB/servers'
+        AND (geo_redundant_backup_enabled IS NULL OR geo_redundant_backup_enabled != 'Enabled')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

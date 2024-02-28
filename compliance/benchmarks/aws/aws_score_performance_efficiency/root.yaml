@@ -1,6 +1,5 @@
 Connector: AWS
 Controls:
-  - aws_app_tier_ec2_instance_using_iam_roles
   - aws_ec2_desired_instance_type
   - aws_ec2_instance_too_old
   - aws_opensearch_version
@@ -15,15 +14,13 @@ Controls:
   - aws_performance_insights
   - aws_rds_event_notifications
   - aws_security_groups_events_subscriptions
-  - azure_check_for_kubernetes_version
-  - azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
-ReferenceCode: performance_efficiency
+ReferenceCode: aws_score_performance_efficiency
 Description: Performance Efficiency Description
-ID: performance_efficiency
+ID: aws_score_performance_efficiency
 AutoAssign: true
 Tags:
   type:
     - SCORE
   score_category:
     - performance_efficiency
-Title: Efficiency
+Title: Efficiency for AWS

@@ -6,6 +6,8 @@ Query:
   QueryToExecute: |
     select
       'arn:' || partition || ':ec2:' || region || ':' || account_id || ':eip/' || allocation_id as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
       case
         when association_id is null then 'alarm'
         else 'ok'

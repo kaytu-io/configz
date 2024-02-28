@@ -1,11 +1,15 @@
-Description: Use of HTTPS ensures authentication and protects data in transit from
-  network layer eavesdropping attacks. This capability is currently generally available
-  for Kubernetes Service (AKS), and in preview for Azure Arc enabled Kubernetes. For
-  more info, visit https://aka.ms/kubepolicydoc
 ID: kubernetes_clusters_should_be_accessible_only_over_https
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
 Title: Kubernetes clusters should be accessible only over HTTPS
+Description: Use of HTTPS ensures authentication and protects data in transit from network layer eavesdropping attacks. This capability is currently generally available for Kubernetes Service (AKS), and in preview for Azure Arc enabled Kubernetes. For more info, visit https://aka.ms/kubepolicydoc
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

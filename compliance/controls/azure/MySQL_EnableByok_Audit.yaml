@@ -1,29 +1,20 @@
-Description: Use customer-managed keys to manage the encryption at rest of your MySQL
-  servers. By default, the data is encrypted at rest with service-managed keys, but
-  customer-managed keys are commonly required to meet regulatory compliance standards.
-  Customer-managed keys enable the data to be encrypted with an Azure Key Vault key
-  created and owned by you. You have full control and responsibility for the key lifecycle,
-  including rotation and management.
 ID: my_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, type, state, version, user_visible_state, location,
-    administrator_login, backup_retention_days, byok_enforcement, earliest_restore_date,
-    fully_qualified_domain_name, geo_redundant_backup, infrastructure_encryption,
-    master_server_id, minimal_tls_version, public_network_access, replica_capacity,
-    replication_role, sku_capacity, sku_family, sku_name, sku_size, sku_tier, ssl_enforcement,
-    storage_auto_grow, storage_mb, server_keys
-
-    FROM azure_mysql_server
-
-    WHERE type = ''Microsoft.DBforMySQL/servers''
-
-    AND (server_keys ->> ''serverKeyType'' = ''AzureKeyVault'' AND server_keys ->>
-    ''uri'' <> '''')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: MySQL servers should use customer-managed keys to encrypt data at rest
+Description: Use customer-managed keys to manage the encryption at rest of your MySQL servers. By default, the data is encrypted at rest with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, id, type, state, version, user_visible_state, location, administrator_login, backup_retention_days, byok_enforcement, earliest_restore_date, fully_qualified_domain_name, geo_redundant_backup, infrastructure_encryption, master_server_id, minimal_tls_version, public_network_access, replica_capacity, replication_role, sku_capacity, sku_family, sku_name, sku_size, sku_tier, ssl_enforcement, storage_auto_grow, storage_mb, server_keys
+        FROM azure_mysql_server
+        WHERE type = 'Microsoft.DBforMySQL/servers'
+        AND (server_keys ->> 'serverKeyType' = 'AzureKeyVault' AND server_keys ->> 'uri' <> '')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

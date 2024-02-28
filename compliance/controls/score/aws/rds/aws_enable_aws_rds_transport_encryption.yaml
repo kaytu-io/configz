@@ -8,6 +8,8 @@ Query:
     with instance_pg as (
       select
         g ->> 'DBParameterGroupName' as pg_name,
+        i.kaytu_account_id,
+        i.kaytu_resource_id,
         i.engine,
         i.title,
         i.arn,
@@ -36,6 +38,8 @@ Query:
     select
       i.arn as resource,
       i.engine,
+      i.kaytu_account_id,
+      i.kaytu_resource_id,
       case
         when i.engine not in ('sqlserver', 'postgres') then 'skip'
         when p.name is not null then 'ok'

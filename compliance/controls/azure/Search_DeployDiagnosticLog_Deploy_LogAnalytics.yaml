@@ -1,24 +1,21 @@
-Description: Deploys the diagnostic settings for Search Services to stream to a regional
-  Log Analytics workspace when any Search Services which is missing this diagnostic
-  settings is created or updated.
 ID: deploy_diagnostic_settings_for_search_services_to_log_analytics_workspace
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_search_service
-
-    WHERE type = ''Microsoft.Search/searchServices''
-
-    AND kaytu_description -> ''$.DiagnosticSettingsResources[*].Properties.Metrics[*].Enabled''
-    = ''true''
-
-    AND kaytu_description -> ''$.DiagnosticSettingsResources[*].Properties.Logs[*].Enabled''
-    = ''true''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Deploy Diagnostic Settings for Search Services to Log Analytics workspace
+Description: Deploys the diagnostic settings for Search Services to stream to a regional Log Analytics workspace when any Search Services which is missing this diagnostic settings is created or updated.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_search_service
+        WHERE type = 'Microsoft.Search/searchServices'
+        AND kaytu_description -> '$.DiagnosticSettingsResources[*].Properties.Metrics[*].Enabled' = 'true'
+        AND kaytu_description -> '$.DiagnosticSettingsResources[*].Properties.Logs[*].Enabled' = 'true'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

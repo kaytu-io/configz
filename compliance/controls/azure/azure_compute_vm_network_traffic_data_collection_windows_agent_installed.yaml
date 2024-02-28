@@ -2,53 +2,22 @@ ID: azure_compute_vm_network_traffic_data_collection_windows_agent_installed
 Title: Network traffic data collection agent should be installed on Windows virtual machines
 Description: Security Center uses the Microsoft Dependency agent to collect network traffic data from your Azure virtual machines to enable advanced network protection features such as traffic visualization on the network map, network hardening recommendations and specific network threats.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with agent_installed_vm as (
-      select
-        distinct a.vm_id
-      from
-        azure_compute_virtual_machine as a,
-        jsonb_array_elements(extensions) as b
-      where
-        b ->> 'ExtensionType' = 'DependencyAgentWindows'
-        and b ->> 'Publisher' = 'Microsoft.Azure.Monitoring.DependencyAgent'
-        and b ->> 'ProvisioningState' = 'Succeeded'
-    )
-    select
-      a.vm_id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when a.os_type <> 'Windows' then 'skip'
-        when b.vm_id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when a.os_type <> 'Windows' then a.title || ' is of ' || a.os_type || ' operating system.'
-        when b.vm_id is not null then a.title || ' have data collection agent installed.'
-        else a.title || ' data collection agent not installed.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_compute_virtual_machine as a
-      left join agent_installed_vm as b on a.vm_id = b.vm_id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_compute_virtual_machine
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with agent_installed_vm as (\n  select\n    distinct a.vm_id\n  from\n    azure_compute_virtual_machine as a,\n    jsonb_array_elements(extensions) as b\n  where\n    b ->> 'ExtensionType' = 'DependencyAgentWindows'\n    and b ->> 'Publisher' = 'Microsoft.Azure.Monitoring.DependencyAgent'\n    and b ->> 'ProvisioningState' = 'Succeeded'\n)\nselect\n  a.vm_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.os_type <> 'Windows' then 'skip'\n    when b.vm_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.os_type <> 'Windows' then a.title || ' is of ' || a.os_type || ' operating system.'\n    when b.vm_id is not null then a.title || ' have data collection agent installed.'\n    else a.title || ' data collection agent not installed.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as a\n  left join agent_installed_vm as b on a.vm_id = b.vm_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_compute_virtual_machine
+    ListOfTables:
+        - azure_compute_virtual_machine
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  hipaa_hitrust_v92:
-  - "true"
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/Compute
+    hipaa_hitrust_v92:
+        - "true"
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/Compute
+Managed: false

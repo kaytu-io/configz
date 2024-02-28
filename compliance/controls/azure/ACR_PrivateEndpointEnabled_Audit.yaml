@@ -1,25 +1,24 @@
-Description: 'Azure Private Link lets you connect your virtual network to Azure services
-  without a public IP address at the source or destination. The private link platform
-  handles the connectivity between the consumer and services over the Azure backbone
-  network.By mapping private endpoints to your container registries instead of the
-  entire service, you''ll also be protected against data leakage risks. Learn more
-  at: https://aka.ms/acr/private-link.'
 ID: container_registries_should_use_private_link
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT name, id, type, provisioning_state, creation_date, admin_user_enabled,\
-    \ data_endpoint_enabled, login_server, network_rule_bypass_options, public_network_access,\
-    \ sku_name, sku_tier, status, status_message, status_timestamp, storage_account_id,\
-    \ zone_redundancy, data_endpoint_host_names, encryption, identity, login_credentials,\
-    \ network_rule_set, policies, private_endpoint_connections, system_data, usages,\
-    \ title, tags, akas, region, resource_group, cloud_environment, subscription_id,\
-    \ kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description\nFROM\
-    \ azure_container_registry\nWHERE type = 'Microsoft.ContainerRegistry/registries'\n\
-    AND (\n    EXISTS (SELECT 1 FROM jsonb_array_elements(private_endpoint_connections)\
-    \ WHERE privateLinkServiceConnectionState->>'status' = 'Approved')\n    OR\n \
-    \   EXISTS (SELECT 1 FROM jsonb_array_elements(kaytu_description->'Registry'->'Properties'->'PrivateEndpointConnections')\
-    \ WHERE value->'privateLinkServiceConnectionState'->>'status' = 'Approved')\n\
-    )\nLIMIT 5;;\n"
-Severity: ''
 Title: Container registries should use private link
+Description: 'Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network.By mapping private endpoints to your container registries instead of the entire service, you''ll also be protected against data leakage risks. Learn more at: https://aka.ms/acr/private-link.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, id, type, provisioning_state, creation_date, admin_user_enabled, data_endpoint_enabled, login_server, network_rule_bypass_options, public_network_access, sku_name, sku_tier, status, status_message, status_timestamp, storage_account_id, zone_redundancy, data_endpoint_host_names, encryption, identity, login_credentials, network_rule_set, policies, private_endpoint_connections, system_data, usages, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
+        FROM azure_container_registry
+        WHERE type = 'Microsoft.ContainerRegistry/registries'
+        AND (
+            EXISTS (SELECT 1 FROM jsonb_array_elements(private_endpoint_connections) WHERE privateLinkServiceConnectionState->>'status' = 'Approved')
+            OR
+            EXISTS (SELECT 1 FROM jsonb_array_elements(kaytu_description->'Registry'->'Properties'->'PrivateEndpointConnections') WHERE value->'privateLinkServiceConnectionState'->>'status' = 'Approved')
+        )
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

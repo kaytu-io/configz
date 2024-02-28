@@ -2,51 +2,28 @@ ID: aws_vpc_security_group_associated_to_eni
 Title: VPC security groups should be associated with at least one ENI
 Description: This rule ensures the security groups are attached to an Amazon Elastic Compute Cloud (Amazon EC2) instance or to an ENI. This rule helps monitoring unused security groups in the inventory and the management of your environment.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with associated_sg as (
-      select
-        count(sg ->> 'GroupId'),
-        sg ->> 'GroupId' as secgrp_id
-      from
-        aws_ec2_network_interface,
-        jsonb_array_elements(groups) as sg
-        group by sg ->> 'GroupId'
-    )
-    select
-      distinct s.arn as resource,
-      s.kaytu_account_id as kaytu_account_id,
-      s.kaytu_resource_id as kaytu_resource_id,
-      case
-        when a.secgrp_id = s.group_id then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when a.secgrp_id = s.group_id then s.title || ' is associated with ' || a.count || ' ENI(s).'
-        else s.title || ' not associated to any ENI.'
-      end as reason
-      
-      , region, account_id
-    from
-      aws_vpc_security_group as s
-      left join associated_sg as a on s.group_id = a.secgrp_id;
-  Connector: AWS
-  PrimaryTable: aws_vpc_security_group
-  ListOfTables:
-  - aws_ec2_network_interface
-  - aws_vpc_security_group
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with associated_sg as (\n  select\n    count(sg ->> 'GroupId'),\n    sg ->> 'GroupId' as secgrp_id\n  from\n    aws_ec2_network_interface,\n    jsonb_array_elements(groups) as sg\n    group by sg ->> 'GroupId'\n)\nselect\n  distinct s.arn as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.secgrp_id = s.group_id then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.secgrp_id = s.group_id then s.title || ' is associated with ' || a.count || ' ENI(s).'\n    else s.title || ' not associated to any ENI.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_vpc_security_group as s\n  left join associated_sg as a on s.group_id = a.secgrp_id;\n"
+    Connector: AWS
+    PrimaryTable: aws_vpc_security_group
+    ListOfTables:
+        - aws_ec2_network_interface
+        - aws_vpc_security_group
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: low
 Tags:
-  category:
-  - Compliance
-  cis_controls_v8_ig1:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/VPC
-  soc_2:
-  - "true"
+    category:
+        - Compliance
+    cis_controls_v8_ig1:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/VPC
+    soc_2:
+        - "true"
+Managed: false

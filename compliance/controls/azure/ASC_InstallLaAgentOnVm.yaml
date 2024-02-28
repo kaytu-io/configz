@@ -1,11 +1,15 @@
-Description: This policy audits any Windows/Linux virtual machines (VMs) if the Log
-  Analytics agent is not installed which Security Center uses to monitor for security
-  vulnerabilities and threats
 ID: log_analytics_agent_should_be_installed_on_your_virtual_machine_for_azure_security_center_monitoring
+Title: Log Analytics agent should be installed on your virtual machine for Azure Security Center monitoring
+Description: This policy audits any Windows/Linux virtual machines (VMs) if the Log Analytics agent is not installed which Security Center uses to monitor for security vulnerabilities and threats
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
-Title: Log Analytics agent should be installed on your virtual machine for Azure Security
-  Center monitoring
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

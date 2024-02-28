@@ -2,54 +2,22 @@ ID: azure_compute_vm_guest_configuration_installed_windows
 Title: Deploy the Windows Guest Configuration extension to enable Guest Configuration assignments on Windows VMs
 Description: This policy deploys the Windows Guest Configuration extension to Windows virtual machines hosted in Azure that are supported by Guest Configuration. The Windows Guest Configuration extension is a prerequisite for all Windows Guest Configuration assignments and must be deployed to machines before using any Windows Guest Configuration policy definition.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with agent_installed_vm as (
-      select
-        distinct a.vm_id
-      from
-        azure_compute_virtual_machine as a,
-        jsonb_array_elements(extensions) as b
-      where
-        b ->> 'Publisher' = 'Microsoft.GuestConfiguration'
-        and b ->> 'ProvisioningState' = 'Succeeded'
-        and b ->> 'ExtensionType' = 'ConfigurationforWindows'
-        and b ->> 'Name' like '%AzurePolicyforWindows'
-    )
-    select
-      a.vm_id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when a.os_type <> 'Windows' then 'skip'
-        when b.vm_id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when a.os_type <> 'Windows' then a.title || ' is of ' || a.os_type || ' operating system.'
-        when b.vm_id is not null then a.title || ' have guest configuration extension installed.'
-        else a.title || ' guest configuration extension not installed.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_compute_virtual_machine as a
-      left join agent_installed_vm as b on a.vm_id = b.vm_id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_compute_virtual_machine
-  ListOfTables:
-  - azure_compute_virtual_machine
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with agent_installed_vm as (\n  select\n    distinct a.vm_id\n  from\n    azure_compute_virtual_machine as a,\n    jsonb_array_elements(extensions) as b\n  where\n    b ->> 'Publisher' = 'Microsoft.GuestConfiguration'\n    and b ->> 'ProvisioningState' = 'Succeeded'\n    and b ->> 'ExtensionType' = 'ConfigurationforWindows'\n    and b ->> 'Name' like '%AzurePolicyforWindows'\n)\nselect\n  a.vm_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.os_type <> 'Windows' then 'skip'\n    when b.vm_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.os_type <> 'Windows' then a.title || ' is of ' || a.os_type || ' operating system.'\n    when b.vm_id is not null then a.title || ' have guest configuration extension installed.'\n    else a.title || ' guest configuration extension not installed.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as a\n  left join agent_installed_vm as b on a.vm_id = b.vm_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_compute_virtual_machine
+    ListOfTables:
+        - azure_compute_virtual_machine
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  service:
-  - Azure/Compute
+    nist_sp_800_53_rev_5:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    service:
+        - Azure/Compute
+Managed: false

@@ -2,75 +2,53 @@ ID: aws_s3_bucket_cross_region_replication_enabled
 Title: S3 bucket cross-region replication should be enabled
 Description: Amazon Simple Storage Service (Amazon S3) Cross-Region Replication (CRR) supports maintaining adequate capacity and availability.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with bucket_with_replication as (
-      select
-        name,
-        r ->> 'Status' as rep_status
-      from
-        aws_s3_bucket,
-        jsonb_array_elements(replication -> 'Rules' ) as r
-    )
-    select
-      b.arn as resource,
-      b.kaytu_account_id as kaytu_account_id,
-      b.kaytu_resource_id as kaytu_resource_id,
-      case
-        when b.name = r.name and r.rep_status = 'Enabled' then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when b.name = r.name and r.rep_status = 'Enabled' then b.title || ' enabled with cross-region replication.'
-        else b.title || ' not enabled with cross-region replication.'
-      end as reason
-      
-      , b.region, b.account_id
-    from
-      aws_s3_bucket b
-      left join bucket_with_replication r on b.name = r.name;
-  Connector: AWS
-  PrimaryTable: aws_s3_bucket
-  ListOfTables:
-  - aws_s3_bucket
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with bucket_with_replication as (\n  select\n    name,\n    r ->> 'Status' as rep_status\n  from\n    aws_s3_bucket,\n    jsonb_array_elements(replication -> 'Rules' ) as r\n)\nselect\n  b.arn as resource,\n  b.kaytu_account_id as kaytu_account_id,\n  b.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.name = r.name and r.rep_status = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.name = r.name and r.rep_status = 'Enabled' then b.title || ' enabled with cross-region replication.'\n    else b.title || ' not enabled with cross-region replication.'\n  end as reason\n  \n  , b.region, b.account_id\nfrom\n  aws_s3_bucket b\n  left join bucket_with_replication r on b.name = r.name;\n"
+    Connector: AWS
+    PrimaryTable: aws_s3_bucket
+    ListOfTables:
+        - aws_s3_bucket
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: low
 Tags:
-  category:
-  - Compliance
-  cis_controls_v8_ig1:
-  - "true"
-  cisa_cyber_essentials:
-  - "true"
-  fedramp_low_rev_4:
-  - "true"
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  gxp_21_cfr_part_11:
-  - "true"
-  gxp_eu_annex_11:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_800_53_rev_4:
-  - "true"
-  nist_800_53_rev_5:
-  - "true"
-  nist_csf:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  plugin:
-  - aws
-  rbi_cyber_security:
-  - "true"
-  service:
-  - AWS/S3
-  soc_2:
-  - "true"
+    category:
+        - Compliance
+    cis_controls_v8_ig1:
+        - "true"
+    cisa_cyber_essentials:
+        - "true"
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    gxp_eu_annex_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_53_rev_4:
+        - "true"
+    nist_800_53_rev_5:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    rbi_cyber_security:
+        - "true"
+    service:
+        - AWS/S3
+    soc_2:
+        - "true"
+Managed: false

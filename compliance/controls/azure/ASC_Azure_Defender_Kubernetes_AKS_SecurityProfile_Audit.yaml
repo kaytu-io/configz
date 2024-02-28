@@ -1,24 +1,20 @@
-Description: Microsoft Defender for Containers provides cloud-native Kubernetes security
-  capabilities including environment hardening, workload protection, and run-time
-  protection. When you enable the SecurityProfile.AzureDefender on your Azure Kubernetes
-  Service cluster, an agent is deployed to your cluster to collect security event
-  data. Learn more about Microsoft Defender for Containers in https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction?tabs=defender-for-container-arch-aks
 ID: azure_kubernetes_service_clusters_should_have_defender_profile_enabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_kubernetes_cluster
-
-    WHERE type = ''Microsoft.ContainerService/managedClusters''
-
-    AND (securityProfile->''defender''->''securityMonitoring''->>''enabled'' IS NULL
-    OR (securityProfile->''defender''->''securityMonitoring''->>''enabled'')::boolean
-    = false)
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Azure Kubernetes Service clusters should have Defender profile enabled
+Description: Microsoft Defender for Containers provides cloud-native Kubernetes security capabilities including environment hardening, workload protection, and run-time protection. When you enable the SecurityProfile.AzureDefender on your Azure Kubernetes Service cluster, an agent is deployed to your cluster to collect security event data. Learn more about Microsoft Defender for Containers in https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction?tabs=defender-for-container-arch-aks
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_kubernetes_cluster
+        WHERE type = 'Microsoft.ContainerService/managedClusters'
+        AND (securityProfile->'defender'->'securityMonitoring'->>'enabled' IS NULL OR (securityProfile->'defender'->'securityMonitoring'->>'enabled')::boolean = false)
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

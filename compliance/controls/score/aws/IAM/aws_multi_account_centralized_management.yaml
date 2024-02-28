@@ -6,6 +6,8 @@ Query:
   QueryToExecute: |
     SELECT 
       organization_id as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
       CASE
         WHEN count(*) = 1 THEN 'alarm'
         ELSE 'ok'
@@ -17,7 +19,9 @@ Query:
     FROM 
       aws_account
     GROUP BY
-      organization_id;
+      organization_id,
+      kaytu_account_id,
+      kaytu_resource_id;
   Connector: AWS
   PrimaryTable: aws_account
   ListOfTables:

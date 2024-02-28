@@ -1,17 +1,24 @@
-Description: Use customer-managed keys to manage the encryption at rest of your PostgreSQL
-  servers. By default, the data is encrypted at rest with service-managed keys, but
-  customer-managed keys are commonly required to meet regulatory compliance standards.
-  Customer-managed keys enable the data to be encrypted with an Azure Key Vault key
-  created and owned by you. You have full control and responsibility for the key lifecycle,
-  including rotation and management.
 ID: postgre_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT *\nFROM azure_postgresql_server\nWHERE type = 'Microsoft.DBforPostgreSQL/servers'\n\
-    AND (\n  (server_keys->>'serverKeyType' = 'AzureKeyVault' AND server_keys->>'uri'\
-    \ <> '')\n  OR\n  (kaytu_description->'definitions'->'ServerKey'->'properties'->>'ServerKeyType'\
-    \ = 'AzureKeyVault' AND kaytu_description->'definitions'->'ServerKey'->'properties'->>'URI'\
-    \ <> '')\n)\nLIMIT 5;;\n"
-Severity: ''
 Title: PostgreSQL servers should use customer-managed keys to encrypt data at rest
+Description: Use customer-managed keys to manage the encryption at rest of your PostgreSQL servers. By default, the data is encrypted at rest with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_postgresql_server
+        WHERE type = 'Microsoft.DBforPostgreSQL/servers'
+        AND (
+          (server_keys->>'serverKeyType' = 'AzureKeyVault' AND server_keys->>'uri' <> '')
+          OR
+          (kaytu_description->'definitions'->'ServerKey'->'properties'->>'ServerKeyType' = 'AzureKeyVault' AND kaytu_description->'definitions'->'ServerKey'->'properties'->>'URI' <> '')
+        )
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

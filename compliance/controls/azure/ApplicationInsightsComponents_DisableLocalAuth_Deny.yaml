@@ -1,11 +1,15 @@
-Description: Enforcing log ingestion to require Azure Active Directory authentication
-  prevents unauthenticated logs from an attacker which could lead to incorrect status,
-  false alerts, and incorrect logs stored in the system.
 ID: application_insights_components_should_block_non_azure_active_directory_based_ingestion.
+Title: Application Insights components should block non-Azure Active Directory based ingestion.
+Description: Enforcing log ingestion to require Azure Active Directory authentication prevents unauthenticated logs from an attacker which could lead to incorrect status, false alerts, and incorrect logs stored in the system.
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
-Title: Application Insights components should block non-Azure Active Directory based
-  ingestion.
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

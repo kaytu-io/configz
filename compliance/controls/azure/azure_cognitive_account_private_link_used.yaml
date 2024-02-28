@@ -2,59 +2,20 @@ ID: azure_cognitive_account_private_link_used
 Title: Cognitive Services should use private link
 Description: Azure Private Link lets you connect your virtual networks to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Cognitive Services, you'll reduce the potential for data leakage.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with cognitive_account as (
-      select
-        distinct a.id
-      from
-        azure_cognitive_account as a,
-        jsonb_array_elements(capabilities ) as c
-      where
-        c ->> 'name' = 'VirtualNetworks'
-    ),
-    cognitive_account_connections as (
-      select
-        distinct a.id
-      from
-        cognitive_account as a
-        left join azure_cognitive_account as b on a.id = b.id,
-        jsonb_array_elements(private_endpoint_connections ) as c
-      where
-        c -> 'PrivateLinkServiceConnectionState' ->> 'status' = 'Approved'
-    )
-    select
-      b.id as resource,
-      b.kaytu_account_id as kaytu_account_id,
-      b.kaytu_resource_id as kaytu_resource_id,
-      case
-        when jsonb_array_length(b.private_endpoint_connections) = 0 then 'info'
-        when c.id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when jsonb_array_length(b.private_endpoint_connections) = 0 then b.name || ' no private link exists.'
-        when c.id is not null then b.name || ' uses private link.'
-        else b.name || ' not uses private link.'
-      end as reason
-      
-      , b.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_cognitive_account as b
-      left join cognitive_account_connections as c on b.id = c.id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = b.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_cognitive_account
-  ListOfTables:
-  - azure_cognitive_account
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with cognitive_account as (\n  select\n    distinct a.id\n  from\n    azure_cognitive_account as a,\n    jsonb_array_elements(capabilities ) as c\n  where\n    c ->> 'name' = 'VirtualNetworks'\n),\ncognitive_account_connections as (\n  select\n    distinct a.id\n  from\n    cognitive_account as a\n    left join azure_cognitive_account as b on a.id = b.id,\n    jsonb_array_elements(private_endpoint_connections ) as c\n  where\n    c -> 'PrivateLinkServiceConnectionState' ->> 'status' = 'Approved'\n)\nselect\n  b.id as resource,\n  b.kaytu_account_id as kaytu_account_id,\n  b.kaytu_resource_id as kaytu_resource_id,\n  case\n    when jsonb_array_length(b.private_endpoint_connections) = 0 then 'info'\n    when c.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when jsonb_array_length(b.private_endpoint_connections) = 0 then b.name || ' no private link exists.'\n    when c.id is not null then b.name || ' uses private link.'\n    else b.name || ' not uses private link.'\n  end as reason\n  \n  , b.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cognitive_account as b\n  left join cognitive_account_connections as c on b.id = c.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = b.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_cognitive_account
+    ListOfTables:
+        - azure_cognitive_account
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/CognitiveServices
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/CognitiveServices
+Managed: false

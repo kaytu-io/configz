@@ -1,12 +1,15 @@
-Description: Restrict pod access to the host network and the allowable host port range
-  in a Kubernetes cluster. This recommendation is part of CIS 5.2.4 which is intended
-  to improve the security of your Kubernetes environments. This policy is generally
-  available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes.
-  For more information, see https://aka.ms/kubepolicydoc.
 ID: kubernetes_cluster_pods_should_only_use_approved_host_network_and_port_range
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
 Title: Kubernetes cluster pods should only use approved host network and port range
+Description: Restrict pod access to the host network and the allowable host port range in a Kubernetes cluster. This recommendation is part of CIS 5.2.4 which is intended to improve the security of your Kubernetes environments. This policy is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

@@ -58,9 +58,6 @@ Query:
   PrimaryTable: aws_vpc_network_acl
   ListOfTables:
     - aws_vpc_network_acl
-  Parameters:
-    - Key: awsWebTierTags
-      Required: true
 ManualVerification: false
 Severity: high
 Tags:

@@ -1,20 +1,20 @@
-Description: Audit usage of client authentication only via Azure Active Directory
-  in Service Fabric
 ID: service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, azure_active_directory
-
-    FROM azure_service_fabric_cluster
-
-    WHERE type = ''Microsoft.ServiceFabric/clusters''
-
-    AND (azure_active_directory->>''tenantId'' IS NULL OR azure_active_directory->>''tenantId''
-    = '''')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Service Fabric clusters should only use Azure Active Directory for client authentication
+Description: Audit usage of client authentication only via Azure Active Directory in Service Fabric
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, id, azure_active_directory
+        FROM azure_service_fabric_cluster
+        WHERE type = 'Microsoft.ServiceFabric/clusters'
+        AND (azure_active_directory->>'tenantId' IS NULL OR azure_active_directory->>'tenantId' = '')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

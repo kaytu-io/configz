@@ -2,17 +2,20 @@ ID: azure_healthcare_fhir_uses_private_link
 Title: Azure API for FHIR should use private link
 Description: Azure API for FHIR should have at least one approved private endpoint connection. Clients in a virtual network can securely access resources that have private endpoint connections through private links.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when private_endpoint_connections is null then 'info'\n    when private_endpoint_connections @> '[{\"privateLinkServiceConnectionState\": \"Approved\"}]'::jsonb then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when private_endpoint_connections is null then a.name || ' no private link exists.'\n    when private_endpoint_connections @> '[{\"privateLinkServiceConnectionState\": \"Approved\"}]'::jsonb then a.name || ' using private link.'\n    else a.name || ' not using private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_healthcare_service a,\n  azure_subscription sub;\n"
-  Connector: Azure
-  PrimaryTable: azure_healthcare_service
-  ListOfTables:
-  - azure_healthcare_service
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when private_endpoint_connections is null then 'info'\n    when private_endpoint_connections @> '[{\"privateLinkServiceConnectionState\": \"Approved\"}]'::jsonb then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when private_endpoint_connections is null then a.name || ' no private link exists.'\n    when private_endpoint_connections @> '[{\"privateLinkServiceConnectionState\": \"Approved\"}]'::jsonb then a.name || ' using private link.'\n    else a.name || ' not using private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_healthcare_service a,\n  azure_subscription sub;\n"
+    Connector: Azure
+    PrimaryTable: azure_healthcare_service
+    ListOfTables:
+        - azure_healthcare_service
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/HealthcareAPIs
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/HealthcareAPIs
+Managed: false

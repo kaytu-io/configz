@@ -1,0 +1,16 @@
+Connector: Azure
+Controls:
+  - azure_check_for_unused_load_balancers
+  - azure_old_snapshots_should_be_deleted_if_not_required
+  - azure_unused_disks_should_be_removed
+  - azure_disks_should_use_standard_snapshots
+ReferenceCode: azure_score_cost_optimization
+Description: Cost Optimization Description
+ID: azure_score_cost_optimization
+AutoAssign: true
+Tags:
+  type:
+    - SCORE
+  score_category:
+    - cost_optimization
+Title: Cost Optimization for Azure

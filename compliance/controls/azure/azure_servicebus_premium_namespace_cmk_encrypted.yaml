@@ -2,37 +2,20 @@ ID: azure_servicebus_premium_namespace_cmk_encrypted
 Title: Service Bus Premium namespaces should use a customer-managed key for encryption
 Description: Azure Service Bus supports the option of encrypting data at rest with either Microsoft-managed keys (default) or customer-managed keys. Choosing to encrypt data using customer-managed keys enables you to assign, rotate, disable, and revoke access to the keys that Service Bus will use to encrypt data in your namespace. Note that Service Bus only supports encryption with customer-managed keys for premium namespaces.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      a.id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when sku_tier <> 'Premium' then 'skip'
-        when encryption -> 'keySource' = '"Microsoft.KeyVault"' then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when sku_tier <> 'Premium' then a.name || ' is of ' || sku_tier || ' tier.'
-        when encryption -> 'keySource' = '"Microsoft.KeyVault"' then a.name || ' encrypted using CMK.'
-        else a.name || ' not encrypted using CMK.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_servicebus_namespace a,
-      azure_subscription sub;
-  Connector: Azure
-  PrimaryTable: azure_servicebus_namespace
-  ListOfTables:
-  - azure_servicebus_namespace
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sku_tier <> 'Premium' then 'skip'\n    when encryption -> 'keySource' = '\"Microsoft.KeyVault\"' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sku_tier <> 'Premium' then a.name || ' is of ' || sku_tier || ' tier.'\n    when encryption -> 'keySource' = '\"Microsoft.KeyVault\"' then a.name || ' encrypted using CMK.'\n    else a.name || ' not encrypted using CMK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_servicebus_namespace a,\n  azure_subscription sub;\n"
+    Connector: Azure
+    PrimaryTable: azure_servicebus_namespace
+    ListOfTables:
+        - azure_servicebus_namespace
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/ServiceBus
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/ServiceBus
+Managed: false

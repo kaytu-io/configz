@@ -1,13 +1,23 @@
-Description: Enabling encryption at host helps protect and safeguard your data to
-  meet your organizational security and compliance commitments. When you enable encryption
-  at host, data stored on the VM host is encrypted at rest and flows encrypted to
-  the Storage service.
 ID: azure_hd_insight_clusters_should_use_encryption_at_host_to_encrypt_data_at_rest
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT *\nFROM azure_hdinsight_cluster\nWHERE type = 'Microsoft.HDInsight/clusters'\n\
-    AND (\n    (disk_encryption_properties ->> 'encryptionAtHost' IS NULL)\n    OR\
-    \ (disk_encryption_properties ->> 'encryptionAtHost' = 'false')\n)\nLIMIT 5;;\n"
-Severity: ''
 Title: Azure HDInsight clusters should use encryption at host to encrypt data at rest
+Description: Enabling encryption at host helps protect and safeguard your data to meet your organizational security and compliance commitments. When you enable encryption at host, data stored on the VM host is encrypted at rest and flows encrypted to the Storage service.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_hdinsight_cluster
+        WHERE type = 'Microsoft.HDInsight/clusters'
+        AND (
+            (disk_encryption_properties ->> 'encryptionAtHost' IS NULL)
+            OR (disk_encryption_properties ->> 'encryptionAtHost' = 'false')
+        )
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

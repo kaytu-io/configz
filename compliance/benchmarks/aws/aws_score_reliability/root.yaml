@@ -1,29 +1,19 @@
 Connector: AWS
 Controls:
   - aws_rds_db_instance_no_public_subnet
-  - aws_opensearch_domain_in_vpc
   - aws_use_aws_backup_service_in_use_for_amazon_rds
   - aws_rds_automated_backups_enabled
   - aws_use_io2_not_io1
   - aws_disable_public_ip_address_assignment_for_ec2_instances
   - aws_ec2_ami_too_old
-  - aws_ec2_instance_too_old
   - aws_opensearch_dedicated_master_enabled
-  - aws_opensearch_version
   - aws_opensearch_zone_awareness_enabled
   - aws_backtrack
   - aws_aurora_database_instance_accessibility
   - aws_enable_serverless_log_exports
-  - aws_instance_level_events_subscriptions
-  - aws_log_exports
   - aws_performance_insights
   - aws_rds_event_notifications
   - aws_rds_multi_az
-  - aws_security_groups_events_subscriptions
-  - azure_check_for_kubernetes_version
-  - azure_disable_plain_ftp_deployment
-  - azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
-  - azure_recovery_service_vault_alert_for_job_failures_enabled
   - aws_dynamodb_instances_have_backup_with_lifecyclepolicy_above_35_days
   - aws_dynamodb_instances_have_backup_withing_48_hours
   - aws_ebs_instances_have_backup_with_lifecyclepolicy_above_35_days
@@ -35,13 +25,13 @@ Controls:
   - aws_rds_instances_have_backup_with_lifecyclepolicy_above_35_days
   - aws_rds_instances_have_backup_withing_48_hours
   - aws_expired_ssl_tls_certificate
-ReferenceCode: reliability
+ReferenceCode: aws_score_reliability
 Description: Reliability Description
-ID: reliability
+ID: aws_score_reliability
 AutoAssign: true
 Tags:
   type:
     - SCORE
   score_category:
     - reliability
-Title: Reliability
+Title: Reliability for AWS

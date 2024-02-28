@@ -1,0 +1,19 @@
+Connector: AWS
+Controls:
+  - aws_ebs_volumes_too_old_snapshots
+  - aws_unassociated_elastic_ip_addresses
+  - aws_ebs_volume_unused
+  - aws_use_gp3_not_gp2
+  - aws_unused_ami
+  - aws_desired_instance_types
+  - aws_redundant_cloud_trail
+ReferenceCode: aws_score_cost_optimization
+Description: Cost Optimization Description
+ID: aws_score_cost_optimization
+AutoAssign: true
+Tags:
+  type:
+    - SCORE
+  score_category:
+    - cost_optimization
+Title: Cost Optimization for AWS

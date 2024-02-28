@@ -1,10 +1,15 @@
-Description: Ensure that devices ordered from Azure Edge Hardware Center have double
-  encryption support enabled, to secure the data at rest on the device. This option
-  adds a second layer of data encryption.
 ID: azure_edge_hardware_center_devices_should_have_double_encryption_support_enabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
 Title: Azure Edge Hardware Center devices should have double encryption support enabled
+Description: Ensure that devices ordered from Azure Edge Hardware Center have double encryption support enabled, to secure the data at rest on the device. This option adds a second layer of data encryption.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

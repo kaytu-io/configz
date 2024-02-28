@@ -7,6 +7,7 @@ Query:
   QueryToExecute: |
     select 
       kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
       count(*) RDS_Instances_Count,
         case
         when count(*) > 10 then 'alarm'
@@ -20,7 +21,7 @@ Query:
     from 
       aws_rds_db_instance 
     group by 
-      kaytu_account_id, account_id;
+      kaytu_account_id, kaytu_resource_id, account_id;
   Connector: AWS
   PrimaryTable: aws_rds_db_instance
   ListOfTables:

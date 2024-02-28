@@ -1,21 +1,20 @@
-Description: To ensure the relevant people in your organization are notified when
-  there is a potential security breach in one of your subscriptions, enable email
-  notifications for high severity alerts in Security Center.
 ID: email_notification_for_high_severity_alerts_should_be_enabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/securityContacts/alertNotifications''
-    != ''Off''
-
-    AND title = ''Microsoft.Resources/subscriptions''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Email notification for high severity alerts should be enabled
+Description: To ensure the relevant people in your organization are notified when there is a potential security breach in one of your subscriptions, enable email notifications for high severity alerts in Security Center.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE kaytu_description -> '$.Subscription.SubscriptionPolicies.Microsoft.Security/securityContacts/alertNotifications' != 'Off'
+        AND title = 'Microsoft.Resources/subscriptions'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

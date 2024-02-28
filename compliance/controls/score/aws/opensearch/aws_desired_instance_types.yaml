@@ -11,20 +11,19 @@ Query:
       CASE
         WHEN ('{{.awsOpensearchAllowedDataInstanceTypes}}' = '' or
             '{{.awsOpensearchAllowedDataInstanceTypes}}' ? cluster_config ->> 'InstanceType')
-          ) and (
+          and (
             '{{.awsOpensearchAllowedDedicatedMasterTypes}}' = '' or
             '{{.awsOpensearchAllowedDedicatedMasterTypes}}' ? cluster_config ->> 'DedicatedMasterType')
-          )
          THEN 'ok'
         ELSE 'alarm'
       END AS status,
       CASE
         WHEN ('{{.awsOpensearchAllowedDataInstanceTypes}}' = '' or
             '{{.awsOpensearchAllowedDataInstanceTypes}}' ? cluster_config ->> 'InstanceType')
-          ) and (
+          and (
             '{{.awsOpensearchAllowedDedicatedMasterTypes}}' = '' or
             '{{.awsOpensearchAllowedDedicatedMasterTypes}}' ? cluster_config ->> 'DedicatedMasterType')
-          ) THEN domain_name || ' was configured using the desired instance type.' 
+          THEN domain_name || ' was configured using the desired instance type.' 
         ELSE domain_name || ' was not configured using the desired instance type.'
       END AS reason,
       region,

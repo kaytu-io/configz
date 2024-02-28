@@ -1,10 +1,15 @@
-Description: To support private link and customer-managed key policies, create your
-  own storage account for profiler and debugger. Learn more in https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage
 ID: application_insights_components_with_private_link_enabled_should_use_bring_your_own_storage_accounts_for_profiler_and_debugger.
+Title: Application Insights components with Private Link enabled should use Bring Your Own Storage accounts for profiler and debugger.
+Description: To support private link and customer-managed key policies, create your own storage account for profiler and debugger. Learn more in https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
-Title: Application Insights components with Private Link enabled should use Bring
-  Your Own Storage accounts for profiler and debugger.
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

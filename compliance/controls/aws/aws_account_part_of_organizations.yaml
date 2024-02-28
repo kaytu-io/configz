@@ -2,41 +2,44 @@ ID: aws_account_part_of_organizations
 Title: AWS account should be part of AWS Organizations
 Description: Ensure if an AWS account is part of AWS Organizations. The rule is non compliant if an AWS account is not part of AWS Organizations or AWS Organizations master account ID does not match rule parameter MasterAccountId.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      case
-        when organization_id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when organization_id is not null then title || ' is part of organization(s).'
-        else title || ' is not part of organization.'
-      end as reason
-      , region, account_id
-    from
-      aws_account;
-  Connector: AWS
-  PrimaryTable: aws_account
-  ListOfTables:
-  - aws_account
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        select
+          arn as resource,
+          kaytu_account_id as kaytu_account_id,
+          kaytu_resource_id as kaytu_resource_id,
+          case
+            when organization_id is not null then 'ok'
+            else 'alarm'
+          end as status,
+          case
+            when organization_id is not null then title || ' is part of organization(s).'
+            else title || ' is not part of organization.'
+          end as reason
+          , region, account_id
+        from
+          aws_account;
+    Connector: AWS
+    PrimaryTable: aws_account
+    ListOfTables:
+        - aws_account
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  category:
-  - Compliance
-  cis_controls_v8_ig1:
-  - "true"
-  gxp_21_cfr_part_11:
-  - "true"
-  nist_800_53_rev_5:
-  - "true"
-  nist_csf:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/IAM
+    category:
+        - Compliance
+    cis_controls_v8_ig1:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    nist_800_53_rev_5:
+        - "true"
+    nist_csf:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/IAM
+Managed: false

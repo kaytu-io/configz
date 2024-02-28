@@ -2,45 +2,29 @@ ID: aws_ebs_attached_volume_delete_on_termination_enabled
 Title: Attached EBS volumes should have delete on termination enabled
 Description: This rule ensures that Amazon Elastic Block Store volumes that are attached to Amazon Elastic Compute Cloud (Amazon EC2) instances are marked for deletion when an instance is terminated.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      case
-        when state != 'in-use' then 'skip'
-        when attachment ->> 'DeleteOnTermination' = 'true' then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when state != 'in-use' then title || ' not attached to EC2 instance.'
-        when attachment ->> 'DeleteOnTermination' = 'true' then title || ' attached to ' || (attachment ->> 'InstanceId') || ', delete on termination enabled.'
-        else title || ' attached to ' || (attachment ->> 'InstanceId') || ', delete on termination disabled.'
-      end as reason
-      
-      , region, account_id
-    from
-      aws_ebs_volume
-      left join jsonb_array_elements(attachments) as attachment on true;
-  Connector: AWS
-  PrimaryTable: aws_ebs_volume
-  ListOfTables:
-  - aws_ebs_volume
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when state != 'in-use' then 'skip'\n    when attachment ->> 'DeleteOnTermination' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when state != 'in-use' then title || ' not attached to EC2 instance.'\n    when attachment ->> 'DeleteOnTermination' = 'true' then title || ' attached to ' || (attachment ->> 'InstanceId') || ', delete on termination enabled.'\n    else title || ' attached to ' || (attachment ->> 'InstanceId') || ', delete on termination disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_ebs_volume\n  left join jsonb_array_elements(attachments) as attachment on true;\n"
+    Connector: AWS
+    PrimaryTable: aws_ebs_volume
+    ListOfTables:
+        - aws_ebs_volume
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  audit_manager_control_tower:
-  - "true"
-  category:
-  - Compliance
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  nist_800_53_rev_4:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/EBS
+    audit_manager_control_tower:
+        - "true"
+    category:
+        - Compliance
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    nist_800_53_rev_4:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/EBS
+Managed: false

@@ -1,21 +1,20 @@
-Description: Enable infrastructure encryption for higher level of assurance that the
-  data is secure. When infrastructure encryption is enabled, data in a storage account
-  is encrypted twice.
 ID: storage_accounts_should_have_infrastructure_encryption
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_storage_account
-
-    WHERE type = ''Microsoft.Storage/storageAccounts''
-
-    AND (encryption_require_infrastructure_encryption IS NULL OR encryption_require_infrastructure_encryption
-    != ''true'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Storage accounts should have infrastructure encryption
+Description: Enable infrastructure encryption for higher level of assurance that the data is secure. When infrastructure encryption is enabled, data in a storage account is encrypted twice.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_storage_account
+        WHERE type = 'Microsoft.Storage/storageAccounts'
+        AND (encryption_require_infrastructure_encryption IS NULL OR encryption_require_infrastructure_encryption != 'true')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

@@ -2,77 +2,80 @@ ID: aws_backup_plan_min_retention_35_days
 Title: Backup plan min frequency and min retention check
 Description: Checks if a backup plan has a backup rule that satisfies the required frequency and retention period(35 Days). The rule is non compliant if recovery points are not created at least as often as the specified frequency or expire before the specified period.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with all_plans as (
-      select
-        arn,
-        r as Rules,
-        title,
-        region,
-        account_id,
-        kaytu_account_id as kaytu_account_id,
-        kaytu_resource_id as kaytu_resource_id,
-        _ctx
-      from
-        aws_backup_plan,
-        jsonb_array_elements(backup_plan -> 'Rules') as r
-    )
-    select
-      -- The resource ARN can be duplicate as we are checking all the associated rules to the backup-plan
-      -- Backup plans are composed of one or more backup rules.
-      -- https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html
-      r.arn as resource,
-      r.kaytu_account_id as kaytu_account_id,
-      r.kaytu_resource_id as kaytu_resource_id,
-      case
-        when r.Rules is null then 'alarm'
-        when r.Rules ->> 'Lifecycle' is null then 'ok'
-        when (r.Rules -> 'Lifecycle' ->> 'DeleteAfterDays')::int >= 35 then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when r.Rules is null then r.title || ' retention period not set.'
-        when r.Rules ->> 'Lifecycle' is null then (r.Rules ->> 'RuleName') || ' retention period set to never expire.'
-        else (r.Rules ->> 'RuleName') || ' retention period set to ' || (r.Rules -> 'Lifecycle' ->> 'DeleteAfterDays') || ' days.'
-      end as reason
-      , region, account_id
-    from
-      all_plans as r;
-  Connector: AWS
-  PrimaryTable: aws_backup_plan
-  ListOfTables:
-  - aws_backup_plan
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        with all_plans as (
+          select
+            arn,
+            r as Rules,
+            title,
+            region,
+            account_id,
+            kaytu_account_id as kaytu_account_id,
+            kaytu_resource_id as kaytu_resource_id,
+            _ctx
+          from
+            aws_backup_plan,
+            jsonb_array_elements(backup_plan -> 'Rules') as r
+        )
+        select
+          -- The resource ARN can be duplicate as we are checking all the associated rules to the backup-plan
+          -- Backup plans are composed of one or more backup rules.
+          -- https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html
+          r.arn as resource,
+          r.kaytu_account_id as kaytu_account_id,
+          r.kaytu_resource_id as kaytu_resource_id,
+          case
+            when r.Rules is null then 'alarm'
+            when r.Rules ->> 'Lifecycle' is null then 'ok'
+            when (r.Rules -> 'Lifecycle' ->> 'DeleteAfterDays')::int >= 35 then 'ok'
+            else 'alarm'
+          end as status,
+          case
+            when r.Rules is null then r.title || ' retention period not set.'
+            when r.Rules ->> 'Lifecycle' is null then (r.Rules ->> 'RuleName') || ' retention period set to never expire.'
+            else (r.Rules ->> 'RuleName') || ' retention period set to ' || (r.Rules -> 'Lifecycle' ->> 'DeleteAfterDays') || ' days.'
+          end as reason
+          , region, account_id
+        from
+          all_plans as r;
+    Connector: AWS
+    PrimaryTable: aws_backup_plan
+    ListOfTables:
+        - aws_backup_plan
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  category:
-  - Compliance
-  cisa_cyber_essentials:
-  - "true"
-  fedramp_low_rev_4:
-  - "true"
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  gxp_21_cfr_part_11:
-  - "true"
-  gxp_eu_annex_11:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_csf:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/Backup
-  soc_2:
-  - "true"
+    category:
+        - Compliance
+    cisa_cyber_essentials:
+        - "true"
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    gxp_eu_annex_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/Backup
+    soc_2:
+        - "true"
+Managed: false

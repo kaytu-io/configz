@@ -1,9 +1,15 @@
-Description: Servers which do not satisfy the configured baseline will be monitored
-  by Azure Security Center as recommendations
 ID: vulnerabilities_in_security_configuration_on_your_machines_should_be_remediated
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
 Title: Vulnerabilities in security configuration on your machines should be remediated
+Description: Servers which do not satisfy the configured baseline will be monitored by Azure Security Center as recommendations
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

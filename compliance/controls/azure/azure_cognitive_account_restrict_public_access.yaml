@@ -2,47 +2,20 @@ ID: azure_cognitive_account_restrict_public_access
 Title: Cognitive Services accounts should restrict network access
 Description: Network access to Cognitive Services accounts should be restricted. Configure network rules so only applications from allowed networks can access the Cognitive Services account. To allow connections from specific internet or on-premises clients, access can be granted to traffic from specific Azure virtual networks or to public internet IP address ranges.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with account_with_public_access_restricted as (
-      select
-        a.id
-      from
-        azure_cognitive_account as a,
-        jsonb_array_elements(capabilities) as c
-      where
-        c ->> 'name' = 'VirtualNetworks' and network_acls ->> 'defaultAction' <> 'Deny'
-    )
-    select
-      distinct a.name as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when b.id is not null then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when b.id is not null then a.name || ' publicly accessible.'
-        else a.name || ' publicly not accessible.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_cognitive_account as a
-      left join account_with_public_access_restricted as b on a.id = b.id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_cognitive_account
-  ListOfTables:
-  - azure_cognitive_account
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with account_with_public_access_restricted as (\n  select\n    a.id\n  from\n    azure_cognitive_account as a,\n    jsonb_array_elements(capabilities) as c\n  where\n    c ->> 'name' = 'VirtualNetworks' and network_acls ->> 'defaultAction' <> 'Deny'\n)\nselect\n  distinct a.name as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.id is not null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when b.id is not null then a.name || ' publicly accessible.'\n    else a.name || ' publicly not accessible.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cognitive_account as a\n  left join account_with_public_access_restricted as b on a.id = b.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_cognitive_account
+    ListOfTables:
+        - azure_cognitive_account
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/CognitiveServices
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/CognitiveServices
+Managed: false

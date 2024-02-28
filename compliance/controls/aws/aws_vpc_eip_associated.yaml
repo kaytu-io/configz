@@ -2,48 +2,35 @@ ID: aws_vpc_eip_associated
 Title: VPC EIPs should be associated with an EC2 instance or ENI
 Description: This rule ensures Elastic IPs allocated to a Amazon Virtual Private Cloud (Amazon VPC) are attached to Amazon Elastic Compute Cloud (Amazon EC2) instances or in-use Elastic Network Interfaces.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      'arn:' || partition || ':ec2:' || region || ':' || account_id || ':eip/' || allocation_id as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      case
-        when association_id is null then 'alarm'
-        else 'ok'
-      end status,
-      case
-        when association_id is null then title || ' is not associated with any resource.'
-        else title || ' is associated with a resource.'
-      end reason
-      
-      , region, account_id
-    from
-      aws_vpc_eip;
-  Connector: AWS
-  PrimaryTable: aws_vpc_eip
-  ListOfTables:
-  - aws_vpc_eip
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  'arn:' || partition || ':ec2:' || region || ':' || account_id || ':eip/' || allocation_id as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when association_id is null then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when association_id is null then title || ' is not associated with any resource.'\n    else title || ' is associated with a resource.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_vpc_eip;\n"
+    Connector: AWS
+    PrimaryTable: aws_vpc_eip
+    ListOfTables:
+        - aws_vpc_eip
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  category:
-  - Compliance
-  cis_controls_v8_ig1:
-  - "true"
-  cisa_cyber_essentials:
-  - "true"
-  ffiec:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_csf:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/VPC
-  soc_2:
-  - "true"
+    category:
+        - Compliance
+    cis_controls_v8_ig1:
+        - "true"
+    cisa_cyber_essentials:
+        - "true"
+    ffiec:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/VPC
+    soc_2:
+        - "true"
+Managed: false

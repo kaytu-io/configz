@@ -26,7 +26,8 @@ Query:
     - azure_compute_snapshot
     - azure_subscription
   Parameters:
-    - azureComputeSnapshotAgeMaxDays
+    - Key: azureComputeSnapshotAgeMaxDays
+      Required: true
 ManualVerification: false
 Severity: medium
 Tags:

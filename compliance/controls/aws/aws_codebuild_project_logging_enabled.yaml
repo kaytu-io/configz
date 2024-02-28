@@ -2,42 +2,29 @@ ID: aws_codebuild_project_logging_enabled
 Title: CodeBuild projects should have logging enabled
 Description: This control checks if an AWS CodeBuild project environment has at least one log option enabled. The rule is non compliant if the status of all present log configurations is set to 'DISABLED'.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      case
-        when logs_config -> 'CloudWatchLogs' ->> 'Status' = 'ENABLED' or logs_config -> 'S3Logs' ->> 'Status' = 'ENABLED' then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when logs_config -> 'CloudWatchLogs' ->> 'Status' = 'ENABLED' or logs_config -> 'S3Logs' ->> 'Status' = 'ENABLED' then title || ' logging enabled.'
-        else title || ' logging disabled.'
-      end as reason
-      
-      , region, account_id
-    from
-      aws_codebuild_project;
-  Connector: AWS
-  PrimaryTable: aws_codebuild_project
-  ListOfTables:
-  - aws_codebuild_project
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when logs_config -> 'CloudWatchLogs' ->> 'Status' = 'ENABLED' or logs_config -> 'S3Logs' ->> 'Status' = 'ENABLED' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when logs_config -> 'CloudWatchLogs' ->> 'Status' = 'ENABLED' or logs_config -> 'S3Logs' ->> 'Status' = 'ENABLED' then title || ' logging enabled.'\n    else title || ' logging disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_codebuild_project;\n"
+    Connector: AWS
+    PrimaryTable: aws_codebuild_project
+    ListOfTables:
+        - aws_codebuild_project
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  category:
-  - Compliance
-  cis_controls_v8_ig1:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_csf:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/CodeBuild
+    category:
+        - Compliance
+    cis_controls_v8_ig1:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_csf:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/CodeBuild
+Managed: false

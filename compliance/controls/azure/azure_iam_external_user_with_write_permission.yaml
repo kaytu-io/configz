@@ -2,57 +2,26 @@ ID: azure_iam_external_user_with_write_permission
 Title: External accounts with write permissions should be removed from your subscription
 Description: External accounts with write privileges should be removed from your subscription in order to prevent unmonitored access.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with all_write_permission_users as (
-      select
-        distinct
-        u.display_name,
-        d.role_name,
-        u.account_enabled,
-        u.user_principal_name,
-        d.subscription_id,
-        u.kaytu_account_id as kaytu_account_id,
-        u.kaytu_resource_id as kaytu_resource_id
-      from
-        azuread_user as u
-        left join azure_role_assignment as a on a.principal_id = u.id
-        left join azure_role_definition as d on d.id = a.role_definition_id
-      where
-        d.role_name = any(array['Owner', 'Contributor'])
-    )
-    select
-      a.user_principal_name as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when a.user_principal_name like '%EXT%' then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when a.user_principal_name like '%EXT%' then a.display_name || ' is external user with ' || a.role_name || ' role.'
-        else a.display_name || ' is domain user with ' || a.role_name || ' role.'
-      end as reason,
-      t.tenant_id
-      
-    from
-      azure_tenant as t,
-      all_write_permission_users as a;
-  Connector: Azure
-  PrimaryTable: azuread_user
-  ListOfTables:
-  - azure_role_assignment
-  - azure_role_definition
-  - azure_tenant
-  - azuread_user
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with all_write_permission_users as (\n  select\n    distinct\n    u.display_name,\n    d.role_name,\n    u.account_enabled,\n    u.user_principal_name,\n    d.subscription_id,\n    u.kaytu_account_id as kaytu_account_id,\n    u.kaytu_resource_id as kaytu_resource_id\n  from\n    azuread_user as u\n    left join azure_role_assignment as a on a.principal_id = u.id\n    left join azure_role_definition as d on d.id = a.role_definition_id\n  where\n    d.role_name = any(array['Owner', 'Contributor'])\n)\nselect\n  a.user_principal_name as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.user_principal_name like '%EXT%' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when a.user_principal_name like '%EXT%' then a.display_name || ' is external user with ' || a.role_name || ' role.'\n    else a.display_name || ' is domain user with ' || a.role_name || ' role.'\n  end as reason,\n  t.tenant_id\n  \nfrom\n  azure_tenant as t,\n  all_write_permission_users as a;\n"
+    Connector: Azure
+    PrimaryTable: azuread_user
+    ListOfTables:
+        - azure_role_assignment
+        - azure_role_definition
+        - azure_tenant
+        - azuread_user
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  hipaa_hitrust_v92:
-  - "true"
-  nist_sp_800_53_rev_5:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  service:
-  - Azure/ActiveDirectory
+    hipaa_hitrust_v92:
+        - "true"
+    nist_sp_800_53_rev_5:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    service:
+        - Azure/ActiveDirectory
+Managed: false

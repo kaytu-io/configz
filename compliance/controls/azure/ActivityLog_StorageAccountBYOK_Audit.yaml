@@ -1,24 +1,20 @@
-Description: 'This policy audits if the Storage account containing the container with
-  activity logs is encrypted with BYOK. The policy works only if the storage account
-  lies on the same subscription as activity logs by design. More information on Azure
-  Storage encryption at rest can be found here https://aka.ms/azurestoragebyok. '
 ID: storage_account_containing_the_container_with_activity_logs_must_be_encrypted_with_byok
+Title: Storage account containing the container with activity logs must be encrypted with BYOK
+Description: 'This policy audits if the Storage account containing the container with activity logs is encrypted with BYOK. The policy works only if the storage account lies on the same subscription as activity logs by design. More information on Azure Storage encryption at rest can be found here https://aka.ms/azurestoragebyok. '
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, storage_account_id, kaytu_description->''LogProfileResource''->''Properties''->''Microsoft.Storage/storageAccounts/encryption.keySource''
-    AS encryption_key_source
-
-    FROM azure_log_profile
-
-    WHERE type = ''Microsoft.Insights/logProfiles''
-
-    AND (storage_account_id IS NOT NULL OR kaytu_description->''LogProfileResource''->''Properties''->>''StorageAccountID''
-    IS NOT NULL)
-
-    LIMIT 5;;
-
-    '
-Severity: ''
-Title: Storage account containing the container with activity logs must be encrypted
-  with BYOK
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, storage_account_id, kaytu_description->'LogProfileResource'->'Properties'->'Microsoft.Storage/storageAccounts/encryption.keySource' AS encryption_key_source
+        FROM azure_log_profile
+        WHERE type = 'Microsoft.Insights/logProfiles'
+        AND (storage_account_id IS NOT NULL OR kaytu_description->'LogProfileResource'->'Properties'->>'StorageAccountID' IS NOT NULL)
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

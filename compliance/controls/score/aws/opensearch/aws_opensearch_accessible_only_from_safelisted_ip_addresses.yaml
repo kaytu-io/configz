@@ -18,7 +18,7 @@ Query:
             FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') AS statement,
                  jsonb_array_elements((statement -> 'Condition' -> 'IpAddress' ->> 'aws:SourceIp')::jsonb) AS ip
             WHERE '{{.awsSafelistedIPs}}' like '%' || ip.value::text || '%') THEN 'ok'
-          WHERE '{{.awsSafelistedIPs}}' = '' THEN 'ok'
+          WHEN '{{.awsSafelistedIPs}}' = '' THEN 'ok'
           ELSE 'alarm'
       END AS status,
       CASE
@@ -31,7 +31,7 @@ Query:
             FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') AS statement,
                  jsonb_array_elements((statement -> 'Condition' -> 'IpAddress' ->> 'aws:SourceIp')::jsonb) AS ip
             WHERE '{{.awsSafelistedIPs}}' like '%' || ip.value::text || '%') THEN domain_name || ' includes approved specific IP addresses'
-          WHERE '{{.awsSafelistedIPs}}' = '' THEN ' approved IP addresses not defined'
+          WHEN '{{.awsSafelistedIPs}}' = '' THEN ' approved IP addresses not defined'
           ELSE domain_name || ' includes not approved specific IP addresses'
       END AS reason,
       region,

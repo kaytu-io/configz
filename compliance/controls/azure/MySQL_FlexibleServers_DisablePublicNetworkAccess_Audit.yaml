@@ -1,32 +1,22 @@
-Description: Disabling the public network access property improves security by ensuring
-  your Azure Database for MySQL flexible servers can only be accessed from a private
-  endpoint. This configuration strictly disables access from any public address space
-  outside of Azure IP range and denies all logins that match IP or virtual network-based
-  firewall rules.
 ID: public_network_access_should_be_disabled_for_my_sql_flexible_servers
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT id, name, kaytu_description->''Network''->>''PublicNetworkAccess''
-    AS public_network_access, kaytu_description->''Network''->>''DelegatedSubnetResourceID''
-    AS delegated_subnet_resource_id, kaytu_description->''Network''->>''PrivateDNSZoneResourceID''
-    AS private_dns_zone_resource_id
-
-    FROM azure_dbformysql_flexibleservers
-
-    WHERE kaytu_description->>''type'' = ''Microsoft.DBforMySQL/flexibleServers''
-
-    AND (network.publicNetworkAccess IS NOT NULL OR kaytu_description @> ''{"Network":
-    {"PublicNetworkAccess": {"$exists": true}}}'')
-
-    AND (network.delegatedSubnetResourceId IS NOT NULL OR kaytu_description @> ''{"Network":
-    {"DelegatedSubnetResourceID": {"$exists": true}}}'')
-
-    AND (network.privateDnsZoneResourceId IS NOT NULL OR kaytu_description @> ''{"Network":
-    {"PrivateDNSZoneResourceID": {"$exists": true}}}'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Public network access should be disabled for MySQL flexible servers
+Description: Disabling the public network access property improves security by ensuring your Azure Database for MySQL flexible servers can only be accessed from a private endpoint. This configuration strictly disables access from any public address space outside of Azure IP range and denies all logins that match IP or virtual network-based firewall rules.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT id, name, kaytu_description->'Network'->>'PublicNetworkAccess' AS public_network_access, kaytu_description->'Network'->>'DelegatedSubnetResourceID' AS delegated_subnet_resource_id, kaytu_description->'Network'->>'PrivateDNSZoneResourceID' AS private_dns_zone_resource_id
+        FROM azure_dbformysql_flexibleservers
+        WHERE kaytu_description->>'type' = 'Microsoft.DBforMySQL/flexibleServers'
+        AND (network.publicNetworkAccess IS NOT NULL OR kaytu_description @> '{"Network": {"PublicNetworkAccess": {"$exists": true}}}')
+        AND (network.delegatedSubnetResourceId IS NOT NULL OR kaytu_description @> '{"Network": {"DelegatedSubnetResourceID": {"$exists": true}}}')
+        AND (network.privateDnsZoneResourceId IS NOT NULL OR kaytu_description @> '{"Network": {"PrivateDNSZoneResourceID": {"$exists": true}}}')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

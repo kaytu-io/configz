@@ -1,13 +1,15 @@
-Description: Windows machines should have the specified Group Policy settings in the
-  category 'Security Settings - Account Policies' for password history, age, length,
-  complexity, and storing passwords using reversible encryption. This policy requires
-  that the Guest Configuration prerequisites have been deployed to the policy assignment
-  scope. For details, visit https://aka.ms/gcpol.
 ID: windows_machines_should_meet_requirements_for_'_security_settings_account_policies'
+Title: Windows machines should meet requirements for 'Security Settings - Account Policies'
+Description: Windows machines should have the specified Group Policy settings in the category 'Security Settings - Account Policies' for password history, age, length, complexity, and storing passwords using reversible encryption. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope. For details, visit https://aka.ms/gcpol.
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
-Title: Windows machines should meet requirements for 'Security Settings - Account
-  Policies'
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

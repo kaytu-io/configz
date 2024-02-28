@@ -1,21 +1,20 @@
-Description: Audit enabling of resource logs. This enables you to recreate activity
-  trails to use for investigation purposes; when a security incident occurs or when
-  your network is compromised
 ID: resource_logs_in_event_hub_should_be_enabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_eventhub_namespace
-
-    WHERE type = ''Microsoft.EventHub/namespaces''
-
-    AND kaytu_description -> ''$.DiagnosticSettingsResources[*].Properties.Logs''
-    IS NOT NULL
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Resource logs in Event Hub should be enabled
+Description: Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_eventhub_namespace
+        WHERE type = 'Microsoft.EventHub/namespaces'
+        AND kaytu_description -> '$.DiagnosticSettingsResources[*].Properties.Logs' IS NOT NULL
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

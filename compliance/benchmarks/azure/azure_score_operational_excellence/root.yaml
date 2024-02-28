@@ -1,0 +1,16 @@
+Connector: Azure
+Controls:
+  - azure_keyvault_logging_enabled
+  - azure_enable_defender_for_cloud_for_aks_clusters
+  - azure_disable_plain_ftp_deployment
+  - azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
+ReferenceCode: azure_score_operational_excellence
+Description: Operational Excellence Description
+ID: azure_score_operational_excellence
+AutoAssign: true
+Tags:
+  type:
+    - SCORE
+  score_category:
+    - operational_excellence
+Title: Operational Excellence For Azure
