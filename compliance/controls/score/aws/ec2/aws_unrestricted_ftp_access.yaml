@@ -1,6 +1,6 @@
-ID: aws_unrestricted_https_access
-Title: Unrestricted HTTPS Access
-Description: Ensure no security group allows unrestricted inbound access to TCP port 443 (HTTPS).
+ID: aws_unrestricted_ftp_access
+Title: Unrestricted FTP Access
+Description: Ensure no security group allows unrestricted inbound access to TCP ports 20 and 21 (FTP).
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -15,8 +15,8 @@ Query:
           or cidr_ipv6 = '::/0'
         )
         and ip_protocol <> 'icmp'
-        and from_port = 443
-        and to_port = 443
+        and (from_port = 20 or from_port = 21)
+        and (to_port = 20 or to_port = 21)
         and not is_egress
       group by
         group_id
@@ -30,8 +30,8 @@ Query:
         else 'alarm'
       end as status,
       case
-        when isg.group_id is null then sg.group_id || ' does not allow unrestricted HTTPS access'
-        else sg.group_id || ' allows unrestricted HTTPS access'
+        when isg.group_id is null then sg.group_id || ' does not allow unrestricted FTP access'
+        else sg.group_id || ' allows unrestricted FTP access'
       end as reason,
       region,
       account_id
@@ -43,7 +43,7 @@ Query:
   ListOfTables:
     - aws_vpc_security_group
 ManualVerification: false
-Severity: medium
+Severity: very high
 Tags:
   score_service_name:
   - AWS/EC2

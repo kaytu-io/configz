@@ -1,0 +1,33 @@
+ID: aws_unused_ami
+Title: Unused AMI
+Description: Identify unused Amazon Machine Images (AMI) to help lower the cost of your monthly AWS bill.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      ami.name as resource,
+      ami.kaytu_resource_id,
+      ami.kaytu_account_id,
+      case
+        when i.arn is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when i.arn is null then ami.name || ' is unused.'
+        else ami.name || ' is used.'
+      end as reason,
+      ami.region,
+      ami.account_id
+    from
+      aws_ec2_ami AS ami
+      LEFT JOIN aws_ec2_instance AS i ON ami.image_id = i.image_id
+  Connector: AWS
+  PrimaryTable: aws_ec2_ami
+  ListOfTables:
+    - aws_ec2_ami
+    - aws_ec2_instance
+ManualVerification: false
+Severity: low
+Tags:
+  score_service_name:
+  - AWS/EC2

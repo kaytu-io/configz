@@ -1,12 +1,13 @@
-ID: aws_unrestricted_https_access
-Title: Unrestricted HTTPS Access
-Description: Ensure no security group allows unrestricted inbound access to TCP port 443 (HTTPS).
+ID: aws_unrestricted_security_group_egress
+Title: Unrestricted Security Group Egress
+Description: Ensure no security group contains any 0.0.0.0/0 egress rules
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
-    with ingress_sg as (
+    with egress_sg as (
       select
-        group_id
+        group_id,
+        count(*)
       from
         aws_vpc_security_group_rule
       where
@@ -15,9 +16,14 @@ Query:
           or cidr_ipv6 = '::/0'
         )
         and ip_protocol <> 'icmp'
-        and from_port = 443
-        and to_port = 443
-        and not is_egress
+        and (
+          from_port = -1
+          or (
+            from_port = 0
+            and to_port = 65535
+          )
+        )
+        and is_egress
       group by
         group_id
     )
@@ -26,24 +32,24 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       case
-        when isg.group_id is null then 'ok'
+        when esg.group_id is null then 'ok'
         else 'alarm'
       end as status,
       case
-        when isg.group_id is null then sg.group_id || ' does not allow unrestricted HTTPS access'
-        else sg.group_id || ' allows unrestricted HTTPS access'
+        when esg.group_id is null then sg.group_id || ' does not allow unrestricted egress access'
+        else sg.group_id || ' allows unrestricted egress access'
       end as reason,
       region,
       account_id
     from
       aws_vpc_security_group as sg
-      left join ingress_sg as isg on sg.group_id = isg.group_id
+      left join egress_sg as esg on sg.group_id = esg.group_id
   Connector: AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
     - aws_vpc_security_group
 ManualVerification: false
-Severity: medium
+Severity: high
 Tags:
   score_service_name:
   - AWS/EC2

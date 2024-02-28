@@ -1,0 +1,33 @@
+ID: aws_ebs_volumes_attached_to_stopped_ec2_instances
+Title: EBS Volumes Attached To Stopped EC2 Instances
+Description: Identify any unused Elastic Block Store volumes to improve cost optimization and security.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      v.volume_id as resource,
+      v.kaytu_resource_id,
+      v.kaytu_account_id,
+      case
+        when i.instance_state = 'running' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when i.instance_state = 'running' then v.volume_id || ' is attached to a running instance'
+        else v.volume_id || ' is attached to a stopped instance'
+      end as reason,
+      v.region,
+      v.account_id
+    from
+      aws_ebs_volume as v,
+      jsonb_array_elements(attachments) as att
+      left join aws_ec2_instance as i on att ->> 'InstanceId' = i.instance_id 
+  Connector: AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+  - aws_ebs_volume
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS/EBS

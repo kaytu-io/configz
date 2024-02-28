@@ -1,0 +1,34 @@
+ID: aws_ebs_encrypted_with_kms_customer_master_keys
+Title: EBS Encrypted With KMS Customer Master Keys
+Description: Ensure EBS volumes are encrypted with CMKs to have full control over encrypting and decrypting data.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      volume_id as resource,
+      v.kaytu_resource_id,
+      v.kaytu_account_id,
+      case
+        when kms_key_id is null then 'alarm'
+        when k.key_manager = 'CUSTOMER' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when kms_key_id is null then volume_id || ' is not using a master key'
+        when k.key_manager = 'CUSTOMER' then volume_id || ' is using a customer master key'
+        else volume_id || ' is using a AWS-managed master key'
+      end as reason,
+      V.region,
+      V.account_id
+    from
+      aws_ebs_volume as v
+      left join aws_kms_key as k on v.kms_key_id = k.arn
+  Connector: AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+  - aws_ebs_volume
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS/EBS
