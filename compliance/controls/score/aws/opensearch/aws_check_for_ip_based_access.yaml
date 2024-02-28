@@ -46,4 +46,4 @@ Query:
     - Key: awsApprovedIPs
       Required: false
 ManualVerification: false
-Severity: very high
+Severity: critical

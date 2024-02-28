@@ -46,4 +46,4 @@ Query:
     - Key: awsTrustedAccounts
       Required: false
 ManualVerification: false
-Severity: very high
+Severity: critical
