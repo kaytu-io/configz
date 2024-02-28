@@ -1,0 +1,31 @@
+ID: aws_cis_v300
+Title: CIS v3.0.0
+ReferenceCode: ""
+Connector: AWS
+Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
+Children:
+- aws_cis_v300_1
+- aws_cis_v300_2
+- aws_cis_v300_3
+- aws_cis_v300_4
+- aws_cis_v300_5
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_version:
+  - v3.0.0
+  plugin:
+  - aws
+  service:
+  - AWS
+  source_git:
+  - https://github.com/turbot/steampipe-mod-aws-compliance.git
+  type:
+  - Benchmark
+Managed: true
+Enabled: true
+AutoAssign: false
+Baseline: true
+Controls: []

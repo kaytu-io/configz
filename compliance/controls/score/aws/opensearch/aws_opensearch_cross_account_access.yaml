@@ -46,7 +46,7 @@ Query:
     - Key: awsTrustedAccounts
       Required: false
 ManualVerification: false
-Severity: very high
+Severity: critical
 Tags:
   score_service_name:
   - AWS/OpenSearch
