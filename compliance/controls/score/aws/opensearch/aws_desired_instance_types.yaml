@@ -10,20 +10,21 @@ Query:
       kaytu_account_id,
       CASE
         WHEN ('{{.awsOpensearchAllowedDataInstanceTypes}}' = '' or
-            '{{.awsOpensearchAllowedDataInstanceTypes}}' ? cluster_config ->> 'InstanceType')
-          and (
+            '{{.awsOpensearchAllowedDataInstanceTypes}}' LIKE '%' || (cluster_config ->> 'InstanceType')::text || '%'
+          ) and (
             '{{.awsOpensearchAllowedDedicatedMasterTypes}}' = '' or
-            '{{.awsOpensearchAllowedDedicatedMasterTypes}}' ? cluster_config ->> 'DedicatedMasterType')
+            '{{.awsOpensearchAllowedDedicatedMasterTypes}}' LIKE '%' || (cluster_config ->> 'DedicatedMasterType')::text || '%'
+          )
          THEN 'ok'
         ELSE 'alarm'
       END AS status,
       CASE
         WHEN ('{{.awsOpensearchAllowedDataInstanceTypes}}' = '' or
-            '{{.awsOpensearchAllowedDataInstanceTypes}}' ? cluster_config ->> 'InstanceType')
-          and (
+            '{{.awsOpensearchAllowedDataInstanceTypes}}' LIKE '%' || (cluster_config ->> 'InstanceType')::text || '%'
+          ) and (
             '{{.awsOpensearchAllowedDedicatedMasterTypes}}' = '' or
-            '{{.awsOpensearchAllowedDedicatedMasterTypes}}' ? cluster_config ->> 'DedicatedMasterType')
-          THEN domain_name || ' was configured using the desired instance type.' 
+            '{{.awsOpensearchAllowedDedicatedMasterTypes}}'  LIKE '%' || (cluster_config ->> 'DedicatedMasterType')::text || '%'
+          ) THEN domain_name || ' was configured using the desired instance type.' 
         ELSE domain_name || ' was not configured using the desired instance type.'
       END AS reason,
       region,
