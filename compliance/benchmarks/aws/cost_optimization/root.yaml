@@ -23,6 +23,11 @@ Controls:
   - aws_rds_reserved_db_instance_payment_failed
   - aws_rds_reserved_db_instance_payment_pending
   - aws_redundant_cloud_trail
+  - azure_check_for_unused_load_balancers
+  - azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
+  - azure_old_snapshots_should_be_deleted_if_not_required
+  - azure_unused_disks_should_be_removed
+  - azure_disks_should_use_standard_snapshots
 ReferenceCode: cost_optimization
 Description: Cost Optimization Description
 ID: cost_optimization

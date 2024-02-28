@@ -16,6 +16,9 @@ Controls:
   - aws_log_exports
   - aws_performance_insights
   - aws_security_groups_events_subscriptions
+  - azure_enable_defender_for_cloud_for_aks_clusters
+  - azure_disable_plain_ftp_deployment
+  - azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
 ReferenceCode: operational_excellence
 Description: Operational Excellence Description
 ID: operational_excellence
