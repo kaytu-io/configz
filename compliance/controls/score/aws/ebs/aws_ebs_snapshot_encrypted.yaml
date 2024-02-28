@@ -1,0 +1,31 @@
+ID: aws_ebs_snapshot_encrypted
+Title: EBS Snapshot Encrypted
+Description: Ensure Amazon EBS snapshots are encrypted to meet security and compliance requirements.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when encrypted then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when encrypted then title || ' encryption enabled.'
+        else title || ' encryption disabled.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ebs_snapshot;
+  Connector: AWS
+  PrimaryTable: aws_ebs_snapshot
+  ListOfTables:
+  - aws_ebs_snapshot
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EBS
