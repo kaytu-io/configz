@@ -1,0 +1,33 @@
+ID: aws_unused_aws_ec2_key_pairs
+Title: Unused AWS EC2 Key Pairs
+Description: Ensure unused AWS EC2 key pairs are decommissioned to follow AWS security best practices.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      k.key_name as resource,
+      k.kaytu_resource_id,
+      k.kaytu_account_id,
+      case
+        when i.arn is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when i.arn is null then k.key_name || ' is unused.'
+        else k.key_name || ' is used.'
+      end as reason,
+      k.region,
+      k.account_id
+    from
+      aws_ec2_key_pair AS k
+      LEFT JOIN aws_ec2_instance AS i ON k.key_name = i.key_name
+  Connector: AWS
+  PrimaryTable: aws_ec2_key_pair
+  ListOfTables:
+    - aws_ec2_key_pair
+    - aws_ec2_instance
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EC2
