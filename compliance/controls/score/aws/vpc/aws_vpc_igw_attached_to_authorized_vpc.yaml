@@ -30,3 +30,6 @@ Query:
     - aws_vpc_internet_gateway
 ManualVerification: false
 Severity: low
+Tags:
+  score_service_name:
+  - AWS/VPC

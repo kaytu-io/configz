@@ -21,10 +21,12 @@ Query:
     from
       aws_rds_db_instance
   Connector: AWS
-  PrimaryTable: null
-  ListOfTables: []
-  Parameters: []
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables: 
+  - aws_rds_db_instance
 ManualVerification: false
 Severity: medium
-Tags: {}
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

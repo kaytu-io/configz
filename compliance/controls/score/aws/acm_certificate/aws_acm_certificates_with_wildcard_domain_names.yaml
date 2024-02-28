@@ -26,3 +26,6 @@ Query:
     - aws_acm_certificate
 ManualVerification: false
 Severity: high
+Tags:
+  score_service_name:
+  - AWS/ACM

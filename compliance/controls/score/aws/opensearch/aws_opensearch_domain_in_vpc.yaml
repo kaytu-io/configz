@@ -57,3 +57,6 @@ Query:
     - aws_vpc_route_table
 ManualVerification: false
 Severity: high
+Tags:
+  score_service_name:
+  - AWS/OpenSearch

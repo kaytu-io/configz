@@ -6,6 +6,22 @@ Controls:
   - aws_unassociated_elastic_ip_addresses
   - aws_unused_elastic_network_interfaces
   - aws_vpc_igw_attached_to_authorized_vpc
+  - aws_ebs_general_purpose_ssd
+  - aws_ebs_volume_unused
+  - aws_ebs_volumes_attached_to_stopped_ec2_instances
+  - aws_use_gp3_not_gp2
+  - aws_unassociated_elastic_ip_addresses
+  - aws_unused_ami
+  - aws_desired_instance_types
+  - aws_opensearch_general_purpose_ssd
+  - aws_total_number_of_cluster_nodes
+  - aws_rds_copy_tags_to_snapshots
+  - aws_rds_event_notifications
+  - aws_rds_general_purpose_ssd
+  - aws_rds_reserved_db_instance_lease_expiration_in_the_next_7_days
+  - aws_rds_reserved_db_instance_lease_expiration_in_the_next_30_days
+  - aws_rds_reserved_db_instance_payment_failed
+  - aws_rds_reserved_db_instance_payment_pending
 ReferenceCode: cost_optimization
 Description: Cost Optimization Description
 ID: cost_optimization

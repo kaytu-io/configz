@@ -1,6 +1,6 @@
 ID: aws_ebs_volumes_attached_to_stopped_ec2_instances
 Title: EBS Volumes Attached To Stopped EC2 Instances
-Description: Identify any unused Elastic Block Store volumes to improve cost optimization and security.
+Description: Identify Amazon EBS volumes attached to stopped EC2 instances (i.e. unused EBS volumes).
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |

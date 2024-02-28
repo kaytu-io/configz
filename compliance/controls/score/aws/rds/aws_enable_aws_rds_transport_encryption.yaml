@@ -55,9 +55,9 @@ Query:
   PrimaryTable: aws_rds_db_snapshot
   ListOfTables:
   - aws_rds_db_snapshot
-  Parameters: []
 ManualVerification: false
 Severity: high
-Tags:
-  category: []
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

@@ -45,9 +45,9 @@ Query:
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
-  Parameters: []
 ManualVerification: false
 Severity: low
-Tags:
-  category: []
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

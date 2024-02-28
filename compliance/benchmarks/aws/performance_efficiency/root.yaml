@@ -4,6 +4,17 @@ Controls:
   - aws_ec2_desired_instance_type
   - aws_ec2_instance_too_old
   - aws_opensearch_version
+  - aws_use_gp3_not_gp2
+  - aws_disable_public_ip_address_assignment_for_ec2_instances
+  - aws_unused_elastic_network_interfaces
+  - aws_opensearch_slow_logs
+  - aws_enable_instance_storage_auto_scaling
+  - aws_enable_serverless_log_exports
+  - aws_instance_level_events_subscriptions
+  - aws_log_exports
+  - aws_performance_insights
+  - aws_rds_event_notifications
+  - aws_security_groups_events_subscriptions
 ReferenceCode: performance_efficiency
 Description: Performance Efficiency Description
 ID: performance_efficiency

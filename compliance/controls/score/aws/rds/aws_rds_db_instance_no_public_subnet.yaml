@@ -1,5 +1,5 @@
 ID: aws_rds_db_instance_no_public_subnet
-Title: ""
+Title: RDS Instance Not In Public Subnet
 Description: Ensure that no AWS RDS database instances are provisioned inside VPC
   public subnets.
 Query:
@@ -112,8 +112,9 @@ Query:
   - aws_rds_db_subnet_group
   - aws_vpc_subnet
   - aws_vpc_route_table
-  Parameters: []
 ManualVerification: false
-Severity: ""
-Tags: {}
+Severity: medium
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

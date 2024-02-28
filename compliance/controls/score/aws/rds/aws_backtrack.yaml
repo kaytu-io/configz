@@ -29,3 +29,6 @@ Query:
 ManualVerification: false
 Severity: low
 Managed: false
+Tags:
+  score_service_name:
+  - AWS/RDS

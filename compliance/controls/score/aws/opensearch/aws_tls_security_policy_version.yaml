@@ -26,3 +26,6 @@ Query:
     - aws_opensearch_domain
 ManualVerification: false
 Severity: medium
+Tags:
+  score_service_name:
+  - AWS/OpenSearch
