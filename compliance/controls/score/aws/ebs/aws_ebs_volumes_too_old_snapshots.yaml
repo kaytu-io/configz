@@ -9,11 +9,11 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       CASE
-        WHEN start_time + '30 days'::interval < now() THEN 'alarm'
+        WHEN start_time + ({{.awsEbsSnapshotAgeMaxDays}}::INT || ' days')::interval < now() THEN 'alarm'
         ELSE 'ok'
       END AS status,
       CASE
-        WHEN start_time + '30 days'::interval < now() THEN snapshot_id || ' snapshot is older than 30 days' 
+        WHEN start_time +  ({{.awsEbsSnapshotAgeMaxDays}}::INT || ' days')::interval < now() THEN snapshot_id || ' snapshot is older than 30 days' 
         ELSE snapshot_id || ' snapshot is not older than 30 days'
       END AS reason,
       region,
@@ -24,6 +24,8 @@ Query:
   PrimaryTable: aws_ebs_snapshot
   ListOfTables:
     - aws_ebs_snapshot
+  Parameters:
+    - awsEbsSnapshotAgeMaxDays
 ManualVerification: false
 Severity: high
 Tags:
