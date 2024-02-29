@@ -1,0 +1,38 @@
+ID: aws_efs_files_have_backup_withing_48_hours
+Title: EFS files have backup withing 48 hours
+Description: Ensure all EFS files have a minimum of one restore point time in the last 48 hrs
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+      WITH points AS (
+        SELECT recovery_point_arn, resource_arn
+        FROM aws_backup_recovery_point 
+        WHERE now() - creation_date < '48 hours'::interval 
+        and resource_type = 'EFS' and status = 'COMPLETED')
+
+      select
+        f.arn as resource,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_resource_id as kaytu_resource_id,
+        case
+          when p.recovery_point_arn is null then 'alarm'
+          else 'ok'
+        end as status,
+        case
+          when p.recovery_point_arn is null then 'lacks a backup with last 48 hours'
+          else ''
+        end as reason
+        , region, account_id 
+      from 
+        aws_efs_file_system as f
+        left join points as p on f.arn = p.resource_arn
+  Connector: AWS
+  PrimaryTable: aws_efs_file_system
+  ListOfTables:
+  - aws_efs_file_system
+  - aws_backup_recovery_point
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EFS

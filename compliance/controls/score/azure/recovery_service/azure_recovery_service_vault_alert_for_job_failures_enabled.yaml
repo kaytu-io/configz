@@ -1,0 +1,33 @@
+ID: azure_recovery_service_vault_alert_for_job_failures_enabled
+Title: Recovery Service Vault alert for job failures enabled
+Description: Ensure all Recovery Service Vaults alert for job failures are enabled
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      v.id as resource,
+      v.kaytu_resource_id,
+      v.kaytu_account_id,
+      case
+        when v.kaytu_description -> 'Vault' -> 'Properties' -> 'MonitoringSettings' -> 'AzureMonitorAlertSettings' ->> 'AlertsForAllJobFailures' = 'Enabled' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when v.kaytu_description -> 'Vault' -> 'Properties' -> 'MonitoringSettings' -> 'AzureMonitorAlertSettings' ->> 'AlertsForAllJobFailures' = 'Enabled' then v.name || ' alert for job failiures is enabled.'
+        else v.name || ' alert for job failiures is not enabled.'
+      end as reason,
+      v.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_recovery_services_vault as v
+      left join azure_subscription sub on sub.subscription_id = v.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_recovery_services_vault
+  ListOfTables:
+    - azure_recovery_services_vault
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure/RecoveryService

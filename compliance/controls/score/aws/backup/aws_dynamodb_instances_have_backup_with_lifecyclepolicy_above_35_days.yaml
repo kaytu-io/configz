@@ -1,0 +1,38 @@
+ID: aws_dynamodb_instances_have_backup_with_lifecyclepolicy_above_35_days
+Title: Dynamodb Instances have backup with lifecyclepolicy above 35 days
+Description: Ensure all DynamoDB are covered by a backup plan with a minimum of Life Cycle Policy 35 days
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+      WITH points AS (
+        SELECT recovery_point_arn, resource_arn
+        FROM aws_backup_recovery_point 
+        WHERE (lifecycle ->> 'DeleteAfterDays')::INT >= 35 
+        and resource_type = 'DynamoDB' and status = 'COMPLETED')
+
+      select
+        t.arn as resource,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_resource_id as kaytu_resource_id,
+        case
+          when p.recovery_point_arn is null then 'alarm'
+          else 'ok'
+        end as status,
+        case
+          when p.recovery_point_arn is null then 'lacks a backup configuration with a minimum of 35 days'
+          else ''
+        end as reason
+        , region, account_id 
+      from 
+        aws_dynamodb_table as t
+        left join points as p on t.arn = p.resource_arn
+  Connector: AWS
+  PrimaryTable: aws_dynamodb_table
+  ListOfTables:
+  - aws_dynamodb_table
+  - aws_backup_recovery_point
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/DynamoDb

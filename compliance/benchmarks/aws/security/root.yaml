@@ -108,6 +108,7 @@ Controls:
   - azure_restrict_default_network_access_for_azure_key_vaults
   - azure_enable_key_vault_recoverability
   - azure_check_for_key_vault_full_administrator_permissions
+  - azure_recovery_service_vault_not_publicly_accessible_and_not_encrypted
 ReferenceCode: security
 Description: Security Description
 ID: security
