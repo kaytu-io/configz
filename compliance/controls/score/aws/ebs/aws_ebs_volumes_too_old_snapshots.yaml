@@ -20,7 +20,7 @@ Query:
       region,
       account_id
     FROM 
-      aws_ebs_snapshot
+      aws_ebs_snapshot es
   Connector: AWS
   PrimaryTable: aws_ebs_snapshot
   ListOfTables:
