@@ -7,7 +7,7 @@ Query:
       WITH points AS (
         SELECT recovery_point_arn, resource_arn
         FROM aws_backup_recovery_point 
-        WHERE (lifecycle ->> 'DeleteAfterDays')::INT >= 35 
+        WHERE now() - creation_date < '35 days'::interval and (lifecycle ->> 'DeleteAfterDays')::INT >= 35 
         and resource_type = 'EFS' and status = 'COMPLETED')
 
       select

@@ -1,0 +1,33 @@
+ID: aws_root_account_access_keys_present
+Title: Root Account Access Keys Present
+Description: Ensure that your AWS root account is not using access keys as a security best practice.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      name as resource,
+      u.kaytu_resource_id,
+      u.kaytu_account_id,
+      CASE
+        WHEN r.access_key_1_active or r.access_key_2_active THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN r.access_key_1_active or r.access_key_2_active THEN u.name || ' does not have any active access key pair'
+        ELSE u.name || ' has at least one active access key pair.'
+      END AS reason,
+      u.region,
+      u.account_id
+    FROM 
+      aws_iam_user AS u
+      LEFT JOIN aws_iam_credential_report AS r ON u.name = r.user_name
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+    - aws_iam_credential_report
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS/IAM
