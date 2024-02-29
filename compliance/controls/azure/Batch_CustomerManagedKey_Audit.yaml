@@ -1,23 +1,20 @@
-Description: Use customer-managed keys to manage the encryption at rest of your Batch
-  account's data. By default, customer data is encrypted with service-managed keys,
-  but customer-managed keys are commonly required to meet regulatory compliance standards.
-  Customer-managed keys enable the data to be encrypted with an Azure Key Vault key
-  created and owned by you. You have full control and responsibility for the key lifecycle,
-  including rotation and management. Learn more at https://aka.ms/Batch-CMK.
 ID: azure_batch_account_should_use_customer_managed_keys_to_encrypt_data
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_batch_account
-
-    WHERE type = ''Microsoft.Batch/batchAccounts''
-
-    AND (encryption ->> ''keySource'' IS NULL OR encryption ->> ''keySource'' != ''Microsoft.KeyVault'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Azure Batch account should use customer-managed keys to encrypt data
+Description: Use customer-managed keys to manage the encryption at rest of your Batch account's data. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at https://aka.ms/Batch-CMK.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_batch_account
+        WHERE type = 'Microsoft.Batch/batchAccounts'
+        AND (encryption ->> 'keySource' IS NULL OR encryption ->> 'keySource' != 'Microsoft.KeyVault')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

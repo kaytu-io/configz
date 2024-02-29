@@ -1,20 +1,21 @@
-Description: CMA_C1181 - Retain previous versions of baseline configs
 ID: retain_previous_versions_of_baseline_configs
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE title = ''Microsoft.Resources/subscriptions''
-
-    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
-
-    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Retain previous versions of baseline configs
+Description: CMA_C1181 - Retain previous versions of baseline configs
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE title = 'Microsoft.Resources/subscriptions'
+        AND kaytu_description ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
+        AND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

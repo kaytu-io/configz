@@ -1,24 +1,21 @@
-Description: Cross-Origin Resource Sharing (CORS) should not allow all domains to
-  access your Function app. Allow only required domains to interact with your Function
-  app.
 ID: function_apps_should_not_have_cors_configured_to_allow_every_resource_to_access_your_apps
+Title: Function apps should not have CORS configured to allow every resource to access your apps
+Description: Cross-Origin Resource Sharing (CORS) should not allow all domains to access your Function app. Allow only required domains to interact with your Function app.
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_app_service_function_app
-
-    WHERE type = ''Microsoft.Web/sites''
-
-    AND (kind LIKE ''%functionapp%'' AND kind NOT LIKE ''%workflowapp%'')
-
-    AND (config->''web''->''cors''->>''allowedOrigins'' IS NOT NULL AND config->''web''->''cors''->>''allowedOrigins''
-    != ''*'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
-Title: Function apps should not have CORS configured to allow every resource to access
-  your apps
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_app_service_function_app
+        WHERE type = 'Microsoft.Web/sites'
+        AND (kind LIKE '%functionapp%' AND kind NOT LIKE '%workflowapp%')
+        AND (config->'web'->'cors'->>'allowedOrigins' IS NOT NULL AND config->'web'->'cors'->>'allowedOrigins' != '*')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

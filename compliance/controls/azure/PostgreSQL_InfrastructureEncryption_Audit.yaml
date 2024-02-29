@@ -1,22 +1,20 @@
-Description: Enable infrastructure encryption for Azure Database for PostgreSQL servers
-  to have higher level of assurance that the data is secure. When infrastructure encryption
-  is enabled, the data at rest is encrypted twice using FIPS 140-2 compliant Microsoft
-  managed keys
 ID: infrastructure_encryption_should_be_enabled_for_azure_database_for_postgre_sql_servers
+Title: Infrastructure encryption should be enabled for Azure Database for PostgreSQL servers
+Description: Enable infrastructure encryption for Azure Database for PostgreSQL servers to have higher level of assurance that the data is secure. When infrastructure encryption is enabled, the data at rest is encrypted twice using FIPS 140-2 compliant Microsoft managed keys
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, type, infrastructure_encryption
-
-    FROM azure_postgresql_server
-
-    WHERE type = ''Microsoft.DBforPostgreSQL/servers''
-
-    AND (infrastructure_encryption IS NULL OR infrastructure_encryption != ''Enabled'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
-Title: Infrastructure encryption should be enabled for Azure Database for PostgreSQL
-  servers
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, id, type, infrastructure_encryption
+        FROM azure_postgresql_server
+        WHERE type = 'Microsoft.DBforPostgreSQL/servers'
+        AND (infrastructure_encryption IS NULL OR infrastructure_encryption != 'Enabled')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

@@ -2,68 +2,39 @@ ID: aws_iam_policy_custom_no_blocked_kms_actions
 Title: Ensure managed IAM policies should not allow blocked actions on KMS keys
 Description: Checks if the managed AWS Identity and Access Management (IAM) policies that you create do not allow blocked actions on AWS KMS keys. The rule is non - compliant if any blocked action is allowed on AWS KMS keys by the managed IAM policy.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with kms_blocked_actions as (
-      select
-        arn,
-        count(*) as statements_num
-      from
-        aws_iam_policy,
-        jsonb_array_elements(policy_std -> 'Statement') as s,
-        jsonb_array_elements_text(s -> 'Resource') as resource,
-        jsonb_array_elements_text(s -> 'Action') as action
-      where
-        not is_aws_managed
-        and s ->> 'Effect' = 'Allow'
-        and action like any(array['kms:decrypt', 'kms:reencryptfrom'])
-      group by
-        arn
-    )
-    select
-      p.arn as resource,
-      p.kaytu_account_id as kaytu_account_id,
-      p.kaytu_resource_id as kaytu_resource_id,
-      case
-        when w.arn is null then 'ok'
-        else 'alarm'
-      end status,
-      p.name || ' contains ' || coalesce(w.statements_num,0)  || ' statements that allow blocked actions on AWS KMS keys.' as reason
-      
-      , p.account_id
-    from
-      aws_iam_policy as p
-      left join kms_blocked_actions as w on p.arn = w.arn
-    where
-      not p.is_aws_managed;
-  Connector: AWS
-  PrimaryTable: aws_iam_policy
-  ListOfTables:
-  - aws_iam_policy
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with kms_blocked_actions as (\n  select\n    arn,\n    count(*) as statements_num\n  from\n    aws_iam_policy,\n    jsonb_array_elements(policy_std -> 'Statement') as s,\n    jsonb_array_elements_text(s -> 'Resource') as resource,\n    jsonb_array_elements_text(s -> 'Action') as action\n  where\n    not is_aws_managed\n    and s ->> 'Effect' = 'Allow'\n    and action like any(array['kms:decrypt', 'kms:reencryptfrom'])\n  group by\n    arn\n)\nselect\n  p.arn as resource,\n  p.kaytu_account_id as kaytu_account_id,\n  p.kaytu_resource_id as kaytu_resource_id,\n  case\n    when w.arn is null then 'ok'\n    else 'alarm'\n  end status,\n  p.name || ' contains ' || coalesce(w.statements_num,0)  || ' statements that allow blocked actions on AWS KMS keys.' as reason\n  \n  , p.account_id\nfrom\n  aws_iam_policy as p\n  left join kms_blocked_actions as w on p.arn = w.arn\nwhere\n  not p.is_aws_managed;\n"
+    Connector: AWS
+    PrimaryTable: aws_iam_policy
+    ListOfTables:
+        - aws_iam_policy
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  category:
-  - Compliance
-  fedramp_low_rev_4:
-  - "true"
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  gxp_21_cfr_part_11:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_csf:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  plugin:
-  - aws
-  service:
-  - AWS/IAM
+    category:
+        - Compliance
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    service:
+        - AWS/IAM
+Managed: false

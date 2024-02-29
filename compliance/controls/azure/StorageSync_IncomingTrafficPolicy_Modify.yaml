@@ -1,21 +1,20 @@
-Description: The Azure File Sync's internet-accessible public endpoint are disabled
-  by your organizational policy. You may still access the Storage Sync Service via
-  its private endpoint(s).
 ID: modify_configure_azure_file_sync_to_disable_public_network_access
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, incoming_traffic_policy
-
-    FROM azure_storage_sync
-
-    WHERE type = ''Microsoft.StorageSync/storageSyncServices''
-
-    AND (incoming_traffic_policy != ''AllowVirtualNetworksOnly'' OR kaytu_description->''Service''->''Properties''->>''IncomingTrafficPolicy''
-    != ''AllowVirtualNetworksOnly'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Modify - Configure Azure File Sync to disable public network access
+Description: The Azure File Sync's internet-accessible public endpoint are disabled by your organizational policy. You may still access the Storage Sync Service via its private endpoint(s).
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, incoming_traffic_policy
+        FROM azure_storage_sync
+        WHERE type = 'Microsoft.StorageSync/storageSyncServices'
+        AND (incoming_traffic_policy != 'AllowVirtualNetworksOnly' OR kaytu_description->'Service'->'Properties'->>'IncomingTrafficPolicy' != 'AllowVirtualNetworksOnly')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: low
+Tags: {}
+Managed: false

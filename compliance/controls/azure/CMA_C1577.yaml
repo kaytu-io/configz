@@ -1,20 +1,21 @@
-Description: CMA_C1577 - Obtain continuous monitoring plan for security controls
 ID: obtain_continuous_monitoring_plan_for_security_controls
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE title = ''Microsoft.Resources/subscriptions''
-
-    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
-
-    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Obtain continuous monitoring plan for security controls
+Description: CMA_C1577 - Obtain continuous monitoring plan for security controls
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE title = 'Microsoft.Resources/subscriptions'
+        AND kaytu_description ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
+        AND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

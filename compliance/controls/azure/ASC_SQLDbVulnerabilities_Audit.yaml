@@ -1,9 +1,15 @@
-Description: Monitor vulnerability assessment scan results and recommendations for
-  how to remediate database vulnerabilities.
 ID: sql_databases_should_have_vulnerability_findings_resolved
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
 Title: SQL databases should have vulnerability findings resolved
+Description: Monitor vulnerability assessment scan results and recommendations for how to remediate database vulnerabilities.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

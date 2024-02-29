@@ -1,20 +1,21 @@
-Description: CMA_C1689 - Provide monitoring information as needed
 ID: provide_monitoring_information_as_needed
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE title = ''Microsoft.Resources/subscriptions''
-
-    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
-
-    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Provide monitoring information as needed
+Description: CMA_C1689 - Provide monitoring information as needed
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE title = 'Microsoft.Resources/subscriptions'
+        AND kaytu_description ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
+        AND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

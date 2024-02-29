@@ -1,20 +1,21 @@
-Description: CMA_0377 - Monitor account activity
 ID: monitor_account_activity
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE title = ''Microsoft.Resources/subscriptions''
-
-    AND kaytu_metadata ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
-
-    AND kaytu_metadata -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Monitor account activity
+Description: CMA_0377 - Monitor account activity
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE title = 'Microsoft.Resources/subscriptions'
+        AND kaytu_metadata ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
+        AND kaytu_metadata -> 'then' ->> 'effect' = '[parameters(''effect'')]'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

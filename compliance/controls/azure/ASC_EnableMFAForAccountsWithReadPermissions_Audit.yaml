@@ -1,18 +1,19 @@
-Description: Multi-Factor Authentication (MFA) should be enabled for all subscription
-  accounts with read privileges to prevent a breach of accounts or resources.
 ID: accounts_with_read_permissions_on_azure_resources_should_be_mfa_enabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code''
-    IN (''NotApplicable'', ''Healthy'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Accounts with read permissions on Azure resources should be MFA enabled
+Description: Multi-Factor Authentication (MFA) should be enabled for all subscription accounts with read privileges to prevent a breach of accounts or resources.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE kaytu_description -> '$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code' IN ('NotApplicable', 'Healthy')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

@@ -1,22 +1,20 @@
-Description: Deploys the diagnostic settings for Data Lake Analytics to stream to
-  a regional Log Analytics workspace when any Data Lake Analytics which is missing
-  this diagnostic settings is created or updated.
 ID: deploy_diagnostic_settings_for_data_lake_analytics_to_log_analytics_workspace
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT account_id, kaytu_description
-
-    FROM azure_data_lake_analytics_account
-
-    WHERE kaytu_description -> ''$.DiagnosticSettingsResource[*].Properties.Metrics[*].Enabled''
-    = ''true''
-
-    AND kaytu_description -> ''$.DiagnosticSettingsResource[*].Properties.Logs[*].Enabled''
-    = ''true''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Deploy Diagnostic Settings for Data Lake Analytics to Log Analytics workspace
+Description: Deploys the diagnostic settings for Data Lake Analytics to stream to a regional Log Analytics workspace when any Data Lake Analytics which is missing this diagnostic settings is created or updated.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT account_id, kaytu_description
+        FROM azure_data_lake_analytics_account
+        WHERE kaytu_description -> '$.DiagnosticSettingsResource[*].Properties.Metrics[*].Enabled' = 'true'
+        AND kaytu_description -> '$.DiagnosticSettingsResource[*].Properties.Logs[*].Enabled' = 'true'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

@@ -2,37 +2,20 @@ ID: azure_sql_server_transparent_data_encryption_enabled
 Title: Transparent Data Encryption on SQL databases should be enabled
 Description: Transparent data encryption should be enabled to protect data-at-rest and meet compliance requirements.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      db.id as resource,
-      db.kaytu_account_id as kaytu_account_id,
-      db.kaytu_resource_id as kaytu_resource_id,
-      case
-        when transparent_data_encryption ->> 'status' = 'Disabled' then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when transparent_data_encryption ->> 'status' = 'Disabled' then db.name || ' transparent data encryption off.'
-        else db.name || ' transparent data encryption on.'
-      end as reason
-      
-      , db.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_sql_database db,
-      azure_subscription sub
-    where
-      sub.subscription_id = db.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_sql_database
-  ListOfTables:
-  - azure_sql_database
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  db.id as resource,\n  db.kaytu_account_id as kaytu_account_id,\n  db.kaytu_resource_id as kaytu_resource_id,\n  case\n    when transparent_data_encryption ->> 'status' = 'Disabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when transparent_data_encryption ->> 'status' = 'Disabled' then db.name || ' transparent data encryption off.'\n    else db.name || ' transparent data encryption on.'\n  end as reason\n  \n  , db.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_database db,\n  azure_subscription sub\nwhere\n  sub.subscription_id = db.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_sql_database
+    ListOfTables:
+        - azure_sql_database
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/SQL
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/SQL
+Managed: false

@@ -2,47 +2,20 @@ ID: azure_frontdoor_waf_enabled
 Title: Web Application Firewall (WAF) should be enabled for Azure Front Door Service service
 Description: Deploy Azure Web Application Firewall (WAF) in front of public facing web applications for additional inspection of incoming traffic. Web Application Firewall (WAF) provides centralized protection of your web applications from common exploits and vulnerabilities such as SQL injections, Cross-Site Scripting, local and remote file executions. You can also restrict access to your web applications by countries, IP address ranges, and other http(s) parameters via custom rules.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with frontdoor_with_waf as (
-      select
-        distinct a.front_door_id
-      from
-        azure_frontdoor as a,
-        jsonb_array_elements(frontend_endpoints) as endpoint
-      where
-        endpoint -> 'properties' -> 'webApplicationFirewallPolicyLink' ->> 'id' is not null
-    )
-    select
-      a.front_door_id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when c.front_door_id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when c.front_door_id is not null then a.name || ' WAF enabled.'
-        else a.name || ' WAF disabled.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_frontdoor as a
-      left join frontdoor_with_waf as c on c.front_door_id = a.front_door_id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_frontdoor
-  ListOfTables:
-  - azure_frontdoor
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with frontdoor_with_waf as (\n  select\n    distinct a.front_door_id\n  from\n    azure_frontdoor as a,\n    jsonb_array_elements(frontend_endpoints) as endpoint\n  where\n    endpoint -> 'properties' -> 'webApplicationFirewallPolicyLink' ->> 'id' is not null\n)\nselect\n  a.front_door_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when c.front_door_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when c.front_door_id is not null then a.name || ' WAF enabled.'\n    else a.name || ' WAF disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_frontdoor as a\n  left join frontdoor_with_waf as c on c.front_door_id = a.front_door_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_frontdoor
+    ListOfTables:
+        - azure_frontdoor
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/FrontDoor
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/FrontDoor
+Managed: false

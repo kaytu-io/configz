@@ -2,47 +2,20 @@ ID: azure_azure_redis_cache_uses_private_link
 Title: Azure Cache for Redis should use private link
 Description: Private endpoints lets you connect your virtual network to Azure services without a public IP address at the source or destination. By mapping private endpoints to your Azure Cache for Redis instances, data leakage risks are reduced.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with redis_private_connection as (
-      select
-        distinct a.id
-      from
-        azure_redis_cache as a,
-        jsonb_array_elements(private_endpoint_connections) as connection
-      where
-        connection -> 'properties' -> 'privateLinkServiceConnectionState' ->> 'status' = 'Approved'
-    )
-    select
-      a.id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when c.id is null then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when c.id is null then a.name || ' not uses private link.'
-        else a.name || ' uses private link.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_redis_cache as a
-      left join redis_private_connection as c on c.id = a.id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_redis_cache
-  ListOfTables:
-  - azure_redis_cache
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with redis_private_connection as (\n  select\n    distinct a.id\n  from\n    azure_redis_cache as a,\n    jsonb_array_elements(private_endpoint_connections) as connection\n  where\n    connection -> 'properties' -> 'privateLinkServiceConnectionState' ->> 'status' = 'Approved'\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when c.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when c.id is null then a.name || ' not uses private link.'\n    else a.name || ' uses private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_redis_cache as a\n  left join redis_private_connection as c on c.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_redis_cache
+    ListOfTables:
+        - azure_redis_cache
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/Redis
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/Redis
+Managed: false

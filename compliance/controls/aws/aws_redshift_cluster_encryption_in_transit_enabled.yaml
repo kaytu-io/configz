@@ -2,78 +2,52 @@ ID: aws_redshift_cluster_encryption_in_transit_enabled
 Title: Redshift cluster encryption in transit should be enabled
 Description: Ensure that your Amazon Redshift clusters require TLS/SSL encryption to connect to SQL clients.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with pg_with_ssl as (
-    select
-      name as pg_name,
-      p ->> 'ParameterName' as parameter_name,
-      p ->> 'ParameterValue' as parameter_value
-    from
-      aws_redshift_parameter_group,
-      jsonb_array_elements(parameters) as p
-    where
-      p ->> 'ParameterName' = 'require_ssl'
-      and p ->> 'ParameterValue' = 'true'
-    )
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      case
-        when cpg ->> 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when cpg ->> 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then title || ' encryption in transit enabled.'
-        else title || ' encryption in transit disabled.'
-      end as reason
-      
-      , region, account_id
-    from
-      aws_redshift_cluster,
-      jsonb_array_elements(cluster_parameter_groups) as cpg;
-  Connector: AWS
-  PrimaryTable: aws_redshift_cluster
-  ListOfTables:
-  - aws_redshift_cluster
-  - aws_redshift_parameter_group
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with pg_with_ssl as (\nselect\n  name as pg_name,\n  p ->> 'ParameterName' as parameter_name,\n  p ->> 'ParameterValue' as parameter_value\nfrom\n  aws_redshift_parameter_group,\n  jsonb_array_elements(parameters) as p\nwhere\n  p ->> 'ParameterName' = 'require_ssl'\n  and p ->> 'ParameterValue' = 'true'\n)\nselect\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when cpg ->> 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when cpg ->> 'ParameterGroupName' in (select pg_name from pg_with_ssl ) then title || ' encryption in transit enabled.'\n    else title || ' encryption in transit disabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_redshift_cluster,\n  jsonb_array_elements(cluster_parameter_groups) as cpg;\n"
+    Connector: AWS
+    PrimaryTable: aws_redshift_cluster
+    ListOfTables:
+        - aws_redshift_cluster
+        - aws_redshift_parameter_group
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  category:
-  - Compliance
-  cisa_cyber_essentials:
-  - "true"
-  fedramp_low_rev_4:
-  - "true"
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  gdpr:
-  - "true"
-  gxp_21_cfr_part_11:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_800_53_rev_4:
-  - "true"
-  nist_800_53_rev_5:
-  - "true"
-  nist_csf:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  plugin:
-  - aws
-  rbi_cyber_security:
-  - "true"
-  service:
-  - AWS/Redshift
-  soc_2:
-  - "true"
+    category:
+        - Compliance
+    cisa_cyber_essentials:
+        - "true"
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gdpr:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_53_rev_4:
+        - "true"
+    nist_800_53_rev_5:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    rbi_cyber_security:
+        - "true"
+    service:
+        - AWS/Redshift
+    soc_2:
+        - "true"
+Managed: false

@@ -1,22 +1,20 @@
-Description: Secure your blob and file storage account with greater flexibility using
-  customer-managed keys. When you specify a customer-managed key, that key is used
-  to protect and control access to the key that encrypts your data. Using customer-managed
-  keys provides additional capabilities to control rotation of the key encryption
-  key or cryptographically erase data.
 ID: storage_accounts_should_use_customer_managed_key_for_encryption
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_storage_account
-
-    WHERE type = ''Microsoft.Storage/storageAccounts''
-
-    AND (encryption_key_source IS NULL OR encryption_key_source != ''Microsoft.Keyvault'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Storage accounts should use customer-managed key for encryption
+Description: Secure your blob and file storage account with greater flexibility using customer-managed keys. When you specify a customer-managed key, that key is used to protect and control access to the key that encrypts your data. Using customer-managed keys provides additional capabilities to control rotation of the key encryption key or cryptographically erase data.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_storage_account
+        WHERE type = 'Microsoft.Storage/storageAccounts'
+        AND (encryption_key_source IS NULL OR encryption_key_source != 'Microsoft.Keyvault')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

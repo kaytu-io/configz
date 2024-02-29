@@ -1,20 +1,20 @@
-Description: This policy audits any Event Hub not configured to use a virtual network
-  service endpoint.
 ID: event_hub_should_use_a_virtual_network_service_endpoint
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_eventhub_namespace
-
-    WHERE type = ''Microsoft.EventHub/namespaces''
-
-    AND kaytu_description -> ''$.EHNamespace.Properties.VirtualNetworkRules[*].Subnet.ID''
-    IS NOT NULL
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Event Hub should use a virtual network service endpoint
+Description: This policy audits any Event Hub not configured to use a virtual network service endpoint.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_eventhub_namespace
+        WHERE type = 'Microsoft.EventHub/namespaces'
+        AND kaytu_description -> '$.EHNamespace.Properties.VirtualNetworkRules[*].Subnet.ID' IS NOT NULL
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

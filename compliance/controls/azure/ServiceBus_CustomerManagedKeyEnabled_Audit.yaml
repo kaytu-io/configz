@@ -1,25 +1,21 @@
-Description: Azure Service Bus supports the option of encrypting data at rest with
-  either Microsoft-managed keys (default) or customer-managed keys. Choosing to encrypt
-  data using customer-managed keys enables you to assign, rotate, disable, and revoke
-  access to the keys that Service Bus will use to encrypt data in your namespace.
-  Note that Service Bus only supports encryption with customer-managed keys for premium
-  namespaces.
 ID: service_bus_premium_namespaces_should_use_a_customer_managed_key_for_encryption
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, type, sku_tier, encryption
-
-    FROM azure_servicebus_namespace
-
-    WHERE type = ''Microsoft.ServiceBus/namespaces''
-
-    AND sku_tier = ''Premium''
-
-    AND (encryption->>''keySource'' IS NULL OR encryption->>''keySource'' != ''Microsoft.Keyvault'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Service Bus Premium namespaces should use a customer-managed key for encryption
+Description: Azure Service Bus supports the option of encrypting data at rest with either Microsoft-managed keys (default) or customer-managed keys. Choosing to encrypt data using customer-managed keys enables you to assign, rotate, disable, and revoke access to the keys that Service Bus will use to encrypt data in your namespace. Note that Service Bus only supports encryption with customer-managed keys for premium namespaces.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, type, sku_tier, encryption
+        FROM azure_servicebus_namespace
+        WHERE type = 'Microsoft.ServiceBus/namespaces'
+        AND sku_tier = 'Premium'
+        AND (encryption->>'keySource' IS NULL OR encryption->>'keySource' != 'Microsoft.Keyvault')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

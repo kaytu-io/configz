@@ -2,50 +2,34 @@ ID: azure_securitycenter_azure_defender_on_for_storage
 Title: Ensure that Azure Defender is set to On for Storage
 Description: Turning on Azure Defender enables threat detection for Storage, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      sub_pricing.id as resource,
-      sub_pricing.kaytu_account_id as kaytu_account_id,
-      sub_pricing.kaytu_resource_id as kaytu_resource_id,
-      case
-        when pricing_tier = 'Standard' then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when pricing_tier = 'Standard' then 'Azure Defender on for Storage.'
-        else 'Azure Defender off for Storage.'
-      end as reason
-      
-      , sub.display_name as subscription
-    from
-      azure_security_center_subscription_pricing sub_pricing
-      right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
-    where
-      name = 'StorageAccounts';
-  Connector: Azure
-  PrimaryTable: azure_security_center_subscription_pricing
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  sub_pricing.id as resource,\n  sub_pricing.kaytu_account_id as kaytu_account_id,\n  sub_pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when pricing_tier = 'Standard' then 'Azure Defender on for Storage.'\n    else 'Azure Defender off for Storage.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing sub_pricing\n  right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id\nwhere\n  name = 'StorageAccounts';\n"
+    Connector: Azure
+    PrimaryTable: azure_security_center_subscription_pricing
+    ListOfTables:
+        - azure_security_center_subscription_pricing
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  category:
-  - Compliance
-  cis:
-  - "true"
-  cis_item_id:
-  - "2.5"
-  cis_level:
-  - "2"
-  cis_section_id:
-  - "2"
-  cis_type:
-  - manual
-  cis_version:
-  - v1.3.0
-  plugin:
-  - azure
-  service:
-  - Azure/SecurityCenter
+    category:
+        - Compliance
+    cis:
+        - "true"
+    cis_item_id:
+        - "2.5"
+    cis_level:
+        - "2"
+    cis_section_id:
+        - "2"
+    cis_type:
+        - manual
+    cis_version:
+        - v1.3.0
+    plugin:
+        - azure
+    service:
+        - Azure/SecurityCenter
+Managed: false

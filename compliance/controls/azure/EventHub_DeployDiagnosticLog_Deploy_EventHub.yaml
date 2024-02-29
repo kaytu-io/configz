@@ -1,22 +1,20 @@
-Description: Deploys the diagnostic settings for Event Hub to stream to a regional
-  Event Hub when any Event Hub which is missing this diagnostic settings is created
-  or updated.
 ID: deploy_diagnostic_settings_for_event_hub_to_event_hub
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT azure_eventhub_namespace.name, azure_eventhub_namespace.location,
-    azure_eventhub_namespace.kaytu_description
-
-    FROM azure_eventhub_namespace
-
-    WHERE azure_eventhub_namespace.type = ''Microsoft.EventHub/namespaces''
-
-    AND (azure_eventhub_namespace.location = ''[parameters(''eventHubLocation'')]''
-    OR azure_eventhub_namespace.kaytu_description->>''$.EHNamespace.Location'' = ''[parameters(''eventHubLocation'')]'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Deploy Diagnostic Settings for Event Hub to Event Hub
+Description: Deploys the diagnostic settings for Event Hub to stream to a regional Event Hub when any Event Hub which is missing this diagnostic settings is created or updated.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT azure_eventhub_namespace.name, azure_eventhub_namespace.location, azure_eventhub_namespace.kaytu_description
+        FROM azure_eventhub_namespace
+        WHERE azure_eventhub_namespace.type = 'Microsoft.EventHub/namespaces'
+        AND (azure_eventhub_namespace.location = '[parameters('eventHubLocation')]' OR azure_eventhub_namespace.kaytu_description->>'$.EHNamespace.Location' = '[parameters('eventHubLocation')]')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

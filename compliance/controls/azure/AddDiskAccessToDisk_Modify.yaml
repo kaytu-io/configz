@@ -1,47 +1,22 @@
-Description: 'Disable public network access for your managed disk resource so that
-  it''s not accessible over the public internet. This can reduce data leakage risks.
-  Learn more at: https://aka.ms/disksprivatelinksdoc.'
 ID: configure_managed_disks_to_disable_public_network_access
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT azure_compute_disk.name, azure_compute_disk.id, azure_compute_disk.type,
-    azure_compute_disk.provisioning_state, azure_compute_disk.managed_by, azure_compute_disk.sku_name,
-    azure_compute_disk.sku_tier, azure_compute_disk.time_created, azure_compute_disk.unique_id,
-    azure_compute_disk.disk_access_id, azure_compute_disk.disk_size_bytes, azure_compute_disk.disk_size_gb,
-    azure_compute_disk.disk_state, azure_compute_disk.hyper_v_generation, azure_compute_disk.disk_iops_read_only,
-    azure_compute_disk.disk_iops_read_write, azure_compute_disk.disk_iops_mbps_read_only,
-    azure_compute_disk.disk_iops_mbps_read_write, azure_compute_disk.max_shares, azure_compute_disk.os_type,
-    azure_compute_disk.encryption_settings_collection_enabled, azure_compute_disk.encryption_settings_collection_version,
-    azure_compute_disk.encryption_disk_encryption_set_id, azure_compute_disk.encryption_type,
-    azure_compute_disk.network_access_policy, azure_compute_disk.creation_data_option,
-    azure_compute_disk.creation_data_storage_account_id, azure_compute_disk.creation_data_source_uri,
-    azure_compute_disk.creation_data_source_resource_id, azure_compute_disk.creation_data_source_unique_id,
-    azure_compute_disk.creation_data_upload_size_bytes, azure_compute_disk.creation_data_image_reference_id,
-    azure_compute_disk.creation_data_image_reference_lun, azure_compute_disk.creation_data_gallery_image_reference_id,
-    azure_compute_disk.creation_data_gallery_image_reference_lun, azure_compute_disk.encryption_settings_collection_settings,
-    azure_compute_disk.share_info, azure_compute_disk.zones, azure_compute_disk.managed_by_extended,
-    azure_compute_disk.title, azure_compute_disk.tags, azure_compute_disk.akas, azure_compute_disk.region,
-    azure_compute_disk.resource_group, azure_compute_disk.cloud_environment, azure_compute_disk.subscription_id,
-    azure_compute_disk.kaytu_account_id, azure_compute_disk.kaytu_resource_id, azure_compute_disk.kaytu_metadata,
-    azure_compute_disk.kaytu_description, azure_compute_disk._ctx
-
-    FROM azure_compute_disk
-
-    WHERE azure_compute_disk.type = ''Microsoft.Compute/disks''
-
-    AND azure_compute_disk.location = ''[parameters(''location'')]''
-
-    AND (azure_compute_disk.network_access_policy NOT IN (''AllowPrivate'', ''DenyAll'')
-    OR azure_compute_disk.network_access_policy IS NULL OR json_extract_path_text(azure_compute_disk.kaytu_description,
-    ''DiskProperties.NetworkAccessPolicy'') NOT IN (''AllowPrivate'', ''DenyAll''))
-
-    AND (azure_compute_disk.publicNetworkAccess != ''Disabled'' OR azure_compute_disk.publicNetworkAccess
-    IS NULL OR json_extract_path_text(azure_compute_disk.kaytu_description, ''DiskProperties.PublicNetworkAccess'')
-    != ''Disabled'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Configure managed disks to disable public network access
+Description: 'Disable public network access for your managed disk resource so that it''s not accessible over the public internet. This can reduce data leakage risks. Learn more at: https://aka.ms/disksprivatelinksdoc.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT azure_compute_disk.name, azure_compute_disk.id, azure_compute_disk.type, azure_compute_disk.provisioning_state, azure_compute_disk.managed_by, azure_compute_disk.sku_name, azure_compute_disk.sku_tier, azure_compute_disk.time_created, azure_compute_disk.unique_id, azure_compute_disk.disk_access_id, azure_compute_disk.disk_size_bytes, azure_compute_disk.disk_size_gb, azure_compute_disk.disk_state, azure_compute_disk.hyper_v_generation, azure_compute_disk.disk_iops_read_only, azure_compute_disk.disk_iops_read_write, azure_compute_disk.disk_iops_mbps_read_only, azure_compute_disk.disk_iops_mbps_read_write, azure_compute_disk.max_shares, azure_compute_disk.os_type, azure_compute_disk.encryption_settings_collection_enabled, azure_compute_disk.encryption_settings_collection_version, azure_compute_disk.encryption_disk_encryption_set_id, azure_compute_disk.encryption_type, azure_compute_disk.network_access_policy, azure_compute_disk.creation_data_option, azure_compute_disk.creation_data_storage_account_id, azure_compute_disk.creation_data_source_uri, azure_compute_disk.creation_data_source_resource_id, azure_compute_disk.creation_data_source_unique_id, azure_compute_disk.creation_data_upload_size_bytes, azure_compute_disk.creation_data_image_reference_id, azure_compute_disk.creation_data_image_reference_lun, azure_compute_disk.creation_data_gallery_image_reference_id, azure_compute_disk.creation_data_gallery_image_reference_lun, azure_compute_disk.encryption_settings_collection_settings, azure_compute_disk.share_info, azure_compute_disk.zones, azure_compute_disk.managed_by_extended, azure_compute_disk.title, azure_compute_disk.tags, azure_compute_disk.akas, azure_compute_disk.region, azure_compute_disk.resource_group, azure_compute_disk.cloud_environment, azure_compute_disk.subscription_id, azure_compute_disk.kaytu_account_id, azure_compute_disk.kaytu_resource_id, azure_compute_disk.kaytu_metadata, azure_compute_disk.kaytu_description, azure_compute_disk._ctx
+        FROM azure_compute_disk
+        WHERE azure_compute_disk.type = 'Microsoft.Compute/disks'
+        AND azure_compute_disk.location = '[parameters('location')]'
+        AND (azure_compute_disk.network_access_policy NOT IN ('AllowPrivate', 'DenyAll') OR azure_compute_disk.network_access_policy IS NULL OR json_extract_path_text(azure_compute_disk.kaytu_description, 'DiskProperties.NetworkAccessPolicy') NOT IN ('AllowPrivate', 'DenyAll'))
+        AND (azure_compute_disk.publicNetworkAccess != 'Disabled' OR azure_compute_disk.publicNetworkAccess IS NULL OR json_extract_path_text(azure_compute_disk.kaytu_description, 'DiskProperties.PublicNetworkAccess') != 'Disabled')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

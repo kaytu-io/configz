@@ -1,23 +1,20 @@
-Description: 'Azure Private Link lets you connect your virtual network to Azure services
-  without a public IP address at the source or destination. The Private Link platform
-  handles the connectivity between the consumer and services over the Azure backbone
-  network. By mapping private endpoints to Azure Data Factory, data leakage risks
-  are reduced. Learn more about private links at: https://docs.microsoft.com/azure/data-factory/data-factory-private-link.'
 ID: azure_data_factory_should_use_private_link
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_data_factory
-
-    WHERE type = ''Microsoft.DataFactory/factories''
-
-    AND kaytu_description -> ''$.PrivateEndPointConnections[*].properties.privateLinkServiceConnectionState.status''
-    = ''Approved''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Azure Data Factory should use private link
+Description: 'Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Data Factory, data leakage risks are reduced. Learn more about private links at: https://docs.microsoft.com/azure/data-factory/data-factory-private-link.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_data_factory
+        WHERE type = 'Microsoft.DataFactory/factories'
+        AND kaytu_description -> '$.PrivateEndPointConnections[*].properties.privateLinkServiceConnectionState.status' = 'Approved'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

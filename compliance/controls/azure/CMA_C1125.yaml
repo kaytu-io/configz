@@ -1,20 +1,21 @@
-Description: CMA_C1125 - Ensure audit records are not altered
 ID: ensure_audit_records_are_not_altered
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE title = ''Microsoft.Resources/subscriptions''
-
-    AND kaytu_description ->> ''if'' = ''{"field": "type", "equals": "Microsoft.Resources/subscriptions"}''
-
-    AND kaytu_description -> ''then'' ->> ''effect'' = ''[parameters(''''effect'''')]''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Ensure audit records are not altered
+Description: CMA_C1125 - Ensure audit records are not altered
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE title = 'Microsoft.Resources/subscriptions'
+        AND kaytu_description ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
+        AND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: critical
+Tags: {}
+Managed: false

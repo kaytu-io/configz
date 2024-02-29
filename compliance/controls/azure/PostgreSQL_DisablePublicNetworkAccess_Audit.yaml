@@ -1,26 +1,21 @@
-Description: Disable the public network access property to improve security and ensure
-  your Azure Database for PostgreSQL can only be accessed from a private endpoint.
-  This configuration disables access from any public address space outside of Azure
-  IP range, and denies all logins that match IP or virtual network-based firewall
-  rules.
 ID: public_network_access_should_be_disabled_for_postgre_sql_servers
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, type, public_network_access
-
-    FROM azure_postgresql_server
-
-    WHERE type = ''Microsoft.DBforPostgreSQL/servers''
-
-    AND (public_network_access IS NOT NULL AND public_network_access != ''Disabled''
-
-    OR kaytu_description->''Server''->''Properties''->>''PublicNetworkAccess'' IS
-    NOT NULL AND kaytu_description->''Server''->''Properties''->>''PublicNetworkAccess''
-    != ''Disabled'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Public network access should be disabled for PostgreSQL servers
+Description: Disable the public network access property to improve security and ensure your Azure Database for PostgreSQL can only be accessed from a private endpoint. This configuration disables access from any public address space outside of Azure IP range, and denies all logins that match IP or virtual network-based firewall rules.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, id, type, public_network_access
+        FROM azure_postgresql_server
+        WHERE type = 'Microsoft.DBforPostgreSQL/servers'
+        AND (public_network_access IS NOT NULL AND public_network_access != 'Disabled'
+        OR kaytu_description->'Server'->'Properties'->>'PublicNetworkAccess' IS NOT NULL AND kaytu_description->'Server'->'Properties'->>'PublicNetworkAccess' != 'Disabled')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

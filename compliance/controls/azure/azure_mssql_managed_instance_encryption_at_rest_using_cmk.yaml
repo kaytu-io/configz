@@ -2,50 +2,22 @@ ID: azure_mssql_managed_instance_encryption_at_rest_using_cmk
 Title: SQL managed instances should use customer-managed keys to encrypt data at rest
 Description: Implementing Transparent Data Encryption (TDE) with your own key provides you with increased transparency and control over the TDE Protector, increased security with an HSM-backed external service, and promotion of separation of duties. This recommendation applies to organizations with a related compliance requirement.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with encryption_protector as (
-      select
-        distinct i.id as id
-      from
-        azure_mssql_managed_instance as i,
-        jsonb_array_elements(encryption_protectors) a
-        where
-          a ->> 'serverKeyType' = 'AzureKeyVault'
-          and a ->> 'uri' is not null
-    )
-    select
-      s.id as resource,
-      s.kaytu_account_id as kaytu_account_id,
-      s.kaytu_resource_id as kaytu_resource_id,
-      case
-        when a.id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when a.id is not null then s.title || ' encrypted with CMK.'
-        else s.title || ' not encrypted with CMK.'
-      end as reason
-      
-      , s.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_mssql_managed_instance as s
-      left join encryption_protector as a on s.id = a.id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = s.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_mssql_managed_instance
-  ListOfTables:
-  - azure_mssql_managed_instance
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with encryption_protector as (\n  select\n    distinct i.id as id\n  from\n    azure_mssql_managed_instance as i,\n    jsonb_array_elements(encryption_protectors) a\n    where\n      a ->> 'serverKeyType' = 'AzureKeyVault'\n      and a ->> 'uri' is not null\n)\nselect\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.id is not null then s.title || ' encrypted with CMK.'\n    else s.title || ' not encrypted with CMK.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mssql_managed_instance as s\n  left join encryption_protector as a on s.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_mssql_managed_instance
+    ListOfTables:
+        - azure_mssql_managed_instance
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  hipaa_hitrust_v92:
-  - "true"
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/MySQL
+    hipaa_hitrust_v92:
+        - "true"
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/MySQL
+Managed: false

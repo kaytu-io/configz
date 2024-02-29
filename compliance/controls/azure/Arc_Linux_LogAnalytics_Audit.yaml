@@ -1,30 +1,23 @@
-Description: This policy audits Linux Azure Arc machines if the Log Analytics extension
-  is not installed.
 ID: '[_preview]:_log_analytics_extension_should_be_installed_on_your_linux_azure_arc_machines'
+Title: '[Preview]: Log Analytics extension should be installed on your Linux Azure Arc machines'
+Description: This policy audits Linux Azure Arc machines if the Log Analytics extension is not installed.
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_hybrid_compute_machine
-
-    WHERE type = ''Microsoft.HybridCompute/machines''
-
-    AND kaytu_description -> ''extensions/publisher'' @> ''[{"MachineExtensions":
-    [{"Properties": {"Publisher": "Microsoft.EnterpriseCloud.Monitoring"}}]}]''
-
-    AND kaytu_description -> ''extensions/type'' @> ''[{"MachineExtensions": [{"Properties":
-    {"Type": "OmsAgentForLinux"}}]}]''
-
-    AND kaytu_description -> ''Microsoft.HybridCompute/imageOffer'' @> ''[{"Machine":
-    {"Properties": {"DetectedProperties": {"Microsoft.HybridCompute.imageOffer": "linux*"}}}}]''
-
-    AND kaytu_description -> ''extensions/provisioningState'' @> ''[{"MachineExtensions":
-    [{"Properties": {"ProvisioningState": "Succeeded"}}]}]''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
-Title: '[Preview]: Log Analytics extension should be installed on your Linux Azure
-  Arc machines'
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_hybrid_compute_machine
+        WHERE type = 'Microsoft.HybridCompute/machines'
+        AND kaytu_description -> 'extensions/publisher' @> '[{"MachineExtensions": [{"Properties": {"Publisher": "Microsoft.EnterpriseCloud.Monitoring"}}]}]'
+        AND kaytu_description -> 'extensions/type' @> '[{"MachineExtensions": [{"Properties": {"Type": "OmsAgentForLinux"}}]}]'
+        AND kaytu_description -> 'Microsoft.HybridCompute/imageOffer' @> '[{"Machine": {"Properties": {"DetectedProperties": {"Microsoft.HybridCompute.imageOffer": "linux*"}}}}]'
+        AND kaytu_description -> 'extensions/provisioningState' @> '[{"MachineExtensions": [{"Properties": {"ProvisioningState": "Succeeded"}}]}]'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

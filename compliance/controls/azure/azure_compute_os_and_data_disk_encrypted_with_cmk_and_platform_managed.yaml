@@ -2,38 +2,20 @@ ID: azure_compute_os_and_data_disk_encrypted_with_cmk_and_platform_managed
 Title: Managed disks should be double encrypted with both platform-managed and customer-managed keys
 Description: High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      disk.id as resource,
-      disk.kaytu_account_id as kaytu_account_id,
-      disk.kaytu_resource_id as kaytu_resource_id,
-      case
-        when encryption_type = 'EncryptionAtRestWithPlatformAndCustomerKeys' then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when encryption_type = 'EncryptionAtRestWithPlatformAndCustomerKeys' then disk.name || ' encrypted with both platform-managed and customer-managed keys.'
-        else disk.name || ' not encrypted with both platform-managed and customer-managed keys.'
-      end as reason
-      
-      , disk.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_compute_disk disk,
-      azure_subscription sub
-    where
-      disk_state = 'Attached'
-      and sub.subscription_id = disk.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_compute_disk
-  ListOfTables:
-  - azure_compute_disk
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  disk.id as resource,\n  disk.kaytu_account_id as kaytu_account_id,\n  disk.kaytu_resource_id as kaytu_resource_id,\n  case\n    when encryption_type = 'EncryptionAtRestWithPlatformAndCustomerKeys' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encryption_type = 'EncryptionAtRestWithPlatformAndCustomerKeys' then disk.name || ' encrypted with both platform-managed and customer-managed keys.'\n    else disk.name || ' not encrypted with both platform-managed and customer-managed keys.'\n  end as reason\n  \n  , disk.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_disk disk,\n  azure_subscription sub\nwhere\n  disk_state = 'Attached'\n  and sub.subscription_id = disk.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_compute_disk
+    ListOfTables:
+        - azure_compute_disk
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/Compute
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/Compute
+Managed: false

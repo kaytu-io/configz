@@ -1,21 +1,20 @@
-Description: Disabling the public network access property shuts down public connectivity
-  such that Azure SQL Server can only be accessed from a private endpoint. This configuration
-  disables the public network access for all databases under the Azure SQL Server.
 ID: configure_azure_sql_server_to_disable_public_network_access
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, public_network_access
-
-    FROM azure_sql_server
-
-    WHERE type = ''Microsoft.Sql/servers''
-
-    AND (public_network_access IS NOT NULL OR kaytu_description->''Server''->''properties''->>''publicNetworkAccess''
-    IS NOT NULL)
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Configure Azure SQL Server to disable public network access
+Description: Disabling the public network access property shuts down public connectivity such that Azure SQL Server can only be accessed from a private endpoint. This configuration disables the public network access for all databases under the Azure SQL Server.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, public_network_access
+        FROM azure_sql_server
+        WHERE type = 'Microsoft.Sql/servers'
+        AND (public_network_access IS NOT NULL OR kaytu_description->'Server'->'properties'->>'publicNetworkAccess' IS NOT NULL)
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

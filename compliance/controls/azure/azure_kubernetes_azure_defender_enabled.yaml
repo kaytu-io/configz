@@ -2,37 +2,20 @@ ID: azure_kubernetes_azure_defender_enabled
 Title: Azure Defender for Kubernetes should be enabled
 Description: Azure Defender for Kubernetes provides real-time threat protection for containerized environments and generates alerts for suspicious activities.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      pricing.id as resource,
-      pricing.kaytu_account_id as kaytu_account_id,
-      pricing.kaytu_resource_id as kaytu_resource_id,
-      case
-        when name = 'KubernetesService' and pricing_tier = 'Standard' then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when name = 'KubernetesService' and pricing_tier = 'Standard' then 'KubernetesService azure defender enabled.'
-        else name || 'KubernetesService azure defender disabled.'
-      end as reason
-      
-      , sub.display_name as subscription
-    from
-      azure_security_center_subscription_pricing as pricing,
-      azure_subscription as sub
-    where
-      sub.subscription_id = pricing.subscription_id
-      and name = 'KubernetesService';
-  Connector: Azure
-  PrimaryTable: azure_security_center_subscription_pricing
-  ListOfTables:
-  - azure_security_center_subscription_pricing
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "select\n  pricing.id as resource,\n  pricing.kaytu_account_id as kaytu_account_id,\n  pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when name = 'KubernetesService' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'KubernetesService' and pricing_tier = 'Standard' then 'KubernetesService azure defender enabled.'\n    else name || 'KubernetesService azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'KubernetesService';\n"
+    Connector: Azure
+    PrimaryTable: azure_security_center_subscription_pricing
+    ListOfTables:
+        - azure_security_center_subscription_pricing
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  nist_sp_800_53_rev_5:
-  - "true"
-  service:
-  - Azure/KubernetesService
+    nist_sp_800_53_rev_5:
+        - "true"
+    service:
+        - Azure/KubernetesService
+Managed: false

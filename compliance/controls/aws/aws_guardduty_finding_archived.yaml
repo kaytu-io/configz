@@ -1,60 +1,63 @@
 ID: aws_guardduty_finding_archived
 Title: GuardDuty findings should be archived
-Description: "Amazon GuardDuty helps you understand the impact of an incident by classifying findings by severity: low, medium, and high."
+Description: 'Amazon GuardDuty helps you understand the impact of an incident by classifying findings by severity: low, medium, and high.'
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      case
-        when service ->> 'Archived' = 'false' then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when service ->> 'Archived' = 'false' then title || ' not archived.'
-        else title || ' archived.'
-      end as reason
-      , region, account_id
-    from
-      aws_guardduty_finding;
-  Connector: AWS
-  PrimaryTable: aws_guardduty_finding
-  ListOfTables:
-  - aws_guardduty_finding
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        select
+          arn as resource,
+          kaytu_account_id as kaytu_account_id,
+          kaytu_resource_id as kaytu_resource_id,
+          case
+            when service ->> 'Archived' = 'false' then 'alarm'
+            else 'ok'
+          end as status,
+          case
+            when service ->> 'Archived' = 'false' then title || ' not archived.'
+            else title || ' archived.'
+          end as reason
+          , region, account_id
+        from
+          aws_guardduty_finding;
+    Connector: AWS
+    PrimaryTable: aws_guardduty_finding
+    ListOfTables:
+        - aws_guardduty_finding
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  category:
-  - Compliance
-  fedramp_low_rev_4:
-  - "true"
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  gxp_eu_annex_11:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_800_53_rev_4:
-  - "true"
-  nist_800_53_rev_5:
-  - "true"
-  nist_csf:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  plugin:
-  - aws
-  rbi_cyber_security:
-  - "true"
-  service:
-  - AWS/GuardDuty
-  soc_2:
-  - "true"
+    category:
+        - Compliance
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gxp_eu_annex_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_53_rev_4:
+        - "true"
+    nist_800_53_rev_5:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    rbi_cyber_security:
+        - "true"
+    service:
+        - AWS/GuardDuty
+    soc_2:
+        - "true"
+Managed: false

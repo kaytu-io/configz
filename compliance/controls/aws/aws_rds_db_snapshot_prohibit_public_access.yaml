@@ -2,92 +2,54 @@ ID: aws_rds_db_snapshot_prohibit_public_access
 Title: RDS snapshots should prohibit public access
 Description: Manage access to resources in the AWS Cloud by ensuring that Amazon Relational Database Service (Amazon RDS) instances are not public.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    (
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      'aws_rds_db_cluster_snapshot' as kaytu_table_name,
-      case
-        when cluster_snapshot -> 'AttributeValues' = '["all"]' then 'alarm'
-        else 'ok'
-      end status,
-      case
-        when cluster_snapshot -> 'AttributeValues' = '["all"]' then title || ' publicly restorable.'
-        else title || ' not publicly restorable.'
-      end reason
-      
-      , region, account_id
-    from
-      aws_rds_db_cluster_snapshot,
-      jsonb_array_elements(db_cluster_snapshot_attributes) as cluster_snapshot
-    )
-    union
-    (
-    select
-      arn as resource,
-      kaytu_account_id as kaytu_account_id,
-      kaytu_resource_id as kaytu_resource_id,
-      'aws_rds_db_snapshot' as kaytu_table_name,
-      case
-        when database_snapshot -> 'AttributeValues' = '["all"]' then 'alarm'
-        else 'ok'
-      end status,
-      case
-        when database_snapshot -> 'AttributeValues' = '["all"]' then title || ' publicly restorable.'
-        else title || ' not publicly restorable.'
-      end reason
-      
-      , region, account_id
-    from
-      aws_rds_db_snapshot,
-      jsonb_array_elements(db_snapshot_attributes) as database_snapshot
-    );
-  Connector: AWS
-  PrimaryTable: null
-  ListOfTables:
-  - aws_rds_db_cluster_snapshot
-  - aws_rds_db_snapshot
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "(\nselect\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  'aws_rds_db_cluster_snapshot' as kaytu_table_name,\n  case\n    when cluster_snapshot -> 'AttributeValues' = '[\"all\"]' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when cluster_snapshot -> 'AttributeValues' = '[\"all\"]' then title || ' publicly restorable.'\n    else title || ' not publicly restorable.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_cluster_snapshot,\n  jsonb_array_elements(db_cluster_snapshot_attributes) as cluster_snapshot\n)\nunion\n(\nselect\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  'aws_rds_db_snapshot' as kaytu_table_name,\n  case\n    when database_snapshot -> 'AttributeValues' = '[\"all\"]' then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when database_snapshot -> 'AttributeValues' = '[\"all\"]' then title || ' publicly restorable.'\n    else title || ' not publicly restorable.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_snapshot,\n  jsonb_array_elements(db_snapshot_attributes) as database_snapshot\n);\n"
+    Connector: AWS
+    PrimaryTable: null
+    ListOfTables:
+        - aws_rds_db_cluster_snapshot
+        - aws_rds_db_snapshot
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  audit_manager_control_tower:
-  - "true"
-  category:
-  - Compliance
-  cis_controls_v8_ig1:
-  - "true"
-  cisa_cyber_essentials:
-  - "true"
-  fedramp_low_rev_4:
-  - "true"
-  fedramp_moderate_rev_4:
-  - "true"
-  ffiec:
-  - "true"
-  gxp_21_cfr_part_11:
-  - "true"
-  hipaa_final_omnibus_security_rule_2013:
-  - "true"
-  hipaa_security_rule_2003:
-  - "true"
-  nist_800_171_rev_2:
-  - "true"
-  nist_800_53_rev_4:
-  - "true"
-  nist_800_53_rev_5:
-  - "true"
-  nist_csf:
-  - "true"
-  pci_dss_v321:
-  - "true"
-  plugin:
-  - aws
-  rbi_cyber_security:
-  - "true"
-  service:
-  - AWS/RDS
-  soc_2:
-  - "true"
+    audit_manager_control_tower:
+        - "true"
+    category:
+        - Compliance
+    cis_controls_v8_ig1:
+        - "true"
+    cisa_cyber_essentials:
+        - "true"
+    fedramp_low_rev_4:
+        - "true"
+    fedramp_moderate_rev_4:
+        - "true"
+    ffiec:
+        - "true"
+    gxp_21_cfr_part_11:
+        - "true"
+    hipaa_final_omnibus_security_rule_2013:
+        - "true"
+    hipaa_security_rule_2003:
+        - "true"
+    nist_800_53_rev_4:
+        - "true"
+    nist_800_53_rev_5:
+        - "true"
+    nist_800_171_rev_2:
+        - "true"
+    nist_csf:
+        - "true"
+    pci_dss_v321:
+        - "true"
+    plugin:
+        - aws
+    rbi_cyber_security:
+        - "true"
+    service:
+        - AWS/RDS
+    soc_2:
+        - "true"
+Managed: false

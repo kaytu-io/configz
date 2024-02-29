@@ -1,24 +1,20 @@
-Description: 'Azure Private Link lets you connect your virtual network to Azure services
-  without a public IP address at the source or destination. The private link platform
-  handles the connectivity between the consumer and services over the Azure backbone
-  network. By mapping private endpoints to your Azure SignalR Service resource instead
-  of the entire service, you''ll reduce your data leakage risks. Learn more about
-  private links at: https://aka.ms/asrs/privatelink.'
 ID: azure_signal_r_service_should_use_private_link
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_signalr_service
-
-    WHERE type = ''Microsoft.SignalRService/SignalR''
-
-    AND (private_endpoint_connections IS NOT NULL OR kaytu_description->''privateEndpointConnections''
-    IS NOT NULL)
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Azure SignalR Service should use private link
+Description: 'Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Azure SignalR Service resource instead of the entire service, you''ll reduce your data leakage risks. Learn more about private links at: https://aka.ms/asrs/privatelink.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_signalr_service
+        WHERE type = 'Microsoft.SignalRService/SignalR'
+        AND (private_endpoint_connections IS NOT NULL OR kaytu_description->'privateEndpointConnections' IS NOT NULL)
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

@@ -1,12 +1,15 @@
-Description: 'Azure Private Link lets you connect your virtual networks to Azure services
-  without a public IP address at the source or destination. The private link platform
-  handles the connectivity between the consumer and services over the Azure backbone
-  network. By mapping private endpoints to your Azure Web PubSub Service, you can
-  reduce data leakage risks. Learn more about private links at: https://aka.ms/awps/privatelink.'
 ID: azure_web_pub_sub_service_should_use_private_link
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: ''
 Title: Azure Web PubSub Service should use private link
+Description: 'Azure Private Link lets you connect your virtual networks to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Azure Web PubSub Service, you can reduce data leakage risks. Learn more about private links at: https://aka.ms/awps/privatelink.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: ""
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

@@ -1,14 +1,24 @@
-Description: 'Managed Instances should avoid using the default geo-redundant storage
-  for backups, if data residency rules require data to stay within a specific region.
-  Note: Azure Policy is not enforced when creating a database using T-SQL. If not
-  explicitly specified, database with geo-redundant backup storage is created via
-  T-SQL.'
 ID: sql_managed_instances_should_avoid_using_grs_backup_redundancy
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT *\nFROM azure_mssql_managed_instance\nWHERE type = 'Microsoft.Sql/managedInstances'\n\
-    AND (\n    (collation = 'LRS' OR collation = 'ZRS')\n    OR\n    (collation !=\
-    \ 'Local' AND collation != 'Zone')\n)\nLIMIT 5;;\n"
-Severity: ''
 Title: SQL Managed Instances should avoid using GRS backup redundancy
+Description: 'Managed Instances should avoid using the default geo-redundant storage for backups, if data residency rules require data to stay within a specific region. Note: Azure Policy is not enforced when creating a database using T-SQL. If not explicitly specified, database with geo-redundant backup storage is created via T-SQL.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_mssql_managed_instance
+        WHERE type = 'Microsoft.Sql/managedInstances'
+        AND (
+            (collation = 'LRS' OR collation = 'ZRS')
+            OR
+            (collation != 'Local' AND collation != 'Zone')
+        )
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: high
+Tags: {}
+Managed: false

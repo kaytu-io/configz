@@ -1,24 +1,20 @@
-Description: 'Azure Private Link lets you connect your virtual network to Azure services
-  without a public IP address at the source or destination. The Private Link platform
-  handles the connectivity between the consumer and services over the Azure backbone
-  network. By mapping private endpoints to your VM Image Builder building resources,
-  data leakage risks are reduced. Learn more about private links at: https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking#deploy-using-an-existing-vnet.'
 ID: vm_image_builder_templates_should_use_private_link
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT id, name, title, tags, akas, cloud_environment, kaytu_account_id,
-    kaytu_resource_id, kaytu_metadata, kaytu_description
-
-    FROM azure_virtualmachineimages_imagetemplates
-
-    WHERE kaytu_account_id = ''account_id''
-
-    AND kaytu_description -> ''ImageTemplate'' -> ''Properties'' -> ''VMProfile''
-    -> ''VnetConfig'' IS NULL
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: VM Image Builder templates should use private link
+Description: 'Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your VM Image Builder building resources, data leakage risks are reduced. Learn more about private links at: https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking#deploy-using-an-existing-vnet.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT id, name, title, tags, akas, cloud_environment, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
+        FROM azure_virtualmachineimages_imagetemplates
+        WHERE kaytu_account_id = 'account_id'
+        AND kaytu_description -> 'ImageTemplate' -> 'Properties' -> 'VMProfile' -> 'VnetConfig' IS NULL
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

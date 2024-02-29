@@ -1,22 +1,20 @@
-Description: 'Private endpoints lets you connect your virtual network to Azure services
-  without a public IP address at the source or destination. By mapping private endpoints
-  to your Azure Cache for Redis instances, data leakage risks are reduced. Learn more
-  at: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link.'
 ID: azure_cache_for_redis_should_use_private_link
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_redis_cache
-
-    WHERE type = ''Microsoft.Cache/redis''
-
-    AND kaytu_description -> ''$.PrivateEndpointConnections[*].PrivateLinkServiceConnectionState.Status''
-    = ''Approved''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Azure Cache for Redis should use private link
+Description: 'Private endpoints lets you connect your virtual network to Azure services without a public IP address at the source or destination. By mapping private endpoints to your Azure Cache for Redis instances, data leakage risks are reduced. Learn more at: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link.'
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_redis_cache
+        WHERE type = 'Microsoft.Cache/redis'
+        AND kaytu_description -> '$.PrivateEndpointConnections[*].PrivateLinkServiceConnectionState.Status' = 'Approved'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

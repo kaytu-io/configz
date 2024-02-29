@@ -2,50 +2,20 @@ ID: azure_compute_vm_scale_set_log_analytics_agent_installed
 Title: The Log Analytics extension should be installed on Virtual Machine Scale Sets
 Description: This policy audits any Windows/Linux Virtual Machine Scale Sets if the Log Analytics extension is not installed.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with agent_installed_vm_scale_set as (
-      select
-        distinct a.id as vm_id
-      from
-        azure_compute_virtual_machine_scale_set as a,
-        jsonb_array_elements(extensions) as b
-      where
-        b ->> 'Publisher' = 'Microsoft.EnterpriseCloud.Monitoring'
-        and b ->> 'ExtensionType' = any(ARRAY ['MicrosoftMonitoringAgent', 'OmsAgentForLinux'])
-        and b ->> 'ProvisioningState' = 'Succeeded'
-        and b -> 'Settings' ->> 'workspaceId' is not null
-    )
-    select
-      a.id as resource,
-      a.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      case
-        when b.vm_id is not null then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when b.vm_id is not null then a.title || ' have log analytics agent installed.'
-        else a.title || ' log analytics agent not installed.'
-      end as reason
-      
-      , a.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_compute_virtual_machine_scale_set as a
-      left join agent_installed_vm_scale_set as b on a.id = b.vm_id,
-      azure_subscription as sub
-    where
-      sub.subscription_id = a.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_compute_virtual_machine_scale_set
-  ListOfTables:
-  - azure_compute_virtual_machine_scale_set
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: "with agent_installed_vm_scale_set as (\n  select\n    distinct a.id as vm_id\n  from\n    azure_compute_virtual_machine_scale_set as a,\n    jsonb_array_elements(extensions) as b\n  where\n    b ->> 'Publisher' = 'Microsoft.EnterpriseCloud.Monitoring'\n    and b ->> 'ExtensionType' = any(ARRAY ['MicrosoftMonitoringAgent', 'OmsAgentForLinux'])\n    and b ->> 'ProvisioningState' = 'Succeeded'\n    and b -> 'Settings' ->> 'workspaceId' is not null\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.vm_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.vm_id is not null then a.title || ' have log analytics agent installed.'\n    else a.title || ' log analytics agent not installed.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine_scale_set as a\n  left join agent_installed_vm_scale_set as b on a.id = b.vm_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+    Connector: Azure
+    PrimaryTable: azure_compute_virtual_machine_scale_set
+    ListOfTables:
+        - azure_compute_virtual_machine_scale_set
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: medium
 Tags:
-  hipaa_hitrust_v92:
-  - "true"
-  service:
-  - Azure/Compute
+    hipaa_hitrust_v92:
+        - "true"
+    service:
+        - Azure/Compute
+Managed: false

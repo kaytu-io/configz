@@ -1,13 +1,22 @@
-Description: Azure App Service Authentication is a feature that can prevent anonymous
-  HTTP requests from reaching the Function app, or authenticate those that have tokens
-  before they reach the Function app.
 ID: function_apps_should_have_authentication_enabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: "SELECT *\nFROM azure_app_service_function_app\nWHERE type = 'Microsoft.Web/sites'\n\
-    \    AND kind LIKE '%functionapp%'\n    AND kind NOT LIKE '%workflowapp%'\n  \
-    \  AND (site_config->'properties'->>'enabled' = 'true' OR kaytu_description->'SiteConfig'->'properties'->>'enabled'\
-    \ = 'true')\nLIMIT 5;;\n"
-Severity: ''
 Title: Function apps should have authentication enabled
+Description: Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the Function app, or authenticate those that have tokens before they reach the Function app.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_app_service_function_app
+        WHERE type = 'Microsoft.Web/sites'
+            AND kind LIKE '%functionapp%'
+            AND kind NOT LIKE '%workflowapp%'
+            AND (site_config->'properties'->>'enabled' = 'true' OR kaytu_description->'SiteConfig'->'properties'->>'enabled' = 'true')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

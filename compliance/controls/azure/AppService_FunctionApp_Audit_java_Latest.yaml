@@ -1,27 +1,21 @@
-Description: Periodically, newer versions are released for Java software either due
-  to security flaws or to include additional functionality. Using the latest Java
-  version for Function apps is recommended in order to take advantage of security
-  fixes, if any, and/or new functionalities of the latest version. This policy only
-  applies to Linux apps. This policy requires you to specify a Java version that meets
-  your requirements.
 ID: function_apps_that_use_java_should_use_a_specified_'_java_version'
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_app_service_function_app
-
-    WHERE type = ''Microsoft.Web/sites''
-
-    AND (kind LIKE ''%functionapp%'' AND kind NOT LIKE ''%workflowapp%'' AND kind
-    LIKE ''%linux%'')
-
-    AND (kaytu_description ->> ''config/web.linuxFxVersion'' NOT LIKE ''%JAVA%'' OR
-    kaytu_description ->> ''config/web.linuxFxVersion'' = CONCAT(''JAVA|'', ''LinuxJavaVersion''))
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Function apps that use Java should use a specified 'Java version'
+Description: Periodically, newer versions are released for Java software either due to security flaws or to include additional functionality. Using the latest Java version for Function apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version. This policy only applies to Linux apps. This policy requires you to specify a Java version that meets your requirements.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_app_service_function_app
+        WHERE type = 'Microsoft.Web/sites'
+        AND (kind LIKE '%functionapp%' AND kind NOT LIKE '%workflowapp%' AND kind LIKE '%linux%')
+        AND (kaytu_description ->> 'config/web.linuxFxVersion' NOT LIKE '%JAVA%' OR kaytu_description ->> 'config/web.linuxFxVersion' = CONCAT('JAVA|', 'LinuxJavaVersion'))
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

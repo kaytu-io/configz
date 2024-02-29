@@ -1,17 +1,19 @@
-Description: This policy enables Defender for Storage (Classic) on storage accounts.
 ID: deploy_defender_for_storage_(_classic)_on_storage_accounts
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, kaytu_description->''Account''->''Properties''->''AdvancedThreatProtectionSettings''->>''IsEnabled''
-    AS advanced_threat_protection_enabled
-
-    FROM azure_storage_account
-
-    WHERE type = ''Microsoft.Storage/storageAccounts''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Deploy Defender for Storage (Classic) on storage accounts
+Description: This policy enables Defender for Storage (Classic) on storage accounts.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT name, kaytu_description->'Account'->'Properties'->'AdvancedThreatProtectionSettings'->>'IsEnabled' AS advanced_threat_protection_enabled
+        FROM azure_storage_account
+        WHERE type = 'Microsoft.Storage/storageAccounts'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

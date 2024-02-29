@@ -1,23 +1,21 @@
-Description: This policy audits specific Policy operations with no activity log alerts
-  configured.
 ID: an_activity_log_alert_should_exist_for_specific_policy_operations
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE kaytu_description ->> ''$.Subscription.SubscriptionPolicies.locationPlacementId''
-    = ''Microsoft.Resources/subscriptions''
-
-    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.quotaId'' = ''Microsoft.Insights/ActivityLogAlerts/condition.allOf''
-
-    AND kaytu_description ->> ''$.Subscription.SubscriptionPolicies.spendingLimit''
-    = ''true''
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: An activity log alert should exist for specific Policy operations
+Description: This policy audits specific Policy operations with no activity log alerts configured.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.locationPlacementId' = 'Microsoft.Resources/subscriptions'
+        AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.quotaId' = 'Microsoft.Insights/ActivityLogAlerts/condition.allOf'
+        AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.spendingLimit' = 'true'
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

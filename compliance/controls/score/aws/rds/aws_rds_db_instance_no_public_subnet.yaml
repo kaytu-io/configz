@@ -3,63 +3,58 @@ Title: RDS Instance Not In Public Subnet
 Description: Ensure that no AWS RDS database instances are provisioned inside VPC
   public subnets.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with subnets_with_explicit_route as (
-      select
-        distinct (a ->> 'SubnetId') as all_sub
-      from
-        aws_vpc_route_table as t,
-        jsonb_array_elements(associations) as a
-      where
-        a ->> 'SubnetId' is not null
-    ),
-    public_subnets_with_explicit_route as (
-      select
-        distinct a ->> 'SubnetId' as SubnetId
-      from
-        aws_vpc_route_table as t,
-        jsonb_array_elements(associations) as a,
-        jsonb_array_elements(routes) as r
-      where
-        r ->> 'DestinationCidrBlock' = '0.0.0.0/0'
-        and (
-          r ->> 'GatewayId' like 'igw-%'
-          or r ->> 'NatGatewayId' like 'nat-%'
-        )
-        and a ->> 'SubnetId' is not null
-    ),
-    public_subnets_with_implicit_route as (
-      select
-        distinct route_table_id,
-        vpc_id,
-        region
-      from
-        aws_vpc_route_table as t,
-        jsonb_array_elements(associations) as a,
-        jsonb_array_elements(routes) as r
-      where
-        a ->> 'Main' = 'true'
-        and r ->> 'DestinationCidrBlock' = '0.0.0.0/0'
-        and (
-          r ->> 'GatewayId' like 'igw-%'
-          or r ->> 'NatGatewayId' like 'nat-%'
-        )
-    ),
-    subnet_accessibility as (
-      select
-        subnet_id,
-        vpc_id,
-        case
-          when s.subnet_id in (
-            select
-              all_sub
-            from
-              subnets_with_explicit_route
-            where
-              all_sub not in (
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        with subnets_with_explicit_route as (
+          select
+            distinct (a ->> 'SubnetId') as all_sub
+          from
+            aws_vpc_route_table as t,
+            jsonb_array_elements(associations) as a
+          where
+            a ->> 'SubnetId' is not null
+        ),
+        public_subnets_with_explicit_route as (
+          select
+            distinct a ->> 'SubnetId' as SubnetId
+          from
+            aws_vpc_route_table as t,
+            jsonb_array_elements(associations) as a,
+            jsonb_array_elements(routes) as r
+          where
+            r ->> 'DestinationCidrBlock' = '0.0.0.0/0'
+            and (
+              r ->> 'GatewayId' like 'igw-%'
+              or r ->> 'NatGatewayId' like 'nat-%'
+            )
+            and a ->> 'SubnetId' is not null
+        ),
+        public_subnets_with_implicit_route as (
+          select
+            distinct route_table_id,
+            vpc_id,
+            region
+          from
+            aws_vpc_route_table as t,
+            jsonb_array_elements(associations) as a,
+            jsonb_array_elements(routes) as r
+          where
+            a ->> 'Main' = 'true'
+            and r ->> 'DestinationCidrBlock' = '0.0.0.0/0'
+            and (
+              r ->> 'GatewayId' like 'igw-%'
+              or r ->> 'NatGatewayId' like 'nat-%'
+            )
+        ),
+        subnet_accessibility as (
+          select
+            subnet_id,
+            vpc_id,
+            case
+              when s.subnet_id in (
                 select
-                  SubnetId
+                  all_sub
                 from
                   public_subnets_with_explicit_route
               )

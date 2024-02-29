@@ -2,36 +2,39 @@ ID: azure_network_security_group_not_configured_gateway_subnets
 Title: Gateway subnets should not be configured with a network security group
 Description: Protect your subnet from potential threats by restricting access to it with a Network Security Group (NSG). NSGs contain a list of Access Control List (ACL) rules that allow or deny network traffic to your subnet.
 Query:
-  Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      subnet.id resource,
-      subnet.kaytu_account_id as kaytu_account_id,
-      subnet.kaytu_resource_id as kaytu_resource_id,
-      case
-        when subnet.name = 'GatewaySubnet' and network_security_group_id is not null then 'alarm'
-        when subnet.name = 'GatewaySubnet' and network_security_group_id is null then 'ok'
-        else 'skip'
-      end as status,
-      case
-        when subnet.name = 'GatewaySubnet' and network_security_group_id is not null then 'Gateway subnet configured with network security group.'
-        when subnet.name = 'GatewaySubnet' and network_security_group_id is null then 'Gateway subnet not configured with network security group.'
-        else subnet.name || ' not of gateway subnet type.'
-      end as reason
-      , subnet.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_subnet as subnet
-      join azure_subscription as sub on sub.subscription_id = subnet.subscription_id;
-  Connector: Azure
-  PrimaryTable: azure_subnet
-  ListOfTables:
-  - azure_subnet
-  - azure_subscription
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        select
+          subnet.id resource,
+          subnet.kaytu_account_id as kaytu_account_id,
+          subnet.kaytu_resource_id as kaytu_resource_id,
+          case
+            when subnet.name = 'GatewaySubnet' and network_security_group_id is not null then 'alarm'
+            when subnet.name = 'GatewaySubnet' and network_security_group_id is null then 'ok'
+            else 'skip'
+          end as status,
+          case
+            when subnet.name = 'GatewaySubnet' and network_security_group_id is not null then 'Gateway subnet configured with network security group.'
+            when subnet.name = 'GatewaySubnet' and network_security_group_id is null then 'Gateway subnet not configured with network security group.'
+            else subnet.name || ' not of gateway subnet type.'
+          end as reason
+          , subnet.resource_group as resource_group
+          , sub.display_name as subscription
+        from
+          azure_subnet as subnet
+          join azure_subscription as sub on sub.subscription_id = subnet.subscription_id;
+    Connector: Azure
+    PrimaryTable: azure_subnet
+    ListOfTables:
+        - azure_subnet
+        - azure_subscription
+    Parameters: []
 ManualVerification: false
-Severity: ""
+Severity: high
 Tags:
-  hipaa_hitrust_v92:
-  - "true"
-  service:
-  - Azure/Network
+    hipaa_hitrust_v92:
+        - "true"
+    service:
+        - Azure/Network
+Managed: false

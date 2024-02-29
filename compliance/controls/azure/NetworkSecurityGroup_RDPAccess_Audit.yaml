@@ -1,18 +1,19 @@
-Description: This policy is deprecated. This policy audits any network security rule
-  that allows RDP access from Internet
 ID: '[_deprecated]:_rdp_access_from_the_internet_should_be_blocked'
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT kaytu_description->''SecurityGroup''->''SecurityRules''
-    AS security_rules
-
-    FROM azure_network_security_group
-
-    WHERE kaytu_description->''SecurityGroup''->>''SecurityRules'' IS NOT NULL
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: '[Deprecated]: RDP access from the Internet should be blocked'
+Description: This policy is deprecated. This policy audits any network security rule that allows RDP access from Internet
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT kaytu_description->'SecurityGroup'->'SecurityRules' AS security_rules
+        FROM azure_network_security_group
+        WHERE kaytu_description->'SecurityGroup'->>'SecurityRules' IS NOT NULL
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

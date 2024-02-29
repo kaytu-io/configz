@@ -1,29 +1,23 @@
-Description: Improve workspace security by blocking log ingestion and querying from
-  public networks. Only private-link connected networks will be able to ingest and
-  query logs on this workspace. Learn more at https://aka.ms/AzMonPrivateLink#configure-log-analytics.
 ID: log_analytics_workspaces_should_block_log_ingestion_and_querying_from_public_networks
+Title: Log Analytics workspaces should block log ingestion and querying from public networks
+Description: Improve workspace security by blocking log ingestion and querying from public networks. Only private-link connected networks will be able to ingest and query logs on this workspace. Learn more at https://aka.ms/AzMonPrivateLink#configure-log-analytics.
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_operationalinsights_workspaces
-
-    WHERE kaytu_metadata ->> ''type'' = ''Microsoft.OperationalInsights/workspaces''
-
-    AND (azure_operationalinsights_workspaces.publicNetworkAccessForQuery != ''disabled''
-
-    OR azure_operationalinsights_workspaces.publicNetworkAccessForIngestion != ''disabled''
-
-    OR kaytu_description -> ''definitions'' -> ''WorkspaceProperties'' -> ''properties''
-    ->> ''publicNetworkAccessForQuery'' != ''disabled''
-
-    OR kaytu_description -> ''definitions'' -> ''WorkspaceProperties'' -> ''properties''
-    ->> ''publicNetworkAccessForIngestion'' != ''disabled'')
-
-    LIMIT 5;;
-
-    '
-Severity: ''
-Title: Log Analytics workspaces should block log ingestion and querying from public
-  networks
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_operationalinsights_workspaces
+        WHERE kaytu_metadata ->> 'type' = 'Microsoft.OperationalInsights/workspaces'
+        AND (azure_operationalinsights_workspaces.publicNetworkAccessForQuery != 'disabled'
+        OR azure_operationalinsights_workspaces.publicNetworkAccessForIngestion != 'disabled'
+        OR kaytu_description -> 'definitions' -> 'WorkspaceProperties' -> 'properties' ->> 'publicNetworkAccessForQuery' != 'disabled'
+        OR kaytu_description -> 'definitions' -> 'WorkspaceProperties' -> 'properties' ->> 'publicNetworkAccessForIngestion' != 'disabled')
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

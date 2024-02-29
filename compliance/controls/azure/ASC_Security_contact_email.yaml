@@ -1,19 +1,19 @@
-Description: To ensure the relevant people in your organization are notified when
-  there is a potential security breach in one of your subscriptions, set a security
-  contact to receive email notifications from Security Center.
 ID: subscriptions_should_have_a_contact_email_address_for_security_issues
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_subscription
-
-    WHERE kaytu_description -> ''$.Subscription.SubscriptionPolicies.Microsoft.Security/securityContacts/email''
-    IS NOT NULL
-
-    LIMIT 5;;
-
-    '
-Severity: ''
 Title: Subscriptions should have a contact email address for security issues
+Description: To ensure the relevant people in your organization are notified when there is a potential security breach in one of your subscriptions, set a security contact to receive email notifications from Security Center.
+Query:
+    ID: ""
+    Engine: odysseus-v0.0.1
+    QueryToExecute: |
+        SELECT *
+        FROM azure_subscription
+        WHERE kaytu_description -> '$.Subscription.SubscriptionPolicies.Microsoft.Security/securityContacts/email' IS NOT NULL
+        LIMIT 5;;
+    Connector: Azure
+    PrimaryTable: null
+    ListOfTables: []
+    Parameters: []
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false
