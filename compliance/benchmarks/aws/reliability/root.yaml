@@ -17,6 +17,17 @@ Controls:
   - azure_check_for_kubernetes_version
   - azure_disable_plain_ftp_deployment
   - azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
+  - azure_recovery_service_vault_alert_for_job_failures_enabled
+  - aws_dynamodb_instances_have_backup_with_lifecyclepolicy_above_35_days
+  - aws_dynamodb_instances_have_backup_withing_48_hours
+  - aws_ebs_instances_have_backup_with_lifecyclepolicy_above_35_days
+  - aws_ebs_instances_have_backup_withing_48_hours
+  - aws_ec2_instances_have_backup_with_lifecyclepolicy_above_35_days
+  - aws_ec2_instances_have_backup_withing_48_hours
+  - aws_efs_files_have_backup_with_lifecyclepolicy_above_35_days
+  - aws_efs_files_have_backup_withing_48_hours
+  - aws_rds_instances_have_backup_with_lifecyclepolicy_above_35_days
+  - aws_rds_instances_have_backup_withing_48_hours
 ReferenceCode: reliability
 Description: Reliability Description
 ID: reliability

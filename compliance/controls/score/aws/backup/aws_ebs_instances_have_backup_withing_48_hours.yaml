@@ -1,0 +1,38 @@
+ID: aws_ebs_instances_have_backup_withing_48_hours
+Title: EBS Instances have backup withing 48 hours
+Description: Ensure all EBS have a minimum of one restore point time in the last 48 hrs
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH points AS (
+      SELECT recovery_point_arn, resource_arn
+      FROM aws_backup_recovery_point 
+      WHERE now() - creation_date < '48 hours'::interval 
+      and resource_type = 'EBS' and status = 'COMPLETED')
+
+    select
+      v.arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when p.recovery_point_arn is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when p.recovery_point_arn is null then 'lacks a backup with last 48 hours'
+        else ''
+      end as reason
+      , region, account_id 
+    from 
+      aws_ebs_volume as v
+      left join points as p on v.arn = p.resource_arn
+  Connector: AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+  - aws_ebs_volume
+  - aws_backup_recovery_point
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS/EBS
