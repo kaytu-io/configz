@@ -6,6 +6,7 @@ Query:
   QueryToExecute: |
     select distinct
       a.kaytu_account_id,
+      a.kaytu_resource_id,
       case
         when s.arn
         is null then 'alarm'
@@ -19,7 +20,6 @@ Query:
       end reason,
       a.account_id
     from
-        
       aws_account a
       left join aws_rds_db_event_subscription s on s.kaytu_account_id
         = a.kaytu_account_id

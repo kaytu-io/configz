@@ -6,6 +6,7 @@ Query:
   QueryToExecute: |
     select distinct
       a.kaytu_account_id,
+      a.kaytu_resource_id,
       case
         when s.arn
         is null then 'alarm'
