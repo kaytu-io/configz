@@ -7,17 +7,13 @@ Controls:
   - aws_unused_ami
   - aws_desired_instance_types
   - aws_redundant_cloud_trail
-  - azure_check_for_unused_load_balancers
-  - azure_old_snapshots_should_be_deleted_if_not_required
-  - azure_unused_disks_should_be_removed
-  - azure_disks_should_use_standard_snapshots
-ReferenceCode: cost_optimization
+ReferenceCode: aws_score_cost_optimization
 Description: Cost Optimization Description
-ID: cost_optimization
+ID: aws_score_cost_optimization
 AutoAssign: true
 Tags:
   type:
     - SCORE
   score_category:
     - cost_optimization
-Title: Cost Optimization
+Title: Cost Optimization for AWS

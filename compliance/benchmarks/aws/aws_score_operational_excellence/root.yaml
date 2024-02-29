@@ -3,7 +3,6 @@ Controls:
   - aws_ec2_instance_naming_conventions
   - aws_unused_elastic_network_interfaces
   - aws_multi_account_centralized_management
-  - azure_keyvault_logging_enabled
   - aws_acm_certificate_expired
   - aws_acm_certificates_validity
   - aws_acm_certificates_with_wildcard_domain_names
@@ -16,16 +15,13 @@ Controls:
   - aws_log_exports
   - aws_performance_insights
   - aws_security_groups_events_subscriptions
-  - azure_enable_defender_for_cloud_for_aks_clusters
-  - azure_disable_plain_ftp_deployment
-  - azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
-ReferenceCode: operational_excellence
+ReferenceCode: aws_score_operational_excellence
 Description: Operational Excellence Description
-ID: operational_excellence
+ID: aws_score_operational_excellence
 AutoAssign: true
 Tags:
   type:
     - SCORE
   score_category:
     - operational_excellence
-Title: Operational Excellence
+Title: Operational Excellence For AWS
