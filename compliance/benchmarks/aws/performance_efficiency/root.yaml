@@ -1,6 +1,5 @@
 Connector: AWS
 Controls:
-  - aws_app_tier_ec2_instance_using_iam_roles
   - aws_ec2_desired_instance_type
   - aws_ec2_instance_too_old
   - aws_opensearch_version
