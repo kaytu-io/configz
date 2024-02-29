@@ -28,4 +28,4 @@ ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-  - AWS/EBS
+  - AWS Elastic Block Store (EBS)

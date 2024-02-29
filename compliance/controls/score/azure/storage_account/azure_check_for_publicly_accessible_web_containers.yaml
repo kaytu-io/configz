@@ -34,4 +34,4 @@ ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-  - Azure/Storage
+  - Azure Storage Accounts

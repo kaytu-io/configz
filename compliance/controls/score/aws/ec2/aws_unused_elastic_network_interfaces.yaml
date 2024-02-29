@@ -28,4 +28,4 @@ ManualVerification: false
 Severity: low
 Tags:
   score_service_name:
-  - AWS/EC2
+  - AWS EC2

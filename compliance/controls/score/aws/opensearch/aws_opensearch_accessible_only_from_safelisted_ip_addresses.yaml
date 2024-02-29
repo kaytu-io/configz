@@ -49,4 +49,4 @@ ManualVerification: false
 Severity: critical
 Tags:
   score_service_name:
-  - AWS/OpenSearch
+  - AWS OpenSearch Service

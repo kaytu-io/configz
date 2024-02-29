@@ -44,4 +44,4 @@ ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-  - AWS/OpenSearch
+  - AWS OpenSearch Service

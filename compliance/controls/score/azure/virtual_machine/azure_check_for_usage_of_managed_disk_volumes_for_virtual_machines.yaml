@@ -34,4 +34,4 @@ ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-  - Azure/Compute
+  - Azure Virtual Machines

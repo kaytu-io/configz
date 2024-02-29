@@ -30,4 +30,4 @@ ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-  - Azure/SQL
+  - Azure Managed SQL Service

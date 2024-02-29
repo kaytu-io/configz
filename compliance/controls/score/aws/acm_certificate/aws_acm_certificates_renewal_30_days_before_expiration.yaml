@@ -29,4 +29,4 @@ ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-  - AWS/ACM
+  - AWS Certificate Manager
