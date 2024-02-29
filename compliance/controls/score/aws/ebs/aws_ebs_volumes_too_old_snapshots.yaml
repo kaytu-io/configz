@@ -25,7 +25,8 @@ Query:
   ListOfTables:
     - aws_ebs_snapshot
   Parameters:
-    - awsEbsSnapshotAgeMaxDays
+    - Key: awsEbsSnapshotAgeMaxDays
+      Required: true
 ManualVerification: false
 Severity: high
 Tags:
