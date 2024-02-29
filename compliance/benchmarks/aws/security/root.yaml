@@ -35,6 +35,7 @@ Controls:
   - aws_check_for_untrusted_cross_account_iam_roles
   - aws_iam_user_no_policies
   - aws_ssl_tls_certificate_expiry_30_days
+  - aws_ssl_tls_certificate_expiry_7_days
   - aws_unnecessary_ssh_public_keys
   - aws_valid_iam_identity_providers
   - aws_vpc_igw_attached_to_authorized_vpc
@@ -109,6 +110,10 @@ Controls:
   - azure_enable_key_vault_recoverability
   - azure_check_for_key_vault_full_administrator_permissions
   - azure_recovery_service_vault_not_publicly_accessible_and_not_encrypted
+  - aws_check_for_iam_user_group_membership
+  - aws_enable_mfa_for_iam_users_with_console_password
+  - aws_inactive_iam_console_user
+  - aws_root_account_access_keys_present
 ReferenceCode: security
 Description: Security Description
 ID: security
