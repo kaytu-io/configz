@@ -19,7 +19,9 @@ Query:
     FROM 
       aws_account
     GROUP BY
-      organization_id;
+      organization_id,
+      kaytu_account_id,
+      kaytu_resource_id;
   Connector: AWS
   PrimaryTable: aws_account
   ListOfTables:

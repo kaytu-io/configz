@@ -9,11 +9,11 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       CASE
-        WHEN engine_version = {{.awsOpensearchLatestVersion}} THEN 'ok'
+        WHEN engine_version = '{{.awsOpensearchLatestVersion}}' THEN 'ok'
         ELSE 'alarm'
       END AS status,
       CASE
-        WHEN engine_version = {{.awsOpensearchLatestVersion}} THEN domain_name || ' is using the latest engine version' 
+        WHEN engine_version = '{{.awsOpensearchLatestVersion}}' THEN domain_name || ' is using the latest engine version' 
         ELSE domain_name || ' is not using the latest engine version'
       END AS reason,
       region,
