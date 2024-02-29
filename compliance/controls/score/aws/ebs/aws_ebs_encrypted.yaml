@@ -1,5 +1,5 @@
 ID: aws_ebs_encrypted
-Title: EBS Encrypted
+Title: EBS Volumes need to be encrypted
 Description: Ensure EBS volumes are encrypted to meet security and encryption compliance requirements. Encryption is a key mechanism for you to ensure that you are in full control over who has access to your data.
 Query:
   Engine: odysseus-v0.0.1

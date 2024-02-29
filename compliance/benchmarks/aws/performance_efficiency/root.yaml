@@ -15,6 +15,8 @@ Controls:
   - aws_performance_insights
   - aws_rds_event_notifications
   - aws_security_groups_events_subscriptions
+  - azure_check_for_kubernetes_version
+  - azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
 ReferenceCode: performance_efficiency
 Description: Performance Efficiency Description
 ID: performance_efficiency
