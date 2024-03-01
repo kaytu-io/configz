@@ -20,5 +20,5 @@ Tags:
   type:
   - Benchmark
 Enabled: true
-Controls:
-- azure_iam_conditional_access_mfa_enabled
+Controls: []
+#- azure_iam_conditional_access_mfa_enabled
