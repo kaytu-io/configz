@@ -9,6 +9,7 @@ LongTitle: List of lambda functions which are not encrypted with CMK
 Query:
   Connector: AWS
   Engine: odysseus-v0.0.1
+  ID: aws_insight_lambda_function_not_cmk_encrypted
   ListOfTables:
   - aws_lambda_function
   PrimaryTable: aws_lambda_function
