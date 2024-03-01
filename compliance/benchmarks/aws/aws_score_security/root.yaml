@@ -66,6 +66,7 @@ Controls:
   - aws_elbv2_elastic_load_balancing_deletion_protection
   - aws_elbv2_nlb_listener_security
   - aws_enable_http_to_https_redirect_for_application_load_balancers
+  - aws_efs_encryption_enabled
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security
