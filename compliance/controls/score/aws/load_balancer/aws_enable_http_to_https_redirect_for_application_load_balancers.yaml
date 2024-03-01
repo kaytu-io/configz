@@ -43,4 +43,4 @@ ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-  - AWS/ELB
+  - AWS Elastic Load Balancing V2 (ELBv2)

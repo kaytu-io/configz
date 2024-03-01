@@ -33,4 +33,4 @@ ManualVerification: false
 Severity: low
 Tags:
   score_service_name:
-  - Azure/KubernetesService
+  - Azure Kubernetes (AKS)
