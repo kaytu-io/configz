@@ -29,7 +29,6 @@ Controls:
   - aws_ssl_tls_certificate_expiry_30_days
   - aws_unnecessary_ssh_public_keys
   - aws_valid_iam_identity_providers
-  - aws_vpc_igw_attached_to_authorized_vpc
   - aws_vpc_endpoint_cross_account_access
   - aws_vpc_endpoints_in_use
   - aws_vpc_peering_connections_to_accounts_outside_aws_organization

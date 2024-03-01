@@ -1,4 +1,4 @@
-ID: aws_vpc_igw_attached_to_authorized_vpc
+ID: aws_unused_vpc_internet_gateways
 Title: Unused VPC Internet Gateways
 Description: Ensure unused VPC Internet Gateways and Egress-Only Internet Gateways are removed to follow best practices.
 Query:

@@ -7,6 +7,7 @@ Controls:
   - aws_unused_ami
   - aws_desired_instance_types
   - aws_redundant_cloud_trail
+  - aws_unused_vpc_internet_gateways
   - aws_unused_gateway_load_balancers
   - aws_unused_application_load_balancers
 ReferenceCode: aws_score_cost_optimization
