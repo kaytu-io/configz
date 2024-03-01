@@ -56,6 +56,17 @@ Controls:
   - aws_rds_instance_counts
   - aws_log_exports
   - aws_rds_publicly_accessible
+  - aws_enable_amazon_waf_integration_for_application_load_balancers
+  - aws_check_for_iam_user_group_membership
+  - aws_enable_mfa_for_iam_users_with_console_password
+  - aws_inactive_iam_console_user
+  - aws_root_account_access_keys_present
+  - aws_configure_http_desync_mitigation_mode_for_application_load_balancers
+  - aws_elbv2_alb_listener_security
+  - aws_elbv2_elastic_load_balancing_deletion_protection
+  - aws_elbv2_nlb_listener_security
+  - aws_enable_http_to_https_redirect_for_application_load_balancers
+  - aws_efs_encryption_enabled
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

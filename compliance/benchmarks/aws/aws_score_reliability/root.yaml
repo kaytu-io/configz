@@ -22,9 +22,10 @@ Controls:
   - aws_ec2_instances_have_backup_withing_48_hours
   - aws_efs_files_have_backup_with_lifecyclepolicy_above_35_days
   - aws_efs_files_have_backup_withing_48_hours
-  - aws_rds_instances_have_backup_with_lifecyclepolicy_above_35_days
-  - aws_rds_instances_have_backup_withing_48_hours
+  - aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
+  - aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
   - aws_expired_ssl_tls_certificate
+  - aws_configure_multiple_availability_zones_for_load_balancers
 ReferenceCode: aws_score_reliability
 Description: Reliability Description
 ID: aws_score_reliability

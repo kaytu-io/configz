@@ -35,4 +35,4 @@ Severity: high
 Managed: false
 Tags:
   score_service_name:
-  - AWS/RDS
+  - AWS Relational Database Service (RDS)

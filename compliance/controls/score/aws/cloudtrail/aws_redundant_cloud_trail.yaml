@@ -67,4 +67,4 @@ ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-  - AWS/CloudTrail
+  - AWS CloudTrail

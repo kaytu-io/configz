@@ -1,0 +1,42 @@
+ID: aws_unused_application_load_balancers
+Title: Unused Application Load Balancers
+Description: Identify unused Applications Load Balancers, and delete them to help lower the cost of your monthly AWS bill.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with target_resource as (
+      select
+        load_balancer_arn,
+        target_health_descriptions,
+        target_type
+      from
+        aws_ec2_target_group,
+        jsonb_array_elements_text(load_balancer_arns) as load_balancer_arn
+    )
+    select
+      a.arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when b.load_balancer_arn is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when b.load_balancer_arn is null then a.title || ' has no target registered.'
+        else a.title || ' has registered target of type ' || b.target_type || '.'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_ec2_application_load_balancer a
+      left join target_resource b on a.arn = b.load_balancer_arn;
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+    - aws_ec2_target_group
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Load Balancing V2 (ELBv2)

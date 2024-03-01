@@ -1,0 +1,40 @@
+ID: aws_configure_http_desync_mitigation_mode_for_application_load_balancers
+Title: Configure HTTP Desync Mitigation Mode for Application Load Balancers
+Description: Ensure that the suitable Desync Mitigation mode is configured for your Application Load Balancers.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with app_lb_desync_mitigation_mode as (
+      select
+        arn,
+        l ->> 'Key',
+        l ->> 'Value' as v
+      from
+        aws_ec2_application_load_balancer,
+        jsonb_array_elements(load_balancer_attributes) as l
+      where
+        l ->> 'Key' = 'routing.http.desync_mitigation_mode'
+    )
+    select
+      a.arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when m.v = any(array [ 'defensive', 'strictest' ]) then 'ok'
+        else 'alarm'
+      end as status,
+      title || ' has ' || m.v || ' desync mitigation mode.' as reason,
+      region,
+      account_id
+    from
+      aws_ec2_application_load_balancer as a
+      left join app_lb_desync_mitigation_mode as m on a.arn = m.arn;
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Elastic Load Balancing V2 (ELBv2)

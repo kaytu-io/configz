@@ -1,0 +1,35 @@
+ID: aws_elbv2_alb_listener_security
+Title: ELBv2 ALB Listener Security
+Description: Ensure ELBv2 ALBs are using a secure protocol.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+        al.arn AS resource,
+        al.kaytu_resource_id,
+        al.kaytu_account_id,
+        CASE
+          WHEN STRING_AGG(ll.protocol, ',') ILIKE '%HTTPS%' THEN 'ok'
+          ELSE 'alarm'
+        END AS status,
+        CASE
+          WHEN STRING_AGG(ll.protocol, ',') ILIKE '%HTTPS%' THEN 'alb is using a secure protocol'
+          ELSE 'alb is not using a secure protocol'
+        END AS reason,
+        al.region,
+        al.account_id
+    FROM 
+        aws_ec2_application_load_balancer al
+    LEFT JOIN aws_ec2_load_balancer_listener ll ON al.arn = ll.load_balancer_arn
+    GROUP BY 
+        al.arn, al.kaytu_resource_id, al.kaytu_account_id, al.title, al.region, al.account_id;
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+    - aws_ec2_load_balancer_listener
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Load Balancing V2 (ELBv2)

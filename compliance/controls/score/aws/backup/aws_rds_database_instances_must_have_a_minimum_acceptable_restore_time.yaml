@@ -1,0 +1,46 @@
+ID: aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
+Title: AWS RDS Database Instances must have a minimum acceptable restore time
+Description: Check for all AWS RDS Database Instances to see if they are meeting the required restore time defined.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+        i.arn as resource,
+        i.kaytu_account_id,
+        i.kaytu_resource_id,
+        case
+          when c.latest_restorable_time is not null then 
+            case
+              when now() - c.latest_restorable_time < '{{.awsRdsBaselineRestorableTimeInHrs}} hours'::interval then 'ok'
+              else 'alarm'
+            end
+          else
+            case
+              when now() - i.latest_restorable_time < '{{.awsRdsBaselineRestorableTimeInHrs}} hours'::interval then 'ok'
+              else 'alarm'
+            end
+        end as status,
+        case
+          when c.latest_restorable_time is not null then 
+            i.title || ' backup retention period set to ' || c.latest_restorable_time || '.'
+          else
+            i.title || ' backup retention period set to ' || i.latest_restorable_time || '.'
+        end as reason,
+        i.region,
+        i.account_id
+      from
+        aws_rds_db_instance as i
+        left join aws_rds_db_cluster as c on i.db_cluster_identifier = c.db_cluster_identifier
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  - aws_backup_recovery_point
+  Parameters:
+    - Key: awsRdsBaselineRestorableTimeInHrs
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Relational Database Service (RDS)
