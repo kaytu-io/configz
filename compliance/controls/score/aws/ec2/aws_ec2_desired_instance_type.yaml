@@ -1,6 +1,6 @@
 ID: aws_ec2_desired_instance_type
-Title: EC2 Desired Instance Type
-Description: Ensure all EC2 instances are of a given instance type.
+Title: EC2 Instances types are Approved
+Description: Ensure all EC2 instances are of a given instance type Optimal and Aligned with our Organization
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
