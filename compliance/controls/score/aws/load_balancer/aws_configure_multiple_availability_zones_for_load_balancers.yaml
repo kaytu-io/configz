@@ -1,0 +1,56 @@
+ID: aws_configure_multiple_availability_zones_for_load_balancers
+Title: Configure Multiple Availability Zones for Load Balancers
+Description: Ensure that Amazon Gateway Load Balancers are using Multi-AZ configurations.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when jsonb_array_length(availability_zones) < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason,
+      region,
+      account_id
+    from
+      aws_ec2_application_load_balancer
+    union
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when jsonb_array_length(availability_zones) < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason,
+      region,
+      account_id
+    from
+      aws_ec2_network_load_balancer
+    union
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when jsonb_array_length(availability_zones) < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      title || ' has ' || jsonb_array_length(availability_zones) || ' availability zone(s).' as reason,
+      region,
+      account_id
+    from
+      aws_ec2_gateway_load_balancer;
+  Connector: AWS
+  PrimaryTable: aws_ec2_gateway_load_balancer
+  ListOfTables:
+    - aws_ec2_gateway_load_balancer
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS/ELB
