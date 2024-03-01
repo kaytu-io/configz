@@ -10,7 +10,6 @@ Controls:
   - aws_enable_instance_storage_auto_scaling
   - aws_enable_serverless_log_exports
   - aws_instance_level_events_subscriptions
-  - aws_log_exports
   - aws_performance_insights
   - aws_rds_event_notifications
   - aws_security_groups_events_subscriptions
