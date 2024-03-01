@@ -19,7 +19,8 @@ Query:
       region,
       account_id
     from
-      aws_ec2_instance;
+      aws_ec2_instance
+    where instance_state = 'running';
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
