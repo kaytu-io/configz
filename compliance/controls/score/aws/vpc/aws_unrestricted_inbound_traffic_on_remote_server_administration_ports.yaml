@@ -53,7 +53,8 @@ Query:
       acl.account_id
     from
       aws_vpc_network_acl as acl
-      left join bad_rules on bad_rules.network_acl_id = acl.network_acl_id;
+      left join bad_rules on bad_rules.network_acl_id = acl.network_acl_id
+      where jsonb_array_length(acl.associations) > 0;
   Connector: AWS
   PrimaryTable: aws_vpc_network_acl
   ListOfTables:
