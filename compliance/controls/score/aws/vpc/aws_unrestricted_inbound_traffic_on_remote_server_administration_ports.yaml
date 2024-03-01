@@ -39,8 +39,8 @@ Query:
     )
     select
       'arn:' || acl.partition || ':ec2:' || acl.region || ':' || acl.account_id || ':network-acl/' || acl.network_acl_id as resource,
-      kaytu_resource_id,
-      kaytu_account_id,
+      acl.kaytu_resource_id,
+      acl.kaytu_account_id,
       case
         when bad_rules.network_acl_id is null then 'ok'
         else 'alarm'
@@ -53,8 +53,10 @@ Query:
       acl.account_id
     from
       aws_vpc_network_acl as acl
-      left join bad_rules on bad_rules.network_acl_id = acl.network_acl_id
-      where jsonb_array_length(acl.associations) > 0;
+      left join bad_rules on bad_rules.network_acl_id = acl.network_acl_id 
+      inner join aws_vpc vpc on acl.vpc_id = vpc.vpc_id
+      where jsonb_array_length(acl.associations) > 0 and vpc.is_default = false;
+
   Connector: AWS
   PrimaryTable: aws_vpc_network_acl
   ListOfTables:
