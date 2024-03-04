@@ -1,6 +1,6 @@
 ID: aws_ebs_instances_have_backup_withing_48_hours
-Title: EBS Instances have backup withing 48 hours
-Description: Ensure all EBS have a minimum of one restore point time in the last 48 hrs
+Title: Attached EBS Storage Volumes restoration needs meet RPO Standard
+Description: AWS EBS Storage Volumes that are connected need to have restorable backup within the last 48 hours
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
