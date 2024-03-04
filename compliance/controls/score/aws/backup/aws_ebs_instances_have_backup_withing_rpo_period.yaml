@@ -4,7 +4,12 @@ Description: AWS EBS Storage Volumes that are connected need to have restorable 
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
-    WITH points AS (
+    WITH all_backup AS (
+      SELECT recovery_point_arn, resource_arn, creation_date
+      FROM aws_backup_recovery_point 
+      WHERE now() - creation_date < '2 week'::interval 
+      and resource_type = 'EBS' and status = 'COMPLETED'),
+    points AS (
       SELECT recovery_point_arn, resource_arn
       FROM aws_backup_recovery_point 
       WHERE now() - creation_date < '{{.awsEbsInstancesBackupPeriod}} hours'::interval 
@@ -19,13 +24,15 @@ Query:
         else 'ok'
       end as status,
       case
-        when p.recovery_point_arn is null then 'lacks a backup with last 48 hours'
+        when p.recovery_point_arn is null and a.recovery_point_arn is null then 'there is no backup for this resource'
+        when p.recovery_point_arn is null then 'last backup at ' || a.creation_date::text
         else ''
       end as reason
       , region, account_id 
     from 
       aws_ebs_volume as v
       left join points as p on v.arn = p.resource_arn
+      left join all_backup as a on v.arn = a.resource_arn
   Connector: AWS
   PrimaryTable: aws_ebs_volume
   Parameters:
