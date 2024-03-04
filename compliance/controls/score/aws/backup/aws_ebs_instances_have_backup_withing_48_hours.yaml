@@ -7,7 +7,7 @@ Query:
     WITH points AS (
       SELECT recovery_point_arn, resource_arn
       FROM aws_backup_recovery_point 
-      WHERE now() - creation_date < '48 hours'::interval 
+      WHERE now() - creation_date < '{{.awsEbsInstancesBackupPeriod}} hours'::interval 
       and resource_type = 'EBS' and status = 'COMPLETED')
 
     select
@@ -28,6 +28,9 @@ Query:
       left join points as p on v.arn = p.resource_arn
   Connector: AWS
   PrimaryTable: aws_ebs_volume
+  Parameters:
+    - Key: awsEbsInstancesBackupPeriod
+      Required: true
   ListOfTables:
   - aws_ebs_volume
   - aws_backup_recovery_point
