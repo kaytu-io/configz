@@ -1,0 +1,36 @@
+ID: aws_managed_nat_gateway_in_use
+Title: Managed NAT Gateway in Use
+Description: Ensure that the Managed NAT Gateway service is enabled for high availability (HA).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with available_nat_gateways as (
+      select vpc_id, arn from aws_vpc_nat_gateway where state = 'available'
+    )
+    select
+      v.arn as resource,
+      v.kaytu_account_id,
+      v.kaytu_resource_id,
+      case
+        when ng.arn is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when ng.arn is not null then v.vpc_id || ' is using Managed NAT Gateways.'
+        else v.vpc_id || ' is not using Managed NAT Gateways.'
+      end as reason,
+      v.region,
+      v.account_id
+    from
+      aws_vpc as v
+      left join available_nat_gateways as ng on ng.vpc_id = v.vpc_id
+  Connector: AWS
+  PrimaryTable: aws_vpc
+  ListOfTables:
+    - aws_vpc
+    - aws_vpc_nat_gateway
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Virtual Private Cloud (VPC)

@@ -1,4 +1,4 @@
-ID: aws_desired_instance_types
+ID: aws_opensearch_desired_instance_types
 Title: Desired Instance Type(s)
 Description: Ensure that Amazon OpenSearch cluster instances are of given instance type.
 Query:

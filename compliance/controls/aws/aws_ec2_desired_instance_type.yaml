@@ -1,4 +1,4 @@
-ID: aws_desired_instance_type
+ID: aws_ec2_desired_instance_type
 Title: EC2 instances should be of a specific instance type
 Description: Checks if your EC2 instances are of a specific instance type. The rule is ALARM if an EC2 instance is not specified in the parameter list. For a list of supported EC2 instance types, see Instance types in the EC2 User Guide for Linux Instances.
 Query:

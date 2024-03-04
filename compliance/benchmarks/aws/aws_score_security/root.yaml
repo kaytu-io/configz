@@ -66,6 +66,12 @@ Controls:
   - aws_elbv2_nlb_listener_security
   - aws_enable_http_to_https_redirect_for_application_load_balancers
   - aws_efs_encryption_enabled
+  - aws_vpc_flow_logs_enabled
+  - aws_vpc_endpoint_exposed
+  - aws_elb_insecure_ssl_protocols
+  - aws_kubernetes_cluster_version
+  - aws_unrestricted_network_acl_inbound_traffic
+  - aws_unrestricted_network_acl_outbound_traffic
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

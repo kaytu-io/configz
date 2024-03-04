@@ -13,6 +13,8 @@ Controls:
   - aws_performance_insights
   - aws_rds_event_notifications
   - aws_security_groups_events_subscriptions
+  - aws_kubernetes_cluster_version
+  - aws_managed_nat_gateway_in_use
 ReferenceCode: aws_score_performance_efficiency
 Description: Performance Efficiency Description
 ID: aws_score_performance_efficiency
