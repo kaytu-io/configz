@@ -1,0 +1,46 @@
+ID: aws_unrestricted_icmp_access
+Title: Unrestricted ICMP Access
+Description: Ensure no security group allows unrestricted inbound access to ICMP.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      group_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsIcmpTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'IpProtocol') = 'icmp')
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsIcmpTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'IpProtocol') = 'icmp')
+        ) THEN group_name || ' has Unrestricted ICMP Access' 
+        ELSE group_name || ' ICMP Access is secure'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_vpc_security_group
+    WHERE
+      exists (select 1 from jsonb_array_elements(ip_permissions) as p where (p ->> 'IpProtocol') = 'icmp')
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+    - aws_vpc_security_group
+  Parameters:
+    - Key: awsIcmpTrustedIpRange
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS EC2

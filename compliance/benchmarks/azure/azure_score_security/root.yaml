@@ -25,6 +25,11 @@ Controls:
   - azure_enable_key_vault_recoverability
   - azure_check_for_key_vault_full_administrator_permissions
   - azure_recovery_service_vault_not_publicly_accessible_and_not_encrypted
+  - azure_check_for_unattached_virtual_machine_disk_volumes
+  - azure_check_for_allowed_certificate_key_types
+  - azure_check_for_azure_key_vault_keys_expiration_date
+  - azure_configure_minimum_tls_version
+  - azure_limit_storage_account_access_by_ip_address
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

@@ -1,0 +1,46 @@
+ID: aws_unrestricted_mysql_access
+Title: Unrestricted MySQL Access
+Description: Ensure no security group allows unrestricted ingress access to port 3306.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      group_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsMysqlTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'FromPort') = '3306') and ((p ->> 'ToPort') = '3306')
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsMysqlTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'FromPort') = '3306') and ((p ->> 'ToPort') = '3306')
+        ) THEN group_name || ' has Unrestricted MySQL Access' 
+        ELSE group_name || ' MySQL Access is secure'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_vpc_security_group
+    WHERE
+      exists (select 1 from jsonb_array_elements(ip_permissions) as p where ((p ->> 'FromPort') = '3306') and ((p ->> 'ToPort') = '3306'))
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+    - aws_vpc_security_group
+  Parameters:
+    - Key: awsMysqlTrustedIpRange
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS EC2

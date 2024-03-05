@@ -1,0 +1,33 @@
+ID: aws_mfa_device_deactivated
+Title: MFA Device Deactivated
+Description: A Multi-Factor Authentication (MFA) device deactivation for an IAM user has been detected.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.arn as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when mfa.serial_number is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when mfa.serial_number is null then a.title || 'mfa device not activated.'
+        else a.title || 'mfa device activated.'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_iam_user as a
+      left join aws_iam_virtual_mfa_device as mfa on a.user_id = mfa.user_id
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+    - aws_iam_virtual_mfa_device
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

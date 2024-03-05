@@ -1,0 +1,57 @@
+ID: aws_elbv2_alb_security_group
+Title: ELBv2 ALB Security Group
+Description: Ensure ELBv2 load balancers have secure and valid security groups.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH sg AS (
+      SELECT
+        group_id,
+        group_name,
+        ARRAY_AGG('(' || (p ->> 'ToPort') || ',' || lower(p ->> 'IpProtocol') || ')') AS ports_and_protocols
+      FROM
+        aws_vpc_security_group,
+        jsonb_array_elements(ip_permissions) as p
+      GROUP BY
+        group_id, group_name
+    ), lbl AS (
+      SELECT 
+        load_balancer_arn,
+        ARRAY_AGG('(' || port || ',' || lower(protocol) || ')') AS ports_and_protocols
+      FROM 
+        aws_ec2_load_balancer_listener
+      GROUP BY 
+        load_balancer_arn
+    )
+    SELECT
+      al.name as resource,
+      al.kaytu_account_id,
+      al.kaytu_resource_id,
+      sg.ports_and_protocols,
+      lbl.ports_and_protocols,
+      CASE
+        WHEN sg.ports_and_protocols <@ lbl.ports_and_protocols THEN 'ok'
+        ELSE 'alarm'
+      END as status,
+      CASE
+        WHEN sg.ports_and_protocols <@ lbl.ports_and_protocols THEN al.name || ' is secure'
+        ELSE al.name || ' is not secure'
+      END as reason,
+      al.region,
+      al.account_id
+    FROM
+      aws_ec2_application_load_balancer as al
+      CROSS JOIN LATERAL jsonb_array_elements_text(al.security_groups) as sgid
+      LEFT JOIN sg ON sgid = sg.group_id
+      LEFT JOIN lbl ON al.arn = lbl.load_balancer_arn;
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+    - aws_ec2_load_balancer_listener
+    - aws_vpc_security_group
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Load Balancing V2 (ELBv2)

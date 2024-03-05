@@ -1,0 +1,34 @@
+ID: azure_check_for_sufficient_point_in_time_restore_pitr_backup_retention_period
+Title: Check for Sufficient Point in Time Restore (PITR) Backup Retention Period
+Description: Ensure there is a sufficient PITR backup retention period configured for Azure SQL databases.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when (p -> 'properties' ->> 'retentionDays')::int < '{{.azureDatabaseServerRetentionPeriodDays}}'::int then 'alarm'
+        else 'ok'
+      end as status,
+      name || ' backup retention period set to ' || (p -> 'properties' ->> 'retentionDays') || '.' as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_sql_server as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id,
+      jsonb_array_elements(server_audit_policy) as p
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+  Parameters:
+    - Key: azureDatabaseServerRetentionPeriodDays
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Managed SQL Service

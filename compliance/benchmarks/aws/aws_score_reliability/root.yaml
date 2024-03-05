@@ -26,6 +26,9 @@ Controls:
   - aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
   - aws_expired_ssl_tls_certificate
   - aws_configure_multiple_availability_zones_for_load_balancers
+  - aws_kubernetes_cluster_version
+  - aws_elbv2_alb_minimum_number_of_ec2_target_instances
+  - aws_elbv2_glb_minimum_number_of_ec2_target_instances
 ReferenceCode: aws_score_reliability
 Description: Reliability Description
 ID: aws_score_reliability

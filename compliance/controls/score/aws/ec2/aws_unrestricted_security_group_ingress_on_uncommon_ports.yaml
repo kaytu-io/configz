@@ -1,0 +1,41 @@
+ID: aws_unrestricted_security_group_ingress_on_uncommon_ports
+Title: Unrestricted Security Group Ingress on Uncommon Ports
+Description: Ensure no security group contains any 0.0.0.0/0 ingress rules.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      group_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ((p ->> 'IpRanges') LIKE '%0.0.0.0/0%' or (p ->> 'IpRanges' LIKE '%::/0%'))
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ((p ->> 'IpRanges') LIKE '%0.0.0.0/0%' or (p ->> 'IpRanges' LIKE '%::/0%'))
+        ) THEN group_name || ' has Unrestricted Access' 
+        ELSE group_name || ' Access is secure'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_vpc_security_group
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+    - aws_vpc_security_group
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS EC2

@@ -1,0 +1,41 @@
+ID: aws_unrestricted_network_acl_inbound_traffic
+Title: Unrestricted Network ACL Inbound Traffic
+Description: Ensure that no Network ACL (NACL) allows inbound/ingress traffic from all ports.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(entries) as e
+          where (e ->> 'Egress')::bool = false and e ->> 'PortRange' is null and e ->> 'CidrBlock' = '0.0.0.0/0'
+            and e ->> 'RuleAction' = 'allow'
+        ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(entries) as e
+          where (e ->> 'Egress')::bool = false and e ->> 'PortRange' is null and e ->> 'CidrBlock' = '0.0.0.0/0'
+            and e ->> 'RuleAction' = 'allow'
+        ) then 'the access to the VPC subnets associated with the Network ACL (NACL) is not restricted.'
+        else 'the access to the VPC subnets associated with the Network ACL (NACL) is restricted.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_vpc_network_acl
+  Connector: AWS
+  PrimaryTable: aws_vpc_network_acl
+  ListOfTables:
+    - aws_vpc_network_acl
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Virtual Private Cloud (VPC)

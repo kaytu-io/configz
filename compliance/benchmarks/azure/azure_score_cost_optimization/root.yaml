@@ -4,6 +4,8 @@ Controls:
   - azure_old_snapshots_should_be_deleted_if_not_required
   - azure_unused_disks_should_be_removed
   - azure_disks_should_use_standard_snapshots
+  - azure_check_for_unattached_virtual_machine_disk_volumes
+  - azure_check_for_old_virtual_machine_disk_snapshots
 ReferenceCode: azure_score_cost_optimization
 Description: Cost Optimization Description
 ID: azure_score_cost_optimization

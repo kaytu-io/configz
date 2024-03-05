@@ -4,6 +4,8 @@ Controls:
   - azure_disable_plain_ftp_deployment
   - azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
   - azure_recovery_service_vault_alert_for_job_failures_enabled
+  - azure_check_for_sufficient_point_in_time_restore_pitr_backup_retention_period
+  - azure_configure_minimum_tls_version
 ReferenceCode: azure_score_reliability
 Description: Reliability Description
 ID: azure_score_reliability
