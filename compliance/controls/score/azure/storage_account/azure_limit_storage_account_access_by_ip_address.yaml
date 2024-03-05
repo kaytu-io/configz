@@ -1,0 +1,46 @@
+ID: azure_limit_storage_account_access_by_ip_address
+Title: Limit Storage Account Access by IP Address
+Description: Ensure that Azure Storage account access is limited only to specific IP address(es).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when network_ip_rules is null then 'skip'
+        when exists (
+          select 1
+          from jsonb_array_elements(network_ip_rules) as r
+          where (r ->> 'action') = 'Allow' and '{{.azureStorageAccountAllowedIPAddresses}}' not LIKE '%' || (r ->> 'value') || '%'
+        ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when network_ip_rules is null then 'storage account does not have network ip rule'
+        when exists (
+          select 1
+          from jsonb_array_elements(network_ip_rules) as r
+          where (r ->> 'action') = 'Allow' and '{{.azureStorageAccountAllowedIPAddresses}}' not LIKE '%' || (r ->> 'value') || '%'
+        ) then 'is not restricted to trusted IP addresses/IP ranges only.'
+        else 'is restricted to trusted IP addresses/IP ranges only.'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_storage_account as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+    - azure_storage_account
+    - azure_subscription
+  Parameters:
+    - Key: azureStorageAccountAllowedIPAddresses
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Storage Accounts

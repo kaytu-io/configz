@@ -4,6 +4,7 @@ Controls:
   - azure_enable_defender_for_cloud_for_aks_clusters
   - azure_disable_plain_ftp_deployment
   - azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
+  - azure_configure_minimum_tls_version
 ReferenceCode: azure_score_operational_excellence
 Description: Operational Excellence Description
 ID: azure_score_operational_excellence

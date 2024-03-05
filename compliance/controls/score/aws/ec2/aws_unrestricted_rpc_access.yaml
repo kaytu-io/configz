@@ -1,0 +1,46 @@
+ID: aws_unrestricted_rpc_access
+Title: Unrestricted RPC Access
+Description: Ensure no security group allows unrestricted inbound access to TCP port 135 (RPC).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      group_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsRpcTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'FromPort') = '135') and ((p ->> 'ToPort') = '135')
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsRpcTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'FromPort') = '135') and ((p ->> 'ToPort') = '135')
+        ) THEN group_name || ' has Unrestricted RPC Access' 
+        ELSE group_name || ' RPC Access is secure'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_vpc_security_group
+    WHERE
+      exists (select 1 from jsonb_array_elements(ip_permissions) as p where ((p ->> 'FromPort') = '135') and ((p ->> 'ToPort') = '135'))
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+    - aws_vpc_security_group
+  Parameters:
+    - Key: awsRpcTrustedIpRange
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS EC2

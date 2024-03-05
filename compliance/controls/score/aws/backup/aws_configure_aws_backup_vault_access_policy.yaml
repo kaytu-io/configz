@@ -1,0 +1,41 @@
+ID: aws_configure_aws_backup_vault_access_policy
+Title: Configure AWS Backup Vault Access Policy
+Description: Prevent deletion of backups using an Amazon Backup vault resource-based access policy.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when policy is null then 'alarm'
+        when exists(
+          select 1
+          from jsonb_array_elements(policy -> 'Statement') as s
+          where ((s ->> 'Effect') = 'Deny') and ((s ->> 'Action') LIKE '%backup:DeleteRecoveryPoint%')
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when policy is null then 'there is no policy defined'
+        when exists(
+          select 1
+          from jsonb_array_elements(policy -> 'Statement') as s
+          where ((s ->> 'Effect') = 'Deny') and ((s ->> 'Action') LIKE '%backup:DeleteRecoveryPoint%')
+        ) then 'has deletion protection enabled for its backups.'
+        else 'does not have deletion protection enabled for its backups.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_backup_vault
+  Connector: AWS
+  PrimaryTable: aws_backup_vault
+  ListOfTables:
+    - aws_backup_vault
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Backup

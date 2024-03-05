@@ -72,6 +72,21 @@ Controls:
   - aws_kubernetes_cluster_version
   - aws_unrestricted_network_acl_inbound_traffic
   - aws_unrestricted_network_acl_outbound_traffic
+  - aws_configure_aws_backup_vault_access_policy
+  - aws_mfa_device_deactivated
+  - aws_cross_account_access_lacks_external_id_and_mfa
+  - aws_elbv2_alb_security_group
+  - aws_unrestricted_icmp_access
+  - aws_unrestricted_mongodb_access
+  - aws_unrestricted_mssql_access
+  - aws_unrestricted_mysql_access
+  - aws_unrestricted_netbios_access
+  - aws_unrestricted_opensearch_access
+  - aws_unrestricted_oracle_access
+  - aws_unrestricted_rpc_access
+  - aws_unrestricted_smtp_access
+  - aws_unrestricted_security_group_ingress_on_uncommon_ports
+  - aws_unrestricted_cifs_access
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

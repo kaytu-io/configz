@@ -1,0 +1,46 @@
+ID: aws_unrestricted_mssql_access
+Title: Unrestricted MsSQL Access
+Description: Ensure no security group allows unrestricted ingress access to port 1433.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      group_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsMssqlTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'FromPort') = '1433') and ((p ->> 'ToPort') = '1433')
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN exists (
+          select 1
+          from jsonb_array_elements(ip_permissions) as p,
+          jsonb_array_elements(p -> 'IpRanges') as r
+          where ('{{.awsMssqlTrustedIpRange}}' not LIKE '%' || (r ->> 'CidrIp') || '%') and ((p ->> 'FromPort') = '1433') and ((p ->> 'ToPort') = '1433')
+        ) THEN group_name || ' has Unrestricted MsSQL Access' 
+        ELSE group_name || ' MsSQL Access is secure'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_vpc_security_group
+    WHERE
+      exists (select 1 from jsonb_array_elements(ip_permissions) as p where ((p ->> 'FromPort') = '1433') and ((p ->> 'ToPort') = '1433'))
+  Connector: AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+    - aws_vpc_security_group
+  Parameters:
+    - Key: awsMssqlTrustedIpRange
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS EC2

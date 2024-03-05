@@ -1,0 +1,33 @@
+ID: azure_configure_minimum_tls_version
+Title: Configure Minimum TLS Version
+Description: Ensure that the "Minimum TLS version" setting is set to "Version 1.2" for all Azure Storage accounts.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when minimum_tls_version = '{{.azureLatestTlsVersion}}' then 'ok'
+        else 'alarm'
+      end as status,
+      name || ' tls version is set to ' || minimum_tls_version || '.' as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_storage_account as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+    - azure_storage_account
+    - azure_subscription
+  Parameters:
+    - Key: azureLatestTlsVersion
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Storage Accounts

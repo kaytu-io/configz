@@ -1,0 +1,42 @@
+ID: aws_elbv2_alb_minimum_number_of_ec2_target_instances
+Title: ELBv2 ALB Minimum Number of EC2 Target Instances
+Description: Ensure there is a minimum number of two healthy target instances associated with each AWS ELBv2 application load balancer.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with target_resource as (
+    select 
+      load_balancer_arn,
+      count(*) as c 
+    from 
+      aws_ec2_target_group, 
+      jsonb_array_elements_text(load_balancer_arns) as load_balancer_arn 
+    group by load_balancer_arn
+    )
+    select
+      a.arn as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when b.load_balancer_arn is null or b.c < 2 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when b.load_balancer_arn is null or b.c < 2 then a.title || ' is not using a fault-tolerant configuration.'
+        else a.title || ' is using a fault-tolerant configuration.'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_ec2_application_load_balancer a
+      left join target_resource b on a.arn = b.load_balancer_arn;
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+    - aws_ec2_target_group
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Load Balancing V2 (ELBv2)

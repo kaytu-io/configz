@@ -1,0 +1,55 @@
+ID: azure_check_for_azure_key_vault_keys_expiration_date
+Title: Check for Azure Key Vault Keys Expiration Date
+Description: Ensure that your Azure Key Vault encryption keys are renewed prior to their expiration date.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      k.kaytu_resource_id,
+      k.kaytu_account_id,
+      case
+        when expires_at is null then 'skip'
+        when '{{.azureKeyVaultKeyExpirationDateDays}}' = '' then
+          case 
+            when expires_at - now() > '30 days'::interval then 'ok'
+            else 'alarm'
+          end
+        else
+          case
+            when expires_at - now() > '{{.azureKeyVaultKeyExpirationDateDays}} days'::interval then 'ok'
+            else 'alarm'
+          end
+      end as status,
+      case
+        when expires_at is null then 'expires at is not specified'
+        when expires_at < now() then 'key has been expired'
+        when '{{.azureKeyVaultKeyExpirationDateDays}}' = '' then
+          case
+            when expires_at - now() > '30 days'::interval then 'key does not expire soon'
+            else 'key expires soon'
+          end
+        else
+          case
+            when expires_at - now() > '{{.azureKeyVaultKeyExpirationDateDays}} days'::interval then 'key does not expire soon'
+            else 'key expires soon'
+          end
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault_key as k
+      left join azure_subscription as sub on k.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_key_vault_key
+  ListOfTables:
+    - azure_key_vault_key
+    - azure_subscription
+  Parameters:
+    - Key: azureKeyVaultKeyExpirationDateDays
+      Required: false
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure KeyVault
