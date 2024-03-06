@@ -1,0 +1,35 @@
+ID: aws_unapproved_iam_policy_in_use
+Title: Unapproved IAM Policy in Use
+Description: Ensure there are no unapproved AWS Identity and Access Management (IAM) policies in use.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when attachment_count > 0 and '{{.awsUnapprovedIamPolicies}}' LIKE '%' || name || '%' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when attachment_count > 0 and '{{.awsUnapprovedIamPolicies}}' LIKE '%' || name || '%' then name || ' is an unapproved iam policy which is being used'
+        when attachment_count > 0 then name || ' is not unapproved'
+        else name || ' is not being used'
+      end as reason,
+      region, 
+      account_id
+    from
+      aws_iam_policy
+  Connector: AWS
+  PrimaryTable: aws_iam_policy
+  ListOfTables:
+    - aws_iam_policy
+  Parameters:
+    - Key: awsUnapprovedIamPolicies
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

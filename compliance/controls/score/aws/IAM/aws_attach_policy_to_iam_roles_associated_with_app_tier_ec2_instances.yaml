@@ -1,0 +1,42 @@
+ID: aws_attach_policy_to_iam_roles_associated_with_app_tier_ec2_instances
+Title: Attach Policy to IAM Roles Associated with App-Tier EC2 Instances
+Description: Ensure IAM policy for EC2 IAM roles for app tier is configured.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      instance_id as resource,
+      i.kaytu_account_id,
+      i.kaytu_resource_id,
+      case
+        when r.inline_policies is null and r.attached_policy_arns is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when i.iam_instance_profile_arn is null then instance_id || ' has no role attached'
+        when r.inline_policies is null and r.attached_policy_arns is null then instance_id || ' role does not have any policy'
+        else instance_id || ' role has policy'
+      end as reason,
+      i.region, 
+      i.account_id
+    from
+      aws_ec2_instance as i
+      left join aws_iam_role as r on split_part(i.iam_instance_profile_arn, ':instance-profile/', 2) = r.name
+    where
+      i.tags::text like '%' || REPLACE(REPLACE((
+          SELECT jsonb_object_agg(key, value)::text
+          FROM jsonb_each_text('{{.awsAppTierTags}}'::jsonb)
+        ), '{', ''), '}', '') || '%'
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+    - aws_iam_role
+  Parameters:
+    - Key: awsAppTierTags
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

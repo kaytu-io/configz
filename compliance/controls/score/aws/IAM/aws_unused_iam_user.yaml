@@ -1,0 +1,33 @@
+ID: aws_unused_iam_user
+Title: Unused IAM User
+Description: Ensure unused IAM users are removed from AWS account to follow security best practice.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      u.name as resource,
+      u.kaytu_account_id,
+      u.kaytu_resource_id,
+      case
+        when (password_last_used is null) and (k.access_key_id is null) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (password_last_used is null) and (k.access_key_id is null) then u.name || ' user is unused and should be removed'
+        else u.name || ' user is being used'
+      end as reason,
+      u.region, 
+      u.account_id
+    from
+      aws_iam_user as u
+      left join aws_iam_access_key as k on u.name = k.user_name
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+    - aws_iam_access_key
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

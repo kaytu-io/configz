@@ -1,0 +1,31 @@
+ID: aws_iam_user_policies
+Title: IAM User Policies
+Description: Ensure AWS IAM policies are attached to groups instead of users as an IAM best practice.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      u.name as resource,
+      u.kaytu_account_id,
+      u.kaytu_resource_id,
+      case
+        when attached_policy_arns is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when attached_policy_arns is null then 'this user does not have any policies attached'
+        else 'policies are better to be attached to only iam groups'
+      end as reason,
+      u.region, 
+      u.account_id
+    from
+      aws_iam_user as u
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+ManualVerification: false
+Severity: low
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

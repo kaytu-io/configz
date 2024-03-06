@@ -1,0 +1,36 @@
+ID: aws_access_keys_rotated_x_days
+Title: Access Keys Rotated X Days
+Description: Ensure AWS IAM access keys are rotated on a periodic basis as a security best practice (X Days).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      access_key_id as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when status <> 'Active' then 'skip'
+        when create_date + ('{{.awsIamAccessKeyAge}}' || ' days')::interval < now() then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when status <> 'Active' then 'key is not activated'
+        when create_date + ('{{.awsIamAccessKeyAge}}' || ' days')::interval < now() then 'key is too old'
+        else 'key is not old yet'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_iam_access_key v
+  Connector: AWS
+  PrimaryTable: aws_iam_access_key
+  ListOfTables:
+    - aws_iam_access_key
+  Parameters:
+    - Key: awsIamAccessKeyAge
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)
