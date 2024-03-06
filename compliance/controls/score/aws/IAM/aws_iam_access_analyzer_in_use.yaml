@@ -1,0 +1,36 @@
+ID: aws_iam_access_analyzer_in_use
+Title: IAM Access Analyzer in Use
+Description: Ensure that IAM Access Analyzer feature is enabled to maintain access security to your AWS resources.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.account_id as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when exists (
+          select 1 from aws_accessanalyzer_analyzer as an where a.account_id = an.account_id limit 1
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists (
+          select 1 from aws_accessanalyzer_analyzer as an where a.account_id = an.account_id limit 1
+        ) then 'Amazon IAM Access Analyzer feature is used to protect your cloud resources'
+        else 'There are no access analyzers available on this account'
+      end as reason,
+      a.region, 
+      a.account_id
+    from
+      aws_account as a
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+    - aws_account
+    - aws_accessanalyzer_analyzer
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

@@ -1,0 +1,33 @@
+ID: aws_unnecessary_access_keys
+Title: Unnecessary Access Keys
+Description: Ensure there is a maximum of one active access key pair available for any single IAM user.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      u.name as resource,
+      u.kaytu_account_id,
+      u.kaytu_resource_id,
+      case
+        when (select count(*) from aws_iam_access_key as k where u.name = k.user_name) > 1 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (select count(*) from aws_iam_access_key as k where u.name = k.user_name) > 1 then u.name || ' user has more than one access keys'
+        when (select count(*) from aws_iam_access_key as k where u.name = k.user_name) = 1 then u.name || ' user has only one access key'
+        else u.name || ' user has no access key'
+      end as reason,
+      u.region, 
+      u.account_id
+    from
+      aws_iam_user as u
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+    - aws_iam_access_key
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

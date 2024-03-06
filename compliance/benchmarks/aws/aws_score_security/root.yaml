@@ -87,6 +87,32 @@ Controls:
   - aws_unrestricted_smtp_access
   - aws_unrestricted_security_group_ingress_on_uncommon_ports
   - aws_unrestricted_cifs_access
+  - aws_access_keys_rotated_45_days
+  - aws_access_keys_rotated_x_days
+  - aws_allow_iam_users_to_change_their_own_password
+  - aws_credentials_last_used
+  - aws_check_that_only_safelisted_iam_users_exist
+  - aws_iam_password_policy
+  - aws_iam_user_with_password_and_access_keys
+  - aws_unapproved_iam_policy_in_use
+  - aws_unused_iam_group
+  - aws_unnecessary_access_keys
+  - aws_iam_user_policies
+  - aws_iam_access_analyzer_in_use
+  - aws_iam_access_analyzer_findings
+  - aws_iam_group_with_inline_policies
+  - aws_iam_role_policy_too_permissive
+  - aws_iam_policies_with_effect_set_to_allow_and_notaction
+  - aws_attach_policy_to_iam_roles_associated_with_app_tier_ec2_instances
+  - aws_iam_user_password_expiry_30_days
+  - aws_iam_user_password_expiry_7_days
+  - aws_iam_user_password_expiry_x_days
+  - aws_root_mfa_enabled
+  - aws_root_account_active_signing_certificates
+  - aws_root_account_credentials_usage
+  - aws_iam_support_role
+  - aws_hardware_mfa_for_aws_root_account
+  - aws_iam_policies_with_full_administrative_privileges
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

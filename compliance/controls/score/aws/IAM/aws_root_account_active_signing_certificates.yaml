@@ -1,0 +1,33 @@
+ID: aws_root_account_active_signing_certificates
+Title: Root Account Active Signing Certificates
+Description: Ensure that your AWS root account user is not using X.509 certificates to validate API requests.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      (user_name || ' in account ' || account_id) as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when cert_1_active or cert_2_active then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when cert_1_active or cert_2_active then 'is using X.509 certificates to perform SOAP-protocol requests to AWS services. It is better to be disabled'
+        else 'is not using X.509 certificates to perform SOAP-protocol requests to AWS services'
+      end as reason,
+      region, 
+      account_id
+    from
+      aws_iam_credential_report
+    where
+      user_name = '<root_account>'
+  Connector: AWS
+  PrimaryTable: aws_iam_credential_report
+  ListOfTables:
+    - aws_iam_credential_report
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

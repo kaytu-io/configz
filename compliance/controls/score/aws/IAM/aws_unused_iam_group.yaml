@@ -1,0 +1,31 @@
+ID: aws_unused_iam_group
+Title: Unused IAM Group
+Description: Ensure all IAM groups have at least one user.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when users is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when users is null then name || ' group is unused and should be removed'
+        else name || ' group is being used'
+      end as reason,
+      region, 
+      account_id
+    from
+      aws_iam_group
+  Connector: AWS
+  PrimaryTable: aws_iam_group
+  ListOfTables:
+    - aws_iam_group
+ManualVerification: false
+Severity: low
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

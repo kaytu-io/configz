@@ -1,0 +1,37 @@
+ID: aws_hardware_mfa_for_aws_root_account
+Title: Hardware MFA for AWS Root Account
+Description: Ensure hardware MFA is enabled for the 'root' account.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      (r.user_name || ' in account ' || r.account_id) as resource,
+      r.kaytu_account_id,
+      r.kaytu_resource_id,
+      case
+        when not r.mfa_active::bool then 'alarm'
+        when m.serial_number is not null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when not r.mfa_active::bool then 'mfa is not activated'
+        when m.serial_number is not null then 'user is using virtual mfa'
+        else 'user is using hardware mfs'
+      end as reason,
+      r.region, 
+      r.account_id
+    from
+      aws_iam_credential_report as r
+      left join aws_iam_virtual_mfa_device as m on (m.user -> 'Arn')::text = r.user_arn
+    where
+      r.user_name = '<root_account>'
+  Connector: AWS
+  PrimaryTable: aws_iam_credential_report
+  ListOfTables:
+    - aws_iam_credential_report
+    - aws_iam_virtual_mfa_device
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

@@ -1,0 +1,32 @@
+ID: aws_iam_group_with_inline_policies
+Title: IAM Group With Inline Policies
+Description: Ensure IAM groups don't have inline policies attached.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when inline_policies is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when inline_policies is null then name || ' is not using inline policies'
+        else name || ' is using inline policies'
+      end as reason,
+      region, 
+      account_id
+    from
+      aws_iam_group
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+    - aws_account
+    - aws_accessanalyzer_analyzer
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

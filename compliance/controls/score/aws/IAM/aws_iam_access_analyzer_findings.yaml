@@ -1,0 +1,36 @@
+ID: aws_iam_access_analyzer_findings
+Title: IAM Access Analyzer Findings
+Description: Ensure that IAM Access Analyzer findings are reviewed and resolved to maintain access security to your AWS resources.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.name as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when exists (
+          select 1 from jsonb_array_elements(findings) as f where (f ->> 'Status') = 'ACTIVE'
+        ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when exists (
+          select 1 from jsonb_array_elements(findings) as f where (f ->> 'Status') = 'ACTIVE'
+        ) then 'There are unresolved findings in this analyzer'
+        else 'There is no unresolved findings in this analyzer'
+      end as reason,
+      a.region, 
+      a.account_id
+    from
+      aws_accessanalyzer_analyzer as a
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+    - aws_account
+    - aws_accessanalyzer_analyzer
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

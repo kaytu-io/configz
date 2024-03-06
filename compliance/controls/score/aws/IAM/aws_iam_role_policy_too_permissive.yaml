@@ -1,0 +1,63 @@
+ID: aws_iam_role_policy_too_permissive
+Title: IAM Role Policy Too Permissive
+Description: Ensure that the access policies attached to your IAM roles adhere to the principle of least privilege.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH too_permissive_policies AS (
+      SELECT
+        arn
+      FROM
+        aws_iam_policy,
+        jsonb_array_elements(policy_std -> 'Statement') AS s,
+        jsonb_array_elements_text(s -> 'Action') AS action
+      WHERE
+        action IN ('*', '*:*')
+        AND s ->> 'Effect' = 'Allow'
+    )
+
+    SELECT
+      name AS resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN tp.arn IS NOT NULL THEN 'alarm'
+        WHEN EXISTS(
+          SELECT 1 
+          FROM jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') AS s,
+            jsonb_array_elements_text(s -> 'Action') AS action
+          WHERE
+            action IN ('*', '*:*')
+            AND s ->> 'Effect' = 'Allow'
+        ) THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN tp.arn IS NOT NULL THEN ' there is too permissive attached policy'
+        WHEN EXISTS(
+          SELECT 1 
+          FROM jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') AS s,
+            jsonb_array_elements_text(s -> 'Action') AS action
+          WHERE
+            action IN ('*', '*:*')
+            AND s ->> 'Effect' = 'Allow'
+        ) THEN ' there is too permissive inline policy'
+        ELSE 'there is no too permissive policy'
+      END AS reason,
+      region, 
+      account_id
+    FROM
+      aws_iam_role AS r
+      LEFT JOIN too_permissive_policies AS tp ON r.arn = tp.arn,
+      jsonb_array_elements(inline_policies_std) AS p
+
+  Connector: AWS
+  PrimaryTable: aws_iam_role
+  ListOfTables:
+    - aws_iam_role
+    - aws_iam_policy
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)
