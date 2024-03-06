@@ -1,0 +1,45 @@
+Title: "Roles without Conditions on Properties of the principal"
+Description: ""
+DocumentURI: ""
+ID: aws_iam_roles_without_principal_condition
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+    - aws_iam_role
+  PrimaryTable: aws_iam_role
+  QueryToExecute: |
+    WITH have_condition_on_principal as (
+      SELECT 
+        arn
+      FROM 
+        aws_iam_role 
+        CROSS JOIN jsonb_array_elements(assume_role_policy -> 'Statement') AS statements
+        CROSS JOIN jsonb_each(statements.value -> 'Condition') as condition
+        CROSS JOIN jsonb_each(condition.value) as conditem
+      WHERE
+        not(statements.value -> 'Condition' is null) AND 
+        (conditem.key like 'aws:Principal%' or conditem.key like 'aws:user%')
+    )
+    SELECT
+      role.arn,
+      not(p.arn is null) as has_condition_on_principal
+    FROM
+      aws_iam_role role
+      LEFT JOIN have_condition_on_principal p on role.arn = p.arn
+Severity: high
+Tags:
+  category: []
+  cis: []
+  cis_item_id: []
+  cis_level: []
+  cis_section_id: []
+  cis_type: []
+  cis_version: []
+  plugin: []
+  service: []
+  x-kaytu-explanation: []
+  x-kaytu-noncompliance-cost: []
+  x-kaytu-usefulness-example: []
