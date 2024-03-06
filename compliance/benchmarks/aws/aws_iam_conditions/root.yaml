@@ -8,5 +8,5 @@ Controls:
 ReferenceCode: aws_iam_conditions
 Description: ""
 ID: aws_iam_conditions
-AutoAssign: false
+AutoAssign: true
 Title: Custom IAM Roles missing Global Controls

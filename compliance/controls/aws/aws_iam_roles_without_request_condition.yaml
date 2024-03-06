@@ -41,8 +41,17 @@ Query:
       )
     )
     SELECT
-      role.arn,
-      not(p.arn is null) as has_condition_on_request
+      role.arn as resource,
+      role.kaytu_account_id as kaytu_account_id,
+      role.kaytu_resource_id as kaytu_resource_id,
+      case
+        when p.arn is null then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when p.arn is null then role.arn || ' does not have necessary conditions'
+        else role.arn || ' has necessary conditions'
+      end reason,
     FROM
       aws_iam_role role
       LEFT JOIN have_condition_on_request p on role.arn = p.arn
