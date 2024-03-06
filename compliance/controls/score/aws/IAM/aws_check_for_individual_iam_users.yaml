@@ -1,0 +1,33 @@
+ID: aws_check_for_individual_iam_users
+Title: Check for Individual IAM Users
+Description: Ensure there is at least one IAM user used to access your AWS cloud account.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.account_id as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when user_id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when u.user_id is null then a.account_id || ' account has no user'
+        else a.account_id || ' account has user'
+      end as reason,
+      a.region, 
+      a.account_id
+    from
+      aws_account as a
+      left join aws_iam_user as u on a.account_id = u.account_id
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+    - aws_account
+    - aws_iam_user
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

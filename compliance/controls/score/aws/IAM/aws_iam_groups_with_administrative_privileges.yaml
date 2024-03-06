@@ -1,0 +1,31 @@
+ID: aws_iam_groups_with_administrative_privileges
+Title: IAM Groups with Administrative Privileges
+Description: Ensure there are no IAM groups with administrative permissions available in your AWS cloud account.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when attached_policy_arns::text like '%arn:aws:iam::aws:policy/AdministratorAccess%' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when attached_policy_arns::text like '%arn:aws:iam::aws:policy/AdministratorAccess%' then name || ' iam group has AWS administrator-level permissions'
+        else name || ' iam group does not have AWS administrator-level permissions'
+      end as reason,
+      region, 
+      account_id
+    from
+      aws_iam_group
+  Connector: AWS
+  PrimaryTable: aws_iam_policy
+  ListOfTables:
+    - aws_iam_policy
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

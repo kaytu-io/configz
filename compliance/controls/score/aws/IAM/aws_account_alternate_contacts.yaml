@@ -1,0 +1,33 @@
+ID: aws_account_alternate_contacts
+Title: Account Alternate Contacts
+Description: Ensure alternate contacts are set to improve the security of your AWS account.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.account_id as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when c.name is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when c.name is null then 'account does not have any alternate contact'
+        else 'account has an alternate contact'
+      end as reason,
+      a.region, 
+      a.account_id
+    from
+      aws_account as a
+      left join aws_account_alternate_contact as c on a.account_id = c.account_id
+  Connector: AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+    - aws_account
+    - aws_account_alternate_contact
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)
