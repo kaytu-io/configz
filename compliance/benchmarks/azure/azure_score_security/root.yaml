@@ -40,6 +40,18 @@ Controls:
   - azure_advanced_data_security_for_sql_servers
   - azure_enable_all_types_of_threat_detection_on_sql_servers
   - azure_enable_auditing_for_sql_servers
+  - azure_enable_vulnerability_assessment_email_notifications_for_admins_and_subscription_owners
+  - azure_enable_vulnerability_assessment_periodic_recurring_scans
+  - azure_enable_vulnerability_assessment_for_microsoft_sql_servers
+  - azure_sql_auditing_retention
+  - azure_use_byok_for_transparent_data_encryption
+  - azure_check_for_desired_vm_sku_sizes
+  - azure_check_for_usage_of_byok_for_disk_volumes_encryption
+  - azure_check_for_usage_of_customer_managed_keys_for_virtual_hard_disk_encryption
+  - azure_server_side_encryption_for_unattached_disk_using_cmk
+  - azure_server_side_encryption_for_boot_disk_using_cmk
+  - azure_server_side_encryption_for_non_boot_disk_using_cmk
+  - azure_check_for_usage_of_endpoint_protection
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

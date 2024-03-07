@@ -1,0 +1,35 @@
+ID: azure_check_for_usage_of_customer_managed_keys_for_virtual_hard_disk_encryption
+Title: Check for usage of Customer Managed Keys for Virtual Hard Disk Encryption
+Description: Ensure that Customer Managed Keys are used to encrypt Virtual Hard Disk (VHD) volumes.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      disk.id as resource,
+      disk.kaytu_account_id,
+      disk.kaytu_resource_id,
+      case
+        when encryption_type = 'EncryptionAtRestWithPlatformKey' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when encryption_type = 'EncryptionAtRestWithPlatformKey' then 'Disk is encrypted by CMK.'
+        else 'Disk is encrypted with Platform Key instead of CMK.'
+      end as reason,
+      disk.resource_group,
+      display_name as subscription
+    from
+      azure_compute_disk as disk,
+      azure_subscription as sub
+    where
+      sub.subscription_id = disk.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_disk
+  ListOfTables:
+    - azure_compute_disk
+    - azure_subscription
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

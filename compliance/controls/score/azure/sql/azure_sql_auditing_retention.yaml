@@ -1,0 +1,34 @@
+ID: azure_sql_auditing_retention
+Title: SQL Auditing Retention
+Description: Ensure that SQL database auditing has a sufficient log data retention period configured.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when (ap -> 'properties' ->> 'retentionDays')::int = 0 then 'ok'
+        when (ap -> 'properties' ->> 'retentionDays')::int >= 90 then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when (ap -> 'properties' ->> 'retentionDays')::int = 0 then 'server has unlimited retention'
+        when (ap -> 'properties' ->> 'retentionDays')::int >= 90 then 'server has a sufficient retention period'
+        else 'server does not have a sufficient log data retention period currently configured.'
+      end as type
+    from
+      azure_sql_server as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id,
+      jsonb_array_elements(server_audit_policy) as ap
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Managed SQL Service
