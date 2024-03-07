@@ -14,7 +14,7 @@ Query:
       end as status,
       case
         when date_part('day', now() - time_created) < {{.azureComputeSnapshotAgeMaxDays}} then 0
-        else 5
+        else (SELECT cost FROM pennywise_cost_estimate where resource_type = 'microsoft.compute/snapshots' and resource_id = s.kaytu_resource_id)
       end as cost_optimization,
       s.title || ' created at ' || time_created || ' (' || date_part('day', now() - time_created) || ' days).' as reason,
       s.resource_group,
