@@ -55,6 +55,7 @@ Controls:
   - aws_ssh_public_keys_rotated_90_days
   - aws_ssh_public_keys_rotated_45_days
   - aws_ssh_public_keys_rotated_x_days
+  - aws_iam_server_certificate_size
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

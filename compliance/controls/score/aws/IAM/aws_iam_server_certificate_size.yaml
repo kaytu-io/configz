@@ -1,0 +1,31 @@
+ID: aws_iam_server_certificate_size
+Title: AWS IAM Server Certificate Size
+Description: Ensure that all your SSL/TLS certificates are using either 2048 or 4096 bit RSA keys instead of 1024-bit keys.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN certificate_body_length < 2048 THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN certificate_body_length < 2048 THEN 'The key length is 1024 therefore it is insecure' 
+        ELSE 'Key is secure.'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_iam_server_certificate
+  Connector: AWS
+  PrimaryTable: aws_iam_server_certificate
+  ListOfTables:
+    - aws_iam_server_certificate
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - AWS Identity and Access Management (IAM)
