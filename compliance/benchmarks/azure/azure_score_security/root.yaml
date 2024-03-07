@@ -40,6 +40,11 @@ Controls:
   - azure_advanced_data_security_for_sql_servers
   - azure_enable_all_types_of_threat_detection_on_sql_servers
   - azure_enable_auditing_for_sql_servers
+  - azure_enable_vulnerability_assessment_email_notifications_for_admins_and_subscription_owners
+  - azure_enable_vulnerability_assessment_periodic_recurring_scans
+  - azure_enable_vulnerability_assessment_for_microsoft_sql_servers
+  - azure_sql_auditing_retention
+  - azure_use_byok_for_transparent_data_encryption
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

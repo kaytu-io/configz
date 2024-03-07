@@ -1,0 +1,35 @@
+ID: aws_ssl_tls_certificate_expiry_x_days
+Title: SSL/TLS Certificate Expiry X Days
+Description: Ensure SSL/TLS certificates are renewed before their expiration.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN expiration - ('{{.awsIamServerCertificateAge}}' || ' days')::interval < now() THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN expiration < now() THEN 'certificate has been expired'
+        WHEN expiration - ('{{.awsIamServerCertificateAge}}' || ' days')::interval < now() THEN 'certificate is about to expire in ' || expiration 
+        ELSE 'certificate is not going to expire soon'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_iam_server_certificate
+  Connector: AWS
+  PrimaryTable: aws_iam_server_certificate
+  ListOfTables:
+    - aws_iam_server_certificate
+  Parameters:
+    - Key: awsIamServerCertificateAge
+      Required: true
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

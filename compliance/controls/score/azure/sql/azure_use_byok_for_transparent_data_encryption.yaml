@@ -1,0 +1,33 @@
+ID: azure_use_byok_for_transparent_data_encryption
+Title: Use BYOK for Transparent Data Encryption
+Description: Use Bring Your Own Key (BYOK) support for Transparent Data Encryption (TDE).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      encryption ->> 'kind',
+      case
+        when (encryption ->> 'kind') = 'servicemanaged' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (encryption ->> 'kind') = 'servicemanaged' then 'server encryption is using a service-managed key instead of a Customer-Managed Key (CMK)'
+        else 'server encryption is using a Customer-Managed Key (CMK)'
+      end as type
+    from
+      azure_sql_server as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id,
+      jsonb_array_elements(encryption_protector) as encryption
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Managed SQL Service
