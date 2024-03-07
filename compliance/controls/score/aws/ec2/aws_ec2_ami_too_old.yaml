@@ -9,10 +9,12 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       CASE
+        WHEN is_aws_backup_managed THEN 'skip'
         WHEN now() - (creation_date)::timestamp > '180 days'::interval THEN 'alarm'
         ELSE 'ok'
       END AS status,
       CASE
+        WHEN is_aws_backup_managed THEN name || ' is managed by aws'
         WHEN now() - (creation_date)::timestamp > '180 days'::interval THEN name || ' needs to be restarted' 
         ELSE name || ' launch time was not much time ago'
       END AS reason,

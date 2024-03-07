@@ -8,10 +8,7 @@ Query:
       arn as resource,
       kaytu_account_id as kaytu_account_id,
       kaytu_resource_id as kaytu_resource_id,
-      case
-        when state = 'in-use' then 0
-        else (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::ec2::volume' and resource_id = v.kaytu_resource_id)
-      end as cost_optimization,
+      (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::ec2::volume' and resource_id = v.kaytu_resource_id) as cost_optimization,
       case
         when state = 'in-use' then 'ok'
         else 'alarm'

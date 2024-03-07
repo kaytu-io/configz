@@ -8,10 +8,7 @@ Query:
       disk.id as resource,
       disk.kaytu_resource_id,
       disk.kaytu_account_id,
-      case
-        when disk.disk_state = 'Unattached' then (SELECT cost FROM pennywise_cost_estimate where resource_type = 'microsoft.compute/disks' and resource_id = disk.kaytu_resource_id)
-        else 0
-      end as cost_optimization,
+      (SELECT cost FROM pennywise_cost_estimate where resource_type = 'microsoft.compute/disks' and resource_id = disk.kaytu_resource_id) as cost_optimization,
       case
         when disk.disk_state = 'Unattached' then 'alarm'
         else 'ok'

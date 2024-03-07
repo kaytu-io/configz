@@ -1,0 +1,69 @@
+Title: "Roles without Conditions on Properties on-role session"
+Description: ""
+DocumentURI: ""
+ID: aws_iam_roles_without_on_role_session_condition
+Managed: true
+ManualVerification: false
+Query:
+  Connector: AWS
+  Engine: odysseus-v0.0.1
+  ListOfTables:
+    - aws_iam_role
+  PrimaryTable: aws_iam_role
+  QueryToExecute: |
+    WITH have_condition_on_role_session as (
+    SELECT 
+      arn
+    FROM 
+      aws_iam_role 
+      CROSS JOIN jsonb_array_elements(assume_role_policy -> 'Statement') AS statements
+      CROSS JOIN jsonb_each(statements.value -> 'Condition') as condition
+      CROSS JOIN jsonb_each(condition.value) as conditem
+    WHERE
+      not(statements.value -> 'Condition' is null) AND 
+      (
+        conditem.key = 'aws:FederatedProvider' or 
+        conditem.key = 'aws:TokenIssueTime' or 
+        conditem.key = 'aws:MultiFactorAuthAge' or 
+        conditem.key = 'aws:MultiFactorAuthPresent' or 
+        conditem.key = 'aws:Ec2InstanceSourceVpc' or 
+        conditem.key = 'aws:Ec2InstanceSourcePrivateIPv4' or 
+        conditem.key = 'aws:SourceIdentity' or 
+        conditem.key = 'ec2:RoleDelivery' or 
+        conditem.key = 'ec2:SourceInstanceArn' or 
+        conditem.key = 'glue:RoleAssumedBy' or 
+        conditem.key = 'glue:CredentialIssuingService' or 
+        conditem.key = 'lambda:SourceFunctionArn' or 
+        conditem.key = 'ssm:SourceInstanceArn' or 
+        conditem.key = 'identitystore:UserId'
+      )
+    )
+    SELECT
+      role.arn as resource,
+      role.kaytu_account_id as kaytu_account_id,
+      role.kaytu_resource_id as kaytu_resource_id,
+      case
+        when p.arn is null then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when p.arn is null then role.arn || ' does not have necessary conditions'
+        else role.arn || ' has necessary conditions'
+      end reason,
+    FROM
+      aws_iam_role role
+      LEFT JOIN have_condition_on_role_session p on role.arn = p.arn
+Severity: high
+Tags:
+  category: []
+  cis: []
+  cis_item_id: []
+  cis_level: []
+  cis_section_id: []
+  cis_type: []
+  cis_version: []
+  plugin: []
+  service: []
+  x-kaytu-explanation: []
+  x-kaytu-noncompliance-cost: []
+  x-kaytu-usefulness-example: []
