@@ -1,0 +1,71 @@
+ID: aws_iam_users_unauthorized_to_edit_access_policies
+Title: IAM Users Unauthorized to Edit Access Policies
+Description: Ensure AWS IAM users that are not authorized to edit IAM access policies are decommissioned..
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    WITH authorize_to_edit_policy AS (
+      SELECT
+        arn,
+        (select ARRAY_AGG(action) from jsonb_array_elements_text(s -> 'Action') AS action)
+      FROM
+          aws_iam_policy,
+          jsonb_array_elements(policy_std -> 'Statement') AS s
+      WHERE 
+          ((select ARRAY_AGG(action) from jsonb_array_elements_text(s -> 'Action') AS action) @> ARRAY[
+              'iam:CreatePolicy',
+              'iam:CreatePolicyVersion',
+              'iam:DeleteGroupPolicy',
+              'iam:DeletePolicy',
+              'iam:DeletePolicyVersion',
+              'iam:DeleteRolePolicy',
+              'iam:DeleteUserPolicy',
+              'iam:DetachGroupPolicy',
+              'iam:DetachRolePolicy',
+              'iam:DetachUserPolicy',
+              'iam:PutGroupPolicy',
+              'iam:PutRolePolicy',
+              'iam:PutUserPolicy',
+              'iam:UpdateAssumeRolePolicy'
+          ]
+          and
+          (s ->> 'Effect') = 'Allow')
+          or 
+          ((select ARRAY_AGG(action) from jsonb_array_elements_text(s -> 'Action') AS action) @> ARRAY[
+              'iam:*'
+          ]
+          and
+          (s ->> 'Effect') = 'Allow')
+      )
+
+    SELECT
+      name AS resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN EXISTS(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as parn
+            LEFT JOIN authorize_to_edit_policy AS ep ON parn = ep.arn where ep.arn is not null
+        ) and ('{{.awsIamUsersAuthorizedToEditPolicy}}' not like '%' || user_id || '%') THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN EXISTS(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as parn
+            LEFT JOIN authorize_to_edit_policy AS ep ON parn = ep.arn where ep.arn is not null
+        ) and ('{{.awsIamUsersAuthorizedToEditPolicy}}' not like '%' || user_id || '%') THEN 'this iam user is not authorized to edit policies'
+        ELSE 'ok'
+      END AS reason,
+      region, 
+      account_id
+    FROM
+      aws_iam_user
+  Connector: AWS
+  PrimaryTable: aws_iam_credential_report
+  ListOfTables:
+    - aws_iam_credential_report
+ManualVerification: false
+Severity: critical
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)
