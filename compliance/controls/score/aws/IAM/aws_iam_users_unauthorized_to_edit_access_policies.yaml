@@ -64,6 +64,9 @@ Query:
   PrimaryTable: aws_iam_credential_report
   ListOfTables:
     - aws_iam_credential_report
+  Parameters:
+    - Key: awsIamUsersAuthorizedToEditPolicy
+      Required: true
 ManualVerification: false
 Severity: critical
 Tags:
