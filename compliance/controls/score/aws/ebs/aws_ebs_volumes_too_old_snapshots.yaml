@@ -8,7 +8,10 @@ Query:
       snapshot_id as resource,
       kaytu_resource_id,
       kaytu_account_id,
-      (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::ec2::volumesnapshot' and resource_id = es.kaytu_resource_id) AS cost_optimization,
+      CASE
+        WHEN start_time + ({{.awsEbsSnapshotAgeMaxDays}}::INT || ' days')::interval < now() THEN (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::ec2::volumesnapshot' and resource_id = es.kaytu_resource_id)
+        ELSE 0
+      END AS cost_optimization,
       CASE
         WHEN start_time + ({{.awsEbsSnapshotAgeMaxDays}}::INT || ' days')::interval < now() THEN 'alarm'
         ELSE 'ok'
