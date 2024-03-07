@@ -1,0 +1,34 @@
+ID: azure_check_for_unrestricted_sql_database_access
+Title: Check for Unrestricted SQL Database Access
+Description: Ensure that no SQL databases allow unrestricted inbound access from 0.0.0.0/0 (any IP address).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when s.public_network_access = 'Enabled' and (r -> 'properties' ->> 'startIpAddress' = '0.0.0.0') then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when s.public_network_access = 'Enabled' and (r -> 'properties' ->> 'startIpAddress' = '0.0.0.0') then 'allows unrestricted ingress/inbound access for all the SQL databases hosted on the server.'
+        else 'does not allow unrestricted ingress/inbound access for all the SQL databases hosted on the server.'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_sql_server as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id,
+      jsonb_array_elements(firewall_rules) as r
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+ManualVerification: false
+Severity: critical
+Tags:
+  score_service_name:
+  - Azure Managed SQL Service

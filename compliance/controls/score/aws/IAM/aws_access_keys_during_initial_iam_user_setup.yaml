@@ -1,0 +1,32 @@
+ID: aws_access_keys_during_initial_iam_user_setup
+Title: Access Keys During Initial IAM User Setup
+Description: Ensure no access keys are created during IAM user initial setup with AWS Management Console.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      user_name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when (access_key_1_last_rotated - user_creation_time < '5 second'::interval) and (access_key_1_last_used_date is null) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (access_key_1_last_rotated - user_creation_time < '5 second'::interval) and (access_key_1_last_used_date is null) then 'access key 1 is considered as unused and is better to be removed'
+        when (access_key_1_last_rotated is null) then 'access key 1 is not defined'
+        else 'access key 1 is being used'
+      end as reason,
+      region, 
+      account_id
+    from
+      aws_iam_credential_report
+  Connector: AWS
+  PrimaryTable: aws_iam_credential_report
+  ListOfTables:
+    - aws_iam_credential_report
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

@@ -113,6 +113,14 @@ Controls:
   - aws_iam_support_role
   - aws_hardware_mfa_for_aws_root_account
   - aws_iam_policies_with_full_administrative_privileges
+  - aws_iam_groups_with_administrative_privileges
+  - aws_check_for_individual_iam_users
+  - aws_access_keys_during_initial_iam_user_setup
+  - aws_account_alternate_contacts
+  - aws_check_for_overly_permissive_iam_group_policies
+  - aws_approved_ecs_execute_command_access
+  - aws_canary_access_token
+  - aws_iam_users_unauthorized_to_edit_access_policies
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

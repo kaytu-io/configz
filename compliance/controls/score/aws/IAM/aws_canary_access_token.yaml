@@ -1,0 +1,43 @@
+ID: aws_canary_access_token
+Title: Canary Access Token
+Description: Detects when a canary token access key has been used
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with users as (
+      select
+        user_id,
+        u.account_id
+      from
+        aws_iam_user as u
+        left join aws_iam_credential_report as r on r.user_arn = u.arn
+      where
+        u.inline_policies is null and u.attached_policy_arns is null and 
+        ((not r.password_enabled::bool) and (r.access_key_1_active or r.access_key_2_active))
+    )
+
+    select
+      account_id as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when exists(select 1 from users as u where u.account_id = a.account_id) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists(select 1 from users as u where u.account_id = a.account_id) then 'Canary access tokens are used within your AWS account.'
+        else ' anary access tokens are not currently used within your AWS account.'
+      end as reason,
+      region, 
+      account_id
+    from
+      aws_account as a
+  Connector: AWS
+  PrimaryTable: aws_iam_credential_report
+  ListOfTables:
+    - aws_iam_credential_report
+ManualVerification: false
+Severity: critical
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

@@ -1,6 +1,6 @@
-ID: aws_iam_role_policy_too_permissive
-Title: IAM Role Policy Too Permissive
-Description: Ensure that the access policies attached to your IAM roles adhere to the principle of least privilege.
+ID: aws_check_for_overly_permissive_iam_group_policies
+Title: Check for Overly Permissive IAM Group Policies
+Description: Ensure that Amazon IAM policies attached to IAM groups aren't too permissive.
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -53,7 +53,7 @@ Query:
       region, 
       account_id
     FROM
-      aws_iam_role AS r
+      aws_iam_group AS g
   Connector: AWS
   PrimaryTable: aws_iam_role
   ListOfTables:

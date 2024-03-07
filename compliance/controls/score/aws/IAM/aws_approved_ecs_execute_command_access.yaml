@@ -1,0 +1,105 @@
+ID: aws_approved_ecs_execute_command_access
+Title: Approved ECS Execute Command Access
+Description: Ensure that all access to the ECS Execute Command action is approved
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT
+      name AS resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN (inline_policies_std::text like '%ecs:ExecuteCommand%') and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'alarm'
+        WHEN exists(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as ap left join aws_iam_policy as p on p.arn = ap
+          where p.policy::text like '%ecs:ExecuteCommand%'
+        ) and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN (inline_policies_std::text like '%ecs:ExecuteCommand%') and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'user is not authorized to do this ecs action'
+        WHEN exists(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as ap left join aws_iam_policy as p on p.arn = ap
+          where p.policy::text like '%ecs:ExecuteCommand%'
+        ) and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'user is not authorized to do this ecs action'
+        ELSE 'ok'
+      END AS reason,
+      region, 
+      account_id
+    FROM
+      aws_iam_user
+
+    UNION ALL
+
+    SELECT
+      name AS resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN (inline_policies_std::text like '%ecs:ExecuteCommand%') and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'alarm'
+        WHEN exists(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as ap left join aws_iam_policy as p on p.arn = ap
+          where p.policy::text like '%ecs:ExecuteCommand%'
+        ) and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN (inline_policies_std::text like '%ecs:ExecuteCommand%') and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'user is not authorized to do this ecs action'
+        WHEN exists(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as ap left join aws_iam_policy as p on p.arn = ap
+          where p.policy::text like '%ecs:ExecuteCommand%'
+        ) and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'user is not authorized to do this ecs action'
+        ELSE 'ok'
+      END AS reason,
+      region, 
+      account_id
+    FROM
+      aws_iam_role
+
+    UNION ALL
+
+    SELECT
+      name AS resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN (inline_policies_std::text like '%ecs:ExecuteCommand%') and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'alarm'
+        WHEN exists(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as ap left join aws_iam_policy as p on p.arn = ap
+          where p.policy::text like '%ecs:ExecuteCommand%'
+        ) and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN (inline_policies_std::text like '%ecs:ExecuteCommand%') and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'user is not authorized to do this ecs action'
+        WHEN exists(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as ap left join aws_iam_policy as p on p.arn = ap
+          where p.policy::text like '%ecs:ExecuteCommand%'
+        ) and
+        ('{{.awsEcsExecuteCommandIamArns}}' not like '%' || arn || '%') THEN 'user is not authorized to do this ecs action'
+        ELSE 'ok'
+      END AS reason,
+      region, 
+      account_id
+    FROM
+      aws_iam_group
+  Connector: AWS
+  PrimaryTable: aws_iam_credential_report
+  ListOfTables:
+    - aws_iam_credential_report
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

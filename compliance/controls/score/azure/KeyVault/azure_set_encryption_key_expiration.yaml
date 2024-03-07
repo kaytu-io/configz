@@ -1,0 +1,33 @@
+ID: azure_set_encryption_key_expiration
+Title: Set Encryption Key Expiration
+Description: Ensure that an expiration date is configured for all your Microsoft Azure encryption keys.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      k.name as resource,
+      k.kaytu_resource_id,
+      k.kaytu_account_id,
+      case
+        when expires_at is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when expires_at is null then 'key does not have an expiration time set'
+        else 'key has an expiration time set'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault_key as k
+      left join azure_subscription as sub on k.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_key_vault_key
+  ListOfTables:
+    - azure_key_vault_key
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure KeyVault
