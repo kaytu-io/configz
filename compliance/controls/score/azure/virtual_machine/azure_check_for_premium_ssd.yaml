@@ -1,0 +1,35 @@
+ID: azure_check_for_premium_ssd
+Title: Check for Premium SSD
+Description: Ensure that Azure virtual machines are using Standard SSD disk volumes instead of Premium SSD volumes to optimize VM costs.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      disk.id as resource,
+      disk.kaytu_account_id,
+      disk.kaytu_resource_id,
+      case
+        when sku_name = 'Premium_LRS' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when sku_name = 'Premium_LRS' then 'It is better to use Standard SSD disk volume instead of Premium SSD volume to optimize the cost'
+        else 'ok'
+      end as reason,
+      disk.resource_group,
+      display_name as subscription
+    from
+      azure_compute_disk as disk,
+      azure_subscription as sub
+    where
+      sub.subscription_id = disk.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_disk
+  ListOfTables:
+    - azure_compute_disk
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

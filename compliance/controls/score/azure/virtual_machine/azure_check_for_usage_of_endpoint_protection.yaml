@@ -1,0 +1,39 @@
+ID: azure_check_for_usage_of_endpoint_protection
+Title: Check for usage of Endpoint Protection
+Description: Ensure that endpoint protection is installed on your Microsoft Azure virtual machines.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when exists(
+          select 1 from jsonb_array_elements(vm.extensions) as ex
+          where 'EndpointSecurity,Antimalware,EndpointProtection,SCWPAgent,PortalProtectExtension,FileSecurity' ilike '%' || (ex ->> 'name') || '%'
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists(
+          select 1 from jsonb_array_elements(vm.extensions) as ex
+          where 'EndpointSecurity,Antimalware,EndpointProtection,SCWPAgent,PortalProtectExtension,FileSecurity' ilike '%' || (ex ->> 'name') || '%'
+        ) then 'Azure virtual machine has anti-malware protection'
+        else 'Azure virtual machine is missing anti-malware protection'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm
+      left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

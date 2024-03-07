@@ -1,0 +1,38 @@
+ID: azure_check_for_desired_vm_sku_sizes
+Title: Check for Desired VM SKU Size(s)
+Description: Ensure that your virtual machine instances are of a given SKU size (e.g. Standard_A8_v2).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when '{{.azureAllowedVmSizes}}' not like '%' || (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'HardwareProfile' ->> 'VMSize') || '%' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when '{{.azureAllowedVmSizes}}' not like '%' || (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'HardwareProfile' ->> 'VMSize') || '%' then 'the virtual machine vm size is not allowed by your organization'
+        else 'the virtual machine vm size is allowed by your organization'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm,
+      azure_subscription as sub
+    where
+      sub.subscription_id = vm.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+  Parameters:
+    - Key: azureAllowedVmSizes
+      Required: true
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure Virtual Machines
