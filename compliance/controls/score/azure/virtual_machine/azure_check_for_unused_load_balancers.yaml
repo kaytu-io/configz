@@ -23,6 +23,13 @@ Query:
             ) then lb.name || ' is used.'
         else lb.name || ' is unused.'
       end as reason,
+      case
+        when EXISTS (
+          SELECT 1 FROM jsonb_array_elements(backend_address_pools) AS p
+          WHERE p -> 'properties' ->> 'backendIPConfigurations' is not null
+        ) then 0
+        else 20
+      end as cost_optimization,
       lb.resource_group as resource_group,
       sub.display_name as subscription
     from

@@ -25,6 +25,10 @@ Query:
         when b.load_balancer_arn is null then a.title || ' has no target registered.'
         else a.title || ' has registered target of type ' || b.target_type || '.'
       end as reason,
+      case
+        when b.load_balancer_arn is null then 15
+        else 0
+      end as cost_optimization,
       a.region,
       a.account_id
     from

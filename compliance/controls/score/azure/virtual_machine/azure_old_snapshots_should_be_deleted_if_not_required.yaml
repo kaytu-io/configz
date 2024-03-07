@@ -12,6 +12,10 @@ Query:
         when date_part('day', now() - time_created) < {{.azureComputeSnapshotAgeMaxDays}} then 'ok'
         else 'alarm'
       end as status,
+      case
+        when date_part('day', now() - time_created) < {{.azureComputeSnapshotAgeMaxDays}} then 0
+        else 5
+      end as cost_optimization,
       s.title || ' created at ' || time_created || ' (' || date_part('day', now() - time_created) || ' days).' as reason,
       s.resource_group,
       display_name as subscription

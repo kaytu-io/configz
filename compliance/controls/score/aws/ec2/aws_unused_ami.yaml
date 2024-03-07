@@ -15,7 +15,11 @@ Query:
       case
         when i.arn is null then ami.name || ' is unused.'
         else ami.name || ' is used.'
-      end as reason,
+      end as reason,  
+      case
+        when i.arn is null then 5
+        else 0
+      end as cost_optimization,
       ami.region,
       ami.account_id
     from
