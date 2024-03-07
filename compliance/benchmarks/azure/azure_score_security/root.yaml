@@ -52,6 +52,9 @@ Controls:
   - azure_server_side_encryption_for_boot_disk_using_cmk
   - azure_server_side_encryption_for_non_boot_disk_using_cmk
   - azure_check_for_usage_of_endpoint_protection
+  - aws_ssh_public_keys_rotated_90_days
+  - aws_ssh_public_keys_rotated_45_days
+  - aws_ssh_public_keys_rotated_x_days
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

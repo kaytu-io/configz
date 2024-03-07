@@ -1,0 +1,31 @@
+ID: aws_ssh_public_keys_rotated_90_days
+Title: SSH Public Keys Rotated 90 Days
+Description: Ensure IAM SSH public keys are rotated on a periodic basis to adhere to AWS security best practices.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+      ssh_public_key_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      CASE
+        WHEN now() - update_date > '90 days'::interval THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN now() - update_date > '90 days'::interval THEN 'ssh key is too old and should be removed' 
+        ELSE 'ssh key is not too old'
+      END AS reason,
+      region,
+      account_id
+    FROM 
+      aws_iam_ssh_public_key
+  Connector: AWS
+  PrimaryTable: aws_iam_ssh_public_key
+  ListOfTables:
+    - aws_iam_ssh_public_key
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - AWS Identity and Access Management (IAM)
