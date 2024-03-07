@@ -1,0 +1,48 @@
+ID: azure_database_tier_customer_managed_key_in_use
+Title: Database Tier Customer-Managed Key In Use
+Description: Ensure that a Customer-Managed Key is created for your Azure cloud database tier.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      display_name as resource,
+      sub.kaytu_resource_id,
+      sub.kaytu_account_id,
+      case
+        when exists(
+          select 1 from azure_key_vault_key as k where (k.subscription_id = sub.subscription_id) and
+            k.tags is not null and
+            (k.tags::text like '%' || REPLACE(REPLACE((
+              SELECT jsonb_object_agg(key, value)::text
+              FROM jsonb_each_text('{{.azureDatabaseTierTags}}'::jsonb)
+            ), '{', ''), '}', '') || '%') and enabled
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists(
+          select 1 from azure_key_vault_key as k where (k.subscription_id = sub.subscription_id) and
+            k.tags is not null and
+            (k.tags::text like '%' || REPLACE(REPLACE((
+              SELECT jsonb_object_agg(key, value)::text
+              FROM jsonb_each_text('{{.azureDatabaseTierTags}}'::jsonb)
+            ), '{', ''), '}', '') || '%') and enabled
+        ) then 'subscription has an app-tier cmk'
+        else 'subscription does not have any app-tier cmk'
+      end as reason,
+      sub.display_name as subscription
+    from
+      azure_subscription as sub
+  Connector: Azure
+  PrimaryTable: azure_subscription
+  ListOfTables:
+    - azure_key_vault_key
+    - azure_subscription
+  Parameters:
+    - Key: azureDatabaseTierTags
+      Required: true
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure KeyVault
