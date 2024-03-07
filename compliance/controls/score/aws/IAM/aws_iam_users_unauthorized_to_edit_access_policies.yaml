@@ -68,7 +68,7 @@ Query:
     - Key: awsIamUsersAuthorizedToEditPolicy
       Required: true
 ManualVerification: false
-Severity: critical
+Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)

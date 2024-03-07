@@ -1,0 +1,36 @@
+ID: azure_enable_all_types_of_threat_detection_on_sql_servers
+Title: Enable All Types of Threat Detection on SQL Servers
+Description: Enable all types of threat detection for your Microsoft Azure SQL database servers.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when alert_length = 1 and disabled_alerts = '' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when alert_length = 1 and disabled_alerts = '' then 'send notification alerts for all types of threats detected for the selected SQL server.'
+        else 'does not send notification alerts for all types of threats detected for the selected SQL server.'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_sql_server as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id,
+      jsonb_array_elements(server_security_alert_policy) as security,
+      jsonb_array_elements_text(security -> 'properties' -> 'disabledAlerts') as disabled_alerts,
+      jsonb_array_length(security -> 'properties' -> 'disabledAlerts') as alert_length
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure Managed SQL Service

@@ -36,6 +36,10 @@ Controls:
   - azure_check_for_azure_key_vault_secrets_expiration_date
   - azure_check_for_certificate_minimum_key_size
   - azure_set_encryption_key_expiration
+  - azure_check_for_unrestricted_sql_database_access
+  - azure_advanced_data_security_for_sql_servers
+  - azure_enable_all_types_of_threat_detection_on_sql_servers
+  - azure_enable_auditing_for_sql_servers
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security
