@@ -47,7 +47,7 @@ Query:
     - azure_subscription
   Parameters:
     - Key: azureKeyVaultKeyExpirationDateDays
-      Required: false
+      Required: true
 ManualVerification: false
 Severity: medium
 Tags:
