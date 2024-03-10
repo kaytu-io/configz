@@ -1,0 +1,35 @@
+ID: azure_enable_logging_for_azure_storage_queue_service
+Title: Enable Logging for Azure Storage Queue Service
+Description: Ensure that detailed storage logging is enabled for the Azure Storage Queue service.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      sa.id as resource,
+      sa.kaytu_account_id,
+      sa.kaytu_resource_id,
+      case
+        when (queue_logging_read = 'false' and queue_logging_write = 'false' and queue_logging_delete = 'false') then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (queue_logging_read = 'false' and queue_logging_write = 'false' and queue_logging_delete = 'false') then 'The detailed storage logging is not enabled for the Azure Storage Queue service within the selected storage account.'
+        else 'The detailed storage logging is enabled for the Azure Storage Queue service within the selected storage account.'
+      end as reason,
+      sa.resource_group,
+      display_name as subscription
+    from
+      azure_storage_account as sa,
+      azure_subscription as sub
+    where
+      sub.subscription_id = sa.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+    - azure_storage_account
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Storage Accounts

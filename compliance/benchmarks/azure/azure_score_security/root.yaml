@@ -63,6 +63,31 @@ Controls:
   - azure_check_for_system_assigned_managed_identities
   - azure_check_for_encryption_for_web_tier_disk_volumes
   - azure_check_for_guest_level_diagnostics_for_virtual_machines
+  - azure_use_byok_for_storage_account_encryption
+  - azure_enable_trusted_microsoft_services_for_storage_account_access
+  - azure_enable_secure_transfer_in_azure_storage
+  - azure_enable_logging_for_azure_storage_table_service
+  - azure_enable_logging_for_azure_storage_queue_service
+  - azure_enable_logging_for_azure_storage_blob_service
+  - azure_enable_immutable_blob_storage
+  - azure_enable_blob_storage_lifecycle_management
+  - azure_check_for_unrestricted_telnet_access
+  - azure_enable_azure_network_watcher
+  - azure_check_for_unrestricted_udp_access
+  - azure_check_for_unrestricted_ssh_access
+  - azure_check_for_unrestricted_smtp_access
+  - azure_check_for_unrestricted_rpc_access
+  - azure_check_for_unrestricted_mssql_access
+  - azure_check_for_unrestricted_mysql_database_access
+  - azure_check_for_unrestricted_oracle_database_access
+  - azure_check_for_unrestricted_postgresql_database_access
+  - azure_check_for_unrestricted_rdp_access
+  - azure_check_for_unrestricted_netbios_access
+  - azure_check_for_unrestricted_mongodb_access
+  - azure_review_network_interfaces_with_ip_forwarding_enabled
+  - azure_enable_ddos_standard_protection_for_virtual_networks
+  - azure_use_azure_cni_add_on_for_managing_network_resources
+  - azure_use_microsoft_entra_id_integration_for_aks_clusters
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

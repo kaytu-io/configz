@@ -1,0 +1,42 @@
+ID: azure_check_for_unrestricted_rdp_access
+Title: Check for Unrestricted RDP Access
+Description: Ensure that no network security groups allow unrestricted inbound access on TCP port 3389 (Remote Desktop Protocol RDP).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      sg.id as resource,
+      sg.kaytu_account_id,
+      sg.kaytu_resource_id,
+      case
+        when (sr -> 'properties' ->> 'sourceAddressPrefix' = '*') or
+        (sr -> 'properties' ->> 'sourceAddressPrefix' = 'any') or
+        (sr -> 'properties' ->> 'sourceAddressPrefix' = 'internet') then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (sr -> 'properties' ->> 'sourceAddressPrefix' = '*') or
+        (sr -> 'properties' ->> 'sourceAddressPrefix' = 'any') or
+        (sr -> 'properties' ->> 'sourceAddressPrefix' = 'internet') then 'The RDP inbound access to the associated Microsoft Azure virtual machine(s) is not secured.'
+        else 'The RDP inbound access to the associated Microsoft Azure virtual machine(s) is secured.'
+      end as reason,
+      sg.resource_group,
+      display_name as subscription
+    from
+      azure_network_security_group as sg,
+      azure_subscription as sub,
+      jsonb_array_elements(security_rules) as sr
+    where
+      sub.subscription_id = sg.subscription_id and
+      sr -> 'properties' ->> 'access' = 'Allow' and sr -> 'properties' ->> 'protocol' = 'Tcp' and
+      (sr -> 'properties' ->> 'destinationPortRanges' = '3389' or sr -> 'properties' ->> 'destinationPortRanges' like '%"3389"%' or sr -> 'properties' ->> 'destinationPortRanges' = '*') and sr -> 'properties' ->> 'direction' = 'Inbound'
+  Connector: Azure
+  PrimaryTable: azure_network_security_group
+  ListOfTables:
+    - azure_network_security_group
+    - azure_subscription
+ManualVerification: false
+Severity: critical
+Tags:
+  score_service_name:
+  - Azure Network

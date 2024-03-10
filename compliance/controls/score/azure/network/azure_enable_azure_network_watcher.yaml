@@ -1,0 +1,73 @@
+ID: azure_enable_azure_network_watcher
+Title: Enable Azure Network Watcher
+Description: Ensure that Network Watcher is enabled within your Microsoft Azure account subscription.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with regions_nw as (
+      SELECT subscription_id, array_agg(DISTINCT region) AS regions
+      FROM azure_network_watcher
+      GROUP BY subscription_id
+    )
+
+    select
+      sub.id as resource,
+      sub.kaytu_account_id,
+      sub.kaytu_resource_id,
+      case
+        when nw.regions @> ARRAY[
+          	'eastus', 'eastus2', 'southcentralus', 'westus2', 'westus3',
+          	'australiaeast', 'southeastasia', 'northeurope', 'swedencentral',
+          	'uksouth', 'westeurope', 'centralus', 'southafricanorth', 'centralindia',
+          	'eastasia', 'japaneast', 'koreacentral', 'canadacentral', 'francecentral',
+          	'germanywestcentral', 'norwayeast', 'polandcentral', 'switzerlandnorth',
+          	'uaenorth', 'brazilsouth', 'centraluseuap', 'eastus2euap', 'qatarcentral',
+          	'centralusstage', 'eastusstage', 'eastus2stage', 'northcentralusstage',
+          	'southcentralusstage', 'westusstage', 'westus2stage', 'asia', 'asiapacific',
+          	'australia', 'brazil', 'canada', 'europe', 'france', 'germany', 'global',
+          	'india', 'japan', 'korea', 'norway', 'singapore', 'southafrica', 'switzerland',
+          	'uae', 'uk', 'unitedstates', 'unitedstateseuap', 'eastasiastage',
+          	'southeastasiastage', 'brazilus', 'eastusstg', 'northcentralus', 'westus',
+          	'jioindiawest', 'southcentralusstg', 'westcentralus', 'southafricawest',
+          	'australiacentral', 'australiacentral2', 'australiasoutheast', 'japanwest',
+          	'jioindiacentral', 'koreasouth', 'southindia', 'westindia', 'canadaeast',
+          	'francesouth', 'germanynorth', 'norwaywest', 'switzerlandwest', 'ukwest',
+          	'uaecentral', 'brazilsoutheast'
+          ] then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when nw.regions @> ARRAY[
+          	'eastus', 'eastus2', 'southcentralus', 'westus2', 'westus3',
+          	'australiaeast', 'southeastasia', 'northeurope', 'swedencentral',
+          	'uksouth', 'westeurope', 'centralus', 'southafricanorth', 'centralindia',
+          	'eastasia', 'japaneast', 'koreacentral', 'canadacentral', 'francecentral',
+          	'germanywestcentral', 'norwayeast', 'polandcentral', 'switzerlandnorth',
+          	'uaenorth', 'brazilsouth', 'centraluseuap', 'eastus2euap', 'qatarcentral',
+          	'centralusstage', 'eastusstage', 'eastus2stage', 'northcentralusstage',
+          	'southcentralusstage', 'westusstage', 'westus2stage', 'asia', 'asiapacific',
+          	'australia', 'brazil', 'canada', 'europe', 'france', 'germany', 'global',
+          	'india', 'japan', 'korea', 'norway', 'singapore', 'southafrica', 'switzerland',
+          	'uae', 'uk', 'unitedstates', 'unitedstateseuap', 'eastasiastage',
+          	'southeastasiastage', 'brazilus', 'eastusstg', 'northcentralus', 'westus',
+          	'jioindiawest', 'southcentralusstg', 'westcentralus', 'southafricawest',
+          	'australiacentral', 'australiacentral2', 'australiasoutheast', 'japanwest',
+          	'jioindiacentral', 'koreasouth', 'southindia', 'westindia', 'canadaeast',
+          	'francesouth', 'germanynorth', 'norwaywest', 'switzerlandwest', 'ukwest',
+          	'uaecentral', 'brazilsoutheast'
+          ] then 'Network watcher is available for all regions for this subscription.'
+        else 'Network watcher is not available for all regions for this subscription.'
+      end as reason,
+      display_name as subscription
+    from
+      azure_subscription as sub
+      left join regions_nw as nw on sub.subscription_id = nw.subscription_id  Connector: Azure
+  PrimaryTable: azure_subscription
+  ListOfTables:
+    - azure_network_watcher
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Network

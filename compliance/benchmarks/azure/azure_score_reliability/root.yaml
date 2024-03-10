@@ -12,6 +12,8 @@ Controls:
   - azure_check_for_instance_termination_notifications_for_virtual_machine_scale_sets
   - azure_check_for_associated_load_balancers
   - azure_check_for_guest_level_diagnostics_for_virtual_machines
+  - azure_enable_soft_delete_for_azure_blob_storage
+  - azure_check_for_sufficient_soft_deleted_data_retention_period
 ReferenceCode: azure_score_reliability
 Description: Reliability Description
 ID: azure_score_reliability
