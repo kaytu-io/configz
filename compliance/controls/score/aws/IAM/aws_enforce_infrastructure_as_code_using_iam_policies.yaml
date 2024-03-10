@@ -1,0 +1,69 @@
+ID: aws_enforce_infrastructure_as_code_using_iam_policies
+Title: Enforce Infrastructure as Code using IAM Policies
+Description: Enforce Infrastructure as Code by controlling access for requests made on your behalf.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+     WITH too_permissive_policies AS (
+      SELECT
+        arn
+      FROM
+        aws_iam_policy,
+        jsonb_array_elements(policy_std -> 'Statement') AS s,
+        jsonb_array_elements_text(s -> 'NotAction') AS notAction
+      WHERE
+        notAction IN ('cloudformation:*')
+        AND s ->> 'Effect' = 'Deny'
+        AND (s -> 'Condition' -> 'StringNotEquals' ->> 'aws:CalledViaFirst') = 'cloudformation.amazonaws.com'
+    )
+
+    SELECT
+      name AS resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN EXISTS(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as parn
+            LEFT JOIN too_permissive_policies AS tp ON parn = tp.arn where tp.arn is not null
+        ) THEN 'ok'
+        WHEN EXISTS(
+          SELECT 1 
+          FROM jsonb_array_elements(inline_policies_std) AS p, jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') AS s,
+            jsonb_array_elements_text(s -> 'NotAction') AS notAction
+          WHERE
+            notAction IN ('cloudformation:*')
+            AND s ->> 'Effect' = 'Deny'
+            AND (s -> 'Condition' -> 'StringNotEquals' ->> 'aws:CalledViaFirst') = 'cloudformation.amazonaws.com'
+        ) THEN 'ok'
+        ELSE 'alarm'
+      END AS status,
+      CASE
+        WHEN EXISTS(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as parn
+            LEFT JOIN too_permissive_policies AS tp ON parn = tp.arn where tp.arn is not null
+        ) THEN 'IAM user is forced to deploy AWS resources via CloudFormation only'
+        WHEN EXISTS(
+          SELECT 1 
+          FROM jsonb_array_elements(inline_policies_std) AS p, jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') AS s,
+            jsonb_array_elements_text(s -> 'NotAction') AS notAction
+          WHERE
+            notAction IN ('cloudformation:*')
+            AND s ->> 'Effect' = 'Deny'
+            AND (s -> 'Condition' -> 'StringNotEquals' ->> 'aws:CalledViaFirst') = 'cloudformation.amazonaws.com'
+        ) THEN 'IAM user is forced to deploy AWS resources via CloudFormation only'
+        ELSE 'IAM user is not forced to deploy AWS resources via CloudFormation only'
+      END AS reason,
+      region, 
+      account_id
+    FROM
+      aws_iam_user AS g
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+    - aws_iam_policy
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

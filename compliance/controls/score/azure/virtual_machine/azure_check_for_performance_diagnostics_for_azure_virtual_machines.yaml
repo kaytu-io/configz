@@ -1,0 +1,39 @@
+ID: azure_check_for_performance_diagnostics_for_azure_virtual_machines
+Title: Check for Performance Diagnostics for Azure Virtual Machines
+Description: Ensure that Azure virtual machines are configured to use the Performance Diagnostics tool.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when exists(
+          select 1 from jsonb_array_elements(vm.extensions) as ex
+          where ('AzurePerformanceDiagnosticsLinux' = (ex ->> 'name')) or ('AzurePerformanceDiagnostics' = (ex ->> 'name'))
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists(
+          select 1 from jsonb_array_elements(vm.extensions) as ex
+          where ('AzurePerformanceDiagnosticsLinux' = (ex ->> 'name')) or ('AzurePerformanceDiagnostics' = (ex ->> 'name'))
+        ) then 'Performance Diagnostics feature, powered by PerfInsights extension, is enabled'
+        else 'Performance Diagnostics feature, powered by PerfInsights extension, is not enabled'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm
+      left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

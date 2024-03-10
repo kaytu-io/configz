@@ -1,0 +1,35 @@
+ID: azure_check_for_automatic_instance_repairs
+Title: Check for Automatic Instance Repairs
+Description: Ensure that Azure virtual machine scale sets are configured to use automatic instance repairs
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when vm.kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties' -> 'AutomaticRepairsPolicy' ->> 'Enabled' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when vm.kaytu_description -> 'VirtualMachineScaleSet' -> 'Properties' -> 'AutomaticRepairsPolicy' ->> 'Enabled' = 'true' then 'Automatic repairs feature is enabled'
+        else 'Automatic repairs feature is not currently enabled'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine_scale_set as vm,
+      azure_subscription as sub
+    where
+      sub.subscription_id = vm.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine_scale_set
+  ListOfTables:
+    - azure_compute_virtual_machine_scale_set
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

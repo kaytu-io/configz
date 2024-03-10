@@ -6,6 +6,12 @@ Controls:
   - azure_recovery_service_vault_alert_for_job_failures_enabled
   - azure_check_for_sufficient_point_in_time_restore_pitr_backup_retention_period
   - azure_configure_minimum_tls_version
+  - azure_check_for_configure_health_monitoring
+  - azure_check_for_automatic_os_upgrades
+  - azure_check_for_automatic_instance_repairs
+  - azure_check_for_instance_termination_notifications_for_virtual_machine_scale_sets
+  - azure_check_for_associated_load_balancers
+  - azure_check_for_guest_level_diagnostics_for_virtual_machines
 ReferenceCode: azure_score_reliability
 Description: Reliability Description
 ID: azure_score_reliability
