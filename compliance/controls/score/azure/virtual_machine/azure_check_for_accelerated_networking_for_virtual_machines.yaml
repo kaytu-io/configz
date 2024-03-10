@@ -1,0 +1,39 @@
+ID: azure_check_for_accelerated_networking_for_virtual_machines
+Title: Check for Accelerated Networking for Virtual Machines
+Description: Ensure that Microsoft Azure virtual machines are configured to use accelerated networking.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when nic.enable_accelerated_networking = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when nic.enable_accelerated_networking = 'true' then 'Accelerated networking is enabled'
+        else 'Accelerated networking is not enabled'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm
+      left join azure_subscription as sub on sub.subscription_id = vm.subscription_id,
+      jsonb_array_elements(network_interfaces) as ni
+      left join azure_network_interface as nic on nic.id = (ni ->> 'id')
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_network_interface
+    - azure_subscription
+  Parameters:
+    - Key: azureAllowedVmExtentions
+      Required: true
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

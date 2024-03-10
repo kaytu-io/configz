@@ -1,0 +1,35 @@
+ID: azure_check_for_virtual_machine_boot_diagnostics
+Title: Check for Virtual Machine Boot Diagnostics
+Description: Ensure that Microsoft Azure virtual machines are configured to use Boot Diagnostics feature.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'DiagnosticsProfile' -> 'BootDiagnostics' ->> 'Enabled')::bool then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'DiagnosticsProfile' -> 'BootDiagnostics' ->> 'Enabled')::bool then 'Boot Diagnostics feature is enabled'
+        else 'Boot Diagnostics feature is not enabled'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm,
+      azure_subscription as sub
+    where
+      sub.subscription_id = vm.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

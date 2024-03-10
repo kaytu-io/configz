@@ -13,6 +13,10 @@ Query:
         else 'alarm'
       end as status,
       case
+        when ss.sku_tier = 'Standard' then 0
+        else (SELECT cost FROM pennywise_cost_estimate where resource_type = 'microsoft.compute/snapshots' and resource_id = ss.kaytu_resource_id)
+      end as cost_optimization,
+      case
         when ss.sku_tier = 'Standard' then ss.title || ' has storage type ' || ss.sku_tier || '.'
         else ss.title || ' has storage type ' || ss.sku_tier || '.'
       end as reason,

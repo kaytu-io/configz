@@ -1,0 +1,42 @@
+ID: azure_check_for_encryption_for_app_tier_disk_volumes
+Title: Check for Encryption for App-Tier Disk Volumes
+Description: Ensure that Azure virtual machine disk volumes created for the app tier are encrypted.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'StorageProfile' -> 'OSDisk' -> 'EncryptionSettings' ->> 'Enabled')::bool then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'StorageProfile' -> 'OSDisk' -> 'EncryptionSettings' ->> 'Enabled')::bool then 'OS disk encrypted'
+        else 'OS disk not encrypted'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm,
+      azure_subscription as sub
+    where
+      sub.subscription_id = vm.subscription_id and
+      tags::text like '%' || REPLACE(REPLACE((
+          SELECT jsonb_object_agg(key, value)::text
+          FROM jsonb_each_text('{{.azureAppTierTags}}'::jsonb)
+        ), '{', ''), '}', '') || '%'
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+  Parameters:
+    - Key: azureAppTierTags
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

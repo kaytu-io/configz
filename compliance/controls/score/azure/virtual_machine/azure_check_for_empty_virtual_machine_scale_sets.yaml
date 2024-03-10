@@ -1,0 +1,55 @@
+ID: azure_check_for_empty_virtual_machine_scale_sets
+Title: Check for Empty Virtual Machine Scale Sets
+Description: Identify and remove empty virtual machine scale sets from your Azure cloud account.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      distinct vmss.id as resource,
+      vmss.kaytu_account_id,
+      vmss.kaytu_resource_id,
+      case
+        when not exists(
+          select 1 from
+          jsonb_array_elements(virtual_machine_network_profile -> 'networkInterfaceConfigurations') as nic,
+          jsonb_array_elements(nic -> 'properties' -> 'ipConfigurations') as ipc
+          where ipc -> 'properties' -> 'loadBalancerBackendAddressPools' is not null
+        ) and not exists(
+          select 1 from
+          azure_compute_virtual_machine_scale_set_vm as vmssvm
+          where vmssvm.scale_set_name = vmss.name
+        )
+          then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when not exists(
+          select 1 from
+          jsonb_array_elements(virtual_machine_network_profile -> 'networkInterfaceConfigurations') as nic,
+          jsonb_array_elements(nic -> 'properties' -> 'ipConfigurations') as ipc
+          where ipc -> 'properties' -> 'loadBalancerBackendAddressPools' is not null
+        ) and not exists(
+          select 1 from
+          azure_compute_virtual_machine_scale_set_vm as vmssvm
+          where vmssvm.scale_set_name = vmss.name
+        )
+         then 'Virtual machine scale set is considered empty and can be safely removed from your cloud account.'
+        else 'Virtual machine scale set is not empty'
+      end as reason,
+      vmss.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine_scale_set as vmss,
+      azure_subscription as sub
+    where
+      sub.subscription_id = vmss.subscription_id;
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine_scale_set
+  ListOfTables:
+    - azure_compute_virtual_machine_scale_set
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

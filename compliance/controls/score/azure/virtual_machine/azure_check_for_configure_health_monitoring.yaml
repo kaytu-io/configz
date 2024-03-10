@@ -1,0 +1,39 @@
+ID: azure_check_for_configure_health_monitoring
+Title: Check for Configure Health Monitoring
+Description: Ensure that the health of your Microsoft Azure scale set instances is being monitored.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vmss.id as resource,
+      vmss.kaytu_account_id,
+      vmss.kaytu_resource_id,
+      case
+        when exists(
+          select 1 from jsonb_array_elements(vmss.extensions) as ex
+          where ('ApplicationHealthLinux' = (ex ->> 'name')) or ('healthRepairExtension' = (ex ->> 'name'))
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists(
+          select 1 from jsonb_array_elements(vmss.extensions) as ex
+          where ('ApplicationHealthLinux' = (ex ->> 'name')) or ('healthRepairExtension' = (ex ->> 'name'))
+        ) then 'Azure virtual machine scaleset has application health monitoring enabled'
+        else 'Azure virtual machine scaleset does not have application health monitoring enabled'
+      end as reason,
+      vmss.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine_scale_set as vmss
+      left join azure_subscription as sub on sub.subscription_id = vmss.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine_scale_set
+  ListOfTables:
+    - azure_compute_virtual_machine_scale_set
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

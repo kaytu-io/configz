@@ -1,0 +1,65 @@
+ID: aws_ec2_purchase_restriction
+Title: Amazon EC2 Purchase Restriction
+Description: Restrict unintended IAM users from purchasing Amazon EC2 Reserved Instances and/or Savings Plans.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+      WITH too_permissive_policies AS (
+      SELECT
+        arn
+      FROM
+        aws_iam_policy,
+        jsonb_array_elements(policy_std -> 'Statement') AS s,
+        jsonb_array_elements_text(s -> 'Action') AS action
+      WHERE
+        action IN ('ec2:PurchaseReservedInstancesOffering', 'savingsplans:CreateSavingsPlan')
+)
+
+    SELECT
+      name AS resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      CASE
+        WHEN EXISTS(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as parn
+            LEFT JOIN too_permissive_policies AS tp ON parn = tp.arn where tp.arn is not null
+        ) and '{{.awsAllowedUsersPurchaseEc2}}' not like '%' || name || '%' THEN 'alarm'
+        WHEN EXISTS(
+          SELECT 1 
+          FROM jsonb_array_elements(inline_policies_std) AS p, jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') AS s,
+            jsonb_array_elements_text(s -> 'Action') AS action
+          WHERE
+            action IN ('ec2:PurchaseReservedInstancesOffering', 'savingsplans:CreateSavingsPlan')
+            AND s ->> 'Effect' = 'Allow'
+        ) and '{{.awsAllowedUsersPurchaseEc2}}' not like '%' || name || '%' THEN 'alarm'
+        ELSE 'ok'
+      END AS status,
+      CASE
+        WHEN EXISTS(
+          select 1 from jsonb_array_elements_text(attached_policy_arns) as parn
+            LEFT JOIN too_permissive_policies AS tp ON parn = tp.arn where tp.arn is not null
+        ) and '{{.awsAllowedUsersPurchaseEc2}}' not like '%' || name || '%' THEN 'User has access to purchase ec2 but is not in your organization allowed list'
+        WHEN EXISTS(
+          SELECT 1 
+          FROM jsonb_array_elements(inline_policies_std) AS p, jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') AS s,
+            jsonb_array_elements_text(s -> 'Action') AS action
+          WHERE
+            action IN ('ec2:PurchaseReservedInstancesOffering', 'savingsplans:CreateSavingsPlan')
+            AND s ->> 'Effect' = 'Allow'
+        ) and '{{.awsAllowedUsersPurchaseEc2}}' not like '%' || name || '%' THEN 'User has access to purchase ec2 but is not in your organization allowed list'
+        ELSE 'User either not have the access to purchase ec2 or is in the allowed list'
+      END AS reason,
+      region, 
+      account_id
+    FROM
+      aws_iam_user
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+    - aws_iam_policy
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Identity and Access Management (IAM)

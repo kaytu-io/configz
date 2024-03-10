@@ -1,0 +1,40 @@
+ID: azure_check_for_sufficient_soft_deleted_data_retention_period
+Title: Check for Sufficient Soft Deleted Data Retention Period
+Description: Ensure there is a sufficient retention period configured for Azure Blob Storage soft deleted data.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      sa.id as resource,
+      sa.kaytu_account_id,
+      sa.kaytu_resource_id,
+      case
+        when blob_soft_delete_retention_days is null then 'alarm'
+        when blob_soft_delete_retention_days <> '{{.azureStorageBlobSoftDeleteSufficientDays}}'::int then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when blob_soft_delete_retention_days is null then 'Blob soft delete not enabled'
+        when blob_soft_delete_retention_days <> '{{.azureStorageBlobSoftDeleteSufficientDays}}'::int then 'Blob soft delete retention days is not sufficient'
+        else 'Blob soft delete retention days is sufficient'
+      end as reason,
+      sa.resource_group,
+      display_name as subscription
+    from
+      azure_storage_account as sa,
+      azure_subscription as sub
+    where
+      sub.subscription_id = sa.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+    - azure_storage_account
+    - azure_subscription
+  Parameters:
+    - Key: azureStorageBlobSoftDeleteSufficientDays
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Storage Accounts

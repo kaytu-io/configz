@@ -122,6 +122,12 @@ Controls:
   - aws_canary_access_token
   - aws_iam_users_unauthorized_to_edit_access_policies
   - aws_ssl_tls_certificate_expiry_x_days
+  - aws_enforce_infrastructure_as_code_using_iam_policies
+  - aws_ec2_purchase_restriction
+  - aws_ssh_public_keys_rotated_90_days
+  - aws_ssh_public_keys_rotated_45_days
+  - aws_ssh_public_keys_rotated_x_days
+  - aws_iam_server_certificate_size
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

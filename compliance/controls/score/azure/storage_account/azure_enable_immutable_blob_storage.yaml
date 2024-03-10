@@ -1,0 +1,35 @@
+ID: azure_enable_immutable_blob_storage
+Title: Enable Immutable Blob Storage
+Description: Ensure that critical Azure Blob Storage data is protected from accidental deletion or modification.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      sc.id as resource,
+      sc.kaytu_account_id,
+      sc.kaytu_resource_id,
+      case
+        when has_immutability_policy = 'false' and has_legal_hold = 'false' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when has_immutability_policy = 'false' and has_legal_hold = 'false' then 'Immutable Blob Storage protection feature is not enabled.'
+        else 'Immutable Blob Storage protection feature is enabled.'
+      end as reason,
+      sc.resource_group,
+      display_name as subscription
+    from
+      azure_storage_container as sc,
+      azure_subscription as sub
+    where
+      sub.subscription_id = sc.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+    - azure_storage_account
+    - azure_subscription
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure Storage Accounts

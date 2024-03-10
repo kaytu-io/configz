@@ -1,0 +1,35 @@
+ID: azure_check_for_ssh_authentication_type
+Title: Check for SSH Authentication Type
+Description: Ensure that Azure Linux-based virtual machines (VMs) are configured to use SSH keys.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'OSProfile' -> 'LinuxConfiguration' ->> 'DisablePasswordAuthentication' = 'false' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'OSProfile' -> 'LinuxConfiguration' ->> 'DisablePasswordAuthentication' = 'false' then 'SSH authentication type for the selected Microsoft Azure virtual machine is password-based and is not secured'
+        else 'SSH authentication type for the selected Microsoft Azure virtual machine is secured'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm,
+      azure_subscription as sub
+    where
+      sub.subscription_id = vm.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_subscription
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Azure Virtual Machines

@@ -1,0 +1,34 @@
+ID: azure_use_microsoft_entra_id_integration_for_aks_clusters
+Title: Use Microsoft Entra ID Integration for AKS Clusters
+Description: Ensure that Microsoft Entra ID integration is enabled for Azure Kubernetes clusters.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      kc.id as resource,
+      kc.kaytu_account_id,
+      kc.kaytu_resource_id,
+      case
+        when network_profile ->> 'networkPlugin' = 'kubenet' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when network_profile ->> 'networkPlugin' = 'kubenet' then 'not configured to use the Azure Container Networking Interface (CNI) add-on for managing network resources.'
+        else 'configured to use the Azure Container Networking Interface (CNI) add-on for managing network resources.'
+      end as reason,
+      kc.resource_group,
+      display_name as subscription
+    from
+      azure_kubernetes_cluster as kc,
+      azure_subscription as sub
+    where
+      sub.subscription_id = kc.subscription_id
+  PrimaryTable: azure_network_interface
+  ListOfTables:
+    - azure_kubernetes_cluster
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure Kubernetes (AKS)

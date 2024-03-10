@@ -9,7 +9,7 @@ Query:
         user_name, 
         count(*) 
       from 
-        aws_iam_access_key 
+        aws_iam_ssh_public_key 
       where 
         status = 'Active' 
       group by 

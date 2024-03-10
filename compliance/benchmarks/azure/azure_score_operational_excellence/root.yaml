@@ -5,6 +5,8 @@ Controls:
   - azure_disable_plain_ftp_deployment
   - azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
   - azure_configure_minimum_tls_version
+  - azure_use_azure_cni_add_on_for_managing_network_resources
+  - azure_use_microsoft_entra_id_integration_for_aks_clusters
 ReferenceCode: azure_score_operational_excellence
 Description: Operational Excellence Description
 ID: azure_score_operational_excellence
