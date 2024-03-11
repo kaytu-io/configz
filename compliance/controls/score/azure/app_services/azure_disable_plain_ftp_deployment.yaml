@@ -2,6 +2,7 @@ ID: azure_disable_plain_ftp_deployment
 Title: Disable Plain FTP Deployment
 Description: Ensure that FTP access is disabled for your Azure App Services web applications.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,10 +25,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_app_service_web_app
   ListOfTables:
-    - azure_app_service_web_app
-    - azure_subscription
+  - azure_app_service_web_app
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure App Services
+  score_tags:
+  - Lacking High Availability
+Managed: false

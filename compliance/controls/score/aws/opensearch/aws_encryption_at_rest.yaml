@@ -2,6 +2,7 @@ ID: aws_encryption_at_rest
 Title: Encryption At Rest
 Description: Ensure that your Amazon OpenSearch domains are encrypted in order to meet security and compliance requirements.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
-    - aws_opensearch_domain
+  - aws_opensearch_domain
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS OpenSearch Service
+  score_tags:
+  - Unencrypted Storage
+Managed: false

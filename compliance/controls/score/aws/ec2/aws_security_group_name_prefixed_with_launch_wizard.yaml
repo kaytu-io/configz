@@ -2,6 +2,7 @@ ID: aws_security_group_name_prefixed_with_launch_wizard
 Title: Security Group Name Prefixed With 'launch-wizard'
 Description: Ensure no security group name is prefixed with 'launch-wizard'.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with launch_wizard_sg_attached_instance as (
@@ -33,9 +34,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
+  Parameters: []
 ManualVerification: false
 Severity: low
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

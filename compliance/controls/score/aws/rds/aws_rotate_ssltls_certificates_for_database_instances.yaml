@@ -1,8 +1,8 @@
 ID: aws_rotate_ssltls_certificates_for_database_instances
 Title: Rotate SSL/TLS Certificates for Database Instances
-Description: Ensure that SSL/TLS certificates for RDS database instances are rotated
-  according to the AWS schedule.
+Description: Ensure that SSL/TLS certificates for RDS database instances are rotated according to the AWS schedule.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
@@ -26,9 +26,12 @@ Query:
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
+  Parameters: []
 ManualVerification: false
 Severity: high
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Unencrypted Traffic
+Managed: false

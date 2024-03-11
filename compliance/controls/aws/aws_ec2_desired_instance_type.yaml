@@ -2,6 +2,7 @@ ID: aws_ec2_desired_instance_type
 Title: EC2 instances should be of a specific instance type
 Description: Checks if your EC2 instances are of a specific instance type. The rule is ALARM if an EC2 instance is not specified in the parameter list. For a list of supported EC2 instance types, see Instance types in the EC2 User Guide for Linux Instances.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -21,9 +22,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
   Parameters:
-    - Key: awsEc2InstanceValidInstanceTypes
-      Required: true
+  - Key: awsEc2InstanceValidInstanceTypes
+    Required: true
 ManualVerification: false
 Severity: low
+Tags:
+  score_tags:
+  - Over Utilization
+Managed: false

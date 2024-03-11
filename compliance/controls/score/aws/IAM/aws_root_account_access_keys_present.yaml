@@ -2,6 +2,7 @@ ID: aws_root_account_access_keys_present
 Title: Root Account Access Keys Present
 Description: Ensure that your AWS root account is not using access keys as a security best practice.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -24,10 +25,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
-    - aws_iam_credential_report
+  - aws_iam_user
+  - aws_iam_credential_report
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Insecure Keys
+Managed: false

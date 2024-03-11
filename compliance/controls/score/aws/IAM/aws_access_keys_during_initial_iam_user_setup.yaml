@@ -2,6 +2,7 @@ ID: aws_access_keys_during_initial_iam_user_setup
 Title: Access Keys During Initial IAM User Setup
 Description: Ensure no access keys are created during IAM user initial setup with AWS Management Console.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,9 +25,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_credential_report
   ListOfTables:
-    - aws_iam_credential_report
+  - aws_iam_credential_report
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Insecure Keys
+Managed: false

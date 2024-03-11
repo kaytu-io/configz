@@ -2,6 +2,7 @@ ID: aws_hardware_mfa_for_aws_root_account
 Title: Hardware MFA for AWS Root Account
 Description: Ensure hardware MFA is enabled for the 'root' account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -28,10 +29,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_credential_report
   ListOfTables:
-    - aws_iam_credential_report
-    - aws_iam_virtual_mfa_device
+  - aws_iam_credential_report
+  - aws_iam_virtual_mfa_device
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

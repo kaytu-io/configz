@@ -2,6 +2,7 @@ ID: aws_iam_policies_with_effect_set_to_allow_and_notaction
 Title: IAM Policies with Effect set to Allow and NotAction
 Description: Ensure that IAM policies do not use "Allow" in combination with "NotAction" element to follow IAM security best practices.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,9 +25,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_policy
   ListOfTables:
-    - aws_iam_policy
+  - aws_iam_policy
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

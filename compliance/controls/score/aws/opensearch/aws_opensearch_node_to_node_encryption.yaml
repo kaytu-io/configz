@@ -2,6 +2,7 @@ ID: aws_opensearch_node_to_node_encryption
 Title: OpenSearch Node To Node Encryption
 Description: Ensure that your Amazon OpenSearch clusters are using node to node encryption in order to meet security and compliance requirements.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
-    - aws_opensearch_domain
+  - aws_opensearch_domain
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS OpenSearch Service
+  score_tags:
+  - Unencrypted Traffic
+Managed: false

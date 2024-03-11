@@ -2,6 +2,7 @@ ID: azure_enable_defender_for_cloud_for_aks_clusters
 Title: Enable Defender for Cloud for AKS Clusters
 Description: Ensure that Microsoft Defender for Cloud is enabled for AKS clusters.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,10 +25,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Kubernetes (AKS)
+  score_tags:
+  - Tolerate Failures
+Managed: false

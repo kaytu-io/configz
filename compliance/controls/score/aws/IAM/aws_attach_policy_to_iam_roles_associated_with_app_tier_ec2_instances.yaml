@@ -2,6 +2,7 @@ ID: aws_attach_policy_to_iam_roles_associated_with_app_tier_ec2_instances
 Title: Attach Policy to IAM Roles Associated with App-Tier EC2 Instances
 Description: Ensure IAM policy for EC2 IAM roles for app tier is configured.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -30,13 +31,16 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
-    - aws_iam_role
+  - aws_ec2_instance
+  - aws_iam_role
   Parameters:
-    - Key: awsAppTierTags
-      Required: true
+  - Key: awsAppTierTags
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

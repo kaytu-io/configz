@@ -2,13 +2,51 @@ ID: aws_opensearch_domain_in_vpc
 Title: OpenSearch domains should be in a VPC
 Description: This control checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: "with public_subnets as (\n  select\n    distinct a -> 'SubnetId' as SubnetId\n  from\n    aws_vpc_route_table as t,\n    jsonb_array_elements(associations) as a,\n    jsonb_array_elements(routes) as r\n  where\n    r ->> 'DestinationCidrBlock' = '0.0.0.0/0'\n    and  r ->>  'GatewayId' like 'igw-%'\n), opensearch_domain_with_public_subnet as (\n  select\n    arn\n  from\n    aws_opensearch_domain ,\n    jsonb_array_elements(vpc_options -> 'SubnetIds') as s\n  where\n    s in (select SubnetId from public_subnets)\n)\nselect\n  d.arn as resource,\n  d.kaytu_account_id as kaytu_account_id,\n  d.kaytu_resource_id as kaytu_resource_id,\n  case\n    when d.vpc_options ->> 'VPCId' is null then 'alarm'\n    when d.vpc_options ->> 'VPCId' is not null and p.arn is not null then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when vpc_options ->> 'VPCId' is null then title || ' not in VPC.'\n    when d.vpc_options ->> 'VPCId' is not null and p.arn is not null then title || ' attached to public subnet.'\n    else title || ' in VPC ' || (vpc_options ->> 'VPCId') || '.'\n  end reason, d.region, d.account_id\nfrom\n  aws_opensearch_domain as d\n  left join opensearch_domain_with_public_subnet as p on d.arn = p.arn;"
+  QueryToExecute: |-
+    with public_subnets as (
+      select
+        distinct a -> 'SubnetId' as SubnetId
+      from
+        aws_vpc_route_table as t,
+        jsonb_array_elements(associations) as a,
+        jsonb_array_elements(routes) as r
+      where
+        r ->> 'DestinationCidrBlock' = '0.0.0.0/0'
+        and  r ->>  'GatewayId' like 'igw-%'
+    ), opensearch_domain_with_public_subnet as (
+      select
+        arn
+      from
+        aws_opensearch_domain ,
+        jsonb_array_elements(vpc_options -> 'SubnetIds') as s
+      where
+        s in (select SubnetId from public_subnets)
+    )
+    select
+      d.arn as resource,
+      d.kaytu_account_id as kaytu_account_id,
+      d.kaytu_resource_id as kaytu_resource_id,
+      case
+        when d.vpc_options ->> 'VPCId' is null then 'alarm'
+        when d.vpc_options ->> 'VPCId' is not null and p.arn is not null then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when vpc_options ->> 'VPCId' is null then title || ' not in VPC.'
+        when d.vpc_options ->> 'VPCId' is not null and p.arn is not null then title || ' attached to public subnet.'
+        else title || ' in VPC ' || (vpc_options ->> 'VPCId') || '.'
+      end reason, d.region, d.account_id
+    from
+      aws_opensearch_domain as d
+      left join opensearch_domain_with_public_subnet as p on d.arn = p.arn;
   Connector: AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
   - aws_vpc_route_table
+  Parameters: []
 ManualVerification: false
 Severity: critical
 Tags:
@@ -22,5 +60,8 @@ Tags:
   - opensearch_2
   plugin:
   - aws
+  score_tags:
+  - Exposed Endpoints
   service:
   - AWS/OpenSearch
+Managed: false

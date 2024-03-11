@@ -1,8 +1,8 @@
 ID: aws_aurora_database_cluster_activity_streams
 Title: Aurora Database Cluster Activity Streams
-Description: Ensure that Amazon Aurora clusters are configured to use database activity
-  streams.
+Description: Ensure that Amazon Aurora clusters are configured to use database activity streams.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     with access_count as (
@@ -13,7 +13,7 @@ Query:
       group by
         db_cluster_identifier, publicly_accessible
       )
-
+    
     select
           c.db_cluster_identifier as resource,
           kaytu_account_id as kaytu_account_id,
@@ -37,9 +37,12 @@ Query:
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
   - aws_rds_db_cluster
+  Parameters: []
 ManualVerification: false
 Severity: medium
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Problem Identities
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_unrestricted_icmp_access
 Title: Unrestricted ICMP Access
 Description: Ensure no security group allows unrestricted inbound access to ICMP.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -35,12 +36,15 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
-    - aws_vpc_security_group
+  - aws_vpc_security_group
   Parameters:
-    - Key: awsIcmpTrustedIpRange
-      Required: true
+  - Key: awsIcmpTrustedIpRange
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

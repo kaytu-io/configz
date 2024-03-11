@@ -2,6 +2,7 @@ ID: aws_instance_deletion_protection
 Title: Instance Deletion Protection
 Description: Enable AWS RDS Instance Deletion Protection.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
@@ -26,9 +27,12 @@ Query:
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
+  Parameters: []
 ManualVerification: false
 Severity: medium
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Problem Identities
+Managed: false

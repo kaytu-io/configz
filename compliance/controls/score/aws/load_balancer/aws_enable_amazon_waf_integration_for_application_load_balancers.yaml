@@ -2,6 +2,7 @@ ID: aws_enable_amazon_waf_integration_for_application_load_balancers
 Title: Enable Amazon WAF Integration for Application Load Balancers
 Description: Use Amazon WAF to protect Application Load Balancers from common web exploits.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with associated_resource as (
@@ -31,10 +32,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
-    - aws_ec2_application_load_balancer
-    - aws_wafv2_web_acl
+  - aws_ec2_application_load_balancer
+  - aws_wafv2_web_acl
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Load Balancing V2 (ELBv2)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

@@ -2,6 +2,7 @@ ID: azure_enable_key_vault_recoverability
 Title: Enable Key Vault Recoverability
 Description: Ensure that your Microsoft Azure Key Vault instances are recoverable.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,10 +25,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
-    - azure_key_vault
-    - azure_subscription
+  - azure_key_vault
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure KeyVault
+  score_tags:
+  - Problem Identities
+Managed: false

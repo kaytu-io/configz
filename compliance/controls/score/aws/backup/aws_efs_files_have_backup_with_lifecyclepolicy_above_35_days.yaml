@@ -2,37 +2,42 @@ ID: aws_efs_files_have_backup_with_lifecyclepolicy_above_35_days
 Title: EFS files have backup with lifecyclepolicy above 35 days
 Description: Ensure all EFS files are covered by a backup plan with a minimum of Life Cycle Policy 35 days
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
-      WITH points AS (
-        SELECT recovery_point_arn, resource_arn
-        FROM aws_backup_recovery_point 
-        WHERE now() - creation_date < '35 days'::interval and (lifecycle ->> 'DeleteAfterDays')::INT >= 35 
-        and resource_type = 'EFS' and status = 'COMPLETED')
-
-      select
-        f.arn as resource,
-        kaytu_account_id as kaytu_account_id,
-        kaytu_resource_id as kaytu_resource_id,
-        case
-          when p.recovery_point_arn is null then 'alarm'
-          else 'ok'
-        end as status,
-        case
-          when p.recovery_point_arn is null then 'lacks a backup configuration with a minimum of 35 days'
-          else ''
-        end as reason
-        , region, account_id 
-      from 
-        aws_efs_file_system as f
-        left join points as p on f.arn = p.resource_arn
+    WITH points AS (
+      SELECT recovery_point_arn, resource_arn
+      FROM aws_backup_recovery_point 
+      WHERE now() - creation_date < '35 days'::interval and (lifecycle ->> 'DeleteAfterDays')::INT >= 35 
+      and resource_type = 'EFS' and status = 'COMPLETED')
+    
+    select
+      f.arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when p.recovery_point_arn is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when p.recovery_point_arn is null then 'lacks a backup configuration with a minimum of 35 days'
+        else ''
+      end as reason
+      , region, account_id 
+    from 
+      aws_efs_file_system as f
+      left join points as p on f.arn = p.resource_arn
   Connector: AWS
   PrimaryTable: aws_efs_file_system
   ListOfTables:
   - aws_efs_file_system
   - aws_backup_recovery_point
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Amazon Elastic File System (EFS)
+  score_tags:
+  - Missing Backup
+Managed: false

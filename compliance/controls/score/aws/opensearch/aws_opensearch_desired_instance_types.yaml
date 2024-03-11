@@ -2,6 +2,7 @@ ID: aws_opensearch_desired_instance_types
 Title: Desired Instance Type(s)
 Description: Ensure that Amazon OpenSearch cluster instances are of given instance type.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -34,14 +35,17 @@ Query:
   Connector: AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
-    - aws_opensearch_domain
+  - aws_opensearch_domain
   Parameters:
-    - Key: awsOpensearchAllowedDataInstanceTypes
-      Required: false
-    - Key: awsOpensearchAllowedDedicatedMasterTypes
-      Required: false
+  - Key: awsOpensearchAllowedDataInstanceTypes
+    Required: false
+  - Key: awsOpensearchAllowedDedicatedMasterTypes
+    Required: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS OpenSearch Service
+  score_tags:
+  - Optimization
+Managed: false

@@ -2,6 +2,7 @@ ID: azure_check_for_desired_vm_sku_sizes
 Title: Check for Desired VM SKU Size(s)
 Description: Ensure that your virtual machine instances are of a given SKU size (e.g. Standard_A8_v2).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,13 +27,16 @@ Query:
   Connector: Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
   Parameters:
-    - Key: azureAllowedVmSizes
-      Required: true
+  - Key: azureAllowedVmSizes
+    Required: true
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Virtual Machines
+  score_tags:
+  - Unencrypted Traffic
+Managed: false

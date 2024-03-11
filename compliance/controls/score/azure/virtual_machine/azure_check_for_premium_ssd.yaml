@@ -2,6 +2,7 @@ ID: azure_check_for_premium_ssd
 Title: Check for Premium SSD
 Description: Ensure that Azure virtual machines are using Standard SSD disk volumes instead of Premium SSD volumes to optimize VM costs.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,10 +27,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
-    - azure_compute_disk
-    - azure_subscription
+  - azure_compute_disk
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+  score_tags:
+  - Optimization
+Managed: false

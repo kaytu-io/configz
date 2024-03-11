@@ -2,6 +2,7 @@ ID: aws_rds_event_notifications
 Title: RDS Event Notifications
 Description: Enable event notifications for RDS.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select distinct
@@ -28,9 +29,12 @@ Query:
   ListOfTables:
   - aws_account
   - aws_rds_db_event_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

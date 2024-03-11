@@ -2,30 +2,19 @@ ID: aws_ebs_public_snapshots
 Title: Amazon EBS Public Snapshots
 Description: Ensure that your Amazon EBS volume snapshots are not accessible to all AWS accounts.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    select
-      'arn:' || partition || ':ec2:' || region || ':' || account_id || ':snapshot/' || snapshot_id as resource,
-      kaytu_resource_id,
-      kaytu_account_id,
-      case
-        when create_volume_permissions @> '[{"Group": "all", "UserId": null}]' then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when create_volume_permissions @> '[{"Group": "all", "UserId": null}]' then title || ' is publicly restorable.'
-        else title || ' is not publicly restorable.'
-      end as reason,
-      region,
-      account_id
-    from
-      aws_ebs_snapshot;
+  QueryToExecute: "select\n  'arn:' || partition || ':ec2:' || region || ':' || account_id || ':snapshot/' || snapshot_id as resource,\n  kaytu_resource_id,\n  kaytu_account_id,\n  case\n    when create_volume_permissions @> '[{\"Group\": \"all\", \"UserId\": null}]' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when create_volume_permissions @> '[{\"Group\": \"all\", \"UserId\": null}]' then title || ' is publicly restorable.'\n    else title || ' is not publicly restorable.'\n  end as reason,\n  region,\n  account_id\nfrom\n  aws_ebs_snapshot;\n"
   Connector: AWS
   PrimaryTable: aws_ebs_snapshot
   ListOfTables:
-    - aws_ebs_snapshot
+  - aws_ebs_snapshot
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Block Store (EBS)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

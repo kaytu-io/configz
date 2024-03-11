@@ -2,6 +2,7 @@ ID: aws_vpc_endpoints_in_use
 Title: VPC Endpoints In Use
 Description: Ensure that VPC endpoints are being used to connect your VPC to another AWS cloud service.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -28,10 +29,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc
   ListOfTables:
-    - aws_vpc
-    - aws_vpc_endpoint
+  - aws_vpc
+  - aws_vpc_endpoint
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Virtual Private Cloud (VPC)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

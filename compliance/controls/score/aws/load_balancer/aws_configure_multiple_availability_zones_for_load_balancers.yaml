@@ -2,6 +2,7 @@ ID: aws_configure_multiple_availability_zones_for_load_balancers
 Title: Configure Multiple Availability Zones for Load Balancers
 Description: Ensure that Amazon Gateway Load Balancers are using Multi-AZ configurations.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -48,9 +49,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
-    - aws_ec2_gateway_load_balancer
+  - aws_ec2_gateway_load_balancer
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Load Balancing V2 (ELBv2)
+  score_tags:
+  - Lacking High Availability
+Managed: false

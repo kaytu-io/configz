@@ -1,8 +1,8 @@
 ID: aws_enable_instance_storage_auto_scaling
 Title: Enable Instance Storage AutoScaling
-Description: Ensure that the Storage AutoScaling feature is enabled to support unpredictable
-  database workload.
+Description: Ensure that the Storage AutoScaling feature is enabled to support unpredictable database workload.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
@@ -27,9 +27,12 @@ Query:
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
+  Parameters: []
 ManualVerification: false
 Severity: medium
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Over Utilization
+Managed: false

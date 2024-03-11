@@ -2,6 +2,7 @@ ID: aws_ebs_encrypted
 Title: EBS Volumes need to be encrypted
 Description: Ensure EBS volumes are encrypted to meet security and encryption compliance requirements. Encryption is a key mechanism for you to ensure that you are in full control over who has access to your data.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,9 +26,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ebs_volume
   ListOfTables:
-    - aws_ebs_volume
+  - aws_ebs_volume
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Block Store (EBS)
+  score_tags:
+  - Unencrypted Storage
+Managed: false

@@ -2,6 +2,7 @@ ID: azure_check_for_allowed_certificate_key_types
 Title: Check for Allowed Certificate Key Types
 Description: Ensure that Azure Key Vault certificates are using the appropriate key type(s).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,13 +25,16 @@ Query:
   Connector: Azure
   PrimaryTable: azure_key_vault_key
   ListOfTables:
-    - azure_key_vault_key
-    - azure_subscription
+  - azure_key_vault_key
+  - azure_subscription
   Parameters:
-    - Key: azureAllowedKeyTypes
-      Required: true
+  - Key: azureAllowedKeyTypes
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure KeyVault
+  score_tags:
+  - Insecure Keys
+Managed: false

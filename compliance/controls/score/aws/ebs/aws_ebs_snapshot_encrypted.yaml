@@ -2,6 +2,7 @@ ID: aws_ebs_snapshot_encrypted
 Title: EBS Snapshot Encrypted
 Description: Ensure Amazon EBS snapshots are encrypted to meet security and compliance requirements.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,8 +25,12 @@ Query:
   PrimaryTable: aws_ebs_snapshot
   ListOfTables:
   - aws_ebs_snapshot
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Elastic Block Store (EBS)
+  score_tags:
+  - Unencrypted Storage
+Managed: false

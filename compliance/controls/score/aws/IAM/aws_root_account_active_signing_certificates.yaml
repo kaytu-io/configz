@@ -2,6 +2,7 @@ ID: aws_root_account_active_signing_certificates
 Title: Root Account Active Signing Certificates
 Description: Ensure that your AWS root account user is not using X.509 certificates to validate API requests.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,9 +26,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_credential_report
   ListOfTables:
-    - aws_iam_credential_report
+  - aws_iam_credential_report
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Insecure Keys
+Managed: false

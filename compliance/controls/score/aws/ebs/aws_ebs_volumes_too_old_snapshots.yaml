@@ -2,6 +2,7 @@ ID: aws_ebs_volumes_too_old_snapshots
 Title: EBS Volumes Too Old Snapshots
 Description: Identify and remove old AWS Elastic Block Store (EBS) volume snapshots for cost optimization.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -27,12 +28,15 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ebs_snapshot
   ListOfTables:
-    - aws_ebs_snapshot
+  - aws_ebs_snapshot
   Parameters:
-    - Key: awsEbsSnapshotAgeMaxDays
-      Required: true
+  - Key: awsEbsSnapshotAgeMaxDays
+    Required: true
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Block Store (EBS)
+  score_tags:
+  - Optimization
+Managed: false

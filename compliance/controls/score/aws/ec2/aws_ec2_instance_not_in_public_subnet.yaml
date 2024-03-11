@@ -2,6 +2,7 @@ ID: aws_ec2_instance_not_in_public_subnet
 Title: EC2 Instance Not In Public Subnet
 Description: Ensure that no backend EC2 instances are provisioned in public subnets.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

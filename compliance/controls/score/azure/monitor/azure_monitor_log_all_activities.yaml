@@ -2,6 +2,7 @@ ID: azure_monitor_log_all_activities
 Title: Azure Monitor Log All Activities
 Description: Ensure audit profile captures all the activities.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,10 +25,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_log_profile
   ListOfTables:
-    - azure_log_profile
-    - azure_subscription
+  - azure_log_profile
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Monitor
+  score_tags:
+  - Exposed Endpoints
+Managed: false
