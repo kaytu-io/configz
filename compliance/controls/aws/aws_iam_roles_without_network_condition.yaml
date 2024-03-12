@@ -39,7 +39,7 @@ Query:
       case
         when p.arn is null then role.arn || ' does not have necessary conditions'
         else role.arn || ' has necessary conditions'
-      end reason,
+      end reason
     FROM
       aws_iam_role role
       LEFT JOIN have_condition_on_network p on role.arn = p.arn
