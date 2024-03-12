@@ -88,6 +88,8 @@ Controls:
   - azure_enable_ddos_standard_protection_for_virtual_networks
   - azure_use_azure_cni_add_on_for_managing_network_resources
   - azure_use_microsoft_entra_id_integration_for_aks_clusters
+  - azure_check_for_installataion_for_latest_os_patches
+  - azure_check_for_backups_for_azure_virtual_machines
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

@@ -14,6 +14,9 @@ Controls:
   - azure_check_for_guest_level_diagnostics_for_virtual_machines
   - azure_enable_soft_delete_for_azure_blob_storage
   - azure_check_for_sufficient_soft_deleted_data_retention_period
+  - azure_check_for_autoscale_notifications
+  - azure_check_for_sufficient_daily_backup_retention_period
+  - azure_check_for_sufficient_instant_restore_retention_period
 ReferenceCode: azure_score_reliability
 Description: Reliability Description
 ID: azure_score_reliability

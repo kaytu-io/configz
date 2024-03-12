@@ -1,0 +1,39 @@
+ID: azure_check_for_sufficient_instant_restore_retention_period
+Title: Check for Sufficient Instant Restore Retention Period
+Description: Ensure there is a sufficient instant restore retention period configured for Azure virtual machines.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when (bp.properties ->> 'InstantRpRetentionRangeInDays')::int < '{{.azureSufficientInstantRestoreRetention}}'::int then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (bp.properties ->> 'InstantRpRetentionRangeInDays')::int < '{{.azureSufficientInstantRestoreRetention}}'::int then 'backup policy does not have a sufficient daily backup retention period configured.'
+        else 'backup policy has a sufficient daily backup retention period configured.'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm
+      left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
+      left join azure_recovery_services_backup_item as bi on vm.id = (bi.properties ->> 'SourceResourceID')
+      left join azure_recovery_services_backup_policy as bp on bi.properties ->> 'PolicyID' = bp.id
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_recovery_services_backup_item
+    - azure_subscription
+  Parameters:
+    - Key: azureSufficientInstantRestoreRetention
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - Azure Virtual Machines

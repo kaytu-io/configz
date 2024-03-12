@@ -1,0 +1,42 @@
+ID: aws_ec2_instance_termination_protection
+Title: EC2 Instance Termination Protection
+Description: Ensure termination protection safety feature is enabled for ec2 instances that aren't part of ASGs
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with instance_nis as (
+      select
+      i.instance_id, count(ni)
+      from
+      aws_ec2_instance as i,
+      jsonb_array_elements(network_interfaces) as ni
+      where ni -> 'Attachment' ->> 'Status' = 'attached'
+      group by i.instance_id
+      )
+      
+      select
+      i.instance_id as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+      when nis.count > 1 then 'alarm'
+      else 'ok'
+      end status,
+      case
+      when nis.count > 1 then i.instance_id || ' Has more than one network interfaces.'
+      else i.instance_id || ' Has more than one network interfaces.'
+      end as reason,
+      region,
+      account_id
+      from
+      aws_ec2_instance as i left join
+      instance_nis as nis on i.instance_id = nis.instance_id
+  Connector: AWS
+  PrimaryTable: aws_ec2_instance
+  ListOfTables:
+    - aws_ec2_instance
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - AWS EC2

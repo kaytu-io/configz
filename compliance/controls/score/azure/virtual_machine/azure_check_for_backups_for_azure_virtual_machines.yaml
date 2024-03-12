@@ -1,0 +1,35 @@
+ID: azure_check_for_backups_for_azure_virtual_machines
+Title: Check for Backups for Azure Virtual Machines
+Description: Ensure that Microsoft Azure Backup service is in use for your Azure virtual machines (VMs).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when bi.name is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when bi.name is null then 'Diagnostic extensions installed on the VM'
+        else 'Diagnostic extensions not installed on the VM'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine as vm
+      left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
+      left join azure_recovery_services_backup_item as bi on vm.id = (bi.properties ->> 'SourceResourceID')
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+    - azure_compute_virtual_machine
+    - azure_recovery_services_backup_item
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - Azure Virtual Machines

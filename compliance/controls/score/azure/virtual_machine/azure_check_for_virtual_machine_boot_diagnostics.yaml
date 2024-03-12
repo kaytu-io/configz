@@ -9,11 +9,11 @@ Query:
       vm.kaytu_account_id,
       vm.kaytu_resource_id,
       case
-        when (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'DiagnosticsProfile' -> 'BootDiagnostics' ->> 'Enabled')::bool then 'ok'
+        when (boot_diagnostics_enabled)::bool then 'ok'
         else 'alarm'
       end as status,
       case
-        when (vm.kaytu_description -> 'VirtualMachine' -> 'Properties' -> 'DiagnosticsProfile' -> 'BootDiagnostics' ->> 'Enabled')::bool then 'Boot Diagnostics feature is enabled'
+        when (boot_diagnostics_enabled)::bool then 'Boot Diagnostics feature is enabled'
         else 'Boot Diagnostics feature is not enabled'
       end as reason,
       vm.resource_group,

@@ -29,6 +29,7 @@ Controls:
   - aws_kubernetes_cluster_version
   - aws_elbv2_alb_minimum_number_of_ec2_target_instances
   - aws_elbv2_glb_minimum_number_of_ec2_target_instances
+  - aws_ec2_instance_termination_protection
 ReferenceCode: aws_score_reliability
 Description: Reliability Description
 ID: aws_score_reliability
