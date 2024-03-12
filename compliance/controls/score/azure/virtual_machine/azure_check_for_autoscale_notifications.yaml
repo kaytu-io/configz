@@ -1,0 +1,35 @@
+ID: azure_check_for_autoscale_notifications
+Title: Check for Autoscale Notifications
+Description: Ensure that autoscale notifications are enabled for Azure virtual machine scale sets.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.id as resource,
+      vm.kaytu_account_id,
+      vm.kaytu_resource_id,
+      case
+        when s.notifications ->> 'enabled' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when s.notifications ->> 'enabled' = 'true' then 'autoscale notifications are enabled'
+        else 'autoscale notifications are not enabled'
+      end as reason,
+      vm.resource_group,
+      display_name as subscription
+    from
+      azure_compute_virtual_machine_scale_set as vm
+      left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
+      left join azure_autoscale_setting as s on vm.id = s.target_resource_uri
+  Connector: Azure
+  PrimaryTable: azure_compute_virtual_machine_scale_set
+  ListOfTables:
+    - azure_compute_virtual_machine_scale_set
+    - azure_autoscale_setting
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - Azure Virtual Machines

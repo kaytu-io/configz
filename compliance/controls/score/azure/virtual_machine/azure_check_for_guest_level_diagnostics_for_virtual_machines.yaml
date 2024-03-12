@@ -9,11 +9,25 @@ Query:
       vm.kaytu_account_id,
       vm.kaytu_resource_id,
       case
-        when r -> 'Properties' -> 'Settings' -> 'LadCfg' ->> 'DiagnosticMonitorConfiguration') is not null then 'ok'
+        when exists(
+          select 1
+          from
+            jsonb_array_elements(extensions) as e
+          where
+            (extensions_settings -> (e ->> 'id') -> 'ladCfg' ->> 'diagnosticMonitorConfiguration') is not null or
+            (extensions_settings -> (e ->> 'id') -> 'WadCfg' ->> 'DiagnosticMonitorConfiguration') is not null
+        ) then 'ok'
         else 'alarm'
       end as status,
       case
-        when r -> 'Properties' -> 'Settings' -> 'LadCfg' ->> 'DiagnosticMonitorConfiguration') is not null then 'Guest-Level Diagnostics feature is enabled'
+        when exists(
+          select 1
+          from
+            jsonb_array_elements(extensions) as e
+          where
+            (extensions_settings -> (e ->> 'id') -> 'ladCfg' ->> 'diagnosticMonitorConfiguration') is not null or
+            (extensions_settings -> (e ->> 'id') -> 'WadCfg' ->> 'DiagnosticMonitorConfiguration') is not null
+        ) then 'Guest-Level Diagnostics feature is enabled'
         else 'Guest-Level Diagnostics feature is not enabled'
       end as reason,
       vm.resource_group,
@@ -32,4 +46,4 @@ ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-  - Azure Virtual Machines
+    - Azure Virtual Machines

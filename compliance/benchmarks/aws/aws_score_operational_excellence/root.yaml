@@ -17,6 +17,7 @@ Controls:
   - aws_security_groups_events_subscriptions
   - aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
   - aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
+  - azure_ec2_instances_with_multiple_elastic_network_interfaces
 ReferenceCode: aws_score_operational_excellence
 Description: Operational Excellence Description
 ID: aws_score_operational_excellence

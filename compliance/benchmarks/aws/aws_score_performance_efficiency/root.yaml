@@ -15,6 +15,7 @@ Controls:
   - aws_security_groups_events_subscriptions
   - aws_kubernetes_cluster_version
   - aws_managed_nat_gateway_in_use
+  - aws_enable_support_for_grpc_protocol
 ReferenceCode: aws_score_performance_efficiency
 Description: Performance Efficiency Description
 ID: aws_score_performance_efficiency

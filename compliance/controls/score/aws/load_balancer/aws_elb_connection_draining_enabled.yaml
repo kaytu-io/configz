@@ -1,0 +1,31 @@
+ID: aws_elb_connection_draining_enabled
+Title: ELB Connection Draining Enabled
+Description: Ensure ELB access logging is enabled for security, troubleshooting, and statistical analysis purposes
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.arn as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when kaytu_description -> 'Attributes' -> 'ConnectionDraining' ->> 'Enabled' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when kaytu_description -> 'Attributes' -> 'ConnectionDraining' ->> 'Enabled' = 'true' then a.title || ' Connection Draining feature is enabled'
+        else a.title || ' Connection Draining feature is not enabled'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_ec2_classic_load_balancer a
+  Connector: AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+    - aws_ec2_classic_load_balancer
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+    - AWS Elastic Load Balancing (ELB)

@@ -1,0 +1,33 @@
+ID: aws_enable_support_for_grpc_protocol
+Title: Enable Support for gRPC Protocol
+Description: Ensure that support for gRPC protocol is enabled for Application Load Balancers (ALBs).
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.arn as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when tg.kaytu_description -> 'TargetGroup' ->> 'ProtocolVersion' = 'GRPC' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when tg.kaytu_description -> 'TargetGroup' ->> 'ProtocolVersion' = 'GRPC' then a.title || ' is  configured to send requests to targets using the gRPC protocol.'
+        else a.title || ' is not configured to send requests to targets using the gRPC protocol.'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_ec2_application_load_balancer a
+      left join aws_ec2_target_group as tg on tg.load_balancer_arns::text like '%' || a.arn || '%'
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+    - aws_ec2_target_group
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - AWS Elastic Load Balancing V2 (ELBv2)
