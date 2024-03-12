@@ -2,6 +2,7 @@ ID: aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
 Title: AWS RDS Database Instances must have a minimum acceptable restore time
 Description: Check for all AWS RDS Database Instances to see if they are meeting the required restore time defined.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -37,10 +38,13 @@ Query:
   - aws_rds_db_instance
   - aws_backup_recovery_point
   Parameters:
-    - Key: awsRdsBaselineRestorableTimeInHrs
-      Required: true
+  - Key: awsRdsBaselineRestorableTimeInHrs
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Missing Backup
+Managed: false

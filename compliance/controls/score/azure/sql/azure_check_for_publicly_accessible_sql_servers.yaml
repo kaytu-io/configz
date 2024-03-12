@@ -2,6 +2,7 @@ ID: azure_check_for_publicly_accessible_sql_servers
 Title: Check for Publicly Accessible SQL Servers
 Description: Ensure that Azure SQL database servers are accessible via private endpoints only.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,10 +27,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
-    - azure_sql_server
-    - azure_subscription
+  - azure_sql_server
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Managed SQL Service
+  score_tags:
+  - Exposed Endpoints
+Managed: false

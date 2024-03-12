@@ -2,6 +2,7 @@ ID: aws_default_security_group_unrestricted
 Title: Default Security Group Unrestricted
 Description: Ensure the default security group of every VPC restricts all traffic.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -33,9 +34,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
-    - aws_vpc_security_group
+  - aws_vpc_security_group
+  Parameters: []
 ManualVerification: false
 Severity: low
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

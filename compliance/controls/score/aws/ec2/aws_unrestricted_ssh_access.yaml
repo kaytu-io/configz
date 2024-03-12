@@ -2,6 +2,7 @@ ID: aws_unrestricted_ssh_access
 Title: Unrestricted SSH Access
 Description: Ensure no security groups allow ingress from 0.0.0.0/0 to port 22.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with ingress_sg as (
@@ -41,9 +42,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
-    - aws_vpc_security_group
+  - aws_vpc_security_group
+  Parameters: []
 ManualVerification: false
 Severity: very high
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

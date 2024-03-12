@@ -1,8 +1,8 @@
 ID: aws_enable_serverless_log_exports
 Title: Enable Serverless Log Exports
-Description: Ensure Log Exports feature is enabled for your Amazon Aurora Serverless
-  databases.
+Description: Ensure Log Exports feature is enabled for your Amazon Aurora Serverless databases.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
@@ -27,9 +27,12 @@ Query:
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
   - aws_rds_db_cluster
+  Parameters: []
 ManualVerification: false
 Severity: low
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

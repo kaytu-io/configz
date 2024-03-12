@@ -2,6 +2,7 @@ ID: aws_use_io2_not_io1
 Title: Use io2, not io1
 Description: io1 Volumes are older generation less reliable than io2 for same cost.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,9 +22,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ebs_volume
   ListOfTables:
-    - aws_ebs_volume
+  - aws_ebs_volume
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Elastic Block Store (EBS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

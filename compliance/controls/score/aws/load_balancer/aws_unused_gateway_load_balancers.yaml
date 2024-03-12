@@ -2,6 +2,7 @@ ID: aws_unused_gateway_load_balancers
 Title: Unused Gateway Load Balancers
 Description: Identify unused Gateway Load Balancers, and delete them to help lower the cost of your monthly AWS bill.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with target_resource as (
@@ -33,10 +34,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
-    - aws_ec2_gateway_load_balancer
-    - aws_ec2_target_group
+  - aws_ec2_gateway_load_balancer
+  - aws_ec2_target_group
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Load Balancing V2 (ELBv2)
+  score_tags:
+  - Orphaned Resources
+Managed: false

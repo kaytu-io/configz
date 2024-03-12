@@ -2,6 +2,7 @@ ID: aws_check_for_iam_user_group_membership
 Title: Check for IAM User Group Membership
 Description: Ensure that all Amazon IAM users have group memberships.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
+  - aws_iam_user
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

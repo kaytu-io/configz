@@ -2,6 +2,7 @@ ID: aws_ec2_instance_in_vpc
 Title: EC2 Instance In VPC
 Description: Ensure EC2 instances are launched using the EC2-VPC platform instead of EC2-Classic outdated platform.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,9 +25,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

@@ -1,8 +1,8 @@
 ID: aws_rds_public_snapshots
 Title: Amazon RDS Public Snapshots
-Description: Ensure that your Amazon RDS database snapshots are not accessible to
-  all AWS accounts.
+Description: Ensure that your Amazon RDS database snapshots are not accessible to all AWS accounts.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH restore_values AS (
@@ -20,15 +20,15 @@ Query:
     )
     SELECT 
       s.db_snapshot_identifier AS resource,
-
+    
         s.kaytu_account_id AS kaytu_account_id,
       s.kaytu_resource_id AS kaytu_resource_id,
-
+    
         CASE
         WHEN rv.attrValues LIKE '%all%'
           THEN 'alarm'
         ELSE 'ok'
-
+    
         END AS status,
       CASE
         WHEN rv.attrValues LIKE '%all%'
@@ -45,9 +45,12 @@ Query:
   PrimaryTable: aws_rds_db_snapshot
   ListOfTables:
   - aws_rds_db_snapshot
+  Parameters: []
 ManualVerification: false
 Severity: high
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

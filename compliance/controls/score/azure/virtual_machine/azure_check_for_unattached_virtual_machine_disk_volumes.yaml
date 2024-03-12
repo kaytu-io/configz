@@ -2,6 +2,7 @@ ID: azure_check_for_unattached_virtual_machine_disk_volumes
 Title: Check for Unattached Virtual Machine Disk Volumes
 Description: Remove any unattached Azure virtual machine (VM) disk volumes to improve security and reduce costs
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -30,10 +31,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
-    - azure_compute_disk
-    - azure_subscription
+  - azure_compute_disk
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+  score_tags:
+  - Orphaned Resources
+Managed: false

@@ -2,6 +2,7 @@ ID: azure_check_for_certificate_minimum_key_size
 Title: Check for Certificate Minimum Key Size
 Description: Ensure that Azure Key Vault RSA certificates are using the appropriate key size.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,13 +27,16 @@ Query:
   Connector: Azure
   PrimaryTable: azure_key_vault_key
   ListOfTables:
-    - azure_key_vault_key
-    - azure_subscription
+  - azure_key_vault_key
+  - azure_subscription
   Parameters:
-    - Key: azureRsaCertificateMinSize
-      Required: true
+  - Key: azureRsaCertificateMinSize
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure KeyVault
+  score_tags:
+  - Insecure Keys
+Managed: false

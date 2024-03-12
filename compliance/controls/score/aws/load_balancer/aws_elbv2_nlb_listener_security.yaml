@@ -2,6 +2,7 @@ ID: aws_elbv2_nlb_listener_security
 Title: ELBv2 NLB Listener Security
 Description: Ensure that your AWS Network Load Balancer listeners are using a secure protocol such as TLS.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with tls_listeners as (
@@ -65,10 +66,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_network_load_balancer
   ListOfTables:
-    - aws_ec2_network_load_balancer
-    - aws_ec2_load_balancer_listener
+  - aws_ec2_network_load_balancer
+  - aws_ec2_load_balancer_listener
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Load Balancing V2 (ELBv2)
+  score_tags:
+  - Unencrypted Traffic
+Managed: false

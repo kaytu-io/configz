@@ -2,6 +2,7 @@ ID: azure_disable_anonymous_access_to_blob_containers
 Title: Disable Anonymous Access to Blob Containers
 Description: Ensure that anonymous access to blob containers is disabled within your Azure Storage account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,10 +28,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
-    - azure_storage_account
-    - azure_subscription
+  - azure_storage_account
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Storage Accounts
+  score_tags:
+  - Exposed Endpoints
+Managed: false

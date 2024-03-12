@@ -2,6 +2,7 @@ ID: aws_default_security_groups_in_use
 Title: Default Security Groups In Use
 Description: Ensure default security groups aren't in use. Instead create unique security groups to better adhere to the principle of least privilege.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -29,9 +30,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

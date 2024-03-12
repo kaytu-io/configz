@@ -2,6 +2,7 @@ ID: aws_efs_encryption_enabled
 Title: EFS Encryption Enabled
 Description: Ensure encryption is enabled for AWS EFS file systems to protect your data at rest.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_efs_file_system
   ListOfTables:
-    - aws_efs_file_system
+  - aws_efs_file_system
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Amazon Elastic File System (EFS)
+  score_tags:
+  - Unencrypted Storage
+Managed: false

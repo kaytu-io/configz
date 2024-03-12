@@ -2,6 +2,7 @@ ID: azure_check_for_key_vault_full_administrator_permissions
 Title: Check for Key Vault Full Administrator Permissions
 Description: Ensure that no Azure user, group or application has full permissions to access and manage Key Vaults.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH secrets AS (
@@ -14,7 +15,7 @@ Query:
         'Update','Create','Import','Delete','Recover','Backup','Restore','ManageContacts',
         'ManageIssuers','GetIssuers','ListIssuers','SetIssuers','DeleteIssuers','Purge']) AS c
     )
-
+    
     select
       v.name as resource,
       v.kaytu_resource_id,
@@ -53,10 +54,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
-    - azure_key_vault
-    - azure_subscription
+  - azure_key_vault
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure KeyVault
+  score_tags:
+  - Exposed Endpoints
+Managed: false

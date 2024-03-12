@@ -2,6 +2,7 @@ ID: aws_disable_public_ip_address_assignment_for_ec2_instances
 Title: Disable Public IP Address Assignment for EC2 Instances
 Description: Ensure that Amazon EC2 instances are not using public IP addresses.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Lacking High Availability
+Managed: false

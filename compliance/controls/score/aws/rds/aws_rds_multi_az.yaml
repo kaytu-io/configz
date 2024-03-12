@@ -2,6 +2,7 @@ ID: aws_rds_multi_az
 Title: RDS Multi-AZ
 Description: Ensure RDS instances are launched into Multi-AZ.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,11 +23,14 @@ Query:
       aws_rds_db_instance
   Connector: AWS
   PrimaryTable: aws_rds_db_instance
-  ListOfTables: 
+  ListOfTables:
   - aws_rds_db_instance
+  Parameters: []
 ManualVerification: false
 Severity: medium
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

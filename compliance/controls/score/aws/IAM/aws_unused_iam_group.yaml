@@ -2,6 +2,7 @@ ID: aws_unused_iam_group
 Title: Unused IAM Group
 Description: Ensure all IAM groups have at least one user.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_group
   ListOfTables:
-    - aws_iam_group
+  - aws_iam_group
+  Parameters: []
 ManualVerification: false
 Severity: low
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

@@ -2,6 +2,7 @@ ID: azure_enable_all_types_of_threat_detection_on_sql_servers
 Title: Enable All Types of Threat Detection on SQL Servers
 Description: Enable all types of threat detection for your Microsoft Azure SQL database servers.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,10 +28,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
-    - azure_sql_server
-    - azure_subscription
+  - azure_sql_server
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Managed SQL Service
+  score_tags:
+  - Problem Identities
+Managed: false

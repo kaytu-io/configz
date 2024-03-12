@@ -2,6 +2,7 @@ ID: aws_unrestricted_network_acl_outbound_traffic
 Title: Unrestricted Network ACL Outbound Traffic
 Description: Ensure that no Network ACL (NACL) allows outbound/egress traffic to all ports.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -33,9 +34,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc_network_acl
   ListOfTables:
-    - aws_vpc_network_acl
+  - aws_vpc_network_acl
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Virtual Private Cloud (VPC)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

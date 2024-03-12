@@ -1,8 +1,8 @@
 ID: aws_enable_aurora_cluster_copy_tags_to_snapshots
 Title: Enable Aurora Cluster Copy Tags to Snapshots
-Description: Ensure that Amazon Aurora clusters have Copy Tags to Snapshots feature
-  enabled.
+Description: Ensure that Amazon Aurora clusters have Copy Tags to Snapshots feature enabled.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
@@ -27,9 +27,12 @@ Query:
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
   - aws_rds_db_cluster
+  Parameters: []
 ManualVerification: false
 Severity: high
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Observability
+Managed: false

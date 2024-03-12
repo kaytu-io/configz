@@ -2,6 +2,7 @@ ID: aws_acm_certificates_renewal_7_days_before_expiration
 Title: AWS ACM Certificates Renewal (7 days before expiration)
 Description: Ensure Amazon Certificate Manager (ACM) certificates are renewed before their expiration.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -24,9 +25,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_acm_certificate
   ListOfTables:
-    - aws_acm_certificate
+  - aws_acm_certificate
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Certificate Manager
+  score_tags:
+  - Unencrypted Storage
+Managed: false

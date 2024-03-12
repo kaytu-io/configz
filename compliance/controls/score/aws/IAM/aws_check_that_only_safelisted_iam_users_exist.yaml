@@ -2,6 +2,7 @@ ID: aws_check_that_only_safelisted_iam_users_exist
 Title: Check that only safelisted IAM Users exist
 Description: Ensure that only safelisted IAM Users exist within your AWS account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,12 +24,15 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
+  - aws_iam_user
   Parameters:
-    - Key: awsApprovedIamUsers
-      Required: true
+  - Key: awsApprovedIamUsers
+    Required: true
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_elbv2_elastic_load_balancing_deletion_protection
 Title: ELBv2 Elastic Load Balancing Deletion Protection
 Description: Ensure ELBv2 Load Balancers have Deletion Protection feature enabled in order to protect them from being accidentally deleted.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with app_lb_desync_mitigation_mode as (
@@ -35,9 +36,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
-    - aws_ec2_application_load_balancer
+  - aws_ec2_application_load_balancer
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Elastic Load Balancing V2 (ELBv2)
+  score_tags:
+  - Problem Identities
+Managed: false

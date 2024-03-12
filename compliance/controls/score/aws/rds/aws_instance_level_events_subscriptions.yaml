@@ -2,6 +2,7 @@ ID: aws_instance_level_events_subscriptions
 Title: Instance Level Events Subscriptions
 Description: Enable Event Subscriptions for Instance Level Events.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select distinct
@@ -15,9 +16,9 @@ Query:
       case
         when s.arn is
         null then 'Event notifications is not enabled for Amazon RDS instance level events'
-
+    
           else 'Event notifications is enabled for Amazon RDS instance level events'
-
+    
         end reason,
       a.account_id
     from 
@@ -30,9 +31,12 @@ Query:
   ListOfTables:
   - aws_account
   - aws_rds_db_event_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - General Efficiency
+Managed: false

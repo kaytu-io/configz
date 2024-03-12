@@ -2,6 +2,7 @@ ID: aws_elbv2_alb_listener_security
 Title: ELBv2 ALB Listener Security
 Description: Ensure ELBv2 ALBs are using a secure protocol.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -26,10 +27,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
-    - aws_ec2_application_load_balancer
-    - aws_ec2_load_balancer_listener
+  - aws_ec2_application_load_balancer
+  - aws_ec2_load_balancer_listener
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Load Balancing V2 (ELBv2)
+  score_tags:
+  - Unencrypted Traffic
+Managed: false

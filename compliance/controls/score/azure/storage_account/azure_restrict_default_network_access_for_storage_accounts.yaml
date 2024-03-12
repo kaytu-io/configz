@@ -2,6 +2,7 @@ ID: azure_restrict_default_network_access_for_storage_accounts
 Title: Restrict Default Network Access for Storage Accounts
 Description: Ensure that the default network access rule is set to "Deny" within your Azure Storage account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,10 +25,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
-    - azure_storage_account
-    - azure_subscription
+  - azure_storage_account
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Storage Accounts
+  score_tags:
+  - Exposed Endpoints
+Managed: false

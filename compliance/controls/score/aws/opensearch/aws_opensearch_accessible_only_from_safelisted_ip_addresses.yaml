@@ -2,6 +2,7 @@ ID: aws_opensearch_accessible_only_from_safelisted_ip_addresses
 Title: Opensearch Accessible Only From Safelisted IP Addresses
 Description: Ensure only safelisted IP addresses can access your Amazon OpenSearch domains.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -41,12 +42,15 @@ Query:
   Connector: AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
-    - aws_opensearch_domain
+  - aws_opensearch_domain
   Parameters:
-    - Key: awsSafelistedIPs
-      Required: false
+  - Key: awsSafelistedIPs
+    Required: false
 ManualVerification: false
 Severity: critical
 Tags:
   score_service_name:
   - AWS OpenSearch Service
+  score_tags:
+  - Exposed Endpoints
+Managed: false

@@ -2,50 +2,15 @@ ID: azure_keyvault_logging_enabled
 Title: Ensure that logging for Azure KeyVault is 'Enabled'
 Description: Enable AuditEvent logging for key vault instances to ensure interactions with key vaults are logged and available.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with logging_details as (
-      select
-        name as key_vault_name
-      from
-        azure_key_vault,
-        jsonb_array_elements(diagnostic_settings) setting,
-        jsonb_array_elements(setting -> 'properties' -> 'logs') log
-      where
-        diagnostic_settings is not null
-        and setting -> 'properties' ->> 'storageAccountId' <> ''
-        and (log ->> 'enabled') :: boolean
-        and log ->> 'category' = 'AuditEvent'
-        and (log -> 'retentionPolicy') :: JSONB ? 'days'
-    )
-    select
-      v.id as resource,
-      v.kaytu_account_id as kaytu_account_id,
-      v.kaytu_resource_id as kaytu_resource_id,
-      case
-        when v.diagnostic_settings is null then 'alarm'
-        when l.key_vault_name not like concat('%', v.name, '%') then 'alarm'
-        else 'ok'
-      end as status,
-      case
-        when v.diagnostic_settings is null then v.name || ' logging not enabled.'
-        when l.key_vault_name not like concat('%', v.name, '%') then v.name || ' logging not enabled.'
-        else v.name || ' logging enabled.'
-      end as reason
-
-      , v.resource_group as resource_group
-      , sub.display_name as subscription
-    from
-      azure_key_vault v
-    left join
-      logging_details l ON l.key_vault_name = v.name
-    join
-      azure_subscription sub ON sub.subscription_id = v.subscription_id;
+  QueryToExecute: "with logging_details as (\n  select\n    name as key_vault_name\n  from\n    azure_key_vault,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -> 'properties' -> 'logs') log\n  where\n    diagnostic_settings is not null\n    and setting -> 'properties' ->> 'storageAccountId' <> ''\n    and (log ->> 'enabled') :: boolean\n    and log ->> 'category' = 'AuditEvent'\n    and (log -> 'retentionPolicy') :: JSONB ? 'days'\n)\nselect\n  v.id as resource,\n  v.kaytu_account_id as kaytu_account_id,\n  v.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.diagnostic_settings is null then 'alarm'\n    when l.key_vault_name not like concat('%', v.name, '%') then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when v.diagnostic_settings is null then v.name || ' logging not enabled.'\n    when l.key_vault_name not like concat('%', v.name, '%') then v.name || ' logging not enabled.'\n    else v.name || ' logging enabled.'\n  end as reason\n\n  , v.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault v\nleft join\n  logging_details l ON l.key_vault_name = v.name\njoin\n  azure_subscription sub ON sub.subscription_id = v.subscription_id;\n"
   Connector: Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
   - azure_key_vault
   - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
@@ -65,5 +30,8 @@ Tags:
   - v1.3.0
   plugin:
   - azure
+  score_tags:
+  - Observability
   service:
   - Azure/KeyVault
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_pre_heartbleed_server_certificates
 Title: Pre-Heartbleed Server Certificates
 Description: Ensure that your server certificates are not vulnerable to Heartbleed security bug.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -23,9 +24,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_server_certificate
   ListOfTables:
-    - aws_iam_server_certificate
+  - aws_iam_server_certificate
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

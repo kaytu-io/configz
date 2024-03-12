@@ -2,6 +2,7 @@ ID: azure_check_for_unused_load_balancers
 Title: Check for Unused Load Balancers
 Description: Identify and remove unused load balancers from your Microsoft Azure cloud account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -38,10 +39,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_lb
   ListOfTables:
-    - azure_lb
-    - azure_subscription
+  - azure_lb
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: low
 Tags:
   score_service_name:
   - Azure Network
+  score_tags:
+  - Orphaned Resources
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_access_keys_rotated_x_days
 Title: Access Keys Rotated X Days
 Description: Ensure AWS IAM access keys are rotated on a periodic basis as a security best practice (X Days).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,12 +26,15 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_access_key
   ListOfTables:
-    - aws_iam_access_key
+  - aws_iam_access_key
   Parameters:
-    - Key: awsIamAccessKeyAge
-      Required: true
+  - Key: awsIamAccessKeyAge
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Insecure Keys
+Managed: false

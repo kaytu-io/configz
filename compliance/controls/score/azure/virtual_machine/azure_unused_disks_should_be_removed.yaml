@@ -2,6 +2,7 @@ ID: azure_unused_disks_should_be_removed
 Title: Unused disks should be removed
 Description: Unattached disks are charged by Azure, they should be removed unless there is a business need to retain them.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -30,10 +31,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
-    - azure_compute_disk
-    - azure_subscription
+  - azure_compute_disk
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+  score_tags:
+  - Orphaned Resources
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_unassociated_elastic_ip_addresses
 Title: Unassociated Elastic IP Addresses
 Description: Identify unassociated Elastic IP addresses, and delete them to help lower the cost of your monthly AWS bill.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,9 +28,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc_eip
   ListOfTables:
-    - aws_vpc_eip
+  - aws_vpc_eip
+  Parameters: []
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Orphaned Resources
+Managed: false

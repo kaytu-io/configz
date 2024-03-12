@@ -2,6 +2,7 @@ ID: azure_check_for_sufficient_point_in_time_restore_pitr_backup_retention_perio
 Title: Check for Sufficient Point in Time Restore (PITR) Backup Retention Period
 Description: Ensure there is a sufficient PITR backup retention period configured for Azure SQL databases.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,13 +23,16 @@ Query:
   Connector: Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
-    - azure_sql_server
-    - azure_subscription
+  - azure_sql_server
+  - azure_subscription
   Parameters:
-    - Key: azureDatabaseServerRetentionPeriodDays
-      Required: true
+  - Key: azureDatabaseServerRetentionPeriodDays
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Managed SQL Service
+  score_tags:
+  - Missing Backup
+Managed: false

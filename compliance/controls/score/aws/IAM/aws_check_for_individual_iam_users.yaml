@@ -2,6 +2,7 @@ ID: aws_check_for_individual_iam_users
 Title: Check for Individual IAM Users
 Description: Ensure there is at least one IAM user used to access your AWS cloud account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,10 +25,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_account
   ListOfTables:
-    - aws_account
-    - aws_iam_user
+  - aws_account
+  - aws_iam_user
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

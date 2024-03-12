@@ -2,6 +2,7 @@ ID: aws_inactive_iam_console_user
 Title: Inactive IAM Console User
 Description: Ensure no AWS IAM users have been inactive for a long (specified) period of time.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -30,10 +31,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
-    - aws_iam_access_key
+  - aws_iam_user
+  - aws_iam_access_key
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

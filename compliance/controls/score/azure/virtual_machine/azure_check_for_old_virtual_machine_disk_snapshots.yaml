@@ -2,6 +2,7 @@ ID: azure_check_for_old_virtual_machine_disk_snapshots
 Title: Check for Old Virtual Machine Disk Snapshots
 Description: Identify and remove old virtual machine disk snapshots in order to optimize cloud costs.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -31,13 +32,16 @@ Query:
   Connector: Azure
   PrimaryTable: azure_compute_snapshot
   ListOfTables:
-    - azure_compute_snapshot
-    - azure_subscription
+  - azure_compute_snapshot
+  - azure_subscription
   Parameters:
-    - Key: azureDiskSnapshotAgeThreshold
-      Required: true
+  - Key: azureDiskSnapshotAgeThreshold
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+  score_tags:
+  - Optimization
+Managed: false

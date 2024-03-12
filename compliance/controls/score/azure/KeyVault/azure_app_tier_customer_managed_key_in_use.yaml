@@ -2,6 +2,7 @@ ID: azure_app_tier_customer_managed_key_in_use
 Title: App Tier Customer-Managed Key In Use
 Description: Ensure that a Customer-Managed Key is created for your Azure cloud application tier.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -36,13 +37,16 @@ Query:
   Connector: Azure
   PrimaryTable: azure_subscription
   ListOfTables:
-    - azure_key_vault_key
-    - azure_subscription
+  - azure_key_vault_key
+  - azure_subscription
   Parameters:
-    - Key: azureAppTierTags
-      Required: true
+  - Key: azureAppTierTags
+    Required: true
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure KeyVault
+  score_tags:
+  - Unencrypted Storage
+Managed: false

@@ -2,6 +2,7 @@ ID: azure_use_byok_for_transparent_data_encryption
 Title: Use BYOK for Transparent Data Encryption
 Description: Use Bring Your Own Key (BYOK) support for Transparent Data Encryption (TDE).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,10 +25,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
-    - azure_sql_server
-    - azure_subscription
+  - azure_sql_server
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Managed SQL Service
+  score_tags:
+  - Insecure Keys
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_managed_nat_gateway_in_use
 Title: Managed NAT Gateway in Use
 Description: Ensure that the Managed NAT Gateway service is enabled for high availability (HA).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with available_nat_gateways as (
@@ -27,10 +28,14 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc
   ListOfTables:
-    - aws_vpc
-    - aws_vpc_nat_gateway
+  - aws_vpc
+  - aws_vpc_nat_gateway
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Virtual Private Cloud (VPC)
+  score_tags:
+  - Over Utilization
+Managed: false

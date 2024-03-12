@@ -2,6 +2,7 @@ ID: aws_check_for_untrusted_cross_account_iam_roles
 Title: Check for Untrusted Cross-Account IAM Roles
 Description: Ensure that AWS IAM roles cannot be used by untrusted accounts via cross-account access feature.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -41,12 +42,15 @@ Query:
   Connector: AWS
   PrimaryTable: aws_iam_role
   ListOfTables:
-    - aws_iam_role
+  - aws_iam_role
   Parameters:
-    - Key: awsTrustedAccounts
-      Required: false
+  - Key: awsTrustedAccounts
+    Required: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+  score_tags:
+  - Problem Identities
+Managed: false

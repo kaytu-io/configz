@@ -2,6 +2,7 @@ ID: aws_elb_insecure_ssl_protocols
 Title: ELB Insecure SSL Protocols
 Description: Ensure ELBs don't use insecure SSL protocols.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with detailed_classic_listeners as (
@@ -36,9 +37,13 @@ Query:
   Connector: AWS
   PrimaryTable: aws_ec2_classic_load_balancer
   ListOfTables:
-    - aws_ec2_classic_load_balancer
+  - aws_ec2_classic_load_balancer
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Elastic Load Balancing V2 (ELBv2)
+  score_tags:
+  - Unencrypted Traffic
+Managed: false

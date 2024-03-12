@@ -2,30 +2,34 @@ ID: aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
 Title: AWS RDS Database Instances have a minimum acceptable backup policy
 Description: Check for all AWS RDS Database Instances are covered by configured to be backup for a minimum time period
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
-      select
-        arn as resource,
-        kaytu_account_id,
-        kaytu_resource_id,
-        case
-          when backup_retention_period < '{{.awsRdsBaselineRetentionPeriodDays}}'::INT then 'alarm'
-          else 'ok'
-        end as status,
-        title || ' backup retention period set to ' || backup_retention_period || '.' as reason,
-        region,
-        account_id
-      from
-        aws_rds_db_instance;
+    select
+      arn as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when backup_retention_period < '{{.awsRdsBaselineRetentionPeriodDays}}'::INT then 'alarm'
+        else 'ok'
+      end as status,
+      title || ' backup retention period set to ' || backup_retention_period || '.' as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance;
   Connector: AWS
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
   Parameters:
-    - Key: awsRdsBaselineRetentionPeriodDays
-      Required: true
+  - Key: awsRdsBaselineRetentionPeriodDays
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+  score_tags:
+  - Missing Backup
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_unrestricted_mongodb_access
 Title: Unrestricted MongoDB Access
 Description: Ensure no security group allows unrestricted ingress access to MongoDB port 27017
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -35,12 +36,15 @@ Query:
   Connector: AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
-    - aws_vpc_security_group
+  - aws_vpc_security_group
   Parameters:
-    - Key: awsMongodbTrustedIpRange
-      Required: true
+  - Key: awsMongodbTrustedIpRange
+    Required: true
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS EC2
+  score_tags:
+  - Exposed Endpoints
+Managed: false

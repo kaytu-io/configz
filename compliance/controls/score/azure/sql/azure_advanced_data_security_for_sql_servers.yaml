@@ -2,6 +2,7 @@ ID: azure_enable_auditing_for_sql_servers
 Title: Enable Auditing for SQL Servers
 Description: Ensure that database auditing is enabled at the Azure SQL database server level.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,10 +26,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
-    - azure_sql_server
-    - azure_subscription
+  - azure_sql_server
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Managed SQL Service
+  score_tags:
+  - Exposed Endpoints
+Managed: false

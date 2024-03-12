@@ -2,6 +2,7 @@ ID: azure_disks_should_use_standard_snapshots
 Title: Disks should use standard snapshots
 Description: Use standard storage instead of premium storage for managed disk snapshots to save 60% on costs.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -30,10 +31,14 @@ Query:
   Connector: Azure
   PrimaryTable: azure_compute_snapshot
   ListOfTables:
-    - azure_compute_snapshot
-    - azure_subscription
+  - azure_compute_snapshot
+  - azure_subscription
+  Parameters: []
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+  score_tags:
+  - Over Utilization
+Managed: false
