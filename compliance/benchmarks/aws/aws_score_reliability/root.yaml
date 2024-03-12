@@ -30,6 +30,9 @@ Controls:
   - aws_elbv2_alb_minimum_number_of_ec2_target_instances
   - aws_elbv2_glb_minimum_number_of_ec2_target_instances
   - aws_ec2_instance_termination_protection
+  - aws_enable_deletion_protection
+  - aws_elb_connection_draining_enabled
+  - aws_elb_cross_zone_load_balancing_enabled
 ReferenceCode: aws_score_reliability
 Description: Reliability Description
 ID: aws_score_reliability

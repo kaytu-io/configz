@@ -1,0 +1,32 @@
+ID: aws_internet_facing_elbs
+Title: Internet Facing ELBs
+Description: Ensure Amazon internet-facing ELBs/ALBs are regularly reviewed for security purposes.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.arn as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when scheme = 'internet-facing' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when scheme = 'internet-facing' then a.title || ' is internet-facing and routes requests from clients over the Internet to the registered EC2 instances.'
+        else a.title || ' is not internet-facing and routes requests from clients over the Internet to the registered EC2 instances.'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_ec2_classic_load_balancer a
+  Connector: AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+    - aws_ec2_classic_load_balancer
+    - aws_ec2_target_group
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - AWS Elastic Load Balancing V2 (ELBv2)

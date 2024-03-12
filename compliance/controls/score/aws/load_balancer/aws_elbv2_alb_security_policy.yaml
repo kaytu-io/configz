@@ -1,0 +1,36 @@
+ID: aws_elbv2_alb_security_policy
+Title: ELBv2 ALB Security Policy
+Description: Ensure that Amazon ALBs are using the latest predefined security policy for their SSL negotiation configuration in order to follow security best practices and protect their front-end connections against SSL/TLS vulnerabilities.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.arn as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when '{{.awsLatestPolicies}}' like '%' || li.ssl_policy || '%' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when '{{.awsLatestPolicies}}' like '%' || li.ssl_policy || '%' then a.title || ' is using one of the latest security policies.'
+        else a.title || ' is not using one of the latest security policies.'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_ec2_application_load_balancer a
+      left join aws_ec2_load_balancer_listener as li on li.load_balancer_arn = a.arn
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+    - aws_ec2_target_group
+  Parameters:
+    - Key: awsLatestPolicies
+      Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - AWS Elastic Load Balancing V2 (ELBv2)

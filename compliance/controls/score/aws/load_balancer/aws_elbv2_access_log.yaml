@@ -1,0 +1,34 @@
+ID: aws_elbv2_access_log
+Title: ELBv2 Access Log
+Description: Ensure that Amazon ALBs have Access Logging feature enabled for security, troubleshooting and statistical analysis purposes.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.arn as resource,
+      a.kaytu_account_id,
+      a.kaytu_resource_id,
+      case
+        when lb ->> 'Value' = 'false' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when lb ->> 'Value' = 'false' then a.title || ' deletion protection is not enabled.'
+        else a.title || ' deletion protection is enabled.'
+      end as reason,
+      a.region,
+      a.account_id
+    from
+      aws_ec2_application_load_balancer a
+      cross join jsonb_array_elements(load_balancer_attributes) as lb
+    where
+      lb ->> 'Key' = 'access_logs.s3.enabled'
+  Connector: AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+    - aws_ec2_application_load_balancer
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+    - AWS Elastic Load Balancing V2 (ELBv2)
