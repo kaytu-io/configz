@@ -1,6 +1,6 @@
-ID: aws_ec2_instance_termination_protection
-Title: EC2 Instance Termination Protection
-Description: Ensure termination protection safety feature is enabled for ec2 instances that aren't part of ASGs
+ID: azure_ec2_instances_with_multiple_elastic_network_interfaces
+Title: EC2 Instances with Multiple Elastic Network Interfaces
+Description: Ensure that Amazon EC2 instances are not using multiple ENIs.
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -36,7 +36,7 @@ Query:
   ListOfTables:
     - aws_ec2_instance
 ManualVerification: false
-Severity: medium
+Severity: high
 Tags:
   score_service_name:
     - AWS EC2

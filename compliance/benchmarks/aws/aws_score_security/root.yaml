@@ -128,6 +128,7 @@ Controls:
   - aws_ssh_public_keys_rotated_45_days
   - aws_ssh_public_keys_rotated_x_days
   - aws_iam_server_certificate_size
+  - azure_ec2_instances_with_multiple_elastic_network_interfaces
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security
