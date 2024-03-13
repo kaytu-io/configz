@@ -7,6 +7,11 @@ Controls:
   - azure_configure_minimum_tls_version
   - azure_use_azure_cni_add_on_for_managing_network_resources
   - azure_use_microsoft_entra_id_integration_for_aks_clusters
+  - azure_use_user_assigned_managed_identities_for_aks_clusters
+  - azure_ec2_instances_with_multiple_elastic_network_interfaces
+  - azure_kubernetes_api_version
+  - azure_use_network_contributor_role_for_managing_azure_network_resources
+  - aws_configure_emails_for_vulnerability_assessment_scan_reports_and_alerts
 ReferenceCode: azure_score_operational_excellence
 Description: Operational Excellence Description
 ID: azure_score_operational_excellence

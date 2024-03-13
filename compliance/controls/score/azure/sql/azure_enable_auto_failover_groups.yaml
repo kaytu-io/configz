@@ -1,0 +1,37 @@
+ID: azure_enable_auto_failover_groups
+Title: Enable Auto-Failover Groups
+Description: Ensure that your Azure SQL database servers are configured to use auto-failover groups.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      s.name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when failover_groups is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when failover_groups is null then 'Automatic Failover Group feature is not enabled.'
+        else 'Automatic Failover Group feature is enabled.'
+      end as reason,
+      s.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_sql_server as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+    - azure_sql_server
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - Azure Managed SQL Service
+  score_tags:
+    - Missing Backup
+Managed: false

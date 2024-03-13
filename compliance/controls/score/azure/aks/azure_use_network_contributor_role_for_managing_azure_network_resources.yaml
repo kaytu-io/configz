@@ -1,0 +1,44 @@
+ID: azure_use_network_contributor_role_for_managing_azure_network_resources
+Title: Use Network Contributor Role for Managing Azure Network Resources
+Description: Ensure that AKS clusters are configured to use the Network Contributor role.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with rd as (
+      select
+        scope, ARRAY_AGG(role_name) as roles
+      from
+        azure_role_assignment as ra left join azure_role_definition as rd on ra.role_definition_id = rd.id
+      group by scope limit 10
+    )
+      
+    select
+      c.name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      case
+        when rd.roles::text ilike '%Network Contributor%' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when rd.roles::text ilike '%Network Contributor%' then c.name || ' is using a Network Contributor role to manage network resources.'
+        else c.name || ' is not using a Network Contributor role to manage network resources.'
+      end as reason,
+        c.resource_group as resource_group,
+        sub.display_name as subscription
+      from
+      azure_kubernetes_cluster as c
+        left join azure_subscription as sub on c.subscription_id = sub.subscription_id
+        left join rd as rd on c.id like '%' || rd.scope || '%'
+  Connector: Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+    - azure_kubernetes_cluster
+    - azure_role_assignment
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - Azure Kubernetes (AKS)

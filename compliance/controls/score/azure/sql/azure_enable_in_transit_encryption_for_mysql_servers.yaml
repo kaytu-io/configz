@@ -1,0 +1,34 @@
+ID: azure_enable_in_transit_encryption_for_mysql_servers
+Title: Enable In-Transit Encryption for MySQL Servers
+Description: Ensure that in-transit encryption is enabled for your Azure MySQL database servers.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      s.name as resource,
+      s.kaytu_resource_id,
+      s.kaytu_account_id,
+      case
+        when ssl_enforcement = 'Enabled' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when ssl_enforcement = 'Enabled' then s.name || ' encryption in transit using Secure Sockets Layer (SSL) is enabled.'
+        else s.name || ' encryption in transit using Secure Sockets Layer (SSL) is not enabled.'
+      end as reason,
+      s.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_mysql_server as s
+      left join azure_subscription as sub on s.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_mysql_server
+  ListOfTables:
+    - azure_mysql_server
+    - azure_subscription
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+    - Azure Database for MySQL

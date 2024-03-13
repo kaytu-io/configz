@@ -1,0 +1,38 @@
+ID: azure_enable_ssl_certificate_auto_renewal
+Title: Enable SSL Certificate Auto-Renewal
+Description: Ensure that Auto-Renewal feature is enabled for your Azure Key Vault SSL certificates.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      case
+        when la -> 'Action' ->> 'ActionType' = 'EmailContacts' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when la -> 'Action' ->> 'ActionType' = 'EmailContacts' then 'Auto-Renewal feature is not enabled'
+        else 'Auto-Renewal feature is enabled'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault_certificate as c
+      left join azure_subscription as sub on c.subscription_id = sub.subscription_id,
+      jsonb_array_elements(lifetime_actions) as la
+  Connector: Azure
+  PrimaryTable: azure_key_vault_certificate
+  ListOfTables:
+    - azure_key_vault_certificate
+    - azure_subscription
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+    - Azure KeyVault
+  score_tags:
+    - Insecure Keys
+Managed: false

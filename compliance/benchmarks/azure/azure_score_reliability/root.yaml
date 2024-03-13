@@ -17,6 +17,8 @@ Controls:
   - azure_check_for_autoscale_notifications
   - azure_check_for_sufficient_daily_backup_retention_period
   - azure_check_for_sufficient_instant_restore_retention_period
+  - azure_kubernetes_api_version
+  - azure_enable_auto_failover_groups
 ReferenceCode: azure_score_reliability
 Description: Reliability Description
 ID: azure_score_reliability

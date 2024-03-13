@@ -1,0 +1,37 @@
+ID: azure_enable_certificate_transparency
+Title: Enable Certificate Transparency
+Description: Ensure there is a sufficient period configured for the SSL certificates auto-renewal.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      case
+        when c.issuer_parameters ->> 'CertificateTransparency' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when c.issuer_parameters ->> 'CertificateTransparency' = 'true' then 'Certificate transparency is not enabled for the certificate'
+        else 'Certificate transparency is enabled for the certificate'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault_certificate as c
+      left join azure_subscription as sub on c.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_key_vault_certificate
+  ListOfTables:
+    - azure_key_vault_certificate
+    - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - Azure KeyVault
+  score_tags:
+    - Insecure Keys
+Managed: false

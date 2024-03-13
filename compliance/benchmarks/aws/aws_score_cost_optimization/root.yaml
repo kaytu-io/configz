@@ -12,7 +12,6 @@ Controls:
   - aws_unused_gateway_load_balancers
   - aws_unused_application_load_balancers
   - aws_unused_elastic_load_balancers
-  - azure_ec2_instances_with_multiple_elastic_network_interfaces
 ReferenceCode: aws_score_cost_optimization
 Description: Cost Optimization Description
 ID: aws_score_cost_optimization

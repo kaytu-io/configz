@@ -11,6 +11,8 @@ Controls:
   - azure_enable_logging_for_azure_storage_table_service
   - azure_enable_logging_for_azure_storage_blob_service
   - azure_enable_blob_storage_lifecycle_management
+  - azure_ec2_instances_with_multiple_elastic_network_interfaces
+  - azure_kubernetes_api_version
 ReferenceCode: azure_score_cost_optimization
 Description: Cost Optimization Description
 ID: azure_score_cost_optimization
