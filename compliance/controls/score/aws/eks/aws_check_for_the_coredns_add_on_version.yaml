@@ -1,0 +1,53 @@
+ID: aws_check_for_the_coredns_add_on_version
+Title: Check for the CoreDNS Add-On Version
+Description: Ensure that the CoreDNS add-on version matches the EKS cluster's Kubernetes version.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.addon_name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      '{"1.29":"v1.11.1-eksbuild.6","1.28":"v1.10.1-eksbuild.7",
+        "1.27":"v1.10.1-eksbuild.7","1.26":"v1.9.3-eksbuild.11",
+        "1.25":"v1.9.3-eksbuild.11","1.24":"v1.9.3-eksbuild.11",
+        "1.23":"v1.8.7-eksbuild.10"}'::jsonb,
+      case
+        when '{"1.29":"v1.11.1-eksbuild.6","1.28":"v1.10.1-eksbuild.7",
+        "1.27":"v1.10.1-eksbuild.7","1.26":"v1.9.3-eksbuild.11",
+        "1.25":"v1.9.3-eksbuild.11","1.24":"v1.9.3-eksbuild.11",
+        "1.23":"v1.8.7-eksbuild.10"}'::jsonb ->> c.version is null then 'alarm'
+        when '{"1.29":"v1.11.1-eksbuild.6","1.28":"v1.10.1-eksbuild.7",
+        "1.27":"v1.10.1-eksbuild.7","1.26":"v1.9.3-eksbuild.11",
+        "1.25":"v1.9.3-eksbuild.11","1.24":"v1.9.3-eksbuild.11",
+        "1.23":"v1.8.7-eksbuild.10"}'::jsonb ->> c.version = a.addon_version then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when '{"1.29":"v1.11.1-eksbuild.6","1.28":"v1.10.1-eksbuild.7",
+        "1.27":"v1.10.1-eksbuild.7","1.26":"v1.9.3-eksbuild.11",
+        "1.25":"v1.9.3-eksbuild.11","1.24":"v1.9.3-eksbuild.11",
+        "1.23":"v1.8.7-eksbuild.10"}'::jsonb ->> c.version is null then 'cluster version is outdated'
+        when '{"1.29":"v1.11.1-eksbuild.6","1.28":"v1.10.1-eksbuild.7",
+        "1.27":"v1.10.1-eksbuild.7","1.26":"v1.9.3-eksbuild.11",
+        "1.25":"v1.9.3-eksbuild.11","1.24":"v1.9.3-eksbuild.11",
+        "1.23":"v1.8.7-eksbuild.10"}'::jsonb ->> c.version = a.addon_version then 'addon is using latest version'
+        else 'addon is not using latest version'
+      end as reason,
+      c.region,
+      c.account_id
+    from
+      aws_eks_cluster as c
+      left join aws_eks_addon as a on c.name = a.cluster_name
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

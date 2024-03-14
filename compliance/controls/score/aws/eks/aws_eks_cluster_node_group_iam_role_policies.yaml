@@ -1,0 +1,46 @@
+ID: aws_eks_cluster_node_group_iam_role_policies
+Title: EKS Cluster Node Group IAM Role Policies
+Description: Ensure that EKS Cluster node groups are using appropriate permissions.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      ng.nodegroup_name as resource,
+      ng.kaytu_account_id,
+      ng.kaytu_resource_id,
+      case
+        when exists(
+          select 1
+          from jsonb_array_elements_text(attached_policy_arns) as p 
+          where p <> 'arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly' and p <> 'arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy'
+        ) then 'alarm'
+        when r.inline_policies is not null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when exists(
+          select 1
+          from jsonb_array_elements_text(attached_policy_arns) as p 
+          where p <> 'arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly' and p <> 'arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy'
+        ) then 'permissions configured for IAM role are too permissive'
+        when r.inline_policies is not null then 'permissions configured for IAM role are too permissive'
+        else 'permissions configured for IAM role are not too permissive'
+      end as reason,
+      ng.region,
+      ng.account_id
+    from
+      aws_eks_node_group as ng
+      left join aws_iam_role as r on r.arn = ng.node_role
+  PrimaryTable: aws_eks_node_group
+  ListOfTables:
+  - aws_eks_node_group
+  - aws_iam_role
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

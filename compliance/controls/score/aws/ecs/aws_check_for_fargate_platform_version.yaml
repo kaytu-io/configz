@@ -1,0 +1,38 @@
+ID: aws_check_for_fargate_platform_version
+Title: Check for Fargate Platform Version
+Description: Ensure that your Amazon ECS cluster services are using the latest Fargate platform version.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when platform_version < '{{.awsEcsServicePlatformVersion}}' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when platform_version < '{{.awsEcsServicePlatformVersion}}' then 'Service is not using the latest supported version of platform'
+        else 'Service is using the latest supported version of platform'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecs_service
+  Connector: AWS
+  PrimaryTable: aws_ecs_service
+  ListOfTables:
+  - aws_ecs_service
+  Parameters:
+  - Key: awsEcsServicePlatformVersion
+    Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Elastic Container Service (ECS)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

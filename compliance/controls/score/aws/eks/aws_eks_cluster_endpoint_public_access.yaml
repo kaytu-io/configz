@@ -1,0 +1,36 @@
+ID: aws_eks_cluster_endpoint_public_access
+Title: EKS Cluster Endpoint Public Access
+Description: Ensure that AWS EKS cluster endpoint access isn't public and prone to security risks.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when resources_vpc_config ->> 'EndpointPublicAccess' = 'true' and
+        (resources_vpc_config ->> 'PublicAccessCidrs')::text like '%"0.0.0.0/0"%' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when resources_vpc_config ->> 'EndpointPublicAccess' = 'true' and
+        (resources_vpc_config ->> 'PublicAccessCidrs')::text like '%"0.0.0.0/0"%' then name || ' Kubernetes API endpoint configured is publicly accessible.'
+        else name || ' Kubernetes API endpoint configured is not publicly accessible.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_eks_cluster;
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

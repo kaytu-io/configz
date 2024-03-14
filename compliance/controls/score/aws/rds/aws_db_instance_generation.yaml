@@ -1,0 +1,41 @@
+ID: aws_db_instance_generation
+Title: DB Instance Generation
+Description: Ensure you always use the latest generation of DB instances to get better performance with lower cost.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |-
+    select
+      db_instance_identifier as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      class,
+      case
+        when ARRAY['db.m1.small', 'db.m1.medium', 'db.m1.large',
+        'db.m1.xlarge', 'db.m3.medium', 'db.m3.large', 'db.m3.xlarge',
+        'db.m3.2xlarge', 'db.m2.xlarge', 'db.m2.2xlarge', 'db.m2.4xlarge',
+        'db.r3.large', 'db.r3.xlarge', 'db.r3.2xlarge', 'db.r3.4xlarge',
+        'db.r3.8xlarge'] @> ARRAY[class] then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when ARRAY['db.m1.small', 'db.m1.medium', 'db.m1.large',
+        'db.m1.xlarge', 'db.m3.medium', 'db.m3.large', 'db.m3.xlarge',
+        'db.m3.2xlarge', 'db.m2.xlarge', 'db.m2.2xlarge', 'db.m2.4xlarge',
+        'db.r3.large', 'db.r3.xlarge', 'db.r3.2xlarge', 'db.r3.4xlarge',
+        'db.r3.8xlarge'] @> ARRAY[class] then title || ' RDS Instance is using previous generation class'
+        else title || ' RDS Instance is using class of latest generation'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_rds_db_instance
+  Connector: AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+ManualVerification: false
+Severity: medium
+Managed: false
+Tags:
+  score_service_name:
+  - AWS Relational Database Service (RDS)

@@ -1,0 +1,45 @@
+ID: aws_eks_security_groups
+Title: EKS Security Groups
+Description: Ensure that AWS EKS security groups are configured to allow incoming traffic only on TCP port 443.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.name as resource,
+      c.kaytu_account_id,
+      c.kaytu_resource_id,
+      case
+        when exists(
+          select 1
+          from jsonb_array_elements(ip_permissions) as ips 
+          where (ips ->> 'FromPort' <> '443') and (ips ->> 'ToPort' <> '443')
+        ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when exists(
+          select 1
+          from jsonb_array_elements(ip_permissions) as ips 
+          where (ips ->> 'FromPort' <> '443') and (ips ->> 'ToPort' <> '443')
+        ) then name || ' Amazon EKS security group is not compliant (allow access on ports different than TCP port 443 (HTTPS))'
+        else name || ' Amazon EKS security group is compliant'
+      end as reason,
+      c.region,
+      c.account_id
+    from
+      aws_eks_cluster as c
+      cross join jsonb_array_elements_text(resources_vpc_config -> 'SecurityGroupIds') as sg_id
+      left join aws_vpc_security_group as sg on sg.group_id = sg_id
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+  - aws_vpc_security_group
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

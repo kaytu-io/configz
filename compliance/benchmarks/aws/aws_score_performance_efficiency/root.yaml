@@ -16,6 +16,8 @@ Controls:
   - aws_kubernetes_cluster_version
   - aws_managed_nat_gateway_in_use
   - aws_enable_support_for_grpc_protocol
+  - aws_db_instance_generation
+  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
 ReferenceCode: aws_score_performance_efficiency
 Description: Performance Efficiency Description
 ID: aws_score_performance_efficiency

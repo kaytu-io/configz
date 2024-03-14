@@ -1,12 +1,12 @@
-ID: aws_ebs_encrypted_with_kms_customer_master_keys
-Title: EBS Encrypted With KMS Customer Master Keys
-Description: Ensure EBS volumes are encrypted with CMKs to have full control over encrypting and decrypting data.
+ID: aws_use_kms_customer_master_keys_for_fsx_windows_file_server_file_systems
+Title: Use KMS Customer Master Keys for FSx Windows File Server File Systems
+Description: Ensure AWS FSx for Windows File Server file systems data is encrypted using AWS KMS CMKs.
 Query:
   ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
-      volume_id as resource,
+      file_system_id as resource,
       v.kaytu_resource_id,
       v.kaytu_account_id,
       case
@@ -15,14 +15,14 @@ Query:
         else 'alarm'
       end as status,
       case
-        when kms_key_id is null then volume_id || ' is not using a master key'
-        when k.key_manager = 'CUSTOMER' then volume_id || ' is using a customer master key'
-        else volume_id || ' is using a AWS-managed master key'
+        when kms_key_id is null then file_system_id || ' is not using a master key'
+        when k.key_manager = 'CUSTOMER' then file_system_id || ' is using a customer master key'
+        else file_system_id || ' is using a AWS-managed master key'
       end as reason,
       V.region,
       V.account_id
     from
-      aws_ebs_volume as v
+      aws_fsx_file_system as v
       left join aws_kms_key as k on v.kms_key_id = k.arn
   Connector: AWS
   PrimaryTable: aws_ebs_volume
@@ -31,7 +31,7 @@ Query:
   - aws_kms_key
   Parameters: []
 ManualVerification: false
-Severity: high
+Severity: medium
 Tags:
   score_service_name:
   - AWS Elastic Block Store (EBS)

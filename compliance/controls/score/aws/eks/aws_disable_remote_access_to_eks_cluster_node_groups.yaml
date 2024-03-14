@@ -1,0 +1,34 @@
+ID: aws_disable_remote_access_to_eks_cluster_node_groups
+Title: Disable Remote Access to EKS Cluster Node Groups
+Description: Ensure that remote access to EKS cluster node groups is disabled.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      nodegroup_name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when remote_access ->> 'Ec2SshKey' is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when remote_access ->> 'Ec2SshKey' is null then nodegroup_name || ' SSH remote access is disabled.'
+        else nodegroup_name || ' SSH remote access is not disabled.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_eks_node_group;
+  PrimaryTable: aws_eks_node_group
+  ListOfTables:
+  - aws_eks_node_group
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

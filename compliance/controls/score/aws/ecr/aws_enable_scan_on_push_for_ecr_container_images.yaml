@@ -1,0 +1,36 @@
+ID: aws_enable_scan_on_push_for_ecr_container_images
+Title: Enable Scan on Push for ECR Container Images
+Description: Ensure that each Amazon ECR container image is automatically scanned for vulnerabilities when pushed to a repository.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      repository_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when image_scanning_configuration ->> 'ScanOnPush' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when image_scanning_configuration ->> 'ScanOnPush' = 'true' then repository_name || ' container images are not automatically scanned for vulnerabilities'
+        else repository_name || ' container images are automatically scanned for vulnerabilities'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecr_repository
+  Connector: AWS
+  PrimaryTable: aws_ecr_repository
+  ListOfTables:
+  - aws_ecr_repository
+  Parameters: []
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Elastic Container Registry (ECR)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

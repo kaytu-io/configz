@@ -1,0 +1,36 @@
+ID: aws_check_for_amazon_ecs_service_placement_strategy
+Title: Check for Amazon ECS Service Placement Strategy
+Description: Ensure that your Amazon ECS cluster services are using optimal placement strategies.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      service_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when (select ARRAY_AGG(ps ->> 'Type') from jsonb_array_elements(placement_strategy) as ps) = ARRAY['spread', 'binpack'] then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when (select ARRAY_AGG(ps ->> 'Type') from jsonb_array_elements(placement_strategy) as ps) = ARRAY['spread', 'binpack'] then 'task placement strategy is compliant'
+        else 'task placement strategy is not compliant'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecs_service
+  Connector: AWS
+  PrimaryTable: aws_ecs_task_definition
+  ListOfTables:
+  - aws_ecs_task_definition
+  Parameters: []
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Elastic Container Service (ECS)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

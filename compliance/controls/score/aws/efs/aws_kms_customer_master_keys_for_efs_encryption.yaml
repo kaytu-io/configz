@@ -1,0 +1,40 @@
+ID: aws_kms_customer_master_keys_for_efs_encryption
+Title: AWS KMS Customer Master Keys for EFS Encryption
+Description: Ensure EFS file systems are encrypted with KMS Customer Master Keys (CMKs) in order to have full control over data encryption and decryption.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      fs.file_system_id as resource,
+      fs.kaytu_resource_id,
+      fs.kaytu_account_id,
+      case
+        when k.arn is null then 'alarm'
+        when k.key_manager = 'CUSTOMER' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when k.arn is null then fs.file_system_id || ' is not using a master key'
+        when k.key_manager = 'CUSTOMER' then fs.file_system_id || ' is using a customer master key'
+        else fs.file_system_id || ' is using a AWS-managed master key'
+      end as reason,
+      fs.region,
+      fs.account_id
+    from
+      aws_efs_file_system as fs
+      left join aws_kms_key as k on fs.kms_key_id = k.arn
+  Connector: AWS
+  PrimaryTable: aws_efs_file_system
+  ListOfTables:
+  - aws_efs_file_system
+  - aws_kms_key
+  Parameters: []
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Amazon Elastic File System (EFS)
+  score_tags:
+  - Unencrypted Storage
+Managed: false

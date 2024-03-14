@@ -1,0 +1,38 @@
+ID: aws_check_for_ecs_container_instance_agent_version
+Title: Check for ECS Container Instance Agent Version
+Description: Ensure that your Amazon ECS instances are using the latest ECS container agent version.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when version_info ->> 'AgentVersion' < '{{.awsEcsContainerInstanceAgentVersion}}' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when version_info ->> 'AgentVersion' < '{{.awsEcsContainerInstanceAgentVersion}}' then 'Container instance is not using the latest supported version of agent'
+        else 'Container instance is using the latest supported version of agent'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecs_container_instance
+  Connector: AWS
+  PrimaryTable: aws_ecs_container_instance
+  ListOfTables:
+  - aws_ecs_container_instance
+  Parameters:
+  - Key: awsEcsContainerInstanceAgentVersion
+    Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Elastic Container Service (ECS)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

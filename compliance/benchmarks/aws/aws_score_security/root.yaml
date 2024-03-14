@@ -134,6 +134,22 @@ Controls:
   - aws_internet_facing_elbs
   - aws_elb_access_log
   - aws_internet_facing_elbv2s
+  - aws_use_kms_customer_master_keys_for_fsx_windows_file_server_file_systems
+  - aws_rds_encrypted_with_kms_customer_master_keys
+  - aws_enable_alert_notifications_for_failed_backup_jobs
+  - aws_use_kms_customer_master_keys_for_aws_backup
+  - aws_enable_scan_on_push_for_ecr_container_images
+  - aws_ecs_task_log_driver_in_use
+  - aws_check_for_ecs_container_instance_agent_version
+  - aws_check_for_fargate_platform_version
+  - aws_kms_customer_master_keys_for_efs_encryption
+  - aws_disable_remote_access_to_eks_cluster_node_groups
+  - aws_eks_cluster_endpoint_public_access
+  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+  - aws_enable_envelope_encryption_for_eks_kubernetes_secrets
+  - aws_kubernetes_cluster_logging
+  - aws_eks_security_groups
+  - aws_eks_cluster_node_group_iam_role_policies
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

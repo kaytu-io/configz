@@ -1,0 +1,36 @@
+ID: aws_enable_alert_notifications_for_failed_backup_jobs
+Title: Enable Alert Notifications for Failed Backup Jobs
+Description: Ensure that email notifications for unsuccessful backup jobs are enabled.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when backup_vault_events::text like '%BACKUP_JOB_FAILED%' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when backup_vault_events::text like '%BACKUP_JOB_FAILED%' then 'Backup vault is configured to send alert notifications for failed Amazon Backup jobs.'
+        else 'Backup vault is not configured to send alert notifications for failed Amazon Backup jobs.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_backup_vault
+  Connector: AWS
+  PrimaryTable: aws_backup_vault
+  ListOfTables:
+  - aws_backup_vault
+  Parameters: []
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Backup
+  score_tags:
+  - Exposed Endpoints
+Managed: false
