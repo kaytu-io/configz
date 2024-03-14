@@ -150,6 +150,10 @@ Controls:
   - aws_kubernetes_cluster_logging
   - aws_eks_security_groups
   - aws_eks_cluster_node_group_iam_role_policies
+  - aws_use_aws_managed_policy_to_manage_networking_resources
+  - aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
+  - aws_use_aws_managed_policy_to_manage_aws_resources
+  - aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security
