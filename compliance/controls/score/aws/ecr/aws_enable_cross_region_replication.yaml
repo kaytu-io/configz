@@ -1,0 +1,48 @@
+ID: aws_enable_cross_region_replication
+Title: Enable Cross-Region Replication
+Description: Ensure that Cross-Region Replication feature is enabled for your Amazon ECR container images.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      account_id || ' backup region setting in ' || region as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when rules::text = '[]' then 'alarm'
+        when exists (
+          select 1
+          from jsonb_array_elements(rules) as r,
+          jsonb_array_elements(r -> 'Destinations') as d
+          where
+            d ->> 'RegistryId' = registry_id
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when rules::text = '[]' then 'Cross-Region Replication feature is not enabled'
+        when exists (
+          select 1
+          from jsonb_array_elements(rules) as r,
+          jsonb_array_elements(r -> 'Destinations') as d
+          where
+            d ->> 'RegistryId' = registry_id
+        ) then 'Cross-Region Replication feature is enabled'
+        else 'Cross-Region Replication feature is not enabled'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecr_registry
+  Connector: AWS
+  PrimaryTable: aws_ecr_registry
+  ListOfTables:
+  - aws_ecr_registry
+  Parameters: []
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Elastic Container Registry (ECR)
+Managed: false

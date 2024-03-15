@@ -1,0 +1,36 @@
+ID: aws_check_for_protected_amazon_backup_resource_types
+Title: Check for Protected Amazon Backup Resource Types
+Description: Ensure that the appropriate resource types are protected by Amazon Backup within your AWS account.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      account_id || ' backup region setting in ' || region as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when resource_type_opt_in_preference::jsonb='{{.awsBackupResourceTypeOptInPreference}}'::jsonb then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when resource_type_opt_in_preference::jsonb='{{.awsBackupResourceTypeOptInPreference}}'::jsonb then account_id || ' backup region setting in ' || region || ' is compliant.'
+        else account_id || ' backup region setting in ' || region || ' is not compliant.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_backup_region_settings
+  Connector: AWS
+  PrimaryTable: aws_backup_vault
+  ListOfTables:
+  - aws_backup_vault
+  Parameters:
+  - Key: awsBackupResourceTypeOptInPreference
+    Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Backup
+Managed: false

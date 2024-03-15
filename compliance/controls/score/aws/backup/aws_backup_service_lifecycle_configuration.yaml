@@ -1,0 +1,41 @@
+ID: aws_backup_service_lifecycle_configuration
+Title: AWS Backup Service Lifecycle Configuration
+Description: Ensure Amazon Backup plans have a compliant lifecycle configuration enabled.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      account_id || ' backup region setting in ' || region as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when r -> 'Lifecycle' ->> 'DeleteAfterDays' is null and r -> 'Lifecycle' ->> 'MoveToColdStorageAfterDays' is null then 'alarm'
+        when r -> 'Lifecycle' ->> 'DeleteAfterDays' <> '{{.awsBackupPlanDeleteAfterDays}}' or r -> 'Lifecycle' ->> 'MoveToColdStorageAfterDays' <> '{{.awsBackupPlanMoveToColdStorageAfterDays}}' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when r -> 'Lifecycle' ->> 'DeleteAfterDays' is null and r -> 'Lifecycle' ->> 'MoveToColdStorageAfterDays' is null then 'there is no lifecycle configuration enabled'
+        when r -> 'Lifecycle' ->> 'DeleteAfterDays' <> '{{.awsBackupPlanDeleteAfterDays}}' or r -> 'Lifecycle' ->> 'MoveToColdStorageAfterDays' <> '{{.awsBackupPlanMoveToColdStorageAfterDays}}' then 'lifecycle configuration is not compatible with your setting'
+        else 'lifecycle configuration is compatible with your setting'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_backup_plan,
+      jsonb_array_elements(rules) as r
+  Connector: AWS
+  PrimaryTable: aws_backup_vault
+  ListOfTables:
+  - aws_backup_vault
+  Parameters:
+  - Key: awsBackupPlanDeleteAfterDays
+    Required: true
+  - Key: awsBackupPlanMoveToColdStorageAfterDays
+    Required: true
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - AWS Backup
+Managed: false
