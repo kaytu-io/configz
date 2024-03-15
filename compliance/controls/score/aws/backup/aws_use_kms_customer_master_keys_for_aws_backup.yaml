@@ -1,0 +1,39 @@
+ID: aws_use_kms_customer_master_keys_for_aws_backup
+Title: Use KMS Customer Master Keys for AWS Backup
+Description: Ensure that your backups are encrypted at rest using KMS Customer Master Keys (CMKs).
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      v.kaytu_resource_id,
+      v.kaytu_account_id,
+      case
+        when k.arn is null then 'alarm'
+        when k.key_manager = 'CUSTOMER' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when k.arn is null then name || ' is not using a master key'
+        when k.key_manager = 'CUSTOMER' then name || ' is using a customer master key'
+        else name || ' is using a AWS-managed master key'
+      end as reason,
+      V.region,
+      V.account_id
+    from
+      aws_backup_vault as v
+      left join aws_kms_key as k on v.encryption_key_arn = k.arn
+  Connector: AWS
+  PrimaryTable: aws_backup_vault
+  ListOfTables:
+  - aws_backup_vault
+  Parameters: []
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Backup
+  score_tags:
+  - Exposed Endpoints
+Managed: false

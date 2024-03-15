@@ -33,6 +33,9 @@ Controls:
   - aws_enable_deletion_protection
   - aws_elb_connection_draining_enabled
   - aws_elb_cross_zone_load_balancing_enabled
+  - aws_check_for_amazon_ecs_service_placement_strategy
+  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+  - aws_enable_cloudwatch_container_insights
 ReferenceCode: aws_score_reliability
 Description: Reliability Description
 ID: aws_score_reliability

@@ -1,0 +1,37 @@
+ID: aws_ecs_task_log_driver_in_use
+Title: Amazon ECS Task Log Driver in Use
+Description: Ensure that a log driver has been defined for each active Amazon ECS task definition.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      td.task_definition_arn || ' - ' || (c ->> 'Name') as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when (c -> 'LogConfiguration' ->> 'LogDriver') is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (c -> 'LogConfiguration' ->> 'LogDriver') is null then td.task_definition_arn || ' - ' || (c ->> 'Name') || ' has no log driver'
+        else td.task_definition_arn || ' - ' || (c ->> 'Name') || ' has log driver'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecs_task_definition as td,
+      jsonb_array_elements(container_definitions) as c
+  Connector: AWS
+  PrimaryTable: aws_ecs_task_definition
+  ListOfTables:
+  - aws_ecs_task_definition
+  Parameters: []
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Elastic Container Service (ECS)
+  score_tags:
+  - Exposed Endpoints
+Managed: false

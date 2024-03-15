@@ -1,0 +1,42 @@
+ID: aws_ecr_repository_exposed
+Title: ECR Repository Exposed
+Description: Ensure that AWS Elastic Container Registry (ECR) repositories are not exposed to everyone.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      repository_name as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(policy_std -> 'Statement') as p
+          where p ->> 'Effect' = 'Allow' and p ->> 'Principal' = '*'
+        ) then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(policy_std -> 'Statement') as p
+          where p ->> 'Effect' = 'Allow' and p ->> 'Principal' = '*'
+        ) then repository_name || ' repository is exposed to everyone.'
+        else repository_name || ' repository is not exposed to everyone.'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecr_repository
+  Connector: AWS
+  PrimaryTable: aws_ecr_repository
+  ListOfTables:
+  - aws_ecr_repository
+  Parameters: []
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - Elastic Container Registry (ECR)
+Managed: false

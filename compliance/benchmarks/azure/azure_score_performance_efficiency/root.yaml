@@ -9,6 +9,8 @@ Controls:
   - azure_check_for_guest_level_diagnostics_for_virtual_machines
   - azure_use_azure_cni_add_on_for_managing_network_resources
   - azure_check_for_autoscale_notifications
+  - azure_kubernetes_api_version
+  - azure_enable_automatic_tuning_for_sql_database_servers
 ReferenceCode: azure_score_performance_efficiency
 Description: Performance Efficiency Description
 ID: azure_score_performance_efficiency

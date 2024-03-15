@@ -1,0 +1,41 @@
+ID: azure_check_for_sufficient_certificate_auto_renewal_period
+Title: Check for Sufficient Certificate Auto-Renewal Period
+Description: Ensure there is a sufficient period configured for the SSL certificates auto-renewal.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      case
+        when (la -> 'Trigger' ->> 'DaysBeforeExpiry')::int < '{{.azureSufficientDaysBeforeCertificateExpiry}}'::int then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when (la -> 'Trigger' ->> 'DaysBeforeExpiry')::int < '{{.azureSufficientDaysBeforeCertificateExpiry}}'::int then 'SSL certificate does not have a sufficient period of time before expiration to trigger the auto-renewal process, configured for the issuance policy.'
+        else 'SSL certificate has a sufficient period of time before expiration to trigger the auto-renewal process, configured for the issuance policy.'
+      end as reason,
+      resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault_certificate as c
+      left join azure_subscription as sub on c.subscription_id = sub.subscription_id,
+      jsonb_array_elements(lifetime_actions) as la
+  Connector: Azure
+  PrimaryTable: azure_key_vault_certificate
+  ListOfTables:
+    - azure_key_vault_certificate
+    - azure_subscription
+  Parameters:
+    - Key: azureSufficientDaysBeforeCertificateExpiry
+      Required: true
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+    - Azure KeyVault
+  score_tags:
+    - Insecure Keys
+Managed: false

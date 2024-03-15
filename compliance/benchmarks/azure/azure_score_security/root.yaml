@@ -90,6 +90,21 @@ Controls:
   - azure_use_microsoft_entra_id_integration_for_aks_clusters
   - azure_check_for_installataion_for_latest_os_patches
   - azure_check_for_backups_for_azure_virtual_machines
+  - azure_ec2_instances_with_multiple_elastic_network_interfaces
+  - azure_use_user_assigned_managed_identities_for_aks_clusters
+  - azure_kubernetes_api_version
+  - azure_set_azure_secret_key_expiration
+  - azure_web_tier_customer_managed_key_in_use
+  - azure_enable_trusted_microsoft_services_for_key_vault_access
+  - azure_use_network_contributor_role_for_managing_azure_network_resources
+  - azure_configure_emails_for_vulnerability_assessment_scan_reports_and_alerts
+  - azure_configure_audit_action_group_for_sql_server_auditing
+  - azure_use_microsoft_entra_admin_for_sql_authentication
+  - azure_enable_in_transit_encryption_for_mysql_servers
+  - azure_enable_automatic_failover
+  - azure_check_for_sufficient_certificate_auto_renewal_period
+  - azure_enable_ssl_certificate_auto_renewal
+  - azure_enable_certificate_transparency
 ReferenceCode: azure_score_security
 Description: Security Description
 ID: azure_score_security

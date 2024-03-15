@@ -12,7 +12,12 @@ Controls:
   - aws_unused_gateway_load_balancers
   - aws_unused_application_load_balancers
   - aws_unused_elastic_load_balancers
-  - azure_ec2_instances_with_multiple_elastic_network_interfaces
+  - aws_unused_rds_reserved_instances
+  - aws_db_instance_generation
+  - aws_lifecycle_policy_in_use
+  - aws_check_for_amazon_ecs_service_placement_strategy
+  - aws_check_for_the_coredns_add_on_version
+  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
 ReferenceCode: aws_score_cost_optimization
 Description: Cost Optimization Description
 ID: aws_score_cost_optimization

@@ -1,0 +1,35 @@
+ID: aws_use_aws_managed_policy_to_manage_networking_resources
+Title: Use AWS-managed policy to Manage Networking Resources
+Description: Ensure that EKS cluster node groups implement the "AmazonEKS_CNI_Policy" managed policy.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      ng.nodegroup_name as resource,
+      ng.kaytu_account_id,
+      ng.kaytu_resource_id,
+      case
+        when attached_policy_arns::text like '%arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy%' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when attached_policy_arns::text like '%arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy%' then 'node group policies contains AmazonEKS_CNI_Policy'
+        else 'node group policies does not contain AmazonEKS_CNI_Policy'
+      end as reason,
+      ng.region,
+      ng.account_id
+    from
+      aws_eks_node_group as ng
+      left join aws_iam_role as r on r.arn = ng.node_role
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

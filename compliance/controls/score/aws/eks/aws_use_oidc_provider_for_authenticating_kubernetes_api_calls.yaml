@@ -1,0 +1,36 @@
+ID: aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
+Title: Use OIDC Provider for Authenticating Kubernetes API Calls
+Description: Ensure that Amazon EKS clusters are using an OpenID Connect (OIDC) provider.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.name as resource,
+      c.kaytu_account_id,
+      c.kaytu_resource_id,
+      case
+        when oidc.url is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when oidc.url is null then 'Amazon EKS cluster is not using an OIDC provider for authenticating Kubernetes API calls.'
+        else 'Amazon EKS cluster is using an OIDC provider for authenticating Kubernetes API calls.'
+      end as reason,
+      c.region,
+      c.account_id
+    from
+      aws_eks_cluster as c
+      left join aws_iam_open_id_connect_provider as oidc on 'https://' || oidc.url = c.identity -> 'Oidc' ->> 'Issuer'
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+  - aws_iam_open_id_connect_provider
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

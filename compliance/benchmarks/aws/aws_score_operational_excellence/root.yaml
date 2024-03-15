@@ -17,7 +17,18 @@ Controls:
   - aws_security_groups_events_subscriptions
   - aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
   - aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
-  - azure_ec2_instances_with_multiple_elastic_network_interfaces
+  - aws_lifecycle_policy_in_use
+  - aws_ecs_task_log_driver_in_use
+  - aws_check_for_ecs_container_instance_agent_version
+  - aws_check_for_the_coredns_add_on_version
+  - aws_disable_remote_access_to_eks_cluster_node_groups
+  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+  - aws_eks_cluster_node_group_iam_role_policies
+  - aws_use_aws_managed_policy_to_manage_networking_resources
+  - aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
+  - aws_use_aws_managed_policy_to_manage_aws_resources
+  - aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
+  - aws_enable_cloudwatch_container_insights
 ReferenceCode: aws_score_operational_excellence
 Description: Operational Excellence Description
 ID: aws_score_operational_excellence

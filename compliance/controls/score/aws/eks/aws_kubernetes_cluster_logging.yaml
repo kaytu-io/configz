@@ -1,0 +1,42 @@
+ID: aws_kubernetes_cluster_logging
+Title: Kubernetes Cluster Logging
+Description: Ensure that EKS control plane logging is enabled for your Amazon EKS clusters.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      name as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when exists(
+          select 1
+          from jsonb_array_elements(logging -> 'ClusterLogging') as cl
+          where cl ->> 'Enabled' = 'true'
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists(
+          select 1
+          from jsonb_array_elements(logging -> 'ClusterLogging') as cl
+          where cl ->> 'Enabled' = 'true'
+        ) then name || ' EKS control plane logging is enabled'
+        else name || ' EKS control plane logging is not enabled'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_eks_cluster;
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+ManualVerification: false
+Severity: low
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

@@ -1,0 +1,43 @@
+ID: aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+Title: Enable CloudTrail Logging for Kubernetes API Calls
+Description: Ensure that all Kubernetes API calls are logged using Amazon CloudTrail.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      account_id as resource,
+      kaytu_account_id,
+      kaytu_resource_id,
+      case
+        when exists(
+          select 1
+          from aws_cloudtrail_trail as ct
+          where ct.kaytu_account_id = a.kaytu_account_id and ct.is_logging = 'true'
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists(
+          select 1
+          from aws_cloudtrail_trail as ct
+          where ct.kaytu_account_id = a.kaytu_account_id and ct.is_logging = 'true'
+        ) then 'There are active trails'
+        else 'There are no active trails'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_account as a
+  PrimaryTable: aws_account
+  ListOfTables:
+  - aws_account
+  - aws_cloudtrail_trail
+ManualVerification: false
+Severity: high
+Tags:
+  score_service_name:
+  - AWS Elastic Kubernetes Service (EKS)
+  score_tags:
+  - Lacking High Availability
+Managed: false

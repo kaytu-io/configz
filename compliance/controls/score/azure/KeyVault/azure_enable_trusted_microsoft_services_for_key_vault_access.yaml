@@ -1,0 +1,39 @@
+ID: azure_enable_trusted_microsoft_services_for_key_vault_access
+Title: Enable Trusted Microsoft Services for Key Vault Access
+Description: Allow trusted Microsoft services to access your Azure Key Vault resources (i.e. encryption keys, secrets and certificates).
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.name as resource,
+      c.kaytu_resource_id,
+      c.kaytu_account_id,
+      case
+        when network_acls is null then 'alarm'
+        when network_acls ->> 'bypass' = 'None' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when network_acls is null then 'no trusted Microsoft Azure cloud services are allowed to access the resources (keys, secrets and certificates) available in the Azure Key Vault'
+        when network_acls ->> 'bypass' = 'None' then 'no trusted Microsoft Azure cloud services are allowed to access the resources (keys, secrets and certificates) available in the Azure Key Vault'
+        else 'trusted Microsoft Azure cloud services are allowed to access the resources (keys, secrets and certificates) available in the Azure Key Vault'
+      end as reason,
+      c.resource_group as resource_group,
+      sub.display_name as subscription
+    from
+      azure_key_vault as c
+      left join azure_subscription as sub on c.subscription_id = sub.subscription_id
+  Connector: Azure
+  PrimaryTable: azure_key_vault
+  ListOfTables:
+  - azure_key_vault
+  - azure_subscription
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+  - Azure KeyVault
+  score_tags:
+  - Insecure Keys
+Managed: false
