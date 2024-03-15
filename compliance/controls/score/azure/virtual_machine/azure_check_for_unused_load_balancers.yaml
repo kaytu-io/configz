@@ -9,7 +9,6 @@ Query:
       lb.name as resource,
       lb.kaytu_resource_id,
       lb.kaytu_account_id,
-      backend_address_pools,
       case
         when EXISTS (
           SELECT 1 FROM jsonb_array_elements(backend_address_pools) AS p

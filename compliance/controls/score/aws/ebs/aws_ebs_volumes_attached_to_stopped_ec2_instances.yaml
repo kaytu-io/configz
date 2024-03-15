@@ -10,6 +10,10 @@ Query:
       v.kaytu_resource_id,
       v.kaytu_account_id,
       case
+        when i.instance_state = 'running' then 0
+        else (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::ec2::volume' and resource_id = v.kaytu_resource_id)
+      end as cost_optimization,
+      case
         when i.instance_state = 'running' then 'ok'
         else 'alarm'
       end as status,

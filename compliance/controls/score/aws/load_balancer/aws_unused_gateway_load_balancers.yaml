@@ -19,6 +19,10 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       case
+        when jsonb_array_length(b.target_health_descriptions) = 0 then (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::elasticloadbalancingv2::loadbalancer' and resource_id = a.kaytu_resource_id)
+        else 0
+      end as cost_optimization,
+      case
         when jsonb_array_length(b.target_health_descriptions) = 0 then 'alarm'
         else 'ok'
       end as status,
