@@ -33,9 +33,6 @@ Query:
   PrimaryTable: aws_ecs_container_instance
   ListOfTables:
   - aws_ecs_container_instance
-  Parameters:
-  - Key: awsEcsContainerInstanceAgentVersion
-    Required: true
 ManualVerification: false
 Severity: low
 Tags:
