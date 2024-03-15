@@ -1,0 +1,44 @@
+ID: aws_enable_cloudwatch_container_insights
+Title: Enable CloudWatch Container Insights
+Description: Ensure that CloudWatch Container Insights feature is enabled for your AWS ECS clusters.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      cluster_arn as resource,
+      kaytu_resource_id,
+      kaytu_account_id,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(settings) as s
+          where s ->> 'Name' = 'containerInsights' and s ->> 'Value' = 'enabled'
+        ) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists (
+          select 1
+          from jsonb_array_elements(settings) as s
+          where s ->> 'Name' = 'containerInsights' and s ->> 'Value' = 'enabled'
+        ) then 'Container Insights feature is enabled'
+        else 'Container Insights feature is not currently enabled'
+      end as reason,
+      region,
+      account_id
+    from
+      aws_ecs_cluster
+  Connector: AWS
+  PrimaryTable: aws_ecs_container_instance
+  ListOfTables:
+  - aws_ecs_container_instance
+  Parameters:
+  - Key: awsEcsContainerInstanceAgentVersion
+    Required: true
+ManualVerification: false
+Severity: low
+Tags:
+  score_service_name:
+  - Elastic Container Service (ECS)
+Managed: false

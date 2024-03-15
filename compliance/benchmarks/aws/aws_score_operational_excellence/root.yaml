@@ -28,6 +28,7 @@ Controls:
   - aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
   - aws_use_aws_managed_policy_to_manage_aws_resources
   - aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
+  - aws_enable_cloudwatch_container_insights
 ReferenceCode: aws_score_operational_excellence
 Description: Operational Excellence Description
 ID: aws_score_operational_excellence

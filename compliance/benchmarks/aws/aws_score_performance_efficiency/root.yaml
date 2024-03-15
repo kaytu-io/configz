@@ -18,6 +18,7 @@ Controls:
   - aws_enable_support_for_grpc_protocol
   - aws_db_instance_generation
   - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+  - aws_enable_cloudwatch_container_insights
 ReferenceCode: aws_score_performance_efficiency
 Description: Performance Efficiency Description
 ID: aws_score_performance_efficiency

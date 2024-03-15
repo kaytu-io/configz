@@ -154,6 +154,8 @@ Controls:
   - aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
   - aws_use_aws_managed_policy_to_manage_aws_resources
   - aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
+  - aws_rds_desired_instance_type
+  - aws_ecr_repository_exposed
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

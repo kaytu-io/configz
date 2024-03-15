@@ -31,6 +31,4 @@ Severity: medium
 Tags:
   score_service_name:
   - Elastic Container Registry (ECR)
-  score_tags:
-  - Exposed Endpoints
 Managed: false
