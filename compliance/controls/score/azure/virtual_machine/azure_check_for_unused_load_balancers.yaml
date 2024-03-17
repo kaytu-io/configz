@@ -28,7 +28,7 @@ Query:
           SELECT 1 FROM jsonb_array_elements(backend_address_pools) AS p
           WHERE p -> 'properties' ->> 'backendIPConfigurations' is not null
         ) then 0
-        else 20
+        else (SELECT COALESCE(cost, 0) from pennywise_cost_estimate where resource_type = 'microsoft.network/loadbalancers' AND resource_id = lb.kaytu_resource_id)
       end as cost_optimization,
       lb.resource_group as resource_group,
       sub.display_name as subscription
