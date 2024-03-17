@@ -10,15 +10,24 @@ Query:
       ami.kaytu_resource_id,
       ami.kaytu_account_id,
       case
+        when is_aws_backup_managed then 'skip'
+        when ami.root_device_type <> 'ebs' then 'skip'
         when i.arn is null then 'alarm'
         else 'ok'
       end as status,
       case
+        when is_aws_backup_managed then name || ' is managed by aws'
+        when ami.root_device_type <> 'ebs' then name || ' is not stored in ebs'
         when i.arn is null then ami.name || ' is unused.'
         else ami.name || ' is used.'
       end as reason,  
       case
-        when i.arn is null then 5
+        when is_aws_backup_managed then 0
+        when ami.root_device_type <> 'ebs' then 0
+        when i.arn is null then (SELECT SUM((select cost from pennywise_cost_estimate AS es WHERE es.resource_type = 'aws::ec2::volumesnapshot' 
+             AND es.resource_id = s.arn))
+             FROM jsonb_array_elements(ami.block_device_mappings) AS bdm
+             LEFT JOIN aws_ebs_snapshot AS s ON s.snapshot_id = bdm -> 'Ebs' ->> 'SnapshotId')
         else 0
       end as cost_optimization,
       ami.region,

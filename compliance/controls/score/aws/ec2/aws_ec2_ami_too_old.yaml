@@ -11,14 +11,25 @@ Query:
       kaytu_account_id,
       CASE
         WHEN is_aws_backup_managed THEN 'skip'
-        WHEN now() - (creation_date)::timestamp > '180 days'::interval THEN 'alarm'
+        WHEN root_device_type <> 'ebs' THEN 'skip'
+        WHEN now() - (creation_date)::timestamp > '{{.awsEbsAmiAgeMaxDays}} days'::interval THEN 'alarm'
         ELSE 'ok'
       END AS status,
       CASE
         WHEN is_aws_backup_managed THEN name || ' is managed by aws'
-        WHEN now() - (creation_date)::timestamp > '180 days'::interval THEN name || ' needs to be restarted' 
+        WHEN root_device_type <> 'ebs' THEN name || ' is not stored in ebs'
+        WHEN now() - (creation_date)::timestamp > '{{.awsEbsAmiAgeMaxDays}} days'::interval THEN name || ' needs to be restarted' 
         ELSE name || ' launch time was not much time ago'
       END AS reason,
+      case
+        when is_aws_backup_managed then 0
+        when root_device_type <> 'ebs' then 0
+        when now() - (creation_date)::timestamp > '{{.awsEbsAmiAgeMaxDays}} days'::interval then (SELECT SUM((select cost from pennywise_cost_estimate AS es WHERE es.resource_type = 'aws::ec2::volumesnapshot' 
+             AND es.resource_id = s.arn))
+             FROM jsonb_array_elements(block_device_mappings) AS bdm
+             LEFT JOIN aws_ebs_snapshot AS s ON s.snapshot_id = bdm -> 'Ebs' ->> 'SnapshotId')
+        else 0
+      end as cost_optimization,
       region,
       account_id
     FROM 
@@ -27,7 +38,9 @@ Query:
   PrimaryTable: aws_ec2_ami
   ListOfTables:
   - aws_ec2_ami
-  Parameters: []
+  Parameters:
+    - Key: awsEbsAmiAgeMaxDays
+      Required: true
 ManualVerification: false
 Severity: high
 Tags:
