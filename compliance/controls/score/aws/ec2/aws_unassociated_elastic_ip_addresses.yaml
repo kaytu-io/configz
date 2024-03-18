@@ -18,7 +18,7 @@ Query:
         else title || ' is associated with a resource.'
       end as reason,
       case
-        when association_id is null then 3.5
+        when association_id is null then 3.6
         else 0
       end as cost_optimization,
       region,
