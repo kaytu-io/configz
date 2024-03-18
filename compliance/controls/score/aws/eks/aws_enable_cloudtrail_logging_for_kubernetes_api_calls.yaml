@@ -29,6 +29,7 @@ Query:
       account_id
     from
       aws_account as a
+  Connector: AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account

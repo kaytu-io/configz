@@ -9,10 +9,6 @@ Query:
       a.addon_name as resource,
       c.kaytu_resource_id,
       c.kaytu_account_id,
-      '{"1.29":"v1.11.1-eksbuild.6","1.28":"v1.10.1-eksbuild.7",
-        "1.27":"v1.10.1-eksbuild.7","1.26":"v1.9.3-eksbuild.11",
-        "1.25":"v1.9.3-eksbuild.11","1.24":"v1.9.3-eksbuild.11",
-        "1.23":"v1.8.7-eksbuild.10"}'::jsonb,
       case
         when '{"1.29":"v1.11.1-eksbuild.6","1.28":"v1.10.1-eksbuild.7",
         "1.27":"v1.10.1-eksbuild.7","1.26":"v1.9.3-eksbuild.11",
@@ -40,6 +36,7 @@ Query:
     from
       aws_eks_cluster as c
       left join aws_eks_addon as a on c.name = a.cluster_name
+  Connector: AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
   - aws_eks_cluster
