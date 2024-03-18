@@ -22,6 +22,7 @@ Query:
     from
       aws_eks_cluster as c
       left join aws_iam_open_id_connect_provider as oidc on 'https://' || oidc.url = c.identity -> 'Oidc' ->> 'Issuer'
+  Connector: AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
   - aws_eks_cluster
