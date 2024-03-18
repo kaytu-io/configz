@@ -20,7 +20,6 @@ Controls:
   - aws_lifecycle_policy_in_use
   - aws_ecs_task_log_driver_in_use
   - aws_check_for_ecs_container_instance_agent_version
-  - aws_check_for_the_coredns_add_on_version
   - aws_disable_remote_access_to_eks_cluster_node_groups
   - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
   - aws_eks_cluster_node_group_iam_role_policies
