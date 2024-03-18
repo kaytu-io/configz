@@ -156,6 +156,7 @@ Controls:
   - aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
   - aws_rds_desired_instance_type
   - aws_ecr_repository_exposed
+  - aws_backup_service_lifecycle_configuration
 ReferenceCode: aws_score_security
 Description: Security Description
 ID: aws_score_security

@@ -27,7 +27,7 @@ Query:
         else a.title || ' has registered target of type ' || b.target_type || '.'
       end as reason,
       case
-        when b.load_balancer_arn is null then 15
+        when b.load_balancer_arn is null then (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::elasticloadbalancingv2::loadbalancer' and resource_id = a.kaytu_resource_id)
         else 0
       end as cost_optimization,
       a.region,

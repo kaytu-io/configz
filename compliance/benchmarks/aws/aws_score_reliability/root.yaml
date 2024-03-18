@@ -36,6 +36,8 @@ Controls:
   - aws_check_for_amazon_ecs_service_placement_strategy
   - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
   - aws_enable_cloudwatch_container_insights
+  - aws_check_for_protected_amazon_backup_resource_types
+  - aws_enable_cross_region_replication
 ReferenceCode: aws_score_reliability
 Description: Reliability Description
 ID: aws_score_reliability

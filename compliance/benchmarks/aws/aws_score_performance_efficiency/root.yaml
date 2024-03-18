@@ -19,6 +19,7 @@ Controls:
   - aws_db_instance_generation
   - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
   - aws_enable_cloudwatch_container_insights
+  - aws_enable_cross_region_replication
 ReferenceCode: aws_score_performance_efficiency
 Description: Performance Efficiency Description
 ID: aws_score_performance_efficiency
