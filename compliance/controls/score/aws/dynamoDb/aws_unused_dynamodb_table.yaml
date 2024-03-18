@@ -10,6 +10,10 @@ Query:
       kaytu_resource_id,
       kaytu_account_id,
       case
+        when item_count::int = 0 then (SELECT cost FROM pennywise_cost_estimate where resource_type = 'aws::dynamodb::table' and resource_id = t.kaytu_resource_id)
+        else 0
+      end as cost_optimization,
+      case
         when item_count::int = 0 then 'alarm'
         else 'ok'
       end as status,
@@ -20,7 +24,7 @@ Query:
       region,
       account_id
     from
-      aws_dynamodb_table
+      aws_dynamodb_table as t
   Connector: AWS
   PrimaryTable: aws_dynamodb_table
   ListOfTables:
