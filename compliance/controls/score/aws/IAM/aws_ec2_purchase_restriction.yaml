@@ -4,7 +4,7 @@ Description: Restrict unintended IAM users from purchasing Amazon EC2 Reserved I
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
-      WITH too_permissive_policies AS (
+    WITH too_permissive_policies AS (
       SELECT
         arn
       FROM
@@ -13,7 +13,7 @@ Query:
         jsonb_array_elements_text(s -> 'Action') AS action
       WHERE
         action IN ('ec2:PurchaseReservedInstancesOffering', 'savingsplans:CreateSavingsPlan')
-)
+    )
 
     SELECT
       name AS resource,
