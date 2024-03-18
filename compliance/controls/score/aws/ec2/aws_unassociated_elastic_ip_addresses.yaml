@@ -18,8 +18,8 @@ Query:
         else title || ' is associated with a resource.'
       end as reason,
       case
-        when association_id is null then '3.6'
-        else '0'
+        when association_id is null then '3.6'::float
+        else '0'::float
       end as cost_optimization,
       region,
       account_id
