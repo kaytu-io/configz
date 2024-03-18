@@ -1,6 +1,6 @@
 connectors:
 - Azure
-name: AKS cluster
+name: AKS (Kubernetes) cluster
 query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.containerservice/managedclusters' group by 1,2;
 status: active
 tags:
