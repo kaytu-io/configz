@@ -43,6 +43,7 @@ Query:
   PrimaryTable: aws_eks_cluster
   ListOfTables:
   - aws_eks_cluster
+  - aws_eks_addon
 ManualVerification: false
 Severity: high
 Tags:
