@@ -61,7 +61,8 @@ Query:
       display_name as subscription
     from
       azure_subscription as sub
-      left join regions_nw as nw on sub.subscription_id = nw.subscription_id  Connector: Azure
+      left join regions_nw as nw on sub.subscription_id = nw.subscription_id
+  Connector: Azure
   PrimaryTable: azure_subscription
   ListOfTables:
     - azure_network_watcher
