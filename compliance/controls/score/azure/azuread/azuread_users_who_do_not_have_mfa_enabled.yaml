@@ -1,0 +1,25 @@
+ID: Get AzureAD Users who do not have MFA Enabled
+Title: Get AzureAD Users who do not have MFA Enabled
+Description: Ensure that Azure Key Vault certificates are using the appropriate key type(s).
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      u.*, is_mfa_registered
+    from
+      azuread_user as u
+      left join azuread_user_registration_details as rd on u.id = rd.id
+    where
+      rd.is_mfa_registered::bool = false
+  Connector: Azure
+  PrimaryTable: azuread_user
+  ListOfTables:
+    - azuread_user
+    - azuread_user_registration_details
+ManualVerification: false
+Severity: medium
+Tags:
+  score_service_name:
+    - Azure KeyVault
+Managed: false

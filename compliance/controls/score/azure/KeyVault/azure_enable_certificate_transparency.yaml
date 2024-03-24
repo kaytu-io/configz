@@ -6,7 +6,7 @@ Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
-      name as resource,
+      c.id as resource,
       c.kaytu_resource_id,
       c.kaytu_account_id,
       case
