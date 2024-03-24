@@ -14,13 +14,13 @@ Query:
         else 'ok'
       end as status,
       case
-        when disk.disk_state = 'Unattached' then (SELECT cost FROM pennywise_cost_estimate where resource_type = 'microsoft.compute/disks' and resource_id = disk.kaytu_resource_id)
-        else 0
-      end as status,
-      case
         when disk.disk_state = 'Unattached' then disk.title || ' has no attachments.'
         else disk.title || ' has attachments.'
       end as reason,
+      case
+        when disk.disk_state = 'Unattached' then (SELECT cost FROM pennywise_cost_estimate where resource_type = 'microsoft.compute/disks' and resource_id = disk.kaytu_resource_id)
+        else 0
+      end as cost_optimization,
       disk.resource_group,
       display_name as subscription
     from
