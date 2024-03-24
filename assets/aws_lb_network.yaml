@@ -8,3 +8,14 @@ tables:
 tags:
   category:
   - Network
+  search_terms:
+  - NLB
+  - AWS NLB
+  - Network Load Balancer
+  - AWS network balancing
+  - AWS TCP load balancer
+  - AWS layer 4 load balancer
+  - AWS load balancing
+  - AWS network traffic
+  - AWS high-performance load balancer
+  - AWS elastic load balancing

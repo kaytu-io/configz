@@ -3,6 +3,7 @@ Title: Use Azure CNI Add-On for Managing Network Resources
 Description: Ensure that DDoS standard protection is enabled for production Azure virtual networks.
 Query:
   Engine: odysseus-v0.0.1
+  Connector: Azure
   QueryToExecute: |
     select
       kc.id as resource,

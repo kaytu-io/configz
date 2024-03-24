@@ -3,6 +3,7 @@ Title: Use Microsoft Entra ID Integration for AKS Clusters
 Description: Ensure that Microsoft Entra ID integration is enabled for Azure Kubernetes clusters.
 Query:
   Engine: odysseus-v0.0.1
+  Connector: Azure
   QueryToExecute: |
     select
       kc.id as resource,

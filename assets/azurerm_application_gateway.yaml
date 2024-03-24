@@ -6,3 +6,14 @@ status: active
 tags:
   category:
   - Network
+  search_terms:
+  - Application Gateway
+  - Azure Gateway
+  - Azure WAF
+  - Azure web application firewall
+  - Azure application proxy
+  - Azure load balancing
+  - Azure routing
+  - Azure web traffic
+  - Azure application security
+  - Azure front-end
