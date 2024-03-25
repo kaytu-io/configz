@@ -1,0 +1,30 @@
+ID: aws_iam_users_need_to_be_part_of_a_iam_group
+Title: IAM Users need to be part of a IAM Group
+Description: IAM Users need to be part of a IAM Group
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when groups is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when groups is null then 'user is not part of a group'
+        else 'user is part of a group'
+      end as reason
+      , region, account_id
+    from
+      aws_iam_user
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+ManualVerification: false
+Severity: medium
+Tags:
+  category:
+    - Compliance
