@@ -1,0 +1,51 @@
+ID: aws_iam_users_with_api_keys_need_to_have_ip_restrictions
+Title: IAM Users with API Keys need to have IP Restrictions
+Description: IAM Users with API Keys need to have IP Restrictions
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      u.arn as resource,
+      u.kaytu_account_id as kaytu_account_id,
+      u.kaytu_resource_id as kaytu_resource_id,
+      case
+        when exists (
+          select 1 
+          from 
+            jsonb_array_elements(u.inline_policies_std) as p,
+            jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') as s
+          where
+            (s ->> 'Effect') = 'Deny' and
+            (s ->> 'Resource') = '["*"]' and
+            (s ->> 'Action') = '["*"]') then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when exists (
+          select 1 
+          from 
+            jsonb_array_elements(u.inline_policies_std) as p,
+            jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') as s
+          where
+            (s ->> 'Effect') = 'Deny' and
+            (s ->> 'Resource') = '["*"]' and
+            (s ->> 'Action') = '["*"]') then title || ' integrated with CloudWatch logs.'
+        else title || ' not integrated with CloudWatch logs.'
+      end as reason
+    
+      , u.region, u.account_id
+    from
+      aws_iam_user as u
+      left join aws_iam_credential_report as r on u.arn = r.user_arn
+    where
+      r.access_key_1_active or r.access_key_2_active
+  Connector: AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+    - aws_iam_user
+    - aws_iam_credential_report
+ManualVerification: false
+Severity: low
+Tags:
+  category:
+    - Compliance
