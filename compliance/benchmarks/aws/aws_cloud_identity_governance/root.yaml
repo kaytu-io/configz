@@ -1,0 +1,23 @@
+Connector: AWS
+Controls:
+- aws_iam_users_with_console_access_are_requried_to_have_MFA
+- aws_organizational_cloud_trail_needs_to_be_present
+Description: Cloud Identity Entitlements and Governance - AWS
+Enabled: true
+ID: aws_cloud_identity_governance
+Tags:
+  category:
+  - Compliance
+  kaytu_benchmark_type:
+  - compliance
+  kaytu_category:
+  - Best Practices
+  kaytu_logo:
+    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
+  plugin:
+  - aws
+  service:
+  - AWS
+  type:
+  - Benchmark
+Title: Cloud Identity Entitlements and Governance - AWS

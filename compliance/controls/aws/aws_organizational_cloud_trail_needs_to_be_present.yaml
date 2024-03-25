@@ -1,0 +1,28 @@
+ID: aws_organizational_cloud_trail_needs_to_be_present
+Title: Organizational Cloud Trail needs to be present
+Description: Organizational Cloud Trail needs to be present
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with org_cloudtrail_exists as (
+      select exists(select * from aws_cloudtrail_trail where is_organization_trail) as trail_exists
+    )
+    select 
+      'org_cloud_trail' as resource,
+      case 
+        when trail_exists then 'ok'
+        else 'alarm'
+      end as status,
+      case 
+        when trail_exists then 'organization cloud trail exists'
+        else 'organization cloud trail does not exist'
+      end as reason
+    from  
+      org_cloudtrail_exists
+  Connector: AWS
+  PrimaryTable: aws_acmpca_certificate_authority
+  ListOfTables:
+    - aws_acmpca_certificate_authority
+
+ManualVerification: false
+Severity: low
