@@ -12,6 +12,8 @@ Controls:
 - aws_iam_users_need_to_be_part_of_a_iam_group
 - aws_valid_iam_identity_providers
 - aws_iam_users_with_api_keys_need_to_have_ip_restrictions
+- aws_root_account_cannot_have_api_keys
+- aws_root_accounts_needs_to_have_mfa
 Description: Cloud Identity Entitlements and Governance - AWS
 Enabled: true
 ID: aws_cloud_identity_governance
