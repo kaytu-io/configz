@@ -1,0 +1,29 @@
+ID: aws_root_email_needs_to_be_of_approved_domains_approved
+Title: Root Email needs to be of approved domains Approved 
+Description: Root Email needs to be of approved domains Approved 
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select  
+      id as resource,  
+      kaytu_account_id,
+      kaytu_resource_id,
+      case 
+        when split_part(email, '@', 2) NOT IN (SELECT unnest(string_to_array('{{.awsAccountApprovedDomains}}', ',')))  then 'alarm'
+        else 'ok'
+      end as status,
+      case 
+        when split_part(email, '@', 2) NOT IN (SELECT unnest(string_to_array('{{.awsAccountApprovedDomains}}', ',')))  then split_part(email, '@', 2) || ' is not an approved domain'
+        else split_part(email, '@', 2) || ' is an approved domain'
+      end as reason,
+      region,
+      account_id
+    from  
+      aws_organizations_account  
+      where lower(status) = 'active'
+  Connector: AWS
+  PrimaryTable: aws_organizations_account
+  ListOfTables:
+    - aws_organizations_account
+ManualVerification: false
+Severity: low

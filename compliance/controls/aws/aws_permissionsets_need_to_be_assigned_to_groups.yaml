@@ -1,0 +1,31 @@
+ID: aws_permissionsets_need_to_be_assigned_to_groups
+Title: PermissionSets need to be assigned to Groups
+Description: PermissionSets need to be assigned to Groups
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select 
+      ps.name as resource, 
+      ps.kaytu_account_id, 
+      ps.kaytu_resource_id, 
+      case 
+        when exists (select 1 from aws_ssoadmin_account_assignment as aa where 
+          ps.arn = aa.permission_set_arn and aa.principal_type = 'GROUP') then 'ok' 
+        else 'alarm' 
+      end as status, 
+      case 
+        when exists (select 1 from aws_ssoadmin_account_assignment as aa where 
+          ps.arn = aa.permission_set_arn and aa.principal_type = 'GROUP') then 'permission set is assigned to a group' 
+        else 'permission set is not assigned to a group' 
+      end as reason, 
+      ps.region, 
+      ps.account_id 
+    from 
+      aws_ssoadmin_permission_set as ps 
+  Connector: AWS
+  PrimaryTable: aws_ssoadmin_permission_set
+  ListOfTables:
+    - aws_ssoadmin_permission_set
+    - aws_ssoadmin_account_assignment
+ManualVerification: false
+Severity: low
