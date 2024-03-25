@@ -11,9 +11,8 @@ Query:
         aws_iam_policy, 
         jsonb_array_elements(policy_std -> 'Statement') as s
       where
-        (s ->> 'Effect') = 'Deny' and
-        (s ->> 'Resource') = '["*"]' and
-        (s ->> 'Action') = '["*"]'
+        ((s ->> 'Effect') = 'Allow' and
+                '{{.awsUserApprovedIpAddresses}}' @> (s -> 'Condition' -> 'IpAddress' -> 'aws:sourceip'))
     )
 
     select
@@ -27,9 +26,8 @@ Query:
                 jsonb_array_elements(u.inline_policies_std) as p,
                 jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') as s
               where
-                (s ->> 'Effect') = 'Deny' and
-                (s ->> 'Resource') = '["*"]' and
-                (s ->> 'Action') = '["*"]') then 'ok'
+                ((s ->> 'Effect') = 'Allow' and
+                '{{.awsUserApprovedIpAddresses}}' @> (s -> 'Condition' -> 'IpAddress' -> 'aws:sourceip'))) then 'ok'
             when exists (
               select 1 from policies as p where u.attached_policy_arns::text like '%' || p.arn || '%'
             ) then 'ok'
@@ -42,9 +40,8 @@ Query:
                 jsonb_array_elements(u.inline_policies_std) as p,
                 jsonb_array_elements(p -> 'PolicyDocument' -> 'Statement') as s
               where
-                (s ->> 'Effect') = 'Deny' and
-                (s ->> 'Resource') = '["*"]' and
-                (s ->> 'Action') = '["*"]') then title || ' user IP access is restricted.'
+                ((s ->> 'Effect') = 'Allow' and
+                '{{.awsUserApprovedIpAddresses}}' @> (s -> 'Condition' -> 'IpAddress' -> 'aws:sourceip'))) then title || ' user IP access is restricted.'
             when exists (
               select 1 from policies as p where u.attached_policy_arns::text like '%' || p.arn || '%'
             ) then title || ' user IP access is restricted.'
