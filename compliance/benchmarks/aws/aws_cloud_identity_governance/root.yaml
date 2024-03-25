@@ -6,6 +6,12 @@ Controls:
 - aws_only_approved_permission_set_can_be_assigned_to_users
 - aws_only_approved_standard_permission_sets_can_be_assigned_to_groups
 - aws_root_email_needs_to_be_of_approved_domains_approved
+- aws_iam_users_with_console_access_need_to_have_a_password_changed_every_x_days
+- aws_iam_users_with_api_keys_should_have_keys_rotated_every_x_days
+- aws_iam_users_cannot_have_in_line_policies_assigned
+- aws_iam_users_need_to_be_part_of_a_iam_group
+- aws_valid_iam_identity_providers
+- aws_iam_users_with_api_keys_need_to_have_ip_restrictions
 Description: Cloud Identity Entitlements and Governance - AWS
 Enabled: true
 ID: aws_cloud_identity_governance
