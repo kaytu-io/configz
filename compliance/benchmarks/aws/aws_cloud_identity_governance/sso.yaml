@@ -3,6 +3,7 @@ Controls:
 - aws_permissionsets_need_to_be_assigned_to_groups
 - aws_only_approved_permission_set_can_be_assigned_to_users
 - aws_only_approved_standard_permission_sets_can_be_assigned_to_groups
+- aws_sso_users_with_permission_assignments_are_required_to_have_MFA_on_AzureAD
 Description: SSO
 Enabled: true
 ID: aws_cloud_identity_governance_sso

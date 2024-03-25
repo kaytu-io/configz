@@ -1,5 +1,6 @@
 Connector: AWS
 Controls:
+  - aws_sso_users_with_permission_assignments_are_required_to_have_MFA_on_AzureAD
   - aws_iam_users_with_console_access_are_requried_to_have_MFA
   - aws_root_accounts_needs_to_have_mfa
   - aws_iam_users_with_api_keys_should_have_keys_rotated_every_x_days
