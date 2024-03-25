@@ -10,6 +10,8 @@ Controls:
 - aws_iam_users_with_api_keys_should_have_keys_rotated_every_x_days
 - aws_iam_users_cannot_have_in_line_policies_assigned
 - aws_iam_users_need_to_be_part_of_a_iam_group
+- aws_valid_iam_identity_providers
+- aws_iam_users_with_api_keys_need_to_have_ip_restrictions
 Description: Cloud Identity Entitlements and Governance - AWS
 Enabled: true
 ID: aws_cloud_identity_governance
