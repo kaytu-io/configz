@@ -1,5 +1,9 @@
 Connector: AWS
 Controls:
+  - aws_iam_users_with_console_access_are_requried_to_have_MFA
+  - aws_root_accounts_needs_to_have_mfa
+  - aws_iam_users_with_api_keys_should_have_keys_rotated_every_x_days
+  - aws_valid_iam_identity_providers
   - aws_unrestricted_inbound_traffic_on_remote_server_administration_ports
   - aws_iam_users_with_administrative_privileges
   - aws_ami_encryption

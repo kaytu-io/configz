@@ -1,5 +1,7 @@
 Connector: Azure
 Controls:
+  - azuread_user_should_have_mfa_enabled_with_azure_subscription_role_assignment
+  - azuread_spn_with_active_client_secret_created_x_days_ago
   - azure_keyvault_logging_enabled
   - azure_check_for_kubernetes_version
   - azure_enable_defender_for_cloud_for_aks_clusters
