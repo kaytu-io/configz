@@ -1,0 +1,38 @@
+ID: aws_sso_users_with_permission_assignments_are_required_to_have_MFA_on_AzureAD
+Title: AWS SSO Users with Permission Assignments are required to have MFA on AzureAD
+Description: AWS SSO Users with Permission Assignments are required to have MFA on AzureAD
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select 
+      iden.id as resource,
+      iden.kaytu_account_id,
+      iden.kaytu_resource_id,
+      case
+        when is_mfa_registered::bool then 'ok'
+        else 'alarm'
+      end status,
+      case
+        when is_mfa_registered::bool then iden.name || ' has MFA registered'
+        else iden.name || ' doesnt have MFA'
+      end reason
+    from 
+      (aws_identitystore_user cross join jsonb_array_elements(external_ids) as external_id) iden
+      inner join azuread_user_registration_details az on az.id = value ->> 'Id'
+    where 
+      exists(select * from aws_ssoadmin_account_assignment where principal_type = 'USER' and principal_id = iden.id) 
+  Connector: AWS
+  PrimaryTable: aws_identitystore_user
+  ListOfTables:
+  - aws_identitystore_user
+  - azuread_user_registration_details
+  - aws_ssoadmin_account_assignment
+ManualVerification: false
+Severity: high
+Tags:
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/SSO
