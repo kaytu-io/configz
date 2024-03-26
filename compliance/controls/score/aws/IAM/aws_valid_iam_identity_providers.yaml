@@ -38,7 +38,7 @@ Query:
   - aws_iam_saml_provider
   Parameters:
   - Key: awsTrustedEndpoints
-    Required: false
+    Required: true
 ManualVerification: false
 Severity: high
 Tags:
