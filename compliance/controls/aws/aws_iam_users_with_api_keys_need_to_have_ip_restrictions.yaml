@@ -59,6 +59,9 @@ Query:
   ListOfTables:
     - aws_iam_user
     - aws_iam_credential_report
+  Parameters:
+    - Key: awsUserApprovedIpAddresses
+      Required: true
 ManualVerification: false
 Severity: low
 Tags:

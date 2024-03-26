@@ -25,5 +25,8 @@ Query:
   PrimaryTable: aws_organizations_account
   ListOfTables:
     - aws_organizations_account
+  Parameters:
+    - Key: awsAccountApprovedDomains
+      Required: true
 ManualVerification: false
 Severity: low

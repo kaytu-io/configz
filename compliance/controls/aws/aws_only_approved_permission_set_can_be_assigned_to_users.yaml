@@ -29,5 +29,8 @@ Query:
   ListOfTables:
     - aws_ssoadmin_permission_set
     - aws_ssoadmin_account_assignment
+  Parameters:
+    - Key: awsApprovedPermissionSets
+      Required: true
 ManualVerification: false
 Severity: low
