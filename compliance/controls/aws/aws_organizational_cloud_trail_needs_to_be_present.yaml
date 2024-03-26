@@ -5,24 +5,30 @@ Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with org_cloudtrail_exists as (
-      select exists(select * from aws_cloudtrail_trail where is_organization_trail) as trail_exists
+      select exists(select * from aws_cloudtrail_trail where is_multi_region_trail and is_organization_trail) as trail_exists
     )
     select 
       'org_cloud_trail' as resource,
+      o.kaytu_account_id as kaytu_account_id,
+      o.kaytu_resource_id as kaytu_resource_id,
       case 
-        when trail_exists then 'ok'
+        when ce.trail_exists then 'ok'
         else 'alarm'
       end as status,
       case 
-        when trail_exists then 'organization cloud trail exists'
+        when ce.trail_exists then 'organization cloud trail exists'
         else 'organization cloud trail does not exist'
       end as reason
+      , region, account_id
     from  
-      org_cloudtrail_exists
+      org_cloudtrail_exists as ce,
+      aws_organizations_organization as o
+    where
+      o.account_id = o.kaytu_description -> 'Organization' ->> 'MasterAccountId'
   Connector: AWS
-  PrimaryTable: aws_acmpca_certificate_authority
+  PrimaryTable: aws_organizations_organization
   ListOfTables:
-    - aws_acmpca_certificate_authority
-
+    - aws_organizations_organization
+    - aws_cloudtrail_trail
 ManualVerification: false
 Severity: low
