@@ -2,7 +2,7 @@ connectors:
 - Azure
 name: Azure Cognitive Services
 query: select connection_id, region, count(*) from kaytu_lookup where resource_type = 'microsoft.cognitiveservices/accounts' group by 1,2;
-status: inactive
+status: active
 tags:
   category:
   - AI + ML
