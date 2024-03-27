@@ -2,7 +2,6 @@ ID: aws_ec2_instances_have_backup_with_lifecyclepolicy_above_35_days
 Title: EC2 Instances have backup with lifecyclepolicy above 35 days
 Description: Ensure all EC2 are covered by a backup plan with a minimum of Life Cycle Policy 35 days
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH points AS (
@@ -27,12 +26,14 @@ Query:
     from 
       aws_ec2_instance as i
       left join points as p on i.arn = p.resource_arn
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
   - aws_ec2_instance
   - aws_backup_recovery_point
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

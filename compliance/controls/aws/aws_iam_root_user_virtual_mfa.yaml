@@ -21,11 +21,14 @@ Query:
     from
       aws_iam_account_summary as s
       left join aws_iam_virtual_mfa_device on serial_number = 'arn:' || s.partition || ':iam::' || s.account_id || ':mfa/root-account-mfa-device';
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_account_summary
   ListOfTables:
   - aws_iam_account_summary
   - aws_iam_virtual_mfa_device
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -41,3 +44,4 @@ Tags:
   - aws
   service:
   - iam
+Managed: false

@@ -34,11 +34,14 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_unauthorized_ports on ingress_unauthorized_ports.group_id = sg.group_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   - aws_vpc_security_group_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -54,3 +57,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
+Managed: false

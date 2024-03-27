@@ -21,11 +21,14 @@ Query:
     from
       azure_security_center_auto_provisioning sc_prov
       right join azure_subscription sub on sc_prov.subscription_id = sub.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_auto_provisioning
   ListOfTables:
   - azure_security_center_auto_provisioning
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -47,3 +50,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

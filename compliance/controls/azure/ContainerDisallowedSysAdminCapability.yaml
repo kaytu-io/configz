@@ -2,13 +2,14 @@ ID: kubernetes_clusters_should_not_grant_cap__sys__admin_security_capabilities
 Title: Kubernetes clusters should not grant CAP_SYS_ADMIN security capabilities
 Description: To reduce the attack surface of your containers, restrict CAP_SYS_ADMIN Linux capabilities. For more information, see https://aka.ms/kubepolicydoc.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: ""
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

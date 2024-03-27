@@ -42,11 +42,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -68,3 +71,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

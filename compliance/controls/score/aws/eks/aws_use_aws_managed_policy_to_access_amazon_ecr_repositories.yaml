@@ -2,7 +2,6 @@ ID: aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
 Title: Use AWS-managed policy to access Amazon ECR Repositories
 Description: Ensure that EKS cluster node groups implement the "AmazonEC2ContainerRegistryReadOnly" managed policy.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,10 +21,13 @@ Query:
     from
       aws_eks_node_group as ng
       left join aws_iam_role as r on r.arn = ng.node_role
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
   - aws_eks_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

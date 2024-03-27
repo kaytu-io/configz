@@ -2,7 +2,6 @@ ID: aws_acm_certificates_with_wildcard_domain_names
 Title: AWS ACM Certificates with Wildcard Domain Names
 Description: Ensure that wildcard certificates issued by Amazon Certificate Manager (ACM) or imported to ACM are not in use.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -21,11 +20,13 @@ Query:
       account_id
     FROM 
       aws_acm_certificate
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_acm_certificate
   ListOfTables:
   - aws_acm_certificate
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

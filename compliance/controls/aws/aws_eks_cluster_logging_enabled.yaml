@@ -20,11 +20,14 @@ Query:
       aws_eks_cluster,
       jsonb_array_elements(logging -> 'ClusterLogging') as log_status
     GROUP BY name,kaytu_resource_id,kaytu_account_id
-
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
-    - aws_eks_cluster
-
+  - aws_eks_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

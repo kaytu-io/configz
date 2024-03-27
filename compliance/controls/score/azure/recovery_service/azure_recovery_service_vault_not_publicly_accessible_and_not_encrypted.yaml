@@ -2,7 +2,6 @@ ID: azure_recovery_service_vault_not_publicly_accessible_and_not_encrypted
 Title: Recovery Service Vault not publicly accessible and not encrypted
 Description: Ensure Recovery Service Vaults are not publicly accessible and not encrypted
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,12 +21,14 @@ Query:
     from
       azure_recovery_services_vault as v
       left join azure_subscription sub on sub.subscription_id = v.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_recovery_services_vault
   ListOfTables:
   - azure_recovery_services_vault
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

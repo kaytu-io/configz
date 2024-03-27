@@ -47,12 +47,15 @@ Query:
         azure_subscription as sub
       where
         sub.subscription_id = wa.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: null
   ListOfTables:
   - azure_app_service_function_app
   - azure_app_service_web_app
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -74,3 +77,4 @@ Tags:
   - azure
   service:
   - Azure/AppService
+Managed: false

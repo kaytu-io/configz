@@ -2,18 +2,19 @@ ID: sql_auditing_settings_should_have_action_groups_configured_to_capture_critic
 Title: SQL Auditing settings should have Action-Groups configured to capture critical activities
 Description: The AuditActionsAndGroups property should contain at least SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, BATCH_COMPLETED_GROUP to ensure a thorough audit logging
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_sql_server
-        WHERE type = 'Microsoft.Sql/servers'
-        AND kaytu_description -> '$.ServerBlobAuditingPolicies[*].properties.auditActionsAndGroups' IS NOT NULL
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_sql_server
+    WHERE type = 'Microsoft.Sql/servers'
+    AND kaytu_description -> '$.ServerBlobAuditingPolicies[*].properties.auditActionsAndGroups' IS NOT NULL
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

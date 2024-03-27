@@ -2,7 +2,6 @@ ID: azure_check_for_kubernetes_version
 Title: Check for Kubernetes Version
 Description: Ensure that AKS clusters are using the latest available version of Kubernetes software.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,7 +21,8 @@ Query:
     from
       azure_kubernetes_cluster as c
       left join azure_subscription as sub on c.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_kubernetes_cluster
   ListOfTables:
   - azure_kubernetes_cluster
@@ -30,6 +30,7 @@ Query:
   Parameters:
   - Key: azureAksLatestVersion
     Required: true
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

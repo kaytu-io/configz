@@ -1,8 +1,16 @@
-Description: CMA_C1702 - Discover any indicators of compromise
 ID: discover_any_indicators_of_compromise
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Discover any indicators of compromise
+Description: CMA_C1702 - Discover any indicators of compromise
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

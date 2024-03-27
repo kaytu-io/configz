@@ -41,11 +41,14 @@ Query:
       aws_account as a
       left join event_selectors_trail_details as d on d.account_id = a.account_id
       left join advanced_event_selectors_trail_details as ad on ad.account_id = a.account_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_cloudtrail_trail
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -67,3 +70,4 @@ Tags:
   - aws
   service:
   - AWS/CloudTrail
+Managed: false

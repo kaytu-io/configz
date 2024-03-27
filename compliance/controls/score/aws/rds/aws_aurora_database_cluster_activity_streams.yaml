@@ -2,7 +2,6 @@ ID: aws_aurora_database_cluster_activity_streams
 Title: Aurora Database Cluster Activity Streams
 Description: Ensure that Amazon Aurora clusters are configured to use database activity streams.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     with access_count as (
@@ -33,11 +32,13 @@ Query:
           left join access_count as a on c.db_cluster_identifier = a.db_cluster_identifier
         where
           c.engine = 'aurora-mysql' or c.engine = 'aurora-postgresql'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
   - aws_rds_db_cluster
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -24,11 +24,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = app.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_app_service_web_app
   ListOfTables:
   - azure_app_service_web_app
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -50,3 +53,4 @@ Tags:
   - azure
   service:
   - Azure/AppService
+Managed: false

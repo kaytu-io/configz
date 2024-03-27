@@ -2,19 +2,20 @@ ID: azure_vpn_gateways_should_not_use_'basic'_sku
 Title: Azure VPN gateways should not use 'basic' SKU
 Description: This policy ensures that VPN gateways do not use 'basic' SKU.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, type, gateway_type, vpn_type, vpn_gateway_generation, provisioning_state, active_active, enable_bgp, enable_dns_forwarding, enable_private_ip_address, etag, gateway_default_site, inbound_dns_forwarding_endpoint, resource_guid, sku_name, sku_tier, sku_capacity, bgp_settings, custom_routes_address_prefixes, gateway_connections, ip_configurations, vpn_client_configuration, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
-        FROM azure_virtual_network_gateway
-        WHERE type = 'Microsoft.Network/virtualNetworkGateways'
-        AND (gateway_type = 'Vpn' OR kaytu_description->'VirtualNetworkGateway'->'properties'->>'gatewayType' = 'Vpn')
-        AND (sku_tier = 'Basic' OR kaytu_description->'VirtualNetworkGateway'->'properties'->'sku'->>'tier' = 'Basic')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, type, gateway_type, vpn_type, vpn_gateway_generation, provisioning_state, active_active, enable_bgp, enable_dns_forwarding, enable_private_ip_address, etag, gateway_default_site, inbound_dns_forwarding_endpoint, resource_guid, sku_name, sku_tier, sku_capacity, bgp_settings, custom_routes_address_prefixes, gateway_connections, ip_configurations, vpn_client_configuration, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
+    FROM azure_virtual_network_gateway
+    WHERE type = 'Microsoft.Network/virtualNetworkGateways'
+    AND (gateway_type = 'Vpn' OR kaytu_description->'VirtualNetworkGateway'->'properties'->>'gatewayType' = 'Vpn')
+    AND (sku_tier = 'Basic' OR kaytu_description->'VirtualNetworkGateway'->'properties'->'sku'->>'tier' = 'Basic')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

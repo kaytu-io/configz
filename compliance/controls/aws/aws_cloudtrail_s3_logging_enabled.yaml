@@ -23,11 +23,14 @@ Query:
       inner join aws_s3_bucket b on t.s3_bucket_name = b.name
     where
       t.region = t.home_region;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudtrail_trail
   ListOfTables:
   - aws_cloudtrail_trail
   - aws_s3_bucket
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -49,3 +52,4 @@ Tags:
   - aws
   service:
   - AWS/CloudTrail
+Managed: false

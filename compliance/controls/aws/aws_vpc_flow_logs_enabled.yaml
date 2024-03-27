@@ -2,7 +2,6 @@ ID: aws_vpc_flow_logs_enabled
 Title: VPC flow logs should be enabled
 Description: The VPC flow logs provide detailed records for information about the IP traffic going to and from network interfaces in your Amazon Virtual Private Cloud (Amazon VPC.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,12 +23,14 @@ Query:
     from
       aws_vpc as v
       left join aws_vpc_flow_log as f on v.vpc_id = f.resource_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc
   ListOfTables:
   - aws_vpc
   - aws_vpc_flow_log
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

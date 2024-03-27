@@ -2,7 +2,6 @@ ID: azure_enable_auto_failover_groups
 Title: Enable Auto-Failover Groups
 Description: Ensure that your Azure SQL database servers are configured to use auto-failover groups.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,16 +21,19 @@ Query:
     from
       azure_sql_server as s
       left join azure_subscription as sub on s.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
-    - azure_sql_server
-    - azure_subscription
+  - azure_sql_server
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-    - Azure Managed SQL Service
+  - Azure Managed SQL Service
   score_tags:
-    - Missing Backup
+  - Missing Backup
 Managed: false

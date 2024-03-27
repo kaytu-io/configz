@@ -1,32 +1,24 @@
-Description: Intrusion Detection and Prevention System (IDPS) Bypass List allows you
-  to not filter traffic to any of the IP addresses, ranges, and subnets specified
-  in the bypass list. However, enabling IDPS is recommanded for all traffic flows
-  to better identify known threats. To learn more about the Intrusion Detection and
-  Prevention System (IDPS) signatures with Azure Firewall Premium, visit https://aka.ms/fw-idps-signature
 ID: bypass_list_of_intrusion_detection_and_prevention_system_(_idps)_should_be_empty_in_firewall_policy_premium
+Title: Bypass list of Intrusion Detection and Prevention System (IDPS) should be empty in Firewall Policy Premium
+Description: Intrusion Detection and Prevention System (IDPS) Bypass List allows you to not filter traffic to any of the IP addresses, ranges, and subnets specified in the bypass list. However, enabling IDPS is recommanded for all traffic flows to better identify known threats. To learn more about the Intrusion Detection and Prevention System (IDPS) signatures with Azure Firewall Premium, visit https://aka.ms/fw-idps-signature
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
+  QueryToExecute: |
+    SELECT *
     FROM azure_firewall_policy
-
-    WHERE type = ''Microsoft.Network/firewallPolicies''
-
-    AND (base_policy->>''properties''->>''intrusionDetection.configuration.bypassTrafficSettings''
-    IS NOT NULL
-
-    OR kaytu_description->''FirewallPolicy''->''properties''->''intrusionDetection''->''configuration''->>''bypassTrafficSettings''
-    IS NOT NULL)
-
-    AND (base_policy->>''properties''->>''sku.tier'' = ''Premium''
-
-    OR kaytu_description->''FirewallPolicy''->''properties''->''sku''->>''tier'' =
-    ''Premium'')
-
+    WHERE type = 'Microsoft.Network/firewallPolicies'
+    AND (base_policy->>'properties'->>'intrusionDetection.configuration.bypassTrafficSettings' IS NOT NULL
+    OR kaytu_description->'FirewallPolicy'->'properties'->'intrusionDetection'->'configuration'->>'bypassTrafficSettings' IS NOT NULL)
+    AND (base_policy->>'properties'->>'sku.tier' = 'Premium'
+    OR kaytu_description->'FirewallPolicy'->'properties'->'sku'->>'tier' = 'Premium')
     LIMIT 5;;
-
-    '
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: medium
-Title: Bypass list of Intrusion Detection and Prevention System (IDPS) should be empty
-  in Firewall Policy Premium
+Tags: {}
+Managed: false

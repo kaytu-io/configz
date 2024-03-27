@@ -2,22 +2,53 @@ ID: azure_sql_server_azure_ad_authentication_enabled
 Title: An Azure Active Directory administrator should be provisioned for SQL servers
 Description: Audit provisioning of an Azure Active Directory administrator for your SQL server to enable Azure AD authentication. Azure AD authentication enables simplified permission management and centralized identity management of database users and other Microsoft services.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with sever_with_ad_admin as (\n  select\n    distinct a.id\n  from\n    azure_sql_server as a,\n    jsonb_array_elements(server_azure_ad_administrator) as ad_admin\n  where\n    ad_admin ->> 'type' = 'Microsoft.Sql/servers/administrators'\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when s.id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when s.id is not null then a.name || ' azure AD authentication enabled.'\n    else a.name || ' azure AD authentication disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server as a\n  left join sever_with_ad_admin as s on a.id = s.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_sql_server
-    ListOfTables:
-        - azure_sql_server
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with sever_with_ad_admin as (
+      select
+        distinct a.id
+      from
+        azure_sql_server as a,
+        jsonb_array_elements(server_azure_ad_administrator) as ad_admin
+      where
+        ad_admin ->> 'type' = 'Microsoft.Sql/servers/administrators'
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when s.id is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when s.id is not null then a.name || ' azure AD authentication enabled.'
+        else a.name || ' azure AD authentication disabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_server as a
+      left join sever_with_ad_admin as s on a.id = s.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    service:
-        - Azure/SQL
+  nist_sp_800_53_rev_5:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  service:
+  - Azure/SQL
 Managed: false

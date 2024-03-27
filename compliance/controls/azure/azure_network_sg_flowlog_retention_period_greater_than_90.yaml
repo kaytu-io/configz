@@ -26,12 +26,15 @@ Query:
       azure_network_security_group sg
       left join azure_network_watcher_flow_log fl on sg.id = fl.target_resource_id
       join azure_subscription sub on sub.subscription_id = sg.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_network_security_group
   ListOfTables:
   - azure_network_security_group
   - azure_network_watcher_flow_log
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -53,3 +56,4 @@ Tags:
   - azure
   service:
   - Azure/Network
+Managed: false

@@ -2,49 +2,66 @@ ID: aws_sns_topic_encrypted_at_rest
 Title: SNS topics should be encrypted at rest
 Description: To help protect data at rest, ensure that your Amazon Simple Notification Service (Amazon SNS) topics require encryption using AWS Key Management Service (AWS KMS).
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  topic_arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when kms_master_key_id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kms_master_key_id is null then title || ' encryption at rest disabled.'\n    else title || ' encryption at rest enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_sns_topic;\n"
-    Connector: AWS
-    PrimaryTable: aws_sns_topic
-    ListOfTables:
-        - aws_sns_topic
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      topic_arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when kms_master_key_id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when kms_master_key_id is null then title || ' encryption at rest disabled.'
+        else title || ' encryption at rest enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_sns_topic;
+  Connector:
+  - AWS
+  PrimaryTable: aws_sns_topic
+  ListOfTables:
+  - aws_sns_topic
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    gdpr:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    gxp_eu_annex_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/SNS
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  gxp_eu_annex_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/SNS
+  soc_2:
+  - "true"
 Managed: false

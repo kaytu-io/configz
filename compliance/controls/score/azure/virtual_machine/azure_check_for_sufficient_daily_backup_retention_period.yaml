@@ -23,17 +23,20 @@ Query:
       left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
       left join azure_recovery_services_backup_item as bi on vm.id = (bi.properties ->> 'SourceResourceID')
       left join azure_recovery_services_backup_policy as bp on bi.properties ->> 'PolicyID' = bp.id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_recovery_services_backup_item
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_recovery_services_backup_item
+  - azure_subscription
   Parameters:
-    - Key: azureSufficientDailyBackupRetention
-      Required: true
+  - Key: azureSufficientDailyBackupRetention
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-    - Azure Virtual Machines
+  - Azure Virtual Machines
+Managed: false

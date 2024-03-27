@@ -34,10 +34,13 @@ Query:
     from
       aws_cloudfront_distribution as b
       left join data as d on b.arn = d.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudfront_distribution
   ListOfTables:
   - aws_cloudfront_distribution
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -53,3 +56,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFront
+Managed: false

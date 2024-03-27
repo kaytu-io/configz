@@ -2,18 +2,19 @@ ID: both_operating_systems_and_data_disks_in_azure_kubernetes_service_clusters_s
 Title: Both operating systems and data disks in Azure Kubernetes Service clusters should be encrypted by customer-managed keys
 Description: Encrypting OS and data disks using customer-managed keys provides more control and greater flexibility in key management. This is a common requirement in many regulatory and industry compliance standards.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_kubernetes_cluster
-        WHERE type = 'Microsoft.ContainerService/managedClusters'
-        AND (disk_encryption_set_id IS NULL OR disk_encryption_set_id = '')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_kubernetes_cluster
+    WHERE type = 'Microsoft.ContainerService/managedClusters'
+    AND (disk_encryption_set_id IS NULL OR disk_encryption_set_id = '')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

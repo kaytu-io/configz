@@ -2,17 +2,18 @@ ID: an_activity_log_alert_should_exist_for_specific_administrative_operations
 Title: An activity log alert should exist for specific Administrative operations
 Description: This policy audits specific Administrative operations with no activity log alerts configured.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description -> 'Subscription' -> 'SubscriptionPolicies' -> 'Microsoft.Insights/ActivityLogAlerts/condition.allOf' IS NOT NULL
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description -> 'Subscription' -> 'SubscriptionPolicies' -> 'Microsoft.Insights/ActivityLogAlerts/condition.allOf' IS NOT NULL
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

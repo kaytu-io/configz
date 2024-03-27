@@ -2,18 +2,19 @@ ID: azure_automation_accounts_should_use_customer_managed_keys_to_encrypt_data_a
 Title: Azure Automation accounts should use customer-managed keys to encrypt data at rest
 Description: Use customer-managed keys to manage the encryption at rest of your Azure Automation Accounts. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at https://aka.ms/automation-cmk.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT aa.name, aa.id, aa.description, aa.etag, aa.creation_time, aa.last_modified_time, aa.last_modified_by, aa.type, aa.state, aa.sku_name, aa.sku_family, aa.sku_capacity, aa.title, aa.tags, aa.akas, aa.region, aa.resource_group, aa.cloud_environment, aa.subscription_id, aa.kaytu_account_id, aa.kaytu_resource_id, aa.kaytu_metadata, aa.kaytu_description, aa._ctx
-        FROM azure_automation_account aa
-        WHERE aa.type = 'Microsoft.Automation/automationAccounts'
-        AND (aa."Microsoft.Automation/automationAccounts/encryption.keySource" IS NULL OR aa."Microsoft.Automation/automationAccounts/encryption.keySource" != 'Microsoft.Keyvault')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT aa.name, aa.id, aa.description, aa.etag, aa.creation_time, aa.last_modified_time, aa.last_modified_by, aa.type, aa.state, aa.sku_name, aa.sku_family, aa.sku_capacity, aa.title, aa.tags, aa.akas, aa.region, aa.resource_group, aa.cloud_environment, aa.subscription_id, aa.kaytu_account_id, aa.kaytu_resource_id, aa.kaytu_metadata, aa.kaytu_description, aa._ctx
+    FROM azure_automation_account aa
+    WHERE aa.type = 'Microsoft.Automation/automationAccounts'
+    AND (aa."Microsoft.Automation/automationAccounts/encryption.keySource" IS NULL OR aa."Microsoft.Automation/automationAccounts/encryption.keySource" != 'Microsoft.Keyvault')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

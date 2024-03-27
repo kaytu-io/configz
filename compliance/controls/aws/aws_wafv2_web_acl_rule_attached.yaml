@@ -33,10 +33,13 @@ Query:
     from
       aws_wafv2_web_acl as a
       left join rule_group_count as c on c.arn = a.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_wafv2_web_acl
   ListOfTables:
   - aws_wafv2_web_acl
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -52,3 +55,4 @@ Tags:
   - aws
   service:
   - AWS/WAF
+Managed: false

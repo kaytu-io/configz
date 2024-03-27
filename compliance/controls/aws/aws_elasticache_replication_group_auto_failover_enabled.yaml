@@ -19,10 +19,13 @@ Query:
       , region, account_id
     from
       aws_elasticache_replication_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_elasticache_replication_group
   ListOfTables:
   - aws_elasticache_replication_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -38,3 +41,4 @@ Tags:
   - aws
   service:
   - AWS/ElastiCache
+Managed: false

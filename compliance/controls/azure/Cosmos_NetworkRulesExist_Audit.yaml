@@ -2,23 +2,24 @@ ID: azure_cosmos_db_accounts_should_have_firewall_rules
 Title: Azure Cosmos DB accounts should have firewall rules
 Description: Firewall rules should be defined on your Azure Cosmos DB accounts to prevent traffic from unauthorized sources. Accounts that have at least one IP rule defined with the virtual network filter enabled are deemed compliant. Accounts disabling public access are also deemed compliant.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_cosmosdb_account
-        WHERE kind = 'Microsoft.DocumentDB/databaseAccounts'
-        AND (
-            (public_network_access = 'Enabled' OR public_network_access IS NULL)
-            OR (is_virtual_network_filter_enabled = false OR is_virtual_network_filter_enabled IS NULL)
-            OR (ip_rules IS NULL OR jsonb_array_length(ip_rules) = 0)
-            OR (ip_range_filter = '')
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_cosmosdb_account
+    WHERE kind = 'Microsoft.DocumentDB/databaseAccounts'
+    AND (
+        (public_network_access = 'Enabled' OR public_network_access IS NULL)
+        OR (is_virtual_network_filter_enabled = false OR is_virtual_network_filter_enabled IS NULL)
+        OR (ip_rules IS NULL OR jsonb_array_length(ip_rules) = 0)
+        OR (ip_range_filter = '')
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

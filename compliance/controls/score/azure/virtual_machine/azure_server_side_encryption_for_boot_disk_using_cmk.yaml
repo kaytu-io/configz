@@ -2,7 +2,6 @@ ID: azure_server_side_encryption_for_boot_disk_using_cmk
 Title: Server Side Encryption for Boot Disk using CMK
 Description: Ensure that Azure VM managed disk boot volumes are encrypted at rest using customer-managed keys (CMKs).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,12 +24,14 @@ Query:
       left join azure_compute_virtual_machine as vm on vm.os_disk_name = disk.name
     where
       vm.id is not null
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

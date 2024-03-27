@@ -1,9 +1,16 @@
-Description: Some applications require the use of keys backed by a specific cryptographic
-  type. Enforce a particular cryptographic key type, RSA or EC, in your environment.
 ID: keys_should_be_the_specified_cryptographic_type_rsa_or_ec
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Keys should be the specified cryptographic type RSA or EC
+Description: Some applications require the use of keys backed by a specific cryptographic type. Enforce a particular cryptographic key type, RSA or EC, in your environment.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

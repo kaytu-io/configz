@@ -2,13 +2,14 @@ ID: endpoint_protection_should_be_installed_on_your_machines
 Title: Endpoint protection should be installed on your machines
 Description: To protect your machines from threats and vulnerabilities, install a supported endpoint protection solution.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: ""
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

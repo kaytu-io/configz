@@ -18,10 +18,14 @@ Query:
       END AS reason
     FROM 
       aws_s3_access_point
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_s3_access_point
   ListOfTables:
-    - aws_s3_access_point
-
+  - aws_s3_access_point
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

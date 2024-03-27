@@ -42,10 +42,13 @@ Query:
       left join star_access_policies as s on p.arn = s.arn
     where
       not p.is_aws_managed;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_policy
   ListOfTables:
   - aws_iam_policy
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -61,3 +64,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
+Managed: false

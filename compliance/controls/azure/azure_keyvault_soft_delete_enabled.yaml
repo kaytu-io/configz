@@ -2,20 +2,41 @@ ID: azure_keyvault_soft_delete_enabled
 Title: Key vaults should have soft delete enabled
 Description: Deleting a key vault without soft delete enabled permanently deletes all secrets, keys, and certificates stored in the key vault. Accidental deletion of a key vault can lead to permanent data loss. Soft delete allows you to recover an accidentally deleted key vault for a configurable retention period.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  kv.id as resource,\n  kv.kaytu_account_id as kaytu_account_id,\n  kv.kaytu_resource_id as kaytu_resource_id,\n  case\n    when soft_delete_enabled then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when soft_delete_enabled then name || ' soft delete enabled.'\n    else name || ' soft delete disabled.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_key_vault
-    ListOfTables:
-        - azure_key_vault
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      kv.id as resource,
+      kv.kaytu_account_id as kaytu_account_id,
+      kv.kaytu_resource_id as kaytu_resource_id,
+      case
+        when soft_delete_enabled then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when soft_delete_enabled then name || ' soft delete enabled.'
+        else name || ' soft delete disabled.'
+      end as reason
+      
+      , kv.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_key_vault as kv,
+      azure_subscription as sub
+    where
+      sub.subscription_id = kv.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_key_vault
+  ListOfTables:
+  - azure_key_vault
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/KeyVault
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/KeyVault
 Managed: false

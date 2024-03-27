@@ -25,10 +25,15 @@ Query:
       aws_organizations_organization as o
     where
       o.account_id = o.kaytu_description -> 'Organization' ->> 'MasterAccountId'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_organizations_organization
   ListOfTables:
-    - aws_organizations_organization
-    - aws_cloudtrail_trail
+  - aws_organizations_organization
+  - aws_cloudtrail_trail
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

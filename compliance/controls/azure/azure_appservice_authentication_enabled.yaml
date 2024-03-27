@@ -4,11 +4,14 @@ Description: Azure App Service Authentication is a feature that can prevent anon
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not (auth_settings -> 'properties' ->> 'enabled') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (auth_settings -> 'properties' ->> 'enabled') :: boolean then name || ' authentication not set.'\n    else name || ' authentication set.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n"
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_app_service_web_app
   ListOfTables:
   - azure_app_service_web_app
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -30,3 +33,4 @@ Tags:
   - azure
   service:
   - Azure/AppService
+Managed: false

@@ -1,8 +1,16 @@
-Description: CMA_0058 - Conduct exit interview upon termination
 ID: conduct_exit_interview_upon_termination
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: low
 Title: Conduct exit interview upon termination
+Description: CMA_0058 - Conduct exit interview upon termination
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: low
+Tags: {}
+Managed: false

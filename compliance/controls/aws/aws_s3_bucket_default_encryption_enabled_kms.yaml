@@ -3,10 +3,6 @@ Title: S3 bucket default encryption should be enabled with KMS
 Description: To help protect data at rest, ensure encryption is enabled for your Amazon Simple Storage Service (Amazon S3) buckets.
 Query:
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_s3_bucket
-  PrimaryTable: aws_s3_bucket
-  Connector: AWS
   QueryToExecute: |
     with data as (
       select
@@ -33,39 +29,48 @@ Query:
     from
       aws_s3_bucket as b
       left join data as d on b.name = d.name;
-Severity: "high"
+  Connector:
+  - AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: high
 Tags:
   category:
-    - Compliance
+  - Compliance
   cisa_cyber_essentials:
-    - "true"
+  - "true"
   fedramp_low_rev_4:
-    - "true"
+  - "true"
   fedramp_moderate_rev_4:
-    - "true"
+  - "true"
   ffiec:
-    - "true"
+  - "true"
   gdpr:
-    - "true"
+  - "true"
   gxp_21_cfr_part_11:
-    - "true"
+  - "true"
   gxp_eu_annex_11:
-    - "true"
+  - "true"
   hipaa_final_omnibus_security_rule_2013:
-    - "true"
+  - "true"
   hipaa_security_rule_2003:
-    - "true"
+  - "true"
   nist_800_171_rev_2:
-    - "true"
+  - "true"
   nist_800_53_rev_5:
-    - "true"
+  - "true"
   nist_csf:
-    - "true"
+  - "true"
   pci_dss_v321:
-    - "true"
+  - "true"
   plugin:
-    - aws
+  - aws
   rbi_cyber_security:
-    - "true"
+  - "true"
   service:
-    - AWS/S3
+  - AWS/S3
+Managed: false

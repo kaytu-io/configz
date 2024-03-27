@@ -25,11 +25,14 @@ Query:
     where
       sub.subscription_id = s.subscription_id
       and s.name <> 'master';
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_database
   ListOfTables:
   - azure_sql_database
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: The text does not provide information about a specific Azure Control to determine its suggested severity.
 Tags:
@@ -51,3 +54,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

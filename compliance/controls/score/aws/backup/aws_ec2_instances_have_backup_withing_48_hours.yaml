@@ -2,7 +2,6 @@ ID: aws_ec2_instances_have_backup_withing_48_hours
 Title: Stateful EC2 Instances have operational backup within 48 hours.
 Description: Verify that EC2 Instances, excluding shutdowns, spot VMs, and those under 24 hrs old, have at least one restore point in the past 48 hrs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH all_backup AS (
@@ -38,12 +37,14 @@ Query:
           and instance_state = 'running'
           and state_transition_time <= (current_date - interval '24 hours'
       )
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
   - aws_ec2_instance
   - aws_backup_recovery_point
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

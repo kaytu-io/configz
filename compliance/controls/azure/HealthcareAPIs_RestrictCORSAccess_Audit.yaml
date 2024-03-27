@@ -1,21 +1,21 @@
-Description: Cross-Origin Resource Sharing (CORS) should not allow all domains to
-  access your API for FHIR. To protect your API for FHIR, remove access for all domains
-  and explicitly define the domains allowed to connect.
 ID: cors_should_not_allow_every_domain_to_access_your_api_for_fhir
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, kaytu_description
-
-    FROM azure_healthcare_service
-
-    WHERE type = ''Microsoft.HealthcareApis/services''
-
-    AND (origins IS NOT NULL OR kaytu_description -> ''$.defs.ServicesDescription.properties.Properties.$ref.ServicesCorsConfigurationInfo.properties.Origins''
-    IS NOT NULL)
-
-    LIMIT 5;;
-
-    '
-Severity: medium
 Title: CORS should not allow every domain to access your API for FHIR
+Description: Cross-Origin Resource Sharing (CORS) should not allow all domains to access your API for FHIR. To protect your API for FHIR, remove access for all domains and explicitly define the domains allowed to connect.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, kaytu_description
+    FROM azure_healthcare_service
+    WHERE type = 'Microsoft.HealthcareApis/services'
+    AND (origins IS NOT NULL OR kaytu_description -> '$.defs.ServicesDescription.properties.Properties.$ref.ServicesCorsConfigurationInfo.properties.Origins' IS NOT NULL)
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

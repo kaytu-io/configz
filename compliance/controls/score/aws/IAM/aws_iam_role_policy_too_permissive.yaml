@@ -2,7 +2,6 @@ ID: aws_iam_role_policy_too_permissive
 Title: IAM Role Policy Too Permissive
 Description: Ensure that the access policies attached to your IAM roles adhere to the principle of least privilege.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH too_permissive_policies AS (
@@ -55,12 +54,14 @@ Query:
       account_id
     FROM
       aws_iam_role AS r
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_role
   ListOfTables:
   - aws_iam_role
   - aws_iam_policy
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

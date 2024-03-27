@@ -2,7 +2,6 @@ ID: aws_unused_aws_ec2_key_pairs
 Title: Unused AWS EC2 Key Pairs
 Description: Ensure unused AWS EC2 key pairs are decommissioned to follow AWS security best practices.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,12 +21,14 @@ Query:
     from
       aws_ec2_key_pair AS k
       LEFT JOIN aws_ec2_instance AS i ON k.key_name = i.key_name
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_key_pair
   ListOfTables:
   - aws_ec2_key_pair
   - aws_ec2_instance
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

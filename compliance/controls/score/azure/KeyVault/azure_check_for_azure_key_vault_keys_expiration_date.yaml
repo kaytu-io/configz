@@ -2,7 +2,6 @@ ID: azure_check_for_azure_key_vault_keys_expiration_date
 Title: Check for Azure Key Vault Keys Expiration Date
 Description: Ensure that your Azure Key Vault encryption keys are renewed prior to their expiration date.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -41,14 +40,16 @@ Query:
     from
       azure_key_vault_key as k
       left join azure_subscription as sub on k.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault_key
   ListOfTables:
   - azure_key_vault_key
   - azure_subscription
   Parameters:
-    - Key: azureKeyVaultKeyExpirationDateDays
-      Required: true
+  - Key: azureKeyVaultKeyExpirationDateDays
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -9,7 +9,7 @@ Query:
       FROM azure_network_watcher
       GROUP BY subscription_id
     )
-
+    
     select
       sub.id as resource,
       sub.kaytu_account_id,
@@ -62,13 +62,17 @@ Query:
     from
       azure_subscription as sub
       left join regions_nw as nw on sub.subscription_id = nw.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_subscription
   ListOfTables:
-    - azure_network_watcher
-    - azure_subscription
+  - azure_network_watcher
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Network
+Managed: false

@@ -1,20 +1,21 @@
 ID: microsoft_defender_for_storage_should_be_enabled
 Title: Microsoft Defender for Storage should be enabled
-Description: 'Microsoft Defender for Storage detects potential threats to your storage accounts. It helps prevent the three major impacts on your data and workload: malicious file uploads, sensitive data exfiltration, and data corruption. The new Defender for Storage plan includes Malware Scanning and Sensitive Data Threat Detection. This plan also provides a predictable pricing structure (per storage account) for control over coverage and costs.'
+Description: "Microsoft Defender for Storage detects potential threats to your storage accounts. It helps prevent the three major impacts on your data and workload: malicious file uploads, sensitive data exfiltration, and data corruption. The new Defender for Storage plan includes Malware Scanning and Sensitive Data Threat Detection. This plan also provides a predictable pricing structure (per storage account) for control over coverage and costs."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.locationPlacementId' = 'Microsoft.Security/pricings/extensions'
-        AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.quotaId' = 'Microsoft.Security/pricings/pricingTier'
-        AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.spendingLimit' = 'Microsoft.Security/pricings/subPlan'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.locationPlacementId' = 'Microsoft.Security/pricings/extensions'
+    AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.quotaId' = 'Microsoft.Security/pricings/pricingTier'
+    AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.spendingLimit' = 'Microsoft.Security/pricings/subPlan'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

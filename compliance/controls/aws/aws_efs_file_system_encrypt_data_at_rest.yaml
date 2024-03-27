@@ -20,10 +20,13 @@ Query:
       , region, account_id
     from
       aws_efs_file_system;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_efs_file_system
   ListOfTables:
   - aws_efs_file_system
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -45,3 +48,4 @@ Tags:
   - aws
   service:
   - AWS/EFS
+Managed: false

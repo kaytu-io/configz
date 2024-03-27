@@ -1,8 +1,16 @@
-Description: CMA_C1652 - Establish usage restrictions for mobile code technologies
 ID: establish_usage_restrictions_for_mobile_code_technologies
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Establish usage restrictions for mobile code technologies
+Description: CMA_C1652 - Establish usage restrictions for mobile code technologies
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

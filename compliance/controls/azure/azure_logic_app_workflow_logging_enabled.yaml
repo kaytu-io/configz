@@ -2,22 +2,23 @@ ID: azure_logic_app_workflow_logging_enabled
 Title: Resource logs in Logic Apps should be enabled
 Description: Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with logging_details as (\n  select\n    distinct id as workflow_id\n  from\n    azure_logic_app_workflow,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -> 'properties' -> 'logs') log\n  where\n    diagnostic_settings is not null\n    and (\n      (\n        (log ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy' ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy') :: JSONB ? 'days'\n      )\n      or\n      (\n        (log ->> 'enabled') :: boolean\n        and (\n          log -> 'retentionPolicy' ->> 'enabled' <> 'true'\n          or setting -> 'properties' ->> 'storageAccountId' = ''\n        )\n      )\n    )\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.diagnostic_settings is null then 'alarm'\n    when l.workflow_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.diagnostic_settings is null then a.name || ' logging disabled.'\n    when l.workflow_id is not null then a.name || ' logging enabled.'\n    else a.name || ' logging disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_logic_app_workflow as a\n  left join logging_details as l on a.id = l.workflow_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_logic_app_workflow
-    ListOfTables:
-        - azure_logic_app_workflow
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "with logging_details as (\n  select\n    distinct id as workflow_id\n  from\n    azure_logic_app_workflow,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -> 'properties' -> 'logs') log\n  where\n    diagnostic_settings is not null\n    and (\n      (\n        (log ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy' ->> 'enabled') :: boolean\n        and (log -> 'retentionPolicy') :: JSONB ? 'days'\n      )\n      or\n      (\n        (log ->> 'enabled') :: boolean\n        and (\n          log -> 'retentionPolicy' ->> 'enabled' <> 'true'\n          or setting -> 'properties' ->> 'storageAccountId' = ''\n        )\n      )\n    )\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when a.diagnostic_settings is null then 'alarm'\n    when l.workflow_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when a.diagnostic_settings is null then a.name || ' logging disabled.'\n    when l.workflow_id is not null then a.name || ' logging enabled.'\n    else a.name || ' logging disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_logic_app_workflow as a\n  left join logging_details as l on a.id = l.workflow_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
+  Connector:
+  - Azure
+  PrimaryTable: azure_logic_app_workflow
+  ListOfTables:
+  - azure_logic_app_workflow
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/Logic
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/Logic
 Managed: false

@@ -2,22 +2,43 @@ ID: azure_appservice_function_app_latest_tls_version
 Title: Function apps should use the latest TLS version
 Description: Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for Function apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  app.id as resource,\n  app.kaytu_account_id as kaytu_account_id,\n  app.kaytu_resource_id as kaytu_resource_id,\n  case\n    when configuration -> 'properties' ->> 'minTlsVersion' < '1.2' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when configuration -> 'properties' ->> 'minTlsVersion' < '1.2' then name || ' not using the latest version of TLS encryption.'\n    else name || ' using the latest version of TLS encryption.'\n  end as reason\n  \n  , app.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_function_app as app,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = app.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_app_service_function_app
-    ListOfTables:
-        - azure_app_service_function_app
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      app.id as resource,
+      app.kaytu_account_id as kaytu_account_id,
+      app.kaytu_resource_id as kaytu_resource_id,
+      case
+        when configuration -> 'properties' ->> 'minTlsVersion' < '1.2' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when configuration -> 'properties' ->> 'minTlsVersion' < '1.2' then name || ' not using the latest version of TLS encryption.'
+        else name || ' using the latest version of TLS encryption.'
+      end as reason
+      
+      , app.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_app_service_function_app as app,
+      azure_subscription as sub
+    where
+      sub.subscription_id = app.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_app_service_function_app
+  ListOfTables:
+  - azure_app_service_function_app
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/AppService
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/AppService
 Managed: false

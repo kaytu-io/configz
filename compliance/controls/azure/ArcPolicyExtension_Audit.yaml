@@ -2,18 +2,19 @@ ID: azure_arc_enabled_kubernetes_clusters_should_have_the_azure_policy_extension
 Title: Azure Arc enabled Kubernetes clusters should have the Azure Policy extension installed
 Description: The Azure Policy extension for Azure Arc provides at-scale enforcements and safeguards on your Arc enabled Kubernetes clusters in a centralized, consistent manner. Learn more at https://aka.ms/akspolicydoc.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_hybrid_kubernetes_connected_cluster
-        WHERE type = 'Microsoft.Kubernetes/connectedClusters'
-        AND distribution != 'aks'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_hybrid_kubernetes_connected_cluster
+    WHERE type = 'Microsoft.Kubernetes/connectedClusters'
+    AND distribution != 'aks'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

@@ -1,14 +1,8 @@
-Description: Manage access to resources in the AWS Cloud by ensuring common ports are restricted on Amazon Elastic Compute Cloud (Amazon EC2) Security Groups.
 ID: aws_vpc_security_group_restrict_ingress_tcp_udp_all_ipv6
-Managed: true
-ManualVerification: false
+Title: VPC security groups should restrict ingress TCP and UDP access from ::/0
+Description: Manage access to resources in the AWS Cloud by ensuring common ports are restricted on Amazon Elastic Compute Cloud (Amazon EC2) Security Groups.
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_vpc_security_group
-    - aws_vpc_security_group_rule
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with bad_rules as (
       select
@@ -45,40 +39,49 @@ Query:
     from
       aws_vpc_security_group as sg
       left join bad_rules on bad_rules.group_id = sg.group_id;
-Severity: "high"
+  Connector:
+  - AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: high
 Tags:
   category:
-    - Compliance
+  - Compliance
   cisa_cyber_essentials:
-    - "true"
+  - "true"
   fedramp_low_rev_4:
-    - "true"
+  - "true"
   fedramp_moderate_rev_4:
-    - "true"
+  - "true"
   ffiec:
-    - "true"
+  - "true"
   gxp_21_cfr_part_11:
-    - "true"
+  - "true"
   hipaa_final_omnibus_security_rule_2013:
-    - "true"
+  - "true"
   hipaa_security_rule_2003:
-    - "true"
+  - "true"
   nist_800_171_rev_2:
-    - "true"
+  - "true"
   nist_800_53_rev_4:
-    - "true"
+  - "true"
   nist_800_53_rev_5:
-    - "true"
+  - "true"
   nist_csf:
-    - "true"
+  - "true"
   pci_dss_v321:
-    - "true"
+  - "true"
   plugin:
-    - aws
+  - aws
   rbi_cyber_security:
-    - "true"
+  - "true"
   service:
-    - AWS/VPC
+  - AWS/VPC
   soc_2:
-    - "true"
-Title: VPC security groups should restrict ingress TCP and UDP access from ::/0
+  - "true"
+Managed: true

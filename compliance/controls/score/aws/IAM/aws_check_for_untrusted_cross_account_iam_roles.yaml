@@ -2,50 +2,17 @@ ID: aws_check_for_untrusted_cross_account_iam_roles
 Title: Check for Untrusted Cross-Account IAM Roles
 Description: Ensure that AWS IAM roles cannot be used by untrusted accounts via cross-account access feature.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    SELECT 
-      name as resource,
-      kaytu_resource_id,
-      kaytu_account_id,
-      CASE
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
-          (s ->> 'Principal')::text = '{"AWS": "*"}')
-        ) THEN 'alarm'
-        WHEN '{{.awsTrustedAccounts}}' = '' THEN 'ok'
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s -> 'Principal' ->> 'AWS')::text) || '%'))
-        ) THEN 'alarm'
-        ELSE 'ok'
-      END AS status,
-      CASE
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
-          (s ->> 'Principal')::text = '{"AWS": "*"}')
-        ) THEN name || ' is publicly accessible' 
-        WHEN '{{.awsTrustedAccounts}}' = '' THEN 'trusted AWS accounts are not defined'
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s -> 'Principal' ->> 'AWS')::text) || '%'))
-        ) THEN name || ' is not configured to allow access only to trusted AWS accounts'
-        ELSE name || ' is configured to allow access only to trusted AWS accounts'
-      END AS reason,
-      region,
-      account_id
-    FROM 
-      aws_iam_role
-  Connector: AWS
+  QueryToExecute: "SELECT \n  name as resource,\n  kaytu_resource_id,\n  kaytu_account_id,\n  CASE\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '\"*\"' or\n      (s ->> 'Principal')::text = '{\"AWS\": \"*\"}')\n    ) THEN 'alarm'\n    WHEN '{{.awsTrustedAccounts}}' = '' THEN 'ok'\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s -> 'Principal' ->> 'AWS')::text) || '%'))\n    ) THEN 'alarm'\n    ELSE 'ok'\n  END AS status,\n  CASE\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '\"*\"' or\n      (s ->> 'Principal')::text = '{\"AWS\": \"*\"}')\n    ) THEN name || ' is publicly accessible' \n    WHEN '{{.awsTrustedAccounts}}' = '' THEN 'trusted AWS accounts are not defined'\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(assume_role_policy::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s -> 'Principal' ->> 'AWS')::text) || '%'))\n    ) THEN name || ' is not configured to allow access only to trusted AWS accounts'\n    ELSE name || ' is configured to allow access only to trusted AWS accounts'\n  END AS reason,\n  region,\n  account_id\nFROM \n  aws_iam_role\n"
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_role
   ListOfTables:
   - aws_iam_role
   Parameters:
   - Key: awsTrustedAccounts
     Required: false
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

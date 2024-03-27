@@ -2,7 +2,6 @@ ID: aws_iam_access_analyzer_in_use
 Title: IAM Access Analyzer in Use
 Description: Ensure that IAM Access Analyzer feature is enabled to maintain access security to your AWS resources.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,12 +24,14 @@ Query:
       a.account_id
     from
       aws_account as a
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_accessanalyzer_analyzer
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -24,10 +24,13 @@ Query:
       , region, account_id
     from
       aws_elasticsearch_domain;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_elasticsearch_domain
   ListOfTables:
   - aws_elasticsearch_domain
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -43,3 +46,4 @@ Tags:
   - aws
   service:
   - AWS/ES
+Managed: false

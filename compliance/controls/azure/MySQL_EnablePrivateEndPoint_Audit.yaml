@@ -1,19 +1,20 @@
-ID: '[_deprecated]:_private_endpoint_should_be_enabled_for_my_sql_servers'
-Title: '[Deprecated]: Private endpoint should be enabled for MySQL servers'
+ID: "[_deprecated]:_private_endpoint_should_be_enabled_for_my_sql_servers"
+Title: "[Deprecated]: Private endpoint should be enabled for MySQL servers"
 Description: Private endpoint connections enforce secure communication by enabling private connectivity to Azure Database for MySQL. Configure a private endpoint connection to enable access to traffic coming only from known networks and prevent access from all other IP addresses, including within Azure.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_mysql_server
-        WHERE type = 'Microsoft.DBforMySQL/servers'
-        AND kaytu_description -> '$.Server.Properties.PrivateEndpointConnections[*].Properties.PrivateLinkServiceConnectionState.Status' = 'Approved'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_mysql_server
+    WHERE type = 'Microsoft.DBforMySQL/servers'
+    AND kaytu_description -> '$.Server.Properties.PrivateEndpointConnections[*].Properties.PrivateLinkServiceConnectionState.Status' = 'Approved'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

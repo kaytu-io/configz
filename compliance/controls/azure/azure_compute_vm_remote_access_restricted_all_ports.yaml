@@ -2,25 +2,26 @@ ID: azure_compute_vm_remote_access_restricted_all_ports
 Title: All network ports should be restricted on network security groups associated to your virtual machine
 Description: Azure Security Center has identified some of your network security groups' inbound rules to be too permissive. Inbound rules should not allow access from 'Any' or 'Internet' ranges. This can potentially enable attackers to target your resources.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with network_sg as (\n  select\n    distinct name as sg_name,\n    network_interfaces\n  from\n    azure_network_security_group as nsg,\n    jsonb_array_elements(security_rules) as sg,\n    jsonb_array_elements_text(sg -> 'properties' -> 'destinationPortRanges' || (sg -> 'properties' -> 'destinationPortRange') :: jsonb) as dport,\n    jsonb_array_elements_text(sg -> 'properties' -> 'sourceAddressPrefixes' || (sg -> 'properties' -> 'sourceAddressPrefix') :: jsonb) as sip\n  where\n    sg -> 'properties' ->> 'access' = 'Allow'\n    and sg -> 'properties' ->> 'direction' = 'Inbound'\n    and sg -> 'properties' ->> 'protocol' in ('TCP','*')\n    and sip in ('*', '0.0.0.0', '0.0.0.0/0', 'Internet', '<nw>/0', '/0')\n)\nselect\n  vm.vm_id as resource,\n  vm.kaytu_account_id as kaytu_account_id,\n  vm.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sg.sg_name is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sg.sg_name is null then vm.title || ' restricts remote access from internet.'\n    else vm.title || ' allows remote access from internet.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm\n  left join network_sg as sg on sg.network_interfaces @> vm.network_interfaces\n  join azure_subscription as sub on sub.subscription_id = vm.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_compute_virtual_machine
-    ListOfTables:
-        - azure_compute_virtual_machine
-        - azure_network_security_group
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "with network_sg as (\n  select\n    distinct name as sg_name,\n    network_interfaces\n  from\n    azure_network_security_group as nsg,\n    jsonb_array_elements(security_rules) as sg,\n    jsonb_array_elements_text(sg -> 'properties' -> 'destinationPortRanges' || (sg -> 'properties' -> 'destinationPortRange') :: jsonb) as dport,\n    jsonb_array_elements_text(sg -> 'properties' -> 'sourceAddressPrefixes' || (sg -> 'properties' -> 'sourceAddressPrefix') :: jsonb) as sip\n  where\n    sg -> 'properties' ->> 'access' = 'Allow'\n    and sg -> 'properties' ->> 'direction' = 'Inbound'\n    and sg -> 'properties' ->> 'protocol' in ('TCP','*')\n    and sip in ('*', '0.0.0.0', '0.0.0.0/0', 'Internet', '<nw>/0', '/0')\n)\nselect\n  vm.vm_id as resource,\n  vm.kaytu_account_id as kaytu_account_id,\n  vm.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sg.sg_name is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sg.sg_name is null then vm.title || ' restricts remote access from internet.'\n    else vm.title || ' allows remote access from internet.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm\n  left join network_sg as sg on sg.network_interfaces @> vm.network_interfaces\n  join azure_subscription as sub on sub.subscription_id = vm.subscription_id;\n"
+  Connector:
+  - Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_network_security_group
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    nist_sp_800_53_rev_5:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    service:
-        - Azure/Compute
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  service:
+  - Azure/Compute
 Managed: false

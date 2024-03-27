@@ -18,10 +18,14 @@ Query:
       END as reason
     FROM 
       aws_api_gatewayv2_route
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_api_gatewayv2_route
   ListOfTables:
-    - aws_api_gatewayv2_route
-
+  - aws_api_gatewayv2_route
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

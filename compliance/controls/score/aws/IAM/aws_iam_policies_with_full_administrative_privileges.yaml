@@ -2,7 +2,6 @@ ID: aws_iam_policies_with_full_administrative_privileges
 Title: IAM Policies With Full Administrative Privileges
 Description: Ensure IAM policies that allow full '*:*' administrative privileges aren't created.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,11 +21,13 @@ Query:
     from
       aws_iam_policy as p,
       jsonb_array_elements(p.policy_std -> 'Statement') as stmt
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_policy
   ListOfTables:
   - aws_iam_policy
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -19,10 +19,13 @@ Query:
       , region, account_id
     from
       aws_api_gatewayv2_route;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_api_gatewayv2_route
   ListOfTables:
   - aws_api_gatewayv2_route
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -38,3 +41,4 @@ Tags:
   - aws
   service:
   - AWS/APIGateway
+Managed: false

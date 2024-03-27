@@ -2,7 +2,6 @@ ID: aws_backup_service_lifecycle_configuration
 Title: AWS Backup Service Lifecycle Configuration
 Description: Ensure Amazon Backup plans have a compliant lifecycle configuration enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,7 +23,8 @@ Query:
     from
       aws_backup_plan,
       jsonb_array_elements(rules) as r
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_backup_vault
   ListOfTables:
   - aws_backup_vault
@@ -33,6 +33,7 @@ Query:
     Required: true
   - Key: awsBackupPlanMoveToColdStorageAfterDays
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

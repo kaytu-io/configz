@@ -1,27 +1,22 @@
-Description: Enabling the Intrusion Detection and Prevention System (IDPS) allows
-  you to monitor your network for malicious activity, log information about this activity,
-  report it, and optionally attempt to block it. To learn more about the Intrusion
-  Detection and Prevention System (IDPS) with Azure Firewall Premium, visit https://aka.ms/fw-idps
 ID: firewall_policy_premium_should_enable_the_intrusion_detection_and_prevention_system_(_idps)
+Title: Firewall Policy Premium should enable the Intrusion Detection and Prevention System (IDPS)
+Description: Enabling the Intrusion Detection and Prevention System (IDPS) allows you to monitor your network for malicious activity, log information about this activity, report it, and optionally attempt to block it. To learn more about the Intrusion Detection and Prevention System (IDPS) with Azure Firewall Premium, visit https://aka.ms/fw-idps
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
+  QueryToExecute: |
+    SELECT *
     FROM azure_firewall_policy
-
-    WHERE type = ''Microsoft.Network/firewallPolicies''
-
-    AND (sku_tier = ''Premium'' OR kaytu_description->''FirewallPolicy''->''properties''->>''sku.tier''
-    = ''Premium'')
-
-    AND (intrusion_detection_mode = ''FirewallPolicyIntrusionDetectionStateTypeOff''
-    OR kaytu_description->''FirewallPolicy''->''properties''->>''intrusionDetection.mode''
-    = ''off'')
-
+    WHERE type = 'Microsoft.Network/firewallPolicies'
+    AND (sku_tier = 'Premium' OR kaytu_description->'FirewallPolicy'->'properties'->>'sku.tier' = 'Premium')
+    AND (intrusion_detection_mode = 'FirewallPolicyIntrusionDetectionStateTypeOff' OR kaytu_description->'FirewallPolicy'->'properties'->>'intrusionDetection.mode' = 'off')
     LIMIT 5;;
-
-    '
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: medium
-Title: Firewall Policy Premium should enable the Intrusion Detection and Prevention
-  System (IDPS)
+Tags: {}
+Managed: false

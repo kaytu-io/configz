@@ -2,18 +2,19 @@ ID: private_endpoint_connections_on_azure_sql_database_should_be_enabled
 Title: Private endpoint connections on Azure SQL Database should be enabled
 Description: Private endpoint connections enforce secure communication by enabling private connectivity to Azure SQL Database.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_sql_server
-        WHERE type = 'Microsoft.Sql/servers'
-        AND kaytu_description ->> '$.PrivateEndpointConnections' IS NOT NULL
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_sql_server
+    WHERE type = 'Microsoft.Sql/servers'
+    AND kaytu_description ->> '$.PrivateEndpointConnections' IS NOT NULL
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

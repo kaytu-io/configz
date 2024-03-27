@@ -21,12 +21,15 @@ Query:
       inner join azuread_user_registration_details az on az.id = value ->> 'Id'
     where 
       exists(select * from aws_ssoadmin_account_assignment where principal_type = 'USER' and principal_id = iden.id) 
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_identitystore_user
   ListOfTables:
   - aws_identitystore_user
   - azuread_user_registration_details
   - aws_ssoadmin_account_assignment
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -36,3 +39,4 @@ Tags:
   - aws
   service:
   - AWS/SSO
+Managed: false

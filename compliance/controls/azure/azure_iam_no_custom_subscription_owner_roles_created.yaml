@@ -48,11 +48,14 @@ Query:
       cr.kaytu_resource_id,
       cr._ctx,
       sub.display_name;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_subscription
   ListOfTables:
   - azure_role_definition
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -74,3 +77,4 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
+Managed: false

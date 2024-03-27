@@ -19,10 +19,14 @@ Query:
       END as reason
     FROM 
       aws_acmpca_certificate_authority
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_acmpca_certificate_authority
   ListOfTables:
-    - aws_acmpca_certificate_authority
-
+  - aws_acmpca_certificate_authority
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

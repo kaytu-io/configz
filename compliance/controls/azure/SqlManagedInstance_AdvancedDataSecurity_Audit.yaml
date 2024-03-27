@@ -2,18 +2,19 @@ ID: azure_defender_for_sql_should_be_enabled_for_unprotected_sql_managed_instanc
 Title: Azure Defender for SQL should be enabled for unprotected SQL Managed Instances
 Description: Audit each SQL Managed Instance without advanced data security.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_mssql_managed_instance
-        WHERE type = 'Microsoft.Sql/managedInstances'
-        AND kaytu_description -> '$.ManagedDatabaseSecurityAlertPolicies[*].properties.state' = 'Enabled'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_mssql_managed_instance
+    WHERE type = 'Microsoft.Sql/managedInstances'
+    AND kaytu_description -> '$.ManagedDatabaseSecurityAlertPolicies[*].properties.state' = 'Enabled'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

@@ -1,24 +1,22 @@
-Description: 'Disabling local authentication methods improves security by ensuring
-  that Cosmos DB database accounts exclusively require Azure Active Directory identities
-  for authentication. Learn more at: https://docs.microsoft.com/azure/cosmos-db/how-to-setup-rbac#disable-local-auth.'
 ID: cosmos_db_database_accounts_should_have_local_authentication_methods_disabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_cosmosdb_account
-
-    WHERE type = ''Microsoft.DocumentDB/databaseAccounts''
-
-    AND (disable_key_based_metadata_write_access IS NULL OR disable_key_based_metadata_write_access
-    = false)
-
-    AND (capabilities->>''name'' IS NULL OR capabilities->>''name'' NOT IN (''EnableMongo'',
-    ''EnableCassandra'', ''EnableTable'', ''EnableGremlin''))
-
-    LIMIT 5;;
-
-    '
-Severity: medium
 Title: Cosmos DB database accounts should have local authentication methods disabled
+Description: "Disabling local authentication methods improves security by ensuring that Cosmos DB database accounts exclusively require Azure Active Directory identities for authentication. Learn more at: https://docs.microsoft.com/azure/cosmos-db/how-to-setup-rbac#disable-local-auth."
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_cosmosdb_account
+    WHERE type = 'Microsoft.DocumentDB/databaseAccounts'
+    AND (disable_key_based_metadata_write_access IS NULL OR disable_key_based_metadata_write_access = false)
+    AND (capabilities->>'name' IS NULL OR capabilities->>'name' NOT IN ('EnableMongo', 'EnableCassandra', 'EnableTable', 'EnableGremlin'))
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

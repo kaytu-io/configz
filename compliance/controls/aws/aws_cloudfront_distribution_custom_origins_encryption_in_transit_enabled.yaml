@@ -48,10 +48,13 @@ Query:
       aws_cloudfront_distribution as b
       left join origin_protocol_policy_value as o on b.arn = o.arn
       left join viewer_protocol_policy_value as v on b.arn = v.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudfront_distribution
   ListOfTables:
   - aws_cloudfront_distribution
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -67,3 +70,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFront
+Managed: false

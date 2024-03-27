@@ -2,19 +2,20 @@ ID: storage_accounts_should_allow_access_from_trusted_microsoft_services
 Title: Storage accounts should allow access from trusted Microsoft services
 Description: Some Microsoft services that interact with storage accounts operate from networks that can't be granted access through network rules. To help this type of service work as intended, allow the set of trusted Microsoft services to bypass the network rules. These services will then use strong authentication to access the storage account.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_storage_account
-        WHERE type = 'Microsoft.Storage/storageAccounts'
-        AND (network_rule_bypass IS NOT NULL AND network_rule_bypass != 'AzureServices'
-        OR kaytu_description -> 'Account' -> 'Properties' -> 'NetworkRuleSet' ->> 'Bypass' IS NOT NULL AND kaytu_description -> 'Account' -> 'Properties' -> 'NetworkRuleSet' ->> 'Bypass' != 'AzureServices')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_storage_account
+    WHERE type = 'Microsoft.Storage/storageAccounts'
+    AND (network_rule_bypass IS NOT NULL AND network_rule_bypass != 'AzureServices'
+    OR kaytu_description -> 'Account' -> 'Properties' -> 'NetworkRuleSet' ->> 'Bypass' IS NOT NULL AND kaytu_description -> 'Account' -> 'Properties' -> 'NetworkRuleSet' ->> 'Bypass' != 'AzureServices')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

@@ -14,7 +14,7 @@ Query:
       WHERE
         action IN ('ec2:PurchaseReservedInstancesOffering', 'savingsplans:CreateSavingsPlan')
     )
-
+    
     SELECT
       name AS resource,
       kaytu_account_id,
@@ -53,13 +53,17 @@ Query:
       account_id
     FROM
       aws_iam_user
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
-    - aws_iam_policy
+  - aws_iam_user
+  - aws_iam_policy
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+Managed: false

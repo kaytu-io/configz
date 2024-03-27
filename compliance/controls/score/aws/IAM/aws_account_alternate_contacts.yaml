@@ -2,7 +2,6 @@ ID: aws_account_alternate_contacts
 Title: Account Alternate Contacts
 Description: Ensure alternate contacts are set to improve the security of your AWS account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,12 +21,14 @@ Query:
     from
       aws_account as a
       left join aws_account_alternate_contact as c on a.account_id = c.account_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_account_alternate_contact
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

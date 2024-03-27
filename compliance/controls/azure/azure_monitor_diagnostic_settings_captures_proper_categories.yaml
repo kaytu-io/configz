@@ -53,11 +53,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = sett.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_diagnostic_setting
   ListOfTables:
   - azure_diagnostic_setting
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -79,3 +82,4 @@ Tags:
   - azure
   service:
   - Azure/Monitor
+Managed: false

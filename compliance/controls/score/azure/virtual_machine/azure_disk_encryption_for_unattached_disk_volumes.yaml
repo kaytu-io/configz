@@ -2,7 +2,6 @@ ID: azure_disk_encryption_for_unattached_disk_volumes
 Title: Azure Disk Encryption for Unattached Disk Volumes
 Description: Ensure that Azure Disk Encryption is enabled for unattached Azure virtual machine disk volumes.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,12 +23,14 @@ Query:
       left join azure_subscription as sub on d.subscription_id = sub.subscription_id
     where
       d.managed_by is null;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

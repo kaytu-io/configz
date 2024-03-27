@@ -3,7 +3,6 @@ Title: Review Network Interfaces with IP Forwarding Enabled
 Description: Ensure that the Azure network interfaces with IP forwarding enabled are regularly reviewed.
 Query:
   Engine: odysseus-v0.0.1
-  Connector: Azure
   QueryToExecute: |
     select
       ni.id as resource,
@@ -24,12 +23,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = ni.subscription_id
+  Connector:
+  - Azure
   PrimaryTable: azure_network_interface
   ListOfTables:
-    - azure_network_interface
-    - azure_subscription
+  - azure_network_interface
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Network
+Managed: false

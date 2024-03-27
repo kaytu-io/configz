@@ -2,7 +2,6 @@ ID: aws_expired_ssl_tls_certificate
 Title: Expired SSL/TLS Certificate
 Description: Ensure expired SSL/TLS certificates are removed from AWS IAM.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -21,11 +20,13 @@ Query:
       account_id
     FROM 
       aws_iam_server_certificate
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_server_certificate
   ListOfTables:
   - aws_iam_server_certificate
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

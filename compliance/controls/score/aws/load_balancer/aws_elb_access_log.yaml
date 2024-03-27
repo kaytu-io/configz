@@ -20,12 +20,16 @@ Query:
       a.account_id
     from
       aws_ec2_classic_load_balancer a
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_classic_load_balancer
   ListOfTables:
-    - aws_ec2_classic_load_balancer
+  - aws_ec2_classic_load_balancer
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - AWS Elastic Load Balancing (ELB)
+  - AWS Elastic Load Balancing (ELB)
+Managed: false

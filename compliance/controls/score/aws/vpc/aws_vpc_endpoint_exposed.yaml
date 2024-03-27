@@ -2,15 +2,16 @@ ID: aws_vpc_endpoint_exposed
 Title: VPC Endpoint Exposed
 Description: Ensure Amazon VPC endpoints aren't exposed to everyone.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "select\n  distinct arn as resource,\n  v.kaytu_resource_id,\n  v.kaytu_account_id,\n  case\n    when p ->> 'Principal' = '*' or p ->> 'Principal' = '{\"AWS\": [\"*\"]}' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when p ->> 'Principal' = '*' or p ->> 'Principal' = '{\"AWS\": [\"*\"]}' then v.vpc_id || ' endpoint is fully accessible..'\n    else v.vpc_id || ' endpoint is not fully accessible..'\n  end as reason,\n  v.region,\n  v.account_id\nfrom\n  aws_vpc as v\n  left join aws_vpc_endpoint as e on v.vpc_id = e.vpc_id,\n  jsonb_array_elements(e.policy -> 'Statement') as p\n"
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc
   ListOfTables:
   - aws_vpc
   - aws_vpc_endpoint
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

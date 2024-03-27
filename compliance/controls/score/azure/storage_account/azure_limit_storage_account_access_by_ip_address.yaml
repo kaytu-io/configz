@@ -2,7 +2,6 @@ ID: azure_limit_storage_account_access_by_ip_address
 Title: Limit Storage Account Access by IP Address
 Description: Ensure that Azure Storage account access is limited only to specific IP address(es).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -32,7 +31,8 @@ Query:
     from
       azure_storage_account as s
       left join azure_subscription as sub on s.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
@@ -40,6 +40,7 @@ Query:
   Parameters:
   - Key: azureStorageAccountAllowedIPAddresses
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

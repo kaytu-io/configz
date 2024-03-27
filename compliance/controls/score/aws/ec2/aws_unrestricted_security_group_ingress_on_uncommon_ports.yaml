@@ -2,7 +2,6 @@ ID: aws_unrestricted_security_group_ingress_on_uncommon_ports
 Title: Unrestricted Security Group Ingress on Uncommon Ports
 Description: Ensure no security group contains any 0.0.0.0/0 ingress rules.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -31,11 +30,13 @@ Query:
       account_id
     FROM 
       aws_vpc_security_group
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

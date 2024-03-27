@@ -2,7 +2,6 @@ ID: aws_instance_level_events_subscriptions
 Title: Instance Level Events Subscriptions
 Description: Enable Event Subscriptions for Instance Level Events.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select distinct
@@ -26,12 +25,14 @@ Query:
       left join (select * from
         aws_rds_db_event_subscription where source_type = 'db-instance') s on s.kaytu_account_id
         = a.kaytu_account_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_rds_db_event_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

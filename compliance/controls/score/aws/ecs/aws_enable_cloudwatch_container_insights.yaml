@@ -2,7 +2,6 @@ ID: aws_enable_cloudwatch_container_insights
 Title: Enable CloudWatch Container Insights
 Description: Ensure that CloudWatch Container Insights feature is enabled for your AWS ECS clusters.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -29,10 +28,13 @@ Query:
       account_id
     from
       aws_ecs_cluster
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecs_container_instance
   ListOfTables:
   - aws_ecs_container_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

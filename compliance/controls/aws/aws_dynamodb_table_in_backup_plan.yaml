@@ -2,50 +2,97 @@ ID: aws_dynamodb_table_in_backup_plan
 Title: DynamoDB tables should be in a backup plan
 Description: To help with data back-up processes, ensure your Amazon DynamoDB tables are a part of an AWS Backup plan.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with mapped_with_id as (\n  select\n    jsonb_agg(elems) as mapped_ids\n  from\n    aws_backup_selection,\n    jsonb_array_elements(resources) as elems\n  group by backup_plan_id\n),\nmapped_with_tags as (\n  select\n    jsonb_agg(elems ->> 'ConditionKey') as mapped_tags\n  from\n    aws_backup_selection,\n    jsonb_array_elements(list_of_tags) as elems\n  group by backup_plan_id\n),\nbacked_up_table as (\n  select\n    t.name\n  from\n    aws_dynamodb_table as t\n    join mapped_with_id as m on m.mapped_ids ?| array[t.arn]\n  union\n  select\n    t.name\n  from\n    aws_dynamodb_table as t\n    join mapped_with_tags as m on m.mapped_tags ?| array(select jsonb_object_keys(tags))\n)\nselect\n  t.arn as resource,\n  t.kaytu_account_id as kaytu_account_id,\n  t.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when b.name is null then t.title || ' not in backup plan.'\n    else t.title || ' in backup plan.'\n  end as reason\n  \n  , t.region, t.account_id\nfrom\n  aws_dynamodb_table as t\n  left join backed_up_table as b on t.name = b.name;\n"
-    Connector: AWS
-    PrimaryTable: aws_dynamodb_table
-    ListOfTables:
-        - aws_backup_selection
-        - aws_dynamodb_table
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with mapped_with_id as (
+      select
+        jsonb_agg(elems) as mapped_ids
+      from
+        aws_backup_selection,
+        jsonb_array_elements(resources) as elems
+      group by backup_plan_id
+    ),
+    mapped_with_tags as (
+      select
+        jsonb_agg(elems ->> 'ConditionKey') as mapped_tags
+      from
+        aws_backup_selection,
+        jsonb_array_elements(list_of_tags) as elems
+      group by backup_plan_id
+    ),
+    backed_up_table as (
+      select
+        t.name
+      from
+        aws_dynamodb_table as t
+        join mapped_with_id as m on m.mapped_ids ?| array[t.arn]
+      union
+      select
+        t.name
+      from
+        aws_dynamodb_table as t
+        join mapped_with_tags as m on m.mapped_tags ?| array(select jsonb_object_keys(tags))
+    )
+    select
+      t.arn as resource,
+      t.kaytu_account_id as kaytu_account_id,
+      t.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.name is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when b.name is null then t.title || ' not in backup plan.'
+        else t.title || ' in backup plan.'
+      end as reason
+      
+      , t.region, t.account_id
+    from
+      aws_dynamodb_table as t
+      left join backed_up_table as b on t.name = b.name;
+  Connector:
+  - AWS
+  PrimaryTable: aws_dynamodb_table
+  ListOfTables:
+  - aws_backup_selection
+  - aws_dynamodb_table
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    ffiec:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    gxp_eu_annex_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/DynamoDB
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  gxp_eu_annex_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/DynamoDB
+  soc_2:
+  - "true"
 Managed: false

@@ -2,54 +2,55 @@ ID: aws_elb_application_classic_lb_logging_enabled
 Title: ELB application and classic load balancer logging should be enabled
 Description: Elastic Load Balancing activity is a central point of communication within an environment.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "(\n  select\n    arn as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_application_load_balancer' as kaytu_table_name,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_application_load_balancer\n)\nunion\n(\n  select\n    'arn:' || partition || ':elasticloadbalancing:' || region || ':' || account_id || ':loadbalancer/' || title as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_classic_load_balancer' as kaytu_table_name,\n    case\n      when access_log_enabled = 'true' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when access_log_enabled = 'true' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_classic_load_balancer\n);\n"
-    Connector: AWS
-    PrimaryTable: null
-    ListOfTables:
-        - aws_ec2_application_load_balancer
-        - aws_ec2_classic_load_balancer
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "(\n  select\n    arn as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_application_load_balancer' as kaytu_table_name,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when load_balancer_attributes @> '[{\"Key\": \"access_logs.s3.enabled\", \"Value\": \"true\"}]' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_application_load_balancer\n)\nunion\n(\n  select\n    'arn:' || partition || ':elasticloadbalancing:' || region || ':' || account_id || ':loadbalancer/' || title as resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_resource_id as kaytu_resource_id,\n    'aws_ec2_classic_load_balancer' as kaytu_table_name,\n    case\n      when access_log_enabled = 'true' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when access_log_enabled = 'true' then title || ' logging enabled.'\n      else title || ' logging disabled.'\n    end as reason\n    \n    , region, account_id\n  from\n    aws_ec2_classic_load_balancer\n);\n"
+  Connector:
+  - AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  - aws_ec2_classic_load_balancer
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gdpr:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/ELB
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/ELB
+  soc_2:
+  - "true"
 Managed: false

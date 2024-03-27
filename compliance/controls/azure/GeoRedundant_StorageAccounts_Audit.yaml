@@ -2,19 +2,20 @@ ID: geo_redundant_storage_should_be_enabled_for_storage_accounts
 Title: Geo-redundant storage should be enabled for Storage Accounts
 Description: Use geo-redundancy to create highly available applications
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, sku_name
-        FROM azure_storage_account
-        WHERE type = 'Microsoft.Storage/storageAccounts'
-        AND (sku_name NOT IN ('Standard_GRS', 'Standard_RAGRS', 'Standard_GZRS', 'Standard_RAGZRS')
-        OR kaytu_description->'Account'->'SKU'->>'Name' NOT IN ('Standard_GRS', 'Standard_RAGRS', 'Standard_GZRS', 'Standard_RAGZRS'))
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, sku_name
+    FROM azure_storage_account
+    WHERE type = 'Microsoft.Storage/storageAccounts'
+    AND (sku_name NOT IN ('Standard_GRS', 'Standard_RAGRS', 'Standard_GZRS', 'Standard_RAGZRS')
+    OR kaytu_description->'Account'->'SKU'->>'Name' NOT IN ('Standard_GRS', 'Standard_RAGRS', 'Standard_GZRS', 'Standard_RAGZRS'))
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

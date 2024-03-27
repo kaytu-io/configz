@@ -30,13 +30,17 @@ Query:
       sub.subscription_id = sg.subscription_id and
       sr -> 'properties' ->> 'access' = 'Allow' and sr -> 'properties' ->> 'protocol' = 'Udp' and
       sr -> 'properties' ->> 'direction' = 'Inbound'
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_network_security_group
   ListOfTables:
-    - azure_network_security_group
-    - azure_subscription
+  - azure_network_security_group
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Network
+Managed: false

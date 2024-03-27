@@ -21,11 +21,14 @@ Query:
     from
       azure_tenant as t,
       azuread_authorization_policy as a;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azuread_authorization_policy
   ListOfTables:
   - azure_tenant
   - azuread_authorization_policy
+  Parameters: []
+  Global: false
 ManualVerification: true
 Severity: high
 Tags:
@@ -47,3 +50,4 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
+Managed: false

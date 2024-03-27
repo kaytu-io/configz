@@ -31,12 +31,16 @@ Query:
       from
       aws_ec2_instance as i left join
       instance_nis as nis on i.instance_id = nis.instance_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - AWS EC2
+  - AWS EC2
+Managed: false

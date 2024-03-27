@@ -48,11 +48,14 @@ Query:
     from
       aws_vpc_security_group as sg
       left join bad_rules on bad_rules.group_id = sg.group_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   - aws_vpc_security_group_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
@@ -74,3 +77,4 @@ Tags:
   - aws
   service:
   - AWS/VPC
+Managed: false

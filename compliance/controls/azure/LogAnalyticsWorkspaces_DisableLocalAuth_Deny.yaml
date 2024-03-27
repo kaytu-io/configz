@@ -2,18 +2,19 @@ ID: log_analytics_workspaces_should_block_non_azure_active_directory_based_inges
 Title: Log Analytics Workspaces should block non-Azure Active Directory based ingestion.
 Description: Enforcing log ingestion to require Azure Active Directory authentication prevents unauthenticated logs from an attacker which could lead to incorrect status, false alerts, and incorrect logs stored in the system.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_operationalinsights_workspaces
-        WHERE kaytu_account_id = 'account_id'
-        AND kaytu_description->'definitions'->'WorkspaceProperties'->'properties'->'features'->'properties'->>'disableLocalAuth' != 'true'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_operationalinsights_workspaces
+    WHERE kaytu_account_id = 'account_id'
+    AND kaytu_description->'definitions'->'WorkspaceProperties'->'properties'->'features'->'properties'->>'disableLocalAuth' != 'true'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

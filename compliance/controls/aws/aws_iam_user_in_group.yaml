@@ -2,45 +2,62 @@ ID: aws_iam_user_in_group
 Title: IAM users should be in at least one group
 Description: AWS Identity and Access Management (IAM) can help you restrict access permissions and authorizations, by ensuring IAM users are members of at least one group.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when jsonb_array_length(groups) = 0 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when jsonb_array_length(groups) = 0 then title || ' not associated with any IAM group.'\n    else title || ' associated with IAM group.'\n  end as reason\n  \n  , account_id\nfrom\n  aws_iam_user;\n"
-    Connector: AWS
-    PrimaryTable: aws_iam_user
-    ListOfTables:
-        - aws_iam_user
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when jsonb_array_length(groups) = 0 then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when jsonb_array_length(groups) = 0 then title || ' not associated with any IAM group.'
+        else title || ' associated with IAM group.'
+      end as reason
+      
+      , account_id
+    from
+      aws_iam_user;
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+  - aws_iam_user
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    plugin:
-        - aws
-    service:
-        - AWS/IAM
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
+  soc_2:
+  - "true"
 Managed: false

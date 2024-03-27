@@ -31,11 +31,14 @@ Query:
     from
       azure_subscription sub
       left join contact_info ci on sub.subscription_id = ci.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_contact
   ListOfTables:
   - azure_security_center_contact
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -57,3 +60,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

@@ -2,20 +2,39 @@ ID: azure_monitor_log_profile_enabled_for_all_categories
 Title: Azure Monitor log profile should collect logs for categories 'write,' 'delete,' and 'action'
 Description: This policy ensures that a log profile collects logs for categories 'write,' 'delete,' and 'action'.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  p.id as resource,\n  p.kaytu_account_id as kaytu_account_id,\n  p.kaytu_resource_id as kaytu_resource_id,\n  case\n    when p.categories @> '[\"Write\", \"Action\", \"Delete\"]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when p.categories @> '[\"Write\", \"Action\", \"Delete\"]' then p.name || ' collects logs for categories write, delete and action'\n    else p.name || ' does not collects logs for all categories.'\n  end as reason\n  \n  , p.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_log_profile as p\n  left join azure_subscription sub on sub.subscription_id = p.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_log_profile
-    ListOfTables:
-        - azure_log_profile
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      p.id as resource,
+      p.kaytu_account_id as kaytu_account_id,
+      p.kaytu_resource_id as kaytu_resource_id,
+      case
+        when p.categories @> '["Write", "Action", "Delete"]' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when p.categories @> '["Write", "Action", "Delete"]' then p.name || ' collects logs for categories write, delete and action'
+        else p.name || ' does not collects logs for all categories.'
+      end as reason
+      
+      , p.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_log_profile as p
+      left join azure_subscription sub on sub.subscription_id = p.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_log_profile
+  ListOfTables:
+  - azure_log_profile
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    service:
-        - Azure/Monitor
+  hipaa_hitrust_v92:
+  - "true"
+  service:
+  - Azure/Monitor
 Managed: false

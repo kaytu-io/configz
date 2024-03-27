@@ -2,13 +2,14 @@ ID: linux_machines_should_meet_requirements_for_the_azure_compute_security_basel
 Title: Linux machines should meet requirements for the Azure compute security baseline
 Description: Requires that prerequisites are deployed to the policy assignment scope. For details, visit https://aka.ms/gcpol. Machines are non-compliant if the machine is not configured correctly for one of the recommendations in the Azure compute security baseline.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: ""
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

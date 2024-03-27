@@ -22,10 +22,13 @@ Query:
       , region, account_id
     from
       aws_networkfirewall_firewall_policy;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_networkfirewall_firewall_policy
   ListOfTables:
   - aws_networkfirewall_firewall_policy
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -41,3 +44,4 @@ Tags:
   - aws
   service:
   - AWS/NetworkFirewall
+Managed: false

@@ -1,28 +1,29 @@
-ID: '[_deprecated]:_ssh_access_from_the_internet_should_be_blocked'
-Title: '[Deprecated]: SSH access from the Internet should be blocked'
+ID: "[_deprecated]:_ssh_access_from_the_internet_should_be_blocked"
+Title: "[Deprecated]: SSH access from the Internet should be blocked"
 Description: This policy is deprecated. This policy audits any network security rule that allows SSH access from Internet
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT kaytu_description->'SecurityRulePropertiesFormat'->'destinationPortRanges' AS destinationPortRanges,
-               kaytu_description->'SecurityRulePropertiesFormat'->'sourceAddressPrefix' AS sourceAddressPrefix,
-               kaytu_description->'SecurityRulePropertiesFormat'->'access' AS access,
-               kaytu_description->'SecurityRulePropertiesFormat'->'destinationPortRange' AS destinationPortRange,
-               kaytu_description->'SecurityRulePropertiesFormat'->'direction' AS direction,
-               kaytu_description->'SecurityRulePropertiesFormat'->'sourceAddressPrefixes' AS sourceAddressPrefixes
-        FROM azure_network_security_group
-        WHERE kaytu_description->'SecurityRulePropertiesFormat'->>'destinationPortRanges' IS NOT NULL
-           OR kaytu_description->'SecurityRulePropertiesFormat'->>'sourceAddressPrefix' IS NOT NULL
-           OR kaytu_description->'SecurityRulePropertiesFormat'->>'access' IS NOT NULL
-           OR kaytu_description->'SecurityRulePropertiesFormat'->>'destinationPortRange' IS NOT NULL
-           OR kaytu_description->'SecurityRulePropertiesFormat'->>'direction' IS NOT NULL
-           OR kaytu_description->'SecurityRulePropertiesFormat'->>'sourceAddressPrefixes' IS NOT NULL
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT kaytu_description->'SecurityRulePropertiesFormat'->'destinationPortRanges' AS destinationPortRanges,
+           kaytu_description->'SecurityRulePropertiesFormat'->'sourceAddressPrefix' AS sourceAddressPrefix,
+           kaytu_description->'SecurityRulePropertiesFormat'->'access' AS access,
+           kaytu_description->'SecurityRulePropertiesFormat'->'destinationPortRange' AS destinationPortRange,
+           kaytu_description->'SecurityRulePropertiesFormat'->'direction' AS direction,
+           kaytu_description->'SecurityRulePropertiesFormat'->'sourceAddressPrefixes' AS sourceAddressPrefixes
+    FROM azure_network_security_group
+    WHERE kaytu_description->'SecurityRulePropertiesFormat'->>'destinationPortRanges' IS NOT NULL
+       OR kaytu_description->'SecurityRulePropertiesFormat'->>'sourceAddressPrefix' IS NOT NULL
+       OR kaytu_description->'SecurityRulePropertiesFormat'->>'access' IS NOT NULL
+       OR kaytu_description->'SecurityRulePropertiesFormat'->>'destinationPortRange' IS NOT NULL
+       OR kaytu_description->'SecurityRulePropertiesFormat'->>'direction' IS NOT NULL
+       OR kaytu_description->'SecurityRulePropertiesFormat'->>'sourceAddressPrefixes' IS NOT NULL
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

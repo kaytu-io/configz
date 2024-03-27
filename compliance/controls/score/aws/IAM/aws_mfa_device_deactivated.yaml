@@ -2,7 +2,6 @@ ID: aws_mfa_device_deactivated
 Title: MFA Device Deactivated
 Description: A Multi-Factor Authentication (MFA) device deactivation for an IAM user has been detected.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,12 +21,14 @@ Query:
     from
       aws_iam_user as a
       left join aws_iam_virtual_mfa_device as mfa on a.user_id = mfa.user_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
   - aws_iam_user
   - aws_iam_virtual_mfa_device
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

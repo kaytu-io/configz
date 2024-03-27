@@ -1,19 +1,20 @@
 ID: azure_health_data_services_workspace_should_use_private_link
 Title: Azure Health Data Services workspace should use private link
-Description: 'Health Data Services workspace should have at least one approved private endpoint connection. Clients in a virtual network can securely access resources that have private endpoint connections through private links. For more information, visit: https://aka.ms/healthcareapisprivatelink.'
+Description: "Health Data Services workspace should have at least one approved private endpoint connection. Clients in a virtual network can securely access resources that have private endpoint connections through private links. For more information, visit: https://aka.ms/healthcareapisprivatelink."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_configuration
-        WHERE type = 'Microsoft.AppConfiguration/configurationStores'
-        AND kaytu_description -> '$.privateEndpointConnections[*].privateLinkServiceConnectionState.status' = 'Approved'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_configuration
+    WHERE type = 'Microsoft.AppConfiguration/configurationStores'
+    AND kaytu_description -> '$.privateEndpointConnections[*].privateLinkServiceConnectionState.status' = 'Approved'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

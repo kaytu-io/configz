@@ -2,20 +2,41 @@ ID: azure_data_factory_encrypted_with_cmk
 Title: Azure data factories should be encrypted with a customer-managed key
 Description: Use customer-managed keys to manage the encryption at rest of your Azure Data Factory. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when encryption ->> 'vaultBaseUrl' is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encryption ->> 'vaultBaseUrl' is not null then a.name || ' encrypted with CMK.'\n    else a.name || ' not encrypted with CMK.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_data_factory as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_data_factory
-    ListOfTables:
-        - azure_data_factory
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when encryption ->> 'vaultBaseUrl' is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when encryption ->> 'vaultBaseUrl' is not null then a.name || ' encrypted with CMK.'
+        else a.name || ' not encrypted with CMK.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_data_factory as a,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_data_factory
+  ListOfTables:
+  - azure_data_factory
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/DataFactory
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/DataFactory
 Managed: false

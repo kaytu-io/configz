@@ -33,15 +33,18 @@ Query:
       , region, account_id
     from
       aws_iam_credential_report
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_credential_report
   ListOfTables:
-    - aws_iam_credential_report
+  - aws_iam_credential_report
   Parameters:
-    - Key: awsIamUserKeyRotateDays
-      Required: true
+  - Key: awsIamUserKeyRotateDays
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   category:
-    - Compliance
+  - Compliance
+Managed: false

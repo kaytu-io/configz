@@ -26,11 +26,14 @@ Query:
     where
       config ->> 'Name' = 'audit_log_events'
       and sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_mysql_server
   ListOfTables:
   - azure_mysql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -52,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/MySQL
+Managed: false

@@ -2,7 +2,6 @@ ID: aws_enable_cross_region_replication
 Title: Enable Cross-Region Replication
 Description: Ensure that Cross-Region Replication feature is enabled for your Amazon ECR container images.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -35,11 +34,13 @@ Query:
       account_id
     from
       aws_ecr_registry
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecr_registry
   ListOfTables:
   - aws_ecr_registry
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

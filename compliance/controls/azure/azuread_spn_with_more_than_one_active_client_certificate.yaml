@@ -1,40 +1,41 @@
 ID: azuread_spn_with_more_than_one_active_client_certificate
 Title: SPNs in AzureAD should not have more than one active Client Certificate
-Description: SPNs in AzureAD should not have more than one active Client Certificate 
+Description: SPNs in AzureAD should not have more than one active Client Certificate
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-      with azuread_apps as (
-      select 
-        id,
-        display_name,
-        kaytu_account_id,
-        kaytu_resource_id,
-        subscription_id,
-        (select count(*) from jsonb_array_elements(key_credentials) as pc where (value ->> 'EndDateTime')::timestamp > now()) as active_client_certificate_count
-      from 
-        azuread_application 
-      )
-
-      select 
-        id as resource,
-        case 
-          when active_client_certificate_count > 1 then 'alarm'
-          else 'ok'
-        end as status,
-        display_name || ' has ' || active_client_certificate_count || ' active client certificate' as reason,
-        kaytu_account_id,
-        kaytu_resource_id,
-        subscription_id
-      from 
-        azuread_apps 
-
-    Connector: Azure
-    PrimaryTable: azuread_application
-    ListOfTables:
-        - azuread_application
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with azuread_apps as (
+    select 
+      id,
+      display_name,
+      kaytu_account_id,
+      kaytu_resource_id,
+      subscription_id,
+      (select count(*) from jsonb_array_elements(key_credentials) as pc where (value ->> 'EndDateTime')::timestamp > now()) as active_client_certificate_count
+    from 
+      azuread_application 
+    )
+    
+    select 
+      id as resource,
+      case 
+        when active_client_certificate_count > 1 then 'alarm'
+        else 'ok'
+      end as status,
+      display_name || ' has ' || active_client_certificate_count || ' active client certificate' as reason,
+      kaytu_account_id,
+      kaytu_resource_id,
+      subscription_id
+    from 
+      azuread_apps 
+  Connector:
+  - Azure
+  PrimaryTable: azuread_application
+  ListOfTables:
+  - azuread_application
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
+Tags: {}
 Managed: false

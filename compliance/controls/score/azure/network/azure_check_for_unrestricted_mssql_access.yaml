@@ -30,13 +30,17 @@ Query:
       sub.subscription_id = sg.subscription_id and
       sr -> 'properties' ->> 'access' = 'Allow' and sr -> 'properties' ->> 'protocol' = 'Tcp' and
       (sr -> 'properties' ->> 'destinationPortRanges' = '1433' or sr -> 'properties' ->> 'destinationPortRanges' like '%"1433"%' or sr -> 'properties' ->> 'destinationPortRanges' = '*') and sr -> 'properties' ->> 'direction' = 'Inbound'
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_network_security_group
   ListOfTables:
-    - azure_network_security_group
-    - azure_subscription
+  - azure_network_security_group
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Network
+Managed: false

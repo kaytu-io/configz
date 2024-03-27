@@ -2,7 +2,6 @@ ID: aws_unrestricted_oracle_access
 Title: Unrestricted Oracle Access
 Description: Ensure no security group allows unrestricted ingress access to port 1521.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -33,13 +32,15 @@ Query:
       aws_vpc_security_group
     WHERE
       exists (select 1 from jsonb_array_elements(ip_permissions) as p where ((p ->> 'FromPort') = '1521') and ((p ->> 'ToPort') = '1521'))
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   Parameters:
   - Key: awsOracleTrustedIpRange
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

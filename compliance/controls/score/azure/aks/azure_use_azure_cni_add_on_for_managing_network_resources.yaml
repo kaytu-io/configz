@@ -3,7 +3,6 @@ Title: Use Azure CNI Add-On for Managing Network Resources
 Description: Ensure that DDoS standard protection is enabled for production Azure virtual networks.
 Query:
   Engine: odysseus-v0.0.1
-  Connector: Azure
   QueryToExecute: |
     select
       kc.id as resource,
@@ -24,12 +23,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = kc.subscription_id
+  Connector:
+  - Azure
   PrimaryTable: azure_network_interface
   ListOfTables:
-    - azure_kubernetes_cluster
-    - azure_subscription
+  - azure_kubernetes_cluster
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Kubernetes (AKS)
+Managed: false

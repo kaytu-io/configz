@@ -2,7 +2,6 @@ ID: azure_database_tier_customer_managed_key_in_use
 Title: Database Tier Customer-Managed Key In Use
 Description: Ensure that a Customer-Managed Key is created for your Azure cloud database tier.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -34,7 +33,8 @@ Query:
       sub.display_name as subscription
     from
       azure_subscription as sub
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_subscription
   ListOfTables:
   - azure_key_vault_key
@@ -42,6 +42,7 @@ Query:
   Parameters:
   - Key: azureDatabaseTierTags
     Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

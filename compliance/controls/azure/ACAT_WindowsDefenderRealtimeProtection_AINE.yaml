@@ -1,11 +1,16 @@
-Description: Windows machines should enable the Real-time protection in the Windows
-  Defender to provide adequate protection against newly released malware. This policy
-  requires that the Guest Configuration prerequisites have been deployed to the policy
-  assignment scope. For more information on Guest Configuration, visit https://aka.ms/gcpol.
 ID: windows_machines_should_enable_windows_defender_real_time_protection
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Windows machines should enable Windows Defender Real-time protection
+Description: Windows machines should enable the Real-time protection in the Windows Defender to provide adequate protection against newly released malware. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope. For more information on Guest Configuration, visit https://aka.ms/gcpol.
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

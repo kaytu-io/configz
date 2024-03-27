@@ -34,11 +34,15 @@ Query:
         ELSE volume_id || ' has no recovery points in the timeframe'
       END as reason
     FROM volume_recovery_count
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ebs_volume
   ListOfTables:
-    - aws_ebs_volume
-    - aws_backup_recovery_point
-
+  - aws_ebs_volume
+  - aws_backup_recovery_point
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

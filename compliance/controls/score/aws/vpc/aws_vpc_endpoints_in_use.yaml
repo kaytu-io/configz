@@ -2,7 +2,6 @@ ID: aws_vpc_endpoints_in_use
 Title: VPC Endpoints In Use
 Description: Ensure that VPC endpoints are being used to connect your VPC to another AWS cloud service.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -26,12 +25,14 @@ Query:
     FROM 
     aws_vpc as v
     WHERE is_default = false;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc
   ListOfTables:
   - aws_vpc
   - aws_vpc_endpoint
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

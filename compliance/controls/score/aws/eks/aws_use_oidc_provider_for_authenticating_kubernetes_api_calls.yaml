@@ -2,7 +2,6 @@ ID: aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
 Title: Use OIDC Provider for Authenticating Kubernetes API Calls
 Description: Ensure that Amazon EKS clusters are using an OpenID Connect (OIDC) provider.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,11 +21,14 @@ Query:
     from
       aws_eks_cluster as c
       left join aws_iam_open_id_connect_provider as oidc on 'https://' || oidc.url = c.identity -> 'Oidc' ->> 'Issuer'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
   - aws_eks_cluster
   - aws_iam_open_id_connect_provider
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

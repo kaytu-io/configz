@@ -2,17 +2,18 @@ ID: a_maximum_of_3_owners_should_be_designated_for_your_subscription
 Title: A maximum of 3 owners should be designated for your subscription
 Description: It is recommended to designate up to 3 subscription owners in order to reduce the potential for breach by a compromised owner.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description -> '$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code' IN ('NotApplicable', 'Healthy')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description -> '$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code' IN ('NotApplicable', 'Healthy')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

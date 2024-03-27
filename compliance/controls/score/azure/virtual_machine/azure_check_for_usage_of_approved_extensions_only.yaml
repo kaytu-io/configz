@@ -27,16 +27,19 @@ Query:
     from
       azure_compute_virtual_machine as vm
       left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
   Parameters:
-    - Key: azureAllowedVmExtentions
-      Required: true
+  - Key: azureAllowedVmExtentions
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Virtual Machines
+Managed: false

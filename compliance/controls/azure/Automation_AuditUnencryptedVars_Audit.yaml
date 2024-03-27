@@ -2,18 +2,19 @@ ID: automation_account_variables_should_be_encrypted
 Title: Automation account variables should be encrypted
 Description: It is important to enable encryption of Automation account variable assets when storing sensitive data
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT aa.name, aa.id, aa.kaytu_description
-        FROM azure_automation_account aa
-        WHERE aa.type = 'Microsoft.Automation/automationAccounts/variables'
-        AND (aa.kaytu_description->'defs'->'Account'->'properties'->'Properties'->'properties'->>'Encryption' IS NULL OR aa.kaytu_description->'defs'->'Account'->'properties'->'Properties'->'properties'->>'Encryption' != 'true')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT aa.name, aa.id, aa.kaytu_description
+    FROM azure_automation_account aa
+    WHERE aa.type = 'Microsoft.Automation/automationAccounts/variables'
+    AND (aa.kaytu_description->'defs'->'Account'->'properties'->'Properties'->'properties'->>'Encryption' IS NULL OR aa.kaytu_description->'defs'->'Account'->'properties'->'Properties'->'properties'->>'Encryption' != 'true')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

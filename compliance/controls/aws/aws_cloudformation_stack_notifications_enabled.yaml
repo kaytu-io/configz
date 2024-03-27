@@ -20,10 +20,13 @@ Query:
       , region, account_id
     from
       aws_cloudformation_stack;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudformation_stack
   ListOfTables:
   - aws_cloudformation_stack
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -39,3 +42,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFormation
+Managed: false

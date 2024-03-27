@@ -17,10 +17,13 @@ Query:
         else 'logging is enabled for network firewall.'
       end as reason
     from kaytu_resources where resource_type = 'aws::networkfirewall::firewall';
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_networkfirewall_firewall
   ListOfTables:
   - aws_networkfirewall_firewall
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -36,3 +39,4 @@ Tags:
   - aws
   service:
   - AWS/NetworkFirewall
+Managed: false

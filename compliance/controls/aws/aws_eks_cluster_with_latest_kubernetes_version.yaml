@@ -21,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_eks_cluster;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
   - aws_eks_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -40,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/EKS
+Managed: false

@@ -19,10 +19,14 @@ Query:
     FROM 
       aws_rds_db_cluster
     WHERE engine LIKE '%mysql%'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
-    - aws_rds_db_cluster
-
+  - aws_rds_db_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

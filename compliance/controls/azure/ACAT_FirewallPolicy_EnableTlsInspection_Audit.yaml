@@ -1,25 +1,22 @@
-Description: Configure a valid intermediate certificate and enable Azure Firewall
-  Premium TLS inspection to detect, alert, and mitigate malicious activity in HTTPS.
-  To learn more about TLS inspection with Azure Firewall, visit https://aka.ms/fw-tlsinspect
 ID: azure_firewall_premium_should_configure_a_valid_intermediate_certificate_to_enable_tls_inspection
+Title: Azure Firewall Premium should configure a valid intermediate certificate to enable TLS inspection
+Description: Configure a valid intermediate certificate and enable Azure Firewall Premium TLS inspection to detect, alert, and mitigate malicious activity in HTTPS. To learn more about TLS inspection with Azure Firewall, visit https://aka.ms/fw-tlsinspect
 Query:
-  Connector: Azure
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
+  QueryToExecute: |
+    SELECT *
     FROM azure_firewall_policy
-
-    WHERE type = ''Microsoft.Network/firewallPolicies''
-
-    AND (sku_tier = ''Premium'' OR kaytu_description->''FirewallPolicy''->''properties''->>''sku.tier''
-    = ''Premium'')
-
-    AND (transport_security_certificate_authority IS NULL OR kaytu_description->''FirewallPolicy''->''properties''->''transportSecurity''->>''certificateAuthority''
-    IS NULL)
-
+    WHERE type = 'Microsoft.Network/firewallPolicies'
+    AND (sku_tier = 'Premium' OR kaytu_description->'FirewallPolicy'->'properties'->>'sku.tier' = 'Premium')
+    AND (transport_security_certificate_authority IS NULL OR kaytu_description->'FirewallPolicy'->'properties'->'transportSecurity'->>'certificateAuthority' IS NULL)
     LIMIT 5;;
-
-    '
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: medium
-Title: Azure Firewall Premium should configure a valid intermediate certificate to
-  enable TLS inspection
+Tags: {}
+Managed: false

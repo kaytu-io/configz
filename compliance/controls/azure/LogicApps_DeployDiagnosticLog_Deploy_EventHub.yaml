@@ -2,20 +2,21 @@ ID: deploy_diagnostic_settings_for_logic_apps_to_event_hub
 Title: Deploy Diagnostic Settings for Logic Apps to Event Hub
 Description: Deploys the diagnostic settings for Logic Apps to stream to a regional Event Hub when any Logic Apps which is missing this diagnostic settings is created or updated.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, location, kaytu_description
-        FROM azure_logic_app_workflow
-        WHERE type = 'Microsoft.Logic/workflows'
-        AND (location = '[parameters('eventHubLocation')]' OR kaytu_description ->> 'location' = '[parameters('eventHubLocation')]')
-        AND (kaytu_description -> 'Workflow' -> 'Properties' -> 'IntegrationServiceEnvironment' -> 'Plan' ->> 'ID' = 'True' OR kaytu_description -> 'Workflow' -> 'Properties' -> 'IntegrationServiceEnvironment' -> 'Plan' ->> 'ID' = '[parameters('metricsEnabled')]')
-        AND (kaytu_description -> 'Workflow' -> 'Properties' -> 'AccessControl' -> 'Actions' -> 'AllowedCallerIPAddresses' ->> 0 = 'True' OR kaytu_description -> 'Workflow' -> 'Properties' -> 'AccessControl' -> 'Actions' -> 'AllowedCallerIPAddresses' ->> 0 = '[parameters('logsEnabled')]')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, location, kaytu_description
+    FROM azure_logic_app_workflow
+    WHERE type = 'Microsoft.Logic/workflows'
+    AND (location = '[parameters('eventHubLocation')]' OR kaytu_description ->> 'location' = '[parameters('eventHubLocation')]')
+    AND (kaytu_description -> 'Workflow' -> 'Properties' -> 'IntegrationServiceEnvironment' -> 'Plan' ->> 'ID' = 'True' OR kaytu_description -> 'Workflow' -> 'Properties' -> 'IntegrationServiceEnvironment' -> 'Plan' ->> 'ID' = '[parameters('metricsEnabled')]')
+    AND (kaytu_description -> 'Workflow' -> 'Properties' -> 'AccessControl' -> 'Actions' -> 'AllowedCallerIPAddresses' ->> 0 = 'True' OR kaytu_description -> 'Workflow' -> 'Properties' -> 'AccessControl' -> 'Actions' -> 'AllowedCallerIPAddresses' ->> 0 = '[parameters('logsEnabled')]')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

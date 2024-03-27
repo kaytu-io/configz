@@ -2,19 +2,20 @@ ID: storage_accounts_should_disable_public_network_access
 Title: Storage accounts should disable public network access
 Description: To improve the security of Storage Accounts, ensure that they aren't exposed to the public internet and can only be accessed from a private endpoint. Disable the public network access property as described in https://aka.ms/storageaccountpublicnetworkaccess. This option disables access from any public address space outside the Azure IP range, and denies all logins that match IP or virtual network-based firewall rules. This reduces data leakage risks.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, type, kaytu_description
-        FROM azure_storage_account
-        WHERE type = 'Microsoft.Storage/storageAccounts'
-        AND (publicNetworkAccess IS NOT NULL AND publicNetworkAccess != 'Disabled'
-        OR kaytu_description -> 'Account' -> 'Properties' ->> 'PublicNetworkAccess' IS NOT NULL AND kaytu_description -> 'Account' -> 'Properties' ->> 'PublicNetworkAccess' != 'Disabled')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, type, kaytu_description
+    FROM azure_storage_account
+    WHERE type = 'Microsoft.Storage/storageAccounts'
+    AND (publicNetworkAccess IS NOT NULL AND publicNetworkAccess != 'Disabled'
+    OR kaytu_description -> 'Account' -> 'Properties' ->> 'PublicNetworkAccess' IS NOT NULL AND kaytu_description -> 'Account' -> 'Properties' ->> 'PublicNetworkAccess' != 'Disabled')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

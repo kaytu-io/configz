@@ -2,7 +2,6 @@ ID: aws_opensearch_domain_in_vpc
 Title: OpenSearch Domain In VPC
 Description: Ensure that your Amazon OpenSearch domains are accessible only from AWS VPCs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with public_subnets as (
@@ -51,12 +50,14 @@ Query:
     from
       aws_opensearch_domain as d
       left join opensearch_domain_with_public_subnet as p on d.arn = p.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
   - aws_vpc_route_table
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

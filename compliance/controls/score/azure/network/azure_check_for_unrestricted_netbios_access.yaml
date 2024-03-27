@@ -31,13 +31,17 @@ Query:
       sr -> 'properties' ->> 'access' = 'Allow' and ((sr -> 'properties' ->> 'protocol' = 'Tcp' and
       (sr -> 'properties' ->> 'destinationPortRanges' = '139' or sr -> 'properties' ->> 'destinationPortRanges' like '%"139"%' or sr -> 'properties' ->> 'destinationPortRanges' = '*')) or (sr -> 'properties' ->> 'protocol' = 'Udp' and
       (sr -> 'properties' ->> 'destinationPortRanges' = '137' or sr -> 'properties' ->> 'destinationPortRanges' like '%"137"%' or sr -> 'properties' ->> 'destinationPortRanges' = '138' or sr -> 'properties' ->> 'destinationPortRanges' like '%"138"%' or sr -> 'properties' ->> 'destinationPortRanges' = '*'))) and sr -> 'properties' ->> 'direction' = 'Inbound'
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_network_security_group
   ListOfTables:
-    - azure_network_security_group
-    - azure_subscription
+  - azure_network_security_group
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Network
+Managed: false

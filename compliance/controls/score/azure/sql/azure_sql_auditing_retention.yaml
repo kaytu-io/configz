@@ -2,7 +2,6 @@ ID: azure_sql_auditing_retention
 Title: SQL Auditing Retention
 Description: Ensure that SQL database auditing has a sufficient log data retention period configured.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,12 +22,14 @@ Query:
       azure_sql_server as s
       left join azure_subscription as sub on s.subscription_id = sub.subscription_id,
       jsonb_array_elements(server_audit_policy) as ap
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

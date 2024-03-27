@@ -3,50 +3,19 @@ Title: OpenSearch Cross Account Access
 Description: Ensure Amazon OpenSearch clusters don't allow unknown cross account access.
 Query:
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    SELECT 
-      domain_name as resource,
-      kaytu_resource_id,
-      kaytu_account_id,
-      CASE
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
-          (s ->> 'Principal')::text = '{"AWS": "*"}')
-        ) THEN 'alarm'
-        WHEN '{{.awsTrustedAccounts}}' = '' THEN 'ok'
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s ->> 'Principal')::text) || '%'))
-        ) THEN 'alarm'
-        ELSE 'ok'
-      END AS status,
-      CASE
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '"*"' or
-          (s ->> 'Principal')::text = '{"AWS": "*"}')
-        ) THEN domain_name || ' is publicly accessible' 
-        WHEN '{{.awsTrustedAccounts}}' = '' THEN 'trusted AWS accounts are not defined'
-        WHEN EXISTS (
-          SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s
-          WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s ->> 'Principal')::text) || '%'))
-        ) THEN domain_name || ' is not configured to allow access only to trusted AWS accounts'
-        ELSE domain_name || ' is configured to allow access only to trusted AWS accounts'
-      END AS reason,
-      region,
-      account_id
-    FROM 
-      aws_opensearch_domain
-  Connector: AWS
+  QueryToExecute: "SELECT \n  domain_name as resource,\n  kaytu_resource_id,\n  kaytu_account_id,\n  CASE\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '\"*\"' or\n      (s ->> 'Principal')::text = '{\"AWS\": \"*\"}')\n    ) THEN 'alarm'\n    WHEN '{{.awsTrustedAccounts}}' = '' THEN 'ok'\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s ->> 'Principal')::text) || '%'))\n    ) THEN 'alarm'\n    ELSE 'ok'\n  END AS status,\n  CASE\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and ((s ->> 'Principal')::text = '\"*\"' or\n      (s ->> 'Principal')::text = '{\"AWS\": \"*\"}')\n    ) THEN domain_name || ' is publicly accessible' \n    WHEN '{{.awsTrustedAccounts}}' = '' THEN 'trusted AWS accounts are not defined'\n    WHEN EXISTS (\n      SELECT 1 FROM jsonb_array_elements(access_policies::jsonb -> 'Statement') as s\n      WHERE (s ->> 'Effect') = 'Allow' and not('{{.awsTrustedAccounts}}' LIKE ('%'||((s ->> 'Principal')::text) || '%'))\n    ) THEN domain_name || ' is not configured to allow access only to trusted AWS accounts'\n    ELSE domain_name || ' is configured to allow access only to trusted AWS accounts'\n  END AS reason,\n  region,\n  account_id\nFROM \n  aws_opensearch_domain\n"
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
-    - aws_opensearch_domain
+  - aws_opensearch_domain
   Parameters:
-    - Key: awsTrustedAccounts
-      Required: false
+  - Key: awsTrustedAccounts
+    Required: false
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
   score_service_name:
   - AWS OpenSearch Service
+Managed: false

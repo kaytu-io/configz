@@ -4,11 +4,14 @@ Description: "The Storage Blob service provides scalable, cost-efficient objecti
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when not (sa.blob_service_logging ->> 'Read') :: boolean\n    or not (sa.blob_service_logging ->> 'Write') :: boolean\n    or not (sa.blob_service_logging ->> 'Delete') :: boolean then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when not (sa.blob_service_logging ->> 'Read') :: boolean\n    or not (sa.blob_service_logging ->> 'Write') :: boolean\n    or not (sa.blob_service_logging ->> 'Delete') :: boolean then name || ' blob service logging not enabled for ' ||\n      concat_ws(', ',\n        case when not (sa.blob_service_logging ->> 'Write') :: boolean then 'write' end,\n        case when not (sa.blob_service_logging ->> 'Read') :: boolean then 'read' end,\n        case when not (sa.blob_service_logging ->> 'Delete') :: boolean then 'delete' end\n      ) || ' requests.'\n    else name || ' blob service logging enabled for read, write, delete requests.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n"
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -30,3 +33,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
+Managed: false

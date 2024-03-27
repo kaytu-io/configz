@@ -2,7 +2,6 @@ ID: aws_opensearch_domain_encrypted_with_kms_cmks
 Title: OpenSearch Domain Encrypted with KMS CMKs
 Description: Ensure that OpenSearch domains are encrypted with KMS Customer Master Keys (CMKs).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -24,12 +23,14 @@ Query:
     FROM 
       aws_opensearch_domain
       left join (select arn, key_manager from aws_kms_key) kms on (encryption_at_rest_options ->> 'KmsKeyId') = kms.arn
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
   - aws_kms_key
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -24,11 +24,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = g.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_virtual_network_gateway
   ListOfTables:
   - azure_subscription
   - azure_virtual_network_gateway
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -36,3 +39,4 @@ Tags:
   - "true"
   service:
   - Azure/Network
+Managed: false

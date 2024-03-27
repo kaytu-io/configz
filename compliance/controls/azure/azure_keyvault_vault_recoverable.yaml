@@ -26,11 +26,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = kv.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
   - azure_key_vault
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
@@ -52,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/KeyVault
+Managed: false

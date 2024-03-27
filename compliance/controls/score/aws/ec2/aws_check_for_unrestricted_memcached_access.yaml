@@ -15,7 +15,7 @@ Query:
         (p ->> 'cidr') = '0.0.0.0/0'
       )
     )
-
+    
     select
       instance_id as resource,
       kaytu_resource_id,
@@ -40,13 +40,17 @@ Query:
       account_id
     from
       aws_ec2_instance
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
-    - aws_vpc_security_group
+  - aws_ec2_instance
+  - aws_vpc_security_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
   score_service_name:
   - AWS EC2
+Managed: false

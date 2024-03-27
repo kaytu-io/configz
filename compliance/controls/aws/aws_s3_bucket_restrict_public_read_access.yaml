@@ -2,53 +2,117 @@ ID: aws_s3_bucket_restrict_public_read_access
 Title: S3 buckets should prohibit public read access
 Description: Manage access to resources in the AWS Cloud by only allowing authorized users, processes, and devices access to Amazon Simple Storage Service (Amazon S3) buckets.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with public_acl as (\n  select\n    distinct name\n  from\n    aws_s3_bucket,\n    jsonb_array_elements(case jsonb_typeof(acl -> 'Grants') \n    when 'array' then acl -> 'Grants' \n    else '[]' end) as grants\n  where\n    (grants -> 'Grantee' ->> 'URI' = 'http://acs.amazonaws.com/groups/global/AllUsers'\n    or grants -> 'Grantee' ->> 'URI' = 'http://acs.amazonaws.com/groups/global/AuthenticatedUsers')\n    and (\n      grants ->> 'Permission' = 'FULL_CONTROL'\n      or grants ->> 'Permission' = 'READ_ACP'\n      or grants ->> 'Permission' = 'READ'\n    )\n  ),read_access_policy as (\n    select\n      distinct name\n    from\n      aws_s3_bucket,\n      jsonb_array_elements(case jsonb_typeof(policy_std -> 'Statement') \n    when 'array' then policy_std -> 'Statement' \n    else '[]' end ) as s,\n      jsonb_array_elements_text(case jsonb_typeof(s -> 'Action') \n    when 'array' then s -> 'Action'\n    else '[]' end) as action\n    where\n      s ->> 'Effect' = 'Allow'\n      and (\n        s -> 'Principal' -> 'AWS' = '[\"*\"]'\n        or s ->> 'Principal' = '*'\n      )\n      and (\n        action = '*'\n        or action = '*:*'\n        or action = 's3:*'\n        or action ilike 's3:get%'\n        or action ilike 's3:list%'\n      )\n)\nselect\n  b.arn as resource,\n  b.kaytu_account_id as kaytu_account_id,\n  b.kaytu_resource_id as kaytu_resource_id,\n  case\n    when (block_public_acls or a.name is null) and not bucket_policy_is_public then 'ok'\n    when (block_public_acls or a.name is null) and (bucket_policy_is_public and block_public_policy) then 'ok'\n    when (block_public_acls or a.name is null) and (bucket_policy_is_public and p.name is null) then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when (block_public_acls or a.name is null) and not bucket_policy_is_public then b.title || ' not publicly readable.'\n    when (block_public_acls or a.name is null) and (bucket_policy_is_public and block_public_policy) then b.title || ' not publicly readable.'\n    when (block_public_acls or a.name is null) and (bucket_policy_is_public and p.name is null) then  b.title || ' not publicly readable.'\n    else b.title || ' publicly readable.'\n  end as reason\n  \n  , b.region, b.account_id\nfrom\n  aws_s3_bucket as b\n  left join public_acl as a on b.name = a.name\n  left join read_access_policy as p on b.name = p.name;\n"
-    Connector: AWS
-    PrimaryTable: aws_s3_bucket
-    ListOfTables:
-        - aws_s3_bucket
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with public_acl as (
+      select
+        distinct name
+      from
+        aws_s3_bucket,
+        jsonb_array_elements(case jsonb_typeof(acl -> 'Grants') 
+        when 'array' then acl -> 'Grants' 
+        else '[]' end) as grants
+      where
+        (grants -> 'Grantee' ->> 'URI' = 'http://acs.amazonaws.com/groups/global/AllUsers'
+        or grants -> 'Grantee' ->> 'URI' = 'http://acs.amazonaws.com/groups/global/AuthenticatedUsers')
+        and (
+          grants ->> 'Permission' = 'FULL_CONTROL'
+          or grants ->> 'Permission' = 'READ_ACP'
+          or grants ->> 'Permission' = 'READ'
+        )
+      ),read_access_policy as (
+        select
+          distinct name
+        from
+          aws_s3_bucket,
+          jsonb_array_elements(case jsonb_typeof(policy_std -> 'Statement') 
+        when 'array' then policy_std -> 'Statement' 
+        else '[]' end ) as s,
+          jsonb_array_elements_text(case jsonb_typeof(s -> 'Action') 
+        when 'array' then s -> 'Action'
+        else '[]' end) as action
+        where
+          s ->> 'Effect' = 'Allow'
+          and (
+            s -> 'Principal' -> 'AWS' = '["*"]'
+            or s ->> 'Principal' = '*'
+          )
+          and (
+            action = '*'
+            or action = '*:*'
+            or action = 's3:*'
+            or action ilike 's3:get%'
+            or action ilike 's3:list%'
+          )
+    )
+    select
+      b.arn as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when (block_public_acls or a.name is null) and not bucket_policy_is_public then 'ok'
+        when (block_public_acls or a.name is null) and (bucket_policy_is_public and block_public_policy) then 'ok'
+        when (block_public_acls or a.name is null) and (bucket_policy_is_public and p.name is null) then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when (block_public_acls or a.name is null) and not bucket_policy_is_public then b.title || ' not publicly readable.'
+        when (block_public_acls or a.name is null) and (bucket_policy_is_public and block_public_policy) then b.title || ' not publicly readable.'
+        when (block_public_acls or a.name is null) and (bucket_policy_is_public and p.name is null) then  b.title || ' not publicly readable.'
+        else b.title || ' publicly readable.'
+      end as reason
+      
+      , b.region, b.account_id
+    from
+      aws_s3_bucket as b
+      left join public_acl as a on b.name = a.name
+      left join read_access_policy as p on b.name = p.name;
+  Connector:
+  - AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_s3_bucket
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    audit_manager_control_tower:
-        - "true"
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/S3
-    soc_2:
-        - "true"
+  audit_manager_control_tower:
+  - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/S3
+  soc_2:
+  - "true"
 Managed: false

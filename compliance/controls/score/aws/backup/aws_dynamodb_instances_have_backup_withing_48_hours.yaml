@@ -2,7 +2,6 @@ ID: aws_dynamodb_instances_have_backup_withing_48_hours
 Title: Dynamodb Instances have backup withing 48 hours
 Description: Ensure all Dynamodb have a minimum of one restore point time in the last 48 hrs
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH points AS (
@@ -27,12 +26,14 @@ Query:
     from 
       aws_dynamodb_table as t
       left join points as p on t.arn = p.resource_arn
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_dynamodb_table
   ListOfTables:
   - aws_dynamodb_table
   - aws_backup_recovery_point
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

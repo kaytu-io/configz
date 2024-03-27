@@ -1,8 +1,16 @@
-Description: CMA_C1120 - Integrate Audit record analysis
 ID: integrate_audit_record_analysis
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Integrate Audit record analysis
+Description: CMA_C1120 - Integrate Audit record analysis
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

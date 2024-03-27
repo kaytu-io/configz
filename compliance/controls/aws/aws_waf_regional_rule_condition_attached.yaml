@@ -19,10 +19,13 @@ Query:
       , region, account_id
     from
       aws_wafregional_rule;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_wafregional_rule
   ListOfTables:
   - aws_wafregional_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -38,3 +41,4 @@ Tags:
   - aws
   service:
   - AWS/WAF
+Managed: false

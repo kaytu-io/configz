@@ -27,10 +27,13 @@ Query:
       aws_vpc_security_group
     where
       group_name = 'default';
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -68,3 +71,4 @@ Tags:
   - AWS/VPC
   soc_2:
   - "true"
+Managed: false

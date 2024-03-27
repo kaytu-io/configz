@@ -24,12 +24,15 @@ Query:
       azure_location loc
       left join azure_network_watcher watcher on watcher.region = loc.name
       join azure_subscription sub on sub.subscription_id = loc.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_location
   ListOfTables:
   - azure_location
   - azure_network_watcher
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -51,3 +54,4 @@ Tags:
   - azure
   service:
   - Azure/Network
+Managed: false

@@ -2,20 +2,39 @@ ID: azure_cognitive_service_local_auth_disabled
 Title: Cognitive Services accounts should have local authentication methods disabled
 Description: Disabling local authentication methods improves security by ensuring that Cognitive Services accounts require Azure Active Directory identities exclusively for authentication.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when disable_local_auth then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when disable_local_auth then a.name || ' account local authentication enabled.'\n    else a.name || ' account local authentication disabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_cognitive_account a,\n  azure_subscription sub;\n"
-    Connector: Azure
-    PrimaryTable: azure_cognitive_account
-    ListOfTables:
-        - azure_cognitive_account
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when disable_local_auth then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when disable_local_auth then a.name || ' account local authentication enabled.'
+        else a.name || ' account local authentication disabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_cognitive_account a,
+      azure_subscription sub;
+  Connector:
+  - Azure
+  PrimaryTable: azure_cognitive_account
+  ListOfTables:
+  - azure_cognitive_account
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/CognitiveServices
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/CognitiveServices
 Managed: false

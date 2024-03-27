@@ -2,7 +2,6 @@ ID: azure_enable_infrastructure_encryption
 Title: Enable Infrastructure Encryption
 Description: Ensure that infrastructure encryption is enabled for Microsoft Azure Storage accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,12 +21,14 @@ Query:
     from
       azure_storage_account as a
       left join azure_subscription as sub on a.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -2,7 +2,6 @@ ID: aws_elbv2_glb_minimum_number_of_ec2_target_instances
 Title: ELBv2 GLB Minimum Number of EC2 Target Instances
 Description: Ensure there is a minimum number of two healthy target instances associated with each AWS ELBv2 gateway load balancer.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with target_resource as (
@@ -31,12 +30,14 @@ Query:
     from
       aws_ec2_gateway_load_balancer a
       left join target_resource b on a.arn = b.load_balancer_arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
   - aws_ec2_gateway_load_balancer
   - aws_ec2_target_group
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -1,25 +1,46 @@
 ID: azure_compute_vm_uses_azure_resource_manager
 Title: Virtual machines should be migrated to new Azure Resource Manager resources
-Description: 'Use new Azure Resource Manager for your virtual machines to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management.'
+Description: "Use new Azure Resource Manager for your virtual machines to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  vm.vm_id as resource,\n  vm.kaytu_account_id as kaytu_account_id,\n  vm.kaytu_resource_id as kaytu_resource_id,\n  case\n    when resource_group is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when resource_group is not null then vm.title || ' uses azure resource manager.'\n    else vm.title || ' not uses azure resource manager.'\n  end as reason\n  \n  , vm.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as vm,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = vm.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_compute_virtual_machine
-    ListOfTables:
-        - azure_compute_virtual_machine
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      vm.vm_id as resource,
+      vm.kaytu_account_id as kaytu_account_id,
+      vm.kaytu_resource_id as kaytu_resource_id,
+      case
+        when resource_group is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when resource_group is not null then vm.title || ' uses azure resource manager.'
+        else vm.title || ' not uses azure resource manager.'
+      end as reason
+      
+      , vm.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_compute_virtual_machine as vm,
+      azure_subscription as sub
+    where
+      sub.subscription_id = vm.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    nist_sp_800_53_rev_5:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    service:
-        - Azure/Compute
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  service:
+  - Azure/Compute
 Managed: false

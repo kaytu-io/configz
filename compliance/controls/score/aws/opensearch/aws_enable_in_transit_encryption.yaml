@@ -2,7 +2,6 @@ ID: aws_enable_in_transit_encryption
 Title: Enable In-Transit Encryption
 Description: Ensure that in-transit encryption is enabled for your Amazon OpenSearch domains.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -21,11 +20,13 @@ Query:
       account_id
     FROM 
       aws_opensearch_domain
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

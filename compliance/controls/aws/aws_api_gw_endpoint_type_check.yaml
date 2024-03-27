@@ -17,12 +17,16 @@ Query:
         ELSE name || ' endpoint configuration type does not have ' || '{{.awsApiGatewayValidEndpointConfigurationTypes}}' 
       END as reason
     FROM aws_api_gateway_rest_api;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_api_gateway_rest_api
   ListOfTables:
-    - aws_api_gateway_rest_api
+  - aws_api_gateway_rest_api
   Parameters:
-    - Key: awsApiGatewayValidEndpointConfigurationTypes
-      Required: true
+  - Key: awsApiGatewayValidEndpointConfigurationTypes
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

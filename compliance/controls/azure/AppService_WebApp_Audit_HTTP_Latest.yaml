@@ -2,19 +2,20 @@ ID: app_service_apps_should_use_latest_'_http_version'
 Title: App Service apps should use latest 'HTTP Version'
 Description: Periodically, newer versions are released for HTTP either due to security flaws or to include additional functionality. Using the latest HTTP version for web apps to take advantage of security fixes, if any, and/or new functionalities of the newer version.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_service_function_app
-        WHERE type = 'Microsoft.Web/sites'
-        AND (kind IS NULL OR kind NOT LIKE '%functionapp%')
-        AND (site_config -> 'web' ->> 'http20Enabled' = 'true' OR kaytu_description -> 'Microsoft.Web/sites/config/web.http20Enabled' = 'true')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_service_function_app
+    WHERE type = 'Microsoft.Web/sites'
+    AND (kind IS NULL OR kind NOT LIKE '%functionapp%')
+    AND (site_config -> 'web' ->> 'http20Enabled' = 'true' OR kaytu_description -> 'Microsoft.Web/sites/config/web.http20Enabled' = 'true')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

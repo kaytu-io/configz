@@ -1,6 +1,6 @@
 ID: aws_lambda_function_settings_check
-Title:
-Description:
+Title: ""
+Description: ""
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -33,18 +33,22 @@ Query:
       END as reason
     FROM 
       aws_lambda_function
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_lambda_function
   ListOfTables:
-    - aws_lambda_function
+  - aws_lambda_function
   Parameters:
-    - Key: awsLambdaFunctionAllowedRuntimes
-      Required: true
-    - Key: awsLambdaFunctionAllowedRoles
-      Required: false
-    - Key: awsLambdaFunctionAllowedTimeouts
-      Required: false
-    - Key: awsLambdaFunctionAllowedMemorySizes
-      Required: false
+  - Key: awsLambdaFunctionAllowedRuntimes
+    Required: true
+  - Key: awsLambdaFunctionAllowedRoles
+    Required: false
+  - Key: awsLambdaFunctionAllowedTimeouts
+    Required: false
+  - Key: awsLambdaFunctionAllowedMemorySizes
+    Required: false
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

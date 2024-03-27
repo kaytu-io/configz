@@ -39,11 +39,14 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_ssh_rules on ingress_ssh_rules.group_id = sg.group_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   - aws_vpc_security_group_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -54,4 +57,5 @@ Tags:
   service:
   - AWS/EC2
   soc_2:
-    - "true"
+  - "true"
+Managed: false

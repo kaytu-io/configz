@@ -34,11 +34,15 @@ Query:
         ELSE instance_id || ' has no recovery points in the timeframe'
       END as reason
     FROM instance_recovery_count
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
-    - aws_backup_recovery_point
-
+  - aws_ec2_instance
+  - aws_backup_recovery_point
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

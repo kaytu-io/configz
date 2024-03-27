@@ -24,11 +24,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = c.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_redis_cache
   ListOfTables:
   - azure_redis_cache
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -36,3 +39,4 @@ Tags:
   - "true"
   service:
   - Azure/Redis
+Managed: false

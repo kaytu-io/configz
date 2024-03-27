@@ -2,13 +2,14 @@ ID: allowlist_rules_in_your_adaptive_application_control_policy_should_be_update
 Title: Allowlist rules in your adaptive application control policy should be updated
 Description: Monitor for changes in behavior on groups of machines configured for auditing by Azure Security Center's adaptive application controls. Security Center uses machine learning to analyze the running processes on your machines and suggest a list of known-safe applications. These are presented as recommended apps to allow in adaptive application control policies.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: ""
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

@@ -2,29 +2,14 @@ ID: a_custom_i_psec/_ike_policy_must_be_applied_to_all_azure_virtual_network_gat
 Title: A custom IPsec/IKE policy must be applied to all Azure virtual network gateway connections
 Description: This policy ensures that all Azure virtual network gateway connections use a custom Internet Protocol Security(Ipsec)/Internet Key Exchange(IKE) policy. Supported algorithms and key strengths - https://aka.ms/AA62kb0
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_network_connections
-        WHERE kaytu_account_id = 'account_id'
-        AND kaytu_metadata->>'type' = 'Microsoft.Network/connections'
-        AND (
-            kaytu_metadata->'ipsecPolicies' IS NULL
-            OR NOT (
-                kaytu_metadata->'ipsecPolicies' @> '[{"ipsecEncryption": "IPsecEncryptionValue"}]'
-                AND kaytu_metadata->'ipsecPolicies' @> '[{"ipsecIntegrity": "IPsecIntegrityValue"}]'
-                AND kaytu_metadata->'ipsecPolicies' @> '[{"ikeEncryption": "IKEEncryptionValue"}]'
-                AND kaytu_metadata->'ipsecPolicies' @> '[{"ikeIntegrity": "IKEIntegrityValue"}]'
-                AND kaytu_metadata->'ipsecPolicies' @> '[{"dhGroup": "DHGroupValue"}]'
-                AND kaytu_metadata->'ipsecPolicies' @> '[{"pfsGroup": "PFSGroupValue"}]'
-            )
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_network_connections\nWHERE kaytu_account_id = 'account_id'\nAND kaytu_metadata->>'type' = 'Microsoft.Network/connections'\nAND (\n    kaytu_metadata->'ipsecPolicies' IS NULL\n    OR NOT (\n        kaytu_metadata->'ipsecPolicies' @> '[{\"ipsecEncryption\": \"IPsecEncryptionValue\"}]'\n        AND kaytu_metadata->'ipsecPolicies' @> '[{\"ipsecIntegrity\": \"IPsecIntegrityValue\"}]'\n        AND kaytu_metadata->'ipsecPolicies' @> '[{\"ikeEncryption\": \"IKEEncryptionValue\"}]'\n        AND kaytu_metadata->'ipsecPolicies' @> '[{\"ikeIntegrity\": \"IKEIntegrityValue\"}]'\n        AND kaytu_metadata->'ipsecPolicies' @> '[{\"dhGroup\": \"DHGroupValue\"}]'\n        AND kaytu_metadata->'ipsecPolicies' @> '[{\"pfsGroup\": \"PFSGroupValue\"}]'\n    )\n)\nLIMIT 5;;\n"
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

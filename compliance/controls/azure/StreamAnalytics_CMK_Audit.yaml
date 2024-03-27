@@ -2,18 +2,19 @@ ID: azure_stream_analytics_jobs_should_use_customer_managed_keys_to_encrypt_data
 Title: Azure Stream Analytics jobs should use customer-managed keys to encrypt data
 Description: Use customer-managed keys when you want to securely store any metadata and private data assets of your Stream Analytics jobs in your storage account. This gives you total control over how your Stream Analytics data is encrypted.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_stream_analytics_job
-        WHERE kaytu_description -> 'StreamingJob' -> 'Properties' ->> 'ContentStoragePolicy' = 'SystemAccount'
-        AND type = 'Microsoft.StreamAnalytics/streamingJobs'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_stream_analytics_job
+    WHERE kaytu_description -> 'StreamingJob' -> 'Properties' ->> 'ContentStoragePolicy' = 'SystemAccount'
+    AND type = 'Microsoft.StreamAnalytics/streamingJobs'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

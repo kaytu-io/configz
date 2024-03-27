@@ -2,14 +2,15 @@ ID: aws_unrestricted_inbound_traffic_on_remote_server_administration_ports
 Title: Unrestricted Inbound Traffic on Remote Server Administration Ports
 Description: Ensure that no Network ACL (NACL) allows unrestricted inbound traffic on TCP ports 22 and 3389.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "with bad_rules as (\n  select\n    network_acl_id,\n    count(*) as num_bad_rules\n  from\n    aws_vpc_network_acl,\n    jsonb_array_elements(entries) as att\n  where\n    att ->> 'Egress' = 'false' -- as per aws egress = false indicates the ingress\n    and (\n      att ->> 'CidrBlock' = '0.0.0.0/0'\n      or att ->> 'Ipv6CidrBlock' = '::/0'\n    )\n    and att ->> 'RuleAction' = 'allow'\n    and (\n      (\n        att ->> 'Protocol' = '-1' -- all traffic\n        and att ->> 'PortRange' is null\n      )\n      or (\n        (att -> 'PortRange' ->> 'From') :: int <= 22\n        and (att -> 'PortRange' ->> 'To') :: int >= 22\n        and att ->> 'Protocol' in('6', '17') -- TCP or UDP\n      )\n      or (\n        (att -> 'PortRange' ->> 'From') :: int <= 3389\n        and (att -> 'PortRange' ->> 'To') :: int >= 3389\n        and att ->> 'Protocol' in('6', '17') -- TCP or UDP\n      )\n    )\n  group by\n    network_acl_id\n)\nselect\n  'arn:' || acl.partition || ':ec2:' || acl.region || ':' || acl.account_id || ':network-acl/' || acl.network_acl_id as resource,\n  acl.kaytu_resource_id,\n  acl.kaytu_account_id,\n  case\n    when bad_rules.network_acl_id is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when bad_rules.network_acl_id is null then acl.network_acl_id || ' does not allow ingress to port 22 or 3389 from 0.0.0.0/0 or ::/0.'\n    else acl.network_acl_id || ' contains ' || bad_rules.num_bad_rules || ' rule(s) allowing ingress to port 22 or 3389 from 0.0.0.0/0 or ::/0.'\n  end as reason,\n  acl.region,\n  acl.account_id\nfrom\n  aws_vpc_network_acl as acl\n  left join bad_rules on bad_rules.network_acl_id = acl.network_acl_id \n  inner join aws_vpc vpc on acl.vpc_id = vpc.vpc_id\n  where jsonb_array_length(acl.associations) > 0 and vpc.is_default = false;\n\n"
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_network_acl
   ListOfTables:
   - aws_vpc_network_acl
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

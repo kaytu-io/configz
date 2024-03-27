@@ -2,54 +2,93 @@ ID: aws_vpc_security_group_restrict_ingress_ssh_all
 Title: VPC security groups should restrict ingress SSH access from 0.0.0.0/0
 Description: Amazon Elastic Compute Cloud (Amazon EC2) Security Groups can help manage network access by providing stateful filtering of ingress and egress network traffic to AWS resources.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with ingress_ssh_rules as (\n  select\n    group_id,\n    count(*) as num_ssh_rules\n  from\n    aws_vpc_security_group_rule\n  where\n    type = 'ingress'\n    and cidr_ipv4 = '0.0.0.0/0'\n    and (\n        ( ip_protocol = '-1'\n        and from_port is null\n        )\n        or (\n            from_port >= 22\n            and to_port <= 22\n        )\n    )\n  group by\n    group_id\n)\nselect\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when ingress_ssh_rules.group_id is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when ingress_ssh_rules.group_id is null then sg.group_id || ' ingress restricted for SSH from 0.0.0.0/0.'\n    else  sg.group_id || ' contains ' || ingress_ssh_rules.num_ssh_rules || ' ingress rule(s) allowing SSH from 0.0.0.0/0.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_vpc_security_group as sg\n  left join ingress_ssh_rules on ingress_ssh_rules.group_id = sg.group_id;\n"
-    Connector: AWS
-    PrimaryTable: aws_vpc_security_group
-    ListOfTables:
-        - aws_vpc_security_group
-        - aws_vpc_security_group_rule
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with ingress_ssh_rules as (
+      select
+        group_id,
+        count(*) as num_ssh_rules
+      from
+        aws_vpc_security_group_rule
+      where
+        type = 'ingress'
+        and cidr_ipv4 = '0.0.0.0/0'
+        and (
+            ( ip_protocol = '-1'
+            and from_port is null
+            )
+            or (
+                from_port >= 22
+                and to_port <= 22
+            )
+        )
+      group by
+        group_id
+    )
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when ingress_ssh_rules.group_id is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when ingress_ssh_rules.group_id is null then sg.group_id || ' ingress restricted for SSH from 0.0.0.0/0.'
+        else  sg.group_id || ' contains ' || ingress_ssh_rules.num_ssh_rules || ' ingress rule(s) allowing SSH from 0.0.0.0/0.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_vpc_security_group as sg
+      left join ingress_ssh_rules on ingress_ssh_rules.group_id = sg.group_id;
+  Connector:
+  - AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    audit_manager_control_tower:
-        - "true"
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/VPC
-    soc_2:
-        - "true"
+  audit_manager_control_tower:
+  - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/VPC
+  soc_2:
+  - "true"
 Managed: false

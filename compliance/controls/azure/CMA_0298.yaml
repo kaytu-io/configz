@@ -2,19 +2,14 @@ ID: identify_and_manage_downstream_information_exchanges
 Title: Identify and manage downstream information exchanges
 Description: CMA_0298 - Identify and manage downstream information exchanges
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE title = 'Microsoft.Resources/subscriptions'
-        AND kaytu_description ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
-        AND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

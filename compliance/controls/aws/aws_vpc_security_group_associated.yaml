@@ -29,11 +29,14 @@ Query:
     from
       aws_vpc_security_group s
       left join associated_sg a on s.group_id = a.secgrp_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   - aws_ec2_network_interface
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -49,3 +52,4 @@ Tags:
   - aws
   service:
   - ec2
+Managed: false

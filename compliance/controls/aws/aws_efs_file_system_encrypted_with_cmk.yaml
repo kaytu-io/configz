@@ -33,11 +33,14 @@ Query:
     from
       aws_efs_file_system as f
       left join encrypted_fs as e on f.arn = e.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_efs_file_system
   ListOfTables:
   - aws_efs_file_system
   - aws_kms_key
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -51,3 +54,4 @@ Tags:
   - aws
   service:
   - AWS/EFS
+Managed: false

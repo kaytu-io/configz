@@ -54,12 +54,15 @@ Query:
       , account_id
     from
       aws_iam_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: null
   ListOfTables:
   - aws_iam_user
   - aws_iam_role
   - aws_iam_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -81,3 +84,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
+Managed: false

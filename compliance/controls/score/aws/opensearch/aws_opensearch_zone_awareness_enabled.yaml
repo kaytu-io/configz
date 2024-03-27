@@ -2,7 +2,6 @@ ID: aws_opensearch_zone_awareness_enabled
 Title: OpenSearch Zone Awareness Enabled
 Description: Ensure high availability for your Amazon OpenSearch clusters by enabling the Zone Awareness feature.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -21,11 +20,13 @@ Query:
       account_id
     FROM 
       aws_opensearch_domain
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

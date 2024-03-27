@@ -34,11 +34,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -60,3 +63,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
+Managed: false

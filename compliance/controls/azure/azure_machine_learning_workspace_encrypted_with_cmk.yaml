@@ -2,20 +2,41 @@ ID: azure_machine_learning_workspace_encrypted_with_cmk
 Title: Azure Machine Learning workspaces should be encrypted with a customer-managed key
 Description: Manage encryption at rest of Azure Machine Learning workspace data with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  c.id as resource,\n  c.kaytu_account_id as kaytu_account_id,\n  c.kaytu_resource_id as kaytu_resource_id,\n  case\n    when encryption ->> 'status' = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when encryption ->> 'status' = 'Enabled' then c.name || ' encrypted with CMK.'\n    else c.name || ' not encrypted with CMK.'\n  end as reason\n  \n  , c.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_machine_learning_workspace c,\n  azure_subscription sub\nwhere\n  sub.subscription_id = c.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_machine_learning_workspace
-    ListOfTables:
-        - azure_machine_learning_workspace
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.id as resource,
+      c.kaytu_account_id as kaytu_account_id,
+      c.kaytu_resource_id as kaytu_resource_id,
+      case
+        when encryption ->> 'status' = 'Enabled' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when encryption ->> 'status' = 'Enabled' then c.name || ' encrypted with CMK.'
+        else c.name || ' not encrypted with CMK.'
+      end as reason
+      
+      , c.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_machine_learning_workspace c,
+      azure_subscription sub
+    where
+      sub.subscription_id = c.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_machine_learning_workspace
+  ListOfTables:
+  - azure_machine_learning_workspace
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/MachineLearning
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/MachineLearning
 Managed: false

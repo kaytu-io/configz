@@ -23,12 +23,16 @@ Query:
       cross join jsonb_array_elements(load_balancer_attributes) as lb
     where
       lb ->> 'Key' = 'deletion_protection.enabled'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
-    - aws_ec2_gateway_load_balancer
+  - aws_ec2_gateway_load_balancer
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - AWS Elastic Load Balancing V2 (ELBv2)
+  - AWS Elastic Load Balancing V2 (ELBv2)
+Managed: false

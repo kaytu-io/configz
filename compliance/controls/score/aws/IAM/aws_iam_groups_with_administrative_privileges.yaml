@@ -2,7 +2,6 @@ ID: aws_iam_groups_with_administrative_privileges
 Title: IAM Groups with Administrative Privileges
 Description: Ensure there are no IAM groups with administrative permissions available in your AWS cloud account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,11 +20,13 @@ Query:
       account_id
     from
       aws_iam_group
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_policy
   ListOfTables:
   - aws_iam_policy
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

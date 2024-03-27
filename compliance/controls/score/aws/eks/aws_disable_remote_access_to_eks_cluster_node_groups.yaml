@@ -2,7 +2,6 @@ ID: aws_disable_remote_access_to_eks_cluster_node_groups
 Title: Disable Remote Access to EKS Cluster Node Groups
 Description: Ensure that remote access to EKS cluster node groups is disabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,10 +20,13 @@ Query:
       account_id
     from
       aws_eks_node_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_node_group
   ListOfTables:
   - aws_eks_node_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

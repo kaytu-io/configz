@@ -2,7 +2,6 @@ ID: aws_unrestricted_smtp_access
 Title: Unrestricted SMTP Access
 Description: Ensure no security group allows unrestricted inbound access to TCP port 25 (SMTP).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -33,13 +32,15 @@ Query:
       aws_vpc_security_group
     WHERE
       exists (select 1 from jsonb_array_elements(ip_permissions) as p where ((p ->> 'FromPort') = '25') and ((p ->> 'ToPort') = '25'))
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   Parameters:
   - Key: awsSmtpTrustedIpRange
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

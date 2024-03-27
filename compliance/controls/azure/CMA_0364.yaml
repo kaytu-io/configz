@@ -1,8 +1,16 @@
-Description: CMA_0364 - Manage nonlocal maintenance and diagnostic activities
 ID: manage_nonlocal_maintenance_and_diagnostic_activities
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Manage nonlocal maintenance and diagnostic activities
+Description: CMA_0364 - Manage nonlocal maintenance and diagnostic activities
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

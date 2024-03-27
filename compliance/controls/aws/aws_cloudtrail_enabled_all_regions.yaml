@@ -41,10 +41,13 @@ Query:
       account_id
     from
       trail_details
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudtrail_trail
   ListOfTables:
   - aws_cloudtrail_trail
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -60,3 +63,4 @@ Tags:
   - aws
   service:
   - cloudtrail
+Managed: false

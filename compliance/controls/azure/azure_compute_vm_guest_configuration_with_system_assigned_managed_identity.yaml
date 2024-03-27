@@ -2,20 +2,54 @@ ID: azure_compute_vm_guest_configuration_with_system_assigned_managed_identity
 Title: Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity
 Description: The Guest Configuration extension requires a system assigned managed identity. Azure virtual machines in the scope of this policy will be non-compliant when they have the Guest Configuration extension installed but do not have a system assigned managed identity.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with gc_installed_vm as (\n  select\n    distinct a.vm_id,\n    title\n  from\n    azure_compute_virtual_machine as a,\n    jsonb_array_elements(extensions) as b\n  where\n    b ->> 'Publisher' = 'Microsoft.GuestConfiguration'\n)\nselect\n  a.vm_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.vm_id is null then 'skip'\n    when b.vm_id is not null and string_to_array(identity ->> 'type' , ', ') @> array['SystemAssigned'] then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.vm_id is null then a.title || ' guest configuration extension not installed.'\n    when b.vm_id is not null and string_to_array(identity ->> 'type' , ', ') @> array['SystemAssigned'] then a.title || ' guest configuration extension installed with system-assigned managed identity.'\n    else a.title || ' guest configuration extension not installed with system-assigned managed identity.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_compute_virtual_machine as a\n  left join gc_installed_vm as b on a.vm_id = b.vm_id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_compute_virtual_machine
-    ListOfTables:
-        - azure_compute_virtual_machine
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with gc_installed_vm as (
+      select
+        distinct a.vm_id,
+        title
+      from
+        azure_compute_virtual_machine as a,
+        jsonb_array_elements(extensions) as b
+      where
+        b ->> 'Publisher' = 'Microsoft.GuestConfiguration'
+    )
+    select
+      a.vm_id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.vm_id is null then 'skip'
+        when b.vm_id is not null and string_to_array(identity ->> 'type' , ', ') @> array['SystemAssigned'] then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.vm_id is null then a.title || ' guest configuration extension not installed.'
+        when b.vm_id is not null and string_to_array(identity ->> 'type' , ', ') @> array['SystemAssigned'] then a.title || ' guest configuration extension installed with system-assigned managed identity.'
+        else a.title || ' guest configuration extension not installed with system-assigned managed identity.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_compute_virtual_machine as a
+      left join gc_installed_vm as b on a.vm_id = b.vm_id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_compute_virtual_machine
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/Compute
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/Compute
 Managed: false

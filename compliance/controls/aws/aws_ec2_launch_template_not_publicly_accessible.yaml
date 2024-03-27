@@ -38,11 +38,14 @@ Query:
     from
       aws_ec2_launch_template as t
       left join launch_templates_associated_instance as i on i.launch_template_id = t.launch_template_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_launch_template
   ListOfTables:
   - aws_ec2_instance
   - aws_ec2_launch_template
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -58,3 +61,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
+Managed: false

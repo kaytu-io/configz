@@ -2,13 +2,30 @@ ID: long_term_geo_redundant_backup_should_be_enabled_for_azure_sql_databases
 Title: Long-term geo-redundant backup should be enabled for Azure SQL Databases
 Description: This policy audits any Azure SQL Database with long-term geo-redundant backup not enabled.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "SELECT \n    azure_sql_database.name,\n    azure_sql_database.kaytu_description->'Database'->'properties'->'backupLongTermRetentionPolicies'->>'monthlyRetention' AS monthly_retention,\n    azure_sql_database.kaytu_description->'Database'->'properties'->'backupLongTermRetentionPolicies'->>'yearlyRetention' AS yearly_retention,\n    azure_sql_database.kaytu_description->'Database'->'properties'->'backupLongTermRetentionPolicies'->>'weeklyRetention' AS weekly_retention\nFROM \n    azure_sql_database\nWHERE \n    azure_sql_database.type = 'Microsoft.Sql/servers/databases' \n    AND azure_sql_database.name != 'master'\n    AND (\n        azure_sql_database.backupLongTermRetentionPolicies->>'monthlyRetention' != 'PT0S'\n        OR azure_sql_database.backupLongTermRetentionPolicies->>'yearlyRetention' != 'PT0S'\n        OR azure_sql_database.backupLongTermRetentionPolicies->>'weeklyRetention' != 'PT0S'\n    )\nLIMIT 5;;\n"
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT 
+        azure_sql_database.name,
+        azure_sql_database.kaytu_description->'Database'->'properties'->'backupLongTermRetentionPolicies'->>'monthlyRetention' AS monthly_retention,
+        azure_sql_database.kaytu_description->'Database'->'properties'->'backupLongTermRetentionPolicies'->>'yearlyRetention' AS yearly_retention,
+        azure_sql_database.kaytu_description->'Database'->'properties'->'backupLongTermRetentionPolicies'->>'weeklyRetention' AS weekly_retention
+    FROM 
+        azure_sql_database
+    WHERE 
+        azure_sql_database.type = 'Microsoft.Sql/servers/databases' 
+        AND azure_sql_database.name != 'master'
+        AND (
+            azure_sql_database.backupLongTermRetentionPolicies->>'monthlyRetention' != 'PT0S'
+            OR azure_sql_database.backupLongTermRetentionPolicies->>'yearlyRetention' != 'PT0S'
+            OR azure_sql_database.backupLongTermRetentionPolicies->>'weeklyRetention' != 'PT0S'
+        )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

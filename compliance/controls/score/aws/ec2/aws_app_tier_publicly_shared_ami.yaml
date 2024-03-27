@@ -25,15 +25,18 @@ Query:
           SELECT jsonb_object_agg(key, value)::text
           FROM jsonb_each_text('{{.awsAppTierTags}}'::jsonb)
         ), '{', ''), '}', '') || '%'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_ami
   ListOfTables:
-    - aws_ec2_ami
+  - aws_ec2_ami
   Parameters:
-    - Key: awsAppTierTags
-      Required: true
+  - Key: awsAppTierTags
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS EC2
+Managed: false

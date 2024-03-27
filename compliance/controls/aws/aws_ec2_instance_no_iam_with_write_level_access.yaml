@@ -1,6 +1,6 @@
 ID: aws_ec2_instance_no_iam_with_write_level_access
-Title: "EC2 instances should not have IAM write level access"
-Description: "This control checks whether EC2 instances have IAM write level access. If an EC2 instance has IAM write level access, it can modify IAM roles, users, groups, and policies. This control checks whether EC2 instances have IAM write level access. If an EC2 instance has IAM write level access, it can modify IAM roles, users, groups, and policies."
+Title: EC2 instances should not have IAM write level access
+Description: This control checks whether EC2 instances have IAM write level access. If an EC2 instance has IAM write level access, it can modify IAM roles, users, groups, and policies. This control checks whether EC2 instances have IAM write level access. If an EC2 instance has IAM write level access, it can modify IAM roles, users, groups, and policies.
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -101,46 +101,50 @@ Query:
     from aws_ec2_instance as i
         left join iam_roles as r on r.instance_arn = i.arn
         left join iam_role_with_permission as p on p.arn = r.role_arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
+  - aws_ec2_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
-Severity: "critical"
+Severity: critical
 Tags:
   category:
-    - Compliance
+  - Compliance
   cis_controls_v8_ig1:
-    - "true"
+  - "true"
   cisa_cyber_essentials:
-    - "true"
+  - "true"
   fedramp_low_rev_4:
-    - "true"
+  - "true"
   fedramp_moderate_rev_4:
-    - "true"
+  - "true"
   ffiec:
-    - "true"
+  - "true"
   gxp_21_cfr_part_11:
-    - "true"
+  - "true"
   hipaa_final_omnibus_security_rule_2013:
-    - "true"
+  - "true"
   hipaa_security_rule_2003:
-    - "true"
+  - "true"
   nist_800_171_rev_2:
-    - "true"
+  - "true"
   nist_800_53_rev_4:
-    - "true"
+  - "true"
   nist_800_53_rev_5:
-    - "true"
+  - "true"
   nist_csf:
-    - "true"
+  - "true"
   pci_dss_v321:
-    - "true"
+  - "true"
   plugin:
-    - aws
+  - aws
   rbi_cyber_security:
-    - "true"
+  - "true"
   service:
-    - AWS/EC2
+  - AWS/EC2
   soc_2:
-    - "true"
+  - "true"
+Managed: false

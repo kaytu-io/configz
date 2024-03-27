@@ -2,35 +2,36 @@ ID: sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
 Title: SQL servers should use customer-managed keys to encrypt data at rest
 Description: Implementing Transparent Data Encryption (TDE) with your own key provides increased transparency and control over the TDE Protector, increased security with an HSM-backed external service, and promotion of separation of duties. This recommendation applies to organizations with a related compliance requirement.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_sql_server
-        WHERE type = 'Microsoft.Sql/servers'
-        AND (
-            (
-                type = 'Microsoft.Sql/servers'
-                AND '[resourcegroup().managedBy]' NOT LIKE '%/providers/Microsoft.Synapse/%'
-                AND (
-                    "Microsoft.Sql/servers/keyid" IS NULL
-                    OR "Microsoft.Sql/servers/keyid" = ''
-                )
-            )
-            OR (
-                type = 'Microsoft.Sql/servers/encryptionProtector'
-                AND '[resourcegroup().managedBy]' NOT LIKE '%/providers/Microsoft.Synapse/%'
-                AND (
-                    "Microsoft.Sql/servers/encryptionProtector/serverKeyType" IS NULL
-                    OR "Microsoft.Sql/servers/encryptionProtector/serverKeyType" != 'AzureKeyVault'
-                )
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_sql_server
+    WHERE type = 'Microsoft.Sql/servers'
+    AND (
+        (
+            type = 'Microsoft.Sql/servers'
+            AND '[resourcegroup().managedBy]' NOT LIKE '%/providers/Microsoft.Synapse/%'
+            AND (
+                "Microsoft.Sql/servers/keyid" IS NULL
+                OR "Microsoft.Sql/servers/keyid" = ''
             )
         )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+        OR (
+            type = 'Microsoft.Sql/servers/encryptionProtector'
+            AND '[resourcegroup().managedBy]' NOT LIKE '%/providers/Microsoft.Synapse/%'
+            AND (
+                "Microsoft.Sql/servers/encryptionProtector/serverKeyType" IS NULL
+                OR "Microsoft.Sql/servers/encryptionProtector/serverKeyType" != 'AzureKeyVault'
+            )
+        )
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

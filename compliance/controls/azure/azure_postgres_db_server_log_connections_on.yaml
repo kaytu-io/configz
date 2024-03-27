@@ -26,11 +26,14 @@ Query:
     where
       config ->> 'Name' = 'log_connections'
       and sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_postgresql_server
   ListOfTables:
   - azure_postgresql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -52,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/PostgreSQL
+Managed: false

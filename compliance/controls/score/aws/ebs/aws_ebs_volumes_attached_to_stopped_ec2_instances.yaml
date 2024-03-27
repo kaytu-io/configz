@@ -2,7 +2,6 @@ ID: aws_ebs_volumes_attached_to_stopped_ec2_instances
 Title: EBS Volumes Attached To Stopped EC2 Instances
 Description: Identify Amazon EBS volumes attached to stopped EC2 instances (i.e. unused EBS volumes).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,11 +26,13 @@ Query:
       aws_ebs_volume as v,
       jsonb_array_elements(attachments) as att
       left join aws_ec2_instance as i on att ->> 'InstanceId' = i.instance_id 
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ebs_volume
   ListOfTables:
   - aws_ebs_volume
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

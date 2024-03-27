@@ -1,6 +1,6 @@
 ID: aws_iam_users_with_console_access_are_requried_to_have_MFA
-Title: IAM Users with Console Access are requried to have MFA 
-Description: IAM Users with Console Access are requried to have MFA 
+Title: IAM Users with Console Access are requried to have MFA
+Description: IAM Users with Console Access are requried to have MFA
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -21,10 +21,14 @@ Query:
       aws_iam_credential_report cr inner join aws_iam_user u on cr.user_arn = u.arn 
     where 
       not(login_profile ->> 'UserName' is null)
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_acmpca_certificate_authority
   ListOfTables:
-    - aws_acmpca_certificate_authority
-
+  - aws_acmpca_certificate_authority
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

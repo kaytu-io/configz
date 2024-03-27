@@ -31,11 +31,14 @@ Query:
     from
       aws_s3_bucket as b
       left join bucket_list as l on b.name = l.bucket_name;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_s3_bucket
   ListOfTables:
   - aws_macie2_classification_job
   - aws_s3_bucket
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -57,3 +60,4 @@ Tags:
   - aws
   service:
   - AWS/S3
+Managed: false

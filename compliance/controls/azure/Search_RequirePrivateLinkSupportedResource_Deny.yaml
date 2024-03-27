@@ -1,18 +1,19 @@
 ID: azure_cognitive_search_service_should_use_a_sku_that_supports_private_link
 Title: Azure Cognitive Search service should use a SKU that supports private link
-Description: 'With supported SKUs of Azure Cognitive Search, Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Search service, data leakage risks are reduced. Learn more at: https://aka.ms/azure-cognitive-search/inbound-private-endpoints.'
+Description: "With supported SKUs of Azure Cognitive Search, Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Search service, data leakage risks are reduced. Learn more at: https://aka.ms/azure-cognitive-search/inbound-private-endpoints."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, provisioning_state, status, status_details, type, hosting_mode, partition_count, public_network_access, replica_count, sku_name, kaytu_description
-        FROM azure_search_service
-        WHERE type = 'Microsoft.Search/searchServices' AND (sku_name = 'free' OR kaytu_description->'Service'->'sku'->>'name' = 'free')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, provisioning_state, status, status_details, type, hosting_mode, partition_count, public_network_access, replica_count, sku_name, kaytu_description
+    FROM azure_search_service
+    WHERE type = 'Microsoft.Search/searchServices' AND (sku_name = 'free' OR kaytu_description->'Service'->'sku'->>'name' = 'free')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

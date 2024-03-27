@@ -2,7 +2,6 @@ ID: aws_iam_support_role
 Title: IAM Support Role
 Description: Ensure there is an active IAM Support Role available within your AWS cloud account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with aws_support_access_roles as (
@@ -32,12 +31,14 @@ Query:
     from
       aws_account as a
       left join aws_support_access_roles as r on a.account_id = r.account_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_iam_role
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -1,8 +1,16 @@
-Description: CMA_C1198 - Assign information security representative to change control
 ID: assign_information_security_representative_to_change_control
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Assign information security representative to change control
+Description: CMA_C1198 - Assign information security representative to change control
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

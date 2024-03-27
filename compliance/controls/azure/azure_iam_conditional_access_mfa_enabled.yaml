@@ -21,11 +21,14 @@ Query:
     from
       azure_tenant as t,
       azuread_conditional_access_policy as p;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azuread_conditional_access_policy
   ListOfTables:
   - azure_tenant
   - azuread_conditional_access_policy
+  Parameters: []
+  Global: false
 ManualVerification: true
 Severity: medium
 Tags:
@@ -47,3 +50,4 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
+Managed: false

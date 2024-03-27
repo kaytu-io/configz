@@ -34,11 +34,14 @@ Query:
       , region, account_id
     from
       aws_vpc;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc
   ListOfTables:
   - aws_vpc
   - aws_vpc_endpoint
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -54,3 +57,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
+Managed: false

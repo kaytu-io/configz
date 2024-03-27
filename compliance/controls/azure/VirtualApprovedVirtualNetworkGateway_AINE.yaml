@@ -2,18 +2,19 @@ ID: virtual_networks_should_use_specified_virtual_network_gateway
 Title: Virtual networks should use specified virtual network gateway
 Description: This policy audits any virtual network if the default route does not point to the specified virtual network gateway.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, provisioning_state, resource_group
-        FROM azure_virtual_network
-        WHERE type = 'Microsoft.Network/virtualNetworks'
-        AND kaytu_description -> '$.VirtualNetwork.properties.subnets[*].properties.ipConfigurations[*].id' @> '["GatewaySubnet"]'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, provisioning_state, resource_group
+    FROM azure_virtual_network
+    WHERE type = 'Microsoft.Network/virtualNetworks'
+    AND kaytu_description -> '$.VirtualNetwork.properties.subnets[*].properties.ipConfigurations[*].id' @> '["GatewaySubnet"]'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

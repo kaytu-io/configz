@@ -2,7 +2,6 @@ ID: aws_unused_ami
 Title: Unused AMI
 Description: Identify unused Amazon Machine Images (AMI) to help lower the cost of your monthly AWS bill.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -35,12 +34,14 @@ Query:
     from
       aws_ec2_ami AS ami
       LEFT JOIN aws_ec2_instance AS i ON ami.image_id = i.image_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_ami
   ListOfTables:
   - aws_ec2_ami
   - aws_ec2_instance
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

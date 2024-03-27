@@ -33,13 +33,16 @@ Query:
       END AS reason
     FROM
       aws_ec2_classic_load_balancer AS lb LEFT JOIN lb_pn ON lb.arn = lb_pn.arn
-
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_classic_load_balancer
   ListOfTables:
-    - aws_ec2_classic_load_balancer
+  - aws_ec2_classic_load_balancer
   Parameters:
-    - Key: awsClassicLoadBalancerPredefinedPolicyName
-      Required: true
+  - Key: awsClassicLoadBalancerPredefinedPolicyName
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

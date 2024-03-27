@@ -2,20 +2,41 @@ ID: azure_kubernetes_cluster_add_on_azure_policy_enabled
 Title: Azure Policy Add-on for Kubernetes service (AKS) should be installed and enabled on your clusters
 Description: Azure Policy Add-on for Kubernetes service (AKS) extends Gatekeeper v3, an admission controller webhook for Open Policy Agent (OPA), to apply at-scale enforcements and safeguards on your clusters in a centralized, consistent manner.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  kc.id as resource,\n  kc.kaytu_account_id as kaytu_account_id,\n  kc.kaytu_resource_id as kaytu_resource_id,\n  case\n    when addon_profiles -> 'azurepolicy' ->> 'enabled' = 'true' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when addon_profiles -> 'azurepolicy' ->> 'enabled' = 'true' then name || ' add on azure policy enabled.'\n    else name || ' add on azure policy disabled.'\n  end as reason\n  \n  , kc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster kc,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kc.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_kubernetes_cluster
-    ListOfTables:
-        - azure_kubernetes_cluster
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      kc.id as resource,
+      kc.kaytu_account_id as kaytu_account_id,
+      kc.kaytu_resource_id as kaytu_resource_id,
+      case
+        when addon_profiles -> 'azurepolicy' ->> 'enabled' = 'true' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when addon_profiles -> 'azurepolicy' ->> 'enabled' = 'true' then name || ' add on azure policy enabled.'
+        else name || ' add on azure policy disabled.'
+      end as reason
+      
+      , kc.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_kubernetes_cluster kc,
+      azure_subscription sub
+    where
+      sub.subscription_id = kc.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+  - azure_kubernetes_cluster
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/KubernetesService
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/KubernetesService
 Managed: false

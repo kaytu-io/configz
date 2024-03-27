@@ -34,11 +34,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_cosmosdb_account
   ListOfTables:
   - azure_cosmosdb_account
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -60,3 +63,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

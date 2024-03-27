@@ -2,7 +2,6 @@ ID: aws_security_group_port_range
 Title: Security Group Port Range
 Description: Ensure no security group opens range of ports.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with ingress_sg as (
@@ -33,11 +32,13 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_sg as isg on sg.group_id = isg.group_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: very high
 Tags:

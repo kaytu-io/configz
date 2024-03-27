@@ -2,7 +2,6 @@ ID: aws_aurora_database_instance_accessibility
 Title: Aurora Database Instance Accessibility
 Description: Ensure that all database instances within an Amazon Aurora cluster have the same accessibility.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     with access_count as (
@@ -33,12 +32,14 @@ Query:
       left join access_count as a on c.db_cluster_identifier = a.db_cluster_identifier
     where
       c.engine = 'aurora-mysql' or c.engine = 'aurora-postgresql'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
   - aws_rds_db_cluster
   - aws_rds_db_instance
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

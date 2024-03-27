@@ -2,19 +2,20 @@ ID: app_service_apps_should_have_authentication_enabled
 Title: App Service apps should have authentication enabled
 Description: Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the web app, or authenticate those that have tokens before they reach the web app.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_service_function_app
-        WHERE type = 'Microsoft.Web/sites'
-        AND (kind NOT LIKE '%functionapp%' OR kind IS NULL)
-        AND (site_config ->> 'siteAuthEnabled' = 'true' OR kaytu_description -> 'SiteAuthSettings' -> 'properties' ->> 'enabled' = 'true')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_service_function_app
+    WHERE type = 'Microsoft.Web/sites'
+    AND (kind NOT LIKE '%functionapp%' OR kind IS NULL)
+    AND (site_config ->> 'siteAuthEnabled' = 'true' OR kaytu_description -> 'SiteAuthSettings' -> 'properties' ->> 'enabled' = 'true')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

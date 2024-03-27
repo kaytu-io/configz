@@ -2,20 +2,51 @@ ID: azure_search_service_uses_private_link
 Title: Azure Cognitive Search services should use private link
 Description: Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Cognitive Search, data leakage risks are reduced.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with search_service_connection as (\n  select\n    distinct a.id\n  from\n    azure_search_service as a,\n    jsonb_array_elements(private_endpoint_connections) as connection\n  where\n    connection -> 'properties' -> 'privateLinkServiceConnectionState' ->> 'status' = 'Approved'\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when c.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when c.id is null then a.title || ' not uses private link.'\n    else a.title || ' uses private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_search_service as a\n  left join search_service_connection as c on c.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_search_service
-    ListOfTables:
-        - azure_search_service
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with search_service_connection as (
+      select
+        distinct a.id
+      from
+        azure_search_service as a,
+        jsonb_array_elements(private_endpoint_connections) as connection
+      where
+        connection -> 'properties' -> 'privateLinkServiceConnectionState' ->> 'status' = 'Approved'
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when c.id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when c.id is null then a.title || ' not uses private link.'
+        else a.title || ' uses private link.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_search_service as a
+      left join search_service_connection as c on c.id = a.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_search_service
+  ListOfTables:
+  - azure_search_service
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/CognitiveSearch
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/CognitiveSearch
 Managed: false

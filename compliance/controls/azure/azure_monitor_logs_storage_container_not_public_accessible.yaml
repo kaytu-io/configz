@@ -25,11 +25,14 @@ Query:
     where
       name LIKE 'insight%logs%'
       and sub.subscription_id = sc.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_container
   ListOfTables:
   - azure_storage_container
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -51,3 +54,4 @@ Tags:
   - azure
   service:
   - Azure/Monitor
+Managed: false

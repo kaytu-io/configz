@@ -2,7 +2,6 @@ ID: azure_storage_account_encryption_using_customer_managed_keys
 Title: Storage Account Encryption using Customer Managed Keys
 Description: Use Customer Managed Keys (CMKs) to encrypt data within Azure Storage accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,12 +21,14 @@ Query:
     from
       azure_storage_account as a
       left join azure_subscription as sub on a.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

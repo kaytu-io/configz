@@ -1,8 +1,16 @@
-Description: CMA_C1192 - Automate approval request for proposed changes
 ID: automate_approval_request_for_proposed_changes
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Automate approval request for proposed changes
+Description: CMA_C1192 - Automate approval request for proposed changes
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

@@ -28,10 +28,13 @@ Query:
       aws_kms_key
     where
       key_manager = 'CUSTOMER';
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_kms_key
   ListOfTables:
   - aws_kms_key
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -63,3 +66,4 @@ Tags:
   - "true"
   service:
   - AWS/KMS
+Managed: false

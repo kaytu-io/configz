@@ -1,8 +1,16 @@
-Description: CMA_C1314 - Prevent identifier reuse for the defined time period
 ID: prevent_identifier_reuse_for_the_defined_time_period
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Prevent identifier reuse for the defined time period
+Description: CMA_C1314 - Prevent identifier reuse for the defined time period
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

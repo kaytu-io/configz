@@ -22,10 +22,13 @@ Query:
       , region, account_id
     from
       aws_lambda_function;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_lambda_function
   ListOfTables:
   - aws_lambda_function
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -41,3 +44,4 @@ Tags:
   - aws
   service:
   - AWS/Lambda
+Managed: false

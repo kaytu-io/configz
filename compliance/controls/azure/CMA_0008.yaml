@@ -2,19 +2,14 @@ ID: align_business_objectives_and_it_goals
 Title: Align business objectives and IT goals
 Description: CMA_0008 - Align business objectives and IT goals
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE title = 'Microsoft.Resources/subscriptions'
-        AND kaytu_description ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
-        AND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

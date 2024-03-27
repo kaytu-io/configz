@@ -4,7 +4,7 @@ Description: Enforce Infrastructure as Code by controlling access for requests m
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
-     WITH too_permissive_policies AS (
+    WITH too_permissive_policies AS (
       SELECT
         arn
       FROM
@@ -16,7 +16,7 @@ Query:
         AND s ->> 'Effect' = 'Deny'
         AND (s -> 'Condition' -> 'StringNotEquals' ->> 'aws:CalledViaFirst') = 'cloudformation.amazonaws.com'
     )
-
+    
     SELECT
       name AS resource,
       kaytu_account_id,
@@ -57,13 +57,17 @@ Query:
       account_id
     FROM
       aws_iam_user AS g
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
-    - aws_iam_policy
+  - aws_iam_user
+  - aws_iam_policy
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+Managed: false

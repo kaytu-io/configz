@@ -1,6 +1,6 @@
 ID: aws_root_email_needs_to_be_of_approved_domains_approved
-Title: Root Email needs to be of approved domains Approved 
-Description: Root Email needs to be of approved domains Approved 
+Title: Root Email needs to be of approved domains Approved
+Description: Root Email needs to be of approved domains Approved
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
@@ -21,12 +21,16 @@ Query:
     from  
       aws_organizations_account  
       where lower(status) = 'active'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_organizations_account
   ListOfTables:
-    - aws_organizations_account
+  - aws_organizations_account
   Parameters:
-    - Key: awsAccountApprovedDomains
-      Required: true
+  - Key: awsAccountApprovedDomains
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

@@ -1,8 +1,16 @@
-Description: CMA_0333 - Initiate transfer or reassignment actions
 ID: initiate_transfer_or_reassignment_actions
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Initiate transfer or reassignment actions
+Description: CMA_0333 - Initiate transfer or reassignment actions
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

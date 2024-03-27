@@ -2,7 +2,6 @@ ID: aws_enable_http_to_https_redirect_for_application_load_balancers
 Title: Enable HTTP to HTTPS Redirect for Application Load Balancers
 Description: Ensure that your Application Load Balancers have a rule that redirects HTTP traffic to HTTPS.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with detailed_listeners as (
@@ -36,11 +35,13 @@ Query:
     from
       aws_ec2_application_load_balancer a
       left join detailed_listeners b on a.arn = b.load_balancer_arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
   - aws_ec2_application_load_balancer
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

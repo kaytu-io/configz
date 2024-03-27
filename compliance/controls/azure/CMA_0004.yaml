@@ -2,19 +2,14 @@ ID: adhere_to_retention_periods_defined
 Title: Adhere to retention periods defined
 Description: CMA_0004 - Adhere to retention periods defined
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE title = 'Microsoft.Resources/subscriptions'
-        AND kaytu_metadata ->> 'if' = '{"field": "type", "equals": "Microsoft.Resources/subscriptions"}'
-        AND kaytu_metadata -> 'then' ->> 'effect' = '[parameters(''effect'')]'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_metadata ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_metadata -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

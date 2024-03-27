@@ -1,8 +1,16 @@
-Description: CMA_C1632 - Prevent split tunneling for remote devices
 ID: prevent_split_tunneling_for_remote_devices
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Prevent split tunneling for remote devices
+Description: CMA_C1632 - Prevent split tunneling for remote devices
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

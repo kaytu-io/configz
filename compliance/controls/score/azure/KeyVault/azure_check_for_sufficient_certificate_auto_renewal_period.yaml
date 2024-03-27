@@ -2,7 +2,6 @@ ID: azure_check_for_sufficient_certificate_auto_renewal_period
 Title: Check for Sufficient Certificate Auto-Renewal Period
 Description: Ensure there is a sufficient period configured for the SSL certificates auto-renewal.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,19 +22,21 @@ Query:
       azure_key_vault_certificate as c
       left join azure_subscription as sub on c.subscription_id = sub.subscription_id,
       jsonb_array_elements(lifetime_actions) as la
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault_certificate
   ListOfTables:
-    - azure_key_vault_certificate
-    - azure_subscription
+  - azure_key_vault_certificate
+  - azure_subscription
   Parameters:
-    - Key: azureSufficientDaysBeforeCertificateExpiry
-      Required: true
+  - Key: azureSufficientDaysBeforeCertificateExpiry
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - Azure KeyVault
+  - Azure KeyVault
   score_tags:
-    - Insecure Keys
+  - Insecure Keys
 Managed: false

@@ -2,22 +2,23 @@ ID: hpc_cache_accounts_should_use_customer_managed_key_for_encryption
 Title: HPC Cache accounts should use customer-managed key for encryption
 Description: Manage encryption at rest of Azure HPC Cache with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_hpc_cache
-        WHERE type = 'Microsoft.StorageCache/caches'
-        AND (
-            (identity->>'type' IS NULL)
-            OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->>'keyUrl' IS NULL)
-            OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->'sourceVault'->>'id' IS NULL)
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_hpc_cache
+    WHERE type = 'Microsoft.StorageCache/caches'
+    AND (
+        (identity->>'type' IS NULL)
+        OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->>'keyUrl' IS NULL)
+        OR (kaytu_description->'Cache'->'properties'->'encryptionSettings'->'keyEncryptionKey'->'sourceVault'->>'id' IS NULL)
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

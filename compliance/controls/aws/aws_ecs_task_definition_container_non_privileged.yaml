@@ -30,10 +30,13 @@ Query:
     from
       aws_ecs_task_definition as d
       left join privileged_container_definition as c on d.task_definition_arn = c.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecs_task_definition
   ListOfTables:
   - aws_ecs_task_definition
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -49,3 +52,4 @@ Tags:
   - aws
   service:
   - AWS/ECS
+Managed: false

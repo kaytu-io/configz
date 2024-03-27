@@ -2,7 +2,6 @@ ID: azure_enable_trusted_microsoft_services_for_key_vault_access
 Title: Enable Trusted Microsoft Services for Key Vault Access
 Description: Allow trusted Microsoft services to access your Azure Key Vault resources (i.e. encryption keys, secrets and certificates).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,11 +23,14 @@ Query:
     from
       azure_key_vault as c
       left join azure_subscription as sub on c.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
   - azure_key_vault
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

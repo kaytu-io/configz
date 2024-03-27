@@ -1,14 +1,8 @@
-Description: ""
-DocumentURI: ""
 ID: aws_iam_role_should_not_have_trust_to_cognito
-Managed: true
-ManualVerification: false
+Title: AWS IAM role should not have permissive trust with the Cognito Identity service
+Description: ""
 Query:
-  Connector: AWS
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_iam_role
-  PrimaryTable: aws_iam_role
   QueryToExecute: |
     with cognito_access as (
         select role_id,
@@ -34,6 +28,14 @@ Query:
         role.account_id
     from aws_iam_role as role
         left join cognito_access on cognito_access.role_id = role.role_id;
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_role
+  ListOfTables:
+  - aws_iam_role
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: high
 Tags:
   category: []
@@ -48,4 +50,4 @@ Tags:
   x-kaytu-explanation: []
   x-kaytu-noncompliance-cost: []
   x-kaytu-usefulness-example: []
-Title: AWS IAM role should not have permissive trust with the Cognito Identity service
+Managed: true

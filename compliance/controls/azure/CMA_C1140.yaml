@@ -1,8 +1,16 @@
-Description: CMA_C1140 - Compile Audit records into system wide audit
 ID: compile_audit_records_into_system_wide_audit
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Compile Audit records into system wide audit
+Description: CMA_C1140 - Compile Audit records into system wide audit
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

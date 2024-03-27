@@ -2,20 +2,47 @@ ID: azure_storage_account_block_public_access
 Title: Storage account public access should be disallowed
 Description: Anonymous public read access to containers and blobs in Azure Storage is a convenient way to share data but might present security risks. To prevent data breaches caused by undesired anonymous access, Microsoft recommends preventing public access to a storage account unless your scenario requires it.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  sa.id as resource,\n  sa.kaytu_account_id as kaytu_account_id,\n  sa.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sa.id not like '%/resourceGroups/aro-%'\n      and (sa.name not like 'cluster%' or sa.name not like 'imageregistry%')\n      and sa.allow_blob_public_access = 'false'\n      then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when sa.id not like '%/resourceGroups/aro-%'\n      and (sa.name not like 'cluster%' or sa.name not like 'imageregistry%')\n      and sa.allow_blob_public_access = 'false'\n      then sa.name || ' not publicy accessible.'\n    else sa.name || ' publicy accessible.'\n  end as reason\n  \n  , sa.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account sa,\n  azure_subscription sub\nwhere\n  sub.subscription_id = sa.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_storage_account
-    ListOfTables:
-        - azure_storage_account
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      sa.id as resource,
+      sa.kaytu_account_id as kaytu_account_id,
+      sa.kaytu_resource_id as kaytu_resource_id,
+      case
+        when sa.id not like '%/resourceGroups/aro-%'
+          and (sa.name not like 'cluster%' or sa.name not like 'imageregistry%')
+          and sa.allow_blob_public_access = 'false'
+          then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when sa.id not like '%/resourceGroups/aro-%'
+          and (sa.name not like 'cluster%' or sa.name not like 'imageregistry%')
+          and sa.allow_blob_public_access = 'false'
+          then sa.name || ' not publicy accessible.'
+        else sa.name || ' publicy accessible.'
+      end as reason
+      
+      , sa.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_storage_account sa,
+      azure_subscription sub
+    where
+      sub.subscription_id = sa.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/Storage
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/Storage
 Managed: false

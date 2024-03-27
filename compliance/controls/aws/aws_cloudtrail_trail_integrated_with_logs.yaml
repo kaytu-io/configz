@@ -22,10 +22,13 @@ Query:
       aws_cloudtrail_trail
     where
       region = home_region;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudtrail_trail
   ListOfTables:
   - aws_cloudtrail_trail
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -67,3 +70,4 @@ Tags:
   - AWS/CloudTrail
   soc_2:
   - "true"
+Managed: false

@@ -1,8 +1,16 @@
-Description: CMA_C1649 - Explicitly notify use of collaborative computing devices
 ID: explicitly_notify_use_of_collaborative_computing_devices
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Explicitly notify use of collaborative computing devices
+Description: CMA_C1649 - Explicitly notify use of collaborative computing devices
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

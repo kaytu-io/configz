@@ -2,7 +2,6 @@ ID: azure_set_encryption_key_expiration
 Title: Set Encryption Key Expiration
 Description: Ensure that an expiration date is configured for all your Microsoft Azure encryption keys.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,12 +21,14 @@ Query:
     from
       azure_key_vault_key as k
       left join azure_subscription as sub on k.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault_key
   ListOfTables:
   - azure_key_vault_key
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -2,20 +2,54 @@ ID: azure_sql_server_azure_defender_enabled
 Title: Azure Defender for SQL should be enabled for unprotected Azure SQL servers
 Description: Audit SQL servers without Advanced Data Security.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with sql_server_policy as (\n  select\n    distinct a.name\n  from\n    azure_sql_server as a,\n    jsonb_array_elements(server_security_alert_policy) as policy\n  where\n    policy ->> 'name' = 'Default'\n    and policy -> 'properties' ->> 'state' = 'Enabled'\n)\nselect\n  distinct a.name as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when kind like '%analytics%' then 'skip'\n    when s.name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when kind like '%analytics%' then a.name || ' azure defender not applicable.'\n    when s.name is null then a.name || 'sql azure defender disabled.'\n    else a.name || ' sql azure defender enabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_sql_server as a\n  left join sql_server_policy as s on a.name = s.name,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_sql_server
-    ListOfTables:
-        - azure_sql_server
-        - azure_subscription
-    Parameters: []
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with sql_server_policy as (
+      select
+        distinct a.name
+      from
+        azure_sql_server as a,
+        jsonb_array_elements(server_security_alert_policy) as policy
+      where
+        policy ->> 'name' = 'Default'
+        and policy -> 'properties' ->> 'state' = 'Enabled'
+    )
+    select
+      distinct a.name as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when kind like '%analytics%' then 'skip'
+        when s.name is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when kind like '%analytics%' then a.name || ' azure defender not applicable.'
+        when s.name is null then a.name || 'sql azure defender disabled.'
+        else a.name || ' sql azure defender enabled.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_sql_server as a
+      left join sql_server_policy as s on a.name = s.name,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_sql_server
+  ListOfTables:
+  - azure_sql_server
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/SQL
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SQL
 Managed: false

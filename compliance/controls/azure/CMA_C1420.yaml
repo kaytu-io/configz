@@ -1,8 +1,16 @@
-Description: CMA_C1420 - Maintain list of authorized remote maintenance personnel
 ID: maintain_list_of_authorized_remote_maintenance_personnel
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Maintain list of authorized remote maintenance personnel
+Description: CMA_C1420 - Maintain list of authorized remote maintenance personnel
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

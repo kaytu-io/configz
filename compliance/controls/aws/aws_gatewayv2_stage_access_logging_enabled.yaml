@@ -20,10 +20,13 @@ Query:
       , region, account_id
     from
       aws_api_gatewayv2_stage;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_api_gatewayv2_stage
   ListOfTables:
   - aws_api_gatewayv2_stage
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -39,3 +42,4 @@ Tags:
   - aws
   service:
   - AWS/APIGateway
+Managed: false

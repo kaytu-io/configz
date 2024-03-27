@@ -1,8 +1,16 @@
-Description: CMA_C1124 - Provide audit review, analysis, and reporting capability
 ID: provide_audit_review,_analysis,_and_reporting_capability
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Provide audit review, analysis, and reporting capability
+Description: CMA_C1124 - Provide audit review, analysis, and reporting capability
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

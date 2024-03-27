@@ -1,8 +1,16 @@
-Description: CMA_C1126 - Provide capability to process customer-controlled audit records
 ID: provide_capability_to_process_customer_controlled_audit_records
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Provide capability to process customer-controlled audit records
+Description: CMA_C1126 - Provide capability to process customer-controlled audit records
+Query:
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

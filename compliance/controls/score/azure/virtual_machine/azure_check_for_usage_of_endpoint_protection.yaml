@@ -2,7 +2,6 @@ ID: azure_check_for_usage_of_endpoint_protection
 Title: Check for usage of Endpoint Protection
 Description: Ensure that endpoint protection is installed on your Microsoft Azure virtual machines.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -28,12 +27,14 @@ Query:
     from
       azure_compute_virtual_machine as vm
       left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
   - azure_compute_virtual_machine
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

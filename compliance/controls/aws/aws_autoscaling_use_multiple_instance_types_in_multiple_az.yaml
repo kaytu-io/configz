@@ -47,10 +47,13 @@ Query:
     from
       autoscaling_groups as a
       left join distinct_instance_types_count as b on a.autoscaling_group_arn = b.autoscaling_group_arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_autoscaling_group
   ListOfTables:
   - aws_ec2_autoscaling_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -66,3 +69,4 @@ Tags:
   - aws
   service:
   - AWS/AutoScaling
+Managed: false

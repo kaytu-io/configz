@@ -2,7 +2,6 @@ ID: azure_use_user_assigned_managed_identities_for_aks_clusters
 Title: Use User-Assigned Managed Identities for AKS Clusters
 Description: Ensure that AKS clusters are using user-assigned managed identities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,13 +21,17 @@ Query:
     from
       azure_kubernetes_cluster as c
       left join azure_subscription as sub on c.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_kubernetes_cluster
   ListOfTables:
-    - azure_kubernetes_cluster
-    - azure_subscription
+  - azure_kubernetes_cluster
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Kubernetes (AKS)
+Managed: false

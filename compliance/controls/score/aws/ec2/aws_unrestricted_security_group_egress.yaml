@@ -44,12 +44,16 @@ Query:
     from
       aws_vpc_security_group as sg
       left join egress_sg as esg on sg.group_id = esg.group_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
-    - aws_vpc_security_group
+  - aws_vpc_security_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS EC2
+Managed: false

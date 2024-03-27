@@ -2,7 +2,6 @@ ID: azure_use_network_contributor_role_for_managing_azure_network_resources
 Title: Use Network Contributor Role for Managing Azure Network Resources
 Description: Ensure that AKS clusters are configured to use the Network Contributor role.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with rd as (
@@ -31,14 +30,18 @@ Query:
       azure_kubernetes_cluster as c
         left join azure_subscription as sub on c.subscription_id = sub.subscription_id
         left join rd as rd on c.id like '%' || rd.scope || '%'
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_kubernetes_cluster
   ListOfTables:
-    - azure_kubernetes_cluster
-    - azure_role_assignment
-    - azure_subscription
+  - azure_kubernetes_cluster
+  - azure_role_assignment
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-    - Azure Kubernetes (AKS)
+  - Azure Kubernetes (AKS)
+Managed: false

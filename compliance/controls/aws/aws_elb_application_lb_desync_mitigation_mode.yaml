@@ -29,10 +29,13 @@ Query:
     from
       aws_ec2_application_load_balancer as a
       left join app_lb_desync_mitigation_mode as m on a.arn = m.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
   - aws_ec2_application_load_balancer
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -48,3 +51,4 @@ Tags:
   - aws
   service:
   - AWS/ELB
+Managed: false
