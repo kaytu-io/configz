@@ -2,18 +2,20 @@ ID: storage_account_encryption_scopes_should_use_double_encryption_for_data_at_r
 Title: Storage account encryption scopes should use double encryption for data at rest
 Description: Enable infrastructure encryption for encryption at rest of your storage account encryption scopes for added security. Infrastructure encryption ensures that your data is encrypted twice.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_storage_account
-        WHERE type = 'Microsoft.Storage/storageAccounts/encryptionScopes'
-        AND (require_infrastructure_encryption IS NULL OR require_infrastructure_encryption != 'true')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_storage_account
+    WHERE type = 'Microsoft.Storage/storageAccounts/encryptionScopes'
+    AND (require_infrastructure_encryption IS NULL OR require_infrastructure_encryption != 'true')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

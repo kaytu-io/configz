@@ -1,8 +1,17 @@
-Description: CMA_C1207 - Review and reevaluate privileges
 ID: review_and_reevaluate_privileges
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Review and reevaluate privileges
+Description: CMA_C1207 - Review and reevaluate privileges
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

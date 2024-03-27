@@ -25,11 +25,13 @@ Query:
       account_id
     from
       aws_dynamodb_table as t
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_dynamodb_table
   ListOfTables:
   - aws_dynamodb_table
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

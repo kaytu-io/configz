@@ -2,6 +2,7 @@ ID: aws_unrestricted_dns_access
 Title: Unrestricted DNS Access
 Description: Ensure no security group allows unrestricted ingress access to port 53.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with ingress_sg as (
@@ -38,12 +39,16 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_sg as isg on sg.group_id = isg.group_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
-    - aws_vpc_security_group
+  - aws_vpc_security_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: very high
 Tags:
   score_service_name:
   - AWS EC2
+Managed: false

@@ -22,12 +22,14 @@ Query:
     from
       azure_log_profile as p
       left join azure_subscription sub on sub.subscription_id = p.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_log_profile
   ListOfTables:
   - azure_log_profile
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

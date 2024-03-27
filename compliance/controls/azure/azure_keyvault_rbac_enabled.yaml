@@ -2,6 +2,7 @@ ID: azure_keyvault_rbac_enabled
 Title: Enable Role Based Access Control for Azure Key Vault
 Description: Role assignments disappear when a Key Vault has been deleted (soft- delete) and recovered. Afterwards it will be required to recreate all role assignments. This is a limitation of the soft-delete feature across all Azure services.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,11 +25,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = kv.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
   - azure_key_vault
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -50,3 +54,4 @@ Tags:
   - azure
   service:
   - Azure/KeyVault
+Managed: false

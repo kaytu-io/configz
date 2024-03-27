@@ -2,6 +2,7 @@ ID: azure_sql_server_tde_protector_cmk_encrypted
 Title: Ensure SQL server's TDE protector is encrypted with Customer-managed key
 Description: Based on business needs or criticality of data/databases hosted a SQL server, it is recommended that the TDE protector is encrypted by a key that is managed by the data owner (Customer-managed key)
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,11 +26,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -51,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

@@ -2,17 +2,19 @@ ID: azure_monitor_log_profile_should_collect_logs_for_categories_'write,'_'delet
 Title: Azure Monitor log profile should collect logs for categories 'write,' 'delete,' and 'action'
 Description: This policy ensures that a log profile collects logs for categories 'write,' 'delete,' and 'action'
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description -> 'Subscription' ->> 'SubscriptionPolicies' ->> 'Microsoft.Insights/logProfiles/categories' IS NOT NULL
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description -> 'Subscription' ->> 'SubscriptionPolicies' ->> 'Microsoft.Insights/logProfiles/categories' IS NOT NULL
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

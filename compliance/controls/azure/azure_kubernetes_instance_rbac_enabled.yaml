@@ -2,22 +2,45 @@ ID: azure_kubernetes_instance_rbac_enabled
 Title: Role-Based Access Control (RBAC) should be used on Kubernetes Services
 Description: To provide granular filtering on the actions that users can perform, use Role-Based Access Control (RBAC) to manage permissions in Kubernetes Service Clusters and configure relevant authorization policies.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  kc.id as resource,\n  kc.kaytu_account_id as kaytu_account_id,\n  kc.kaytu_resource_id as kaytu_resource_id,\n  case\n    when enable_rbac then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when enable_rbac then name || ' role based access control enabled.'\n    else name || ' role based access control disabled.'\n  end as reason,\n  enable_rbac\n  \n  , kc.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kubernetes_cluster kc,\n  azure_subscription sub\nwhere\n  sub.subscription_id = kc.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_kubernetes_cluster
-    ListOfTables:
-        - azure_kubernetes_cluster
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      kc.id as resource,
+      kc.kaytu_account_id as kaytu_account_id,
+      kc.kaytu_resource_id as kaytu_resource_id,
+      case
+        when enable_rbac then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when enable_rbac then name || ' role based access control enabled.'
+        else name || ' role based access control disabled.'
+      end as reason,
+      enable_rbac
+      
+      , kc.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_kubernetes_cluster kc,
+      azure_subscription sub
+    where
+      sub.subscription_id = kc.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+  - azure_kubernetes_cluster
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/KubernetesService
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/KubernetesService
 Managed: false

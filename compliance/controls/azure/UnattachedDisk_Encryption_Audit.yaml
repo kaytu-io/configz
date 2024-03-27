@@ -1,22 +1,24 @@
-ID: '[_deprecated]:_unattached_disks_should_be_encrypted'
-Title: '[Deprecated]: Unattached disks should be encrypted'
+ID: "[_deprecated]:_unattached_disks_should_be_encrypted"
+Title: "[Deprecated]: Unattached disks should be encrypted"
 Description: This policy audits any unattached disk without encryption enabled.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT azure_compute_disk.*
-        FROM azure_compute_disk
-        WHERE azure_compute_disk.type = 'Microsoft.Compute/disks'
-        AND (azure_compute_disk.disk_state = 'Unattached'
-        OR kaytu_description->'$.definitions.ComputeDiskDescription.properties.Disk.properties.Properties.properties.DiskState' = 'Unattached')
-        AND (azure_compute_disk.encryption_settings_collection_enabled = false
-        OR kaytu_description->'$.definitions.ComputeDiskDescription.properties.Disk.properties.Properties.properties.EncryptionSettingsCollection.properties.Enabled' = 'false')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT azure_compute_disk.*
+    FROM azure_compute_disk
+    WHERE azure_compute_disk.type = 'Microsoft.Compute/disks'
+    AND (azure_compute_disk.disk_state = 'Unattached'
+    OR kaytu_description->'$.definitions.ComputeDiskDescription.properties.Disk.properties.Properties.properties.DiskState' = 'Unattached')
+    AND (azure_compute_disk.encryption_settings_collection_enabled = false
+    OR kaytu_description->'$.definitions.ComputeDiskDescription.properties.Disk.properties.Properties.properties.EncryptionSettingsCollection.properties.Enabled' = 'false')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

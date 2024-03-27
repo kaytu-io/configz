@@ -2,18 +2,20 @@ ID: azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_service
 Title: Azure Role-Based Access Control (RBAC) should be used on Kubernetes Services
 Description: To provide granular filtering on the actions that users can perform, use Azure Role-Based Access Control (RBAC) to manage permissions in Kubernetes Service Clusters and configure relevant authorization policies.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_kubernetes_cluster
-        WHERE type = 'Microsoft.ContainerService/managedClusters'
-        AND (enable_rbac = false OR kaytu_description->'ManagedCluster'->'properties'->>'enableRBAC' = 'false')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_kubernetes_cluster
+    WHERE type = 'Microsoft.ContainerService/managedClusters'
+    AND (enable_rbac = false OR kaytu_description->'ManagedCluster'->'properties'->>'enableRBAC' = 'false')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

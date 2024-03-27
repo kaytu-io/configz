@@ -23,11 +23,13 @@ Query:
       aws_rds_db_instance
     where
      engine = 'aurora-mysql' or engine = 'aurora-postgresql' or engine = 'mysql' or engine = 'postgres'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

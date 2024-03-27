@@ -2,56 +2,92 @@ ID: aws_cloudtrail_s3_data_events_enabled
 Title: All S3 buckets should log S3 data events in CloudTrail
 Description: The collection of Simple Storage Service (Amazon S3) data events helps in detecting any anomalous activity. The details include AWS account information that accessed an Amazon S3 bucket, IP address, and time of event.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with s3_selectors as (\n  select\n    name as trail_name,\n    is_multi_region_trail,\n    bucket_selector\n  from\n    aws_cloudtrail_trail,\n    jsonb_array_elements(event_selectors) as event_selector,\n    jsonb_array_elements(event_selector -> 'DataResources') as data_resource,\n    jsonb_array_elements_text(data_resource -> 'Values') as bucket_selector\n  where\n    is_multi_region_trail\n    and data_resource ->> 'Type' = 'AWS::S3::Object'\n    and event_selector ->> 'ReadWriteType' = 'All'\n)\nselect\n  b.arn as resource,\n  b.kaytu_account_id as kaytu_account_id,\n  b.kaytu_resource_id as kaytu_resource_id,\n  case\n    when count(bucket_selector) > 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when count(bucket_selector) > 0 then b.name || ' object-level data events logging enabled.'\n    else b.name || ' object-level data events logging disabled.'\n  end as reason\n  \n  , b.region, b.account_id\nfrom\n  aws_s3_bucket as b\n  left join s3_selectors on bucket_selector like (b.arn || '%') or bucket_selector = 'arn:aws:s3'\ngroup by\n  b.account_id, b.region, b.arn, b.name, b.tags, b.kaytu_account_id, b.kaytu_resource_id, b._ctx;\n"
-    Connector: AWS
-    PrimaryTable: aws_s3_bucket
-    ListOfTables:
-        - aws_cloudtrail_trail
-        - aws_s3_bucket
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with s3_selectors as (
+      select
+        name as trail_name,
+        is_multi_region_trail,
+        bucket_selector
+      from
+        aws_cloudtrail_trail,
+        jsonb_array_elements(event_selectors) as event_selector,
+        jsonb_array_elements(event_selector -> 'DataResources') as data_resource,
+        jsonb_array_elements_text(data_resource -> 'Values') as bucket_selector
+      where
+        is_multi_region_trail
+        and data_resource ->> 'Type' = 'AWS::S3::Object'
+        and event_selector ->> 'ReadWriteType' = 'All'
+    )
+    select
+      b.arn as resource,
+      b.kaytu_account_id as kaytu_account_id,
+      b.kaytu_resource_id as kaytu_resource_id,
+      case
+        when count(bucket_selector) > 0 then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when count(bucket_selector) > 0 then b.name || ' object-level data events logging enabled.'
+        else b.name || ' object-level data events logging disabled.'
+      end as reason
+      
+      , b.region, b.account_id
+    from
+      aws_s3_bucket as b
+      left join s3_selectors on bucket_selector like (b.arn || '%') or bucket_selector = 'arn:aws:s3'
+    group by
+      b.account_id, b.region, b.arn, b.name, b.tags, b.kaytu_account_id, b.kaytu_resource_id, b._ctx;
+  Connector:
+  - AWS
+  PrimaryTable: aws_s3_bucket
+  ListOfTables:
+  - aws_cloudtrail_trail
+  - aws_s3_bucket
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gdpr:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    gxp_eu_annex_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/CloudTrail
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  gxp_eu_annex_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/CloudTrail
+  soc_2:
+  - "true"
 Managed: false

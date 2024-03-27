@@ -32,11 +32,14 @@ Query:
     from
       aws_eks_node_group as ng
       left join aws_iam_role as r on r.arn = ng.node_role
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_node_group
   ListOfTables:
   - aws_eks_node_group
   - aws_iam_role
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

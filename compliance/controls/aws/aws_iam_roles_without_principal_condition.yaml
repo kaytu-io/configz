@@ -1,15 +1,9 @@
-Title: "Roles without Conditions on Properties of the principal"
-Description: ""
-DocumentURI: ""
 ID: aws_iam_roles_without_principal_condition
-Managed: true
-ManualVerification: false
+Title: Roles without Conditions on Properties of the principal
+Description: ""
 Query:
-  Connector: AWS
+  ID: ""
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_iam_role
-  PrimaryTable: aws_iam_role
   QueryToExecute: |
     WITH have_condition_on_principal as (
       SELECT 
@@ -38,6 +32,14 @@ Query:
     FROM
       aws_iam_role role
       LEFT JOIN have_condition_on_principal p on role.arn = p.arn
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_role
+  ListOfTables:
+  - aws_iam_role
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: high
 Tags:
   category: []
@@ -52,3 +54,4 @@ Tags:
   x-kaytu-explanation: []
   x-kaytu-noncompliance-cost: []
   x-kaytu-usefulness-example: []
+Managed: true

@@ -2,6 +2,7 @@ ID: aws_iam_policy_blacklisted_check
 Title: Blacklisted IAM policy should not be attached to IAM resources
 Description: Checks in each AWS Identity and Access Management (IAM) resource, if a policy Amazon Resource Name (ARN) in the input parameter is attached to the IAM resource. The rule is ALARM if the policy ARN is attached to the IAM resource.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH iam_entities AS (
@@ -47,14 +48,18 @@ Query:
         ELSE name || ' iam entity has no black listed policies attached to it'
       END AS reason
     FROM iam_entities
-  Connector: AWS
-  PrimaryTable:
+  Connector:
+  - AWS
+  PrimaryTable: null
   ListOfTables:
-    - aws_iam_role
-    - aws_iam_user
-    - aws_iam_group
+  - aws_iam_role
+  - aws_iam_user
+  - aws_iam_group
   Parameters:
-    - Key: awsIamBlacklistedPolicies
-      Required: true
+  - Key: awsIamBlacklistedPolicies
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

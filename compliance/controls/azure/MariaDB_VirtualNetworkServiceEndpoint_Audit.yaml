@@ -2,18 +2,15 @@ ID: maria_db_server_should_use_a_virtual_network_service_endpoint
 Title: MariaDB server should use a virtual network service endpoint
 Description: Virtual network based firewall rules are used to enable traffic from a specific subnet to Azure Database for MariaDB while ensuring the traffic stays within the Azure boundary. This policy provides a way to audit if the Azure Database for MariaDB has virtual network service endpoint being used.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, type, kaytu_description
-        FROM azure_mariadb_server
-        WHERE type = 'Microsoft.DBforMariaDB/servers'
-        AND kaytu_description -> 'Server' -> 'Properties' -> 'virtualNetworkRules' @> '[{"virtualNetworkSubnetId": "exists"}]'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT name, id, type, kaytu_description\nFROM azure_mariadb_server\nWHERE type = 'Microsoft.DBforMariaDB/servers'\nAND kaytu_description -> 'Server' -> 'Properties' -> 'virtualNetworkRules' @> '[{\"virtualNetworkSubnetId\": \"exists\"}]'\nLIMIT 5;;\n"
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

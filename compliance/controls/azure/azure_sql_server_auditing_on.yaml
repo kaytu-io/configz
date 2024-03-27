@@ -2,6 +2,7 @@ ID: azure_sql_server_auditing_on
 Title: Ensure that 'Auditing' is set to 'On'
 Description: Enable auditing on SQL Servers.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,11 +26,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -51,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

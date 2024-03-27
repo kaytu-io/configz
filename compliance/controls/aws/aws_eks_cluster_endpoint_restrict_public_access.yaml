@@ -2,29 +2,47 @@ ID: aws_eks_cluster_endpoint_restrict_public_access
 Title: EKS clusters endpoint should restrict public access
 Description: Ensure whether Amazon Elastic Kubernetes Service (Amazon EKS) endpoint is not publicly accessible. The rule is compliant if the endpoint is publicly accessible.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when resources_vpc_config ->> 'EndpointPublicAccess' = 'true' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when resources_vpc_config ->> 'EndpointPublicAccess' = 'true' then title || ' endpoint publicly accessible.'\n    else title || ' endpoint not publicly accessible.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_eks_cluster;\n"
-    Connector: AWS
-    PrimaryTable: aws_eks_cluster
-    ListOfTables:
-        - aws_eks_cluster
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when resources_vpc_config ->> 'EndpointPublicAccess' = 'true' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when resources_vpc_config ->> 'EndpointPublicAccess' = 'true' then title || ' endpoint publicly accessible.'
+        else title || ' endpoint not publicly accessible.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_eks_cluster;
+  Connector:
+  - AWS
+  PrimaryTable: aws_eks_cluster
+  ListOfTables:
+  - aws_eks_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    service:
-        - AWS/EKS
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/EKS
 Managed: false

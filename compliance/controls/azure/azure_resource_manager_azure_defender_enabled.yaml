@@ -2,20 +2,42 @@ ID: azure_resource_manager_azure_defender_enabled
 Title: Azure Defender for Resource Manager should be enabled
 Description: Azure Defender for Resource Manager automatically monitors the resource management operations in your organization. Azure Defender detects threats and alerts you about suspicious activity.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  pricing.id as resource,\n  pricing.kaytu_account_id as kaytu_account_id,\n  pricing.kaytu_resource_id as kaytu_resource_id,\n  case\n    when name = 'Arm' and pricing_tier = 'Standard' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when name = 'Arm' and pricing_tier = 'Standard' then 'Arm azure defender enabled.'\n    else name || 'Arm azure defender disabled.'\n  end as reason\n  \n  , sub.display_name as subscription\nfrom\n  azure_security_center_subscription_pricing as pricing,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = pricing.subscription_id\n  and name = 'Arm';\n"
-    Connector: Azure
-    PrimaryTable: azure_security_center_subscription_pricing
-    ListOfTables:
-        - azure_security_center_subscription_pricing
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      pricing.id as resource,
+      pricing.kaytu_account_id as kaytu_account_id,
+      pricing.kaytu_resource_id as kaytu_resource_id,
+      case
+        when name = 'Arm' and pricing_tier = 'Standard' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when name = 'Arm' and pricing_tier = 'Standard' then 'Arm azure defender enabled.'
+        else name || 'Arm azure defender disabled.'
+      end as reason
+      
+      , sub.display_name as subscription
+    from
+      azure_security_center_subscription_pricing as pricing,
+      azure_subscription as sub
+    where
+      sub.subscription_id = pricing.subscription_id
+      and name = 'Arm';
+  Connector:
+  - Azure
+  PrimaryTable: azure_security_center_subscription_pricing
+  ListOfTables:
+  - azure_security_center_subscription_pricing
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/ResourceManager
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/ResourceManager
 Managed: false

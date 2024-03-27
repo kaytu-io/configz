@@ -25,12 +25,14 @@ Query:
       jsonb_array_elements(server_security_alert_policy) as security,
       jsonb_array_elements_text(security -> 'properties' -> 'disabledAlerts') as disabled_alerts,
       jsonb_array_length(security -> 'properties' -> 'disabledAlerts') as alert_length
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

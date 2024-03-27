@@ -2,6 +2,7 @@ ID: aws_vpc_security_group_restricted_http_ports
 Title: Security groups should not allow unrestricted access to HTTP port
 Description: This control checks whether unrestricted incoming traffic for the security groups is accessible to the HTTP port. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 for that port.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with ingress_ssh_rules as (
@@ -40,11 +41,14 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_ssh_rules on ingress_ssh_rules.group_id = sg.group_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   - aws_vpc_security_group_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -55,4 +59,5 @@ Tags:
   service:
   - AWS/EC2
   soc_2:
-    - "true"
+  - "true"
+Managed: false

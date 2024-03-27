@@ -2,6 +2,7 @@ ID: aws_iam_user_access_key_age_90
 Title: Ensure access keys are rotated every 90 days or less
 Description: Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS. AWS users need their own access keys to make programmatic calls to AWS from the AWS Command Line Interface (AWS CLI), Tools for Windows PowerShell, the AWS SDKs, or direct HTTP calls using the APIs for individual AWS services. It is recommended that all access keys be regularly rotated.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -18,10 +19,13 @@ Query:
       , account_id
     from
       aws_iam_access_key;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_access_key
   ListOfTables:
   - aws_iam_access_key
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -43,3 +47,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
+Managed: false

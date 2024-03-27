@@ -2,6 +2,7 @@ ID: aws_rds_encrypted_with_kms_customer_master_keys
 Title: RDS Encrypted With KMS Customer Master Keys
 Description: Ensure RDS instances are encrypted with CMKs to have full control over encrypting and decrypting data.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
@@ -25,13 +26,16 @@ Query:
     from
       aws_rds_db_instance as v
       left join aws_kms_key as k on v.kms_key_id = k.arn
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
-Managed: false
 Tags:
   score_service_name:
   - AWS Relational Database Service (RDS)
+Managed: false

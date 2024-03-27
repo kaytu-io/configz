@@ -1,23 +1,17 @@
-Description: TLS 1.0 and 1.1 are out-of-date protocols that do not support modern
-  cryptographic algorithms. Disabling inbound TLS 1.0 and 1.1 traffic helps secure
-  apps in an App Service Environment.
 ID: app_service_environment_should_have_tls_1.0_and_1.1_disabled
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT *
-
-    FROM azure_app_service_environment
-
-    WHERE type = ''Microsoft.Web/hostingEnvironments''
-
-    AND (kind = ''ASE%'' OR kaytu_description->>''kind'' LIKE ''ASE%'')
-
-    AND kaytu_description->''Microsoft.Web/HostingEnvironments/clusterSettings'' @>
-    ''[{"name": "DisableTls1.0", "value": "1"}]''
-
-    LIMIT 5;;
-
-    '
-Severity: medium
 Title: App Service Environment should have TLS 1.0 and 1.1 disabled
+Description: TLS 1.0 and 1.1 are out-of-date protocols that do not support modern cryptographic algorithms. Disabling inbound TLS 1.0 and 1.1 traffic helps secure apps in an App Service Environment.
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT *\nFROM azure_app_service_environment\nWHERE type = 'Microsoft.Web/hostingEnvironments'\nAND (kind = 'ASE%' OR kaytu_description->>'kind' LIKE 'ASE%')\nAND kaytu_description->'Microsoft.Web/HostingEnvironments/clusterSettings' @> '[{\"name\": \"DisableTls1.0\", \"value\": \"1\"}]'\nLIMIT 5;;\n"
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

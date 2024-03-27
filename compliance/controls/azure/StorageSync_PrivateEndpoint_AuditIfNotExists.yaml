@@ -2,20 +2,22 @@ ID: azure_file_sync_should_use_private_link
 Title: Azure File Sync should use private link
 Description: Creating a private endpoint for the indicated Storage Sync Service resource allows you to address your Storage Sync Service resource from within the private IP address space of your organization's network, rather than through the internet-accessible public endpoint. Creating a private endpoint by itself does not disable the public endpoint.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_storage_sync
-        WHERE type = 'Microsoft.StorageSync/storageSyncServices'
-        AND kaytu_description -> 'Service' -> 'Properties' -> 'PrivateEndpointConnections' -> 0 ->> 'ProvisioningState' = 'Succeeded'
-        AND kaytu_description -> 'Service' -> 'Properties' -> 'PrivateEndpointConnections' -> 0 -> 'PrivateEndpoint' IS NOT NULL
-        AND kaytu_description -> 'Service' -> 'Properties' -> 'PrivateEndpointConnections' -> 0 -> 'PrivateLinkServiceConnectionState' ->> 'status' = 'Approved'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_storage_sync
+    WHERE type = 'Microsoft.StorageSync/storageSyncServices'
+    AND kaytu_description -> 'Service' -> 'Properties' -> 'PrivateEndpointConnections' -> 0 ->> 'ProvisioningState' = 'Succeeded'
+    AND kaytu_description -> 'Service' -> 'Properties' -> 'PrivateEndpointConnections' -> 0 -> 'PrivateEndpoint' IS NOT NULL
+    AND kaytu_description -> 'Service' -> 'Properties' -> 'PrivateEndpointConnections' -> 0 -> 'PrivateLinkServiceConnectionState' ->> 'status' = 'Approved'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

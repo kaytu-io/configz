@@ -2,6 +2,7 @@ ID: azure_check_for_backups_for_azure_virtual_machines
 Title: Check for Backups for Azure Virtual Machines
 Description: Ensure that Microsoft Azure Backup service is in use for your Azure virtual machines (VMs).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,14 +23,18 @@ Query:
       azure_compute_virtual_machine as vm
       left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
       left join azure_recovery_services_backup_item as bi on vm.id = (bi.properties ->> 'SourceResourceID')
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_recovery_services_backup_item
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_recovery_services_backup_item
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-    - Azure Virtual Machines
+  - Azure Virtual Machines
+Managed: false

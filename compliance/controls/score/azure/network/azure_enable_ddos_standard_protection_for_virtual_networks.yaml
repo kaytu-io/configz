@@ -2,8 +2,8 @@ ID: azure_enable_ddos_standard_protection_for_virtual_networks
 Title: Enable DDoS Standard Protection for Virtual Networks
 Description: Ensure that DDoS standard protection is enabled for production Azure virtual networks.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  Connector: Azure
   QueryToExecute: |
     select
       vn.id as resource,
@@ -24,12 +24,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = vn.subscription_id
+  Connector:
+  - Azure
   PrimaryTable: azure_virtual_network
   ListOfTables:
-    - azure_virtual_network
-    - azure_subscription
+  - azure_virtual_network
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Network
+Managed: false

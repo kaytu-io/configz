@@ -21,11 +21,13 @@ Query:
       account_id
     from
       aws_ecr_repository
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecr_repository
   ListOfTables:
   - aws_ecr_repository
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -2,6 +2,7 @@ ID: aws_opensearch_domain_logs_to_cloudwatch
 Title: OpenSearch domain error logging to CloudWatch Logs should be enabled
 Description: This control checks whether OpenSearch domains are configured to send error logs to CloudWatch Logs. This control fails if error logging to CloudWatch is not enabled for a domain.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -61,10 +62,13 @@ Query:
       , region, account_id
     from
       aws_opensearch_domain;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -80,3 +84,4 @@ Tags:
   - aws
   service:
   - AWS/OpenSearch
+Managed: false

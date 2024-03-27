@@ -24,12 +24,14 @@ Query:
     LEFT JOIN aws_ec2_load_balancer_listener ll ON al.arn = ll.load_balancer_arn
     GROUP BY 
         al.arn, al.kaytu_resource_id, al.kaytu_account_id, al.title, al.region, al.account_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
   - aws_ec2_application_load_balancer
   - aws_ec2_load_balancer_listener
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

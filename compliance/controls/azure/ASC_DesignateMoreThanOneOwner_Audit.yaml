@@ -2,17 +2,19 @@ ID: there_should_be_more_than_one_owner_assigned_to_your_subscription
 Title: There should be more than one owner assigned to your subscription
 Description: It is recommended to designate more than one subscription owner in order to have administrator access redundancy.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description -> '$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code' IN ('NotApplicable', 'Healthy')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description -> '$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code' IN ('NotApplicable', 'Healthy')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

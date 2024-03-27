@@ -2,6 +2,7 @@ ID: azure_enable_immutable_blob_storage
 Title: Enable Immutable Blob Storage
 Description: Ensure that critical Azure Blob Storage data is protected from accidental deletion or modification.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,13 +24,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = sc.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
-    - azure_storage_account
-    - azure_subscription
+  - azure_storage_account
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Storage Accounts
+Managed: false

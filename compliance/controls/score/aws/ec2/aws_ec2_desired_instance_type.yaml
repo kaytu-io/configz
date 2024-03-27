@@ -23,13 +23,15 @@ Query:
       account_id
     FROM 
       aws_ec2_instance
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
   - aws_ec2_instance
   Parameters:
   - Key: awsAllowedInstanceTypes
     Required: false
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -1,7 +1,8 @@
 ID: aws_iam_user_access_key_after_initial_setup
-Title:
-Description:
+Title: ""
+Description: ""
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with used_credentials as (
@@ -36,28 +37,32 @@ Query:
         aws_iam_user.account_id
     from aws_iam_user
         left join used_credentials on used_credentials.user_arn = aws_iam_user.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_access_key
   ListOfTables:
-    - aws_iam_access_key
+  - aws_iam_access_key
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   category:
-    - Compliance
+  - Compliance
   cis:
-    - "true"
+  - "true"
   cis_item_id:
-    - "1.4"
+  - "1.4"
   cis_level:
-    - "1"
+  - "1"
   cis_section_id:
-    - "1"
+  - "1"
   cis_type:
-    - scored
+  - scored
   cis_version:
-    - v1.2.0
+  - v1.2.0
   plugin:
-    - aws
+  - aws
   service:
-    - AWS/IAM
+  - AWS/IAM
+Managed: false

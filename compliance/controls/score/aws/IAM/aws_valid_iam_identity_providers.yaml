@@ -32,13 +32,15 @@ Query:
       account_id
     FROM 
       aws_iam_saml_provider AS p
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_saml_provider
   ListOfTables:
   - aws_iam_saml_provider
   Parameters:
   - Key: awsTrustedEndpoints
     Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

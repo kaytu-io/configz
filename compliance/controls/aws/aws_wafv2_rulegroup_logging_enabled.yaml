@@ -2,6 +2,7 @@ ID: aws_wafv2_rulegroup_logging_enabled
 Title: Amazon CloudWatch security metrics collection should be enabled on AWS WAFv2 rule groups
 Description: Checks if Amazon CloudWatch security metrics collection is enabled on AWS WAFv2 rule groups. The rule is ALARM if the AWS WAFv2 rule group does not have Amazon CloudWatch security metrics collection enabled.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -18,11 +19,14 @@ Query:
       END as reason
     FROM 
       aws_wafv2_rule_group
-
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_wafv2_rule_group
   ListOfTables:
-    - aws_wafv2_rule_group
-
+  - aws_wafv2_rule_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

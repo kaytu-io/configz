@@ -2,20 +2,54 @@ ID: azure_signalr_service_private_link_used
 Title: Azure SignalR Service should use private link
 Description: Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The private link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Azure SignalR Service resource instead of the entire service, you'll reduce your data leakage risks.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with signalr_service_connection as (\n  select\n    distinct a.id\n  from\n    azure_signalr_service as a,\n    jsonb_array_elements(private_endpoint_connections) as connection\n  where\n    connection -> 'PrivateLinkServiceConnectionState' ->> 'status' = 'Approved'\n)\nselect\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when sku ->> 'tier' = 'Free' then 'skip'\n    when c.id is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when sku ->>'tier' = 'Free' then a.name || ' is of ' || (sku ->>'tier' )|| ' tier.'\n    when c.id is null then a.name || ' not uses private link.'\n    else a.name || ' uses private link.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_signalr_service as a\n  left join signalr_service_connection as c on c.id = a.id,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_signalr_service
-    ListOfTables:
-        - azure_signalr_service
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with signalr_service_connection as (
+      select
+        distinct a.id
+      from
+        azure_signalr_service as a,
+        jsonb_array_elements(private_endpoint_connections) as connection
+      where
+        connection -> 'PrivateLinkServiceConnectionState' ->> 'status' = 'Approved'
+    )
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when sku ->> 'tier' = 'Free' then 'skip'
+        when c.id is null then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when sku ->>'tier' = 'Free' then a.name || ' is of ' || (sku ->>'tier' )|| ' tier.'
+        when c.id is null then a.name || ' not uses private link.'
+        else a.name || ' uses private link.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_signalr_service as a
+      left join signalr_service_connection as c on c.id = a.id,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_signalr_service
+  ListOfTables:
+  - azure_signalr_service
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/SignalRService
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/SignalRService
 Managed: false

@@ -25,12 +25,14 @@ Query:
       left join azure_compute_virtual_machine as vm on vm.os_disk_name = disk.name
     where
       vm.id is not null
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -1,19 +1,21 @@
 ID: managed_disks_should_disable_public_network_access
 Title: Managed disks should disable public network access
-Description: 'Disabling public network access improves security by ensuring that a managed disk isn''t exposed on the public internet. Creating private endpoints can limit exposure of managed disks. Learn more at: https://aka.ms/disksprivatelinksdoc.'
+Description: "Disabling public network access improves security by ensuring that a managed disk isn't exposed on the public internet. Creating private endpoints can limit exposure of managed disks. Learn more at: https://aka.ms/disksprivatelinksdoc."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_compute_disk
-        WHERE type = 'Microsoft.Compute/disks'
-        AND (network_access_policy NOT IN ('DenyAll', 'AllowPrivate') OR kaytu_description->'definitions'->'ComputeDiskDescription'->'properties'->'Disk'->'properties'->'Properties'->'properties'->>'PublicNetworkAccess' != 'Disabled')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_compute_disk
+    WHERE type = 'Microsoft.Compute/disks'
+    AND (network_access_policy NOT IN ('DenyAll', 'AllowPrivate') OR kaytu_description->'definitions'->'ComputeDiskDescription'->'properties'->'Disk'->'properties'->'Properties'->'properties'->>'PublicNetworkAccess' != 'Disabled')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

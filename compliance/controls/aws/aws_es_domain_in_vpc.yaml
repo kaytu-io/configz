@@ -2,51 +2,69 @@ ID: aws_es_domain_in_vpc
 Title: ES domains should be in a VPC
 Description: Manage access to the AWS Cloud by ensuring Amazon Elasticsearch Service (Amazon ES) Domains are within an Amazon Virtual Private Cloud (Amazon VPC).
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when vpc_options ->> 'VPCId' is null then 'alarm'\n    else 'ok'\n  end status,\n  case\n    when vpc_options ->> 'VPCId' is null then title || ' not in VPC.'\n    else title || ' in VPC ' || (vpc_options ->> 'VPCId') || '.'\n  end reason\n  \n  , region, account_id\nfrom\n  aws_elasticsearch_domain;\n"
-    Connector: AWS
-    PrimaryTable: aws_elasticsearch_domain
-    ListOfTables:
-        - aws_elasticsearch_domain
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when vpc_options ->> 'VPCId' is null then 'alarm'
+        else 'ok'
+      end status,
+      case
+        when vpc_options ->> 'VPCId' is null then title || ' not in VPC.'
+        else title || ' in VPC ' || (vpc_options ->> 'VPCId') || '.'
+      end reason
+      
+      , region, account_id
+    from
+      aws_elasticsearch_domain;
+  Connector:
+  - AWS
+  PrimaryTable: aws_elasticsearch_domain
+  ListOfTables:
+  - aws_elasticsearch_domain
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/ES
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/ES
+  soc_2:
+  - "true"
 Managed: false

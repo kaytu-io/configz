@@ -46,11 +46,13 @@ Query:
       account_id
     from
       aws_ec2_gateway_load_balancer;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
   - aws_ec2_gateway_load_balancer
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

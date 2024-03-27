@@ -2,6 +2,7 @@ ID: aws_wafv2_rule_group_rule_attached
 Title: A WAF rule group should have rules attached
 Description: Checks if AWS WAFv2 rule groups have rules attached. The rule is ALARM if the rule group does not have any rules attached.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -19,9 +20,14 @@ Query:
       , region, account_id
     from
       aws_wafv2_rule_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_wafv2_rule_group
   ListOfTables:
   - aws_wafv2_rule_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
+Tags: {}
+Managed: false

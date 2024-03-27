@@ -22,13 +22,17 @@ Query:
     from
       azure_mysql_server as s
       left join azure_subscription as sub on s.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_mysql_server
   ListOfTables:
-    - azure_mysql_server
-    - azure_subscription
+  - azure_mysql_server
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - Azure Database for MySQL
+  - Azure Database for MySQL
+Managed: false

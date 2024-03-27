@@ -2,6 +2,7 @@ ID: aws_kinesis_stream_server_side_encryption_enabled
 Title: Kinesis Data Streams should be encrypted at rest
 Description: This control checks if Kinesis Data Streams are encrypted at rest with server-side encryption. This control fails if a Kinesis stream is not encrypted at rest with server-side encryption.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_kinesis_stream;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_kinesis_stream
   ListOfTables:
   - aws_kinesis_stream
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/Kinesis
+Managed: false

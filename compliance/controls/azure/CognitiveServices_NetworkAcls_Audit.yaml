@@ -2,18 +2,20 @@ ID: cognitive_services_accounts_should_restrict_network_access
 Title: Cognitive Services accounts should restrict network access
 Description: Network access to Cognitive Services accounts should be restricted. Configure network rules so only applications from allowed networks can access the Cognitive Services account. To allow connections from specific internet or on-premises clients, access can be granted to traffic from specific Azure virtual networks or to public internet IP address ranges.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_cognitive_account
-        WHERE type = 'Microsoft.CognitiveServices/accounts'
-        AND (network_acls->>'defaultAction' IS NULL OR network_acls->>'defaultAction' != 'Deny')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_cognitive_account
+    WHERE type = 'Microsoft.CognitiveServices/accounts'
+    AND (network_acls->>'defaultAction' IS NULL OR network_acls->>'defaultAction' != 'Deny')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

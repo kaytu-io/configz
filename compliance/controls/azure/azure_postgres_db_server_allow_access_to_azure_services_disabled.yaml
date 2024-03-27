@@ -2,6 +2,7 @@ ID: azure_postgres_db_server_allow_access_to_azure_services_disabled
 Title: Ensure 'Allow access to Azure services' for PostgreSQL Database Server is disabled
 Description: Disable access from Azure services to PostgreSQL Database Server.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with postgres_db_with_allow_access_to_azure_services as (
@@ -35,11 +36,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_postgresql_server
   ListOfTables:
   - azure_postgresql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -61,3 +65,4 @@ Tags:
   - azure
   service:
   - Azure/PostgreSQL
+Managed: false

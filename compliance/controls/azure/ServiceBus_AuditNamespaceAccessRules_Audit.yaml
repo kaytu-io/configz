@@ -2,18 +2,20 @@ ID: all_authorization_rules_except_root_manage_shared_access_key_should_be_remov
 Title: All authorization rules except RootManageSharedAccessKey should be removed from Service Bus namespace
 Description: Service Bus clients should not use a namespace level access policy that provides access to all queues and topics in a namespace. To align with the least privilege security model, you should create access policies at the entity level for queues and topics to provide access to only the specific entity
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name
-        FROM azure_servicebus_namespace
-        WHERE type = 'Microsoft.ServiceBus/namespaces/authorizationRules'
-        AND name != 'RootManageSharedAccessKey'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name
+    FROM azure_servicebus_namespace
+    WHERE type = 'Microsoft.ServiceBus/namespaces/authorizationRules'
+    AND name != 'RootManageSharedAccessKey'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

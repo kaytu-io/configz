@@ -2,6 +2,7 @@ ID: aws_opensearch_domain_https_required
 Title: Connections to OpenSearch domains should be encrypted using TLS 1.2
 Description: This control checks whether connections to OpenSearch domains are required to use TLS 1.2. The check fails if the OpenSearch domain TLSSecurityPolicy is not Policy-Min-TLS-1-2-2019-07.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_opensearch_domain;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/OpenSearch
+Managed: false

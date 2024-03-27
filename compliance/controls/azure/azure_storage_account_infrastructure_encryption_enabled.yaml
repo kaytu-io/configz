@@ -2,6 +2,7 @@ ID: azure_storage_account_infrastructure_encryption_enabled
 Title: Ensure that 'Enable Infrastructure Encryption' for Each Storage Account in Azure Storage is Set to ‘enabled’
 Description: Enabling double encryption at the hardware level on top of the default software encryption for Storage Accounts accessing Azure storage solutions.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,11 +25,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -50,3 +54,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
+Managed: false

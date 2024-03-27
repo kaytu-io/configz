@@ -2,6 +2,7 @@ ID: azure_ad_guest_user_reviewed_monthly
 Title: Ensure guest users are reviewed on a monthly basis
 Description: Guest users allow you to share your company's applications and services with users from any other organization, while maintaining control over your own corporate data. Guest users should be review on a monthly basis to ensure that inactive and unneeded accounts are removed.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,13 +25,16 @@ Query:
       left join azure_tenant as t on t.tenant_id = u.tenant_id
     where
       u.user_type = 'Guest';
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azuread_user
   ListOfTables:
   - azure_tenant
   - azuread_user
   - azure_tenant
   - azuread_user
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -52,3 +56,4 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
+Managed: false

@@ -45,12 +45,14 @@ Query:
       , account_id
     from
       support_role_count;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_iam_role
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

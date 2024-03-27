@@ -61,13 +61,15 @@ Query:
       account_id
     FROM
       aws_iam_user
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_credential_report
   ListOfTables:
   - aws_iam_credential_report
   Parameters:
   - Key: awsIamUsersAuthorizedToEditPolicy
     Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -2,6 +2,7 @@ ID: aws_ecr_repository_image_scan_on_push_enabled
 Title: ECR private repositories should have image scanning configured
 Description: This control checks whether a private ECR repository has image scanning configured. This control fails if a private ECR repository doesn't have image scanning configured.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_ecr_repository;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecr_repository
   ListOfTables:
   - aws_ecr_repository
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/ECR
+Managed: false

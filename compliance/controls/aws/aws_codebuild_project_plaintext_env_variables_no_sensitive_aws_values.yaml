@@ -2,43 +2,73 @@ ID: aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
 Title: CodeBuild project plaintext environment variables should not contain sensitive AWS values
 Description: Ensure authentication credentials AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY do not exist within AWS CodeBuild project environments. Do not store these variables in clear text. Storing these variables in clear text leads to unintended data exposure and unauthorized access.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with invalid_key_name as (\n  select\n    distinct arn,\n    name\n  from\n    aws_codebuild_project,\n    jsonb_array_elements(environment -> 'EnvironmentVariables') as env\n  where\n    env ->> 'Name' ilike any(array['%AWS_ACCESS_KEY_ID%', '%AWS_SECRET_ACCESS_KEY%', '%PASSWORD%'])\n    and env ->> 'Type' = 'PLAINTEXT'\n)\nselect\n  a.arn as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when b.arn is null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when b.arn is null then a.title || ' has no plaintext environment variables with sensitive AWS values.'\n    else a.title || ' has plaintext environment variables with sensitive AWS values.'\n  end as reason\n  \n  , a.region, a.account_id\nfrom\n  aws_codebuild_project as a\n  left join invalid_key_name b on a.arn = b.arn;\n"
-    Connector: AWS
-    PrimaryTable: aws_codebuild_project
-    ListOfTables:
-        - aws_codebuild_project
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with invalid_key_name as (
+      select
+        distinct arn,
+        name
+      from
+        aws_codebuild_project,
+        jsonb_array_elements(environment -> 'EnvironmentVariables') as env
+      where
+        env ->> 'Name' ilike any(array['%AWS_ACCESS_KEY_ID%', '%AWS_SECRET_ACCESS_KEY%', '%PASSWORD%'])
+        and env ->> 'Type' = 'PLAINTEXT'
+    )
+    select
+      a.arn as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when b.arn is null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when b.arn is null then a.title || ' has no plaintext environment variables with sensitive AWS values.'
+        else a.title || ' has plaintext environment variables with sensitive AWS values.'
+      end as reason
+      
+      , a.region, a.account_id
+    from
+      aws_codebuild_project as a
+      left join invalid_key_name b on a.arn = b.arn;
+  Connector:
+  - AWS
+  PrimaryTable: aws_codebuild_project
+  ListOfTables:
+  - aws_codebuild_project
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    service:
-        - AWS/CodeBuild
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/CodeBuild
+  soc_2:
+  - "true"
 Managed: false

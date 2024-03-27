@@ -2,19 +2,21 @@ ID: managed_disks_should_use_a_specific_set_of_disk_encryption_sets_for_the_cust
 Title: Managed disks should use a specific set of disk encryption sets for the customer-managed key encryption
 Description: Requiring a specific set of disk encryption sets to be used with managed disks give you control over the keys used for encryption at rest. You are able to select the allowed encrypted sets and all others are rejected when attached to a disk. Learn more at https://aka.ms/disks-cmk.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_compute_disk
-        WHERE type = 'Microsoft.Compute/disks'
-        AND (managed_by IS NULL OR managed_by = '')
-        AND (encryption_disk_encryption_set_id NOT IN ('allowedEncryptionSets') OR encryption_disk_encryption_set_id IS NULL)
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_compute_disk
+    WHERE type = 'Microsoft.Compute/disks'
+    AND (managed_by IS NULL OR managed_by = '')
+    AND (encryption_disk_encryption_set_id NOT IN ('allowedEncryptionSets') OR encryption_disk_encryption_set_id IS NULL)
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

@@ -2,6 +2,7 @@ ID: azure_monitor_diagnostic_settings_captures_proper_categories
 Title: Ensure Diagnostic Setting captures appropriate categories
 Description: Enable Diagnostic settings for exporting activity logs. Diagnostic setting are available for each individual resources within a subscription. Settings should be configured for all appropriate resources for your environment.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with enabled_settings as (
@@ -53,11 +54,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = sett.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_diagnostic_setting
   ListOfTables:
   - azure_diagnostic_setting
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -79,3 +83,4 @@ Tags:
   - azure
   service:
   - Azure/Monitor
+Managed: false

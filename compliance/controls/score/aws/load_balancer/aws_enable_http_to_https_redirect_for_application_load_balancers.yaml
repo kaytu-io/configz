@@ -36,11 +36,13 @@ Query:
     from
       aws_ec2_application_load_balancer a
       left join detailed_listeners b on a.arn = b.load_balancer_arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
   - aws_ec2_application_load_balancer
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

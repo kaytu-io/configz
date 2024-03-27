@@ -23,11 +23,13 @@ Query:
       organization_id,
       kaytu_account_id,
       kaytu_resource_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

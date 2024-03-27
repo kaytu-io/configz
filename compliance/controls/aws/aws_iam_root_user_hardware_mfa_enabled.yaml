@@ -2,6 +2,7 @@ ID: aws_iam_root_user_hardware_mfa_enabled
 Title: IAM root user hardware MFA should be enabled
 Description: Manage access to resources in the AWS Cloud by ensuring hardware MFA is enabled for the root user.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,11 +22,14 @@ Query:
     from
       aws_iam_account_summary as s
       left join aws_iam_virtual_mfa_device on serial_number = 'arn:' || s.partition || ':iam::' || s.account_id || ':mfa/root-account-mfa-device';
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_account_summary
   ListOfTables:
   - aws_iam_account_summary
   - aws_iam_virtual_mfa_device
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -65,3 +69,4 @@ Tags:
   - AWS/IAM
   soc_2:
   - "true"
+Managed: false

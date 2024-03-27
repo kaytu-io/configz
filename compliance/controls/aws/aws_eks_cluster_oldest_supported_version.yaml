@@ -1,7 +1,8 @@
 ID: aws_eks_cluster_oldest_supported_version
-Title:
-Description:
+Title: ""
+Description: ""
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -18,12 +19,16 @@ Query:
       END AS reason
     FROM 
       aws_eks_cluster
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
-    - aws_eks_cluster
+  - aws_eks_cluster
   Parameters:
-    - Key: awsEksClusterOldestVersionSupported
-      Required: true
+  - Key: awsEksClusterOldestVersionSupported
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

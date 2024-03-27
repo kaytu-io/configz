@@ -1,14 +1,9 @@
-Description: ""
-DocumentURI: ""
 ID: aws_iam_user_should_not_have_admin_permission
-Managed: true
-ManualVerification: false
+Title: An IAM privileged user should not have admin permissions in AWS
+Description: ""
 Query:
-  Connector: AWS
+  ID: ""
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_iam_user
-  PrimaryTable: aws_iam_user
   QueryToExecute: |
     with users_with_admin_access as (
         select aws_iam_user.name as user_name,
@@ -34,6 +29,14 @@ Query:
         'alarm' as status,
         'User ' || user_name || ' has ' || access as reason
     from users_with_admin_access;
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+  - aws_iam_user
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: high
 Tags:
   category: []
@@ -48,4 +51,4 @@ Tags:
   x-kaytu-explanation: []
   x-kaytu-noncompliance-cost: []
   x-kaytu-usefulness-example: []
-Title: An IAM privileged user should not have admin permissions in AWS
+Managed: true

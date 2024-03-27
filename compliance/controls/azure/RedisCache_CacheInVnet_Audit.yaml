@@ -1,18 +1,20 @@
-ID: '[_deprecated]:_azure_cache_for_redis_should_reside_within_a_virtual_network'
-Title: '[Deprecated]: Azure Cache for Redis should reside within a virtual network'
+ID: "[_deprecated]:_azure_cache_for_redis_should_reside_within_a_virtual_network"
+Title: "[Deprecated]: Azure Cache for Redis should reside within a virtual network"
 Description: Azure Virtual Network deployment provides enhanced security and isolation for your Azure Cache for Redis, as well as subnets, access control policies, and other features to further restrict access.When an Azure Cache for Redis instance is configured with a virtual network, it is not publicly addressable and can only be accessed from virtual machines and applications within the virtual network.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, type, provisioning_state, redis_version, enable_non_ssl_port, host_name, minimum_tls_version, port, public_network_access, sku_capacity, sku_family, sku_name, ssl_port, subnet_id, static_ip, replicas_per_master, shard_count, access_keys, linked_servers, instances, private_endpoint_connections, redis_configuration, tenant_settings, zones, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
-        FROM azure_redis_cache
-        WHERE type = 'Microsoft.Cache/redis' AND (subnet_id IS NULL OR json_extract_path_text(kaytu_description, 'RedisCacheDescription.ResourceInfo.Properties.SubnetID') IS NULL)
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, type, provisioning_state, redis_version, enable_non_ssl_port, host_name, minimum_tls_version, port, public_network_access, sku_capacity, sku_family, sku_name, ssl_port, subnet_id, static_ip, replicas_per_master, shard_count, access_keys, linked_servers, instances, private_endpoint_connections, redis_configuration, tenant_settings, zones, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
+    FROM azure_redis_cache
+    WHERE type = 'Microsoft.Cache/redis' AND (subnet_id IS NULL OR json_extract_path_text(kaytu_description, 'RedisCacheDescription.ResourceInfo.Properties.SubnetID') IS NULL)
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags: {}

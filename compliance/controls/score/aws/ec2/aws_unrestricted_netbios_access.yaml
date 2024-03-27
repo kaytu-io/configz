@@ -33,13 +33,15 @@ Query:
       aws_vpc_security_group
     WHERE
       exists (select 1 from jsonb_array_elements(ip_permissions) as p where ((p ->> 'FromPort') in ('137', '138', '139')) and ((p ->> 'ToPort') in ('137', '138', '139')))
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   Parameters:
   - Key: awsNetBiosTrustedIpRange
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -55,11 +55,13 @@ Query:
     from
       instance_pg as i
       left join pg_with_ssl_enabled as p on p.name = i.pg_name
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_snapshot
   ListOfTables:
   - aws_rds_db_snapshot
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

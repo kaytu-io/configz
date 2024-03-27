@@ -29,12 +29,14 @@ Query:
     from
       aws_ec2_application_load_balancer as lb
       left join associated_resource as ar on lb.arn = ar.arns;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
   - aws_ec2_application_load_balancer
   - aws_wafv2_web_acl
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

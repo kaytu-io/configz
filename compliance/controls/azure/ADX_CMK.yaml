@@ -2,23 +2,25 @@ ID: azure_data_explorer_encryption_at_rest_should_use_a_customer_managed_key
 Title: Azure Data Explorer encryption at rest should use a customer-managed key
 Description: Enabling encryption at rest using a customer-managed key on your Azure Data Explorer cluster provides additional control over the key being used by the encryption at rest. This feature is oftentimes applicable to customers with special compliance requirements and requires a Key Vault to managing the keys.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_kusto_cluster
-        WHERE type = 'Microsoft.Kusto/Clusters'
-        AND (
-            (key_vault_properties IS NULL)
-            OR (key_vault_properties ->> 'keyName' IS NULL)
-            OR (key_vault_properties ->> 'keyVersion' IS NULL)
-            OR (key_vault_properties ->> 'keyVaultUri' IS NULL)
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_kusto_cluster
+    WHERE type = 'Microsoft.Kusto/Clusters'
+    AND (
+        (key_vault_properties IS NULL)
+        OR (key_vault_properties ->> 'keyName' IS NULL)
+        OR (key_vault_properties ->> 'keyVersion' IS NULL)
+        OR (key_vault_properties ->> 'keyVaultUri' IS NULL)
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

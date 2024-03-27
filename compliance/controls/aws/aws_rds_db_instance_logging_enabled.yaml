@@ -2,53 +2,86 @@ ID: aws_rds_db_instance_logging_enabled
 Title: Database logging should be enabled
 Description: To help with logging and monitoring within your environment, ensure Amazon Relational Database Service (Amazon RDS) logging is enabled.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id as kaytu_account_id,\n  kaytu_resource_id as kaytu_resource_id,\n  case\n    when engine = 'docdb' then 'skip'\n    when engine like any (array ['mariadb', '%mysql']) and enabled_cloudwatch_logs_exports ?& array ['audit','error','general','slowquery'] then 'ok'\n    when engine like any (array['%postgres%']) and enabled_cloudwatch_logs_exports ?& array ['postgresql','upgrade'] then 'ok'\n    when engine like 'oracle%' and enabled_cloudwatch_logs_exports ?& array ['alert','audit', 'trace','listener'] then 'ok'\n    when engine = 'sqlserver-ex' and enabled_cloudwatch_logs_exports ?& array ['error'] then 'ok'\n    when engine like 'sqlserver%' and enabled_cloudwatch_logs_exports ?& array ['error','agent'] then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when engine = 'docdb' then title || ' is docdb instance.'\n    when engine like any (array ['mariadb', '%mysql']) and enabled_cloudwatch_logs_exports ?& array ['audit','error','general','slowquery']\n    then title || ' ' || engine || ' logging enabled.'\n    when engine like any (array['%postgres%']) and enabled_cloudwatch_logs_exports ?& array ['postgresql','upgrade']\n    then title || ' ' || engine || ' logging enabled.'\n    when engine like 'oracle%' and enabled_cloudwatch_logs_exports ?& array ['alert','audit', 'trace','listener']\n    then title || ' ' || engine || ' logging enabled.'\n    when engine = 'sqlserver-ex' and enabled_cloudwatch_logs_exports ?& array ['error']\n    then title || ' ' || engine || ' logging enabled.'\n    when engine like 'sqlserver%' and enabled_cloudwatch_logs_exports ?& array ['error','agent']\n    then title || ' ' || engine || ' logging enabled.'\n    else title || ' logging not enabled.'\n  end as reason\n  \n  , region, account_id\nfrom\n  aws_rds_db_instance;\n"
-    Connector: AWS
-    PrimaryTable: aws_rds_db_instance
-    ListOfTables:
-        - aws_rds_db_instance
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      arn as resource,
+      kaytu_account_id as kaytu_account_id,
+      kaytu_resource_id as kaytu_resource_id,
+      case
+        when engine = 'docdb' then 'skip'
+        when engine like any (array ['mariadb', '%mysql']) and enabled_cloudwatch_logs_exports ?& array ['audit','error','general','slowquery'] then 'ok'
+        when engine like any (array['%postgres%']) and enabled_cloudwatch_logs_exports ?& array ['postgresql','upgrade'] then 'ok'
+        when engine like 'oracle%' and enabled_cloudwatch_logs_exports ?& array ['alert','audit', 'trace','listener'] then 'ok'
+        when engine = 'sqlserver-ex' and enabled_cloudwatch_logs_exports ?& array ['error'] then 'ok'
+        when engine like 'sqlserver%' and enabled_cloudwatch_logs_exports ?& array ['error','agent'] then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when engine = 'docdb' then title || ' is docdb instance.'
+        when engine like any (array ['mariadb', '%mysql']) and enabled_cloudwatch_logs_exports ?& array ['audit','error','general','slowquery']
+        then title || ' ' || engine || ' logging enabled.'
+        when engine like any (array['%postgres%']) and enabled_cloudwatch_logs_exports ?& array ['postgresql','upgrade']
+        then title || ' ' || engine || ' logging enabled.'
+        when engine like 'oracle%' and enabled_cloudwatch_logs_exports ?& array ['alert','audit', 'trace','listener']
+        then title || ' ' || engine || ' logging enabled.'
+        when engine = 'sqlserver-ex' and enabled_cloudwatch_logs_exports ?& array ['error']
+        then title || ' ' || engine || ' logging enabled.'
+        when engine like 'sqlserver%' and enabled_cloudwatch_logs_exports ?& array ['error','agent']
+        then title || ' ' || engine || ' logging enabled.'
+        else title || ' logging not enabled.'
+      end as reason
+      
+      , region, account_id
+    from
+      aws_rds_db_instance;
+  Connector:
+  - AWS
+  PrimaryTable: aws_rds_db_instance
+  ListOfTables:
+  - aws_rds_db_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gdpr:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/RDS
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gdpr:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/RDS
+  soc_2:
+  - "true"
 Managed: false

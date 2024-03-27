@@ -36,12 +36,14 @@ Query:
     from
       azure_key_vault as v
       left join azure_subscription as sub on v.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_subscription
   ListOfTables:
   - azure_key_vault
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

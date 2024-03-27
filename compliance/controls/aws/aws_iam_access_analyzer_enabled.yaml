@@ -2,54 +2,18 @@ ID: aws_iam_access_analyzer_enabled
 Title: Ensure AWS Accounts have IAM Access analyzer enabled
 Description: Enable IAM Access analyzer for IAM policies about all resources. IAM Access Analyzer is a technology introduced at AWS reinvent 2019. After the Analyzer is enabled in IAM, scan results are displayed on the console showing the accessible resources. Scans show resources that other accounts and federated users can access, such as KMS keys and IAM roles. So the results allow you to determine if an unintended user is allowed, making it easier for administrators to monitor least privileges access.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with regions as (
-      select
-        'arn:' || r.partition || '::' || r.region || ':' || r.account_id as resource,
-        r.kaytu_account_id as kaytu_account_id,
-        r.kaytu_resource_id as kaytu_resource_id,
-        case
-          when r.opt_in_status = 'not-opted-in' then 1
-          when aa.arn is not null then 0
-          else 2
-        end as status,
-        r.region, r.account_id
-      from
-        aws_region as r
-          left join aws_accessanalyzer_analyzer as aa on r.account_id = aa.account_id and r.region = aa.region
-    ),
-    results as (
-      SELECT
-        account_id AS resource,
-        kaytu_account_id as kaytu_account_id,
-        kaytu_account_id as kaytu_resource_id,
-        case
-          when max(status) = 2 then 'alarm'
-          when max(status) = 1 then 'skip'
-          when max(status) = 0 then 'ok'
-        end as status,
-        case
-          when max(status) = 2 then 'IAM Access analyzer is not enabled for this account on regions: [' || string_agg(region, ',') || ']' 
-          when max(status) = 1 then 'Account is not opted in regions: [' || string_agg(region, ',') || ']'
-          when max(status) = 0 then 'IAM Access analyzer is enabled for this account on regions: [' || string_agg(region, ',') || ']'
-        end as reason
-      FROM regions
-      GROUP BY account_id, kaytu_account_id
-    )
-    SELECT 
-      r.resource AS resource,
-      r.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      r.status as status,
-      r.reason as reason
-    FROM results as r JOIN aws_account as a ON r.kaytu_account_id = a.kaytu_account_id
-  Connector: AWS
+  QueryToExecute: "with regions as (\n  select\n    'arn:' || r.partition || '::' || r.region || ':' || r.account_id as resource,\n    r.kaytu_account_id as kaytu_account_id,\n    r.kaytu_resource_id as kaytu_resource_id,\n    case\n      when r.opt_in_status = 'not-opted-in' then 1\n      when aa.arn is not null then 0\n      else 2\n    end as status,\n    r.region, r.account_id\n  from\n    aws_region as r\n      left join aws_accessanalyzer_analyzer as aa on r.account_id = aa.account_id and r.region = aa.region\n),\nresults as (\n  SELECT\n    account_id AS resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_account_id as kaytu_resource_id,\n    case\n      when max(status) = 2 then 'alarm'\n      when max(status) = 1 then 'skip'\n      when max(status) = 0 then 'ok'\n    end as status,\n    case\n      when max(status) = 2 then 'IAM Access analyzer is not enabled for this account on regions: [' || string_agg(region, ',') || ']' \n      when max(status) = 1 then 'Account is not opted in regions: [' || string_agg(region, ',') || ']'\n      when max(status) = 0 then 'IAM Access analyzer is enabled for this account on regions: [' || string_agg(region, ',') || ']'\n    end as reason\n  FROM regions\n  GROUP BY account_id, kaytu_account_id\n)\nSELECT \n  r.resource AS resource,\n  r.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  r.status as status,\n  r.reason as reason\nFROM results as r JOIN aws_account as a ON r.kaytu_account_id = a.kaytu_account_id\n"
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_accessanalyzer_analyzer
   - aws_region
   - aws_account
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -71,3 +35,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
+Managed: false

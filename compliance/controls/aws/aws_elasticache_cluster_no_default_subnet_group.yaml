@@ -2,6 +2,7 @@ ID: aws_elasticache_cluster_no_default_subnet_group
 Title: ElastiCache clusters should not use the default subnet group
 Description: This control checks if ElastiCache clusters are configured with a custom subnet group. The control fails for an ElastiCache cluster if CacheSubnetGroupName has the value default.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_elasticache_cluster;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_elasticache_cluster
   ListOfTables:
   - aws_elasticache_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/ElastiCache
+Managed: false

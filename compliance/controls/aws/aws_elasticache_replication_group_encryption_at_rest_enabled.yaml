@@ -2,6 +2,7 @@ ID: aws_elasticache_replication_group_encryption_at_rest_enabled
 Title: ElastiCache for Redis replication groups should be encrypted at rest
 Description: This control checks if ElastiCache for Redis replication groups are encrypted at rest. This control fails if an ElastiCache for Redis replication group isn't encrypted at rest.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -19,10 +20,13 @@ Query:
       , region, account_id
     from
       aws_elasticache_replication_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_elasticache_replication_group
   ListOfTables:
   - aws_elasticache_replication_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -38,3 +42,4 @@ Tags:
   - aws
   service:
   - AWS/ElastiCache
+Managed: false

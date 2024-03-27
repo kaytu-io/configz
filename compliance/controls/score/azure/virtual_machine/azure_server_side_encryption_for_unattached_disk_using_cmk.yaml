@@ -25,12 +25,14 @@ Query:
     where
       sub.subscription_id = disk.subscription_id
       and disk_state = 'Unattached'
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

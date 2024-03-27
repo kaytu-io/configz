@@ -1,8 +1,17 @@
-Description: CMA_C1106 - Review and update the events defined in AU-02
 ID: review_and_update_the_events_defined_in_au_02
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Review and update the events defined in AU-02
+Description: CMA_C1106 - Review and update the events defined in AU-02
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

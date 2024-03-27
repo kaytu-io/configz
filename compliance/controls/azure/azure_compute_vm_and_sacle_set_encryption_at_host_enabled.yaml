@@ -2,21 +2,70 @@ ID: azure_compute_vm_and_sacle_set_encryption_at_host_enabled
 Title: Virtual machines and virtual machine scale sets should have encryption at host enabled
 Description: Use encryption at host to get end-to-end encryption for your virtual machine and virtual machine scale set data. Encryption at host enables encryption at rest for your temporary disk and OS/data disk caches. Temporary and ephemeral OS disks are encrypted with platform-managed keys when encryption at host is enabled. OS/data disk caches are encrypted at rest with either customer-managed or platform-managed key, depending on the encryption type selected on the disk.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "(\n  select\n    a.id as resource,\n    a.kaytu_account_id as kaytu_account_id,\n    a.kaytu_resource_id as kaytu_resource_id,\n    'azure_compute_virtual_machine' as kaytu_table_name,\n    case\n      when security_profile -> 'encryptionAtHost' = 'true' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when security_profile -> 'encryptionAtHost' = 'true' then a.name || ' encryption at host enabled.'\n      else a.name || ' encryption at host disabled.'\n    end as reason\n    \n    , a.resource_group as resource_group\n    , sub.display_name as subscription\n  from\n    azure_compute_virtual_machine as a,\n    azure_subscription as sub\n  where\n    sub.subscription_id = a.subscription_id\n)\nunion\n(\n  select\n    a.id as resource,\n    a.kaytu_account_id as kaytu_account_id,\n    a.kaytu_resource_id as kaytu_resource_id,\n    'azure_compute_virtual_machine_scale_set' as kaytu_table_name,\n    case\n      when virtual_machine_security_profile -> 'encryptionAtHost' = 'true' then 'ok'\n      else 'alarm'\n    end as status,\n    case\n      when virtual_machine_security_profile -> 'encryptionAtHost' = 'true' then a.name || ' encryption at host enabled.'\n      else a.name || ' encryption at host disabled.'\n    end as reason\n    \n    , a.resource_group as resource_group\n    , sub.display_name as subscription\n  from\n    azure_compute_virtual_machine_scale_set as a,\n    azure_subscription as sub\n  where\n    sub.subscription_id = a.subscription_id\n)\n"
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables:
-        - azure_compute_virtual_machine
-        - azure_compute_virtual_machine_scale_set
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    (
+      select
+        a.id as resource,
+        a.kaytu_account_id as kaytu_account_id,
+        a.kaytu_resource_id as kaytu_resource_id,
+        'azure_compute_virtual_machine' as kaytu_table_name,
+        case
+          when security_profile -> 'encryptionAtHost' = 'true' then 'ok'
+          else 'alarm'
+        end as status,
+        case
+          when security_profile -> 'encryptionAtHost' = 'true' then a.name || ' encryption at host enabled.'
+          else a.name || ' encryption at host disabled.'
+        end as reason
+        
+        , a.resource_group as resource_group
+        , sub.display_name as subscription
+      from
+        azure_compute_virtual_machine as a,
+        azure_subscription as sub
+      where
+        sub.subscription_id = a.subscription_id
+    )
+    union
+    (
+      select
+        a.id as resource,
+        a.kaytu_account_id as kaytu_account_id,
+        a.kaytu_resource_id as kaytu_resource_id,
+        'azure_compute_virtual_machine_scale_set' as kaytu_table_name,
+        case
+          when virtual_machine_security_profile -> 'encryptionAtHost' = 'true' then 'ok'
+          else 'alarm'
+        end as status,
+        case
+          when virtual_machine_security_profile -> 'encryptionAtHost' = 'true' then a.name || ' encryption at host enabled.'
+          else a.name || ' encryption at host disabled.'
+        end as reason
+        
+        , a.resource_group as resource_group
+        , sub.display_name as subscription
+      from
+        azure_compute_virtual_machine_scale_set as a,
+        azure_subscription as sub
+      where
+        sub.subscription_id = a.subscription_id
+    )
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables:
+  - azure_compute_virtual_machine
+  - azure_compute_virtual_machine_scale_set
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/Compute
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/Compute
 Managed: false

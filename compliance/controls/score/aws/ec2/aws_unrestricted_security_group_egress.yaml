@@ -2,6 +2,7 @@ ID: aws_unrestricted_security_group_egress
 Title: Unrestricted Security Group Egress
 Description: Ensure no security group contains any 0.0.0.0/0 egress rules
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with egress_sg as (
@@ -44,12 +45,16 @@ Query:
     from
       aws_vpc_security_group as sg
       left join egress_sg as esg on sg.group_id = esg.group_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
-    - aws_vpc_security_group
+  - aws_vpc_security_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS EC2
+Managed: false

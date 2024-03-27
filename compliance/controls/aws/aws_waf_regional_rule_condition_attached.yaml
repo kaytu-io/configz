@@ -2,6 +2,7 @@ ID: aws_waf_regional_rule_condition_attached
 Title: A WAF Regional rule should have at least one condition
 Description: This control checks whether an AWS WAF Regional rule has at least one condition. The control fails if no conditions are present within a rule.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -19,10 +20,13 @@ Query:
       , region, account_id
     from
       aws_wafregional_rule;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_wafregional_rule
   ListOfTables:
   - aws_wafregional_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -38,3 +42,4 @@ Tags:
   - aws
   service:
   - AWS/WAF
+Managed: false

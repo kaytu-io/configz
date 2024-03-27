@@ -1,14 +1,16 @@
-ID: '[_preview]:_guest_attestation_extension_should_be_installed_on_supported_windows_virtual_machines'
-Title: '[Preview]: Guest Attestation extension should be installed on supported Windows virtual machines'
+ID: "[_preview]:_guest_attestation_extension_should_be_installed_on_supported_windows_virtual_machines"
+Title: "[Preview]: Guest Attestation extension should be installed on supported Windows virtual machines"
 Description: Install Guest Attestation extension on supported virtual machines to allow Azure Security Center to proactively attest and monitor the boot integrity. Once installed, boot integrity will be attested via Remote Attestation. This assessment applies to Trusted Launch and Confidential Windows virtual machines.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: ""
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

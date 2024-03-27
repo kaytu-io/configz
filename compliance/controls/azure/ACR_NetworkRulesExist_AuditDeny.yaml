@@ -1,26 +1,28 @@
 ID: container_registries_should_not_allow_unrestricted_network_access
 Title: Container registries should not allow unrestricted network access
-Description: 'Azure container registries by default accept connections over the internet from hosts on any network. To protect your registries from potential threats, allow access from only specific private endpoints, public IP addresses or address ranges. If your registry doesn''t have network rules configured, it will appear in the unhealthy resources. Learn more about Container Registry network rules here: https://aka.ms/acr/privatelink, https://aka.ms/acr/portal/public-network and https://aka.ms/acr/vnet.'
+Description: "Azure container registries by default accept connections over the internet from hosts on any network. To protect your registries from potential threats, allow access from only specific private endpoints, public IP addresses or address ranges. If your registry doesn't have network rules configured, it will appear in the unhealthy resources. Learn more about Container Registry network rules here: https://aka.ms/acr/privatelink, https://aka.ms/acr/portal/public-network and https://aka.ms/acr/vnet."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, kaytu_description->'definitions'->'RegistryProperties'->'properties'->'NetworkRuleSet'->'properties'->>'DefaultAction' AS network_rule_default_action, kaytu_description->'definitions'->'RegistryProperties'->'properties'->>'PublicNetworkAccess' AS public_network_access
-        FROM azure_container_registry
-        WHERE type = 'Microsoft.ContainerRegistry/registries'
-        AND (
-            (network_rule_set_default_action IS NULL AND kaytu_description->'definitions'->'RegistryProperties'->'properties'->'NetworkRuleSet'->'properties'->>'DefaultAction' = 'Allow')
-            OR network_rule_set_default_action = 'Allow'
-        )
-        AND (
-            (public_network_access IS NULL AND kaytu_description->'definitions'->'RegistryProperties'->'properties'->>'PublicNetworkAccess' = 'Enabled')
-            OR public_network_access = 'Enabled'
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, kaytu_description->'definitions'->'RegistryProperties'->'properties'->'NetworkRuleSet'->'properties'->>'DefaultAction' AS network_rule_default_action, kaytu_description->'definitions'->'RegistryProperties'->'properties'->>'PublicNetworkAccess' AS public_network_access
+    FROM azure_container_registry
+    WHERE type = 'Microsoft.ContainerRegistry/registries'
+    AND (
+        (network_rule_set_default_action IS NULL AND kaytu_description->'definitions'->'RegistryProperties'->'properties'->'NetworkRuleSet'->'properties'->>'DefaultAction' = 'Allow')
+        OR network_rule_set_default_action = 'Allow'
+    )
+    AND (
+        (public_network_access IS NULL AND kaytu_description->'definitions'->'RegistryProperties'->'properties'->>'PublicNetworkAccess' = 'Enabled')
+        OR public_network_access = 'Enabled'
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

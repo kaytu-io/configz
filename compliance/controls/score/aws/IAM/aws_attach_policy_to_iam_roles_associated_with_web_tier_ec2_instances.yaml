@@ -2,6 +2,7 @@ ID: aws_attach_policy_to_iam_roles_associated_with_web_tier_ec2_instances
 Title: Attach Policy to IAM Roles Associated with Web-Tier EC2 Instances
 Description: Ensure IAM policy for EC2 IAM roles for web tier is configured.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with iam_roles as (
@@ -52,16 +53,19 @@ Query:
           SELECT jsonb_object_agg(key, value)::text
           FROM jsonb_each_text('{{.awsWebTierTags}}'::jsonb)
         ), '{', ''), '}', '') || '%'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_role
   ListOfTables:
-    - aws_ec2_instance
-    - aws_iam_role
+  - aws_ec2_instance
+  - aws_iam_role
   Parameters:
-    - Key: awsWebTierTags
-      Required: true
+  - Key: awsWebTierTags
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+Managed: false

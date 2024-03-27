@@ -2,6 +2,7 @@ ID: azure_securitycenter_azure_defender_on_for_sqlservervm
 Title: Ensure that Azure Defender is set to On for SQL servers on machines
 Description: Turning on Azure Defender enables threat detection for SQL servers on machines, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,11 +24,14 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       name = 'SqlServerVirtualMachines';
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_subscription_pricing
   ListOfTables:
   - azure_security_center_subscription_pricing
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -49,3 +53,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

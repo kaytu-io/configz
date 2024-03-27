@@ -2,6 +2,7 @@ ID: aws_api_gw_endpoint_type_check
 Title: API Gateway endpoint type should be configured as specified
 Description: Checks if Amazon API Gateway APIs are of the type specified in the rule parameter endpointConfigurationType. The rule returns ALARM if the REST API does not match the endpoint type configured in the rule parameter.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -17,12 +18,16 @@ Query:
         ELSE name || ' endpoint configuration type does not have ' || '{{.awsApiGatewayValidEndpointConfigurationTypes}}' 
       END as reason
     FROM aws_api_gateway_rest_api;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_api_gateway_rest_api
   ListOfTables:
-    - aws_api_gateway_rest_api
+  - aws_api_gateway_rest_api
   Parameters:
-    - Key: awsApiGatewayValidEndpointConfigurationTypes
-      Required: true
+  - Key: awsApiGatewayValidEndpointConfigurationTypes
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

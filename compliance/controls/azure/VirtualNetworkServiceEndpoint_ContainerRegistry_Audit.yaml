@@ -1,23 +1,25 @@
-ID: '[_preview]:_container_registry_should_use_a_virtual_network_service_endpoint'
-Title: '[Preview]: Container Registry should use a virtual network service endpoint'
+ID: "[_preview]:_container_registry_should_use_a_virtual_network_service_endpoint"
+Title: "[Preview]: Container Registry should use a virtual network service endpoint"
 Description: This policy audits any Container Registry not configured to use a virtual network service endpoint.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, kaytu_description->'definitions'->'ContainerRegistryDescription'->'properties'->'RegistryProperties'->'NetworkRuleSet'->>'DefaultAction' AS default_action, kaytu_description->'definitions'->'ContainerRegistryDescription'->'properties'->'RegistryProperties'->'NetworkRuleSet'->'IPRules'->>0->>'Action' AS virtual_network_action
-        FROM azure_container_registry
-        WHERE type = 'Microsoft.ContainerRegistry/registries'
-        AND (
-            (network_rule_set->>'defaultAction' IS NOT NULL AND network_rule_set->>'defaultAction' != 'Deny')
-            OR
-            (network_rule_set->'virtualNetworkRules' IS NULL OR jsonb_array_length(network_rule_set->'virtualNetworkRules') = 0)
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, kaytu_description->'definitions'->'ContainerRegistryDescription'->'properties'->'RegistryProperties'->'NetworkRuleSet'->>'DefaultAction' AS default_action, kaytu_description->'definitions'->'ContainerRegistryDescription'->'properties'->'RegistryProperties'->'NetworkRuleSet'->'IPRules'->>0->>'Action' AS virtual_network_action
+    FROM azure_container_registry
+    WHERE type = 'Microsoft.ContainerRegistry/registries'
+    AND (
+        (network_rule_set->>'defaultAction' IS NOT NULL AND network_rule_set->>'defaultAction' != 'Deny')
+        OR
+        (network_rule_set->'virtualNetworkRules' IS NULL OR jsonb_array_length(network_rule_set->'virtualNetworkRules') = 0)
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

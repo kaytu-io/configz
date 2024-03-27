@@ -2,19 +2,21 @@ ID: azure_monitor_solution_'_security_and_audit'_must_be_deployed
 Title: Azure Monitor solution 'Security and Audit' must be deployed
 Description: This policy ensures that Security and Audit is deployed.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.locationPlacementId' = 'Succeeded'
-        AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.quotaId' LIKE 'Security%'
-        AND kaytu_description ->> '$.type' = 'Microsoft.Resources/subscriptions'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.locationPlacementId' = 'Succeeded'
+    AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.quotaId' LIKE 'Security%'
+    AND kaytu_description ->> '$.type' = 'Microsoft.Resources/subscriptions'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

@@ -2,6 +2,7 @@ ID: azure_securitycenter_azure_defender_on_for_dns
 Title: Ensure That Microsoft Defender for DNS Is Set To 'On'
 Description: Microsoft Defender for DNS scans all network traffic exiting from within a subscription.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,11 +24,14 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       name = 'Dns';
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_subscription_pricing
   ListOfTables:
   - azure_security_center_subscription_pricing
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -49,3 +53,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

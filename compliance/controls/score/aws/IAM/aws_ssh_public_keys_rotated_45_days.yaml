@@ -2,6 +2,7 @@ ID: aws_ssh_public_keys_rotated_45_days
 Title: SSH Public Keys Rotated 45 Days
 Description: Ensure IAM SSH public keys are rotated on a periodic basis to adhere to AWS security best practices.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -20,12 +21,16 @@ Query:
       account_id
     FROM 
       aws_iam_ssh_public_key
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_ssh_public_key
   ListOfTables:
-    - aws_iam_ssh_public_key
+  - aws_iam_ssh_public_key
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-    - AWS Identity and Access Management (IAM)
+  - AWS Identity and Access Management (IAM)
+Managed: false

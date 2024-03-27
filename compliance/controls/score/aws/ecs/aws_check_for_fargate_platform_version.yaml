@@ -21,13 +21,15 @@ Query:
       account_id
     from
       aws_ecs_service
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecs_service
   ListOfTables:
   - aws_ecs_service
   Parameters:
   - Key: awsEcsServicePlatformVersion
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

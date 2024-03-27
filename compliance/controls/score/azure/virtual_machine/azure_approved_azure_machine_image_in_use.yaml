@@ -2,6 +2,7 @@ ID: azure_approved_azure_machine_image_in_use
 Title: Approved Azure Machine Image in Use
 Description: Ensure that all your Azure virtual machine instances are launched from approved machine images only.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,13 +24,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = vm.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+Managed: false

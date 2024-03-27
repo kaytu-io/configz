@@ -1,13 +1,9 @@
-Description: ""
 ID: aws_vpc_network_acl_should_enforce_outbound_traffic_restrictions
-Managed: true
-ManualVerification: false
+Title: Network ACLs should enforce outbound traffic restrictions.
+Description: ""
 Query:
-  Connector: AWS
+  ID: ""
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_vpc_network_acl
-  PrimaryTable: aws_vpc_network_acl
   QueryToExecute: |
     with bad_rules as (
         select network_acl_id,
@@ -39,18 +35,26 @@ Query:
         acl.account_id
     from aws_vpc_network_acl as acl
         left join bad_rules on bad_rules.network_acl_id = acl.network_acl_id;
-Severity: "medium"
+  Connector:
+  - AWS
+  PrimaryTable: aws_vpc_network_acl
+  ListOfTables:
+  - aws_vpc_network_acl
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
 Tags:
   category:
-    - Compliance
+  - Compliance
   cis_controls_v8_ig1:
-    - "true"
+  - "true"
   cisa_cyber_essentials:
-    - "true"
+  - "true"
   nist_csf:
-    - "true"
+  - "true"
   plugin:
-    - aws
+  - aws
   service:
-    - AWS/VPC
-Title: Network ACLs should enforce outbound traffic restrictions.
+  - AWS/VPC
+Managed: true

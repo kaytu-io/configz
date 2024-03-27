@@ -2,6 +2,7 @@ ID: aws_only_approved_permission_set_can_be_assigned_to_users
 Title: Only Approved Permission set can be assigned to Users
 Description: Only Approved Permission set can be assigned to Users
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select 
@@ -24,13 +25,17 @@ Query:
       ps.account_id 
     from 
       aws_ssoadmin_permission_set as ps 
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ssoadmin_permission_set
   ListOfTables:
-    - aws_ssoadmin_permission_set
-    - aws_ssoadmin_account_assignment
+  - aws_ssoadmin_permission_set
+  - aws_ssoadmin_account_assignment
   Parameters:
-    - Key: awsApprovedPermissionSets
-      Required: true
+  - Key: awsApprovedPermissionSets
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

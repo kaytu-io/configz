@@ -2,6 +2,7 @@ ID: aws_lambda_function_use_latest_runtime
 Title: Lambda functions should use latest runtimes
 Description: "This control checks that the Lambda function settings for runtimes match the expected values set for the latest runtimes for each supported language. This control checks for the following runtimes: nodejs14.x, nodejs12.x, nodejs10.x, python3.8, python3.7, python3.6, ruby2.7, ruby2.5,java11, java8, go1.x, dotnetcore3.1, dotnetcore2.1."
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -22,10 +23,13 @@ Query:
       , region, account_id
     from
       aws_lambda_function;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_lambda_function
   ListOfTables:
   - aws_lambda_function
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -41,3 +45,4 @@ Tags:
   - aws
   service:
   - AWS/Lambda
+Managed: false

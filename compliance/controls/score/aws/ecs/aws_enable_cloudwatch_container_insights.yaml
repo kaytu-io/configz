@@ -29,10 +29,13 @@ Query:
       account_id
     from
       aws_ecs_cluster
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecs_container_instance
   ListOfTables:
   - aws_ecs_container_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

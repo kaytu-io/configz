@@ -2,6 +2,7 @@ ID: azure_sql_server_atp_enabled
 Title: Ensure that Advanced Threat Protection (ATP) on a SQL server is set to 'Enabled'
 Description: Enable "Azure Defender for SQL" on critical SQL Servers.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,11 +26,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
@@ -51,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

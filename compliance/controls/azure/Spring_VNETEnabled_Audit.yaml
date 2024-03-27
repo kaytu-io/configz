@@ -1,20 +1,22 @@
 ID: azure_spring_cloud_should_use_network_injection
 Title: Azure Spring Cloud should use network injection
-Description: 'Azure Spring Cloud instances should use virtual network injection for the following purposes: 1. Isolate Azure Spring Cloud from Internet. 2. Enable Azure Spring Cloud to interact with systems in either on premises data centers or Azure service in other virtual networks. 3. Empower customers to control inbound and outbound network communications for Azure Spring Cloud.'
+Description: "Azure Spring Cloud instances should use virtual network injection for the following purposes: 1. Isolate Azure Spring Cloud from Internet. 2. Enable Azure Spring Cloud to interact with systems in either on premises data centers or Azure service in other virtual networks. 3. Empower customers to control inbound and outbound network communications for Azure Spring Cloud."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, sku_tier, kaytu_description
-        FROM azure_spring_cloud_service
-        WHERE type = 'Microsoft.AppPlatform/Spring'
-        AND (sku_tier IN ([parameters('evaluatedSkuNames')]) OR kaytu_description->'ServiceResource'->'SKU'->>'tier' IN ([parameters('evaluatedSkuNames')]))
-        AND (network_profile->>'serviceRuntimeSubnetId' IS NULL OR kaytu_description->'ServiceResource'->'Properties'->'networkProfile'->>'serviceRuntimeSubnetId' IS NULL)
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, sku_tier, kaytu_description
+    FROM azure_spring_cloud_service
+    WHERE type = 'Microsoft.AppPlatform/Spring'
+    AND (sku_tier IN ([parameters('evaluatedSkuNames')]) OR kaytu_description->'ServiceResource'->'SKU'->>'tier' IN ([parameters('evaluatedSkuNames')]))
+    AND (network_profile->>'serviceRuntimeSubnetId' IS NULL OR kaytu_description->'ServiceResource'->'Properties'->'networkProfile'->>'serviceRuntimeSubnetId' IS NULL)
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

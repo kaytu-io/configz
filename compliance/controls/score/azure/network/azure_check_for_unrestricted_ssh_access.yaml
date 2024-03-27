@@ -2,6 +2,7 @@ ID: azure_check_for_unrestricted_ssh_access
 Title: Check for Unrestricted SSH Access
 Description: Ensure that no network security groups allow unrestricted inbound access on TCP port 22.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -30,13 +31,17 @@ Query:
       sub.subscription_id = sg.subscription_id and
       sr -> 'properties' ->> 'access' = 'Allow' and sr -> 'properties' ->> 'protocol' = 'Tcp' and
       (sr -> 'properties' ->> 'destinationPortRanges' = '22' or sr -> 'properties' ->> 'destinationPortRanges' like '%"22"%' or sr -> 'properties' ->> 'destinationPortRanges' = '*') and sr -> 'properties' ->> 'direction' = 'Inbound'
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_network_security_group
   ListOfTables:
-    - azure_network_security_group
-    - azure_subscription
+  - azure_network_security_group
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
   score_service_name:
   - Azure Network
+Managed: false

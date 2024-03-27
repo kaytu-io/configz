@@ -2,22 +2,24 @@ ID: service_fabric_clusters_should_have_the_cluster_protection_level_property_se
 Title: Service Fabric clusters should have the ClusterProtectionLevel property set to EncryptAndSign
 Description: Service Fabric provides three levels of protection (None, Sign and EncryptAndSign) for node-to-node communication using a primary cluster certificate. Set the protection level to ensure that all node-to-node messages are encrypted and digitally signed
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, kaytu_description->'Cluster'->'properties'->'fabricSettings'->>0->>'name' AS fabric_settings_name, kaytu_description->'Cluster'->'properties'->'fabricSettings'->0->'parameters'->>0->>'name' AS parameter_name, kaytu_description->'Cluster'->'properties'->'fabricSettings'->0->'parameters'->>0->>'value' AS parameter_value
-        FROM azure_service_fabric_cluster
-        WHERE type = 'Microsoft.ServiceFabric/clusters'
-        AND (
-            (fabric_settings_name != 'Security')
-            OR (parameter_name != 'ClusterProtectionLevel')
-            OR (parameter_value != 'EncryptAndSign')
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, kaytu_description->'Cluster'->'properties'->'fabricSettings'->>0->>'name' AS fabric_settings_name, kaytu_description->'Cluster'->'properties'->'fabricSettings'->0->'parameters'->>0->>'name' AS parameter_name, kaytu_description->'Cluster'->'properties'->'fabricSettings'->0->'parameters'->>0->>'value' AS parameter_value
+    FROM azure_service_fabric_cluster
+    WHERE type = 'Microsoft.ServiceFabric/clusters'
+    AND (
+        (fabric_settings_name != 'Security')
+        OR (parameter_name != 'ClusterProtectionLevel')
+        OR (parameter_value != 'EncryptAndSign')
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

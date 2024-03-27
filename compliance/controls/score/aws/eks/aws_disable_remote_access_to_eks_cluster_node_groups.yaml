@@ -21,10 +21,13 @@ Query:
       account_id
     from
       aws_eks_node_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_node_group
   ListOfTables:
   - aws_eks_node_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

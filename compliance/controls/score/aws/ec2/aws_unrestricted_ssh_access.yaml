@@ -39,11 +39,13 @@ Query:
     from
       aws_vpc_security_group as sg
       left join ingress_sg as isg on sg.group_id = isg.group_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: very high
 Tags:

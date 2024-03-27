@@ -2,6 +2,7 @@ ID: aws_organizational_cloud_trail_needs_to_be_present
 Title: Organizational Cloud Trail needs to be present
 Description: Organizational Cloud Trail needs to be present
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with org_cloudtrail_exists as (
@@ -25,10 +26,15 @@ Query:
       aws_organizations_organization as o
     where
       o.account_id = o.kaytu_description -> 'Organization' ->> 'MasterAccountId'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_organizations_organization
   ListOfTables:
-    - aws_organizations_organization
-    - aws_cloudtrail_trail
+  - aws_organizations_organization
+  - aws_cloudtrail_trail
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

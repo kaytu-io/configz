@@ -2,72 +2,74 @@ ID: aws_ssm_managed_instance_compliance_association_compliant
 Title: SSM managed instance associations should be compliant
 Description: Use AWS Systems Manager Associations to help with inventory of software platforms and applications within an organization.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        select
-          c.id as resource,
-          c.kaytu_account_id as kaytu_account_id,
-          c.kaytu_resource_id as kaytu_resource_id,
-          case
-            when c.status = 'COMPLIANT' then 'ok'
-            else 'alarm'
-          end as status,
-          case
-            when c.status = 'COMPLIANT' then c.resource_id || ' association ' || c.title || ' is compliant.'
-            else c.resource_id || ' association ' || c.title || ' is non-compliant.'
-          end as reason
-
-          , c.region, c.account_id
-        from
-          aws_ssm_managed_instance as i,
-          aws_ssm_managed_instance_compliance as c
-        where
-          c.resource_id = i.instance_id
-          and c.compliance_type = 'Association';
-    Connector: AWS
-    PrimaryTable: aws_ssm_managed_instance_compliance
-    ListOfTables:
-        - aws_ssm_managed_instance
-        - aws_ssm_managed_instance_compliance
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      c.id as resource,
+      c.kaytu_account_id as kaytu_account_id,
+      c.kaytu_resource_id as kaytu_resource_id,
+      case
+        when c.status = 'COMPLIANT' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when c.status = 'COMPLIANT' then c.resource_id || ' association ' || c.title || ' is compliant.'
+        else c.resource_id || ' association ' || c.title || ' is non-compliant.'
+      end as reason
+    
+      , c.region, c.account_id
+    from
+      aws_ssm_managed_instance as i,
+      aws_ssm_managed_instance_compliance as c
+    where
+      c.resource_id = i.instance_id
+      and c.compliance_type = 'Association';
+  Connector:
+  - AWS
+  PrimaryTable: aws_ssm_managed_instance_compliance
+  ListOfTables:
+  - aws_ssm_managed_instance
+  - aws_ssm_managed_instance_compliance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
-    category:
-        - Compliance
-    cis_controls_v8_ig1:
-        - "true"
-    cisa_cyber_essentials:
-        - "true"
-    fedramp_low_rev_4:
-        - "true"
-    fedramp_moderate_rev_4:
-        - "true"
-    ffiec:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_53_rev_4:
-        - "true"
-    nist_800_53_rev_5:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    rbi_cyber_security:
-        - "true"
-    service:
-        - AWS/SSM
-    soc_2:
-        - "true"
+  category:
+  - Compliance
+  cis_controls_v8_ig1:
+  - "true"
+  cisa_cyber_essentials:
+  - "true"
+  fedramp_low_rev_4:
+  - "true"
+  fedramp_moderate_rev_4:
+  - "true"
+  ffiec:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_800_53_rev_4:
+  - "true"
+  nist_800_53_rev_5:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  rbi_cyber_security:
+  - "true"
+  service:
+  - AWS/SSM
+  soc_2:
+  - "true"
 Managed: false

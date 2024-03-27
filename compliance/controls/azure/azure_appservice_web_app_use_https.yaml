@@ -2,6 +2,7 @@ ID: azure_appservice_web_app_use_https
 Title: Ensure web app redirects all HTTP traffic to HTTPS in Azure App Service
 Description: Azure Web Apps allows sites to run under both HTTP and HTTPS by default. Web apps can be accessed by anyone using non-secure HTTP links by default. Non-secure HTTP requests can be restricted and all HTTP requests redirected to the secure HTTPS port. It is recommended to enforce HTTPS-only traffic.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,11 +25,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = app.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_app_service_web_app
   ListOfTables:
   - azure_app_service_web_app
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -50,3 +54,4 @@ Tags:
   - azure
   service:
   - Azure/AppService
+Managed: false

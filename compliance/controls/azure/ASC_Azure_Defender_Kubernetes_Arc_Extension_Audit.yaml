@@ -1,33 +1,35 @@
-ID: '[_preview]:_azure_arc_enabled_kubernetes_clusters_should_have_microsoft_defender_for_cloud_extension_installed'
-Title: '[Preview]: Azure Arc enabled Kubernetes clusters should have Microsoft Defender for Cloud extension installed'
+ID: "[_preview]:_azure_arc_enabled_kubernetes_clusters_should_have_microsoft_defender_for_cloud_extension_installed"
+Title: "[Preview]: Azure Arc enabled Kubernetes clusters should have Microsoft Defender for Cloud extension installed"
 Description: Microsoft Defender for Cloud extension for Azure Arc provides threat protection for your Arc enabled Kubernetes clusters. The extension collects data from all nodes in the cluster and sends it to the Azure Defender for Kubernetes backend in the cloud for further analysis. Learn more in https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-enable?pivots=defender-for-container-arc.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_hybrid_kubernetes_connected_cluster
-        WHERE type = 'Microsoft.Kubernetes/connectedClusters'
-        AND (
-            (distribution NOT IN ('aks', 'aks_management', 'eks', 'gke') AND connectivity_status = 'connected')
-            OR
-            (
-                kaytu_description -> 'ConnectedCluster' -> 'Properties' ->> 'Distribution' NOT IN ('aks', 'aks_management', 'eks', 'gke')
-                AND
-                kaytu_description -> 'ConnectedCluster' -> 'Properties' ->> 'ConnectivityStatus' = 'connected'
-                AND
-                kaytu_description -> 'ConnectedClusterExtensions' ?| array['Microsoft.KubernetesConfiguration']
-                AND
-                (kaytu_description -> 'ConnectedClusterExtensions' -> 0 -> 'Properties' ->> 'ProvisioningState') = 'Succeeded'
-                AND
-                (kaytu_description -> 'ConnectedClusterExtensions' -> 0 -> 'Properties' ->> 'ExtensionType') = 'microsoft.azuredefender.kubernetes'
-            )
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_hybrid_kubernetes_connected_cluster
+    WHERE type = 'Microsoft.Kubernetes/connectedClusters'
+    AND (
+        (distribution NOT IN ('aks', 'aks_management', 'eks', 'gke') AND connectivity_status = 'connected')
+        OR
+        (
+            kaytu_description -> 'ConnectedCluster' -> 'Properties' ->> 'Distribution' NOT IN ('aks', 'aks_management', 'eks', 'gke')
+            AND
+            kaytu_description -> 'ConnectedCluster' -> 'Properties' ->> 'ConnectivityStatus' = 'connected'
+            AND
+            kaytu_description -> 'ConnectedClusterExtensions' ?| array['Microsoft.KubernetesConfiguration']
+            AND
+            (kaytu_description -> 'ConnectedClusterExtensions' -> 0 -> 'Properties' ->> 'ProvisioningState') = 'Succeeded'
+            AND
+            (kaytu_description -> 'ConnectedClusterExtensions' -> 0 -> 'Properties' ->> 'ExtensionType') = 'microsoft.azuredefender.kubernetes'
         )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

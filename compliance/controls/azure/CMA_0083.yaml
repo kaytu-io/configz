@@ -1,8 +1,17 @@
-Description: CMA_0083 - Control use of portable storage devices
 ID: control_use_of_portable_storage_devices
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Control use of portable storage devices
+Description: CMA_0083 - Control use of portable storage devices
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

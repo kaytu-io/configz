@@ -2,6 +2,7 @@ ID: aws_cloudtrail_bucket_not_public
 Title: Ensure the S3 bucket used to store CloudTrail logs is not publicly accessible
 Description: CloudTrail logs a record of every API call made in your AWS account. These logs file are stored in an S3 bucket. It is recommended that the bucket policy, or access control list (ACL), applied to the S3 bucket that CloudTrail logs to prevents public access to the CloudTrail logs.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with public_bucket_data as (
@@ -59,29 +60,33 @@ Query:
       , region, account_id
     from
       public_bucket_data;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudtrail_trail
   ListOfTables:
   - aws_cloudtrail_trail
   - aws_s3_bucket
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   category:
-    - Compliance
+  - Compliance
   cis:
-    - "true"
+  - "true"
   cis_item_id:
-    - "2.3"
+  - "2.3"
   cis_level:
-    - "1"
+  - "1"
   cis_section_id:
-    - "2"
+  - "2"
   cis_type:
-    - scored
+  - scored
   cis_version:
-    - v1.2.0
+  - v1.2.0
   plugin:
-    - aws
+  - aws
   service:
   - AWS/CloudTrail
+Managed: false

@@ -2,6 +2,7 @@ ID: aws_iam_users_need_to_be_part_of_a_iam_group
 Title: IAM Users need to be part of a IAM Group
 Description: IAM Users need to be part of a IAM Group
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -19,12 +20,16 @@ Query:
       , region, account_id
     from
       aws_iam_user
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
+  - aws_iam_user
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   category:
-    - Compliance
+  - Compliance
+Managed: false

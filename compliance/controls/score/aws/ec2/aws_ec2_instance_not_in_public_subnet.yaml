@@ -21,11 +21,13 @@ Query:
       account_id
     from
       aws_ec2_instance;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
   - aws_ec2_instance
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

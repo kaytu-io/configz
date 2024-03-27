@@ -1,13 +1,17 @@
-Description: To provide adequate protection against newly released malware, Windows
-  Defender protection signatures need to be updated regularly to account for newly
-  released malware. This policy requires that the Guest Configuration prerequisites
-  have been deployed to the policy assignment scope. For more information on Guest
-  Configuration, visit https://aka.ms/gcpol.
 ID: windows_machines_should_configure_windows_defender_to_update_protection_signatures_within_one_day
+Title: Windows machines should configure Windows Defender to update protection signatures within one day
+Description: To provide adequate protection against newly released malware, Windows Defender protection signatures need to be updated regularly to account for newly released malware. This policy requires that the Guest Configuration prerequisites have been deployed to the policy assignment scope. For more information on Guest Configuration, visit https://aka.ms/gcpol.
 Query:
-  Connector: Azure
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: ''
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: medium
-Title: Windows machines should configure Windows Defender to update protection signatures
-  within one day
+Tags: {}
+Managed: false

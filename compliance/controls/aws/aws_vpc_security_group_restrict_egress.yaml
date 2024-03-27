@@ -1,14 +1,9 @@
-Description:
 ID: aws_vpc_security_group_restrict_egress
-Managed: true
-ManualVerification: false
+Title: Outbound access on all ports should be restricted
+Description: ""
 Query:
-  Connector: AWS
+  ID: ""
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_vpc_security_group
-    - aws_vpc_security_group_rule
-  PrimaryTable: aws_vpc_security_group
   QueryToExecute: |
     with egress_unfettered_rules as (
         select group_id,
@@ -36,40 +31,49 @@ Query:
         account_id
     from aws_vpc_security_group as sg
         left join egress_unfettered_rules on egress_unfettered_rules.group_id = sg.group_id;
-Severity: "medium"
+  Connector:
+  - AWS
+  PrimaryTable: aws_vpc_security_group
+  ListOfTables:
+  - aws_vpc_security_group
+  - aws_vpc_security_group_rule
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
 Tags:
   audit_manager_control_tower:
-    - "true"
+  - "true"
   category:
-    - Compliance
+  - Compliance
   cisa_cyber_essentials:
-    - "true"
+  - "true"
   fedramp_low_rev_4:
-    - "true"
+  - "true"
   fedramp_moderate_rev_4:
-    - "true"
+  - "true"
   ffiec:
-    - "true"
+  - "true"
   gxp_21_cfr_part_11:
-    - "true"
+  - "true"
   hipaa_final_omnibus_security_rule_2013:
-    - "true"
+  - "true"
   hipaa_security_rule_2003:
-    - "true"
+  - "true"
   nist_800_171_rev_2:
-    - "true"
+  - "true"
   nist_800_53_rev_4:
-    - "true"
+  - "true"
   nist_800_53_rev_5:
-    - "true"
+  - "true"
   nist_csf:
-    - "true"
+  - "true"
   plugin:
-    - aws
+  - aws
   rbi_cyber_security:
-    - "true"
+  - "true"
   service:
-    - AWS/VPC
+  - AWS/VPC
   soc_2:
-    - "true"
-Title: Outbound access on all ports should be restricted
+  - "true"
+Managed: true

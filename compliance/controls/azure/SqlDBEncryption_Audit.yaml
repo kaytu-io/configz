@@ -2,13 +2,28 @@ ID: transparent_data_encryption_on_sql_databases_should_be_enabled
 Title: Transparent Data Encryption on SQL databases should be enabled
 Description: Transparent data encryption should be enabled to protect data-at-rest and meet compliance requirements
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "SELECT kaytu_description->>'$.name' AS name, \n  CASE \n      WHEN azure_sql_database.transparent_data_encryption IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'$.TransparentDataEncryption[*].status'\n      ELSE kaytu_description->>'$.TransparentDataEncryption[*].status'\n  END AS status,\n  CASE \n      WHEN azure_sql_database.transparent_data_encryption IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'$.TransparentDataEncryption[*].state'\n      ELSE kaytu_description->>'$.TransparentDataEncryption[*].state'\n  END AS state\nFROM azure_sql_database\nWHERE azure_sql_database.type = 'Microsoft.Sql/servers/databases'\nAND azure_sql_database.name != 'master'\nLIMIT 5;;\n"
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT kaytu_description->>'$.name' AS name, 
+      CASE 
+          WHEN azure_sql_database.transparent_data_encryption IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'$.TransparentDataEncryption[*].status'
+          ELSE kaytu_description->>'$.TransparentDataEncryption[*].status'
+      END AS status,
+      CASE 
+          WHEN azure_sql_database.transparent_data_encryption IS NOT NULL THEN azure_sql_database.transparent_data_encryption->>'$.TransparentDataEncryption[*].state'
+          ELSE kaytu_description->>'$.TransparentDataEncryption[*].state'
+      END AS state
+    FROM azure_sql_database
+    WHERE azure_sql_database.type = 'Microsoft.Sql/servers/databases'
+    AND azure_sql_database.name != 'master'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

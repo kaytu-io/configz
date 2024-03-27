@@ -2,6 +2,7 @@ ID: azure_enable_automatic_failover
 Title: Enable Automatic Failover
 Description: Enable automatic failover for Microsoft Azure Cosmos DB accounts.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,13 +22,17 @@ Query:
     from
       azure_cosmosdb_account as a
       left join azure_subscription as sub on a.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_cosmosdb_account
   ListOfTables:
-    - azure_cosmosdb_account
-    - azure_subscription
+  - azure_cosmosdb_account
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-    - Azure Network
+  - Azure Network
+Managed: false

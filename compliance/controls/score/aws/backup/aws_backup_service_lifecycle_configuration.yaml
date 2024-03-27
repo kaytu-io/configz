@@ -24,7 +24,8 @@ Query:
     from
       aws_backup_plan,
       jsonb_array_elements(rules) as r
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_backup_vault
   ListOfTables:
   - aws_backup_vault
@@ -33,6 +34,7 @@ Query:
     Required: true
   - Key: awsBackupPlanMoveToColdStorageAfterDays
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

@@ -2,20 +2,22 @@ ID: function_apps_should_use_the_latest_tls_version
 Title: Function apps should use the latest TLS version
 Description: Periodically, newer versions are released for TLS either due to security flaws, include additional functionality, and enhance speed. Upgrade to the latest TLS version for Function apps to take advantage of security fixes, if any, and/or new functionalities of the latest version.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_service_function_app
-        WHERE type = 'Microsoft.Web/sites'
-          AND kind LIKE '%functionapp%'
-          AND kind NOT LIKE '%workflowapp%'
-          AND kaytu_description ->> '$.SiteConfig.minTlsVersion' = '1.2'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_service_function_app
+    WHERE type = 'Microsoft.Web/sites'
+      AND kind LIKE '%functionapp%'
+      AND kind NOT LIKE '%workflowapp%'
+      AND kaytu_description ->> '$.SiteConfig.minTlsVersion' = '1.2'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

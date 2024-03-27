@@ -2,6 +2,7 @@ ID: aws_total_number_of_cluster_nodes
 Title: Total Number of Cluster Nodes
 Description: Ensure there are fewer OpenSearch cluster nodes than the established limit.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -22,15 +23,18 @@ Query:
       account_id
     FROM 
       aws_opensearch_domain
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
-    - aws_opensearch_domain
+  - aws_opensearch_domain
   Parameters:
-    - Key: awsOpensearchClusterNodesLimit
-      Required: false
+  - Key: awsOpensearchClusterNodesLimit
+    Required: false
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - AWS OpenSearch Service
+Managed: false

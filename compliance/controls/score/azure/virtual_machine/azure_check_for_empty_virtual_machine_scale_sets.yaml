@@ -2,6 +2,7 @@ ID: azure_check_for_empty_virtual_machine_scale_sets
 Title: Check for Empty Virtual Machine Scale Sets
 Description: Identify and remove empty virtual machine scale sets from your Azure cloud account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -43,13 +44,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = vmss.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine_scale_set
   ListOfTables:
-    - azure_compute_virtual_machine_scale_set
-    - azure_subscription
+  - azure_compute_virtual_machine_scale_set
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+Managed: false

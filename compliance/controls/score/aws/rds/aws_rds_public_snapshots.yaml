@@ -41,11 +41,13 @@ Query:
       aws_rds_db_snapshot AS s
       LEFT JOIN
         restore_values AS rv ON s.db_snapshot_identifier = rv.db_snapshot_identifier
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_snapshot
   ListOfTables:
   - aws_rds_db_snapshot
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

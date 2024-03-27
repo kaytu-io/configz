@@ -2,6 +2,7 @@ ID: aws_permissionsets_need_to_be_assigned_to_groups
 Title: PermissionSets need to be assigned to Groups
 Description: PermissionSets need to be assigned to Groups
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select 
@@ -22,10 +23,15 @@ Query:
       ps.account_id 
     from 
       aws_ssoadmin_permission_set as ps 
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ssoadmin_permission_set
   ListOfTables:
-    - aws_ssoadmin_permission_set
-    - aws_ssoadmin_account_assignment
+  - aws_ssoadmin_permission_set
+  - aws_ssoadmin_account_assignment
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

@@ -2,6 +2,7 @@ ID: azure_check_for_sufficient_soft_deleted_data_retention_period
 Title: Check for Sufficient Soft Deleted Data Retention Period
 Description: Ensure there is a sufficient retention period configured for Azure Blob Storage soft deleted data.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,16 +26,19 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = sa.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
-    - azure_storage_account
-    - azure_subscription
+  - azure_storage_account
+  - azure_subscription
   Parameters:
-    - Key: azureStorageBlobSoftDeleteSufficientDays
-      Required: true
+  - Key: azureStorageBlobSoftDeleteSufficientDays
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Storage Accounts
+Managed: false

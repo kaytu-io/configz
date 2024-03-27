@@ -2,19 +2,21 @@ ID: azure_machine_learning_computes_should_be_in_a_virtual_network
 Title: Azure Machine Learning Computes should be in a virtual network
 Description: Azure Virtual Networks provide enhanced security and isolation for your Azure Machine Learning Compute Clusters and Instances, as well as subnets, access control policies, and other features to further restrict access. When a compute is configured with a virtual network, it is not publicly addressable and can only be accessed from virtual machines and applications within the virtual network.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_machine_learning_workspace
-        WHERE type = 'Microsoft.MachineLearningServices/workspaces/computes'
-        AND (computeType = 'AmlCompute' OR computeType = 'ComputeInstance')
-        AND (subnet.id IS NULL OR subnet.id = '')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_machine_learning_workspace
+    WHERE type = 'Microsoft.MachineLearningServices/workspaces/computes'
+    AND (computeType = 'AmlCompute' OR computeType = 'ComputeInstance')
+    AND (subnet.id IS NULL OR subnet.id = '')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

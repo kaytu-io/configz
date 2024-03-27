@@ -40,13 +40,15 @@ Query:
       LEFT JOIN vpc_org AS requester_org ON c.requester_vpc_id = accepter_org.vpc_id
     WHERE
       status_code = 'active'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_peering_connection
   ListOfTables:
   - aws_vpc_peering_connection
   - aws_vpc
   - aws_account
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

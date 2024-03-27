@@ -2,6 +2,7 @@ ID: azure_postgres_db_server_log_retention_days_3
 Title: Ensure server parameter 'log_retention_days' is greater than 3 days for PostgreSQL Database Server
 Description: Enable log_retention_days on PostgreSQL Servers.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,11 +27,14 @@ Query:
     where
       config ->> 'Name' = 'log_retention_days'
       and sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_postgresql_server
   ListOfTables:
   - azure_postgresql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -52,3 +56,4 @@ Tags:
   - azure
   service:
   - Azure/PostgreSQL
+Managed: false

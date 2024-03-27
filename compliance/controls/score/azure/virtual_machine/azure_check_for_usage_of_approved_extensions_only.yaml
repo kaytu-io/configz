@@ -2,6 +2,7 @@ ID: azure_check_for_usage_of_approved_extensions_only
 Title: Check for usage of Approved Extensions Only
 Description: Ensure that only approved extensions are installed on your Microsoft Azure virtual machines.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,16 +28,19 @@ Query:
     from
       azure_compute_virtual_machine as vm
       left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
   Parameters:
-    - Key: azureAllowedVmExtentions
-      Required: true
+  - Key: azureAllowedVmExtentions
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Virtual Machines
+Managed: false

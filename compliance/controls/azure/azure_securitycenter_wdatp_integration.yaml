@@ -2,6 +2,7 @@ ID: azure_securitycenter_wdatp_integration
 Title: Ensure that Windows Defender ATP (WDATP) integration with Security Center is selected
 Description: This setting enables Windows Defender ATP (WDATP) integration with Security Center.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,11 +24,14 @@ Query:
       right join azure_subscription sub on sc_sett.subscription_id = sub.subscription_id
     where
       sc_sett.title = 'WDATP';
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_setting
   ListOfTables:
   - azure_security_center_setting
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -49,3 +53,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

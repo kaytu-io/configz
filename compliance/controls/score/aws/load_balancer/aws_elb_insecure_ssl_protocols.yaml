@@ -34,11 +34,13 @@ Query:
     from
       aws_ec2_classic_load_balancer as a
       left join detailed_classic_listeners as b on a.name = b.name;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_classic_load_balancer
   ListOfTables:
   - aws_ec2_classic_load_balancer
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

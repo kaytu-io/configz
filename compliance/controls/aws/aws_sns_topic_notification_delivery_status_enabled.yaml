@@ -2,6 +2,7 @@ ID: aws_sns_topic_notification_delivery_status_enabled
 Title: Logging of delivery status should be enabled for notification messages sent to a topic
 Description: This control checks whether logging is enabled for the delivery status of notification messages sent to an Amazon SNS topic for the endpoints. This control fails if the delivery status notification for messages is not enabled.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -28,10 +29,13 @@ Query:
       , region, account_id
     from
       aws_sns_topic;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_sns_topic
   ListOfTables:
   - aws_sns_topic
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -47,3 +51,4 @@ Tags:
   - aws
   service:
   - AWS/SNS
+Managed: false

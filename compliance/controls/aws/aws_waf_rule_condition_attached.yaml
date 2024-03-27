@@ -2,6 +2,7 @@ ID: aws_waf_rule_condition_attached
 Title: A WAF global rule should have at least one condition
 Description: This control checks whether an AWS WAF global rule contains any conditions. The control fails if no conditions are present within a rule.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_waf_rule;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_waf_rule
   ListOfTables:
   - aws_waf_rule
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/WAF
+Managed: false

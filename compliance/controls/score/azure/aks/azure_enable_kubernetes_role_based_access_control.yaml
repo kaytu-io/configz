@@ -23,12 +23,14 @@ Query:
     from
       azure_kubernetes_cluster as c
       left join azure_subscription as sub on c.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_kubernetes_cluster
   ListOfTables:
   - azure_kubernetes_cluster
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

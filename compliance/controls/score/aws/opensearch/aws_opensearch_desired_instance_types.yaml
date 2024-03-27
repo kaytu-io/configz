@@ -32,7 +32,8 @@ Query:
       account_id
     FROM 
       aws_opensearch_domain
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
@@ -41,6 +42,7 @@ Query:
     Required: false
   - Key: awsOpensearchAllowedDedicatedMasterTypes
     Required: false
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

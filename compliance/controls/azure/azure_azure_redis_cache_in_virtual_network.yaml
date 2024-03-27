@@ -2,20 +2,42 @@ ID: azure_azure_redis_cache_in_virtual_network
 Title: Azure Cache for Redis should reside within a virtual network
 Description: Azure Virtual Network deployment provides enhanced security and isolation for your Azure Cache for Redis, as well as subnets, access control policies, and other features to further restrict access.When an Azure Cache for Redis instance is configured with a virtual network, it is not publicly addressable and can only be accessed from virtual machines and applications within the virtual network.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  redis.id as resource,\n  redis.kaytu_account_id as kaytu_account_id,\n  redis.kaytu_resource_id as kaytu_resource_id,\n  case\n    when subnet_id is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when subnet_id is not null then redis.name || ' in virtual network.'\n    else redis.name || ' not in virtual network.'\n  end as reason\n  \n  , redis.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_redis_cache as redis,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = redis.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_redis_cache
-    ListOfTables:
-        - azure_redis_cache
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      redis.id as resource,
+      redis.kaytu_account_id as kaytu_account_id,
+      redis.kaytu_resource_id as kaytu_resource_id,
+      case
+        when subnet_id is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when subnet_id is not null then redis.name || ' in virtual network.'
+        else redis.name || ' not in virtual network.'
+      end as reason
+      
+      , redis.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_redis_cache as redis,
+      azure_subscription as sub
+    where
+      sub.subscription_id = redis.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_redis_cache
+  ListOfTables:
+  - azure_redis_cache
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/Redis
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/Redis
 Managed: false

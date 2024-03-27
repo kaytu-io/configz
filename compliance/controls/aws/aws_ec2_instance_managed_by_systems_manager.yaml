@@ -2,6 +2,7 @@ ID: aws_ec2_instance_managed_by_systems_manager
 Title: Amazon Elastic Compute Cloud (Amazon EC2) instances should be managed by AWS Systems Manager Agent (SSM Agent)
 Description: Checks if your Amazon EC2 instances are managed by AWS Systems Manager Agent (SSM Agent). The rule is ALARM if an EC2 instance is running and the SSM Agent is stopped, or if an EC2 instance is running and the SSM Agent is terminated.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -21,12 +22,15 @@ Query:
       LEFT JOIN 
       aws_ssm_managed_instance as si
       ON si.instance_id = i.instance_id
-
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
-    - aws_ec2_instance
-    - aws_ssm_managed_instance
-
+  - aws_ec2_instance
+  - aws_ssm_managed_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

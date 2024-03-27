@@ -2,36 +2,17 @@ ID: aws_acm_certificate_rsa_length
 Title: ACM RSA certificate length should be at least 2048 bits
 Description: Checks if RSA certificates managed by AWS Certificate Manager (ACM) have a key length of at least '2048' bits. The rule is ALARM if the minimum key length is less than 2048 bits
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    WITH cert_with_length AS (
-      SELECT 
-        certificate_arn, kaytu_resource_id, kaytu_account_id,
-        split_part(key_algorithm, '-', 1) AS algorithm_name,
-        CASE WHEN algorithm_length~E'^\\d+$' THEN algorithm_length::integer ELSE 0 END AS algorithm_length_int
-      FROM 
-        aws_acm_certificate,
-        split_part(key_algorithm, '-', 2) as algorithm_length
-    )
-    SELECT
-      certificate_arn AS resource,
-      kaytu_resource_id AS kaytu_resource_id, 
-      kaytu_account_id AS kaytu_account_id,
-      CASE
-        WHEN algorithm_length_int = 0 THEN 'skip'
-        WHEN algorithm_length_int >= 2048 THEN 'ok'
-        ELSE 'alarm'
-      END AS status,
-      CASE
-        WHEN algorithm_length_int = 0 THEN 'Can not find key length for ' || certificate_arn
-        WHEN algorithm_length_int >= 2048 THEN certificate_arn || 'is using key of ' || algorithm_length_int || ' which is at least 2048'
-        ELSE certificate_arn || 'is using key of ' || algorithm_length_int || ' which is lower than 2048'
-      END AS reason
-    FROM cert_with_length 
-    WHERE algorithm_name = 'RSA'
-  Connector: AWS
+  QueryToExecute: "WITH cert_with_length AS (\n  SELECT \n    certificate_arn, kaytu_resource_id, kaytu_account_id,\n    split_part(key_algorithm, '-', 1) AS algorithm_name,\n    CASE WHEN algorithm_length~E'^\\\\d+$' THEN algorithm_length::integer ELSE 0 END AS algorithm_length_int\n  FROM \n    aws_acm_certificate,\n    split_part(key_algorithm, '-', 2) as algorithm_length\n)\nSELECT\n  certificate_arn AS resource,\n  kaytu_resource_id AS kaytu_resource_id, \n  kaytu_account_id AS kaytu_account_id,\n  CASE\n    WHEN algorithm_length_int = 0 THEN 'skip'\n    WHEN algorithm_length_int >= 2048 THEN 'ok'\n    ELSE 'alarm'\n  END AS status,\n  CASE\n    WHEN algorithm_length_int = 0 THEN 'Can not find key length for ' || certificate_arn\n    WHEN algorithm_length_int >= 2048 THEN certificate_arn || 'is using key of ' || algorithm_length_int || ' which is at least 2048'\n    ELSE certificate_arn || 'is using key of ' || algorithm_length_int || ' which is lower than 2048'\n  END AS reason\nFROM cert_with_length \nWHERE algorithm_name = 'RSA'\n"
+  Connector:
+  - AWS
   PrimaryTable: aws_acm_certificate
   ListOfTables:
-    - aws_acm_certificate
+  - aws_acm_certificate
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

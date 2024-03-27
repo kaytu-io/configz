@@ -2,6 +2,7 @@ ID: aws_waf_regional_rule_group_rule_attached
 Title: A WAF Regional rule group should have at least one rule
 Description: This control checks whether an AWS WAF Regional rule group has at least one rule. The control fails if no rules are present within a rule group.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_wafregional_rule_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_wafregional_rule_group
   ListOfTables:
   - aws_wafregional_rule_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/WAF
+Managed: false

@@ -22,11 +22,13 @@ Query:
       backup_retention_period
     from
       aws_rds_db_instance;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

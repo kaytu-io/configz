@@ -2,20 +2,22 @@ ID: azure_keyvault_managed_hms_logging_enabled
 Title: Resource logs in Azure Key Vault Managed HSM should be enabled
 Description: To recreate activity trails for investigation purposes when a security incident occurs or when your network is compromised, you may want to audit by enabling resource logs on Managed HSMs.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "with logging_details as (\n  select\n    name as key_vault_name\n  from\n    azure_key_vault_managed_hardware_security_module,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -> 'properties' -> 'logs') log\n  where\n    diagnostic_settings is not null\n    and setting -> 'properties' ->> 'storageAccountId' <> ''\n    and (log ->> 'enabled') :: boolean\n    and log ->> 'category' = 'AuditEvent'\n    and (log -> 'retentionPolicy') :: JSONB ? 'days'\n)\nselect\n  v.id as resource,\n  v.kaytu_account_id as kaytu_account_id,\n  v.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.diagnostic_settings is null then 'alarm'\n    when l.key_vault_name not like concat('%', v.name, '%') then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when v.diagnostic_settings is null then v.name || ' logging not enabled.'\n    when l.key_vault_name not like concat('%', v.name, '%')\n      then v.name || ' logging not enabled.'\n    else v.name || ' logging enabled.'\n  end as reason\n  \n  , v.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_managed_hardware_security_module as v,\n  logging_details as l,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = v.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_key_vault_managed_hardware_security_module
-    ListOfTables:
-        - azure_key_vault_managed_hardware_security_module
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "with logging_details as (\n  select\n    name as key_vault_name\n  from\n    azure_key_vault_managed_hardware_security_module,\n    jsonb_array_elements(diagnostic_settings) setting,\n    jsonb_array_elements(setting -> 'properties' -> 'logs') log\n  where\n    diagnostic_settings is not null\n    and setting -> 'properties' ->> 'storageAccountId' <> ''\n    and (log ->> 'enabled') :: boolean\n    and log ->> 'category' = 'AuditEvent'\n    and (log -> 'retentionPolicy') :: JSONB ? 'days'\n)\nselect\n  v.id as resource,\n  v.kaytu_account_id as kaytu_account_id,\n  v.kaytu_resource_id as kaytu_resource_id,\n  case\n    when v.diagnostic_settings is null then 'alarm'\n    when l.key_vault_name not like concat('%', v.name, '%') then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when v.diagnostic_settings is null then v.name || ' logging not enabled.'\n    when l.key_vault_name not like concat('%', v.name, '%')\n      then v.name || ' logging not enabled.'\n    else v.name || ' logging enabled.'\n  end as reason\n  \n  , v.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault_managed_hardware_security_module as v,\n  logging_details as l,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = v.subscription_id;\n"
+  Connector:
+  - Azure
+  PrimaryTable: azure_key_vault_managed_hardware_security_module
+  ListOfTables:
+  - azure_key_vault_managed_hardware_security_module
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    service:
-        - Azure/KeyVault
+  hipaa_hitrust_v92:
+  - "true"
+  service:
+  - Azure/KeyVault
 Managed: false

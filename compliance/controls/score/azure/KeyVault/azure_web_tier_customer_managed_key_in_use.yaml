@@ -16,7 +16,7 @@ Query:
               FROM jsonb_each_text('{{.azureWebTierTags}}'::jsonb)
             ), '{', ''), '}', '') || '%'
     )
-
+    
     select
       sub.display_name as resource,
       sub.kaytu_resource_id,
@@ -33,14 +33,16 @@ Query:
     from
       azure_subscription as sub
       left join web_tier_keys as wtk on sub.subscription_id = wtk.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault_secret
   ListOfTables:
-    - azure_key_vault_secret
-    - azure_subscription
+  - azure_key_vault_secret
+  - azure_subscription
   Parameters:
-    - Key: azureWebTierTags
-      Required: true
+  - Key: azureWebTierTags
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

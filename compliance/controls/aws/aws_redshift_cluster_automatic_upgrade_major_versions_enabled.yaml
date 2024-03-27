@@ -2,6 +2,7 @@ ID: aws_redshift_cluster_automatic_upgrade_major_versions_enabled
 Title: Amazon Redshift should have automatic upgrades to major versions enabled
 Description: This control checks whether automatic major version upgrades are enabled for the Amazon Redshift cluster.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_redshift_cluster;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_redshift_cluster
   ListOfTables:
   - aws_redshift_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/Redshift
+Managed: false

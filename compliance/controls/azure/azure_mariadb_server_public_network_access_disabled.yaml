@@ -2,20 +2,42 @@ ID: azure_mariadb_server_public_network_access_disabled
 Title: Public network access should be disabled for MariaDB servers
 Description: Disable the public network access property to improve security and ensure your Azure Database for MariaDB can only be accessed from a private endpoint. This configuration strictly disables access from any public address space outside of Azure IP range, and denies all logins that match IP or virtual network-based firewall rules.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when public_network_access = 'Enabled' then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when public_network_access = 'Enabled' then name || ' public network access enabled.'\n    else name || ' public network access disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mariadb_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_mariadb_server
-    ListOfTables:
-        - azure_mariadb_server
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when public_network_access = 'Enabled' then 'alarm'
+        else 'ok'
+      end as status,
+      case
+        when public_network_access = 'Enabled' then name || ' public network access enabled.'
+        else name || ' public network access disabled.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_mariadb_server as s,
+      azure_subscription as sub
+    where
+      sub.subscription_id = s.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_mariadb_server
+  ListOfTables:
+  - azure_mariadb_server
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/MariaDB
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/MariaDB
 Managed: false

@@ -2,17 +2,19 @@ ID: ip_firewall_rules_on_azure_synapse_workspaces_should_be_removed
 Title: IP firewall rules on Azure Synapse workspaces should be removed
 Description: Removing all IP firewall rules improves security by ensuring your Azure Synapse workspace can only be accessed from a private endpoint. This configuration audits creation of firewall rules that allow public network access on the workspace.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, kaytu_description->'Workspace'->>'Name' AS workspace_name
-        FROM azure_synapse_workspace
-        WHERE type = 'Microsoft.Synapse/workspaces/firewallrules'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, kaytu_description->'Workspace'->>'Name' AS workspace_name
+    FROM azure_synapse_workspace
+    WHERE type = 'Microsoft.Synapse/workspaces/firewallrules'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

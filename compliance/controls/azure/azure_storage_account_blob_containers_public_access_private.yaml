@@ -2,6 +2,7 @@ ID: azure_storage_account_blob_containers_public_access_private
 Title: Ensure that 'Public access level' is set to Private for blob containers
 Description: Disable anonymous access to blob containers and disallow blob public access on storage account.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -24,12 +25,15 @@ Query:
       azure_storage_container container
       join azure_storage_account account on container.account_name = account.name
       join azure_subscription sub on sub.subscription_id = account.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_container
   ListOfTables:
   - azure_storage_account
   - azure_storage_container
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -51,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
+Managed: false

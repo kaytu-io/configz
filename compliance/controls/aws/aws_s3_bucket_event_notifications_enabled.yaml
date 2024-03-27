@@ -2,6 +2,7 @@ ID: aws_s3_bucket_event_notifications_enabled
 Title: S3 buckets should have event notifications enabled
 Description: This control checks whether S3 Event Notifications are enabled on an Amazon S3 bucket. This control fails if S3 Event Notifications are not enabled on a bucket.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -28,10 +29,13 @@ Query:
       , region, account_id
     from
       aws_s3_bucket;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_s3_bucket
   ListOfTables:
   - aws_s3_bucket
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -47,3 +51,4 @@ Tags:
   - aws
   service:
   - AWS/S3
+Managed: false

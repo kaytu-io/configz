@@ -2,41 +2,43 @@ ID: log_analytics_extension_should_be_enabled_in_virtual_machine_scale_sets_for_
 Title: Log Analytics extension should be enabled in virtual machine scale sets for listed virtual machine images
 Description: Reports virtual machine scale sets as non-compliant if the virtual machine image is not in the list defined and the extension is not installed.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, provisioning_state, type, location, sku_name
-        FROM azure_compute_virtual_machine_scale_set
-        WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'
-        AND (
-            (extensions->'publisher' = 'Microsoft.EnterpriseCloud.Monitoring')
-            OR (kaytu_description->'VirtualMachineScaleSetExtensionProfile'->'Extensions' @> '[{"Properties":{"Publisher":"Microsoft.EnterpriseCloud.Monitoring"}}]')
-        )
-        AND (
-            (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'ID' IN [parameters('listOfImageIdToInclude_windows')])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'ID' IN [parameters('listOfImageIdToInclude_linux')])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['2008-R2-SP1', '2008-R2-SP1-smalldisk', '2012-Datacenter', '2012-Datacenter-smalldisk', '2012-R2-Datacenter', '2012-R2-Datacenter-smalldisk', '2016-Datacenter', '2016-Datacenter-Server-Core', '2016-Datacenter-Server-Core-smalldisk', '2016-Datacenter-smalldisk', '2016-Datacenter-with-Containers', '2016-Datacenter-with-RDSH', '2019-Datacenter', '2019-Datacenter-Core', '2019-Datacenter-Core-smalldisk', '2019-Datacenter-Core-with-Containers', '2019-Datacenter-Core-with-Containers-smalldisk', '2019-Datacenter-smalldisk', '2019-Datacenter-with-Containers', '2019-Datacenter-with-Containers-smalldisk', '2019-Datacenter-zhcn'])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Datacenter-Core-1709-smalldisk', 'Datacenter-Core-1709-with-Containers-smalldisk', 'Datacenter-Core-1803-with-Containers-smalldisk'])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['WindowsServerHPCPack'])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2016' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2016-BYOL' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2012R2' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2012R2-BYOL')
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['MLServer-WS2016'])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['VisualStudio', 'Windows'])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Dynamics'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' = 'Pre-Req-AX7-Onebox-U8')
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Dynamics'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' = 'Pre-Req-AX7-Onebox-V4')
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['windows-data-science-vm'])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Windows-10'])
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['RHEL', 'RHEL-SAP-HANA'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '6.%' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7%'))
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['SLES', 'SLES-HPC', 'SLES-HPC-Priority', 'SLES-SAP', 'SLES-SAP-BYOS', 'SLES-Priority', 'SLES-BYOS', 'SLES-SAPCAL', 'SLES-Standard'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '12%')
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['UbuntuServer'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '14.04%LTS' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '16.04%LTS' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '18.04%LTS'))
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Oracle-Linux'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '6.%' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7.%'))
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['CentOS', 'Centos-LVM', 'CentOS-SRIOV'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '6.%' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7%'))
-            OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['cloudera-centos-os'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7%')
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, provisioning_state, type, location, sku_name
+    FROM azure_compute_virtual_machine_scale_set
+    WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'
+    AND (
+        (extensions->'publisher' = 'Microsoft.EnterpriseCloud.Monitoring')
+        OR (kaytu_description->'VirtualMachineScaleSetExtensionProfile'->'Extensions' @> '[{"Properties":{"Publisher":"Microsoft.EnterpriseCloud.Monitoring"}}]')
+    )
+    AND (
+        (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'ID' IN [parameters('listOfImageIdToInclude_windows')])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'ID' IN [parameters('listOfImageIdToInclude_linux')])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['2008-R2-SP1', '2008-R2-SP1-smalldisk', '2012-Datacenter', '2012-Datacenter-smalldisk', '2012-R2-Datacenter', '2012-R2-Datacenter-smalldisk', '2016-Datacenter', '2016-Datacenter-Server-Core', '2016-Datacenter-Server-Core-smalldisk', '2016-Datacenter-smalldisk', '2016-Datacenter-with-Containers', '2016-Datacenter-with-RDSH', '2019-Datacenter', '2019-Datacenter-Core', '2019-Datacenter-Core-smalldisk', '2019-Datacenter-Core-with-Containers', '2019-Datacenter-Core-with-Containers-smalldisk', '2019-Datacenter-smalldisk', '2019-Datacenter-with-Containers', '2019-Datacenter-with-Containers-smalldisk', '2019-Datacenter-zhcn'])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Datacenter-Core-1709-smalldisk', 'Datacenter-Core-1709-with-Containers-smalldisk', 'Datacenter-Core-1803-with-Containers-smalldisk'])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['WindowsServerHPCPack'])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2016' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2016-BYOL' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2012R2' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' LIKE '%-WS2012R2-BYOL')
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['MLServer-WS2016'])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['VisualStudio', 'Windows'])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Dynamics'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' = 'Pre-Req-AX7-Onebox-U8')
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Dynamics'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' = 'Pre-Req-AX7-Onebox-V4')
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['windows-data-science-vm'])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Windows-10'])
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['RHEL', 'RHEL-SAP-HANA'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '6.%' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7%'))
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['SLES', 'SLES-HPC', 'SLES-HPC-Priority', 'SLES-SAP', 'SLES-SAP-BYOS', 'SLES-Priority', 'SLES-BYOS', 'SLES-SAPCAL', 'SLES-Standard'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '12%')
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['UbuntuServer'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '14.04%LTS' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '16.04%LTS' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '18.04%LTS'))
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['Oracle-Linux'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '6.%' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7.%'))
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['CentOS', 'Centos-LVM', 'CentOS-SRIOV'] AND (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '6.%' OR kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7%'))
+        OR (kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'Offer' IN ['cloudera-centos-os'] AND kaytu_description->'VirtualMachineScaleSetProperties'->'VirtualMachineProfile'->'StorageProfile'->'ImageReference'->>'SKU' LIKE '7%')
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

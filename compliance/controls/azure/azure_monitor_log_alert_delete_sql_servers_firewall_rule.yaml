@@ -2,57 +2,17 @@ ID: azure_monitor_log_alert_delete_sql_servers_firewall_rule
 Title: Ensure that Activity Log Alert exists for Delete SQL Server Firewall Rule
 Description: Create an activity log alert for the 'Delete SQL Server Firewall Rule.'
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with alert_rule as(
-      select
-        alert.id as alert_id,
-        alert.name as alert_name,
-        alert.enabled,
-        alert.location,
-        alert.subscription_id
-      from
-        azure_log_alert as alert,
-        jsonb_array_elements_text(scopes) as sc
-      where
-        alert.location ILIKE 'Global'
-        and alert.enabled
-        and sc = '/subscriptions/' || alert.subscription_id
-        and
-        (
-          ( alert.condition -> 'allOf' @> '[{"equals":"Administrative","field":"category"}]'
-          and alert.condition -> 'allOf' @> '[{"field": "operationName", "equals": "Microsoft.Sql/servers/firewallRules/delete"}]' )
-        )
-        limit 1
-    )
-    select
-      sub.subscription_id as resource,
-      sub.kaytu_account_id as kaytu_account_id,
-      sub.kaytu_resource_id as kaytu_resource_id,
-      case
-        when count(a.subscription_id) > 0 then 'ok'
-        else 'alarm'
-      end as status,
-      case
-        when count(a.subscription_id) > 0 then 'Activity Log Alert exists for Delete SQL Server Firewall Rule.'
-        else 'Activity Log Alert does not exists for Delete SQL Server Firewall Rule.'
-      end as reason
-
-      , sub.display_name as subscription
-    from
-      azure_subscription sub
-      left join alert_rule a on sub.subscription_id = a.subscription_id
-    group by
-      sub.kaytu_account_id,
-      sub.kaytu_resource_id,
-      sub._ctx,
-      sub.subscription_id,
-      sub.display_name;
-  Connector: Azure
+  QueryToExecute: "with alert_rule as(\n  select\n    alert.id as alert_id,\n    alert.name as alert_name,\n    alert.enabled,\n    alert.location,\n    alert.subscription_id\n  from\n    azure_log_alert as alert,\n    jsonb_array_elements_text(scopes) as sc\n  where\n    alert.location ILIKE 'Global'\n    and alert.enabled\n    and sc = '/subscriptions/' || alert.subscription_id\n    and\n    (\n      ( alert.condition -> 'allOf' @> '[{\"equals\":\"Administrative\",\"field\":\"category\"}]'\n      and alert.condition -> 'allOf' @> '[{\"field\": \"operationName\", \"equals\": \"Microsoft.Sql/servers/firewallRules/delete\"}]' )\n    )\n    limit 1\n)\nselect\n  sub.subscription_id as resource,\n  sub.kaytu_account_id as kaytu_account_id,\n  sub.kaytu_resource_id as kaytu_resource_id,\n  case\n    when count(a.subscription_id) > 0 then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when count(a.subscription_id) > 0 then 'Activity Log Alert exists for Delete SQL Server Firewall Rule.'\n    else 'Activity Log Alert does not exists for Delete SQL Server Firewall Rule.'\n  end as reason\n\n  , sub.display_name as subscription\nfrom\n  azure_subscription sub\n  left join alert_rule a on sub.subscription_id = a.subscription_id\ngroup by\n  sub.kaytu_account_id,\n  sub.kaytu_resource_id,\n  sub._ctx,\n  sub.subscription_id,\n  sub.display_name;\n"
+  Connector:
+  - Azure
   PrimaryTable: azure_log_alert
   ListOfTables:
   - azure_log_alert
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -74,3 +34,4 @@ Tags:
   - azure
   service:
   - Azure/Monitor
+Managed: false

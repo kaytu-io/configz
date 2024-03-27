@@ -21,11 +21,13 @@ Query:
       account_id
     from
       aws_iam_group
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_group
   ListOfTables:
   - aws_iam_group
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

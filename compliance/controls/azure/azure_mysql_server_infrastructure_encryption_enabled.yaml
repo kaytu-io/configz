@@ -2,20 +2,42 @@ ID: azure_mysql_server_infrastructure_encryption_enabled
 Title: Infrastructure encryption should be enabled for Azure Database for MySQL servers
 Description: Enable infrastructure encryption for Azure Database for MySQL servers to have higher level of assurance that the data is secure. When infrastructure encryption is enabled, the data at rest is encrypted twice using FIPS 140-2 compliant Microsoft managed keys.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when infrastructure_encryption = 'Enabled' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when infrastructure_encryption = 'Enabled' then s.name || ' infrastructure encryption enabled.'\n    else s.name || ' infrastructure encryption disabled.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_mysql_server as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_mysql_server
-    ListOfTables:
-        - azure_mysql_server
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when infrastructure_encryption = 'Enabled' then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when infrastructure_encryption = 'Enabled' then s.name || ' infrastructure encryption enabled.'
+        else s.name || ' infrastructure encryption disabled.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_mysql_server as s,
+      azure_subscription as sub
+    where
+      sub.subscription_id = s.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_mysql_server
+  ListOfTables:
+  - azure_mysql_server
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/MySQL
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/MySQL
 Managed: false

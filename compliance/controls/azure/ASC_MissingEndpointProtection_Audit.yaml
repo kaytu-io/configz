@@ -2,13 +2,15 @@ ID: monitor_missing_endpoint_protection_in_azure_security_center
 Title: Monitor missing Endpoint Protection in Azure Security Center
 Description: Servers without an installed Endpoint Protection agent will be monitored by Azure Security Center as recommendations
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: ""
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

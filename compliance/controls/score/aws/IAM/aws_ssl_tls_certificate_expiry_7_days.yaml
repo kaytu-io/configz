@@ -2,6 +2,7 @@ ID: aws_ssl_tls_certificate_expiry_7_days
 Title: SSL/TLS Certificate Expiry 7 Days
 Description: Ensure SSL/TLS certificates are renewed before their expiration.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -21,12 +22,16 @@ Query:
       account_id
     FROM 
       aws_iam_server_certificate
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_server_certificate
   ListOfTables:
-    - aws_iam_server_certificate
+  - aws_iam_server_certificate
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Identity and Access Management (IAM)
+Managed: false

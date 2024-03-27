@@ -1,20 +1,22 @@
 ID: azure_event_grid_domains_should_use_private_link
 Title: Azure Event Grid domains should use private link
-Description: 'Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Event Grid domain instead of the entire service, you''ll also be protected against data leakage risks. Learn more at: https://aka.ms/privateendpoints.'
+Description: "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Event Grid domain instead of the entire service, you'll also be protected against data leakage risks. Learn more at: https://aka.ms/privateendpoints."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_eventgrid_domain
-        WHERE type = 'Microsoft.EventGrid/domains'
-        AND kaytu_description -> 'Domain' -> 'Properties' ->> 'PrivateEndpointConnections' IS NOT NULL
-        AND kaytu_description -> 'Domain' -> 'Properties' ->> 'PrivateEndpointConnections' ->> '[*].privateLinkServiceConnectionState.status' = 'Approved'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_eventgrid_domain
+    WHERE type = 'Microsoft.EventGrid/domains'
+    AND kaytu_description -> 'Domain' -> 'Properties' ->> 'PrivateEndpointConnections' IS NOT NULL
+    AND kaytu_description -> 'Domain' -> 'Properties' ->> 'PrivateEndpointConnections' ->> '[*].privateLinkServiceConnectionState.status' = 'Approved'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

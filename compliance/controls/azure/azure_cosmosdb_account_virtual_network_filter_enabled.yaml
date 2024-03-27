@@ -2,6 +2,7 @@ ID: azure_cosmosdb_account_virtual_network_filter_enabled
 Title: Ensure That 'Firewalls & Networks' Is Limited to Use Selected Networks Instead of All Networks
 Description: ""
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,11 +27,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_cosmosdb_account
   ListOfTables:
   - azure_cosmosdb_account
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
@@ -52,3 +56,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

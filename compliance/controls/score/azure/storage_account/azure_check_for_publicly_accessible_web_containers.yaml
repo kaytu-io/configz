@@ -25,13 +25,15 @@ Query:
       azure_storage_container container
       join azure_storage_account account on container.account_name = account.name
       join azure_subscription sub on sub.subscription_id = account.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_storage_container
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -2,83 +2,39 @@ ID: aws_log_metric_filter_iam_policy
 Title: Ensure a log metric filter and alarm exist for IAM policy changes
 Description: Real-time monitoring of API calls can be achieved by directing CloudTrail Logs to CloudWatch Logs and establishing corresponding metric filters and alarms. It is recommended that a metric filter and alarm be established changes made to Identity and Access Management (IAM) policies.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        with filter_data as (
-          select
-            trail.account_id,
-            trail.name as trail_name,
-            trail.is_logging as is_logging,
-            split_part(trail.log_group_arn, ':', 7) as log_group_name,
-            filter.name as filter_name,
-            action_arn as topic_arn,
-            alarm.metric_name,
-            subscription.subscription_arn,
-            filter.filter_pattern,
-            filter.metric_transformation_name
-          from
-            aws_cloudtrail_trail as trail,
-            jsonb_array_elements(trail.event_selectors) as se,
-            aws_cloudwatch_log_metric_filter as filter,
-            aws_cloudwatch_alarm as alarm,
-            jsonb_array_elements_text(alarm.alarm_actions) as action_arn,
-            aws_sns_topic_subscription as subscription
-          where
-            trail.is_multi_region_trail is true
-            and trail.is_logging
-            and se ->> 'ReadWriteType' = 'All'
-            and trail.log_group_arn is not null
-            and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)
-          and filter.filter_pattern ~ '\s*\$\.eventName\s*=\s*DeleteGroupPolicy.+\$\.eventName\s*=\s*DeleteRolePolicy.+\$\.eventName\s*=\s*DeleteUserPolicy.+\$\.eventName\s*=\s*PutGroupPolicy.+\$\.eventName\s*=\s*PutRolePolicy.+\$\.eventName\s*=\s*PutUserPolicy.+\$\.eventName\s*=\s*CreatePolicy.+\$\.eventName\s*=\s*DeletePolicy.+\$\.eventName\s*=\s*CreatePolicyVersion.+\$\.eventName\s*=\s*DeletePolicyVersion.+\$\.eventName\s*=\s*AttachRolePolicy.+\$\.eventName\s*=\s*DetachRolePolicy.+\$\.eventName\s*=\s*AttachUserPolicy.+\$\.eventName\s*=\s*DetachUserPolicy.+\$\.eventName\s*=\s*AttachGroupPolicy.+\$\.eventName\s*=\s*DetachGroupPolicy'
-            and alarm.metric_name LIKE filter.metric_transformation_name
-            and subscription.topic_arn = action_arn
-        )
-        select
-          distinct 'arn:' || a.partition || ':::' || a.account_id as resource,
-          a.kaytu_account_id as kaytu_account_id,
-          a.kaytu_resource_id as kaytu_resource_id,
-          case
-            when f.trail_name is null then 'alarm'
-            else 'ok'
-          end as status,
-          case
-            when f.trail_name is null then 'No log metric filter and alarm exist for IAM policy changes.'
-            else filter_name || ' forwards events for IAM policy changes.'
-          end as reason
-
-          , a.account_id
-        from
-          aws_account as a
-          left join filter_data as f on a.account_id = f.account_id;
-    Connector: AWS
-    PrimaryTable: aws_account
-    ListOfTables:
-        - aws_account
-        - aws_cloudtrail_trail
-        - aws_cloudwatch_alarm
-        - aws_cloudwatch_log_metric_filter
-        - aws_sns_topic_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "with filter_data as (\n  select\n    trail.account_id,\n    trail.name as trail_name,\n    trail.is_logging as is_logging,\n    split_part(trail.log_group_arn, ':', 7) as log_group_name,\n    filter.name as filter_name,\n    action_arn as topic_arn,\n    alarm.metric_name,\n    subscription.subscription_arn,\n    filter.filter_pattern,\n    filter.metric_transformation_name\n  from\n    aws_cloudtrail_trail as trail,\n    jsonb_array_elements(trail.event_selectors) as se,\n    aws_cloudwatch_log_metric_filter as filter,\n    aws_cloudwatch_alarm as alarm,\n    jsonb_array_elements_text(alarm.alarm_actions) as action_arn,\n    aws_sns_topic_subscription as subscription\n  where\n    trail.is_multi_region_trail is true\n    and trail.is_logging\n    and se ->> 'ReadWriteType' = 'All'\n    and trail.log_group_arn is not null\n    and filter.log_group_name = split_part(trail.log_group_arn, ':', 7)\n  and filter.filter_pattern ~ '\\s*\\$\\.eventName\\s*=\\s*DeleteGroupPolicy.+\\$\\.eventName\\s*=\\s*DeleteRolePolicy.+\\$\\.eventName\\s*=\\s*DeleteUserPolicy.+\\$\\.eventName\\s*=\\s*PutGroupPolicy.+\\$\\.eventName\\s*=\\s*PutRolePolicy.+\\$\\.eventName\\s*=\\s*PutUserPolicy.+\\$\\.eventName\\s*=\\s*CreatePolicy.+\\$\\.eventName\\s*=\\s*DeletePolicy.+\\$\\.eventName\\s*=\\s*CreatePolicyVersion.+\\$\\.eventName\\s*=\\s*DeletePolicyVersion.+\\$\\.eventName\\s*=\\s*AttachRolePolicy.+\\$\\.eventName\\s*=\\s*DetachRolePolicy.+\\$\\.eventName\\s*=\\s*AttachUserPolicy.+\\$\\.eventName\\s*=\\s*DetachUserPolicy.+\\$\\.eventName\\s*=\\s*AttachGroupPolicy.+\\$\\.eventName\\s*=\\s*DetachGroupPolicy'\n    and alarm.metric_name LIKE filter.metric_transformation_name\n    and subscription.topic_arn = action_arn\n)\nselect\n  distinct 'arn:' || a.partition || ':::' || a.account_id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when f.trail_name is null then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when f.trail_name is null then 'No log metric filter and alarm exist for IAM policy changes.'\n    else filter_name || ' forwards events for IAM policy changes.'\n  end as reason\n\n  , a.account_id\nfrom\n  aws_account as a\n  left join filter_data as f on a.account_id = f.account_id;\n"
+  Connector:
+  - AWS
+  PrimaryTable: aws_account
+  ListOfTables:
+  - aws_account
+  - aws_cloudtrail_trail
+  - aws_cloudwatch_alarm
+  - aws_cloudwatch_log_metric_filter
+  - aws_sns_topic_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cis:
-        - "true"
-    cis_item_id:
-        - "3.4"
-    cis_level:
-        - "1"
-    cis_section_id:
-        - "3"
-    cis_type:
-        - scored
-    cis_version:
-        - v1.2.0
-    plugin:
-        - aws
-    service:
-        - AWS/CloudWatch
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "3.4"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "3"
+  cis_type:
+  - scored
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/CloudWatch
 Managed: false

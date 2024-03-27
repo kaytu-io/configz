@@ -2,22 +2,55 @@ ID: azure_appservice_web_app_diagnostic_logs_enabled
 Title: App Service apps should have resource logs enabled
 Description: Audit enabling of resource logs on the app. This enables you to recreate activity trails for investigation purposes if a security incident occurs or your network is compromised.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n    when (a.configuration-> 'properties' -> 'detailedErrorLoggingEnabled')::bool\n      and (a.configuration -> 'properties' -> 'httpLoggingEnabled')::bool\n      and (a.configuration-> 'properties' -> 'requestTracingEnabled')::bool\n    then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when (a.configuration-> 'properties' -> 'detailedErrorLoggingEnabled')::bool\n      and (a.configuration -> 'properties' -> 'httpLoggingEnabled')::bool\n      and (a.configuration-> 'properties' -> 'requestTracingEnabled')::bool\n      then a.name || ' diagnostic logs enabled.'\n    else a.title || ' diagnostic logs disabled.'\n      -- concat_ws(', ',\n      -- case when not ((a.configuration-> 'properties' -> 'detailedErrorLoggingEnabled')::bool) then 'detailed_Error_Logging_Enabled' end,\n      -- case when not ((a.configuration -> 'properties' -> 'httpLoggingEnabled')::bool) then 'http_logging_enabled' end,\n      -- case when not ((a.configuration-> 'properties' -> 'requestTracingEnabled')::bool) then 'request_tracing_enabled' end\n      -- ) || '.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_app_service_web_app as a,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = a.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_app_service_web_app
-    ListOfTables:
-        - azure_app_service_web_app
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      a.id as resource,
+      a.kaytu_account_id as kaytu_account_id,
+      a.kaytu_resource_id as kaytu_resource_id,
+      case
+        when (a.configuration-> 'properties' -> 'detailedErrorLoggingEnabled')::bool
+          and (a.configuration -> 'properties' -> 'httpLoggingEnabled')::bool
+          and (a.configuration-> 'properties' -> 'requestTracingEnabled')::bool
+        then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when (a.configuration-> 'properties' -> 'detailedErrorLoggingEnabled')::bool
+          and (a.configuration -> 'properties' -> 'httpLoggingEnabled')::bool
+          and (a.configuration-> 'properties' -> 'requestTracingEnabled')::bool
+          then a.name || ' diagnostic logs enabled.'
+        else a.title || ' diagnostic logs disabled.'
+          -- concat_ws(', ',
+          -- case when not ((a.configuration-> 'properties' -> 'detailedErrorLoggingEnabled')::bool) then 'detailed_Error_Logging_Enabled' end,
+          -- case when not ((a.configuration -> 'properties' -> 'httpLoggingEnabled')::bool) then 'http_logging_enabled' end,
+          -- case when not ((a.configuration-> 'properties' -> 'requestTracingEnabled')::bool) then 'request_tracing_enabled' end
+          -- ) || '.'
+      end as reason
+      
+      , a.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_app_service_web_app as a,
+      azure_subscription as sub
+    where
+      sub.subscription_id = a.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_app_service_web_app
+  ListOfTables:
+  - azure_app_service_web_app
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    hipaa_hitrust_v92:
-        - "true"
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/AppService
+  hipaa_hitrust_v92:
+  - "true"
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/AppService
 Managed: false

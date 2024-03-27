@@ -2,13 +2,17 @@ ID: azure_keyvault_vault_private_link_used
 Title: Ensure that Private Endpoints are Used for Azure Key Vault
 Description: Private endpoints will secure network traffic from Azure Key Vault to the resources requesting secrets and keys.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "select\n  a.id as resource,\n  a.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  case\n  -- Having private_endpoint_connections will not permit vault to use the same.\n  -- In case'defaultAction' = 'Allow', All Network including internet is allowed, which will not satisfy the private endpoint connection.\n  -- Default All network will have not network_acls associated.\n    when network_acls is null or network_acls ->> 'defaultAction' = 'Allow' then 'alarm'\n    when private_endpoint_connections is null then 'info'\n    when private_endpoint_connections @> '[{\"PrivateLinkServiceConnectionStateStatus\": \"Approved\"}]' then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when network_acls is null or network_acls ->> 'defaultAction' = 'Allow' then a.name || ' using public networks.'\n    when private_endpoint_connections is null then a.name || ' no private link exists.'\n    when private_endpoint_connections @> '[{\"PrivateLinkServiceConnectionStateStatus\": \"Approved\"}]'\n    then a.name || ' using private link.'\n    else a.name || ' private link not enabled.'\n  end as reason\n  \n  , a.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_key_vault a,\n  azure_subscription sub;\n"
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
   - azure_key_vault
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -30,3 +34,4 @@ Tags:
   - azure
   service:
   - Azure/KeyVault
+Managed: false

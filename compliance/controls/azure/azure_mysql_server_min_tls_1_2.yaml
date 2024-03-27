@@ -2,6 +2,7 @@ ID: azure_mysql_server_min_tls_1_2
 Title: Ensure 'TLS Version' is set to 'TLSV1.2' for MySQL flexible Database Server
 Description: Ensure TLS version on MySQL flexible servers is set to the default value.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,11 +27,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_mysql_server
   ListOfTables:
   - azure_mysql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -52,3 +56,4 @@ Tags:
   - azure
   service:
   - Azure/MySQL
+Managed: false

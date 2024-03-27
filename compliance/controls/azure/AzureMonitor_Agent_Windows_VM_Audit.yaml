@@ -1,11 +1,17 @@
-Description: 'Windows virtual machines should be monitored and secured through the
-  deployed Azure Monitor Agent. The Azure Monitor Agent collects telemetry data from
-  the guest OS. Windows virtual machines with supported OS and in supported regions
-  are monitored for Azure Monitor Agent deployment. Learn more: https://aka.ms/AMAOverview.'
 ID: windows_virtual_machines_should_have_azure_monitor_agent_installed
-Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
-  QueryToExecute: ''
-Severity: medium
 Title: Windows virtual machines should have Azure Monitor Agent installed
+Description: "Windows virtual machines should be monitored and secured through the deployed Azure Monitor Agent. The Azure Monitor Agent collects telemetry data from the guest OS. Windows virtual machines with supported OS and in supported regions are monitored for Azure Monitor Agent deployment. Learn more: https://aka.ms/AMAOverview."
+Query:
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: ""
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
+Severity: medium
+Tags: {}
+Managed: false

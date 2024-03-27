@@ -33,13 +33,15 @@ Query:
       aws_vpc_security_group
     WHERE
       exists (select 1 from jsonb_array_elements(ip_permissions) as p where ((p ->> 'FromPort') = '1433') and ((p ->> 'ToPort') = '1433'))
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
   Parameters:
   - Key: awsMssqlTrustedIpRange
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

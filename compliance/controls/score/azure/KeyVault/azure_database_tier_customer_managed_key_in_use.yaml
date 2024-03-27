@@ -34,7 +34,8 @@ Query:
       sub.display_name as subscription
     from
       azure_subscription as sub
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_subscription
   ListOfTables:
   - azure_key_vault_key
@@ -42,6 +43,7 @@ Query:
   Parameters:
   - Key: azureDatabaseTierTags
     Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

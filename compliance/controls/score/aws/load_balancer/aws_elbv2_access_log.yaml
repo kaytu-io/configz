@@ -2,6 +2,7 @@ ID: aws_elbv2_access_log
 Title: ELBv2 Access Log
 Description: Ensure that Amazon ALBs have Access Logging feature enabled for security, troubleshooting and statistical analysis purposes.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,12 +24,16 @@ Query:
       cross join jsonb_array_elements(load_balancer_attributes) as lb
     where
       lb ->> 'Key' = 'access_logs.s3.enabled'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
-    - aws_ec2_application_load_balancer
+  - aws_ec2_application_load_balancer
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - AWS Elastic Load Balancing V2 (ELBv2)
+  - AWS Elastic Load Balancing V2 (ELBv2)
+Managed: false

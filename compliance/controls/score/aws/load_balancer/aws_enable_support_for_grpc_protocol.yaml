@@ -2,6 +2,7 @@ ID: aws_enable_support_for_grpc_protocol
 Title: Enable Support for gRPC Protocol
 Description: Ensure that support for gRPC protocol is enabled for Application Load Balancers (ALBs).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,13 +22,17 @@ Query:
     from
       aws_ec2_application_load_balancer a
       left join aws_ec2_target_group as tg on tg.load_balancer_arns::text like '%' || a.arn || '%'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
-    - aws_ec2_application_load_balancer
-    - aws_ec2_target_group
+  - aws_ec2_application_load_balancer
+  - aws_ec2_target_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
-    - AWS Elastic Load Balancing V2 (ELBv2)
+  - AWS Elastic Load Balancing V2 (ELBv2)
+Managed: false

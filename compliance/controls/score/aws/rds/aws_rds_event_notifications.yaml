@@ -24,12 +24,14 @@ Query:
       aws_account a
       left join aws_rds_db_event_subscription s on s.kaytu_account_id
         = a.kaytu_account_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_rds_db_event_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

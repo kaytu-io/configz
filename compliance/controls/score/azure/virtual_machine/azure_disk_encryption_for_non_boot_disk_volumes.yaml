@@ -25,13 +25,15 @@ Query:
       left join azure_subscription as sub on vm.subscription_id = sub.subscription_id
     where
       d.name != vm.os_disk_name;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
   - azure_compute_virtual_machine
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

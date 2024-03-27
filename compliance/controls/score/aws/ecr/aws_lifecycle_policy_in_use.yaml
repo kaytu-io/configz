@@ -17,7 +17,7 @@ Query:
           and (r -> 'selection' ->> 'countType' = 'sinceImagePushed')
         )
     )
-
+    
     select
       r.repository_name as resource,
       kaytu_resource_id,
@@ -35,11 +35,13 @@ Query:
     from
       aws_ecr_repository as r
       left join repo_with_policy as p on r.repository_name = p.repository_name
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecr_repository
   ListOfTables:
   - aws_ecr_repository
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

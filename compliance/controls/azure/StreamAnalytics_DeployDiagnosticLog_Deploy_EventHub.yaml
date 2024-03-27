@@ -2,20 +2,22 @@ ID: deploy_diagnostic_settings_for_stream_analytics_to_event_hub
 Title: Deploy Diagnostic Settings for Stream Analytics to Event Hub
 Description: Deploys the diagnostic settings for Stream Analytics to stream to a regional Event Hub when any Stream Analytics which is missing this diagnostic settings is created or updated.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, location, kaytu_description
-        FROM azure_stream_analytics_job
-        WHERE type = 'Microsoft.StreamAnalytics/streamingjobs'
-        AND (location = '[parameters('eventHubLocation')]' OR kaytu_description ->> 'location' = '[parameters('eventHubLocation')]')
-        AND (kaytu_description -> 'Microsoft.Insights/diagnosticSettings/logs.enabled' = '[parameters('logsEnabled')]' OR kaytu_description -> 'StreamingJobProperties.Outputs[?(@.Name == 'Microsoft.Insights/diagnosticSettings')].Properties.Diagnostics.Logs[0].Enabled' = '[parameters('logsEnabled')]')
-        AND (kaytu_description -> 'Microsoft.Insights/diagnosticSettings/metrics.enabled' = '[parameters('metricsEnabled')]' OR kaytu_description -> 'StreamingJobProperties.Outputs[?(@.Name == 'Microsoft.Insights/diagnosticSettings')].Properties.Diagnostics.Metrics[0].Enabled' = '[parameters('metricsEnabled')]')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, location, kaytu_description
+    FROM azure_stream_analytics_job
+    WHERE type = 'Microsoft.StreamAnalytics/streamingjobs'
+    AND (location = '[parameters('eventHubLocation')]' OR kaytu_description ->> 'location' = '[parameters('eventHubLocation')]')
+    AND (kaytu_description -> 'Microsoft.Insights/diagnosticSettings/logs.enabled' = '[parameters('logsEnabled')]' OR kaytu_description -> 'StreamingJobProperties.Outputs[?(@.Name == 'Microsoft.Insights/diagnosticSettings')].Properties.Diagnostics.Logs[0].Enabled' = '[parameters('logsEnabled')]')
+    AND (kaytu_description -> 'Microsoft.Insights/diagnosticSettings/metrics.enabled' = '[parameters('metricsEnabled')]' OR kaytu_description -> 'StreamingJobProperties.Outputs[?(@.Name == 'Microsoft.Insights/diagnosticSettings')].Properties.Diagnostics.Metrics[0].Enabled' = '[parameters('metricsEnabled')]')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags: {}

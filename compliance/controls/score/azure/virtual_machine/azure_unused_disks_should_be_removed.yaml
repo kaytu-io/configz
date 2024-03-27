@@ -28,12 +28,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = disk.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

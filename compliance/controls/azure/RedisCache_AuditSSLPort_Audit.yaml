@@ -2,17 +2,19 @@ ID: only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
 Title: Only secure connections to your Azure Cache for Redis should be enabled
 Description: Audit enabling of only connections via SSL to Azure Cache for Redis. Use of secure connections ensures authentication between the server and the service and protects data in transit from network layer attacks such as man-in-the-middle, eavesdropping, and session-hijacking
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, type, provisioning_state, redis_version, enable_non_ssl_port, host_name, minimum_tls_version, port, public_network_access, sku_capacity, sku_family, sku_name, ssl_port, subnet_id, static_ip, replicas_per_master, shard_count, access_keys, linked_servers, instances, private_endpoint_connections, redis_configuration, tenant_settings, zones, title, tags, akas, region, resource_group, cloud_environment, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
-        FROM azure_redis_cache
-        WHERE type = 'Microsoft.Cache/redis' AND kaytu_description->>'$.properties.EnableNonSSLPort' = 'true'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, type, provisioning_state, redis_version, enable_non_ssl_port, host_name, minimum_tls_version, port, public_network_access, sku_capacity, sku_family, sku_name, ssl_port, subnet_id, static_ip, replicas_per_master, shard_count, access_keys, linked_servers, instances, private_endpoint_connections, redis_configuration, tenant_settings, zones, title, tags, akas, region, resource_group, cloud_environment, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
+    FROM azure_redis_cache
+    WHERE type = 'Microsoft.Cache/redis' AND kaytu_description->>'$.properties.EnableNonSSLPort' = 'true'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

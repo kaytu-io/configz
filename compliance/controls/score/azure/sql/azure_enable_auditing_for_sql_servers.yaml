@@ -32,12 +32,14 @@ Query:
       azure_sql_server as s
       left join azure_subscription as sub on s.subscription_id = sub.subscription_id
       left join sql_server_audit_enabled as a on lower(s.id) = lower(a.id);
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

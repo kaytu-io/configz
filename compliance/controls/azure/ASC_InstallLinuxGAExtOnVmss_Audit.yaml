@@ -1,23 +1,25 @@
-ID: '[_preview]:_guest_attestation_extension_should_be_installed_on_supported_linux_virtual_machines_scale_sets'
-Title: '[Preview]: Guest Attestation extension should be installed on supported Linux virtual machines scale sets'
+ID: "[_preview]:_guest_attestation_extension_should_be_installed_on_supported_linux_virtual_machines_scale_sets"
+Title: "[Preview]: Guest Attestation extension should be installed on supported Linux virtual machines scale sets"
 Description: Install Guest Attestation extension on supported Linux virtual machines scale sets to allow Azure Security Center to proactively attest and monitor the boot integrity. Once installed, boot integrity will be attested via Remote Attestation.  This assessment applies to Trusted Launch and Confidential Linux virtual machine scale sets.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, type, kaytu_description
-        FROM azure_compute_virtual_machine_scale_set
-        WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'
-        AND (
-            (kaytu_description -> 'VirtualMachineScaleSetVMProfile' -> 'SecurityProfile' -> 'UefiSettings' ->> 'SecureBootEnabled' = 'true')
-            OR
-            (kaytu_description -> 'VirtualMachineScaleSetVMProfile' -> 'SecurityProfile' -> 'UefiSettings' ? 'SecureBootEnabled' = true)
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, type, kaytu_description
+    FROM azure_compute_virtual_machine_scale_set
+    WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'
+    AND (
+        (kaytu_description -> 'VirtualMachineScaleSetVMProfile' -> 'SecurityProfile' -> 'UefiSettings' ->> 'SecureBootEnabled' = 'true')
+        OR
+        (kaytu_description -> 'VirtualMachineScaleSetVMProfile' -> 'SecurityProfile' -> 'UefiSettings' ? 'SecureBootEnabled' = true)
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

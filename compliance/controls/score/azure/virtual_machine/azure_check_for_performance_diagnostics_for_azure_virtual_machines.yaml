@@ -2,6 +2,7 @@ ID: azure_check_for_performance_diagnostics_for_azure_virtual_machines
 Title: Check for Performance Diagnostics for Azure Virtual Machines
 Description: Ensure that Azure virtual machines are configured to use the Performance Diagnostics tool.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,13 +28,17 @@ Query:
     from
       azure_compute_virtual_machine as vm
       left join azure_subscription as sub on sub.subscription_id = vm.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+Managed: false

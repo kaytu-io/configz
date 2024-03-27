@@ -21,11 +21,13 @@ Query:
       account_id
     FROM 
       aws_opensearch_domain
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

@@ -26,12 +26,14 @@ Query:
     FROM 
     aws_vpc as v
     WHERE is_default = false;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc
   ListOfTables:
   - aws_vpc
   - aws_vpc_endpoint
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

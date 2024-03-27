@@ -25,11 +25,13 @@ Query:
       account_id
     from
       aws_vpc_eip;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_eip
   ListOfTables:
   - aws_vpc_eip
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

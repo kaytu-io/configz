@@ -2,18 +2,20 @@ ID: azure_monitor_should_collect_activity_logs_from_all_regions
 Title: Azure Monitor should collect activity logs from all regions
 Description: This policy audits the Azure Monitor log profile which does not export activities from all Azure supported regions including global.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description ->> '$.Subscription.subscriptionPolicies.locationPlacementId' IN ('usgovarizona', 'usgoviowa', 'usgovtexas', 'usgovvirginia', 'global')
-          AND kaytu_description ->> '$.type' = 'Microsoft.Resources/subscriptions'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description ->> '$.Subscription.subscriptionPolicies.locationPlacementId' IN ('usgovarizona', 'usgoviowa', 'usgovtexas', 'usgovvirginia', 'global')
+      AND kaytu_description ->> '$.type' = 'Microsoft.Resources/subscriptions'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

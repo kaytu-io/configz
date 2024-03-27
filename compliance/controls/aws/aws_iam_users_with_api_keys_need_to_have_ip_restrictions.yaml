@@ -2,6 +2,7 @@ ID: aws_iam_users_with_api_keys_need_to_have_ip_restrictions
 Title: IAM Users with API Keys need to have IP Restrictions
 Description: IAM Users with API Keys need to have IP Restrictions
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with policies as (
@@ -14,7 +15,7 @@ Query:
         ((s ->> 'Effect') = 'Allow' and
                 '{{.awsUserApprovedIpAddresses}}' @> (s -> 'Condition' -> 'IpAddress' -> 'aws:sourceip'))
     )
-
+    
     select
           u.arn as resource,
           u.kaytu_account_id as kaytu_account_id,
@@ -47,23 +48,26 @@ Query:
             ) then title || ' user IP access is restricted.'
             else title || ' user IP access is not restricted'
           end as reason
-
+    
           , u.region, u.account_id
         from
           aws_iam_user as u
           left join aws_iam_credential_report as r on u.arn = r.user_arn
         where
           r.access_key_1_active or r.access_key_2_active
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_user
   ListOfTables:
-    - aws_iam_user
-    - aws_iam_credential_report
+  - aws_iam_user
+  - aws_iam_credential_report
   Parameters:
-    - Key: awsUserApprovedIpAddresses
-      Required: true
+  - Key: awsUserApprovedIpAddresses
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
   category:
-    - Compliance
+  - Compliance
+Managed: false

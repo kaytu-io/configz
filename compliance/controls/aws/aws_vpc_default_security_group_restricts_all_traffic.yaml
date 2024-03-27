@@ -2,6 +2,7 @@ ID: aws_vpc_default_security_group_restricts_all_traffic
 Title: VPC default security group should not allow inbound and outbound traffic
 Description: Amazon Elastic Compute Cloud (Amazon EC2) security groups can help in the management of network access by providing stateful filtering of ingress and egress network traffic to AWS resources.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,10 +28,13 @@ Query:
       aws_vpc_security_group
     where
       group_name = 'default';
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_security_group
   ListOfTables:
   - aws_vpc_security_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -68,3 +72,4 @@ Tags:
   - AWS/VPC
   soc_2:
   - "true"
+Managed: false

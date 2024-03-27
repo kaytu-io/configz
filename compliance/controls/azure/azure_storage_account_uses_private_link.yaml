@@ -2,6 +2,7 @@ ID: azure_storage_account_uses_private_link
 Title: Ensure Private Endpoints are used to access Storage Accounts
 Description: Use private endpoints for your Azure Storage accounts to allow clients and services to securely access data located over a network via an encrypted Private Link. To do this, the private endpoint uses an IP address from the VNet for each service. Network traffic between disparate services securely traverses encrypted over the VNet. This VNet can also link addressing space, extending your network and accessing resources on it. Similarly, it can be a tunnel through public networks to connect remote infrastructures together. This creates further security through segmenting network traffic and preventing outside sources from accessing it.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with storage_account_connection as (
@@ -34,11 +35,14 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = a.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_account
   ListOfTables:
   - azure_storage_account
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -60,3 +64,4 @@ Tags:
   - azure
   service:
   - Azure/Storage
+Managed: false

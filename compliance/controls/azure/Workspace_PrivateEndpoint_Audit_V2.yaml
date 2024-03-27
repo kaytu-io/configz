@@ -1,20 +1,22 @@
 ID: azure_machine_learning_workspaces_should_use_private_link
 Title: Azure Machine Learning workspaces should use private link
-Description: 'Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are reduced. Learn more about private links at: https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link.'
+Description: "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are reduced. Learn more about private links at: https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_machine_learning_workspace
-        WHERE type = 'Microsoft.MachineLearningServices/workspaces'
-        AND kaytu_description -> 'Workspace' ->> 'privateEndpointConnections' IS NOT NULL
-        AND kaytu_description -> 'Workspace' ->> 'privateEndpointConnections' ->> '[*].privateLinkServiceConnectionState.status' = 'Approved'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_machine_learning_workspace
+    WHERE type = 'Microsoft.MachineLearningServices/workspaces'
+    AND kaytu_description -> 'Workspace' ->> 'privateEndpointConnections' IS NOT NULL
+    AND kaytu_description -> 'Workspace' ->> 'privateEndpointConnections' ->> '[*].privateLinkServiceConnectionState.status' = 'Approved'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

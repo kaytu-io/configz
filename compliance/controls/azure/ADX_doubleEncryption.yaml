@@ -2,18 +2,20 @@ ID: double_encryption_should_be_enabled_on_azure_data_explorer
 Title: Double encryption should be enabled on Azure Data Explorer
 Description: Enabling double encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. When double encryption has been enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level, using two different encryption algorithms and two different keys.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_kusto_cluster
-        WHERE type = 'Microsoft.Kusto/Clusters'
-        AND (enable_double_encryption IS NULL OR enable_double_encryption = FALSE)
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_kusto_cluster
+    WHERE type = 'Microsoft.Kusto/Clusters'
+    AND (enable_double_encryption IS NULL OR enable_double_encryption = FALSE)
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

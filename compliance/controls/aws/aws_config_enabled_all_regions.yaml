@@ -2,70 +2,18 @@ ID: aws_config_enabled_all_regions
 Title: Ensure AWS Accounts have AWS Config enabled in all regions
 Description: AWS Config is a web service that performs configuration management of supported AWS resources within your account and delivers log files to you. The recorded information includes the configuration item (AWS resource), relationships between configuration items (AWS resources), any configuration changes between resources. It is recommended to enable AWS Config be enabled in all regions.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: |
-    with global_recorders as (
-      select
-        count(*) as global_config_recorders
-      from
-        aws_config_configuration_recorder
-      where
-        recording_group -> 'IncludeGlobalResourceTypes' = 'true'
-        and recording_group -> 'AllSupported' = 'true'
-        and status ->> 'Recording' = 'true'
-        and status ->> 'LastStatus' = 'SUCCESS'
-    ),
-    regions as (
-      select
-        'arn:aws::' || a.region || ':' || a.account_id as resource,
-        a.kaytu_account_id as kaytu_account_id,
-        a.kaytu_resource_id as kaytu_resource_id,
-        case
-          when
-            g.global_config_recorders >= 1
-            and status ->> 'Recording' = 'true'
-            and status ->> 'LastStatus' = 'SUCCESS'
-          then 0
-          when a.opt_in_status = 'not-opted-in' then 1
-          else 2
-        end as status,
-        a.region, a.account_id
-      from
-        global_recorders as g,
-        aws_region as a
-        left join aws_config_configuration_recorder as r on r.account_id = a.account_id and r.region = a.name
-    ),
-    results as (
-      SELECT 
-        account_id AS resource,
-        kaytu_account_id as kaytu_account_id,
-        kaytu_account_id as kaytu_resource_id,
-        case
-          when max(status) = 2 then 'alarm'
-          when max(status) = 1 then 'skip'
-          when max(status) = 0 then 'ok'
-        end as status,
-        case
-          when max(status) = 2 then 'AWS Config is not enabled for this account on regions: [' || string_agg(region, ',') || ']' 
-          when max(status) = 1 then 'Account is not opted in regions: [' || string_agg(region, ',') || ']'
-          when max(status) = 0 then 'AWS Config is enabled for this account on regions: [' || string_agg(region, ',') || ']'
-          end as reason
-      FROM regions
-      GROUP BY account_id, kaytu_account_id
-    )
-    SELECT 
-      r.resource AS resource,
-      r.kaytu_account_id as kaytu_account_id,
-      a.kaytu_resource_id as kaytu_resource_id,
-      r.status as status,
-      r.reason as reason
-    FROM results as r JOIN aws_account as a ON r.kaytu_account_id = a.kaytu_account_id
-  Connector: AWS
+  QueryToExecute: "with global_recorders as (\n  select\n    count(*) as global_config_recorders\n  from\n    aws_config_configuration_recorder\n  where\n    recording_group -> 'IncludeGlobalResourceTypes' = 'true'\n    and recording_group -> 'AllSupported' = 'true'\n    and status ->> 'Recording' = 'true'\n    and status ->> 'LastStatus' = 'SUCCESS'\n),\nregions as (\n  select\n    'arn:aws::' || a.region || ':' || a.account_id as resource,\n    a.kaytu_account_id as kaytu_account_id,\n    a.kaytu_resource_id as kaytu_resource_id,\n    case\n      when\n        g.global_config_recorders >= 1\n        and status ->> 'Recording' = 'true'\n        and status ->> 'LastStatus' = 'SUCCESS'\n      then 0\n      when a.opt_in_status = 'not-opted-in' then 1\n      else 2\n    end as status,\n    a.region, a.account_id\n  from\n    global_recorders as g,\n    aws_region as a\n    left join aws_config_configuration_recorder as r on r.account_id = a.account_id and r.region = a.name\n),\nresults as (\n  SELECT \n    account_id AS resource,\n    kaytu_account_id as kaytu_account_id,\n    kaytu_account_id as kaytu_resource_id,\n    case\n      when max(status) = 2 then 'alarm'\n      when max(status) = 1 then 'skip'\n      when max(status) = 0 then 'ok'\n    end as status,\n    case\n      when max(status) = 2 then 'AWS Config is not enabled for this account on regions: [' || string_agg(region, ',') || ']' \n      when max(status) = 1 then 'Account is not opted in regions: [' || string_agg(region, ',') || ']'\n      when max(status) = 0 then 'AWS Config is enabled for this account on regions: [' || string_agg(region, ',') || ']'\n      end as reason\n  FROM regions\n  GROUP BY account_id, kaytu_account_id\n)\nSELECT \n  r.resource AS resource,\n  r.kaytu_account_id as kaytu_account_id,\n  a.kaytu_resource_id as kaytu_resource_id,\n  r.status as status,\n  r.reason as reason\nFROM results as r JOIN aws_account as a ON r.kaytu_account_id = a.kaytu_account_id\n"
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_config_configuration_recorder
   - aws_region
   - aws_account
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -87,3 +35,4 @@ Tags:
   - aws
   service:
   - AWS/Config
+Managed: false

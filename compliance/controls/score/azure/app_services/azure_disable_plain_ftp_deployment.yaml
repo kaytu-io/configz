@@ -22,12 +22,14 @@ Query:
     from
       azure_app_service_web_app as wa
       left join azure_subscription as sub on wa.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_app_service_web_app
   ListOfTables:
   - azure_app_service_web_app
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

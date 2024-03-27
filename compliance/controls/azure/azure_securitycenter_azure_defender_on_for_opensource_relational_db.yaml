@@ -2,6 +2,7 @@ ID: azure_securitycenter_azure_defender_on_for_opensource_relational_db
 Title: Ensure That Microsoft Defender for Open-Source Relational Databases Is Set To 'On'
 Description: Turning on Microsoft Defender for Open-source relational databases enables threat detection for Open-source relational databases, providing threat intelligence, anomaly detection, and behavior analytics in the Microsoft Defender for Cloud.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,11 +24,14 @@ Query:
       right join azure_subscription sub on sub_pricing.subscription_id = sub.subscription_id
     where
       sub_pricing.title = 'OpenSourceRelationalDatabases';
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_subscription_pricing
   ListOfTables:
   - azure_security_center_subscription_pricing
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -49,3 +53,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

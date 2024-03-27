@@ -2,6 +2,7 @@ ID: azure_sql_server_va_setting_scan_reports_configured
 Title: Ensure that VA setting Send scan reports to is configured for a SQL server
 Description: Configure 'Send scan reports to' with email ids of concerned data owners/stakeholders for a critical SQL servers.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -42,11 +43,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_sql_server
   ListOfTables:
   - azure_sql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -68,3 +72,4 @@ Tags:
   - azure
   service:
   - Azure/SQL
+Managed: false

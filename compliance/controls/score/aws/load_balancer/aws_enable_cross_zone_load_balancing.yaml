@@ -2,6 +2,7 @@ ID: aws_enable_cross_zone_load_balancing
 Title: Enable Cross-Zone Load Balancing
 Description: Ensure fault tolerance for your Amazon Gateway Load Balancers by enabling Cross-Zone Load Balancing.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,12 +24,16 @@ Query:
       cross join jsonb_array_elements(load_balancer_attributes) as lb
     where
       lb ->> 'Key' = 'load_balancing.cross_zone.enabled'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
-    - aws_ec2_gateway_load_balancer
+  - aws_ec2_gateway_load_balancer
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - AWS Elastic Load Balancing V2 (ELBv2)
+  - AWS Elastic Load Balancing V2 (ELBv2)
+Managed: false

@@ -2,19 +2,21 @@ ID: activity_log_should_be_retained_for_at_least_one_year
 Title: Activity log should be retained for at least one year
 Description: This policy audits the activity log if the retention is not set for 365 days or forever (retention days set to 0).
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.additionalProperties.Microsoft.Insights/logProfiles/retentionPolicy.enabled' = 'true'
-        AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.additionalProperties.Microsoft.Insights/logProfiles/retentionPolicy.days' = '365'
-        AND title = 'Microsoft.Resources/subscriptions'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.additionalProperties.Microsoft.Insights/logProfiles/retentionPolicy.enabled' = 'true'
+    AND kaytu_description ->> '$.Subscription.SubscriptionPolicies.additionalProperties.Microsoft.Insights/logProfiles/retentionPolicy.days' = '365'
+    AND title = 'Microsoft.Resources/subscriptions'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

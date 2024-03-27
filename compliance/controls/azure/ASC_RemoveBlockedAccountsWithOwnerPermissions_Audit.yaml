@@ -2,17 +2,19 @@ ID: blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
 Title: Blocked accounts with owner permissions on Azure resources should be removed
 Description: Deprecated accounts with owner permissions should be removed from your subscription.  Deprecated accounts are accounts that have been blocked from signing in.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_subscription
-        WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code' IN ('NotApplicable', 'Healthy')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_subscription
+    WHERE kaytu_description ->> '$.Subscription.SubscriptionPolicies.Microsoft.Security/assessments/status.code' IN ('NotApplicable', 'Healthy')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

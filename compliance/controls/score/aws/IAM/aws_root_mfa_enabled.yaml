@@ -23,11 +23,13 @@ Query:
       aws_iam_credential_report
     where
       user_name = '<root_account>'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_credential_report
   ListOfTables:
   - aws_iam_credential_report
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

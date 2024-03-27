@@ -2,18 +2,20 @@ ID: an_azure_active_directory_administrator_should_be_provisioned_for_sql_server
 Title: An Azure Active Directory administrator should be provisioned for SQL servers
 Description: Audit provisioning of an Azure Active Directory administrator for your SQL server to enable Azure AD authentication. Azure AD authentication enables simplified permission management and centralized identity management of database users and other Microsoft services
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_sql_server
-        WHERE type = 'Microsoft.Sql/servers'
-        AND kaytu_account_id = 'account_id'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_sql_server
+    WHERE type = 'Microsoft.Sql/servers'
+    AND kaytu_account_id = 'account_id'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

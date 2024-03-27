@@ -2,6 +2,7 @@ ID: azure_keyvault_vault_recoverable
 Title: Ensure the key vault is recoverable
 Description: The key vault contains object keys, secrets and certificates. Accidental unavailability of a key vault can cause immediate data loss or loss of security functions (authentication, validation, verification, non-repudiation, etc.) supported by the key vault objects. It is recommended the key vault be made recoverable by enabling the "Do Not Purge" and "Soft Delete" functions.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,11 +27,14 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = kv.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault
   ListOfTables:
   - azure_key_vault
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: critical
 Tags:
@@ -52,3 +56,4 @@ Tags:
   - azure
   service:
   - Azure/KeyVault
+Managed: false

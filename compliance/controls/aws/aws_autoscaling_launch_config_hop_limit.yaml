@@ -2,6 +2,7 @@ ID: aws_autoscaling_launch_config_hop_limit
 Title: Auto Scaling group launch configuration should not have metadata response hop limit greater than 1
 Description: This control checks the number of network hops that a metadata token can travel. The control fails if the metadata response hop limit is greater than 1.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,10 +22,13 @@ Query:
       , region, account_id
     from
       aws_ec2_launch_configuration;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_launch_configuration
   ListOfTables:
   - aws_ec2_launch_configuration
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -40,3 +44,4 @@ Tags:
   - aws
   service:
   - AWS/AutoScaling
+Managed: false

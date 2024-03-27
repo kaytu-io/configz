@@ -2,6 +2,7 @@ ID: azure_compute_unattached_disk_encrypted_with_cmk
 Title: Ensure that 'Unattached disks' are encrypted with CMK
 Description: Ensure that unattached disks in a subscription are encrypted with a Customer Managed Key (CMK).
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,11 +26,14 @@ Query:
     where
       disk_state != 'Attached'
       and sub.subscription_id = disk.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -51,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/Compute
+Managed: false

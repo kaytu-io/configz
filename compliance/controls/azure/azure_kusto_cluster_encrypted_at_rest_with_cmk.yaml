@@ -2,20 +2,50 @@ ID: azure_kusto_cluster_encrypted_at_rest_with_cmk
 Title: Azure Data Explorer encryption at rest should use a customer-managed key
 Description: Enabling encryption at rest using a customer-managed key on your Azure Data Explorer cluster provides additional control over the key being used by the encryption at rest. This feature is oftentimes applicable to customers with special compliance requirements and requires a Key Vault to managing the keys.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  kv.id as resource,\n  kv.kaytu_account_id as kaytu_account_id,\n  kv.kaytu_resource_id as kaytu_resource_id,\n  case\n    when\n      key_vault_properties -> 'keyName' is not null\n      and key_vault_properties -> 'keyVaultUri' is not null\n      and key_vault_properties -> 'keyVersion' is not null\n    then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when\n      key_vault_properties -> 'keyName' is not null\n      and key_vault_properties -> 'keyVaultUri' is not null\n      and key_vault_properties -> 'keyVersion' is not null\n    then name || ' encrypted at rest with CMK.'\n    else name || ' not encrypted at rest with CMK.'\n  end as reason\n  \n  , kv.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_kusto_cluster as kv,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = kv.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_kusto_cluster
-    ListOfTables:
-        - azure_kusto_cluster
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      kv.id as resource,
+      kv.kaytu_account_id as kaytu_account_id,
+      kv.kaytu_resource_id as kaytu_resource_id,
+      case
+        when
+          key_vault_properties -> 'keyName' is not null
+          and key_vault_properties -> 'keyVaultUri' is not null
+          and key_vault_properties -> 'keyVersion' is not null
+        then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when
+          key_vault_properties -> 'keyName' is not null
+          and key_vault_properties -> 'keyVaultUri' is not null
+          and key_vault_properties -> 'keyVersion' is not null
+        then name || ' encrypted at rest with CMK.'
+        else name || ' not encrypted at rest with CMK.'
+      end as reason
+      
+      , kv.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_kusto_cluster as kv,
+      azure_subscription as sub
+    where
+      sub.subscription_id = kv.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_kusto_cluster
+  ListOfTables:
+  - azure_kusto_cluster
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    service:
-        - Azure/DataExplorer
+  nist_sp_800_53_rev_5:
+  - "true"
+  service:
+  - Azure/DataExplorer
 Managed: false

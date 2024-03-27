@@ -1,20 +1,22 @@
 ID: app_configuration_should_disable_public_network_access
 Title: App Configuration should disable public network access
-Description: 'Disabling public network access improves security by ensuring that the resource isn''t exposed on the public internet. You can limit exposure of your resources by creating private endpoints instead. Learn more at: https://aka.ms/appconfig/private-endpoint.'
+Description: "Disabling public network access improves security by ensuring that the resource isn't exposed on the public internet. You can limit exposure of your resources by creating private endpoints instead. Learn more at: https://aka.ms/appconfig/private-endpoint."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_configuration
-        WHERE type = 'Microsoft.AppConfiguration/configurationStores'
-        AND (public_network_access IS NOT NULL AND public_network_access != 'Disabled'
-        OR kaytu_description->'AppConfigurationDescription'->'ConfigurationStore'->'Properties'->>'PublicNetworkAccess' IS NOT NULL AND kaytu_description->'AppConfigurationDescription'->'ConfigurationStore'->'Properties'->>'PublicNetworkAccess' != 'Disabled')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_configuration
+    WHERE type = 'Microsoft.AppConfiguration/configurationStores'
+    AND (public_network_access IS NOT NULL AND public_network_access != 'Disabled'
+    OR kaytu_description->'AppConfigurationDescription'->'ConfigurationStore'->'Properties'->>'PublicNetworkAccess' IS NOT NULL AND kaytu_description->'AppConfigurationDescription'->'ConfigurationStore'->'Properties'->>'PublicNetworkAccess' != 'Disabled')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

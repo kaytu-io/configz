@@ -2,6 +2,7 @@ ID: aws_aurora_mysql_backtracking_enabled
 Title: Amazon Aurora MySQL cluster should have backtracking enabled
 Description: Checks if an Amazon Aurora MySQL cluster has backtracking enabled. The rule is ALARM if the Aurora cluster uses MySQL and it does not have backtracking enabled.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -19,10 +20,14 @@ Query:
     FROM 
       aws_rds_db_cluster
     WHERE engine LIKE '%mysql%'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
-    - aws_rds_db_cluster
-
+  - aws_rds_db_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

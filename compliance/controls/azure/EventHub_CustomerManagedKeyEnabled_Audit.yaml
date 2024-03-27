@@ -2,19 +2,15 @@ ID: event_hub_namespaces_should_use_a_customer_managed_key_for_encryption
 Title: Event Hub namespaces should use a customer-managed key for encryption
 Description: Azure Event Hubs supports the option of encrypting data at rest with either Microsoft-managed keys (default) or customer-managed keys. Choosing to encrypt data using customer-managed keys enables you to assign, rotate, disable, and revoke access to the keys that Event Hub will use to encrypt data in your namespace. Note that Event Hub only supports encryption with customer-managed keys for namespaces in dedicated clusters.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT azure_eventhub_namespace.name, azure_eventhub_namespace.cluster_arm_id, azure_eventhub_namespace.encryption
-        FROM azure_eventhub_namespace
-        WHERE azure_eventhub_namespace.type = 'Microsoft.EventHub/namespaces'
-        AND (azure_eventhub_namespace.cluster_arm_id IS NOT NULL OR json_extract_path_text(azure_eventhub_namespace.kaytu_description, 'clusterArmId: $.defs.EHNamespaceProperties.properties.ClusterArmID') IS NOT NULL)
-        AND (azure_eventhub_namespace.encryption->>'keySource' IS NULL OR json_extract_path_text(azure_eventhub_namespace.kaytu_description, 'encryption.keySource: $.defs.EHNamespaceProperties.properties.Encryption.properties.KeySource') IS NULL)
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: "SELECT azure_eventhub_namespace.name, azure_eventhub_namespace.cluster_arm_id, azure_eventhub_namespace.encryption\nFROM azure_eventhub_namespace\nWHERE azure_eventhub_namespace.type = 'Microsoft.EventHub/namespaces'\nAND (azure_eventhub_namespace.cluster_arm_id IS NOT NULL OR json_extract_path_text(azure_eventhub_namespace.kaytu_description, 'clusterArmId: $.defs.EHNamespaceProperties.properties.ClusterArmID') IS NOT NULL)\nAND (azure_eventhub_namespace.encryption->>'keySource' IS NULL OR json_extract_path_text(azure_eventhub_namespace.kaytu_description, 'encryption.keySource: $.defs.EHNamespaceProperties.properties.Encryption.properties.KeySource') IS NULL)\nLIMIT 5;;\n"
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

@@ -1,31 +1,24 @@
-Description: Enabling all Intrusion Detection and Prevention System (IDPS) signature
-  rules is recommanded to better identify known threats in the traffic flows. To learn
-  more about the Intrusion Detection and Prevention System (IDPS) signatures with
-  Azure Firewall Premium, visit https://aka.ms/fw-idps-signature
 ID: firewall_policy_premium_should_enable_all_idps_signature_rules_to_monitor_all_inbound_and_outbound_traffic_flows
+Title: Firewall Policy Premium should enable all IDPS signature rules to monitor all inbound and outbound traffic flows
+Description: Enabling all Intrusion Detection and Prevention System (IDPS) signature rules is recommanded to better identify known threats in the traffic flows. To learn more about the Intrusion Detection and Prevention System (IDPS) signatures with Azure Firewall Premium, visit https://aka.ms/fw-idps-signature
 Query:
-  Connector: Azure
+  ID: ""
   Engine: odysseus-v0.0.1
-  QueryToExecute: 'SELECT name, id, sku_tier, intrusion_detection_configuration
-
+  QueryToExecute: |
+    SELECT name, id, sku_tier, intrusion_detection_configuration
     FROM azure_firewall_policy
-
-    WHERE type = ''Microsoft.Network/firewallPolicies''
-
-    AND (sku_tier = ''Premium'' OR kaytu_description->''FirewallPolicy''->''properties''->''sku''->>''tier''
-    = ''Premium'')
-
-    AND (intrusion_detection_configuration->''signatureOverrides'' IS NOT NULL OR
-    kaytu_description->''FirewallPolicy''->''properties''->''intrusionDetection''->''configuration''->''signatureOverrides''
-    IS NOT NULL)
-
-    AND (intrusion_detection_configuration->''signatureOverrides''->>0->>''mode''
-    = ''Off'' OR kaytu_description->''FirewallPolicy''->''properties''->''intrusionDetection''->''configuration''->''signatureOverrides''->0->>''mode''
-    = ''Off'')
-
+    WHERE type = 'Microsoft.Network/firewallPolicies'
+    AND (sku_tier = 'Premium' OR kaytu_description->'FirewallPolicy'->'properties'->'sku'->>'tier' = 'Premium')
+    AND (intrusion_detection_configuration->'signatureOverrides' IS NOT NULL OR kaytu_description->'FirewallPolicy'->'properties'->'intrusionDetection'->'configuration'->'signatureOverrides' IS NOT NULL)
+    AND (intrusion_detection_configuration->'signatureOverrides'->>0->>'mode' = 'Off' OR kaytu_description->'FirewallPolicy'->'properties'->'intrusionDetection'->'configuration'->'signatureOverrides'->0->>'mode' = 'Off')
     LIMIT 5;;
-
-    '
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: medium
-Title: Firewall Policy Premium should enable all IDPS signature rules to monitor all
-  inbound and outbound traffic flows
+Tags: {}
+Managed: false

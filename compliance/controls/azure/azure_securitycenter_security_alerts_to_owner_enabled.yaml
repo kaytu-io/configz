@@ -2,6 +2,7 @@ ID: azure_securitycenter_security_alerts_to_owner_enabled
 Title: Ensure that 'All users with the following roles' is set to 'Owner'
 Description: Enable security alert emails to subscription owners.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with contact_info as (
@@ -31,11 +32,14 @@ Query:
     from
       azure_subscription sub
       left join contact_info ci on sub.subscription_id = ci.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_contact
   ListOfTables:
   - azure_security_center_contact
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -57,3 +61,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

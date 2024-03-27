@@ -2,6 +2,7 @@ ID: aws_apigateway_rest_api_stage_xray_tracing_enabled
 Title: API Gateway REST API stages should have AWS X-Ray tracing enabled
 Description: This control checks whether AWS X-Ray active tracing is enabled for your Amazon API Gateway REST API stages.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -20,10 +21,13 @@ Query:
       , region, account_id
     from
       aws_api_gateway_stage;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_api_gateway_stage
   ListOfTables:
   - aws_api_gateway_stage
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -39,3 +43,4 @@ Tags:
   - aws
   service:
   - AWS/APIGateway
+Managed: false

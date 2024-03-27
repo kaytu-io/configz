@@ -2,6 +2,7 @@ ID: aws_docdb_cluster_audit_logging_enabled
 Title: Amazon DocumentDB cluster should have audit logging enabled
 Description: Checks if an Amazon DocumentDB (with MongoDB compatibility) instance cluster has CloudWatch log export enabled for audit logs. The rule is ALARM if an Amazon DocumentDB instance cluster does not have CloudWatch log export enabled for audit logs.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -18,10 +19,14 @@ Query:
       END AS reason
     FROM 
       aws_docdb_cluster
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_docdb_cluster
   ListOfTables:
-    - aws_docdb_cluster
-
+  - aws_docdb_cluster
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

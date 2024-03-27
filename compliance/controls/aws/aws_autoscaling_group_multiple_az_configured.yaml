@@ -2,6 +2,7 @@ ID: aws_autoscaling_group_multiple_az_configured
 Title: Amazon EC2 Auto Scaling group should cover multiple Availability Zones
 Description: This control checks whether an Auto Scaling group spans multiple Availability Zones. The control fails if an Auto Scaling group does not span multiple availability zones.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -17,10 +18,13 @@ Query:
       , region, account_id
     from
       aws_ec2_autoscaling_group;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_autoscaling_group
   ListOfTables:
   - aws_ec2_autoscaling_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -36,3 +40,4 @@ Tags:
   - aws
   service:
   - AWS/AutoScaling
+Managed: false

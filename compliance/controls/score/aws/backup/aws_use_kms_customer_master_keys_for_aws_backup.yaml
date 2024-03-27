@@ -24,11 +24,13 @@ Query:
     from
       aws_backup_vault as v
       left join aws_kms_key as k on v.encryption_key_arn = k.arn
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_backup_vault
   ListOfTables:
   - aws_backup_vault
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

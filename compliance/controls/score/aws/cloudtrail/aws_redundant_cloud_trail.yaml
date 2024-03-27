@@ -60,11 +60,13 @@ Query:
       regional_trails.region = t.region
       and not is_multi_region_trail
       and not is_organization_trail;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudtrail_trail
   ListOfTables:
   - aws_cloudtrail_trail
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

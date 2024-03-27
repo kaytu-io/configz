@@ -2,18 +2,20 @@ ID: configure_container_registries_to_disable_public_network_access
 Title: Configure Container registries to disable public network access
 Description: Disable public network access for your Container Registry resource so that it's not accessible over the public internet. This can reduce data leakage risks. Learn more at https://aka.ms/acr/portal/public-network and https://aka.ms/acr/private-link.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, kaytu_description->'Registry'->'Properties'->>'PublicNetworkAccess' AS public_network_access
-        FROM azure_container_registry
-        WHERE type = 'Microsoft.ContainerRegistry/registries'
-        AND (public_network_access IS NOT NULL OR kaytu_description->'Registry'->'Properties'->>'PublicNetworkAccess' IS NOT NULL)
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, kaytu_description->'Registry'->'Properties'->>'PublicNetworkAccess' AS public_network_access
+    FROM azure_container_registry
+    WHERE type = 'Microsoft.ContainerRegistry/registries'
+    AND (public_network_access IS NOT NULL OR kaytu_description->'Registry'->'Properties'->>'PublicNetworkAccess' IS NOT NULL)
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

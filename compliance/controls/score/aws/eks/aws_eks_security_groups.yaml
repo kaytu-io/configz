@@ -31,11 +31,14 @@ Query:
       aws_eks_cluster as c
       cross join jsonb_array_elements_text(resources_vpc_config -> 'SecurityGroupIds') as sg_id
       left join aws_vpc_security_group as sg on sg.group_id = sg_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_eks_cluster
   ListOfTables:
   - aws_eks_cluster
   - aws_vpc_security_group
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

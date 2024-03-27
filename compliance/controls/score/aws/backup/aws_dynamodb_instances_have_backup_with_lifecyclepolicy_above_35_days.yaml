@@ -27,12 +27,14 @@ Query:
     from 
       aws_dynamodb_table as t
       left join points as p on t.arn = p.resource_arn
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_dynamodb_table
   ListOfTables:
   - aws_dynamodb_table
   - aws_backup_recovery_point
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

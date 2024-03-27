@@ -23,13 +23,15 @@ Query:
       azure_compute_virtual_machine as vm
       left join azure_compute_disk as d on d.name = vm.os_disk_name
       left join azure_subscription as sub on vm.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
   - azure_compute_virtual_machine
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

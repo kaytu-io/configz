@@ -22,13 +22,15 @@ Query:
       account_id
     from
       aws_iam_policy
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_policy
   ListOfTables:
   - aws_iam_policy
   Parameters:
   - Key: awsUnapprovedIamPolicies
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

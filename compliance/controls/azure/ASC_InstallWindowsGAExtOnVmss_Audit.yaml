@@ -1,24 +1,26 @@
-ID: '[_preview]:_guest_attestation_extension_should_be_installed_on_supported_windows_virtual_machines_scale_sets'
-Title: '[Preview]: Guest Attestation extension should be installed on supported Windows virtual machines scale sets'
+ID: "[_preview]:_guest_attestation_extension_should_be_installed_on_supported_windows_virtual_machines_scale_sets"
+Title: "[Preview]: Guest Attestation extension should be installed on supported Windows virtual machines scale sets"
 Description: Install Guest Attestation extension on supported virtual machines scale sets to allow Azure Security Center to proactively attest and monitor the boot integrity. Once installed, boot integrity will be attested via Remote Attestation. This assessment applies to Trusted Launch and Confidential Windows virtual machine scale sets.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, provisioning_state, type, location, do_not_run_extensions_on_overprovisioned_vms, overprovision, platform_fault_domain_count, single_placement_group, sku_name, sku_capacity, sku_tier, unique_id, extensions, kaytu_description
-        FROM azure_compute_virtual_machine_scale_set
-        WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'
-        AND kaytu_description ->> 'virtualMachineProfile' -> 'storageProfile' -> 'imageReference' ->> 'offer' LIKE 'windows%'
-        AND kaytu_description ->> 'virtualMachineProfile' -> 'securityProfile' ->> 'securityType' IN ('TrustedLaunch', 'ConfidentialVM')
-        AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ? 'vTpmEnabled'
-        AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ->> 'vTpmEnabled' = 'true'
-        AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ? 'secureBootEnabled'
-        AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ->> 'secureBootEnabled' = 'true'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, provisioning_state, type, location, do_not_run_extensions_on_overprovisioned_vms, overprovision, platform_fault_domain_count, single_placement_group, sku_name, sku_capacity, sku_tier, unique_id, extensions, kaytu_description
+    FROM azure_compute_virtual_machine_scale_set
+    WHERE type = 'Microsoft.Compute/virtualMachineScaleSets'
+    AND kaytu_description ->> 'virtualMachineProfile' -> 'storageProfile' -> 'imageReference' ->> 'offer' LIKE 'windows%'
+    AND kaytu_description ->> 'virtualMachineProfile' -> 'securityProfile' ->> 'securityType' IN ('TrustedLaunch', 'ConfidentialVM')
+    AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ? 'vTpmEnabled'
+    AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ->> 'vTpmEnabled' = 'true'
+    AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ? 'secureBootEnabled'
+    AND kaytu_description -> 'virtualMachineProfile' -> 'securityProfile' -> 'uefiSettings' ->> 'secureBootEnabled' = 'true'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

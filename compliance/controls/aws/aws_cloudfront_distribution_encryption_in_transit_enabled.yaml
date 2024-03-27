@@ -2,6 +2,7 @@ ID: aws_cloudfront_distribution_encryption_in_transit_enabled
 Title: CloudFront distributions should require encryption in transit
 Description: This control checks whether an Amazon CloudFront distribution requires viewers to use HTTPS directly or whether it uses redirection. The control fails if ViewerProtocolPolicy is set to allow-all for defaultCacheBehavior or for cacheBehaviors.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with data as (
@@ -34,10 +35,13 @@ Query:
     from
       aws_cloudfront_distribution as b
       left join data as d on b.arn = d.arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_cloudfront_distribution
   ListOfTables:
   - aws_cloudfront_distribution
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -53,3 +57,4 @@ Tags:
   - aws
   service:
   - AWS/CloudFront
+Managed: false

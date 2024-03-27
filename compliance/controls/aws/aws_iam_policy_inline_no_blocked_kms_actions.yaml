@@ -2,107 +2,109 @@ ID: aws_iam_policy_inline_no_blocked_kms_actions
 Title: Ensure inline policies attached to IAM users, roles, and groups should not allow blocked actions on KMS keys
 Description: Checks if the inline policies attached to IAM users, roles, and groups do not allow blocked actions on all AWS Key Management Service (KMS) keys. The rule is non - compliant if any blocked action is allowed on all KMS keys in an inline policy.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        with iam_resource_types as (
-          select
-            arn,
-            inline_policies_std,
-            name,
-            account_id,
-            region,
-            kaytu_account_id as kaytu_account_id,
-            kaytu_resource_id as kaytu_resource_id,
-            'aws_iam_user' as kaytu_table_name,
-            _ctx
-          from
-            aws_iam_user
-          union
-          select
-            arn,
-            inline_policies_std,
-            name,
-            account_id,
-            region,
-            kaytu_account_id as kaytu_account_id,
-            kaytu_resource_id as kaytu_resource_id,
-            'aws_iam_role' as kaytu_table_name,
-            _ctx
-          from
-            aws_iam_role
-          union
-          select
-            arn,
-            inline_policies_std,
-            name,
-            account_id,
-            region,
-            kaytu_account_id as kaytu_account_id,
-            kaytu_resource_id as kaytu_resource_id,
-            'aws_iam_group' as kaytu_table_name,
-            _ctx
-          from
-            aws_iam_group
-        ),
-        kms_blocked_actions as (
-          select
-            arn,
-            count(*) as statements_num
-          from
-            iam_resource_types,
-            jsonb_array_elements(inline_policies_std) as policy_std,
-            jsonb_array_elements(policy_std -> 'PolicyDocument' -> 'Statement') as s,
-            jsonb_array_elements_text(s -> 'Resource') as resource,
-            jsonb_array_elements_text(s -> 'Action') as action
-          where
-            s ->> 'Effect' = 'Allow'
-            and action like any(array['kms:decrypt','kms:decrypt*', 'kms:reencryptfrom', 'kms:*', 'kms:reencrypt*'])
-          group by
-            arn
-        )
-        select
-          u.arn as resource,
-          u.kaytu_account_id as kaytu_account_id,
-          u.kaytu_resource_id as kaytu_resource_id,
-          u.kaytu_table_name as kaytu_table_name,
-          case
-            when w.arn is null then 'ok'
-            else 'alarm'
-          end status,
-          u.name || ' contains ' || coalesce(w.statements_num,0)  || ' inline policy statement(s) that allow blocked actions on AWS KMS keys.' as reason
-          , u.account_id
-        from
-          iam_resource_types as u
-          left join kms_blocked_actions as w on u.arn = w.arn;
-    Connector: AWS
-    PrimaryTable: null
-    ListOfTables:
-        - aws_iam_group
-        - aws_iam_role
-        - aws_iam_user
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    with iam_resource_types as (
+      select
+        arn,
+        inline_policies_std,
+        name,
+        account_id,
+        region,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_resource_id as kaytu_resource_id,
+        'aws_iam_user' as kaytu_table_name,
+        _ctx
+      from
+        aws_iam_user
+      union
+      select
+        arn,
+        inline_policies_std,
+        name,
+        account_id,
+        region,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_resource_id as kaytu_resource_id,
+        'aws_iam_role' as kaytu_table_name,
+        _ctx
+      from
+        aws_iam_role
+      union
+      select
+        arn,
+        inline_policies_std,
+        name,
+        account_id,
+        region,
+        kaytu_account_id as kaytu_account_id,
+        kaytu_resource_id as kaytu_resource_id,
+        'aws_iam_group' as kaytu_table_name,
+        _ctx
+      from
+        aws_iam_group
+    ),
+    kms_blocked_actions as (
+      select
+        arn,
+        count(*) as statements_num
+      from
+        iam_resource_types,
+        jsonb_array_elements(inline_policies_std) as policy_std,
+        jsonb_array_elements(policy_std -> 'PolicyDocument' -> 'Statement') as s,
+        jsonb_array_elements_text(s -> 'Resource') as resource,
+        jsonb_array_elements_text(s -> 'Action') as action
+      where
+        s ->> 'Effect' = 'Allow'
+        and action like any(array['kms:decrypt','kms:decrypt*', 'kms:reencryptfrom', 'kms:*', 'kms:reencrypt*'])
+      group by
+        arn
+    )
+    select
+      u.arn as resource,
+      u.kaytu_account_id as kaytu_account_id,
+      u.kaytu_resource_id as kaytu_resource_id,
+      u.kaytu_table_name as kaytu_table_name,
+      case
+        when w.arn is null then 'ok'
+        else 'alarm'
+      end status,
+      u.name || ' contains ' || coalesce(w.statements_num,0)  || ' inline policy statement(s) that allow blocked actions on AWS KMS keys.' as reason
+      , u.account_id
+    from
+      iam_resource_types as u
+      left join kms_blocked_actions as w on u.arn = w.arn;
+  Connector:
+  - AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_iam_group
+  - aws_iam_role
+  - aws_iam_user
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
-    category:
-        - Compliance
-    cisa_cyber_essentials:
-        - "true"
-    gxp_21_cfr_part_11:
-        - "true"
-    hipaa_final_omnibus_security_rule_2013:
-        - "true"
-    hipaa_security_rule_2003:
-        - "true"
-    nist_800_171_rev_2:
-        - "true"
-    nist_csf:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    plugin:
-        - aws
-    service:
-        - AWS/IAM
+  category:
+  - Compliance
+  cisa_cyber_essentials:
+  - "true"
+  gxp_21_cfr_part_11:
+  - "true"
+  hipaa_final_omnibus_security_rule_2013:
+  - "true"
+  hipaa_security_rule_2003:
+  - "true"
+  nist_800_171_rev_2:
+  - "true"
+  nist_csf:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
 Managed: false

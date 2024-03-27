@@ -2,21 +2,23 @@ ID: key_vault_should_use_a_virtual_network_service_endpoint
 Title: Key Vault should use a virtual network service endpoint
 Description: This policy audits any Key Vault not configured to use a virtual network service endpoint.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_key_vault
-        WHERE type = 'Microsoft.KeyVault/vaults'
-        AND (
-            network_acls->>'defaultAction' <> 'Deny'
-            OR NOT network_acls->'virtualNetworkRules' @> '[{}]'
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_key_vault
+    WHERE type = 'Microsoft.KeyVault/vaults'
+    AND (
+        network_acls->>'defaultAction' <> 'Deny'
+        OR NOT network_acls->'virtualNetworkRules' @> '[{}]'
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

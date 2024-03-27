@@ -2,6 +2,7 @@ ID: azure_appservice_ftp_deployment_disabled
 Title: Ensure FTP deployments are disabled
 Description: By default, Azure Functions, Web and API Services can be deployed over FTP. If FTP is required for an essential deployment workflow, FTPS should be required for FTP login for all App Service Apps and Functions.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -47,12 +48,15 @@ Query:
         azure_subscription as sub
       where
         sub.subscription_id = wa.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: null
   ListOfTables:
   - azure_app_service_function_app
   - azure_app_service_web_app
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -74,3 +78,4 @@ Tags:
   - azure
   service:
   - Azure/AppService
+Managed: false

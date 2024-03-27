@@ -45,13 +45,15 @@ Query:
       CROSS JOIN LATERAL jsonb_array_elements_text(al.security_groups) as sgid
       LEFT JOIN sg ON sgid = sg.group_id
       LEFT JOIN lbl ON al.arn = lbl.load_balancer_arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_application_load_balancer
   ListOfTables:
   - aws_ec2_application_load_balancer
   - aws_ec2_load_balancer_listener
   - aws_vpc_security_group
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

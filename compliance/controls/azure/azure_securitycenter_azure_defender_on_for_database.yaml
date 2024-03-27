@@ -2,6 +2,7 @@ ID: azure_securitycenter_azure_defender_on_for_database
 Title: Ensure That Microsoft Defender for Databases Is Set To 'On'
 Description: Turning on Microsoft Defender for Databases enables threat detection for the instances running your database software. This provides threat intelligence, anomaly detection, and behavior analytics in the Azure Microsoft Defender for Cloud. Instead of being enabled on services like Platform as a Service (PaaS), this implementation will run within your instances as Infrastructure as a Service (IaaS) on the Operating Systems hosting your databases.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with defender_list as (
@@ -42,11 +43,14 @@ Query:
     from
       azure_subscription as sub
       left join defender_list as l on l.subscription_id = sub.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_security_center_subscription_pricing
   ListOfTables:
   - azure_security_center_subscription_pricing
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -68,3 +72,4 @@ Tags:
   - azure
   service:
   - Azure/SecurityCenter
+Managed: false

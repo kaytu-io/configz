@@ -2,28 +2,30 @@ ID: key_vaults_should_have_deletion_protection_enabled
 Title: Key vaults should have deletion protection enabled
 Description: Malicious deletion of a key vault can lead to permanent data loss. You can prevent permanent data loss by enabling purge protection and soft delete. Purge protection protects you from insider attacks by enforcing a mandatory retention period for soft deleted key vaults. No one inside your organization or Microsoft will be able to purge your key vaults during the soft delete retention period. Keep in mind that key vaults created after September 1st 2019 have soft-delete enabled by default.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_key_vault
-        WHERE type = 'Microsoft.KeyVault/vaults'
-        AND (create_mode IS NOT NULL AND create_mode != 'recover')
-        AND (
-            (
-                (kaytu_description -> 'Vault' -> 'properties' ->> 'enableSoftDelete')::BOOLEAN = false
-                OR NOT kaytu_description ? 'Vault' -> 'properties' -> 'enableSoftDelete'
-            )
-            AND (
-                (kaytu_description -> 'Vault' -> 'properties' ->> 'enablePurgeProtection')::BOOLEAN = false
-                OR NOT kaytu_description ? 'Vault' -> 'properties' -> 'enablePurgeProtection'
-            )
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_key_vault
+    WHERE type = 'Microsoft.KeyVault/vaults'
+    AND (create_mode IS NOT NULL AND create_mode != 'recover')
+    AND (
+        (
+            (kaytu_description -> 'Vault' -> 'properties' ->> 'enableSoftDelete')::BOOLEAN = false
+            OR NOT kaytu_description ? 'Vault' -> 'properties' -> 'enableSoftDelete'
         )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+        AND (
+            (kaytu_description -> 'Vault' -> 'properties' ->> 'enablePurgeProtection')::BOOLEAN = false
+            OR NOT kaytu_description ? 'Vault' -> 'properties' -> 'enablePurgeProtection'
+        )
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags: {}

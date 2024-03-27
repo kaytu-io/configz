@@ -2,6 +2,7 @@ ID: aws_account_alternate_contact_security_registered
 Title: Ensure security contact information is registered
 Description: AWS provides customers with the option of specifying the contact information for account's security team. It is recommended that this information be provided.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with alternate_security_contact as (
@@ -32,11 +33,14 @@ Query:
     from
       aws_account as a
       left join alternate_security_contact as c on c.account_id = a.account_id;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_account
   ListOfTables:
   - aws_account
   - aws_account_alternate_contact
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -58,3 +62,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
+Managed: false

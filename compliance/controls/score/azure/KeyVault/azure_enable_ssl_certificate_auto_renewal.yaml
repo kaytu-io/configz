@@ -23,16 +23,19 @@ Query:
       azure_key_vault_certificate as c
       left join azure_subscription as sub on c.subscription_id = sub.subscription_id,
       jsonb_array_elements(lifetime_actions) as la
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault_certificate
   ListOfTables:
-    - azure_key_vault_certificate
-    - azure_subscription
+  - azure_key_vault_certificate
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - Azure KeyVault
+  - Azure KeyVault
   score_tags:
-    - Insecure Keys
+  - Insecure Keys
 Managed: false

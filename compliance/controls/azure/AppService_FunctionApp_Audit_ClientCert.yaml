@@ -1,21 +1,23 @@
-ID: '[_deprecated]:_function_apps_should_have_''_client_certificates_(_incoming_client_certificates)''_enabled'
-Title: '[Deprecated]: Function apps should have ''Client Certificates (Incoming client certificates)'' enabled'
+ID: "[_deprecated]:_function_apps_should_have_'_client_certificates_(_incoming_client_certificates)'_enabled"
+Title: "[Deprecated]: Function apps should have 'Client Certificates (Incoming client certificates)' enabled"
 Description: Client certificates allow for the app to request a certificate for incoming requests. Only clients with valid certificates will be able to reach the app. This policy has been replaced by a new policy with the same name because Http 2.0 doesn't support client certificates.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_service_function_app
-        WHERE type = 'Microsoft.Web/sites'
-          AND kind LIKE '%functionapp%'
-          AND kind NOT LIKE '%workflowapp%'
-          AND (client_cert_enabled = false OR kaytu_description->'Site'->'SiteAuthSettings'->'properties'->>'clientCertEnabled' = 'false')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_service_function_app
+    WHERE type = 'Microsoft.Web/sites'
+      AND kind LIKE '%functionapp%'
+      AND kind NOT LIKE '%workflowapp%'
+      AND (client_cert_enabled = false OR kaytu_description->'Site'->'SiteAuthSettings'->'properties'->>'clientCertEnabled' = 'false')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

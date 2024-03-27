@@ -24,12 +24,14 @@ Query:
       left join azure_subscription as sub on d.subscription_id = sub.subscription_id
     where
       d.managed_by is null;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

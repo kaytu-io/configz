@@ -2,6 +2,7 @@ ID: aws_enable_deletion_protection
 Title: Enable Deletion Protection
 Description: Ensure that Deletion Protection is enabled for Amazon Gateway Load Balancers.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -23,12 +24,16 @@ Query:
       cross join jsonb_array_elements(load_balancer_attributes) as lb
     where
       lb ->> 'Key' = 'deletion_protection.enabled'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
-    - aws_ec2_gateway_load_balancer
+  - aws_ec2_gateway_load_balancer
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
-    - AWS Elastic Load Balancing V2 (ELBv2)
+  - AWS Elastic Load Balancing V2 (ELBv2)
+Managed: false

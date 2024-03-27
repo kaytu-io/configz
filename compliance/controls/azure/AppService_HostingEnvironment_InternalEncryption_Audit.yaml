@@ -1,21 +1,23 @@
 ID: app_service_environment_should_have_internal_encryption_enabled
 Title: App Service Environment should have internal encryption enabled
-Description: Setting InternalEncryption to true encrypts the pagefile, worker disks, and internal network traffic between the front ends and workers in an App Service Environment. To learn more, refer to https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-custom-settings#enable-internal-encryption.
+Description: "Setting InternalEncryption to true encrypts the pagefile, worker disks, and internal network traffic between the front ends and workers in an App Service Environment. To learn more, refer to https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-custom-settings#enable-internal-encryption."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_service_environment
-        WHERE type = 'Microsoft.Web/hostingEnvironments'
-        AND (kind = 'ASE*' OR kaytu_description->'AppServiceEnvironmentDescription'->'AppServiceEnvironmentResource'->>'kind' = 'ASE*')
-        AND (kaytu_description->'AppServiceEnvironmentDescription'->'AppServiceEnvironmentResource'->'properties'->'clusterSettings' ? 'InternalEncryption')
-        AND (kaytu_description->'AppServiceEnvironmentDescription'->'AppServiceEnvironmentResource'->'properties'->'clusterSettings'->'InternalEncryption'->>'value' = 'true')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_service_environment
+    WHERE type = 'Microsoft.Web/hostingEnvironments'
+    AND (kind = 'ASE*' OR kaytu_description->'AppServiceEnvironmentDescription'->'AppServiceEnvironmentResource'->>'kind' = 'ASE*')
+    AND (kaytu_description->'AppServiceEnvironmentDescription'->'AppServiceEnvironmentResource'->'properties'->'clusterSettings' ? 'InternalEncryption')
+    AND (kaytu_description->'AppServiceEnvironmentDescription'->'AppServiceEnvironmentResource'->'properties'->'clusterSettings'->'InternalEncryption'->>'value' = 'true')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

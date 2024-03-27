@@ -2,19 +2,21 @@ ID: function_apps_should_require_ftps_only
 Title: Function apps should require FTPS only
 Description: Enable FTPS enforcement for enhanced security.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_app_service_function_app
-        WHERE type = 'Microsoft.Web/sites'
-        AND (kind LIKE '%functionapp%' AND kind NOT LIKE '%workflowapp%')
-        AND (site_config->>'ftpsState' = 'FtpsOnly' OR site_config->>'ftpsState' = 'Disabled')
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_app_service_function_app
+    WHERE type = 'Microsoft.Web/sites'
+    AND (kind LIKE '%functionapp%' AND kind NOT LIKE '%workflowapp%')
+    AND (site_config->>'ftpsState' = 'FtpsOnly' OR site_config->>'ftpsState' = 'Disabled')
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

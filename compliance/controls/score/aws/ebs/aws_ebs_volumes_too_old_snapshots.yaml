@@ -25,13 +25,15 @@ Query:
       account_id
     FROM 
       aws_ebs_snapshot es
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ebs_snapshot
   ListOfTables:
   - aws_ebs_snapshot
   Parameters:
   - Key: awsEbsSnapshotAgeMaxDays
     Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

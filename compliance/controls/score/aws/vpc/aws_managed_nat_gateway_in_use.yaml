@@ -25,12 +25,14 @@ Query:
     from
       aws_vpc as v
       left join available_nat_gateways as ng on ng.vpc_id = v.vpc_id
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc
   ListOfTables:
   - aws_vpc
   - aws_vpc_nat_gateway
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

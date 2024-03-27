@@ -2,6 +2,7 @@ ID: aws_opensearch_domain_data_node_fault_tolerance
 Title: OpenSearch domains should have at least three data nodes
 Description: This control checks whether OpenSearch domains are configured with at least three data nodes and zoneAwarenessEnabled is true. This control fails for an OpenSearch domain if instanceCount is less than 3 or zoneAwarenessEnabled is false.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,10 +22,13 @@ Query:
       , region, account_id
     from
       aws_opensearch_domain;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
   - aws_opensearch_domain
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -40,3 +44,4 @@ Tags:
   - aws
   service:
   - AWS/OpenSearch
+Managed: false

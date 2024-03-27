@@ -2,6 +2,7 @@ ID: aws_autoscaling_launch_config_requires_imdsv2
 Title: Auto Scaling group should configure EC2 instances to require Instance Metadata Service Version 2 (IMDSv2)
 Description: This control checks whether IMDSv2 is enabled on all instances launched by Amazon EC2 Auto Scaling groups. The control fails if the Instance Metadata Service (IMDS) version is not included in the launch configuration or if both IMDSv1 and IMDSv2 are enabled.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -19,10 +20,13 @@ Query:
       , region, account_id
     from
       aws_ec2_launch_configuration;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_launch_configuration
   ListOfTables:
   - aws_ec2_launch_configuration
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -38,3 +42,4 @@ Tags:
   - aws
   service:
   - AWS/AutoScaling
+Managed: false

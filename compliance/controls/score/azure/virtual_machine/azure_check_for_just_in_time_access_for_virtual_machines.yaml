@@ -2,6 +2,7 @@ ID: azure_check_for_just_in_time_access_for_virtual_machines
 Title: Check for Just-In-Time Access for Virtual Machines
 Description: Ensure that Microsoft Azure virtual machines are configured to use Just-in-Time (JIT) access.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -35,13 +36,17 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = vm.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - Azure Virtual Machines
+Managed: false

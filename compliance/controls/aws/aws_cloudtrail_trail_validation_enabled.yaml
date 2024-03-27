@@ -2,11 +2,8 @@ ID: aws_cloudtrail_trail_validation_enabled
 Title: CloudTrail trail log file validation should be enabled
 Description: "Utilize AWS CloudTrail log file validation to check the integrity of CloudTrail logs. Log file validation helps determine if a log file was modified or deleted or unchanged after CloudTrail delivered it. This feature is built using industry standard algorithms: SHA-256 for hashing and SHA-256 with RSA for digital signing. This makes it computationally infeasible to modify, delete or forge CloudTrail log files without detection."
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
-  ListOfTables:
-    - aws_cloudtrail_trail
-  PrimaryTable: aws_cloudtrail_trail
-  Connector: AWS
   QueryToExecute: |
     select
       arn as resource,
@@ -25,39 +22,48 @@ Query:
       aws_cloudtrail_trail
     where
       region = home_region;
+  Connector:
+  - AWS
+  PrimaryTable: aws_cloudtrail_trail
+  ListOfTables:
+  - aws_cloudtrail_trail
+  Parameters: []
+  Global: false
+ManualVerification: false
 Severity: high
 Tags:
   category:
-    - Compliance
+  - Compliance
   cis_controls_v8_ig1:
-    - "true"
+  - "true"
   cisa_cyber_essentials:
-    - "true"
+  - "true"
   fedramp_low_rev_4:
-    - "true"
+  - "true"
   fedramp_moderate_rev_4:
-    - "true"
+  - "true"
   gdpr:
-    - "true"
+  - "true"
   gxp_21_cfr_part_11:
-    - "true"
+  - "true"
   hipaa_final_omnibus_security_rule_2013:
-    - "true"
+  - "true"
   hipaa_security_rule_2003:
-    - "true"
+  - "true"
   nist_800_171_rev_2:
-    - "true"
+  - "true"
   nist_800_53_rev_4:
-    - "true"
+  - "true"
   nist_800_53_rev_5:
-    - "true"
+  - "true"
   nist_csf:
-    - "true"
+  - "true"
   pci_dss_v321:
-    - "true"
+  - "true"
   plugin:
-    - aws
+  - aws
   service:
-    - AWS/CloudTrail
+  - AWS/CloudTrail
   soc_2:
-    - "true"
+  - "true"
+Managed: false

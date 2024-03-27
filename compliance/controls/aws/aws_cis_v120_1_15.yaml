@@ -5,22 +5,22 @@ Query: null
 ManualVerification: true
 Severity: low
 Tags:
-    category:
-        - Compliance
-    cis:
-        - "true"
-    cis_item_id:
-        - "1.15"
-    cis_level:
-        - "1"
-    cis_section_id:
-        - "1"
-    cis_type:
-        - not_scored
-    cis_version:
-        - v1.2.0
-    plugin:
-        - aws
-    service:
-        - AWS/IAM
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_item_id:
+  - "1.15"
+  cis_level:
+  - "1"
+  cis_section_id:
+  - "1"
+  cis_type:
+  - not_scored
+  cis_version:
+  - v1.2.0
+  plugin:
+  - aws
+  service:
+  - AWS/IAM
 Managed: false

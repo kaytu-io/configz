@@ -2,6 +2,7 @@ ID: aws_ec2_instance_not_use_multiple_enis
 Title: EC2 instances should not use multiple ENIs
 Description: This control checks whether an EC2 instance uses multiple Elastic Network Interfaces (ENIs) or Elastic Fabric Adapters (EFAs). This control passes if a single network adapter is used. The control includes an optional parameter list to identify the allowed ENIs.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -18,10 +19,13 @@ Query:
       , region, account_id
     from
       aws_ec2_instance;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
   - aws_ec2_instance
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:
@@ -37,3 +41,4 @@ Tags:
   - aws
   service:
   - AWS/EC2
+Managed: false

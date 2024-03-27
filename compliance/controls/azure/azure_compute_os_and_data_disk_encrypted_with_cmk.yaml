@@ -2,6 +2,7 @@ ID: azure_compute_os_and_data_disk_encrypted_with_cmk
 Title: Ensure that 'OS and Data' disks are encrypted with CMK
 Description: Ensure that OS disks (boot volumes) and data disks (non-boot volumes) are encrypted with CMK.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,11 +26,14 @@ Query:
     where
       disk_state = 'Attached'
       and sub.subscription_id = disk.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_disk
   ListOfTables:
   - azure_compute_disk
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -51,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/Compute
+Managed: false

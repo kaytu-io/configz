@@ -2,6 +2,7 @@ ID: aws_iam_user_access_key_age_365
 Title: Inactive IAM access keys older than 1 year should be removed
 Description: Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS. AWS users need their own access keys to make programmatic calls to AWS from the AWS Command Line Interface (AWS CLI), Tools for Windows PowerShell, the AWS SDKs, or direct HTTP calls using the APIs for individual AWS services. It is recommended for all old access keys to be removed.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -18,10 +19,13 @@ Query:
       , account_id
     from
       aws_iam_access_key;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_access_key
   ListOfTables:
   - aws_iam_access_key
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -33,3 +37,4 @@ Tags:
   - AWS/IAM
   soc_2:
   - "true"
+Managed: false

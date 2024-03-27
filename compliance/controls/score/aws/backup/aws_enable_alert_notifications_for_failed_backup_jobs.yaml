@@ -21,11 +21,13 @@ Query:
       account_id
     from
       aws_backup_vault
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_backup_vault
   ListOfTables:
   - aws_backup_vault
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

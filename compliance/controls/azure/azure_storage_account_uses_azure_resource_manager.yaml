@@ -1,23 +1,45 @@
 ID: azure_storage_account_uses_azure_resource_manager
 Title: Storage accounts should be migrated to new Azure Resource Manager resources
-Description: 'Use new Azure Resource Manager for your storage accounts to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management.'
+Description: "Use new Azure Resource Manager for your storage accounts to provide security enhancements such as: stronger access control (RBAC), better auditing, Azure Resource Manager based deployment and governance, access to managed identities, access to key vault for secrets, Azure AD-based authentication and support for tags and resource groups for easier security management."
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: "select\n  s.id as resource,\n  s.kaytu_account_id as kaytu_account_id,\n  s.kaytu_resource_id as kaytu_resource_id,\n  case\n    when resource_group is not null then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when resource_group is not null then s.title || ' uses azure resource manager.'\n    else s.title || ' not uses azure resource manager.'\n  end as reason\n  \n  , s.resource_group as resource_group\n  , sub.display_name as subscription\nfrom\n  azure_storage_account as s,\n  azure_subscription as sub\nwhere\n  sub.subscription_id = s.subscription_id;\n"
-    Connector: Azure
-    PrimaryTable: azure_storage_account
-    ListOfTables:
-        - azure_storage_account
-        - azure_subscription
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    select
+      s.id as resource,
+      s.kaytu_account_id as kaytu_account_id,
+      s.kaytu_resource_id as kaytu_resource_id,
+      case
+        when resource_group is not null then 'ok'
+        else 'alarm'
+      end as status,
+      case
+        when resource_group is not null then s.title || ' uses azure resource manager.'
+        else s.title || ' not uses azure resource manager.'
+      end as reason
+      
+      , s.resource_group as resource_group
+      , sub.display_name as subscription
+    from
+      azure_storage_account as s,
+      azure_subscription as sub
+    where
+      sub.subscription_id = s.subscription_id;
+  Connector:
+  - Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
-    nist_sp_800_53_rev_5:
-        - "true"
-    pci_dss_v321:
-        - "true"
-    service:
-        - Azure/Storage
+  nist_sp_800_53_rev_5:
+  - "true"
+  pci_dss_v321:
+  - "true"
+  service:
+  - Azure/Storage
 Managed: false

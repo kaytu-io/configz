@@ -28,12 +28,14 @@ Query:
       azure_subscription as sub
     where
       ss.subscription_id = sub.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_snapshot
   ListOfTables:
   - azure_compute_snapshot
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

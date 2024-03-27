@@ -22,7 +22,8 @@ Query:
     from
       azure_key_vault_key as k
       left join azure_subscription as sub on k.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault_key
   ListOfTables:
   - azure_key_vault_key
@@ -30,6 +31,7 @@ Query:
   Parameters:
   - Key: azureAllowedKeyTypes
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

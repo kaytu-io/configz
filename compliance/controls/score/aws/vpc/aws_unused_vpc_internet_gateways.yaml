@@ -5,11 +5,13 @@ Query:
   ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "select\n  'arn:' || partition || ':ec2:' || region || ':' || account_id || ':internet-gateway/' || title as resource,\n  kaytu_resource_id,\n  kaytu_account_id,\n  case\n    when jsonb_array_length(attachments) = 0 then 'alarm'\n    else 'ok'\n  end as status,\n  case\n    when jsonb_array_length(attachments) = 0 then title || ' not attached to VPC.'\n    else title || ' attached to ' || split_part(\n      substring(attachments :: text, 3, length(attachments :: text) -6),\n      '\"VpcId\": \"',\n      2\n    ) || '.'\n  end as reason,\n  region,\n  account_id\nfrom\n  aws_vpc_internet_gateway;\n"
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_vpc_internet_gateway
   ListOfTables:
   - aws_vpc_internet_gateway
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

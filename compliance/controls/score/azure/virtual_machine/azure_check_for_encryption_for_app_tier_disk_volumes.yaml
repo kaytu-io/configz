@@ -2,6 +2,7 @@ ID: azure_check_for_encryption_for_app_tier_disk_volumes
 Title: Check for Encryption for App-Tier Disk Volumes
 Description: Ensure that Azure virtual machine disk volumes created for the app tier are encrypted.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -27,16 +28,19 @@ Query:
           SELECT jsonb_object_agg(key, value)::text
           FROM jsonb_each_text('{{.azureAppTierTags}}'::jsonb)
         ), '{', ''), '}', '') || '%'
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_virtual_machine
   ListOfTables:
-    - azure_compute_virtual_machine
-    - azure_subscription
+  - azure_compute_virtual_machine
+  - azure_subscription
   Parameters:
-    - Key: azureAppTierTags
-      Required: true
+  - Key: azureAppTierTags
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
   score_service_name:
   - Azure Virtual Machines
+Managed: false

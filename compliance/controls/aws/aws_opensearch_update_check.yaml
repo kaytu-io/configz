@@ -2,6 +2,7 @@ ID: aws_opensearch_update_check
 Title: OpenSearch domains should have the latest software updates installed
 Description: Checks if Amazon OpenSearch Service version updates are available but not installed. The rule is ALARM for an OpenSearch domain if the latest software updates are not installed.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 
@@ -18,9 +19,14 @@ Query:
       END as reason
     FROM 
       aws_opensearch_domain
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_opensearch_domain
   ListOfTables:
-    - aws_opensearch_domain
+  - aws_opensearch_domain
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
+Tags: {}
+Managed: false

@@ -2,31 +2,33 @@ ID: azure_container_instance_container_group_should_deploy_into_a_virtual_networ
 Title: Azure Container Instance container group should deploy into a virtual network
 Description: Secure communication between your containers with Azure Virtual Networks. When you specify a virtual network, resources within the virtual network can securely and privately communicate with each other.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT name, id, type, provisioning_state, restart_policy, sku, os_type, encryption_properties, containers, ip_address, volumes, instance_view, diagnostics, subnet_ids, dns_config, init_containers, image_registry_credentials, identity, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
-        FROM azure_container_group
-        WHERE type = 'Microsoft.ContainerInstance/containerGroups'
-        AND (ip_address->>'type' IS NULL OR ip_address->>'type' != 'Private')
-        AND (
-            (
-                (kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' IS NOT NULL AND kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' != '')
-                OR
-                (kaytu_description->'ContainerGroup'->'properties'->'subnetIds' IS NOT NULL AND jsonb_array_length(kaytu_description->'ContainerGroup'->'properties'->'subnetIds') = 0)
-            )
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT name, id, type, provisioning_state, restart_policy, sku, os_type, encryption_properties, containers, ip_address, volumes, instance_view, diagnostics, subnet_ids, dns_config, init_containers, image_registry_credentials, identity, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description
+    FROM azure_container_group
+    WHERE type = 'Microsoft.ContainerInstance/containerGroups'
+    AND (ip_address->>'type' IS NULL OR ip_address->>'type' != 'Private')
+    AND (
+        (
+            (kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' IS NOT NULL AND kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' != '')
             OR
-            (
-                (kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' IS NULL OR kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' = '')
-                AND
-                (kaytu_description->'ContainerGroup'->'properties'->'subnetIds' IS NULL OR jsonb_array_length(kaytu_description->'ContainerGroup'->'properties'->'subnetIds') > 0)
-            )
+            (kaytu_description->'ContainerGroup'->'properties'->'subnetIds' IS NOT NULL AND jsonb_array_length(kaytu_description->'ContainerGroup'->'properties'->'subnetIds') = 0)
         )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+        OR
+        (
+            (kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' IS NULL OR kaytu_description->'ContainerGroup'->'properties'->'networkProfile'->>'id' = '')
+            AND
+            (kaytu_description->'ContainerGroup'->'properties'->'subnetIds' IS NULL OR jsonb_array_length(kaytu_description->'ContainerGroup'->'properties'->'subnetIds') > 0)
+        )
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

@@ -2,6 +2,7 @@ ID: azure_mysql_server_audit_logging_events_connection_set
 Title: Ensure server parameter 'audit_log_events' has 'CONNECTION' set for MySQL Database Server
 Description: Set audit_log_enabled to include CONNECTION on MySQL Servers.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,11 +27,14 @@ Query:
     where
       config ->> 'Name' = 'audit_log_events'
       and sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_mysql_server
   ListOfTables:
   - azure_mysql_server
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -52,3 +56,4 @@ Tags:
   - azure
   service:
   - Azure/MySQL
+Managed: false

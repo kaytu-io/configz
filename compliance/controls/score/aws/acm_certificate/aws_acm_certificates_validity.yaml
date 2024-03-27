@@ -23,11 +23,13 @@ Query:
       account_id
     FROM 
       aws_acm_certificate
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_acm_certificate
   ListOfTables:
   - aws_acm_certificate
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

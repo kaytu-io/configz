@@ -2,6 +2,7 @@ ID: azure_monitor_logs_storage_container_not_public_accessible
 Title: Ensure the storage container storing the activity logs is not publicly accessible
 Description: The storage account container containing the activity log export should not be publicly accessible.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -25,11 +26,14 @@ Query:
     where
       name LIKE 'insight%logs%'
       and sub.subscription_id = sc.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_storage_container
   ListOfTables:
   - azure_storage_container
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -51,3 +55,4 @@ Tags:
   - azure
   service:
   - Azure/Monitor
+Managed: false

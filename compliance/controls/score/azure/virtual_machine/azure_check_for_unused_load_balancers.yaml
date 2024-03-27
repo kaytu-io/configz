@@ -35,12 +35,14 @@ Query:
     from
       azure_lb as lb
       left join azure_subscription as sub on lb.subscription_id = sub.subscription_id
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_lb
   ListOfTables:
   - azure_lb
   - azure_subscription
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

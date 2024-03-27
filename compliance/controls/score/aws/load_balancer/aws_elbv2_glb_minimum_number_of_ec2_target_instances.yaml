@@ -31,12 +31,14 @@ Query:
     from
       aws_ec2_gateway_load_balancer a
       left join target_resource b on a.arn = b.load_balancer_arn;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_gateway_load_balancer
   ListOfTables:
   - aws_ec2_gateway_load_balancer
   - aws_ec2_target_group
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:

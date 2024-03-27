@@ -2,18 +2,20 @@ ID: connection_throttling_should_be_enabled_for_postgre_sql_database_servers
 Title: Connection throttling should be enabled for PostgreSQL database servers
 Description: This policy helps audit any PostgreSQL databases in your environment without Connection throttling enabled. This setting enables temporary connection throttling per IP for too many invalid password login failures.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_postgresql_server
-        WHERE type = 'Microsoft.DBforPostgreSQL/servers'
-        AND kaytu_description -> '$.Configurations[*].Properties.Value' = 'ON'
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_postgresql_server
+    WHERE type = 'Microsoft.DBforPostgreSQL/servers'
+    AND kaytu_description -> '$.Configurations[*].Properties.Value' = 'ON'
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

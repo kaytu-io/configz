@@ -2,6 +2,7 @@ ID: azure_keyvault_with_non_rbac_key_expiration_set
 Title: Ensure that the Expiration Date is set for all Keys in Non-RBAC Key Vaults
 Description: Ensure that all Keys in Non Role Based Access Control (RBAC) Azure Key Vaults have an expiration time set.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with non_rbac_vault as (
@@ -36,12 +37,15 @@ Query:
       azure_subscription sub
     where
       sub.subscription_id = kvk.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_key_vault_key
   ListOfTables:
   - azure_key_vault
   - azure_key_vault_key
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -63,3 +67,4 @@ Tags:
   - azure
   service:
   - Azure/KeyVault
+Managed: false

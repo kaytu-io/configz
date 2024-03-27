@@ -35,11 +35,13 @@ Query:
       account_id
     from
       aws_ecr_registry
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ecr_registry
   ListOfTables:
   - aws_ecr_registry
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

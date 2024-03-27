@@ -2,6 +2,7 @@ ID: aws_app_tier_ebs_encrypted
 Title: App-Tier EBS Encrypted
 Description: Ensure app-tier Amazon Elastic Block Store (EBS) volumes are encrypted.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -26,15 +27,18 @@ Query:
           SELECT jsonb_object_agg(key, value)::text
           FROM jsonb_each_text('{{.awsAppTierTags}}'::jsonb)
         ), '{', ''), '}', '') || '%'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ebs_volume
   ListOfTables:
-    - aws_ebs_volume
+  - aws_ebs_volume
   Parameters:
-    - Key: awsAppTierTags
-      Required: true
+  - Key: awsAppTierTags
+    Required: true
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
   score_service_name:
   - AWS Elastic Block Store (EBS)
+Managed: false

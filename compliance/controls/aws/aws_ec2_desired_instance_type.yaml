@@ -19,13 +19,15 @@ Query:
       END as reason
     FROM
       aws_ec2_instance
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_ec2_instance
   ListOfTables:
   - aws_ec2_instance
   Parameters:
   - Key: awsEc2InstanceValidInstanceTypes
     Required: true
+  Global: false
 ManualVerification: false
 Severity: low
 Tags:

@@ -29,7 +29,8 @@ Query:
       azure_subscription as sub
     where
       sub.subscription_id = s.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_compute_snapshot
   ListOfTables:
   - azure_compute_snapshot
@@ -37,6 +38,7 @@ Query:
   Parameters:
   - Key: azureDiskSnapshotAgeThreshold
     Required: true
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

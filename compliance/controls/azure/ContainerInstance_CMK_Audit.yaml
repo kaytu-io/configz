@@ -2,21 +2,23 @@ ID: azure_container_instance_container_group_should_use_customer_managed_key_for
 Title: Azure Container Instance container group should use customer-managed key for encryption
 Description: Secure your containers with greater flexibility using customer-managed keys. When you specify a customer-managed key, that key is used to protect and control access to the key that encrypts your data. Using customer-managed keys provides additional capabilities to control rotation of the key encryption key or cryptographically erase data.
 Query:
-    ID: ""
-    Engine: odysseus-v0.0.1
-    QueryToExecute: |
-        SELECT *
-        FROM azure_container_group
-        WHERE type = 'Microsoft.ContainerInstance/containerGroups'
-        AND (
-          (encryption_properties->>'vaultBaseUrl' IS NULL OR encryption_properties->>'vaultBaseUrl' = '')
-          OR (encryption_properties->>'keyName' IS NULL OR encryption_properties->>'keyName' = '')
-        )
-        LIMIT 5;;
-    Connector: Azure
-    PrimaryTable: null
-    ListOfTables: []
-    Parameters: []
+  ID: ""
+  Engine: odysseus-v0.0.1
+  QueryToExecute: |
+    SELECT *
+    FROM azure_container_group
+    WHERE type = 'Microsoft.ContainerInstance/containerGroups'
+    AND (
+      (encryption_properties->>'vaultBaseUrl' IS NULL OR encryption_properties->>'vaultBaseUrl' = '')
+      OR (encryption_properties->>'keyName' IS NULL OR encryption_properties->>'keyName' = '')
+    )
+    LIMIT 5;;
+  Connector:
+  - Azure
+  PrimaryTable: null
+  ListOfTables: []
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags: {}

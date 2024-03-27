@@ -2,6 +2,7 @@ ID: azure_network_bastion_host_min_1
 Title: Ensure an Azure Bastion Host Exists
 Description: The Azure Bastion service allows secure remote access to Azure Virtual Machines over the Internet without exposing remote access protocol ports and services directly to the Internet. The Azure Bastion service provides this access using TLS over 443/TCP, and subscribes to hardened configurations within an organization's Azure Active Directory service.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with bastion_hosts as (
@@ -36,11 +37,14 @@ Query:
     from
       azure_subscription as sub
       left join bastion_hosts as i on i.subscription_id = sub.subscription_id;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azure_bastion_host
   ListOfTables:
   - azure_bastion_host
   - azure_subscription
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:
@@ -62,3 +66,4 @@ Tags:
   - azure
   service:
   - Azure/Compute
+Managed: false

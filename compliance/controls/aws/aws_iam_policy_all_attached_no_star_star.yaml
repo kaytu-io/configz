@@ -2,6 +2,7 @@ ID: aws_iam_policy_all_attached_no_star_star
 Title: Ensure IAM policies that allow full "*:*" administrative privileges are not created
 Description: IAM policies are the means by which privileges are granted to users, groups, or roles. It is recommended and considered a standard security advice to grant least privilege—that is, granting only the permissions required to perform a task. Determine what users need to do and then craft policies for them that let the users perform only those tasks, instead of allowing full administrative privileges.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with star_access_policies as (
@@ -47,10 +48,13 @@ Query:
       left join star_access_policies as s on p.arn = s.arn
     where
       p.is_attached;
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_iam_policy
   ListOfTables:
   - aws_iam_policy
+  Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
@@ -72,3 +76,4 @@ Tags:
   - aws
   service:
   - AWS/IAM
+Managed: false

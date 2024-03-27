@@ -2,6 +2,7 @@ ID: azure_iam_user_not_allowed_to_create_security_group
 Title: Ensure that 'Users can create security groups in Azure portals, API or PowerShell' is set to 'No'
 Description: Restrict security group creation to administrators only.
 Query:
+  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
@@ -21,11 +22,14 @@ Query:
     from
       azure_tenant as t,
       azuread_authorization_policy as a;
-  Connector: Azure
+  Connector:
+  - Azure
   PrimaryTable: azuread_authorization_policy
   ListOfTables:
   - azure_tenant
   - azuread_authorization_policy
+  Parameters: []
+  Global: false
 ManualVerification: true
 Severity: high
 Tags:
@@ -47,3 +51,4 @@ Tags:
   - azure
   service:
   - Azure/ActiveDirectory
+Managed: false

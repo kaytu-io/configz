@@ -27,12 +27,14 @@ Query:
     from 
       aws_efs_file_system as f
       left join points as p on f.arn = p.resource_arn
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_efs_file_system
   ListOfTables:
   - aws_efs_file_system
   - aws_backup_recovery_point
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: medium
 Tags:

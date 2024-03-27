@@ -23,11 +23,13 @@ Query:
       aws_rds_db_cluster
     where
      engine = 'aurora-mysql' or engine = 'aurora-postgresql'
-  Connector: AWS
+  Connector:
+  - AWS
   PrimaryTable: aws_rds_db_cluster
   ListOfTables:
   - aws_rds_db_cluster
   Parameters: []
+  Global: false
 ManualVerification: false
 Severity: high
 Tags:
