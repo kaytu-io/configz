@@ -1,24 +1,23 @@
-Connector: AWS
-Description: List of unencrypted EBS volumes
-Enabled: true
-ID: 4.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of unencrypted EBS volumes
+ID: 4
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_ebs_volume_unencrypted
-  ListOfTables:
-  - aws_ebs_volume
-  PrimaryTable: aws_ebs_volume
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select volume_id, encrypted, account_id, kaytu_account_id, kaytu_resource_id from
       aws_ebs_volume
     where
       not encrypted;
+  Connector:
+  - AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+  - aws_ebs_volume
+  Parameters: []
+Connector: AWS
 ShortTitle: Unencrypted EBS Disks
+LongTitle: List of unencrypted EBS volumes
+Description: List of unencrypted EBS volumes
+LogoURL: ""
 Tags:
   category:
   - Security
@@ -27,3 +26,6 @@ Tags:
   - Security
   - DevOps
   - Product
+Links: []
+Enabled: true
+Internal: false

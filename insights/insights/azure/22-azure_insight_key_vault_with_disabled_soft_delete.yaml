@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List of key vaults where soft deletion is not enabled
-Enabled: true
-ID: 22.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of key vaults where soft deletion is not enabled
+ID: 22
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_key_vault_with_disabled_soft_delete
-  ListOfTables:
-  - azure_key_vault
-  PrimaryTable: azure_key_vault
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -23,9 +12,22 @@ Query:
       azure_key_vault
     where
       not soft_delete_enabled;
+  Connector:
+  - Azure
+  PrimaryTable: azure_key_vault
+  ListOfTables:
+  - azure_key_vault
+  Parameters: []
+Connector: Azure
 ShortTitle: Key Vaults with no Deletion Protection
+LongTitle: List of key vaults where soft deletion is not enabled
+Description: List of key vaults where soft deletion is not enabled
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
   - Resiliency
+Links: []
+Enabled: true
+Internal: false

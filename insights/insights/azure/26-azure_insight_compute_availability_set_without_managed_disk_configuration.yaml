@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List of availability sets which does not use managed disks configuration
-Enabled: true
-ID: 26.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of availability sets which does not use managed disks configuration
+ID: 26
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_compute_availability_set_without_managed_disk_configuration
-  ListOfTables:
-  - azure_compute_availability_set
-  PrimaryTable: azure_compute_availability_set
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -21,10 +10,23 @@ Query:
       azure_compute_availability_set
     where
       sku_name = 'Classic';
+  Connector:
+  - Azure
+  PrimaryTable: azure_compute_availability_set
+  ListOfTables:
+  - azure_compute_availability_set
+  Parameters: []
+Connector: Azure
 ShortTitle: AV Sets with Legacy Disks
+LongTitle: List of availability sets which does not use managed disks configuration
+Description: List of availability sets which does not use managed disks configuration
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
   - Resiliency
   - Cost Management
+Links: []
+Enabled: true
+Internal: false

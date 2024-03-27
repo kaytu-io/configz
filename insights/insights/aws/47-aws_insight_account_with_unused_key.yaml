@@ -1,20 +1,19 @@
-Connector: AWS
-Description: This insight returns a list of AWS accounts with unused access keys.
-Enabled: true
-ID: 47.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: AWS Accounts with Unused Access Keys
+ID: 47
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_account_with_unused_key
+  Engine: odysseus-v0.0.1
+  QueryToExecute: select access_key_1_active, access_key_1_last_used_date, access_key_2_active, access_key_2_last_used_date, user_arn, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where ((access_key_1_active = true AND (access_key_1_last_used_date IS NULL OR (current_date - DATE(access_key_1_last_used_date)) > 90)) OR (access_key_2_active = true AND (access_key_2_last_used_date IS NULL OR (current_date - DATE(access_key_2_last_used_date)) > 90)))
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_credential_report
   ListOfTables:
   - aws_iam_credential_report
-  PrimaryTable: aws_iam_credential_report
-  QueryToExecute: select access_key_1_active, access_key_1_last_used_date, access_key_2_active, access_key_2_last_used_date, user_arn, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where ((access_key_1_active = true AND (access_key_1_last_used_date IS NULL OR (current_date - DATE(access_key_1_last_used_date)) > 90)) OR (access_key_2_active = true AND (access_key_2_last_used_date IS NULL OR (current_date - DATE(access_key_2_last_used_date)) > 90)))
+  Parameters: []
+Connector: AWS
 ShortTitle: AWS Accounts with Unused Access Keys
+LongTitle: AWS Accounts with Unused Access Keys
+Description: This insight returns a list of AWS accounts with unused access keys.
+LogoURL: ""
 Tags:
   category:
   - Security
@@ -22,3 +21,6 @@ Tags:
   - DevOps
   - Security
   - Executive
+Links: []
+Enabled: true
+Internal: false

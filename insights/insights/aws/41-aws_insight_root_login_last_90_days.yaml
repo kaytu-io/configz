@@ -1,20 +1,19 @@
-Connector: AWS
-Description: AWS accounts whose root user has logged in within the last 90 days
-Enabled: true
-ID: 41.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: AWS accounts with root login in the last 90 days
+ID: 41
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_root_login_last_90_days
+  Engine: odysseus-v0.0.1
+  QueryToExecute: select user_arn, password_last_used, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where (user_name = '<root_account>' AND (current_date - DATE(password_last_used)) > 90)
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_credential_report
   ListOfTables:
   - aws_iam_credential_report
-  PrimaryTable: aws_iam_credential_report
-  QueryToExecute: select user_arn, password_last_used, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where (user_name = '<root_account>' AND (current_date - DATE(password_last_used)) > 90)
+  Parameters: []
+Connector: AWS
 ShortTitle: AWS accounts with root login in the last 90 days
+LongTitle: AWS accounts with root login in the last 90 days
+Description: AWS accounts whose root user has logged in within the last 90 days
+LogoURL: ""
 Tags:
   category:
   - Security
@@ -23,3 +22,6 @@ Tags:
   - Security
   - Executive
   - Product
+Links: []
+Enabled: true
+Internal: false

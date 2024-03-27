@@ -1,19 +1,7 @@
-Connector: AWS
-Description: List of lambda function whose retention period is less than 30 days
-Enabled: false
-ID: 2.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of lambda function whose retention period is less than 30 days
+ID: 2
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_lambda_function_retention_period_less_than_30_days
-  ListOfTables:
-  - aws_lambda_function
-  - aws_cloudwatch_log_group
-  PrimaryTable: null
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       fn.name,
@@ -27,8 +15,22 @@ Query:
       )
     where
       lg.retention_in_days < 30
+  Connector:
+  - AWS
+  PrimaryTable: null
+  ListOfTables:
+  - aws_lambda_function
+  - aws_cloudwatch_log_group
+  Parameters: []
+Connector: AWS
 ShortTitle: ""
+LongTitle: List of lambda function whose retention period is less than 30 days
+Description: List of lambda function whose retention period is less than 30 days
+LogoURL: ""
 Tags:
   category:
   - Technical Debt
   - Resiliency
+Links: []
+Enabled: false
+Internal: false

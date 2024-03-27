@@ -1,18 +1,7 @@
-Connector: AWS
-Description: List all ELB with no WAF.
-Enabled: true
-ID: 15.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List all ELB with no WAF.
+ID: 15
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_elb_application_lb_waf_enabled
-  ListOfTables:
-  - aws_ec2_application_load_balancer
-  PrimaryTable: aws_ec2_application_load_balancer
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       -- Required Columns
@@ -29,8 +18,21 @@ Query:
       region 
     from
       aws_ec2_application_load_balancer;
+  Connector:
+  - AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  Parameters: []
+Connector: AWS
 ShortTitle: Load Balancers with no WAF
+LongTitle: List all ELB with no WAF.
+Description: List all ELB with no WAF.
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
+Links: []
+Enabled: true
+Internal: false

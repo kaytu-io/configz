@@ -1,18 +1,7 @@
-Connector: AWS
-Description: List VPCs with public CIDR blocks
-Enabled: true
-ID: 16.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List VPCs with public CIDR blocks
+ID: 16
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_vpc_with_public_cidr
-  ListOfTables:
-  - aws_vpc
-  PrimaryTable: aws_vpc
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       vpc_id,
@@ -25,10 +14,23 @@ Query:
       (not cidr_block <<= '10.0.0.0/8'
       and not cidr_block <<= '192.168.0.0/16'
       and not cidr_block <<= '172.16.0.0/12');
+  Connector:
+  - AWS
+  PrimaryTable: aws_vpc
+  ListOfTables:
+  - aws_vpc
+  Parameters: []
+Connector: AWS
 ShortTitle: VPCs with Public IP Range
+LongTitle: List VPCs with public CIDR blocks
+Description: List VPCs with public CIDR blocks
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
   - Resiliency
   - Cost Management
+Links: []
+Enabled: true
+Internal: false

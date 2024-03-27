@@ -1,18 +1,7 @@
-Connector: AWS
-Description: List all the users having Administrator access
-Enabled: true
-ID: 7.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List all the users having Administrator access
+ID: 7
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_iam_user_with_admin_access
-  ListOfTables:
-  - aws_iam_user
-  PrimaryTable: aws_iam_user
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select name as user_name, split_part(attachments, '/', 2) as attached_policies, aws_iam_user.account_id, aws_iam_user.kaytu_account_id, aws_iam_user.kaytu_resource_id
     from
@@ -20,7 +9,20 @@ Query:
       cross join jsonb_array_elements_text(attached_policy_arns) as attachments
     where
       split_part(attachments, '/', 2) = 'AdministratorAccess';
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_user
+  ListOfTables:
+  - aws_iam_user
+  Parameters: []
+Connector: AWS
 ShortTitle: Admin Users
+LongTitle: List all the users having Administrator access
+Description: List all the users having Administrator access
+LogoURL: ""
 Tags:
   category:
   - Security
+Links: []
+Enabled: true
+Internal: false

@@ -1,26 +1,28 @@
-Connector: AWS
-Description: List certificates for which transparency logging is disabled
-Enabled: true
-ID: 10.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List certificates for which transparency logging is disabled
+ID: 10
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_acm_certificate_transparency_logging_disabled
-  ListOfTables:
-  - aws_acm_certificate
-  PrimaryTable: aws_acm_certificate
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select certificate_arn, domain_name, status, account_id, kaytu_account_id, kaytu_resource_id from
       aws_acm_certificate
     where
       certificate_transparency_logging_preference <> 'ENABLED';
+  Connector:
+  - AWS
+  PrimaryTable: aws_acm_certificate
+  ListOfTables:
+  - aws_acm_certificate
+  Parameters: []
+Connector: AWS
 ShortTitle: Certificates with no Logging
+LongTitle: List certificates for which transparency logging is disabled
+Description: List certificates for which transparency logging is disabled
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
   - Resiliency
+Links: []
+Enabled: true
+Internal: false

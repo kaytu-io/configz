@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List clusters with an undesirable version (older than 1.20.5)
-Enabled: true
-ID: 24.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List clusters with an undesirable version (older than 1.20.5)
+ID: 24
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_kubernetes_cluster_with_undesired_version
-  ListOfTables:
-  - azure_kubernetes_cluster
-  PrimaryTable: azure_kubernetes_cluster
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -24,7 +13,17 @@ Query:
       azure_kubernetes_cluster
     where
       kubernetes_version < '1.24';
+  Connector:
+  - Azure
+  PrimaryTable: azure_kubernetes_cluster
+  ListOfTables:
+  - azure_kubernetes_cluster
+  Parameters: []
+Connector: Azure
 ShortTitle: Legacy Kubernetes Clusters
+LongTitle: List clusters with an undesirable version (older than 1.20.5)
+Description: List clusters with an undesirable version (older than 1.20.5)
+LogoURL: ""
 Tags:
   category:
   - Security
@@ -34,3 +33,6 @@ Tags:
   - Executive
   - Product
   - FinOps
+Links: []
+Enabled: true
+Internal: false
