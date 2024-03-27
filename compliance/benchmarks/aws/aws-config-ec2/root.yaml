@@ -1,7 +1,6 @@
 ID: aws-config-ec2
 Title: AWS Config EC2
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config EC2
 Children: []
 Tags:

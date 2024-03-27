@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_3_7
 Title: Role-based Access Control AC-3(7)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system enforces a role-based access control policy over defined subjects and objects and controls access based upon organization-defined roles and users authorized to assume such roles.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/KubernetesService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_kubernetes_instance_rbac_enabled

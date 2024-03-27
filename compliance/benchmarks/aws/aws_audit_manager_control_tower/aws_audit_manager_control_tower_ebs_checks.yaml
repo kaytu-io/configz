@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_ebs_checks
 Title: EBS checks
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: This benchmark checks if EBS volumes are in use, encrypted etc.
 Children:
 - aws_audit_manager_control_tower_ebs_checks_1_0_1
@@ -20,5 +19,8 @@ Tags:
   - AWS/EBS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rs_an_2
 Title: RS.AN-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The impact of the incident is understood.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_finding_archived

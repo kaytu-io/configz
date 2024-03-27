@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_12_2
 Title: AU-12(2) Standardized Formats
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Produce a system-wide (logical or physical) audit trail composed of audit records in a standardized format.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

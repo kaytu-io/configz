@@ -1,7 +1,6 @@
 ID: aws-config-eks
 Title: AWS Config EKS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config EKS
 Children: []
 Tags:

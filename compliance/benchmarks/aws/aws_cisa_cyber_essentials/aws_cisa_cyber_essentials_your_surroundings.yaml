@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_surroundings
 Title: Your Surroundings
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: As your organization's digital workplace, this is an essential element of your organization's Culture of Cyber Readiness. Your task for this element is to ensure only those who belong on your digital workplace have access to it.
 Children:
 - aws_cisa_cyber_essentials_your_surroundings_1
@@ -19,5 +18,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

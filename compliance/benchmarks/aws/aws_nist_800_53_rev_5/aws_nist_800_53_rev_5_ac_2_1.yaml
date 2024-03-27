@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_2_1
 Title: AC-2(1) Automated System Account Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Support the management of system accounts using [Assignment: organization-defined automated mechanisms]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14
 - aws_iam_group_user_role_no_inline_policies

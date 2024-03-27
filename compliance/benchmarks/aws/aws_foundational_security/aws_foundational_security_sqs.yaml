@@ -1,7 +1,6 @@
 ID: aws_foundational_security_sqs
 Title: SQS
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/SQS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_sqs_queue_encrypted_at_rest

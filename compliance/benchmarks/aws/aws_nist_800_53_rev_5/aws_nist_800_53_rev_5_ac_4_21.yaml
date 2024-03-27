@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_4_21
 Title: AC-4(21) Physical Or Logical Separation Of Infomation Flows
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Separate information flows logically or physically using [Assignment: organization-defined mechanisms and/or techniques] to accomplish [Assignment: organization-defined required separations by types of information]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_use_waf_web_acl
 - aws_autoscaling_launch_config_public_ip_disabled

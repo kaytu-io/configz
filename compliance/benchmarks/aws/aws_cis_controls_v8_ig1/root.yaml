@@ -1,3 +1,7 @@
+ID: aws_cis_controls_v8_ig1
+Title: CIS Controls v8 IG1 for AWS
+ReferenceCode: ""
+Description: The CIS Critical Security Controls (CIS Controls) are a prioritized set of Safeguards to mitigate the most prevalent cyber-attacks against systems and networks. They are mapped to and referenced by multiple legal, regulatory, and policy frameworks.
 Children:
 - aws_cis_controls_v8_ig1_1
 - aws_cis_controls_v8_ig1_3
@@ -11,11 +15,6 @@ Children:
 - aws_cis_controls_v8_ig1_12
 - aws_cis_controls_v8_ig1_13
 - aws_cis_controls_v8_ig1_16
-Connector: AWS
-Controls: null
-Description: The CIS Critical Security Controls (CIS Controls) are a prioritized set of Safeguards to mitigate the most prevalent cyber-attacks against systems and networks. They are mapped to and referenced by multiple legal, regulatory, and policy frameworks.
-Enabled: true
-ID: aws_cis_controls_v8_ig1
 Tags:
   category:
   - Compliance
@@ -31,4 +30,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: CIS Controls v8 IG1 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_12_2
 Title: SC-12(2) Symmetric Keys
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Produce, control, and distribute symmetric cryptographic keys using [Selection: NIST FIPS-validated; NSA-approved] key management technology and processes."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/KMS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_kms_cmk_rotation_enabled
 - aws_kms_key_not_pending_deletion

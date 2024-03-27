@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1216_09ab3system
 Title: 1216.09ab3System.12-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Automated systems are used to review monitoring activities of security systems (e.g., IPS/IDS) and system records on a daily basis, and identify and document anomalies.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_scale_set_log_analytics_agent_installed

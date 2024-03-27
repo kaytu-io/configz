@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_14_b
 Title: AU-14(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop, integrate, and use session auditing activities in consultation with legal counsel and in accordance with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_autoscaling_group_with_lb_use_health_check

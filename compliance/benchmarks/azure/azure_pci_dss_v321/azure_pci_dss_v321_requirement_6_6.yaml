@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_6_6
 Title: PCI DSS requirement 6.6
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Ensure all public-facing web applications are protected against known attacks, either by performing application vulnerability assessment at least annually and after any changes, or by installing an automated technical solution that detects and prevents web-based attacks (for example, a web-application firewall) in front of public-facing web applications, to continually check all traffic.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_system_updates_installed
 - azure_compute_vm_vulnerability_assessment_solution_enabled

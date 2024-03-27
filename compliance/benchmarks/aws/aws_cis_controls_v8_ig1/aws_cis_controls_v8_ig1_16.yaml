@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_16
 Title: 16 Application Software Security
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Manage the security life cycle of in-house developed, hosted, or acquired software to prevent, detect, and remediate security weaknesses before they can impact the enterprise.
 Children:
 - aws_cis_controls_v8_ig1_16_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

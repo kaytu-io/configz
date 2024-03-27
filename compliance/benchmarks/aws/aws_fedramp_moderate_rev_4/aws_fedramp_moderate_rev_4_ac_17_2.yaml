@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_17_2
 Title: AC-17(2) Protection Of Confidentiality/Integrity Using Encryption
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system implements cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_elb_application_lb_redirect_http_request_to_https

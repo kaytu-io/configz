@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ma_4_1_a
 Title: MA-4(1)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Log [Assignment: organization-defined audit events] for nonlocal maintenance and diagnostic sessions."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

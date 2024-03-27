@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_2_j
 Title: AC-2(j)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: j. Reviews accounts for compliance with account management requirements [Assignment: organization-defined frequency]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ecs_task_definition_user_for_host_mode_check
 - aws_iam_account_password_policy_min_length_14

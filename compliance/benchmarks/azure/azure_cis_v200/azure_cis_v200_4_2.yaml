@@ -1,7 +1,6 @@
 ID: azure_cis_v200_4_2
 Title: 4.2 SQL Server - Microsoft Defender for SQL
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/SQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_sql_server_atp_enabled
 - azure_sql_server_and_databases_va_enabled

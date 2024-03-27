@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ds_3
 Title: PR.DS-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Assets are formally managed throughout removal, transfers, and disposition.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_ssm_managed_instance_compliance_association_compliant

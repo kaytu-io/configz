@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_pt
 Title: Protective Technology (PR.PT)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Maintenance and repairs of industrial control and information system components are performed consistent with policies and procedures.
 Children:
 - aws_nist_csf_pr_pt_1
@@ -19,5 +18,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

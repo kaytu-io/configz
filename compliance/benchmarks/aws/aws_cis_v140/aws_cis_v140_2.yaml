@@ -1,7 +1,6 @@
 ID: aws_cis_v140_2
 Title: 2 Storage
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children:
 - aws_cis_v140_2_1
@@ -22,5 +21,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

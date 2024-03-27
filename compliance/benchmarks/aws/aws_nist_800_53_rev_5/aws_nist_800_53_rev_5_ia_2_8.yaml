@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_2_8
 Title: IA-2(8) Access To Accounts — Replay Resistant
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement replay-resistant authentication mechanisms for access to [Selection (one or more): privileged accounts; non-privileged accounts]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_hardware_mfa_enabled
 - aws_iam_root_user_mfa_enabled

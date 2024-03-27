@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_booting_up_things_to_do_first
 Title: "Booting Up: Things to Do First"
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Even before your organization has begun to adopt a Culture of Cyber Readiness, there are things you can begin doing today to make your organization more prepared against cyber risks.
 Children:
 - aws_cisa_cyber_essentials_booting_up_things_to_do_first_1
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

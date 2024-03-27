@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ds_2
 Title: PR.DS-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Data-in-transit is protected.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_rest_api_stage_use_ssl_certificate

@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_cm_11
 Title: User-installed Software (CM-11)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization establishes organization-defined policies governing the installation of software by users, enforces software installation policies through organization-defined methods, and monitors policy compliance at organization-defined frequency.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

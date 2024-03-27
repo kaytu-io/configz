@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_12100_09ab2system
 Title: 12100.09ab2System.15-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization monitors the information system to identify irregularities or anomalies that are indicators of a system malfunction or compromise and help confirm the system is functioning in an optimal, resilient and secure state.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_log_analytics_agent_installed

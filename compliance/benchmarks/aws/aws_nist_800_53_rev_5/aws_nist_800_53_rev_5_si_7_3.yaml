@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_7_3
 Title: SI-7(3) Centrally Managed Integrity Tools
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Employ centrally managed integrity verification tools.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CloudTrail
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled

@@ -1,51 +1,45 @@
 ID: DOD_IL4_audit
-Title: '[Deprecated]: DoD Impact Level 4'
+Title: "[Deprecated]: DoD Impact Level 4"
 ReferenceCode: ""
 Description: This initiative includes policies that address a subset of DoD Impact Level 4 (IL4) controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/dodil4-initiative.
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - geo_redundant_storage_should_be_enabled_for_storage_accounts
-    - vulnerability_assessment_should_be_enabled_on_your_sql_servers
-    - kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_version
-    - endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
-    - subscriptions_should_have_a_contact_email_address_for_security_issues
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - auditing_on_sql_server_should_be_enabled
-    - function_apps_should_use_the_latest_tls_version
-    - app_service_apps_should_only_be_accessible_over_https
-    - function_apps_should_have_remote_debugging_turned_off
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
-    - function_apps_should_use_latest_'_http_version'
-    - app_service_apps_should_use_latest_'_http_version'
-    - function_apps_should_only_be_accessible_over_https
-    - storage_accounts_should_restrict_network_access
-    - audit_usage_of_custom_rbac_roles
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
-    - app_service_apps_should_use_the_latest_tls_version
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-    - app_service_apps_should_have_remote_debugging_turned_off
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- geo_redundant_storage_should_be_enabled_for_storage_accounts
+- vulnerability_assessment_should_be_enabled_on_your_sql_servers
+- kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_version
+- endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+- subscriptions_should_have_a_contact_email_address_for_security_issues
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- auditing_on_sql_server_should_be_enabled
+- function_apps_should_use_the_latest_tls_version
+- app_service_apps_should_only_be_accessible_over_https
+- function_apps_should_have_remote_debugging_turned_off
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- secure_transfer_to_storage_accounts_should_be_enabled
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
+- function_apps_should_use_latest_'_http_version'
+- app_service_apps_should_use_latest_'_http_version'
+- function_apps_should_only_be_accessible_over_https
+- storage_accounts_should_restrict_network_access
+- audit_usage_of_custom_rbac_roles
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
+- app_service_apps_should_use_the_latest_tls_version
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
+- app_service_apps_should_have_remote_debugging_turned_off
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql

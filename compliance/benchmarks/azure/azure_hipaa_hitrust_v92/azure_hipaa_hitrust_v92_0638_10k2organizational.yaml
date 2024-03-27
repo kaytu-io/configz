@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0638_10k2organizational
 Title: 0638.10k2Organizational.34569-10.k 10.05 Security In Development and Support Processes
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Changes are formally controlled, documented and enforced in order to minimize the corruption of information systems.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

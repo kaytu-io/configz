@@ -2,575 +2,569 @@ ID: NIST_SP_800-53_R4
 Title: NIST SP 800-53 Rev. 4
 ReferenceCode: ""
 Description: National Institute of Standards and Technology (NIST) SP 800-53 R4 provides a standardized approach for assessing, monitoring and authorizing cloud computing products and services to manage information security risk.These policies address a subset of NIST SP 800-53 R4 controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/nist800-53r4-initiative
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - require_developers_to_provide_training
-    - review_development_process,_standards_and_tools
-    - prohibit_unfair_practices
-    - specify_permitted_actions_associated_with_customer_audit_information
-    - develop_spillage_response_procedures
-    - resource_logs_in_azure_data_lake_store_should_be_enabled
-    - implement_a_fault_tolerant_name/address_service
-    - azure_hd_insight_clusters_should_use_encryption_in_transit_to_encrypt_communication_between_azure_hd_insight_cluster_nodes
-    - resource_logs_in_service_bus_should_be_enabled
-    - enforce_logical_access
-    - authorize_and_manage_access
-    - implement_transaction_based_recovery
-    - authorize_access_to_security_functions_and_information
-    - restore_resources_to_operational_state
-    - review_changes_for_any_unauthorized_changes
-    - review_and_update_risk_assessment_policies_and_procedures
-    - infrastructure_encryption_should_be_enabled_for_azure_database_for_my_sql_servers
-    - geo_redundant_storage_should_be_enabled_for_storage_accounts
-    - clear_personnel_with_access_to_classified_information
-    - protect_passwords_with_encryption
-    - protect_special_information
-    - ensure_security_categorization_is_approved
-    - vulnerability_assessment_should_be_enabled_on_your_sql_servers
-    - api_management_services_should_use_a_virtual_network
-    - review_and_update_information_integrity_policies_and_procedures
-    - document_acquisition_contract_acceptance_criteria
-    - document_access_privileges
-    - authorized_ip_ranges_should_be_defined_on_kubernetes_services
-    - employ_restrictions_on_external_system_interconnections
-    - define_a_physical_key_management_process
-    - map_authenticated_identities_to_individuals
-    - develop_ssp_that_meets_criteria
-    - require_users_to_sign_access_agreement
-    - issue_public_key_certificates
-    - define_information_system_account_types
-    - define_cryptographic_use
-    - isolate_information_spills
-    - review_and_update_system_maintenance_policies_and_procedures
-    - review_malware_detections_report_weekly
-    - review_label_activity_and_analytics
-    - automate_information_sharing_decisions
-    - update_the_security_authorization
-    - review_contingency_plan
-    - identify_actions_allowed_without_authentication
-    - provide_monitoring_information_as_needed
-    - obtain_legal_opinion_for_monitoring_system_activities
-    - bot_service_should_be_encrypted_with_a_customer_managed_key
-    - double_encryption_should_be_enabled_on_azure_data_explorer
-    - disable_authenticators_upon_termination
-    - obtain_functional_properties_of_security_controls
-    - azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
-    - use_system_clocks_for_audit_records
-    - conduct_incident_response_testing
-    - document_the_protection_of_cardholder_data_in_third_party_contracts
-    - display_an_explicit_logout_message
-    - develop_configuration_item_identification_plan
-    - monitor_security_and_privacy_training_completion
-    - monitor_privileged_role_assignment
-    - azure_data_factories_should_be_encrypted_with_a_customer_managed_key
-    - azure_key_vault_should_have_firewall_enabled
-    - ensure_authorized_users_protect_provided_authenticators
-    - obtain_approvals_for_acquisitions_and_outsourcing
-    - verify_software,_firmware_and_information_integrity
-    - identify_external_service_providers
-    - assign_risk_designations
-    - establish_configuration_management_requirements_for_developers
-    - develop_contingency_planning_policies_and_procedures
-    - subnets_should_be_associated_with_a_network_security_group
-    - protect_data_in_transit_using_encryption
-    - prepare_alternate_processing_site_for_use_as_operational_site
-    - secure_the_interface_to_external_systems
-    - enable_network_protection
-    - review_cloud_identity_report_overview
-    - review_cloud_service_provider's_compliance_with_policies_and_agreements
-    - automate_notification_of_employee_termination
-    - kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_version
-    - bind_authenticators_and_identities_dynamically
-    - eradicate_contaminated_information
-    - endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
-    - saved_queries_in_azure_monitor_should_be_saved_in_customer_storage_account_for_logs_encryption
-    - reauthenticate_or_terminate_a_user_session
-    - app_service_apps_should_use_managed_identity
-    - document_wireless_access_security_controls
-    - govern_and_monitor_audit_processing_activities
-    - review_and_update_incident_response_policies_and_procedures
-    - notify_personnel_upon_sanctions
-    - resource_logs_in_event_hub_should_be_enabled
-    - retain_training_records
-    - review_access_control_policies_and_procedures
-    - incorporate_flaw_remediation_into_configuration_management
-    - perform_all_non_local_maintenance
-    - document_and_implement_wireless_access_guidelines
-    - review_security_assessment_and_authorization_policies_and_procedures
-    - document_mobility_training
-    - test_contingency_plan_at_an_alternate_processing_location
-    - ensure_cryptographic_mechanisms_are_under_configuration_management
-    - update_antivirus_definitions
-    - provide_updated_security_awareness_training
-    - provide_periodic_security_awareness_training
-    - web_application_firewall_(_waf)_should_be_enabled_for_application_gateway
-    - ensure_system_capable_of_dynamic_isolation_of_resources
-    - employ_boundary_protection_to_isolate_information_systems
-    - update_rules_of_behavior_and_access_agreements_every_3_years
-    - hpc_cache_accounts_should_use_customer_managed_key_for_encryption
-    - employ_flow_control_mechanisms_of_encrypted_information
-    - generate_internal_security_alerts
-    - disseminate_security_alerts_to_personnel
-    - establish_a_discrete_line_item_in_budgeting_documentation
-    - implement_incident_handling
-    - establish_a_risk_management_strategy
-    - app_service_apps_should_have_resource_logs_enabled
-    - establish_a_secure_software_development_program
-    - produce,_control_and_distribute_symmetric_cryptographic_keys
-    - maintain_availability_of_information
-    - resource_logs_in_data_lake_analytics_should_be_enabled
-    - determine_assertion_requirements
-    - determine_auditable_events
-    - maintain_data_breach_records
-    - azure_cognitive_search_service_should_use_a_sku_that_supports_private_link
-    - satisfy_token_quality_requirements
-    - route_traffic_through_authenticated_proxy_network
-    - run_simulation_attacks
-    - implement_incident_handling_capability
-    - develop_a_concept_of_operations_(_conops)
-    - automate_process_to_highlight_unreviewed_change_proposals
-    - determine_supplier_contract_obligations
-    - cognitive_services_accounts_should_restrict_network_access
-    - define_and_document_government_oversight
-    - require_external_service_providers_to_comply_with_security_requirements
-    - select_additional_testing_for_security_control_assessments
-    - azure_file_sync_should_use_private_link
-    - employ_independent_assessors_to_conduct_security_control_assessments
-    - azure_policy_add_on_for_kubernetes_service_(_aks)_should_be_installed_and_enabled_on_your_clusters
-    - app_service_environment_should_have_internal_encryption_enabled
-    - establish_and_maintain_an_asset_inventory
-    - establish_authenticator_types_and_processes
-    - enforce_software_execution_privileges
-    - reassign_or_remove_user_privileges_as_needed
-    - azure_hd_insight_clusters_should_use_encryption_at_host_to_encrypt_data_at_rest
-    - establish_a_data_leakage_management_procedure
-    - establish_a_configuration_control_board
-    - perform_a_business_impact_assessment_and_application_criticality_assessment
-    - perform_a_privacy_impact_assessment
-    - perform_security_function_verification_at_a_defined_frequency
-    - verify_security_functions
-    - implement_controls_to_secure_all_media
-    - implement_controls_to_secure_alternate_work_sites
-    - reissue_authenticators_for_changed_groups_and_accounts
-    - remediate_information_system_flaws
-    - subscriptions_should_have_a_contact_email_address_for_security_issues
-    - document_requirements_for_the_use_of_shared_data_in_contracts
-    - develop_security_assessment_plan
-    - document_remote_access_guidelines
-    - assess_security_controls
-    - manage_gateways
-    - resource_logs_in_search_services_should_be_enabled
-    - provide_role_based_training_on_suspicious_activities
-    - provide_role_based_practical_exercises
-    - cosmos_db_accounts_should_use_private_link
-    - initiate_contingency_plan_testing_corrective_actions
-    - review_the_results_of_contingency_plan_testing
-    - provide_security_training_before_providing_access
-    - provide_security_training_for_new_users
-    - facilitate_information_sharing
-    - define_information_security_roles_and_responsibilities
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - manage_availability_and_capacity
-    - azure_cognitive_search_services_should_disable_public_network_access
-    - private_endpoint_connections_on_azure_sql_database_should_be_enabled
-    - review_and_sign_revised_rules_of_behavior
-    - azure_registry_container_images_should_have_vulnerabilities_resolved_(powered_by_qualys)
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - provide_timely_maintenance_support
-    - identify_status_of_individual_users
-    - employ_independent_team_for_penetration_testing
-    - auditing_on_sql_server_should_be_enabled
-    - automate_process_to_document_implemented_changes
-    - function_apps_should_use_the_latest_tls_version
-    - develop_and_document_a_business_continuity_and_disaster_recovery_plan
-    - develop_and_document_a_d_do_s_response_plan
-    - implement_parameters_for_memorized_secret_verifiers
-    - create_separate_alternate_and_primary_storage_sites
-    - ensure_alternate_storage_site_safeguards_are_equivalent_to_primary_site
-    - provide_contingency_training
-    - provide_information_spillage_training
-    - review_user_accounts
-    - review_user_groups_and_applications_with_access_to_sensitive_data
-    - cognitive_services_accounts_should_enable_data_encryption_with_a_customer_managed_key
-    - rescreen_individuals_at_a_defined_frequency
-    - manage_the_input,_output,_processing,_and_storage_of_data
-    - vm_image_builder_templates_should_use_private_link
-    - azure_api_for_fhir_should_use_a_customer_managed_key_to_encrypt_data_at_rest
-    - manage_system_and_admin_accounts
-    - obtain_admin_documentation
-    - obtain_user_security_function_documentation
-    - '[_preview]:_azure_arc_enabled_kubernetes_clusters_should_have_microsoft_defender_for_cloud_extension_installed'
-    - alert_personnel_of_information_spillage
-    - establish_a_threat_intelligence_program
-    - identify_spilled_information
-    - require_developer_to_identify_sdlc_ports,_protocols,_and_services
-    - employ_fips_201_approved_technology_for_piv
-    - app_service_apps_should_only_be_accessible_over_https
-    - identify_and_manage_downstream_information_exchanges
-    - require_approval_for_account_creation
-    - review_and_update_system_and_communications_protection_policies_and_procedures
-    - enforce_expiration_of_cached_authenticators
-    - ensure_audit_records_are_not_altered
-    - kubernetes_cluster_containers_cpu_and_memory_resource_limits_should_not_exceed_the_specified_limits
-    - perform_audit_for_configuration_change_control
-    - verify_identity_before_distributing_authenticators
-    - review_threat_protection_status_weekly
-    - enforce_and_audit_access_restrictions
-    - document_third_party_personnel_security_requirements
-    - require_third_party_providers_to_comply_with_personnel_security_policies_and_procedures
-    - function_apps_should_have_remote_debugging_turned_off
-    - authorize_remote_access
-    - authorize,_monitor,_and_control_voip
-    - support_personal_verification_credentials_issued_by_legal_authorities
-    - categorize_information
-    - restrict_access_to_privileged_accounts
-    - service_bus_premium_namespaces_should_use_a_customer_managed_key_for_encryption
-    - invalidate_session_identifiers_at_logout
-    - azure_machine_learning_workspaces_should_be_encrypted_with_a_customer_managed_key
-    - enforce_rules_of_behavior_and_access_agreements
-    - enforce_security_configuration_settings
-    - storage_accounts_should_use_customer_managed_key_for_encryption
-    - define_requirements_for_supplying_goods_and_services
-    - integrate_cloud_app_security_with_a_siem
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - review_exploit_protection_events
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - review_file_and_folder_activity
-    - accept_only_ficam_approved_third_party_credentials
-    - employ_ficam_approved_resources_to_accept_third_party_credentials
-    - use_privileged_identity_management
-    - azure_container_instance_container_group_should_use_customer_managed_key_for_encryption
-    - document_security_functional_requirements_in_acquisition_contracts
-    - document_security_documentation_requirements_in_acquisition_contract
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
-    - disable_user_accounts_posing_a_significant_risk
-    - govern_the_allocation_of_resources
-    - azure_stream_analytics_jobs_should_use_customer_managed_keys_to_encrypt_data
-    - govern_policies_and_procedures
-    - employ_automatic_shutdown/restart_when_violations_are_detected
-    - ensure_resources_are_authorized
-    - assign_an_authorizing_official_(_ao)
-    - view_and_configure_system_diagnostic_data
-    - require_developers_to_document_approved_changes_and_potential_impact
-    - view_and_investigate_restricted_users
-    - require_developers_to_implement_only_approved_changes
-    - establish_procedures_for_initial_authenticator_distribution
-    - establish_requirements_for_audit_review_and_reporting
-    - restrict_use_of_open_source_software
-    - define_and_enforce_the_limit_of_concurrent_sessions
-    - review_and_update_the_information_security_architecture
-    - azure_signal_r_service_should_use_private_link
-    - establish_relationship_between_incident_response_capability_and_external_providers
-    - azure_data_explorer_encryption_at_rest_should_use_a_customer_managed_key
-    - not_allow_for_information_systems_to_accompany_with_individuals
-    - develop_and_establish_a_system_security_plan
-    - ensure_security_safeguards_not_needed_when_the_individuals_return
-    - microsoft_defender_for_storage_should_be_enabled
-    - protect_incident_response_plan
-    - key_vaults_should_have_soft_delete_enabled
-    - employ_least_privilege_access
-    - update_organizational_access_agreements
-    - update_rules_of_behavior_and_access_agreements
-    - cognitive_services_accounts_should_disable_public_network_access
-    - perform_a_risk_assessment
-    - perform_a_trend_analysis_on_threats
-    - allocate_resources_in_determining_information_system_requirements
-    - use_automated_mechanisms_for_security_alerts
-    - implement_security_directives
-    - review_and_update_system_and_services_acquisition_policies_and_procedures
-    - app_service_apps_should_require_ftps_only
-    - public_network_access_on_azure_sql_database_should_be_disabled
-    - plan_for_resumption_of_essential_business_functions
-    - execute_actions_in_response_to_information_spills
-    - function_apps_should_use_latest_'_http_version'
-    - conduct_capacity_planning
-    - conduct_backup_of_information_system_documentation
-    - produce,_control_and_distribute_asymmetric_cryptographic_keys
-    - review_administrator_assignments_weekly
-    - review_account_provisioning_logs
-    - maintain_records_of_processing_of_personal_data
-    - maintain_incident_response_plan
-    - ensure_access_agreements_are_signed_or_resigned_timely
-    - establish_third_party_personnel_security_requirements
-    - identify_classes_of_incidents_and_actions_taken
-    - include_dynamic_reconfig_of_customer_deployed_resources
-    - app_service_apps_should_use_latest_'_http_version'
-    - function_apps_should_only_be_accessible_over_https
-    - route_traffic_through_managed_network_access_points
-    - storage_accounts_should_restrict_network_access
-    - provide_secure_name_and_address_resolution_services
-    - provide_security_awareness_training_for_insider_threats
-    - audit_usage_of_custom_rbac_roles
-    - automate_proposed_documented_changes
-    - implement_security_engineering_principles_of_information_systems
-    - develop_acceptable_use_policies_and_procedures
-    - app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
-    - establish_and_document_change_control_processes
-    - address_coding_vulnerabilities
-    - establish_and_document_a_configuration_management_plan
-    - distribute_information_system_documentation
-    - enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
-    - document_security_assurance_requirements_in_acquisition_contracts
-    - document_security_and_privacy_training_activities
-    - both_operating_systems_and_data_disks_in_azure_kubernetes_service_clusters_should_be_encrypted_by_customer_managed_keys
-    - managed_disks_should_be_double_encrypted_with_both_platform_managed_and_customer_managed_keys
-    - azure_stack_edge_devices_should_use_double_encryption
-    - enforce_user_uniqueness
-    - implement_an_automated_configuration_management_tool
-    - notify_users_of_system_logon_or_access
-    - notify_when_account_is_not_needed
-    - conform_to_ficam_issued_profiles
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
-    - retain_terminated_user_data
-    - retain_security_policies_and_procedures
-    - '[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall'
-    - manage_symmetric_cryptographic_keys
-    - document_personnel_acceptance_of_privacy_requirements
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - provide_the_capability_to_extend_or_limit_auditing_on_customer_deployed_resources
-    - document_organizational_access_agreements
-    - align_business_objectives_and_it_goals
-    - develop_and_document_application_security_requirements
-    - implement_privileged_access_for_executing_vulnerability_scanning_activities
-    - take_action_in_response_to_customer_information
-    - establish_alternate_storage_site_to_store_and_retrieve_backup_information
-    - evaluate_alternate_processing_site_capabilities
-    - azure_synapse_workspaces_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - enable_dual_or_joint_authorization
-    - turn_on_sensors_for_endpoint_security_solution
-    - undergo_independent_security_review
-    - review_role_group_changes_weekly
-    - define_mobile_device_requirements
-    - define_organizational_requirements_for_cryptographic_key_management
-    - require_use_of_individual_authenticators
-    - infrastructure_encryption_should_be_enabled_for_azure_database_for_postgre_sql_servers
-    - azure_cosmos_db_accounts_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - obtain_design_and_implementation_information_for_the_security_controls
-    - notify_personnel_of_any_failed_security_verification_tests
-    - create_alternative_actions_for_identified_anomalies
-    - obtain_continuous_monitoring_plan_for_security_controls
-    - develop_contingency_plan
-    - terminate_customer_controlled_account_credentials
-    - identify_and_authenticate_network_devices
-    - document_the_information_system_environment_in_acquisition_contracts
-    - document_separation_of_duties
-    - configure_actions_for_noncompliant_devices
-    - provide_the_logout_capability
-    - create_configuration_plan_protection
-    - coordinate_contingency_plans_with_related_plans
-    - develop_configuration_management_plan
-    - terminate_user_session_automatically
-    - correlate_audit_records
-    - establish_firewall_and_router_configuration_standards
-    - assess_risk_in_third_party_relationships
-    - assign_account_managers
-    - establish_network_segmentation_for_card_holder_data_environment
-    - restrict_location_of_information_processing,_storage_and_services
-    - ensure_external_providers_consistently_meet_interests_of_the_customers
-    - verify_security_controls_for_external_information_systems
-    - develop_business_classification_schemes
-    - develop_audit_and_accountability_policies_and_procedures
-    - test_the_business_continuity_and_disaster_recovery_plan
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - provide_real_time_alerts_for_audit_event_failures
-    - implement_managed_interface_for_each_external_service
-    - separate_duties_of_individuals
-    - azure_event_grid_topics_should_use_private_link
-    - email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
-    - identify_and_authenticate_non_organizational_users
-    - storage_accounts_should_restrict_network_access_using_virtual_network_rules
-    - accept_piv_credentials
-    - configure_detection_whitelist
-    - require_developers_to_build_security_architecture
-    - require_developers_to_describe_accurate_security_functionality
-    - information_flow_control_using_security_policy_filters
-    - develop_security_safeguards
-    - implement_a_penetration_testing_methodology
-    - public_network_access_should_be_disabled_for_postgre_sql_servers
-    - recover_and_reconstitute_resources_after_any_disruption
-    - enforce_mandatory_and_discretionary_access_control_policies
-    - audit_user_account_status
-    - transfer_backup_information_to_an_alternate_storage_site
-    - authenticate_to_cryptographic_module
-    - enforce_random_unique_session_identifiers
-    - analyse_data_obtained_from_continuous_monitoring
-    - employ_independent_assessors_for_continuous_monitoring
-    - app_service_apps_should_use_the_latest_tls_version
-    - design_an_access_control_model
-    - limit_privileges_to_make_changes_in_production_environment
-    - function_apps_should_require_ftps_only
-    - conduct_a_security_impact_analysis
-    - conduct_a_full_text_analysis_of_logged_privileged_commands
-    - '[_preview]:_storage_account_public_access_should_be_disallowed'
-    - conduct_risk_assessment_and_document_its_results
-    - generate_error_messages
-    - reveal_error_messages
-    - conduct_risk_assessment
-    - integrate_audit_review,_analysis,_and_reporting
-    - install_an_alarm_system
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - establish_alternate_storage_site_that_facilitates_recovery_operations
-    - define_and_enforce_inactivity_log_policy
-    - identify_and_mitigate_potential_issues_at_alternate_storage_site
-    - update_poa&_m_items
-    - distribute_authenticators
-    - develop_poa&_m
-    - distribute_policies_and_procedures
-    - establish_requirements_for_internet_service_providers
-    - establish_security_requirements_for_the_manufacturing_of_connected_devices
-    - maintain_separate_execution_domains_for_running_processes
-    - produce_complete_records_of_remote_maintenance_activities
-    - automate_remote_maintenance_activities
-    - review_and_update_planning_policies_and_procedures
-    - manage_the_transportation_of_assets
-    - sql_managed_instances_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - define_access_authorizations_to_support_separation_of_duties
-    - define_and_enforce_conditions_for_shared_and_group_accounts
-    - manage_transfers_between_standby_and_active_system_components
-    - storage_account_encryption_scopes_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - function_apps_should_use_managed_identity
-    - azure_web_application_firewall_should_be_enabled_for_azure_front_door_entry_points
-    - review_and_update_identification_and_authentication_policies_and_procedures
-    - review_controlled_folder_access_events
-    - resource_logs_in_batch_accounts_should_be_enabled
-    - public_network_access_should_be_disabled_for_my_sql_servers
-    - define_requirements_for_managing_assets
-    - document_security_operations
-    - document_security_strength_requirements_in_acquisition_contracts
-    - my_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - public_network_access_should_be_disabled_for_maria_db_servers
-    - sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
-    - prohibit_binary/machine_executable_code
-    - report_atypical_behavior_of_user_accounts
-    - review_and_update_contingency_planning_policies_and_procedures
-    - assess_information_security_events
-    - establish_policies_for_supply_chain_risk_management
-    - establish_parameters_for_searching_secret_authenticators_and_verifiers
-    - require_developers_to_manage_change_integrity
-    - review_and_update_personnel_security_policies_and_procedures
-    - control_physical_access
-    - track_software_license_usage
-    - set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
-    - review_and_update_physical_and_environmental_policies_and_procedures
-    - '[_preview]:_log_analytics_extension_should_be_installed_on_your_linux_azure_arc_machines'
-    - develop_and_maintain_a_vulnerability_management_standard
-    - retain_previous_versions_of_baseline_configs
-    - develop_and_maintain_baseline_configurations
-    - communicate_contingency_plan_changes
-    - update_contingency_plan
-    - require_compliance_with_intellectual_property_rights
-    - identify_contaminated_systems_and_components
-    - service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-    - identify_incident_response_personnel
-    - perform_threat_modeling
-    - perform_vulnerability_scans
-    - ensure_there_are_no_unencrypted_static_authenticators
-    - postgre_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - employ_a_media_sanitization_mechanism
-    - employ_automatic_emergency_lighting
-    - require_developers_to_provide_unified_security_protection_approach
-    - require_notification_of_third_party_personnel_transfer_or_termination
-    - monitor_third_party_provider_compliance
-    - provide_capability_to_disconnect_or_disable_remote_access
-    - automate_flaw_remediation
-    - separately_store_backup_information
-    - automate_account_management
-    - resource_logs_in_key_vault_should_be_enabled
-    - perform_information_input_validation
-    - conduct_risk_assessment_and_distribute_its_results
-    - develop_organization_code_of_conduct_policy
-    - app_service_apps_should_have_remote_debugging_turned_off
-    - block_untrusted_and_unsigned_processes_that_run_from_usb
-    - restrict_access_to_private_keys
-    - monitor_access_across_the_organization
-    - accept_assessment_results
-    - require_interconnection_security_agreements
-    - audit_privileged_functions
-    - assign_system_identifiers
-    - ensure_information_system_fails_in_known_state
-    - disk_encryption_should_be_enabled_on_azure_data_explorer
-    - detect_network_services_that_have_not_been_authorized_or_approved
-    - identify_individuals_with_security_roles_and_responsibilities
-    - integrate_risk_management_process_into_sdlc
-    - resume_all_mission_and_business_functions
-    - plan_for_continuance_of_essential_business_functions
-    - configure_workstations_to_check_for_digital_certificates
-    - '[_deprecated]:_function_apps_should_have_''_client_certificates_(_incoming_client_certificates)''_enabled'
-    - resource_logs_in_io_t_hub_should_be_enabled
-    - review_audit_data
-    - manage_a_secure_surveillance_camera_system
-    - manage_authenticator_lifetime_and_reuse
-    - review_and_update_media_protection_policies_and_procedures
-    - '[_preview]:_azure_key_vault_managed_hsm_keys_should_have_an_expiration_date'
-    - protect_wireless_access
-    - implement_physical_security_for_offices,_working_areas,_and_secure_areas
-    - develop_an_incident_response_plan
-    - develop_access_control_policies_and_procedures
-    - implement_personnel_screening
-    - correlate_vulnerability_scan_information
-    - update_interconnection_security_agreements
-    - update_information_security_policies
-    - revoke_privileged_roles_as_appropriate
-    - isolate_secur_id_systems,_security_incident_management_systems
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql
-    - create_a_data_inventory
-    - enforce_a_limit_of_consecutive_failed_login_attempts
-    - implement_cryptographic_mechanisms
-    - establish_an_alternate_processing_site
-    - establish_an_information_security_program
-    - adopt_biometric_authentication_mechanisms
-    - protect_administrator_and_user_documentation
-    - document_customer_defined_actions
-    - establish_a_password_policy
-    - establish_a_privacy_program
-    - azure_hd_insight_clusters_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - resource_logs_in_azure_stream_analytics_should_be_enabled
-    - incorporate_simulated_events_into_incident_response_training
-    - observe_and_report_security_weaknesses
-    - employ_automated_training_environment
-    - require_developers_to_produce_evidence_of_security_assessment_plan_execution
-    - resource_logs_in_logic_apps_should_be_enabled
-    - control_information_flow
-    - refresh_authenticators
-    - temp_disks_and_cache_for_agent_node_pools_in_azure_kubernetes_service_clusters_should_be_encrypted_at_host
-    - review_user_privileges
-    - implement_formal_sanctions_process
-    - manage_authenticators
-    - azure_batch_account_should_use_customer_managed_keys_to_encrypt_data
-    - deliver_security_assessment_results
-    - document_protection_of_personal_data_in_acquisition_contracts
-    - produce_security_assessment_report
-    - document_protection_of_security_information_in_acquisition_contracts
-    - cognitive_services_accounts_should_have_local_authentication_methods_disabled
-    - establish_benchmarks_for_flaw_remediation
-    - measure_the_time_between_flaw_identification_and_flaw_remediation
-    - azure_api_for_fhir_should_use_private_link
-    - establish_backup_policies_and_procedures
-    - establish_conditions_for_role_membership
-    - enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
-    - provide_role_based_security_training
-    - enable_detection_of_network_devices
-    - provide_periodic_role_based_security_training
-    - secure_commitment_from_leadership
-    - coordinate_with_external_organizations_to_achieve_cross_org_perspective
-    - implement_training_for_protecting_authenticators
-    - automation_account_variables_should_be_encrypted
-    - implement_system_boundary_protection
-    - incorporate_simulated_contingency_training
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- require_developers_to_provide_training
+- review_development_process,_standards_and_tools
+- prohibit_unfair_practices
+- specify_permitted_actions_associated_with_customer_audit_information
+- develop_spillage_response_procedures
+- resource_logs_in_azure_data_lake_store_should_be_enabled
+- implement_a_fault_tolerant_name/address_service
+- azure_hd_insight_clusters_should_use_encryption_in_transit_to_encrypt_communication_between_azure_hd_insight_cluster_nodes
+- resource_logs_in_service_bus_should_be_enabled
+- enforce_logical_access
+- authorize_and_manage_access
+- implement_transaction_based_recovery
+- authorize_access_to_security_functions_and_information
+- restore_resources_to_operational_state
+- review_changes_for_any_unauthorized_changes
+- review_and_update_risk_assessment_policies_and_procedures
+- infrastructure_encryption_should_be_enabled_for_azure_database_for_my_sql_servers
+- geo_redundant_storage_should_be_enabled_for_storage_accounts
+- clear_personnel_with_access_to_classified_information
+- protect_passwords_with_encryption
+- protect_special_information
+- ensure_security_categorization_is_approved
+- vulnerability_assessment_should_be_enabled_on_your_sql_servers
+- api_management_services_should_use_a_virtual_network
+- review_and_update_information_integrity_policies_and_procedures
+- document_acquisition_contract_acceptance_criteria
+- document_access_privileges
+- authorized_ip_ranges_should_be_defined_on_kubernetes_services
+- employ_restrictions_on_external_system_interconnections
+- define_a_physical_key_management_process
+- map_authenticated_identities_to_individuals
+- develop_ssp_that_meets_criteria
+- require_users_to_sign_access_agreement
+- issue_public_key_certificates
+- define_information_system_account_types
+- define_cryptographic_use
+- isolate_information_spills
+- review_and_update_system_maintenance_policies_and_procedures
+- review_malware_detections_report_weekly
+- review_label_activity_and_analytics
+- automate_information_sharing_decisions
+- update_the_security_authorization
+- review_contingency_plan
+- identify_actions_allowed_without_authentication
+- provide_monitoring_information_as_needed
+- obtain_legal_opinion_for_monitoring_system_activities
+- bot_service_should_be_encrypted_with_a_customer_managed_key
+- double_encryption_should_be_enabled_on_azure_data_explorer
+- disable_authenticators_upon_termination
+- obtain_functional_properties_of_security_controls
+- azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
+- use_system_clocks_for_audit_records
+- conduct_incident_response_testing
+- document_the_protection_of_cardholder_data_in_third_party_contracts
+- display_an_explicit_logout_message
+- develop_configuration_item_identification_plan
+- monitor_security_and_privacy_training_completion
+- monitor_privileged_role_assignment
+- azure_data_factories_should_be_encrypted_with_a_customer_managed_key
+- azure_key_vault_should_have_firewall_enabled
+- ensure_authorized_users_protect_provided_authenticators
+- obtain_approvals_for_acquisitions_and_outsourcing
+- verify_software,_firmware_and_information_integrity
+- identify_external_service_providers
+- assign_risk_designations
+- establish_configuration_management_requirements_for_developers
+- develop_contingency_planning_policies_and_procedures
+- subnets_should_be_associated_with_a_network_security_group
+- protect_data_in_transit_using_encryption
+- prepare_alternate_processing_site_for_use_as_operational_site
+- secure_the_interface_to_external_systems
+- enable_network_protection
+- review_cloud_identity_report_overview
+- review_cloud_service_provider's_compliance_with_policies_and_agreements
+- automate_notification_of_employee_termination
+- kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_version
+- bind_authenticators_and_identities_dynamically
+- eradicate_contaminated_information
+- endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+- saved_queries_in_azure_monitor_should_be_saved_in_customer_storage_account_for_logs_encryption
+- reauthenticate_or_terminate_a_user_session
+- app_service_apps_should_use_managed_identity
+- document_wireless_access_security_controls
+- govern_and_monitor_audit_processing_activities
+- review_and_update_incident_response_policies_and_procedures
+- notify_personnel_upon_sanctions
+- resource_logs_in_event_hub_should_be_enabled
+- retain_training_records
+- review_access_control_policies_and_procedures
+- incorporate_flaw_remediation_into_configuration_management
+- perform_all_non_local_maintenance
+- document_and_implement_wireless_access_guidelines
+- review_security_assessment_and_authorization_policies_and_procedures
+- document_mobility_training
+- test_contingency_plan_at_an_alternate_processing_location
+- ensure_cryptographic_mechanisms_are_under_configuration_management
+- update_antivirus_definitions
+- provide_updated_security_awareness_training
+- provide_periodic_security_awareness_training
+- web_application_firewall_(_waf)_should_be_enabled_for_application_gateway
+- ensure_system_capable_of_dynamic_isolation_of_resources
+- employ_boundary_protection_to_isolate_information_systems
+- update_rules_of_behavior_and_access_agreements_every_3_years
+- hpc_cache_accounts_should_use_customer_managed_key_for_encryption
+- employ_flow_control_mechanisms_of_encrypted_information
+- generate_internal_security_alerts
+- disseminate_security_alerts_to_personnel
+- establish_a_discrete_line_item_in_budgeting_documentation
+- implement_incident_handling
+- establish_a_risk_management_strategy
+- app_service_apps_should_have_resource_logs_enabled
+- establish_a_secure_software_development_program
+- produce,_control_and_distribute_symmetric_cryptographic_keys
+- maintain_availability_of_information
+- resource_logs_in_data_lake_analytics_should_be_enabled
+- determine_assertion_requirements
+- determine_auditable_events
+- maintain_data_breach_records
+- azure_cognitive_search_service_should_use_a_sku_that_supports_private_link
+- satisfy_token_quality_requirements
+- route_traffic_through_authenticated_proxy_network
+- run_simulation_attacks
+- implement_incident_handling_capability
+- develop_a_concept_of_operations_(_conops)
+- automate_process_to_highlight_unreviewed_change_proposals
+- determine_supplier_contract_obligations
+- cognitive_services_accounts_should_restrict_network_access
+- define_and_document_government_oversight
+- require_external_service_providers_to_comply_with_security_requirements
+- select_additional_testing_for_security_control_assessments
+- azure_file_sync_should_use_private_link
+- employ_independent_assessors_to_conduct_security_control_assessments
+- azure_policy_add_on_for_kubernetes_service_(_aks)_should_be_installed_and_enabled_on_your_clusters
+- app_service_environment_should_have_internal_encryption_enabled
+- establish_and_maintain_an_asset_inventory
+- establish_authenticator_types_and_processes
+- enforce_software_execution_privileges
+- reassign_or_remove_user_privileges_as_needed
+- azure_hd_insight_clusters_should_use_encryption_at_host_to_encrypt_data_at_rest
+- establish_a_data_leakage_management_procedure
+- establish_a_configuration_control_board
+- perform_a_business_impact_assessment_and_application_criticality_assessment
+- perform_a_privacy_impact_assessment
+- perform_security_function_verification_at_a_defined_frequency
+- verify_security_functions
+- implement_controls_to_secure_all_media
+- implement_controls_to_secure_alternate_work_sites
+- reissue_authenticators_for_changed_groups_and_accounts
+- remediate_information_system_flaws
+- subscriptions_should_have_a_contact_email_address_for_security_issues
+- document_requirements_for_the_use_of_shared_data_in_contracts
+- develop_security_assessment_plan
+- document_remote_access_guidelines
+- assess_security_controls
+- manage_gateways
+- resource_logs_in_search_services_should_be_enabled
+- provide_role_based_training_on_suspicious_activities
+- provide_role_based_practical_exercises
+- cosmos_db_accounts_should_use_private_link
+- initiate_contingency_plan_testing_corrective_actions
+- review_the_results_of_contingency_plan_testing
+- provide_security_training_before_providing_access
+- provide_security_training_for_new_users
+- facilitate_information_sharing
+- define_information_security_roles_and_responsibilities
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- manage_availability_and_capacity
+- azure_cognitive_search_services_should_disable_public_network_access
+- private_endpoint_connections_on_azure_sql_database_should_be_enabled
+- review_and_sign_revised_rules_of_behavior
+- azure_registry_container_images_should_have_vulnerabilities_resolved_(powered_by_qualys)
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- provide_timely_maintenance_support
+- identify_status_of_individual_users
+- employ_independent_team_for_penetration_testing
+- auditing_on_sql_server_should_be_enabled
+- automate_process_to_document_implemented_changes
+- function_apps_should_use_the_latest_tls_version
+- develop_and_document_a_business_continuity_and_disaster_recovery_plan
+- develop_and_document_a_d_do_s_response_plan
+- implement_parameters_for_memorized_secret_verifiers
+- create_separate_alternate_and_primary_storage_sites
+- ensure_alternate_storage_site_safeguards_are_equivalent_to_primary_site
+- provide_contingency_training
+- provide_information_spillage_training
+- review_user_accounts
+- review_user_groups_and_applications_with_access_to_sensitive_data
+- cognitive_services_accounts_should_enable_data_encryption_with_a_customer_managed_key
+- rescreen_individuals_at_a_defined_frequency
+- manage_the_input,_output,_processing,_and_storage_of_data
+- vm_image_builder_templates_should_use_private_link
+- azure_api_for_fhir_should_use_a_customer_managed_key_to_encrypt_data_at_rest
+- manage_system_and_admin_accounts
+- obtain_admin_documentation
+- obtain_user_security_function_documentation
+- "[_preview]:_azure_arc_enabled_kubernetes_clusters_should_have_microsoft_defender_for_cloud_extension_installed"
+- alert_personnel_of_information_spillage
+- establish_a_threat_intelligence_program
+- identify_spilled_information
+- require_developer_to_identify_sdlc_ports,_protocols,_and_services
+- employ_fips_201_approved_technology_for_piv
+- app_service_apps_should_only_be_accessible_over_https
+- identify_and_manage_downstream_information_exchanges
+- require_approval_for_account_creation
+- review_and_update_system_and_communications_protection_policies_and_procedures
+- enforce_expiration_of_cached_authenticators
+- ensure_audit_records_are_not_altered
+- kubernetes_cluster_containers_cpu_and_memory_resource_limits_should_not_exceed_the_specified_limits
+- perform_audit_for_configuration_change_control
+- verify_identity_before_distributing_authenticators
+- review_threat_protection_status_weekly
+- enforce_and_audit_access_restrictions
+- document_third_party_personnel_security_requirements
+- require_third_party_providers_to_comply_with_personnel_security_policies_and_procedures
+- function_apps_should_have_remote_debugging_turned_off
+- authorize_remote_access
+- authorize,_monitor,_and_control_voip
+- support_personal_verification_credentials_issued_by_legal_authorities
+- categorize_information
+- restrict_access_to_privileged_accounts
+- service_bus_premium_namespaces_should_use_a_customer_managed_key_for_encryption
+- invalidate_session_identifiers_at_logout
+- azure_machine_learning_workspaces_should_be_encrypted_with_a_customer_managed_key
+- enforce_rules_of_behavior_and_access_agreements
+- enforce_security_configuration_settings
+- storage_accounts_should_use_customer_managed_key_for_encryption
+- define_requirements_for_supplying_goods_and_services
+- integrate_cloud_app_security_with_a_siem
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- review_exploit_protection_events
+- secure_transfer_to_storage_accounts_should_be_enabled
+- review_file_and_folder_activity
+- accept_only_ficam_approved_third_party_credentials
+- employ_ficam_approved_resources_to_accept_third_party_credentials
+- use_privileged_identity_management
+- azure_container_instance_container_group_should_use_customer_managed_key_for_encryption
+- document_security_functional_requirements_in_acquisition_contracts
+- document_security_documentation_requirements_in_acquisition_contract
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
+- disable_user_accounts_posing_a_significant_risk
+- govern_the_allocation_of_resources
+- azure_stream_analytics_jobs_should_use_customer_managed_keys_to_encrypt_data
+- govern_policies_and_procedures
+- employ_automatic_shutdown/restart_when_violations_are_detected
+- ensure_resources_are_authorized
+- assign_an_authorizing_official_(_ao)
+- view_and_configure_system_diagnostic_data
+- require_developers_to_document_approved_changes_and_potential_impact
+- view_and_investigate_restricted_users
+- require_developers_to_implement_only_approved_changes
+- establish_procedures_for_initial_authenticator_distribution
+- establish_requirements_for_audit_review_and_reporting
+- restrict_use_of_open_source_software
+- define_and_enforce_the_limit_of_concurrent_sessions
+- review_and_update_the_information_security_architecture
+- azure_signal_r_service_should_use_private_link
+- establish_relationship_between_incident_response_capability_and_external_providers
+- azure_data_explorer_encryption_at_rest_should_use_a_customer_managed_key
+- not_allow_for_information_systems_to_accompany_with_individuals
+- develop_and_establish_a_system_security_plan
+- ensure_security_safeguards_not_needed_when_the_individuals_return
+- microsoft_defender_for_storage_should_be_enabled
+- protect_incident_response_plan
+- key_vaults_should_have_soft_delete_enabled
+- employ_least_privilege_access
+- update_organizational_access_agreements
+- update_rules_of_behavior_and_access_agreements
+- cognitive_services_accounts_should_disable_public_network_access
+- perform_a_risk_assessment
+- perform_a_trend_analysis_on_threats
+- allocate_resources_in_determining_information_system_requirements
+- use_automated_mechanisms_for_security_alerts
+- implement_security_directives
+- review_and_update_system_and_services_acquisition_policies_and_procedures
+- app_service_apps_should_require_ftps_only
+- public_network_access_on_azure_sql_database_should_be_disabled
+- plan_for_resumption_of_essential_business_functions
+- execute_actions_in_response_to_information_spills
+- function_apps_should_use_latest_'_http_version'
+- conduct_capacity_planning
+- conduct_backup_of_information_system_documentation
+- produce,_control_and_distribute_asymmetric_cryptographic_keys
+- review_administrator_assignments_weekly
+- review_account_provisioning_logs
+- maintain_records_of_processing_of_personal_data
+- maintain_incident_response_plan
+- ensure_access_agreements_are_signed_or_resigned_timely
+- establish_third_party_personnel_security_requirements
+- identify_classes_of_incidents_and_actions_taken
+- include_dynamic_reconfig_of_customer_deployed_resources
+- app_service_apps_should_use_latest_'_http_version'
+- function_apps_should_only_be_accessible_over_https
+- route_traffic_through_managed_network_access_points
+- storage_accounts_should_restrict_network_access
+- provide_secure_name_and_address_resolution_services
+- provide_security_awareness_training_for_insider_threats
+- audit_usage_of_custom_rbac_roles
+- automate_proposed_documented_changes
+- implement_security_engineering_principles_of_information_systems
+- develop_acceptable_use_policies_and_procedures
+- app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
+- establish_and_document_change_control_processes
+- address_coding_vulnerabilities
+- establish_and_document_a_configuration_management_plan
+- distribute_information_system_documentation
+- enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
+- document_security_assurance_requirements_in_acquisition_contracts
+- document_security_and_privacy_training_activities
+- both_operating_systems_and_data_disks_in_azure_kubernetes_service_clusters_should_be_encrypted_by_customer_managed_keys
+- managed_disks_should_be_double_encrypted_with_both_platform_managed_and_customer_managed_keys
+- azure_stack_edge_devices_should_use_double_encryption
+- enforce_user_uniqueness
+- implement_an_automated_configuration_management_tool
+- notify_users_of_system_logon_or_access
+- notify_when_account_is_not_needed
+- conform_to_ficam_issued_profiles
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
+- retain_terminated_user_data
+- retain_security_policies_and_procedures
+- "[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall"
+- manage_symmetric_cryptographic_keys
+- document_personnel_acceptance_of_privacy_requirements
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- provide_the_capability_to_extend_or_limit_auditing_on_customer_deployed_resources
+- document_organizational_access_agreements
+- align_business_objectives_and_it_goals
+- develop_and_document_application_security_requirements
+- implement_privileged_access_for_executing_vulnerability_scanning_activities
+- take_action_in_response_to_customer_information
+- establish_alternate_storage_site_to_store_and_retrieve_backup_information
+- evaluate_alternate_processing_site_capabilities
+- azure_synapse_workspaces_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- enable_dual_or_joint_authorization
+- turn_on_sensors_for_endpoint_security_solution
+- undergo_independent_security_review
+- review_role_group_changes_weekly
+- define_mobile_device_requirements
+- define_organizational_requirements_for_cryptographic_key_management
+- require_use_of_individual_authenticators
+- infrastructure_encryption_should_be_enabled_for_azure_database_for_postgre_sql_servers
+- azure_cosmos_db_accounts_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- obtain_design_and_implementation_information_for_the_security_controls
+- notify_personnel_of_any_failed_security_verification_tests
+- create_alternative_actions_for_identified_anomalies
+- obtain_continuous_monitoring_plan_for_security_controls
+- develop_contingency_plan
+- terminate_customer_controlled_account_credentials
+- identify_and_authenticate_network_devices
+- document_the_information_system_environment_in_acquisition_contracts
+- document_separation_of_duties
+- configure_actions_for_noncompliant_devices
+- provide_the_logout_capability
+- create_configuration_plan_protection
+- coordinate_contingency_plans_with_related_plans
+- develop_configuration_management_plan
+- terminate_user_session_automatically
+- correlate_audit_records
+- establish_firewall_and_router_configuration_standards
+- assess_risk_in_third_party_relationships
+- assign_account_managers
+- establish_network_segmentation_for_card_holder_data_environment
+- restrict_location_of_information_processing,_storage_and_services
+- ensure_external_providers_consistently_meet_interests_of_the_customers
+- verify_security_controls_for_external_information_systems
+- develop_business_classification_schemes
+- develop_audit_and_accountability_policies_and_procedures
+- test_the_business_continuity_and_disaster_recovery_plan
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- provide_real_time_alerts_for_audit_event_failures
+- implement_managed_interface_for_each_external_service
+- separate_duties_of_individuals
+- azure_event_grid_topics_should_use_private_link
+- email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
+- identify_and_authenticate_non_organizational_users
+- storage_accounts_should_restrict_network_access_using_virtual_network_rules
+- accept_piv_credentials
+- configure_detection_whitelist
+- require_developers_to_build_security_architecture
+- require_developers_to_describe_accurate_security_functionality
+- information_flow_control_using_security_policy_filters
+- develop_security_safeguards
+- implement_a_penetration_testing_methodology
+- public_network_access_should_be_disabled_for_postgre_sql_servers
+- recover_and_reconstitute_resources_after_any_disruption
+- enforce_mandatory_and_discretionary_access_control_policies
+- audit_user_account_status
+- transfer_backup_information_to_an_alternate_storage_site
+- authenticate_to_cryptographic_module
+- enforce_random_unique_session_identifiers
+- analyse_data_obtained_from_continuous_monitoring
+- employ_independent_assessors_for_continuous_monitoring
+- app_service_apps_should_use_the_latest_tls_version
+- design_an_access_control_model
+- limit_privileges_to_make_changes_in_production_environment
+- function_apps_should_require_ftps_only
+- conduct_a_security_impact_analysis
+- conduct_a_full_text_analysis_of_logged_privileged_commands
+- "[_preview]:_storage_account_public_access_should_be_disallowed"
+- conduct_risk_assessment_and_document_its_results
+- generate_error_messages
+- reveal_error_messages
+- conduct_risk_assessment
+- integrate_audit_review,_analysis,_and_reporting
+- install_an_alarm_system
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- establish_alternate_storage_site_that_facilitates_recovery_operations
+- define_and_enforce_inactivity_log_policy
+- identify_and_mitigate_potential_issues_at_alternate_storage_site
+- update_poa&_m_items
+- distribute_authenticators
+- develop_poa&_m
+- distribute_policies_and_procedures
+- establish_requirements_for_internet_service_providers
+- establish_security_requirements_for_the_manufacturing_of_connected_devices
+- maintain_separate_execution_domains_for_running_processes
+- produce_complete_records_of_remote_maintenance_activities
+- automate_remote_maintenance_activities
+- review_and_update_planning_policies_and_procedures
+- manage_the_transportation_of_assets
+- sql_managed_instances_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- define_access_authorizations_to_support_separation_of_duties
+- define_and_enforce_conditions_for_shared_and_group_accounts
+- manage_transfers_between_standby_and_active_system_components
+- storage_account_encryption_scopes_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- function_apps_should_use_managed_identity
+- azure_web_application_firewall_should_be_enabled_for_azure_front_door_entry_points
+- review_and_update_identification_and_authentication_policies_and_procedures
+- review_controlled_folder_access_events
+- resource_logs_in_batch_accounts_should_be_enabled
+- public_network_access_should_be_disabled_for_my_sql_servers
+- define_requirements_for_managing_assets
+- document_security_operations
+- document_security_strength_requirements_in_acquisition_contracts
+- my_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- public_network_access_should_be_disabled_for_maria_db_servers
+- sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
+- prohibit_binary/machine_executable_code
+- report_atypical_behavior_of_user_accounts
+- review_and_update_contingency_planning_policies_and_procedures
+- assess_information_security_events
+- establish_policies_for_supply_chain_risk_management
+- establish_parameters_for_searching_secret_authenticators_and_verifiers
+- require_developers_to_manage_change_integrity
+- review_and_update_personnel_security_policies_and_procedures
+- control_physical_access
+- track_software_license_usage
+- set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
+- review_and_update_physical_and_environmental_policies_and_procedures
+- "[_preview]:_log_analytics_extension_should_be_installed_on_your_linux_azure_arc_machines"
+- develop_and_maintain_a_vulnerability_management_standard
+- retain_previous_versions_of_baseline_configs
+- develop_and_maintain_baseline_configurations
+- communicate_contingency_plan_changes
+- update_contingency_plan
+- require_compliance_with_intellectual_property_rights
+- identify_contaminated_systems_and_components
+- service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
+- identify_incident_response_personnel
+- perform_threat_modeling
+- perform_vulnerability_scans
+- ensure_there_are_no_unencrypted_static_authenticators
+- postgre_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- employ_a_media_sanitization_mechanism
+- employ_automatic_emergency_lighting
+- require_developers_to_provide_unified_security_protection_approach
+- require_notification_of_third_party_personnel_transfer_or_termination
+- monitor_third_party_provider_compliance
+- provide_capability_to_disconnect_or_disable_remote_access
+- automate_flaw_remediation
+- separately_store_backup_information
+- automate_account_management
+- resource_logs_in_key_vault_should_be_enabled
+- perform_information_input_validation
+- conduct_risk_assessment_and_distribute_its_results
+- develop_organization_code_of_conduct_policy
+- app_service_apps_should_have_remote_debugging_turned_off
+- block_untrusted_and_unsigned_processes_that_run_from_usb
+- restrict_access_to_private_keys
+- monitor_access_across_the_organization
+- accept_assessment_results
+- require_interconnection_security_agreements
+- audit_privileged_functions
+- assign_system_identifiers
+- ensure_information_system_fails_in_known_state
+- disk_encryption_should_be_enabled_on_azure_data_explorer
+- detect_network_services_that_have_not_been_authorized_or_approved
+- identify_individuals_with_security_roles_and_responsibilities
+- integrate_risk_management_process_into_sdlc
+- resume_all_mission_and_business_functions
+- plan_for_continuance_of_essential_business_functions
+- configure_workstations_to_check_for_digital_certificates
+- "[_deprecated]:_function_apps_should_have_'_client_certificates_(_incoming_client_certificates)'_enabled"
+- resource_logs_in_io_t_hub_should_be_enabled
+- review_audit_data
+- manage_a_secure_surveillance_camera_system
+- manage_authenticator_lifetime_and_reuse
+- review_and_update_media_protection_policies_and_procedures
+- "[_preview]:_azure_key_vault_managed_hsm_keys_should_have_an_expiration_date"
+- protect_wireless_access
+- implement_physical_security_for_offices,_working_areas,_and_secure_areas
+- develop_an_incident_response_plan
+- develop_access_control_policies_and_procedures
+- implement_personnel_screening
+- correlate_vulnerability_scan_information
+- update_interconnection_security_agreements
+- update_information_security_policies
+- revoke_privileged_roles_as_appropriate
+- isolate_secur_id_systems,_security_incident_management_systems
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql
+- create_a_data_inventory
+- enforce_a_limit_of_consecutive_failed_login_attempts
+- implement_cryptographic_mechanisms
+- establish_an_alternate_processing_site
+- establish_an_information_security_program
+- adopt_biometric_authentication_mechanisms
+- protect_administrator_and_user_documentation
+- document_customer_defined_actions
+- establish_a_password_policy
+- establish_a_privacy_program
+- azure_hd_insight_clusters_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- resource_logs_in_azure_stream_analytics_should_be_enabled
+- incorporate_simulated_events_into_incident_response_training
+- observe_and_report_security_weaknesses
+- employ_automated_training_environment
+- require_developers_to_produce_evidence_of_security_assessment_plan_execution
+- resource_logs_in_logic_apps_should_be_enabled
+- control_information_flow
+- refresh_authenticators
+- temp_disks_and_cache_for_agent_node_pools_in_azure_kubernetes_service_clusters_should_be_encrypted_at_host
+- review_user_privileges
+- implement_formal_sanctions_process
+- manage_authenticators
+- azure_batch_account_should_use_customer_managed_keys_to_encrypt_data
+- deliver_security_assessment_results
+- document_protection_of_personal_data_in_acquisition_contracts
+- produce_security_assessment_report
+- document_protection_of_security_information_in_acquisition_contracts
+- cognitive_services_accounts_should_have_local_authentication_methods_disabled
+- establish_benchmarks_for_flaw_remediation
+- measure_the_time_between_flaw_identification_and_flaw_remediation
+- azure_api_for_fhir_should_use_private_link
+- establish_backup_policies_and_procedures
+- establish_conditions_for_role_membership
+- enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
+- provide_role_based_security_training
+- enable_detection_of_network_devices
+- provide_periodic_role_based_security_training
+- secure_commitment_from_leadership
+- coordinate_with_external_organizations_to_achieve_cross_org_perspective
+- implement_training_for_protecting_authenticators
+- automation_account_variables_should_be_encrypted
+- implement_system_boundary_protection
+- incorporate_simulated_contingency_training

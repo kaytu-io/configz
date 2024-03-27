@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_9_b
 Title: CM-9(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Develop, document, and implement a configuration management plan for the system that: b. Establishes a process for identifying configuration items throughout the system development life cycle and for managing the configuration of the configuration items."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_part_of_organizations
 - aws_autoscaling_group_with_lb_use_health_check

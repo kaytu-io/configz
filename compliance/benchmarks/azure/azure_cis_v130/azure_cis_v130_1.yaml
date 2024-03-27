@@ -1,7 +1,6 @@
 ID: azure_cis_v130_1
 Title: 1 Identity and Access Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_ad_guest_user_reviewed_monthly
 - azure_iam_no_custom_subscription_owner_roles_created

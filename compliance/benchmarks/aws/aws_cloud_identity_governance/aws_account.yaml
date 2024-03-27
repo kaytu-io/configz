@@ -1,12 +1,8 @@
-Connector: AWS
-Controls:
-- aws_valid_iam_identity_providers
-- aws_root_email_needs_to_be_of_approved_domains_approved
-- aws_root_account_cannot_have_api_keys
-- aws_root_accounts_needs_to_have_mfa
-Description: AWS Account
-Enabled: true
 ID: aws_cloud_identity_governance_aws_account
+Title: AWS Account
+ReferenceCode: ""
+Description: AWS Account
+Children: []
 Tags:
   category:
   - Compliance
@@ -20,4 +16,12 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: AWS Account
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_valid_iam_identity_providers
+- aws_root_email_needs_to_be_of_approved_domains_approved
+- aws_root_account_cannot_have_api_keys
+- aws_root_accounts_needs_to_have_mfa

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1277_09c2organizational
 Title: 1277.09c2Organizational.4-09.c 09.01 Documented Operating Procedures
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The initiation of an event is separated from its authorization to reduce the possibility of collusion.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

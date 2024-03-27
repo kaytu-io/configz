@@ -1,7 +1,6 @@
 ID: aws_gxp_eu_annex_11_operational_phase_7_2
 Title: 7.2 Data Storage - Backups
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Regular back-ups of all relevant data should be done. Integrity and accuracy of backup data and the ability to restore the data should be checked during validation and monitored periodically.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_encryption_enabled

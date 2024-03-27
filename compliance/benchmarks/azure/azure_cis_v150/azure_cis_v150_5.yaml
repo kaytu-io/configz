@@ -1,7 +1,6 @@
 ID: azure_cis_v150_5
 Title: 5 Logging and Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children:
 - azure_cis_v150_5_1
@@ -21,5 +20,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

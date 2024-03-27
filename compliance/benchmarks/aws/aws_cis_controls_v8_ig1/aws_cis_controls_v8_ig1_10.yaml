@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_10
 Title: 10 Malware Defenses
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Prevent or control the installation, spread, and execution of malicious applications, code, or scripts on enterprise assets.
 Children:
 - aws_cis_controls_v8_ig1_10_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

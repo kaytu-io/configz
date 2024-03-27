@@ -1,7 +1,6 @@
 ID: aws_foundational_security_ec2
 Title: EC2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/EC2
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ebs_snapshot_not_publicly_restorable
 - aws_vpc_default_security_group_restricts_all_traffic

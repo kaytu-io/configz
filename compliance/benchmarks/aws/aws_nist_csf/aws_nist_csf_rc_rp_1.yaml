@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rc_rp_1
 Title: RC.RP-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Recovery plan is executed during or after a cybersecurity incident.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_multiple_az_configured
 - aws_autoscaling_use_multiple_instance_types_in_multiple_az

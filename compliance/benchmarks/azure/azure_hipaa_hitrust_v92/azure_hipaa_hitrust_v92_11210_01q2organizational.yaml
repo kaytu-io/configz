@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_11210_01q2organizational
 Title: Electronic signatures and handwritten signatures executed to electronic records shall be linked to their respective electronic records
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

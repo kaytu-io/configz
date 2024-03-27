@@ -1,7 +1,6 @@
 ID: aws-config-nist-800-53-rev-5
 Title: AWS Config NIST 800 53 rev 5
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NIST 800 53 rev 5
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_sc
 Title: Supply Chain Risk Management (ID.SC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization's priorities, constraints, risk tolerances, and assumptions are established and used to support risk decisions associated with managing supply chain risk. The organization has established and implemented the processes to identify, assess and manage supply chain risks.
 Children:
 - aws_nist_csf_id_sc_4
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

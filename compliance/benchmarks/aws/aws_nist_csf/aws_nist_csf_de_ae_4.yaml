@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_ae_4
 Title: DE.AE-4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Impact of events is determined.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_s3_data_events_enabled

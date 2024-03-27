@@ -1,7 +1,6 @@
 ID: azure_cis_v200_2
 Title: 2 Microsoft Defender
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children:
 - azure_cis_v200_2_1
@@ -22,5 +21,8 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

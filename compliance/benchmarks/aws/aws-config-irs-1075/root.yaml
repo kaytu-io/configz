@@ -1,7 +1,6 @@
 ID: aws-config-irs-1075
 Title: AWS Config IRS 1075
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config IRS 1075
 Children: []
 Tags:

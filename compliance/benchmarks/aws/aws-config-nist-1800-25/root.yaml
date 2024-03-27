@@ -1,7 +1,6 @@
 ID: aws-config-nist-1800-25
 Title: AWS Config NIST 1800 25
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NIST 1800 25
 Children: []
 Tags:

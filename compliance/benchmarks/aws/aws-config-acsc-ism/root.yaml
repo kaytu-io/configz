@@ -1,7 +1,6 @@
 ID: aws-config-acsc-ism
 Title: AWS Config ACSC ISM
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config ACSC ISM
 Children: []
 Tags:

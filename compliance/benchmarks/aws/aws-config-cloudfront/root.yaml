@@ -1,7 +1,6 @@
 ID: aws-config-cloudfront
 Title: AWS Config CloudFront
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CloudFront
 Children: []
 Tags:

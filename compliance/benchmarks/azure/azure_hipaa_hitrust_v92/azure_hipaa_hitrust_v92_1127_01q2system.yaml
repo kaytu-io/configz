@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1127_01q2system
 Title: 1127.01q2System.3-01.q 01.05 Operating System Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Where tokens are provided for multi-factor authentication, in-person verification is required prior to granting access.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

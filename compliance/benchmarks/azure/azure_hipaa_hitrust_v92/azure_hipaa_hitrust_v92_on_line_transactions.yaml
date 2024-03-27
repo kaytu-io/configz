@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_on_line_transactions
 Title: On-line Transactions
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Information involved in online transactions shall be protected to prevent incomplete transmission, misrouting, unauthorized message alteration, unauthorized disclosure, unauthorized message duplication or replay.
 Children:
 - azure_hipaa_hitrust_v92_0946_09y2organizational
@@ -16,5 +15,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

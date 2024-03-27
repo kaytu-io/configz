@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_1_6
 Title: 3.1.6 Use non-privileged accounts or roles when accessing nonsecurity functions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: This requirement limits exposure when operating from within privileged accounts or roles. The inclusion of roles addresses situations where organizations implement access control policies such as role-based access control and where a change of role provides the same degree of assurance in the change of access authorizations for the user and all processes acting on behalf of the user as would be provided by a change between a privileged and non-privileged account.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_policy_custom_no_star_star
 - aws_iam_root_user_no_access_keys

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_11
 Title: SC-7(11) Restrict Incoming communications Traffic
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Only allow incoming communications from [Assignment: organization-defined authorized sources] to be routed to [Assignment: organization-defined authorized destinations]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

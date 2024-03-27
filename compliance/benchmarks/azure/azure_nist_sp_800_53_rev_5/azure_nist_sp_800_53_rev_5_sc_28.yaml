@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_sc_28
 Title: Protection of Information at Rest (SC-28)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system protects the confidentiality and integrity of organization-defined information at rest.
 Children:
 - azure_nist_sp_800_53_rev_5_sc_28_1
@@ -16,7 +15,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_app_service_environment_internal_encryption_enabled
 - azure_compute_vm_and_sacle_set_encryption_at_host_enabled

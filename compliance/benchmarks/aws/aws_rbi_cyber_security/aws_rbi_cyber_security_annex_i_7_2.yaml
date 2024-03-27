@@ -1,7 +1,6 @@
 ID: aws_rbi_cyber_security_annex_i_7_2
 Title: Annex I (7.2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Passwords should be set as complex and lengthy and users should not use same passwords for all the applications/systems/devices.
 Children: []
 Tags:
@@ -17,6 +16,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong_min_reuse_24

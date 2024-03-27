@@ -1,7 +1,6 @@
 ID: azure_cis_v150_2
 Title: 2 Microsoft Defender for Cloud
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children:
 - azure_cis_v150_2_1
@@ -23,6 +22,9 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_securitycenter_asc_default_setting_not_disabled

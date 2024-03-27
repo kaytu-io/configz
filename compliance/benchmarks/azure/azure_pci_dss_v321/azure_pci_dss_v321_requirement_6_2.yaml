@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_6_2
 Title: PCI DSS requirement 6.2
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Protect all system components and software from known vulnerabilities by installing applicable vendor-supplied security patches. Install critical security patches within one month of release.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_system_updates_installed
 - azure_compute_vm_vulnerability_assessment_solution_enabled

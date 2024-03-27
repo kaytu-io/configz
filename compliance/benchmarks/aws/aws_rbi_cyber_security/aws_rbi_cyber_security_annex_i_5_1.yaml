@@ -1,7 +1,6 @@
 ID: aws_rbi_cyber_security_annex_i_5_1
 Title: Annex I (5.1)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The firewall configurations should be set to the highest security level and evaluation of critical device (such as firewall, network switches, security devices, etc.) configurations should be done periodically.
 Children: []
 Tags:
@@ -17,7 +16,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_use_waf_web_acl
 - aws_elb_application_lb_waf_enabled

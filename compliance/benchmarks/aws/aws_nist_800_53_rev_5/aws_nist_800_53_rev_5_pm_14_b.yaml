@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_pm_14_b
 Title: PM-14(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Review testing, training, and monitoring plans for consistency with the organizational risk management strategy and organization-wide priorities for risk response actions.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_autoscaling_group_with_lb_use_health_check

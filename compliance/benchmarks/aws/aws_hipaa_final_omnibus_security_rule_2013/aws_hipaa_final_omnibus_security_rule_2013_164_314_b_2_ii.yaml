@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_314_b_2_ii
 Title: 164.314(b)(2)(ii)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Ensure that the adequate separation required by 164.504(f)(2)(iii) is supported by reasonable and appropriate security measures.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_dax_cluster_encryption_at_rest_enabled

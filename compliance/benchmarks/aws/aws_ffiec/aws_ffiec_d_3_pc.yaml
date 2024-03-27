@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc
 Title: Preventative Controls (PC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Preventative Controls deter and prevent cyber attacks and include infrastructure management, access management, device and end-point security, and secure coding.
 Children:
 - aws_ffiec_d_3_pc_am_b_1
@@ -33,5 +32,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

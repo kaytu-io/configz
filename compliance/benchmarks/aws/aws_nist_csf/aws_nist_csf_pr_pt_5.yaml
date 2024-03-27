@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_pt_5
 Title: PR.PT-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Mechanisms (e.g., failsafe, load balancing, hot swap) are implemented to achieve resilience requirements in normal and adverse situations.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_multiple_az_configured
 - aws_autoscaling_group_with_lb_use_health_check

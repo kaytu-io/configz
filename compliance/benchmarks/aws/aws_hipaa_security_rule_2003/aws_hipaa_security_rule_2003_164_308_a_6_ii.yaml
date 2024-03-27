@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_308_a_6_ii
 Title: 164.308(a)(6)(ii) Response and Reporting
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Identify and respond to suspected or known security incidents; mitigate, to the extent practicable, harmful effects of security incidents that are known to the covered entity; and document security incidents and their outcomes.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

@@ -1,14 +1,13 @@
+ID: aws_cisa_cyber_essentials
+Title: CISA Cyber Essentials for AWS
+ReferenceCode: ""
+Description: CISA's Cyber Essentials is a guide for leaders of small businesses as well as leaders of small and local government agencies to develop an actionable understanding of where to start implementing organizational cybersecurity practices.
 Children:
 - aws_cisa_cyber_essentials_your_systems
 - aws_cisa_cyber_essentials_your_surroundings
 - aws_cisa_cyber_essentials_your_data
 - aws_cisa_cyber_essentials_your_crisis_response
 - aws_cisa_cyber_essentials_booting_up_things_to_do_first
-Connector: AWS
-Controls: null
-Description: CISA's Cyber Essentials is a guide for leaders of small businesses as well as leaders of small and local government agencies to develop an actionable understanding of where to start implementing organizational cybersecurity practices.
-Enabled: true
-ID: aws_cisa_cyber_essentials
 Tags:
   category:
   - Compliance
@@ -24,4 +23,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: CISA Cyber Essentials for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

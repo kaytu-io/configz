@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc_8
 Title: Transmission Confidentiality And Integrity (SC-8)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system protects the [Selection (one or more): confidentiality; integrity] of transmitted information."
 Children:
 - aws_nist_800_53_rev_4_sc_8_1
@@ -16,7 +15,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_lb_drop_http_headers
 - aws_elb_application_lb_redirect_http_request_to_https

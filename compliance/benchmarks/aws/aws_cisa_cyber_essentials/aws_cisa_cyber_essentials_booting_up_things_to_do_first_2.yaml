@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_booting_up_things_to_do_first_2
 Title: "Booting Up: Things to Do First-2"
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Require multi-factor authentication (MFA) for accessing your systems whenever possible. MFA should be required of all users, but start with privileged, administrative, and remote access users.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_hardware_mfa_enabled
 - aws_iam_root_user_mfa_enabled

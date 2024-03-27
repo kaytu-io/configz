@@ -1,7 +1,6 @@
 ID: aws_soc_2_legacy_cc_3_1
 Title: "CC3.1 COSO Principle 6: The entity specifies objectives with sufficient clarity to enable the identification and assessment of risks relating to objectives"
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -21,7 +20,10 @@ Tags:
   - automated
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_config_enabled_all_regions
 - aws_guardduty_enabled

@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_314_b_2_iv
 Title: 164.314(b)(2)(iv)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Report to the group health plan any security incident of which it becomes aware.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_dax_cluster_encryption_at_rest_enabled

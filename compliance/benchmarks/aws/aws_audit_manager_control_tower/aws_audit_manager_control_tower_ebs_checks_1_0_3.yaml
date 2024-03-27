@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_ebs_checks_1_0_3
 Title: 1.0.3 - Enable encryption for EBS volumes attached to EC2 instances
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Enable encryption for EBS volumes attached to EC2 instances - Checks whether EBS volumes that are in an attached state are encrypted.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/EBS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ebs_attached_volume_encryption_enabled

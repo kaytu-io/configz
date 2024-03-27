@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_5
 Title: Separation Of Duties (AC-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Separate duties of individuals to prevent malevolent activity. automate separation of duties and access authorizations.
 Children:
 - aws_nist_800_53_rev_5_ac_5_b
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_cm_7_5
 Title: Authorized Software ??? Allow-by-exception CM-7(5)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization identifies organization-defined software programs authorized to execute on the information system, employs a deny-all, permit-by-exception policy to allow the execution of authorized software programs on the information system, and reviews and updates the list of authorized software programs.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

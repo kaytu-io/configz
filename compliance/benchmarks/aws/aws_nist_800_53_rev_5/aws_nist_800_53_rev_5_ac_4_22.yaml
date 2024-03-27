@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_4_22
 Title: AC-4(22) Access Only
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Provide access from a single device to computing platforms, applications, or data residing in multiple different security domains, while preventing information flow between the different security domains.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

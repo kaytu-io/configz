@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_am_1
 Title: ID.AM-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Physical devices and systems within the organization are inventoried.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_config_enabled_all_regions
 - aws_ec2_instance_ssm_managed

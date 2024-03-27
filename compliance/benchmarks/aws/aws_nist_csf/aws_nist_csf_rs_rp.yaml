@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rs_rp
 Title: Response Planning (RS.RP)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Response processes and procedures are run and maintained, to ensure timely response to detected cybersecurity events.
 Children:
 - aws_nist_csf_rs_rp_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

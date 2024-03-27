@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1325_09s1organizational
 Title: 1325.09s1Organizational.3-09.s 09.08 Exchange of Information
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Ensure the exchange of information within an organization and with any external entity is secured and protected, and carried out in compliance with relevant legislation and exchange agreements.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_function_app_remote_debugging_disabled

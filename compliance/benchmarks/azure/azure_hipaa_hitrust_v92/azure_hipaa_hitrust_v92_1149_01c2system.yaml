@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1149_01c2system
 Title: The organization facilitates information sharing by enabling authorized users
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: To determine a business partner's access when discretion is allowed as defined by the organization and by employing manual processes or automated mechanisms to assist users in making information sharing/collaboration decisions.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/KubernetesService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_kubernetes_instance_rbac_enabled

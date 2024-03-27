@@ -1,13 +1,8 @@
-Connector: Azure
-Controls:
-- azuread_spn_with_more_than_one_active_client_certificate
-- azuread_spn_with_active_client_secret_created_x_days_ago
-- azuread_spn_with_more_than_one_active_client_secret
-- azuread_user_should_have_mfa_enabled_with_azure_subscription_role_assignment
-- azuread_user_should_have_mfa_enabled
-Description: Cloud Identity Entitlements and Governance - Azure
-Enabled: true
 ID: azure_cloud_identity_governance
+Title: Cloud Identity Entitlements and Governance - Azure
+ReferenceCode: ""
+Description: Cloud Identity Entitlements and Governance - Azure
+Children: []
 Tags:
   category:
   - Compliance
@@ -16,11 +11,20 @@ Tags:
   kaytu_category:
   - Best Practices
   kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
   plugin:
   - azure
   service:
   - Azure
   type:
   - Benchmark
-Title: Cloud Identity Entitlements and Governance - Azure
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- azuread_spn_with_more_than_one_active_client_certificate
+- azuread_spn_with_active_client_secret_created_x_days_ago
+- azuread_spn_with_more_than_one_active_client_secret
+- azuread_user_should_have_mfa_enabled_with_azure_subscription_role_assignment
+- azuread_user_should_have_mfa_enabled

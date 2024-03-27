@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_12_6
 Title: SC-12(6) Physical Control Of Keys
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Maintain physical control of cryptographic keys when stored information is encrypted by external service providers.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/KMS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_kms_cmk_rotation_enabled
 - aws_kms_key_not_pending_deletion

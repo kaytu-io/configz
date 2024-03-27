@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_si_4_2
 Title: SI-4(2) Automated Tools For Real-Time Analysis
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization employs automated tools to support near real-time analysis of events.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_s3_data_events_enabled

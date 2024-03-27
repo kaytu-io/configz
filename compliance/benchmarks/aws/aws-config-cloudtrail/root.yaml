@@ -1,7 +1,6 @@
 ID: aws-config-cloudtrail
 Title: AWS Config CloudTrail
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CloudTrail
 Children: []
 Tags:

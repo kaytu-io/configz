@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_2_ma_ma_b_2
 Title: D2.MA.Ma.B.2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Computer event logs are used for investigations once an event has occurred.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

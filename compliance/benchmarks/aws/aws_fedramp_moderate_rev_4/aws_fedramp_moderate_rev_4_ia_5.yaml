@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ia_5
 Title: Authenticator Management (IA-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Authenticate users and devices. Automate administrative control. Enforce restrictions. Protect against unauthorized use.
 Children:
 - aws_fedramp_moderate_rev_4_ia_5_1
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

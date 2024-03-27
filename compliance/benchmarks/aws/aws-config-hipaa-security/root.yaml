@@ -1,7 +1,6 @@
 ID: aws-config-hipaa-security
 Title: AWS Config HIPAA Security
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config HIPAA Security
 Children: []
 Tags:

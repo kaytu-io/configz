@@ -1,7 +1,6 @@
 ID: azure_cis_v150_10
 Title: 10 Miscellaneous
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,5 +18,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_foundational_security_kms
 Title: KMS
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/KMS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_kms_key_decryption_restricted_in_iam_customer_managed_policy
 - aws_kms_key_decryption_restricted_in_iam_inline_policy

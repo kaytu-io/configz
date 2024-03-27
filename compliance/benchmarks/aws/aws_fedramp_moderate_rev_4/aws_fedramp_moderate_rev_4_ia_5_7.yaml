@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ia_5_7
 Title: IA-5(7) No Embedded Unencrypted Static Authenticators
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization ensures that unencrypted static authenticators are not embedded in applications or access scripts or stored on function keys.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CodeBuild
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1195_01l3organizational
 Title: 1195.01l3Organizational.1-01.l 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization reviews the information system within every three hundred and sixty-five (365) days to identify and disables unnecessary and non-secure functions, ports, protocols, and/or services.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_function_app_remote_debugging_disabled

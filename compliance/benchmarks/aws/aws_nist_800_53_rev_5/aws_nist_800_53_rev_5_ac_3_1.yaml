@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_1
 Title: AC-3(1) Restricted Access To Privileged Functions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ an audited override of automated access control mechanisms under [Assignment: organization-defined conditions] by [Assignment: organization-defined roles]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_trail_integrated_with_logs

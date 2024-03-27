@@ -1,31 +1,34 @@
-Connector: Azure
-Controls:
-  - azure_check_for_kubernetes_version
-  - azure_disable_plain_ftp_deployment
-  - azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
-  - azure_recovery_service_vault_alert_for_job_failures_enabled
-  - azure_check_for_sufficient_point_in_time_restore_pitr_backup_retention_period
-  - azure_configure_minimum_tls_version
-  - azure_check_for_configure_health_monitoring
-  - azure_check_for_automatic_os_upgrades
-  - azure_check_for_automatic_instance_repairs
-  - azure_check_for_instance_termination_notifications_for_virtual_machine_scale_sets
-  - azure_check_for_associated_load_balancers
-  - azure_check_for_guest_level_diagnostics_for_virtual_machines
-  - azure_enable_soft_delete_for_azure_blob_storage
-  - azure_check_for_sufficient_soft_deleted_data_retention_period
-  - azure_check_for_autoscale_notifications
-  - azure_check_for_sufficient_daily_backup_retention_period
-  - azure_check_for_sufficient_instant_restore_retention_period
-  - azure_kubernetes_api_version
-  - azure_enable_auto_failover_groups
+ID: azure_score_reliability
+Title: Reliability for Azure
 ReferenceCode: azure_score_reliability
 Description: Reliability Description
-ID: azure_score_reliability
-AutoAssign: true
+Children: []
 Tags:
-  type:
-    - SCORE
   score_category:
-    - reliability
-Title: Reliability for Azure
+  - reliability
+  type:
+  - SCORE
+Managed: false
+Enabled: false
+AutoAssign: true
+Baseline: false
+Controls:
+- azure_check_for_kubernetes_version
+- azure_disable_plain_ftp_deployment
+- azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
+- azure_recovery_service_vault_alert_for_job_failures_enabled
+- azure_check_for_sufficient_point_in_time_restore_pitr_backup_retention_period
+- azure_configure_minimum_tls_version
+- azure_check_for_configure_health_monitoring
+- azure_check_for_automatic_os_upgrades
+- azure_check_for_automatic_instance_repairs
+- azure_check_for_instance_termination_notifications_for_virtual_machine_scale_sets
+- azure_check_for_associated_load_balancers
+- azure_check_for_guest_level_diagnostics_for_virtual_machines
+- azure_enable_soft_delete_for_azure_blob_storage
+- azure_check_for_sufficient_soft_deleted_data_retention_period
+- azure_check_for_autoscale_notifications
+- azure_check_for_sufficient_daily_backup_retention_period
+- azure_check_for_sufficient_instant_restore_retention_period
+- azure_kubernetes_api_version
+- azure_enable_auto_failover_groups

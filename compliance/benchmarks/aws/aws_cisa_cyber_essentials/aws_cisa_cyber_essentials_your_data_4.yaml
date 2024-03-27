@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_data_4
 Title: Your Data-4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Establish regular automated backups and redundancies of key systems.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_min_retention_35_days

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ia_5_1_a_d_e
 Title: IA-5(1)(a)(d)(e)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system, for password-based authentication: a. Enforces minimum password complexity of [Assignment: organization-defined requirements for case sensitivity, number of characters, mix of upper-case letters, lower-case letters, numbers, and special characters, including minimum requirements for each type]; d. Enforces password minimum and maximum lifetime restrictions of [Assignment: organization- defined numbers for lifetime minimum, lifetime maximum]; e. Prohibits password reuse for 24 generations"
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

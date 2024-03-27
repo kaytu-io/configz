@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_308_a_5_ii_b
 Title: 164.308(a)(5)(ii)(B) Protection from malicious software
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Procedures for guarding against, detecting, and reporting malicious software.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_ssm_managed_instance_compliance_association_compliant

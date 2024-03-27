@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_23_5
 Title: SC-23(5) Allowed Certificate Authorities
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Only allow the use of [Assignment: organization-defined certificate authorities] for verification of the establishment of protected sessions."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/ELB
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_network_lb_use_ssl_certificate
 - aws_elb_classic_lb_use_ssl_certificate

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0943_09y1organizational
 Title: 0943.09y1Organizational.1-09.y 09.09 Electronic Commerce Services
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization verifies every ninety (90) days for each extract of covered information recorded that the data is erased or its use is still required.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Storage
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_storage_account_secure_transfer_required_enabled

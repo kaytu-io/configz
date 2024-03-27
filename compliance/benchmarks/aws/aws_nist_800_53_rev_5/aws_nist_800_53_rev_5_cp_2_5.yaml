@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_2_5
 Title: CP-2(5) Continue Mission And Business Functions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Plan for the continuance of [Selection: all; essential] mission and business functions with minimal or no loss of operational continuity and sustains that continuity until full system restoration at primary processing and/or storage sites."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_dynamodb_table_in_backup_plan

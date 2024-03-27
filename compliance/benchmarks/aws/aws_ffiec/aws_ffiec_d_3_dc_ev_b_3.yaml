@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_dc_ev_b_3
 Title: D3.DC.Ev.B.3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Processes are in place to monitor for the presence of unauthorized users, devices, connections, and software.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_enabled
 - aws_guardduty_enabled

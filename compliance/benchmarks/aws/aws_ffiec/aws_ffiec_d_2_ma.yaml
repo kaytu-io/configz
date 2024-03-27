@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_2_ma
 Title: Monitoring and Analyzing (MA)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Monitoring and Analyzing refers to how an institution monitors threat sources and what analysis may be performed to identify threats that are specific to the institution or to resolve conflicts in the different threat intelligence streams.
 Children:
 - aws_ffiec_d_2_ma_ma_b_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

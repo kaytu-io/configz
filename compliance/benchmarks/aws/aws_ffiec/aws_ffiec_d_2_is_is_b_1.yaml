@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_2_is_is_b_1
 Title: D2.IS.Is.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Information security threats are gathered and shared with applicable internal employees.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs
 - aws_guardduty_enabled

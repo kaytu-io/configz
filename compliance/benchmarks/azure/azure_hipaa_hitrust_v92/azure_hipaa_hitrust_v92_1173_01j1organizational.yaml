@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1173_01j1organizational
 Title: If encryption is not used for dial-up connections, the CIO or his/her designated representative provides specific written authorization
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

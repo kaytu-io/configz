@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1270_09ad1system
 Title: 1270.09ad1System.12-09.ad 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization ensures proper logging is enabled in order to audit administrator activities; and reviews system administrator and operator logs on a regular basis.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Monitor
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_monitor_log_alert_for_administrative_operations

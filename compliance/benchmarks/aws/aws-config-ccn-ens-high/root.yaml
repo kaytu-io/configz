@@ -1,7 +1,6 @@
 ID: aws-config-ccn-ens-high
 Title: AWS Config CCN ENS High
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CCN ENS High
 Children: []
 Tags:

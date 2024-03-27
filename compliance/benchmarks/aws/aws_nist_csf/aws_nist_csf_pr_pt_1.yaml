@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_pt_1
 Title: PR.PT-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Audit/log records are determined, documented, implemented, and reviewed in accordance with policy.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_xray_tracing_enabled
 - aws_apigateway_stage_logging_enabled

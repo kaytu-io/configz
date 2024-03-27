@@ -1,7 +1,6 @@
 ID: aws_pci_v321_iam
 Title: IAM
-DisplayCode: ""
-Connector: ""
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -13,7 +12,10 @@ Tags:
   - aws
   service:
   - iam
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_no_access_keys
 - aws_iam_user_no_inline_attached_policies

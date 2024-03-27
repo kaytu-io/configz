@@ -1,7 +1,6 @@
 ID: aws-config-api-gateway
 Title: AWS Config API Gateway
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config API Gateway
 Children: []
 Tags:

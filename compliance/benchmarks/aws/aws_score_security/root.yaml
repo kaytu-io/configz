@@ -1,174 +1,177 @@
-Connector: AWS
-Controls:
-  - aws_sso_users_with_permission_assignments_are_required_to_have_MFA_on_AzureAD
-  - aws_iam_users_with_console_access_are_requried_to_have_MFA
-  - aws_root_accounts_needs_to_have_mfa
-  - aws_iam_users_with_api_keys_should_have_keys_rotated_every_x_days
-  - aws_valid_iam_identity_providers
-  - aws_unrestricted_inbound_traffic_on_remote_server_administration_ports
-  - aws_iam_users_with_administrative_privileges
-  - aws_ami_encryption
-  - aws_ec2_instance_not_in_public_subnet
-  - aws_ebs_public_snapshots
-  - aws_ebs_snapshot_encrypted
-  - aws_ebs_encrypted
-  - aws_ebs_encrypted_with_kms_customer_master_keys
-  - aws_encryption_at_rest
-  - aws_opensearch_accessible_only_from_safelisted_ip_addresses
-  - aws_opensearch_domain_encrypted_with_kms_cmks
-  - aws_opensearch_domain_exposed
-  - aws_opensearch_domain_in_vpc
-  - aws_opensearch_node_to_node_encryption
-  - aws_tls_security_policy_version
-  - aws_rds_public_snapshots
-  - aws_rds_encryption_enabled
-  - aws_rds_db_instance_no_public_subnet
-  - aws_rotate_ssltls_certificates_for_database_instances
-  - aws_acm_certificates_validity
-  - aws_acm_certificate_expired
-  - aws_acm_certificates_with_wildcard_domain_names
-  - aws_pre_heartbleed_server_certificates
-  - aws_multi_account_centralized_management
-  - aws_check_for_untrusted_cross_account_iam_roles
-  - aws_iam_user_no_policies
-  - aws_ssl_tls_certificate_expiry_30_days
-  - aws_unnecessary_ssh_public_keys
-  - aws_valid_iam_identity_providers
-  - aws_vpc_endpoint_cross_account_access
-  - aws_vpc_endpoints_in_use
-  - aws_vpc_peering_connections_to_accounts_outside_aws_organization
-  - aws_acm_certificates_renewal_7_days_before_expiration
-  - aws_default_security_group_unrestricted
-  - aws_default_security_groups_in_use
-  - aws_disable_public_ip_address_assignment_for_ec2_instances
-  - aws_ec2_instance_in_vpc
-  - aws_publicly_shared_ami
-  - aws_require_imdsv2_for_ec2_instances
-  - aws_security_group_name_prefixed_with_launch_wizard
-  - aws_security_group_port_range
-  - aws_unrestricted_ssh_access
-  - aws_enable_audit_logs
-  - aws_enable_in_transit_encryption
-  - aws_encryption_at_rest
-  - aws_aurora_database_cluster_activity_streams
-  - aws_cluster_deletion_protection
-  - aws_enable_aws_rds_transport_encryption
-  - aws_enable_rds_snapshot_encryption
-  - aws_instance_deletion_protection
-  - aws_rds_event_notifications
-  - aws_rds_default_port
-  - aws_rds_instance_counts
-  - aws_log_exports
-  - aws_rds_publicly_accessible
-  - aws_enable_amazon_waf_integration_for_application_load_balancers
-  - aws_check_for_iam_user_group_membership
-  - aws_enable_mfa_for_iam_users_with_console_password
-  - aws_inactive_iam_console_user
-  - aws_root_account_access_keys_present
-  - aws_configure_http_desync_mitigation_mode_for_application_load_balancers
-  - aws_elbv2_alb_listener_security
-  - aws_elbv2_elastic_load_balancing_deletion_protection
-  - aws_elbv2_nlb_listener_security
-  - aws_enable_http_to_https_redirect_for_application_load_balancers
-  - aws_efs_encryption_enabled
-  - aws_vpc_flow_logs_enabled
-  - aws_vpc_endpoint_exposed
-  - aws_elb_insecure_ssl_protocols
-  - aws_kubernetes_cluster_version
-  - aws_unrestricted_network_acl_inbound_traffic
-  - aws_unrestricted_network_acl_outbound_traffic
-  - aws_configure_aws_backup_vault_access_policy
-  - aws_mfa_device_deactivated
-  - aws_cross_account_access_lacks_external_id_and_mfa
-  - aws_elbv2_alb_security_group
-  - aws_unrestricted_icmp_access
-  - aws_unrestricted_mongodb_access
-  - aws_unrestricted_mssql_access
-  - aws_unrestricted_mysql_access
-  - aws_unrestricted_netbios_access
-  - aws_unrestricted_opensearch_access
-  - aws_unrestricted_oracle_access
-  - aws_unrestricted_rpc_access
-  - aws_unrestricted_smtp_access
-  - aws_unrestricted_security_group_ingress_on_uncommon_ports
-  - aws_unrestricted_cifs_access
-  - aws_access_keys_rotated_45_days
-  - aws_access_keys_rotated_x_days
-  - aws_allow_iam_users_to_change_their_own_password
-  - aws_credentials_last_used
-  - aws_check_that_only_safelisted_iam_users_exist
-  - aws_iam_password_policy
-  - aws_iam_user_with_password_and_access_keys
-  - aws_unapproved_iam_policy_in_use
-  - aws_unused_iam_group
-  - aws_unnecessary_access_keys
-  - aws_iam_user_policies
-  - aws_iam_access_analyzer_in_use
-  - aws_iam_access_analyzer_findings
-  - aws_iam_group_with_inline_policies
-  - aws_iam_role_policy_too_permissive
-  - aws_iam_policies_with_effect_set_to_allow_and_notaction
-  - aws_attach_policy_to_iam_roles_associated_with_app_tier_ec2_instances
-  - aws_iam_user_password_expiry_30_days
-  - aws_iam_user_password_expiry_7_days
-  - aws_iam_user_password_expiry_x_days
-  - aws_root_mfa_enabled
-  - aws_root_account_active_signing_certificates
-  - aws_root_account_credentials_usage
-  - aws_iam_support_role
-  - aws_hardware_mfa_for_aws_root_account
-  - aws_iam_policies_with_full_administrative_privileges
-  - aws_iam_groups_with_administrative_privileges
-  - aws_check_for_individual_iam_users
-  - aws_access_keys_during_initial_iam_user_setup
-  - aws_account_alternate_contacts
-  - aws_check_for_overly_permissive_iam_group_policies
-  - aws_approved_ecs_execute_command_access
-  - aws_canary_access_token
-  - aws_iam_users_unauthorized_to_edit_access_policies
-  - aws_ssl_tls_certificate_expiry_x_days
-  - aws_enforce_infrastructure_as_code_using_iam_policies
-  - aws_ec2_purchase_restriction
-  - aws_ssh_public_keys_rotated_90_days
-  - aws_ssh_public_keys_rotated_45_days
-  - aws_ssh_public_keys_rotated_x_days
-  - aws_iam_server_certificate_size
-  - aws_elbv2_access_log
-  - aws_enable_cross_zone_load_balancing
-  - aws_elbv2_alb_security_policy
-  - aws_internet_facing_elbs
-  - aws_elb_access_log
-  - aws_internet_facing_elbv2s
-  - aws_use_kms_customer_master_keys_for_fsx_windows_file_server_file_systems
-  - aws_rds_encrypted_with_kms_customer_master_keys
-  - aws_enable_alert_notifications_for_failed_backup_jobs
-  - aws_use_kms_customer_master_keys_for_aws_backup
-  - aws_enable_scan_on_push_for_ecr_container_images
-  - aws_ecs_task_log_driver_in_use
-  - aws_check_for_ecs_container_instance_agent_version
-  - aws_check_for_fargate_platform_version
-  - aws_kms_customer_master_keys_for_efs_encryption
-  - aws_disable_remote_access_to_eks_cluster_node_groups
-  - aws_eks_cluster_endpoint_public_access
-  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
-  - aws_enable_envelope_encryption_for_eks_kubernetes_secrets
-  - aws_kubernetes_cluster_logging
-  - aws_eks_security_groups
-  - aws_eks_cluster_node_group_iam_role_policies
-  - aws_use_aws_managed_policy_to_manage_networking_resources
-  - aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
-  - aws_use_aws_managed_policy_to_manage_aws_resources
-  - aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
-  - aws_rds_desired_instance_type
-  - aws_ecr_repository_exposed
-  - aws_backup_service_lifecycle_configuration
+ID: aws_score_security
+Title: Security for AWS
 ReferenceCode: aws_score_security
 Description: Security Description
-ID: aws_score_security
-AutoAssign: true
+Children: []
 Tags:
-  type:
-    - SCORE
   score_category:
-    - security
-Title: Security for AWS
+  - security
+  type:
+  - SCORE
+Managed: false
+Enabled: false
+AutoAssign: true
+Baseline: false
+Controls:
+- aws_sso_users_with_permission_assignments_are_required_to_have_MFA_on_AzureAD
+- aws_iam_users_with_console_access_are_requried_to_have_MFA
+- aws_root_accounts_needs_to_have_mfa
+- aws_iam_users_with_api_keys_should_have_keys_rotated_every_x_days
+- aws_valid_iam_identity_providers
+- aws_unrestricted_inbound_traffic_on_remote_server_administration_ports
+- aws_iam_users_with_administrative_privileges
+- aws_ami_encryption
+- aws_ec2_instance_not_in_public_subnet
+- aws_ebs_public_snapshots
+- aws_ebs_snapshot_encrypted
+- aws_ebs_encrypted
+- aws_ebs_encrypted_with_kms_customer_master_keys
+- aws_encryption_at_rest
+- aws_opensearch_accessible_only_from_safelisted_ip_addresses
+- aws_opensearch_domain_encrypted_with_kms_cmks
+- aws_opensearch_domain_exposed
+- aws_opensearch_domain_in_vpc
+- aws_opensearch_node_to_node_encryption
+- aws_tls_security_policy_version
+- aws_rds_public_snapshots
+- aws_rds_encryption_enabled
+- aws_rds_db_instance_no_public_subnet
+- aws_rotate_ssltls_certificates_for_database_instances
+- aws_acm_certificates_validity
+- aws_acm_certificate_expired
+- aws_acm_certificates_with_wildcard_domain_names
+- aws_pre_heartbleed_server_certificates
+- aws_multi_account_centralized_management
+- aws_check_for_untrusted_cross_account_iam_roles
+- aws_iam_user_no_policies
+- aws_ssl_tls_certificate_expiry_30_days
+- aws_unnecessary_ssh_public_keys
+- aws_valid_iam_identity_providers
+- aws_vpc_endpoint_cross_account_access
+- aws_vpc_endpoints_in_use
+- aws_vpc_peering_connections_to_accounts_outside_aws_organization
+- aws_acm_certificates_renewal_7_days_before_expiration
+- aws_default_security_group_unrestricted
+- aws_default_security_groups_in_use
+- aws_disable_public_ip_address_assignment_for_ec2_instances
+- aws_ec2_instance_in_vpc
+- aws_publicly_shared_ami
+- aws_require_imdsv2_for_ec2_instances
+- aws_security_group_name_prefixed_with_launch_wizard
+- aws_security_group_port_range
+- aws_unrestricted_ssh_access
+- aws_enable_audit_logs
+- aws_enable_in_transit_encryption
+- aws_encryption_at_rest
+- aws_aurora_database_cluster_activity_streams
+- aws_cluster_deletion_protection
+- aws_enable_aws_rds_transport_encryption
+- aws_enable_rds_snapshot_encryption
+- aws_instance_deletion_protection
+- aws_rds_event_notifications
+- aws_rds_default_port
+- aws_rds_instance_counts
+- aws_log_exports
+- aws_rds_publicly_accessible
+- aws_enable_amazon_waf_integration_for_application_load_balancers
+- aws_check_for_iam_user_group_membership
+- aws_enable_mfa_for_iam_users_with_console_password
+- aws_inactive_iam_console_user
+- aws_root_account_access_keys_present
+- aws_configure_http_desync_mitigation_mode_for_application_load_balancers
+- aws_elbv2_alb_listener_security
+- aws_elbv2_elastic_load_balancing_deletion_protection
+- aws_elbv2_nlb_listener_security
+- aws_enable_http_to_https_redirect_for_application_load_balancers
+- aws_efs_encryption_enabled
+- aws_vpc_flow_logs_enabled
+- aws_vpc_endpoint_exposed
+- aws_elb_insecure_ssl_protocols
+- aws_kubernetes_cluster_version
+- aws_unrestricted_network_acl_inbound_traffic
+- aws_unrestricted_network_acl_outbound_traffic
+- aws_configure_aws_backup_vault_access_policy
+- aws_mfa_device_deactivated
+- aws_cross_account_access_lacks_external_id_and_mfa
+- aws_elbv2_alb_security_group
+- aws_unrestricted_icmp_access
+- aws_unrestricted_mongodb_access
+- aws_unrestricted_mssql_access
+- aws_unrestricted_mysql_access
+- aws_unrestricted_netbios_access
+- aws_unrestricted_opensearch_access
+- aws_unrestricted_oracle_access
+- aws_unrestricted_rpc_access
+- aws_unrestricted_smtp_access
+- aws_unrestricted_security_group_ingress_on_uncommon_ports
+- aws_unrestricted_cifs_access
+- aws_access_keys_rotated_45_days
+- aws_access_keys_rotated_x_days
+- aws_allow_iam_users_to_change_their_own_password
+- aws_credentials_last_used
+- aws_check_that_only_safelisted_iam_users_exist
+- aws_iam_password_policy
+- aws_iam_user_with_password_and_access_keys
+- aws_unapproved_iam_policy_in_use
+- aws_unused_iam_group
+- aws_unnecessary_access_keys
+- aws_iam_user_policies
+- aws_iam_access_analyzer_in_use
+- aws_iam_access_analyzer_findings
+- aws_iam_group_with_inline_policies
+- aws_iam_role_policy_too_permissive
+- aws_iam_policies_with_effect_set_to_allow_and_notaction
+- aws_attach_policy_to_iam_roles_associated_with_app_tier_ec2_instances
+- aws_iam_user_password_expiry_30_days
+- aws_iam_user_password_expiry_7_days
+- aws_iam_user_password_expiry_x_days
+- aws_root_mfa_enabled
+- aws_root_account_active_signing_certificates
+- aws_root_account_credentials_usage
+- aws_iam_support_role
+- aws_hardware_mfa_for_aws_root_account
+- aws_iam_policies_with_full_administrative_privileges
+- aws_iam_groups_with_administrative_privileges
+- aws_check_for_individual_iam_users
+- aws_access_keys_during_initial_iam_user_setup
+- aws_account_alternate_contacts
+- aws_check_for_overly_permissive_iam_group_policies
+- aws_approved_ecs_execute_command_access
+- aws_canary_access_token
+- aws_iam_users_unauthorized_to_edit_access_policies
+- aws_ssl_tls_certificate_expiry_x_days
+- aws_enforce_infrastructure_as_code_using_iam_policies
+- aws_ec2_purchase_restriction
+- aws_ssh_public_keys_rotated_90_days
+- aws_ssh_public_keys_rotated_45_days
+- aws_ssh_public_keys_rotated_x_days
+- aws_iam_server_certificate_size
+- aws_elbv2_access_log
+- aws_enable_cross_zone_load_balancing
+- aws_elbv2_alb_security_policy
+- aws_internet_facing_elbs
+- aws_elb_access_log
+- aws_internet_facing_elbv2s
+- aws_use_kms_customer_master_keys_for_fsx_windows_file_server_file_systems
+- aws_rds_encrypted_with_kms_customer_master_keys
+- aws_enable_alert_notifications_for_failed_backup_jobs
+- aws_use_kms_customer_master_keys_for_aws_backup
+- aws_enable_scan_on_push_for_ecr_container_images
+- aws_ecs_task_log_driver_in_use
+- aws_check_for_ecs_container_instance_agent_version
+- aws_check_for_fargate_platform_version
+- aws_kms_customer_master_keys_for_efs_encryption
+- aws_disable_remote_access_to_eks_cluster_node_groups
+- aws_eks_cluster_endpoint_public_access
+- aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+- aws_enable_envelope_encryption_for_eks_kubernetes_secrets
+- aws_kubernetes_cluster_logging
+- aws_eks_security_groups
+- aws_eks_cluster_node_group_iam_role_policies
+- aws_use_aws_managed_policy_to_manage_networking_resources
+- aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
+- aws_use_aws_managed_policy_to_manage_aws_resources
+- aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
+- aws_rds_desired_instance_type
+- aws_ecr_repository_exposed
+- aws_backup_service_lifecycle_configuration

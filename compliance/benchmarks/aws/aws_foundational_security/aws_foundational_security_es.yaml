@@ -1,7 +1,6 @@
 ID: aws_foundational_security_es
 Title: Elasticsearch
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/ES
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_es_domain_encryption_at_rest_enabled
 - aws_es_domain_in_vpc

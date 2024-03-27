@@ -1,7 +1,6 @@
 ID: aws-config-devops
 Title: AWS Config DevOps
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config DevOps
 Children: []
 Tags:

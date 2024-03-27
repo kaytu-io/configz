@@ -1,7 +1,6 @@
 ID: aws-config-cccs-medium
 Title: AWS Config CCCS Medium
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CCCS Medium
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_5_h
 Title: IA-5(h)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Manage system authenticators by: h. Requiring individuals to take, and having devices implement, specific controls to protect authenticators."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

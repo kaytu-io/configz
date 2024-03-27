@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_4
 Title: AC-3(4) Discretionary Access Control
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Enforce [Assignment: organization-defined discretionary access control policy] over the set of covered subjects and objects specified in the policy, and where the policy specifies that a subject that has been granted access to information can do one or more of the following: (a) Pass the information to any other subjects or objects; (b) Grant its privileges to other subjects; (c) Change security attributes on subjects, objects, the system, or the system’s components; (d) Choose the security attributes to be associated with newly created or revised objects; or (e) Change the rules governing access control."
 Children:
 - aws_nist_800_53_rev_5_ac_3_4_a
@@ -20,7 +19,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_uses_imdsv2
 - aws_iam_account_password_policy_min_length_14

@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_308_a_1_ii_b
 Title: 164.308(a)(1)(ii)(B) Risk management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement security measures sufficient to reduce risks and vulnerabilities to a reasonable and appropriate level to comply with Section 164.306(a).
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_autoscaling_group_with_lb_use_health_check

@@ -1,7 +1,6 @@
 ID: aws-config-cis-top20
 Title: AWS Config CIS Top20
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CIS Top20
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_fedramp_low_rev_4_cp_10
 Title: Information System Recovery And Reconstitution (CP-10)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization provides for the recovery and reconstitution of the information system to a known state after a disruption, compromise, or failure.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_dynamodb_table_auto_scaling_enabled

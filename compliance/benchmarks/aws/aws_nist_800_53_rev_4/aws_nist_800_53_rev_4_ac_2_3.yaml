@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ac_2_3
 Title: AC-2(3) Disable Inactive Accounts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system automatically disables inactive accounts after 90 days for user accounts.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_user_unused_credentials_90

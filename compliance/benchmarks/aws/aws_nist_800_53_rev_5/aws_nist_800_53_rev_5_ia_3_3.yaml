@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_3_3
 Title: IA-3(3) Dynamic Address Allocation
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Where addresses are allocated dynamically, standardize dynamic address allocation lease information and the lease duration assigned to devices in accordance with [Assignment: organization-defined lease information and lease duration]; and b.\u2003Audit lease information when assigned to a device."
 Children:
 - aws_nist_800_53_rev_5_ia_3_3_b
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

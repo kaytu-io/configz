@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0885_09n2organizational
 Title: 0885.09n2Organizational.3-09.n 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization reviews and updates the interconnection security agreements on an ongoing basis verifying enforcement of security requirements.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_network_traffic_data_collection_linux_agent_installed

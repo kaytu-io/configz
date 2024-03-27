@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3
 Title: Access Enforcement (AC-3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.
 Children:
 - aws_nist_800_53_rev_5_ac_3_1
@@ -25,7 +24,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_dms_replication_instance_not_publicly_accessible

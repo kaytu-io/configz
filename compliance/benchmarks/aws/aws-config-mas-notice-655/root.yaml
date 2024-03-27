@@ -1,7 +1,6 @@
 ID: aws-config-mas-notice-655
 Title: AWS Config MAS Notice 655
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config MAS Notice 655
 Children: []
 Tags:

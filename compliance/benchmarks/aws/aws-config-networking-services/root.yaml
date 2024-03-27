@@ -1,7 +1,6 @@
 ID: aws-config-networking-services
 Title: AWS Config Networking Services
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Networking Services
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws-config-cis
 Title: AWS Config CIS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CIS
 Children: []
 Tags:

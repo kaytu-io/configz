@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_308_a_1_ii_a
 Title: 164.308(a)(1)(ii)(A) Risk analysis
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Conduct an accurate and thorough assessment of the potential risks and vulnerabilities to the confidentiality, integrity, and availability of electronic protected health information held by the covered entity or business associate.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_enabled
 - aws_config_enabled_all_regions

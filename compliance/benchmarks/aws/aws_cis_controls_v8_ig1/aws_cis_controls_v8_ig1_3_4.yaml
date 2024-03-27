@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_3_4
 Title: 3.4 Enforce Data Retention
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Retain data according to the enterprise’s data management process. Data retention must include both minimum and maximum timelines.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_log_group_retention_period_365

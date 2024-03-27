@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1210_09aa3system
 Title: 1210.09aa3System.3-09.aa 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: All disclosures of covered information within or outside of the organization are logged including type of disclosure, date/time of the event, recipient, and sender.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_datalake_analytics_account_logging_enabled

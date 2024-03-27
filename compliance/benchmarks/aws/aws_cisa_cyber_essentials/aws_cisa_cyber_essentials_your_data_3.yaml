@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_data_3
 Title: Your Data-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Domain name system protection.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_lb_waf_enabled

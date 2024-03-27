@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_314_b_2
 Title: 164.314(b)(2) Implementation specifications
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The plan documents of the group health plan must be amended to incorporate provisions to require the plan sponsor to — (i) Implement administrative, physical, and technical safeguards that reasonably and appropriately protect the confidentiality, integrity, and availability of the electronic protected health information that it creates, receives, maintains, or transmits on behalf of the group health plan; (ii) Ensure that the adequate separation required by 164.504(f)(2)(iii) is supported by reasonable and appropriate security measures; (iii) Ensure that any agent, including a subcontractor, to whom it provides this information agrees to implement reasonable and appropriate security measures to protect the information; and (iv) Report to the group health plan any security incident of which it becomes aware.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_dax_cluster_encryption_at_rest_enabled

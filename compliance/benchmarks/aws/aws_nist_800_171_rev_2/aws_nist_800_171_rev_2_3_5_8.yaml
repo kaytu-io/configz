@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_5_8
 Title: 3.5.8 Prohibit password reuse for a specified number of generations
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Password lifetime restrictions do not apply to temporary passwords.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_user_unused_credentials_90

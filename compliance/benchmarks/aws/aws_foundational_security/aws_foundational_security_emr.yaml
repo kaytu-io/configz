@@ -1,7 +1,6 @@
 ID: aws_foundational_security_emr
 Title: EMR
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/EMR
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_emr_cluster_master_nodes_no_public_ip

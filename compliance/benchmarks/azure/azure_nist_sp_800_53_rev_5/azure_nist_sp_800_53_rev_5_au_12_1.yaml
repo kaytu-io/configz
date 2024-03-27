@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_au_12_1
 Title: System-wide and Time-correlated Audit Trail AU-12(1)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system compiles audit records from organization-defined information system components into a system-wide (logical or physical) audit trail that is time-correlated to within organization-defined level of tolerance for the relationship between timestamps of individual records in the audit trail.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_azure_defender_enabled
 - azure_appservice_web_app_diagnostic_logs_enabled

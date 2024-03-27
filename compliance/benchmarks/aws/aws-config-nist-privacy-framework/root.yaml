@@ -1,7 +1,6 @@
 ID: aws-config-nist-privacy-framework
 Title: AWS Config NIST Privacy Framework
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NIST Privacy Framework
 Children: []
 Tags:

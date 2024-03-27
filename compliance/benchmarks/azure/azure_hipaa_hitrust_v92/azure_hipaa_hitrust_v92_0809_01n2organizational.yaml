@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0809_01n2organizational
 Title: 0809.01n2Organizational.1234-01.n 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Network traffic is controlled in accordance with the organizations access control policy through firewall and other network-related restrictions for each network access point or external telecommunication service's managed interface.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_latest_tls_version
 - azure_appservice_api_app_use_https

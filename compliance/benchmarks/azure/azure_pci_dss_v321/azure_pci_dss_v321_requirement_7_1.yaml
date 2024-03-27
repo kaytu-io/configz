@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_7_1
 Title: PCI DSS requirement 7.1
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Limit access to system components and cardholder data to only those individuals whose job requires such access.
 Children:
 - azure_pci_dss_v321_requirement_7_1_1
@@ -18,5 +17,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

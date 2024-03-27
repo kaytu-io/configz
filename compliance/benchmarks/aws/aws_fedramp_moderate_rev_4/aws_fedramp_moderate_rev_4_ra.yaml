@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ra
 Title: Risk Assessment (RA)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The RA control family relates to an organization’s risk assessment policies and vulnerability scanning capabilities. Using an integrated risk management solution like CyberStrong can help streamline and automate your NIST 800 53 compliance efforts.
 Children:
 - aws_fedramp_moderate_rev_4_ra_5
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

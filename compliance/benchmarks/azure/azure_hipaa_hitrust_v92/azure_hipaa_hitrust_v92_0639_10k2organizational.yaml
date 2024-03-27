@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0639_10k2organizational
 Title: 0639.10k2Organizational.78-10.k 10.05 Security In Development and Support Processes
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Installation checklists and vulnerability scans are used to validate the configuration of servers, workstations, devices and appliances and ensure the configuration meets minimum standards.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

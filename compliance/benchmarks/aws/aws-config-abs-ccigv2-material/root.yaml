@@ -1,7 +1,6 @@
 ID: aws-config-abs-ccigv2-material
 Title: AWS Config ABS CCIGv2 Material
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config ABS CCIGv2 Material
 Children: []
 Tags:

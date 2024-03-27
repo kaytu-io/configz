@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_2_2
 Title: CM-2(2) Automation Support For Accuracy And Currency
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Maintain the currency, completeness, accuracy, and availability of the baseline configuration of the system using [Assignment: organization-defined automated mechanisms]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ebs_volume_unused
 - aws_ec2_instance_ssm_managed

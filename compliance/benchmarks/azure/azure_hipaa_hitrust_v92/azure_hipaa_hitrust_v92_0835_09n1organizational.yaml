@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0835_09n1organizational
 Title: 0835.09n1Organizational.1-09.n 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Agreed services provided by a network service provider/manager are formally managed and monitored to ensure they are provided securely.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_network_traffic_data_collection_windows_agent_installed
 - azure_compute_vm_uses_azure_resource_manager

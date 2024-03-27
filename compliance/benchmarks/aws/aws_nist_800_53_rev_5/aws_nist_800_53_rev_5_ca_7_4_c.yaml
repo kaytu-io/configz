@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ca_7_4_c
 Title: CA-7(4)(c)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Ensure risk monitoring is an integral part of the continuous monitoring strategy that includes the following: (c) Change monitoring."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_lb_deletion_protection_enabled
 - aws_rds_db_instance_deletion_protection_enabled

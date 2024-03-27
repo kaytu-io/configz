@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0643_10k3organizational
 Title: 0643.10k3Organizational.3-10.k 10.05 Security In Development and Support Processes
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization (i) establishes and documents mandatory configuration settings for information technology products employed within the information system using the latest security configuration baselines; (ii) identifies, documents, and approves exceptions from the mandatory established configuration settings for individual components based on explicit operational requirements; and (iii) monitors and controls changes to the configuration settings in accordance with organizational policies and procedures.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

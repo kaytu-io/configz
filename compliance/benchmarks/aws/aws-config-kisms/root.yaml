@@ -1,7 +1,6 @@
 ID: aws-config-kisms
 Title: AWS Config KISMS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config KISMS
 Children: []
 Tags:

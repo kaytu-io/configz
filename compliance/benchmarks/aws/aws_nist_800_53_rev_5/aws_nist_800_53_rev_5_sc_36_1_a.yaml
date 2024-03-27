@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_36_1_a
 Title: SC-36(1)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ polling techniques to identify potential faults, errors, or compromises to the following processing and storage components: [Assignment: organization-defined distributed processing and storage components]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_cloudwatch_alarm_action_enabled

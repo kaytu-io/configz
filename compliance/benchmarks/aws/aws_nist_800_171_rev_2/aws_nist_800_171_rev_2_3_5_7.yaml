@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_5_7
 Title: 3.5.7 Enforce a minimum password complexity and change of characters when new passwords are created
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: This requirement applies to single-factor authentication of individuals using passwords as individual or group authenticators, and in a similar manner, when passwords are used as part of multifactor authenticators. The number of changed characters refers to the number of changes required with respect to the total number of positions in the current password. To mitigate certain brute force attacks against passwords, organizations may also consider salting passwords.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong_min_reuse_24

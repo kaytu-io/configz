@@ -1,7 +1,6 @@
 ID: aws-config-monitoring
 Title: AWS Config Monitoring
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Monitoring
 Children: []
 Tags:

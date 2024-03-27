@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rc_rp
 Title: Recovery Planning (RC.RP)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Recovery processes and procedures are executed and maintained to ensure timely restoration of systems or assets affected by cybersecurity events.
 Children:
 - aws_nist_csf_rc_rp_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

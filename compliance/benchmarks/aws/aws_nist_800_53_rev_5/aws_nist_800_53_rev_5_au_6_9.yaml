@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_6_9
 Title: AU-6(9) Correletion With From Nontechnical Sources
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Correlate information from nontechnical sources with audit record information to enhance organization-wide situational awareness.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

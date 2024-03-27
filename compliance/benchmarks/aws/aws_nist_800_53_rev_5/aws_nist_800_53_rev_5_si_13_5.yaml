@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_13_5
 Title: SI-13(5) Failover Capability
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Provide [Selection: real-time; near real-time] [Assignment: organization-defined failover capability] for the system."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_dynamodb_table_in_backup_plan

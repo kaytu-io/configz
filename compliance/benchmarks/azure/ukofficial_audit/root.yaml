@@ -2,39 +2,33 @@ ID: ukofficial_audit
 Title: UK OFFICIAL and UK NHS
 ReferenceCode: ""
 Description: This initiative includes audit and virtual machine extension deployment policies that address a subset of UK OFFICIAL and UK NHS controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/ukofficial-init and https://aka.ms/uknhs-init.
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-    - app_service_apps_should_have_remote_debugging_turned_off
-    - vulnerability_assessment_should_be_enabled_on_your_sql_servers
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - auditing_on_sql_server_should_be_enabled
-    - app_service_apps_should_only_be_accessible_over_https
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - automation_account_variables_should_be_encrypted
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - function_apps_should_have_remote_debugging_turned_off
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - storage_accounts_should_restrict_network_access
-    - function_apps_should_only_be_accessible_over_https
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
+- app_service_apps_should_have_remote_debugging_turned_off
+- vulnerability_assessment_should_be_enabled_on_your_sql_servers
+- secure_transfer_to_storage_accounts_should_be_enabled
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- auditing_on_sql_server_should_be_enabled
+- app_service_apps_should_only_be_accessible_over_https
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- automation_account_variables_should_be_encrypted
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- function_apps_should_have_remote_debugging_turned_off
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- storage_accounts_should_restrict_network_access
+- function_apps_should_only_be_accessible_over_https

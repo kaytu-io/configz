@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_308_a_3_ii_b
 Title: 164.308(a)(3)(ii)(B) Workforce clearance procedure
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement procedures to determine that the access of a workforce member to electronic protected health information is appropriate.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_emr_cluster_kerberos_enabled

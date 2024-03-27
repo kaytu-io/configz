@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1148_01c2system
 Title: 1148.01c2System.78-01.c 01.02 Authorized Access to Information Systems
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization restricts access to privileged functions and all security-relevant information.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_no_custom_role

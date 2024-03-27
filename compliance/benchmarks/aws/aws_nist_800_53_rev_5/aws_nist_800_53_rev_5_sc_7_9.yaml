@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_9
 Title: SC-7(9) Restrict Threatening Outgoing Communications Traffic
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: a. Detect and deny outgoing communications traffic posing a threat to external systems; and b. Audit the identity of internal users associated with denied communications.
 Children:
 - aws_nist_800_53_rev_5_sc_7_9_a
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

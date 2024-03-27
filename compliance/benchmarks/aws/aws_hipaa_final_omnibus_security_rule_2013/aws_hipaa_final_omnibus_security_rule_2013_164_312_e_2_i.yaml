@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_312_e_2_i
 Title: 164.312(e)(2)(i) Integrity controls
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement security measures to ensure that electronically transmitted electronic protected health information is not improperly modified without detection until disposed of.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_s3_data_events_enabled

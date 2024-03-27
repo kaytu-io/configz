@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ac_21
 Title: Information Sharing (AC-21)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Facilitate information sharing. Enable authorized users to grant access to partners.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

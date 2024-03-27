@@ -1,7 +1,6 @@
 ID: aws-config-gxp-eu-annex-11
 Title: AWS Config GxP EU Annex 11
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config GxP EU Annex 11
 Children: []
 Tags:

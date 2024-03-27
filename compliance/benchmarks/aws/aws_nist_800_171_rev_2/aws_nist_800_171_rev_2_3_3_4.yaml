@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_3_4
 Title: 3.3.4 Alert in the event of an audit logging process failure
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Audit logging process failures include software and hardware errors, failures in the audit record capturing mechanisms, and audit record storage capacity being reached or exceeded. This requirement applies to each audit record data storage repository (i.e., distinct system component where audit records are stored), the total audit record storage capacity of organizations (i.e., all audit record data storage repositories combined), or both.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

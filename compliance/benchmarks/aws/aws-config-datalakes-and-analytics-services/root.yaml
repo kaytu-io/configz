@@ -1,7 +1,6 @@
 ID: aws-config-datalakes-and-analytics-services
 Title: AWS Config Datalakes and Analytics Services
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Datalakes and Analytics Services
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_5_3
 Title: 5.3 Disable Dormant Accounts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Delete or disable any dormant accounts after a period of 45 days of inactivity, where supported.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_user_unused_credentials_90

@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id
 Title: Identify (ID)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop the organizational understanding to manage cybersecurity risk to systems, assets, data, and capabilities.
 Children:
 - aws_nist_csf_id_am
@@ -19,5 +18,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

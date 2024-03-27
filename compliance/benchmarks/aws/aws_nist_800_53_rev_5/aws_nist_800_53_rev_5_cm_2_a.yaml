@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_2_a
 Title: CM-2(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop, document, and maintain under configuration control, a current baseline configuration of the system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ebs_volume_unused
 - aws_ec2_instance_ssm_managed

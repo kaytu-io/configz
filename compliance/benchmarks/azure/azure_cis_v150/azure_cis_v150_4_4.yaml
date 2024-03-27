@@ -1,7 +1,6 @@
 ID: azure_cis_v150_4_4
 Title: 4.4 MySQL Database
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/SQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_mysql_ssl_enabled
 - azure_mysql_server_min_tls_1_2

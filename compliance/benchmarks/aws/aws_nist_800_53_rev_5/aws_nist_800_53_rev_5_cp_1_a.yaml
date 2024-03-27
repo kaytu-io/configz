@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_1_a
 Title: CP-1(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1.\u2003[Selection (one or more): Organization-level; Mission/business process-level; System-level] contingency planning policy that: a).\u2003Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and b).\u2003Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2.\u2003Procedures to facilitate the implementation of the contingency planning policy and the associated contingency planning controls."
 Children:
 - aws_nist_800_53_rev_5_cp_1_a_2
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

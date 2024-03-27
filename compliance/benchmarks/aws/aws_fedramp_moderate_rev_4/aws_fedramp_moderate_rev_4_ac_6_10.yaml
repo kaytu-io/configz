@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_6_10
 Title: AC-6(10) Prohibit Non-Privileged Users From Executing Privileged Functions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system prevents non-privileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_policy_custom_no_service_wildcard
 - aws_iam_policy_custom_no_star_star

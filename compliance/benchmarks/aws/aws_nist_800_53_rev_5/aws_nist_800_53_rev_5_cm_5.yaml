@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_5
 Title: Access Restrictions For Change (CM-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Define, document, approve, and enforce physical and logical access restrictions associated with changes to the system.
 Children:
 - aws_nist_800_53_rev_5_cm_5_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

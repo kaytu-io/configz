@@ -1,7 +1,6 @@
 ID: aws-config-acsc-essential8
 Title: AWS Config ACSC Essential8
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config ACSC Essential8
 Children: []
 Tags:

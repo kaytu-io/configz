@@ -1,15 +1,18 @@
-Connector: Azure
-Controls:
-  - azure_check_for_unused_load_balancers
-  - azure_check_for_unattached_virtual_machine_disk_volumes
-  - azure_check_for_old_virtual_machine_disk_snapshots
+ID: azure_score_cost_optimization
+Title: Cost Optimization for Azure
 ReferenceCode: azure_score_cost_optimization
 Description: Cost Optimization Description
-ID: azure_score_cost_optimization
-AutoAssign: true
+Children: []
 Tags:
-  type:
-    - SCORE
   score_category:
-    - cost_optimization
-Title: Cost Optimization for Azure
+  - cost_optimization
+  type:
+  - SCORE
+Managed: false
+Enabled: false
+AutoAssign: true
+Baseline: false
+Controls:
+- azure_check_for_unused_load_balancers
+- azure_check_for_unattached_virtual_machine_disk_volumes
+- azure_check_for_old_virtual_machine_disk_snapshots

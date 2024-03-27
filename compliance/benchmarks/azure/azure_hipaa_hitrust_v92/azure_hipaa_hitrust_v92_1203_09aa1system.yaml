@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1203_09aa1system
 Title: 1203.09aa1System.2-09.aa 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Audit records include the unique user ID, unique data subject ID, function performed, and date/time the event was performed.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Logic
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_logic_app_workflow_logging_enabled

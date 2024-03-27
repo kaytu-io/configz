@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ma_2
 Title: PR.MA-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Remote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/CloudTrail
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_trail_enabled

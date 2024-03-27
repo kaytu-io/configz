@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0715_10m2organizational
 Title: 0715.10m2Organizational.8-10.m 10.06 Technical Vulnerability Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Systems are appropriately hardened (e.g., configured with only necessary and secure services, ports and protocols enabled).
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ir_4_1
 Title: IR-4(1) Automated Incident Handling Processes
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization employs automated mechanisms to support the incident handling process.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_cloudwatch_alarm_action_enabled

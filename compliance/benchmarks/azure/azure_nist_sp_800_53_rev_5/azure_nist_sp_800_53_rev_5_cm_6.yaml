@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_cm_6
 Title: Configuration Settings (CM-6)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization establishes and documents configuration settings for information technology products employed within the information system using organization-defined security configuration checklists that reflect the most restrictive mode consistent with operational requirements; implements the configuration settings; identifies, documents, and approves any deviations from established configuration settings for organization-defined information system components based on organization-defined operational requirements; and monitors and controls changes to the configuration settings in accordance with organizational policies and procedures.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_client_certificates_on
 - azure_appservice_api_app_cors_no_star

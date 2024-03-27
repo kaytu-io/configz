@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_ra_2
 Title: ID.RA-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Cyber threat intelligence is received from information sharing forums and sources.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

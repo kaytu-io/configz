@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_2_is
 Title: Information Sharing (IS)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Information Sharing encompasses establishing relationships with peers and information-sharing forums and how threat information is communicated to those groups as well as internal stakeholders. "
 Children:
 - aws_ffiec_d_2_is_is_b_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

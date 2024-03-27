@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0894_01m2organizational
 Title: 0894.01m2Organizational.7-01.m 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Networks are segregated from production-level networks when migrating physical servers, applications or data to virtualized servers.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_web_app_use_virtual_service_endpoint
 - azure_compute_vm_attached_with_network

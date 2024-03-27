@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_third_party_assurance
 Title: 14 Third Party Assurance
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Where software development is outsourced, the development process is monitored by the organization and includes independent security and code reviews.
 Children:
 - azure_hipaa_hitrust_v92_1450_05i2organizational
@@ -17,5 +16,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,3 +1,7 @@
+ID: aws_nist_800_53_rev_5
+Title: NIST 800-53 Revision 5 for AWS
+ReferenceCode: ""
+Description: NIST 800-53 is a regulatory standard that defines the minimum baseline of security controls for all U.S. federal information systems except those related to national security.
 Children:
 - aws_nist_800_53_rev_5_ac
 - aws_nist_800_53_rev_5_au
@@ -14,11 +18,6 @@ Children:
 - aws_nist_800_53_rev_5_sa
 - aws_nist_800_53_rev_5_sc
 - aws_nist_800_53_rev_5_si
-Connector: AWS
-Controls: null
-Description: NIST 800-53 is a regulatory standard that defines the minimum baseline of security controls for all U.S. federal information systems except those related to national security.
-Enabled: true
-ID: aws_nist_800_53_rev_5
 Tags:
   category:
   - Compliance
@@ -34,4 +33,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: NIST 800-53 Revision 5 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_2_d_1
 Title: AC-2(d)(1)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "d. Specify: 1. Authorized users of the system;personnel termination and transfer processes."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

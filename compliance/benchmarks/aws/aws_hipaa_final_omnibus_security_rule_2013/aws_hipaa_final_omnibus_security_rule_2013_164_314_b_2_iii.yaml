@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_314_b_2_iii
 Title: 164.314(b)(2)(iii)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Ensure that any agent to whom it provides this information agrees to implement reasonable and appropriate security measures to protect the information.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_dax_cluster_encryption_at_rest_enabled

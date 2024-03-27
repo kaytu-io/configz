@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_se_b_1
 Title: D3.PC.Se.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Developers working for the institution follow secure program coding practices, as part of a system development life cycle (SDLC), that meet industry standards.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
 - aws_codebuild_project_source_repo_oauth_configured

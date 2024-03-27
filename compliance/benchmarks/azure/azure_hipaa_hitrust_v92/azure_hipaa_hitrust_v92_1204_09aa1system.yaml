@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1204_09aa1system
 Title: 1204.09aa1System.3-09.aa 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The activities of privileged users (administrators, operators, etc.) include the success/failure of the event, time the event occurred, the account involved, the processes involved, and additional information about the event.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/IoTHub
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iot_hub_logging_enabled

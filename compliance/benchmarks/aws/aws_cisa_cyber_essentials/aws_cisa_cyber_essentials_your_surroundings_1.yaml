@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_surroundings_1
 Title: Your Surroundings-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Learn who is on your network. Maintain inventories of network connections (user accounts, vendors, business partners, etc.).
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_eip_associated
 - aws_vpc_flow_logs_enabled

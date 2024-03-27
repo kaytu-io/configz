@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ia
 Title: Identification and Authentication (IA)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: IA controls are specific to the identification and authentication policies in an organization. This includes the identification and authentication of organizational and non-organizational users and how the management of those systems.
 Children:
 - aws_nist_800_53_rev_4_ia_2
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

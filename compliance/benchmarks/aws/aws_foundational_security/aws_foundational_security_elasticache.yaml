@@ -1,7 +1,6 @@
 ID: aws_foundational_security_elasticache
 Title: ElasticCache
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/ElastiCache
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elasticache_redis_cluster_automatic_backup_retention_15_days
 - aws_elasticache_cluster_auto_minor_version_upgrade_enabled

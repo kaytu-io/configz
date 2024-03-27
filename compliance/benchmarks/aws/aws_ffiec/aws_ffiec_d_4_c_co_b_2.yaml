@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_4_c_co_b_2
 Title: D4.C.Co.B.2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The institution ensures that third-party connections are authorized.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_default_security_group_restricts_all_traffic
 - aws_vpc_security_group_restrict_ingress_common_ports_all

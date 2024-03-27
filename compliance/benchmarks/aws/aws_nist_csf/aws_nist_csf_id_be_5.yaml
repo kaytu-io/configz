@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_be_5
 Title: ID.BE-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Resilience requirements to support delivery of critical services are established for all operating states (e.g. under duress/attack, during recovery, normal operations)
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_multiple_az_configured
 - aws_autoscaling_group_with_lb_use_health_check

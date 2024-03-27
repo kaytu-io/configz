@@ -1,7 +1,6 @@
 ID: azure_cis_v130_4_3
 Title: 4.3 PostgreSQL Database Server
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_postgres_sql_ssl_enabled
 - azure_mysql_ssl_enabled

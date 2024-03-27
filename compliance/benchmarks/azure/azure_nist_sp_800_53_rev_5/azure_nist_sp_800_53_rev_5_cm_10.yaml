@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_cm_10
 Title: Software Usage Restrictions (CM-10)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization uses software and associated documentation in accordance with contract agreements and copyright laws, tracks the use of software and associated documentation protected by quantity licenses to control copying and distribution, and controls and documents the use of peer-to-peer file-sharing technology to ensure that this capability is not used for the unauthorized distribution, display, performance, or reproduction of copyrighted work.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

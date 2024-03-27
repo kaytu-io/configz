@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_5
 Title: Secuity Alerts, Advisories, And Directives (SI-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Receive system security alerts, advisories, and directives from [Assignment: organization-defined external organizations] on an ongoing basis; b.\u2003Generate internal security alerts, advisories, and directives as deemed necessary; c.\u2003Disseminate security alerts, advisories, and directives to: [Selection (one or more): [Assignment: organization-defined personnel or roles]; [Assignment: organization-defined elements within the organization]; [Assignment: organization-defined external organizations]]; and d.\u2003Implement security directives in accordance with established time frames, or notify the issuing organization of the degree of noncompliance."
 Children:
 - aws_nist_800_53_rev_5_si_5_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

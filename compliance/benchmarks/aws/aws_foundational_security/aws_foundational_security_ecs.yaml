@@ -1,7 +1,6 @@
 ID: aws_foundational_security_ecs
 Title: Elastic Container Service
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/ECS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ecs_task_definition_user_for_host_mode_check
 - aws_ecs_service_not_publicly_accessible

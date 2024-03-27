@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_9_b
 Title: CP-9(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Conduct backups of system-level information contained in the system [Assignment: organization-defined frequency consistent with recovery time and recovery point objectives]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_in_backup_plan
 - aws_dynamodb_table_point_in_time_recovery_enabled

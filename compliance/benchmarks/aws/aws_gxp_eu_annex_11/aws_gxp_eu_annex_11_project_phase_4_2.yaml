@@ -1,7 +1,6 @@
 ID: aws_gxp_eu_annex_11_project_phase_4_2
 Title: 4.2 Validation - Documentation Change Control
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Validation documentation should include change control records (if applicable) and reports on any deviations observed during the validation process.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_enabled

@@ -1,7 +1,6 @@
 ID: aws_cis_v300_3
 Title: 3 Logging
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children: []
 Tags:

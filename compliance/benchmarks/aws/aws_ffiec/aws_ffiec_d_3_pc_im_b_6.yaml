@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_im_b_6
 Title: D3.PC.Im.B.6
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Ports, functions, protocols and services are prohibited if no longer needed for business purposes.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_default_security_group_restricts_all_traffic
 - aws_vpc_security_group_restrict_ingress_common_ports_all

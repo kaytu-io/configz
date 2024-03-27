@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_6_5
 Title: AU-6(5) Central Review And Analysis
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Integrate analysis of audit records with analysis of [Selection (one or more): vulnerability scanning information; performance data; system monitoring information; [Assignment: organization-defined data/information collected from other sources]] to further enhance the ability to identify inappropriate or unusual activity."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs
 - aws_cloudwatch_alarm_action_enabled

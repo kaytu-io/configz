@@ -1,7 +1,6 @@
 ID: aws_gxp_eu_annex_11_operational_phase_8_2
 Title: 8.2 Printouts - Data Changes
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: For records supporting batch release it should be possible to generate printouts indicating if any of the data has been changed since the original entry.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_s3_data_events_enabled

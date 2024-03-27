@@ -1,102 +1,96 @@
 ID: asb_v2
-Title: '[Deprecated]: Azure Security Benchmark v2'
+Title: "[Deprecated]: Azure Security Benchmark v2"
 ReferenceCode: ""
 Description: This initiative has been deprecated. The Azure Security Benchmark v2 policy set is now represented in the consolidated Azure Security Benchmark initiative, which also serves as the Azure Security Center default policy initiative. Please assign that initiative, or manage its policies and compliance results within Azure Security Center
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - azure_registry_container_images_should_have_vulnerabilities_resolved_(powered_by_qualys)
-    - email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
-    - '[_deprecated]:_rdp_access_from_the_internet_should_be_blocked'
-    - public_network_access_on_azure_sql_database_should_be_disabled
-    - function_apps_should_use_managed_identity
-    - '[_preview]:_storage_account_public_access_should_be_disallowed'
-    - resource_logs_in_event_hub_should_be_enabled
-    - kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_version
-    - '[_deprecated]:_function_apps_should_have_''_client_certificates_(_incoming_client_certificates)''_enabled'
-    - service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-    - app_service_apps_should_have_remote_debugging_turned_off
-    - resource_logs_in_logic_apps_should_be_enabled
-    - azure_policy_add_on_for_kubernetes_service_(_aks)_should_be_installed_and_enabled_on_your_clusters
-    - vulnerability_assessment_should_be_enabled_on_your_sql_servers
-    - my_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - '[_deprecated]:_ssh_access_from_the_internet_should_be_blocked'
-    - app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
-    - cognitive_services_accounts_should_disable_public_network_access
-    - app_service_apps_should_use_the_latest_tls_version
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - storage_accounts_should_restrict_network_access_using_virtual_network_rules
-    - app_service_apps_should_use_managed_identity
-    - azure_machine_learning_workspaces_should_be_encrypted_with_a_customer_managed_key
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - app_service_apps_should_have_resource_logs_enabled
-    - azure_signal_r_service_should_use_private_link
-    - resource_logs_in_service_bus_should_be_enabled
-    - app_service_apps_should_require_ftps_only
-    - cognitive_services_accounts_should_restrict_network_access
-    - public_network_access_should_be_disabled_for_maria_db_servers
-    - authorized_ip_ranges_should_be_defined_on_kubernetes_services
-    - resource_logs_in_data_lake_analytics_should_be_enabled
-    - azure_key_vault_should_have_firewall_enabled
-    - subnets_should_be_associated_with_a_network_security_group
-    - enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - resource_logs_in_io_t_hub_should_be_enabled
-    - resource_logs_in_key_vault_should_be_enabled
-    - public_network_access_should_be_disabled_for_postgre_sql_servers
-    - storage_accounts_should_use_customer_managed_key_for_encryption
-    - auditing_on_sql_server_should_be_enabled
-    - sql_managed_instances_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - azure_web_application_firewall_should_be_enabled_for_azure_front_door_entry_points
-    - web_application_firewall_(_waf)_should_be_enabled_for_application_gateway
-    - audit_usage_of_custom_rbac_roles
-    - postgre_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - subscriptions_should_have_a_contact_email_address_for_security_issues
-    - resource_logs_in_search_services_should_be_enabled
-    - '[_deprecated]:_resource_logs_in_virtual_machine_scale_sets_should_be_enabled'
-    - resource_logs_in_azure_data_lake_store_should_be_enabled
-    - app_service_apps_should_only_be_accessible_over_https
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
-    - '[_preview]:_log_analytics_extension_should_be_installed_on_your_linux_azure_arc_machines'
-    - automation_account_variables_should_be_encrypted
-    - vm_image_builder_templates_should_use_private_link
-    - public_network_access_should_be_disabled_for_my_sql_servers
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - function_apps_should_have_remote_debugging_turned_off
-    - function_apps_should_require_ftps_only
-    - cognitive_services_accounts_should_enable_data_encryption_with_a_customer_managed_key
-    - private_endpoint_connections_on_azure_sql_database_should_be_enabled
-    - key_vaults_should_have_soft_delete_enabled
-    - azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - resource_logs_in_batch_accounts_should_be_enabled
-    - function_apps_should_use_the_latest_tls_version
-    - azure_event_grid_topics_should_use_private_link
-    - resource_logs_in_azure_stream_analytics_should_be_enabled
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
-    - api_management_services_should_use_a_virtual_network
-    - azure_cosmos_db_accounts_should_use_customer_managed_keys_to_encrypt_data_at_rest
-    - '[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall'
-    - storage_accounts_should_restrict_network_access
-    - function_apps_should_only_be_accessible_over_https
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- azure_registry_container_images_should_have_vulnerabilities_resolved_(powered_by_qualys)
+- email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
+- "[_deprecated]:_rdp_access_from_the_internet_should_be_blocked"
+- public_network_access_on_azure_sql_database_should_be_disabled
+- function_apps_should_use_managed_identity
+- "[_preview]:_storage_account_public_access_should_be_disallowed"
+- resource_logs_in_event_hub_should_be_enabled
+- kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_version
+- "[_deprecated]:_function_apps_should_have_'_client_certificates_(_incoming_client_certificates)'_enabled"
+- service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
+- app_service_apps_should_have_remote_debugging_turned_off
+- resource_logs_in_logic_apps_should_be_enabled
+- azure_policy_add_on_for_kubernetes_service_(_aks)_should_be_installed_and_enabled_on_your_clusters
+- vulnerability_assessment_should_be_enabled_on_your_sql_servers
+- my_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- "[_deprecated]:_ssh_access_from_the_internet_should_be_blocked"
+- app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
+- cognitive_services_accounts_should_disable_public_network_access
+- app_service_apps_should_use_the_latest_tls_version
+- secure_transfer_to_storage_accounts_should_be_enabled
+- storage_accounts_should_restrict_network_access_using_virtual_network_rules
+- app_service_apps_should_use_managed_identity
+- azure_machine_learning_workspaces_should_be_encrypted_with_a_customer_managed_key
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- app_service_apps_should_have_resource_logs_enabled
+- azure_signal_r_service_should_use_private_link
+- resource_logs_in_service_bus_should_be_enabled
+- app_service_apps_should_require_ftps_only
+- cognitive_services_accounts_should_restrict_network_access
+- public_network_access_should_be_disabled_for_maria_db_servers
+- authorized_ip_ranges_should_be_defined_on_kubernetes_services
+- resource_logs_in_data_lake_analytics_should_be_enabled
+- azure_key_vault_should_have_firewall_enabled
+- subnets_should_be_associated_with_a_network_security_group
+- enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- resource_logs_in_io_t_hub_should_be_enabled
+- resource_logs_in_key_vault_should_be_enabled
+- public_network_access_should_be_disabled_for_postgre_sql_servers
+- storage_accounts_should_use_customer_managed_key_for_encryption
+- auditing_on_sql_server_should_be_enabled
+- sql_managed_instances_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- azure_web_application_firewall_should_be_enabled_for_azure_front_door_entry_points
+- web_application_firewall_(_waf)_should_be_enabled_for_application_gateway
+- audit_usage_of_custom_rbac_roles
+- postgre_sql_servers_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- subscriptions_should_have_a_contact_email_address_for_security_issues
+- resource_logs_in_search_services_should_be_enabled
+- "[_deprecated]:_resource_logs_in_virtual_machine_scale_sets_should_be_enabled"
+- resource_logs_in_azure_data_lake_store_should_be_enabled
+- app_service_apps_should_only_be_accessible_over_https
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
+- "[_preview]:_log_analytics_extension_should_be_installed_on_your_linux_azure_arc_machines"
+- automation_account_variables_should_be_encrypted
+- vm_image_builder_templates_should_use_private_link
+- public_network_access_should_be_disabled_for_my_sql_servers
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- function_apps_should_have_remote_debugging_turned_off
+- function_apps_should_require_ftps_only
+- cognitive_services_accounts_should_enable_data_encryption_with_a_customer_managed_key
+- private_endpoint_connections_on_azure_sql_database_should_be_enabled
+- key_vaults_should_have_soft_delete_enabled
+- azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- resource_logs_in_batch_accounts_should_be_enabled
+- function_apps_should_use_the_latest_tls_version
+- azure_event_grid_topics_should_use_private_link
+- resource_logs_in_azure_stream_analytics_should_be_enabled
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
+- api_management_services_should_use_a_virtual_network
+- azure_cosmos_db_accounts_should_use_customer_managed_keys_to_encrypt_data_at_rest
+- "[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall"
+- storage_accounts_should_restrict_network_access
+- function_apps_should_only_be_accessible_over_https
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql

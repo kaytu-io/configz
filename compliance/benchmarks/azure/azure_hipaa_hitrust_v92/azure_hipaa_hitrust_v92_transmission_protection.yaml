@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_transmission_protection
 Title: 09 Transmission Protection
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization uses FIPS-validated cryptographic mechanisms during transmission to prevent unauthorized disclosure of information and detect changes to information unless otherwise protected by organization-defined alternative physical measures.
 Children:
 - azure_hipaa_hitrust_v92_0901_09s1organizational
@@ -27,5 +26,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

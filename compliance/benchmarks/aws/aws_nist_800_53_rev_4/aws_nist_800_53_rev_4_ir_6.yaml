@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ir_6
 Title: Incident Reporting (IR-6)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization report suspected security incidents to the organizational incident response capability within organization-defined time period.
 Children:
 - aws_nist_800_53_rev_4_ir_6_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

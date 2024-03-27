@@ -1,7 +1,6 @@
 ID: aws-config-custom-conformance-pack
 Title: AWS Config custom conformance pack
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config custom conformance pack
 Children: []
 Tags:

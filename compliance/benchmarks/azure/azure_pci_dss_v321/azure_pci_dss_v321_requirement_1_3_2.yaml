@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_1_3_2
 Title: PCI DSS requirement 1.3.2
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Limit inbound Internet traffic to IP addresses within the DMZ.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_remote_access_restricted_all_ports
 - azure_storage_account_default_network_access_rule_denied

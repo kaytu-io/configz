@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_2_a
 Title: SI-2(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Identify, report, and correct system flaws.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_cloudwatch_alarm_action_enabled

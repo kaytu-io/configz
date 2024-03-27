@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0662_09scsporganizational
 Title: 0662.09sCSPOrganizational.2-09.s 09.08 Exchange of Information
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Cloud service providers use an industry-recognized virtualization platform and standard virtualization formats (e.g., Open Virtualization Format, OVF) to help ensure interoperability, and has documented custom changes made to any hypervisor in use and all solution-specific virtualization hooks available for customer review.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_web_app_client_certificates_on

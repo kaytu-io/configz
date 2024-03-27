@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_4_d
 Title: IA-4(d)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Manage system identifiers by: d. Preventing reuse of identifiers for [Assignment: organization-defined time period]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

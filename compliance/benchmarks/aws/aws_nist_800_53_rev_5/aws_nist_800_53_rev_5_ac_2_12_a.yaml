@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_2_12_a
 Title: AC-2(12)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Monitor system accounts for [Assignment: organization-defined atypical usage]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

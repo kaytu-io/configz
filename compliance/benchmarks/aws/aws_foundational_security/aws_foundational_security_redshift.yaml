@@ -1,7 +1,6 @@
 ID: aws_foundational_security_redshift
 Title: Redshift
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/Redshift
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_redshift_cluster_prohibit_public_access
 - aws_redshift_cluster_encryption_in_transit_enabled

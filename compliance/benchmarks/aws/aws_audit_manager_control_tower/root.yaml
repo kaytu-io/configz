@@ -1,14 +1,13 @@
+ID: aws_audit_manager_control_tower
+Title: AWS Audit Manager Control Tower Guardrails
+ReferenceCode: ""
+Description: AWS Control Tower is a service that enables you to enforce and manage governance rules for security, operations, and compliance at scale across all your organizations and accounts in the AWS Cloud.
 Children:
 - aws_audit_manager_control_tower_ebs_checks
 - aws_audit_manager_control_tower_disallow_internet_connection
 - aws_audit_manager_control_tower_multi_factor_authentication
 - aws_audit_manager_control_tower_disallow_public_access
 - aws_audit_manager_control_tower_disallow_instances
-Connector: AWS
-Controls: null
-Description: AWS Control Tower is a service that enables you to enforce and manage governance rules for security, operations, and compliance at scale across all your organizations and accounts in the AWS Cloud.
-Enabled: true
-ID: aws_audit_manager_control_tower
 Tags:
   audit_manager_control_tower:
   - "true"
@@ -24,4 +23,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: AWS Audit Manager Control Tower Guardrails
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

@@ -1,7 +1,6 @@
 ID: aws-config-fedramp-low
 Title: AWS Config FedRAMP Low
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config FedRAMP Low
 Children: []
 Tags:

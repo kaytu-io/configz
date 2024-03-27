@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_2_g
 Title: AC-2(g)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: g. Monitors the use of information system accounts."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_user_unused_credentials_90

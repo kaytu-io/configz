@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_2_b_3
 Title: CM-2(b)(3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Review and update the baseline configuration of the system: 3 When system components are installed or upgraded."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_part_of_organizations
 - aws_ebs_volume_unused

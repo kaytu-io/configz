@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_am_6
 Title: ID.AM-6
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Cybersecurity roles and responsibilities for the entire workforce and third-party stakeholders (e.g., suppliers, customers, partners) are established.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_user_in_group

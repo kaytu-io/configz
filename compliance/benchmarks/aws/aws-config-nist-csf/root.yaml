@@ -1,7 +1,6 @@
 ID: aws-config-nist-csf
 Title: AWS Config NIST CSF
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NIST CSF
 Children: []
 Tags:

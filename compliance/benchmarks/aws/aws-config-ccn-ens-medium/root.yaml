@@ -1,7 +1,6 @@
 ID: aws-config-ccn-ens-medium
 Title: AWS Config CCN ENS Medium
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CCN ENS Medium
 Children: []
 Tags:

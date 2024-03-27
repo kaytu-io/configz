@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc
 Title: System and Communications Protection (SC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The SC control family is responsible for systems and communications protection procedures. This includes boundary protection, protection of information at rest, collaborative computing devices, cryptographic protection, denial of service protection, and many others.
 Children:
 - aws_nist_800_53_rev_4_sc_2
@@ -24,5 +23,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1220_09ab3system
 Title: 1220.09ab3System.56-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Monitoring includes inbound and outbound communications and file integrity monitoring.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_securitycenter_automatic_provisioning_monitoring_agent_on

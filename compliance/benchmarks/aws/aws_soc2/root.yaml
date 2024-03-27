@@ -1,31 +1,34 @@
-Children:
-  - aws_soc_2_c1
-  - aws_soc_2_cc2
-  - aws_soc_2_cc5
-  - aws_soc_2_cc6
-  - aws_soc_2_cc7
-  - aws_soc_2_cc8
-Connector: AWS
-Controls: null
+ID: aws_soc_2
+Title: SOC 2 for AWS
 ReferenceCode: aws_soc2
 Description: System and Organization Controls (SOC) 2 is an auditing procedure that ensures a company's data is securely managed. AWS Audit Manager provides a prebuilt framework that supports SOC 2 to assist you with your audit preparation.
-ID: aws_soc_2
+Children:
+- aws_soc_2_c1
+- aws_soc_2_cc2
+- aws_soc_2_cc5
+- aws_soc_2_cc6
+- aws_soc_2_cc7
+- aws_soc_2_cc8
 Tags:
   category:
-    - Compliance
+  - Compliance
   kaytu_benchmark_type:
-    - compliance
+  - compliance
   kaytu_category:
-    - Certifications and Attestations
-    - Best Practices
+  - Certifications and Attestations
+  - Best Practices
   kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/soc2_large.svg
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/soc2_large.svg
   plugin:
-    - aws
+  - aws
   service:
-    - AWS
+  - AWS
   soc_2:
-    - "true"
+  - "true"
   type:
-    - Benchmark
-Title: SOC 2 for AWS
+  - Benchmark
+Managed: false
+Enabled: false
+AutoAssign: false
+Baseline: false
+Controls: []

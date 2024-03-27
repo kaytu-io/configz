@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_im_b_7
 Title: D3.PC.Im.B.7
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Access to make changes to systems configurations (including virtual machines and hypervisors) is controlled and monitored.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_enabled
 - aws_cloudtrail_trail_integrated_with_logs

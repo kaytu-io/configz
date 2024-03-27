@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0810_01n2organizational
 Title: 0810.01n2Organizational.5-01.n 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Transmitted information is secured and, at a minimum, encrypted over open, public networks.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_latest_tls_version
 - azure_appservice_api_app_use_https

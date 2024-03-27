@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0642_10k3organizational
 Title: 0642.10k3Organizational.12-10.k 10.05 Security In Development and Support Processes
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization develops, documents, and maintains, under configuration control, a current baseline configuration of the information system, and reviews and updates the baseline as required.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

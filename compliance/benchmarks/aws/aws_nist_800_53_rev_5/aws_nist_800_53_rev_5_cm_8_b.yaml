@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_8_b
 Title: CM-8(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Review and update the system component inventory [Assignment: organization-defined frequency]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_ssm_managed_instance_compliance_association_compliant

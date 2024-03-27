@@ -1,7 +1,6 @@
 ID: aws_cis_v130_1
 Title: 1 Identity and Access Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_alternate_contact_security_registered
 - aws_iam_root_user_no_access_keys

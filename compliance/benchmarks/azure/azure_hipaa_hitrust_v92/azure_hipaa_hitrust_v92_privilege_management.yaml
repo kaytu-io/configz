@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_privilege_management
 Title: Privilege Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Privilege management is a crucial aspect of HIPAA and HITRUST compliance, focusing on access control to protect sensitive health information. It involves implementing role-based access controls, strong authentication measures, regular reviews of access privileges, and robust logging and monitoring systems. By enforcing these measures, organizations can ensure that only authorized individuals have appropriate access to electronic protected health information, reducing the risk of unauthorized disclosure and maintaining compliance with HIPAA and HITRUST standards.
 Children:
 - azure_hipaa_hitrust_v92_1149_01c2system
@@ -17,5 +16,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

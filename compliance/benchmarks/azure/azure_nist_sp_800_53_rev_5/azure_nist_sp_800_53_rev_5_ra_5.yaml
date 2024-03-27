@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ra_5
 Title: Vulnerability Monitoring and Scanning (RA-5)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Scan for system vulnerabilities. Share vulnerability information and security controls that eliminate vulnerabilities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_azure_defender_enabled
 - azure_compute_vm_azure_defender_enabled

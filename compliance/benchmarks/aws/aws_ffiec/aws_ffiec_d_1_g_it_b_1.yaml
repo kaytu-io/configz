@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_1_g_it_b_1
 Title: D1.G.IT.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: An inventory of organizational assets (e.g., hardware, software, data, and systems hosted externally) is maintained.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ebs_attached_volume_delete_on_termination_enabled
 - aws_ebs_volume_unused

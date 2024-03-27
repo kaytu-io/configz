@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_6
 Title: 3.6 Incident Response
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: IR controls are specific to an organization's incident response policies and procedures. This includes incident response training, testing, monitoring, reporting, and response plan.
 Children:
 - aws_nist_800_171_rev_2_3_6_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

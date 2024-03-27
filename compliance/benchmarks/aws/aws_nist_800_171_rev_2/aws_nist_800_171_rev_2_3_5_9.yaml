@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_5_9
 Title: 3.5.9 Allow temporary password use for system logons with an immediate change to a permanent password
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Changing temporary passwords to permanent passwords immediately after system logon ensures that the necessary strength of the authentication mechanism is implemented at the earliest opportunity, reducing the susceptibility to authenticator compromises.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong_min_reuse_24

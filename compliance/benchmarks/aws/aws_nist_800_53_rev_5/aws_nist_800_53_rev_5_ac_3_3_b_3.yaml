@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_3_b_3
 Title: AC-3(3)(b)(3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Enforce [Assignment: organization-defined mandatory access policy] over the set of covered subjects and objects specified in the policy, and where the policy: (b) Specifies that a subject that has been granted access to information is constrained from doing any of the following; (3) Changing one or more security attributes (specified by the policy) on subjects, objects, the system, or system components."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_uses_imdsv2
 - aws_iam_account_password_policy_min_length_14

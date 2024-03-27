@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_cm
 Title: Security Continuous Monitoring (DE.CM)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system and assets are monitored to identify cybersecurity events and verify the effectiveness of protective measures.
 Children:
 - aws_nist_csf_de_cm_1
@@ -22,5 +21,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

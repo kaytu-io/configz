@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1230_09c2organizational
 Title: 1230.09c2Organizational.1-09.c 09.01 Documented Operating Procedures
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: No single person is able to access, modify, or use information systems without authorization or detection.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_no_custom_role

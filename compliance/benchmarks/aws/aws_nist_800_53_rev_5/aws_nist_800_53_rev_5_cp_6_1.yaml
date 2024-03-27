@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_6_1
 Title: CP-6(1) Separation From Primary Site
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Identify an alternate storage site that is sufficiently separated from the primary storage site to reduce susceptibility to the same threats.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_in_backup_plan
 - aws_ebs_volume_in_backup_plan

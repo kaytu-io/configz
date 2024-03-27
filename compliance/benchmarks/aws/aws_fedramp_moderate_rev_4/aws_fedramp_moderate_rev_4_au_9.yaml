@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_au_9
 Title: Protection of Audit Information (AU-9)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system protects audit information and audit tools from unauthorized access, modification, and deletion.
 Children:
 - aws_fedramp_moderate_rev_4_au_9_2
@@ -16,7 +15,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_cloudtrail_trail_validation_enabled

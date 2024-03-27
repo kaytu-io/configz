@@ -1,3 +1,7 @@
+ID: aws_rbi_cyber_security
+Title: RBI Cyber Security Framework for AWS
+ReferenceCode: ""
+Description: The Reserve Bank had prescribed a set of baseline cyber security controls for primary (Urban) cooperative banks (UCBs) in October 2018. On further examination, it has been decided to prescribe a comprehensive cyber security framework for the UCBs, as a graded approach, based on their digital depth and interconnectedness with the payment systems landscape, digital products offered by them and assessment of cyber security risk. The framework would mandate implementation of progressively stronger security measures based on the nature, variety and scale of digital product offerings of banks.
 Children:
 - aws_rbi_cyber_security_annex_i_1_1
 - aws_rbi_cyber_security_annex_i_1_3
@@ -8,11 +12,6 @@ Children:
 - aws_rbi_cyber_security_annex_i_7_3
 - aws_rbi_cyber_security_annex_i_7_4
 - aws_rbi_cyber_security_annex_i_12
-Connector: AWS
-Controls: null
-Description: The Reserve Bank had prescribed a set of baseline cyber security controls for primary (Urban) cooperative banks (UCBs) in October 2018. On further examination, it has been decided to prescribe a comprehensive cyber security framework for the UCBs, as a graded approach, based on their digital depth and interconnectedness with the payment systems landscape, digital products offered by them and assessment of cyber security risk. The framework would mandate implementation of progressively stronger security measures based on the nature, variety and scale of digital product offerings of banks.
-Enabled: true
-ID: aws_rbi_cyber_security
 Tags:
   category:
   - Compliance
@@ -28,4 +27,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: RBI Cyber Security Framework for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

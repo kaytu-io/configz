@@ -1,7 +1,6 @@
 ID: aws_gxp_eu_annex_11_operational_phase
 Title: Operational Phase
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: This section focuses on various operational phases of data, such as data accuracy, secure storage, authorized access and backup.
 Children:
 - aws_gxp_eu_annex_11_operational_phase_5
@@ -24,5 +23,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

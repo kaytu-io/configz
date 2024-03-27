@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ip
 Title: Information Protection Processes and Procedures (PR.IP)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Security policies (that address purpose, scope, roles, responsibilities, management commitment, and coordination among organizational entities), processes, and procedures are maintained and used to manage protection of information systems and assets.
 Children:
 - aws_nist_csf_pr_ip_1
@@ -23,5 +22,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

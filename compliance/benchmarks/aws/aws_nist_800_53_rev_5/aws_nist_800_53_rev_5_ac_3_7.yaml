@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_7
 Title: AC-3(7) Role-Based Access Control
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Enforce a role-based access control policy over defined subjects and objects and control access based upon [Assignment: organization-defined roles and users authorized to assume such roles]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_s3_bucket_restrict_public_read_access
 - aws_dms_replication_instance_not_publicly_accessible

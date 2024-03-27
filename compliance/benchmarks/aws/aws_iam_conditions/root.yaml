@@ -1,12 +1,16 @@
-Connector: AWS
-Controls:
-  - aws_iam_roles_without_network_condition
-  - aws_iam_roles_without_on_role_session_condition
-  - aws_iam_roles_without_principal_condition
-  - aws_iam_roles_without_request_condition
-  - aws_iam_roles_without_resource_condition
+ID: aws_iam_conditions
+Title: Custom IAM Roles missing Global Controls
 ReferenceCode: aws_iam_conditions
 Description: ""
-ID: aws_iam_conditions
+Children: []
+Tags: {}
+Managed: false
+Enabled: false
 AutoAssign: true
-Title: Custom IAM Roles missing Global Controls
+Baseline: false
+Controls:
+- aws_iam_roles_without_network_condition
+- aws_iam_roles_without_on_role_session_condition
+- aws_iam_roles_without_principal_condition
+- aws_iam_roles_without_request_condition
+- aws_iam_roles_without_resource_condition

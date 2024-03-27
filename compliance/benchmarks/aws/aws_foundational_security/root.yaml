@@ -1,3 +1,7 @@
+ID: aws_foundational_security
+Title: AWS Foundational Security Best Practices
+ReferenceCode: ""
+Description: The AWS Foundational Security Best Practices standard is a set of controls that detect when your deployed accounts and resources deviate from security best practices.
 Children:
 - aws_foundational_security_account
 - aws_foundational_security_acm
@@ -37,11 +41,6 @@ Children:
 - aws_foundational_security_sqs
 - aws_foundational_security_ssm
 - aws_foundational_security_waf
-Connector: AWS
-Controls: null
-Description: The AWS Foundational Security Best Practices standard is a set of controls that detect when your deployed accounts and resources deviate from security best practices.
-Enabled: true
-ID: aws_foundational_security
 Tags:
   aws_foundational_security:
   - "true"
@@ -57,4 +56,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: AWS Foundational Security Best Practices
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

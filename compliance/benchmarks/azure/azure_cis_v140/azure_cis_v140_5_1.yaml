@@ -1,7 +1,6 @@
 ID: azure_cis_v140_5_1
 Title: 5.1 Configuring Diagnostic Settings
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_monitor_diagnostic_settings_captures_proper_categories
 - azure_monitor_logs_storage_container_not_public_accessible

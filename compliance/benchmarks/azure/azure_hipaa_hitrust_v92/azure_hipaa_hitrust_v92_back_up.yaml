@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_back_up
 Title: Back-up
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Ensure the maintenance, integrity, and availability of organizational information. Back-up copies of information and software shall be taken and tested regularly.
 Children:
 - azure_hipaa_hitrust_v92_1699_09l1organizational
@@ -16,5 +15,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

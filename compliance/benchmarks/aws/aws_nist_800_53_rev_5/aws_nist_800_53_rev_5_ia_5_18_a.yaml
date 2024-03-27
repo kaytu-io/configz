@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_5_18_a
 Title: IA-5(18)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ [Assignment: organization-defined password managers] to generate and manage passwords."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

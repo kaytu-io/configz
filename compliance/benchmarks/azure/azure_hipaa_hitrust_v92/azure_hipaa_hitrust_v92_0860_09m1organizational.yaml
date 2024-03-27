@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0860_09m1organizational
 Title: 0860.09m1Organizational.9-09.m 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization formally manages equipment on the network, including equipment in user areas.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Network
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_network_security_group_diagnostic_setting_deployed

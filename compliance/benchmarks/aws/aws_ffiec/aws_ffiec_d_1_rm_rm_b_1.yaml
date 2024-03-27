@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_1_rm_rm_b_1
 Title: D1.RM.Rm.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: An information security and business continuity risk management function(s) exists within the institution.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_backup_plan_min_retention_35_days

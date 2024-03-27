@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_8
 Title: Requirement 8 - Identify and authenticate access to system components
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Assigning a unique identification (ID) to each person with access ensures that actions taken on critical data and systems are performed by, and can be traced to, known and authorized users. Requirements apply to all accounts, including point of sale accounts, with administrative capabilities and all accounts with access to stored cardholder data. Requirements do not apply to accounts used by consumers (eg.,cardholders).
 Children:
 - azure_pci_dss_v321_requirement_8_1
@@ -18,5 +17,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_foundational_security_dms
 Title: DMS
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/DMS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible

@@ -1,7 +1,6 @@
 ID: aws_foundational_security_waf
 Title: WAF
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/WAF
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_waf_web_acl_logging_enabled
 - aws_waf_regional_rule_condition_attached

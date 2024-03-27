@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_13_a
 Title: SI-4(13)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Analyze communications traffic and event patterns for the system.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

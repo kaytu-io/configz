@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_7
 Title: SC-7(7) Split Tunneling For Remote Devices
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Prevent split tunneling for remote devices connecting to organizational systems unless the split tunnel is securely provisioned using [Assignment: organization-defined safeguards]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

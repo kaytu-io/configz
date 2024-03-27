@@ -1,7 +1,6 @@
 ID: aws-config-cis-aws-fb-v1.3-level1
 Title: AWS Config CIS AWS FB v1.3 Level1
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CIS AWS FB v1.3 Level1
 Children: []
 Tags:

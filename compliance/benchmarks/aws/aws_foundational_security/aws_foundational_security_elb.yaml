@@ -1,7 +1,6 @@
 ID: aws_foundational_security_elb
 Title: ELB
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/ELB
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_lb_redirect_http_request_to_https
 - aws_elb_classic_lb_use_ssl_certificate

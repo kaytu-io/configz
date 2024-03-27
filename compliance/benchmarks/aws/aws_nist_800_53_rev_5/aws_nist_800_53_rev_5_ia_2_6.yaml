@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_2_6
 Title: IA-2(6) Acces To Accounts — Separate Device
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement multi-factor authentication for [Selection (one or more): local; network; remote] access to [Selection (one or more): privileged accounts; non-privileged accounts] such that: (a) One of the factors is provided by a device separate from the system gaining access; and (b) The device meets [Assignment: organization-defined strength of mechanism requirements]."
 Children:
 - aws_nist_800_53_rev_5_ia_2_6_a
@@ -16,7 +15,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_hardware_mfa_enabled
 - aws_iam_root_user_mfa_enabled

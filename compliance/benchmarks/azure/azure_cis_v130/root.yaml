@@ -1,3 +1,7 @@
+ID: azure_cis_v130
+Title: CIS v1.3.0 for Azure
+ReferenceCode: ""
+Description: The CIS Microsoft Azure Foundations Security Benchmark provides prescriptive guidance for establishing a secure baseline configuration for Microsoft Azure.
 Children:
 - azure_cis_v130_1
 - azure_cis_v130_2
@@ -8,11 +12,6 @@ Children:
 - azure_cis_v130_7
 - azure_cis_v130_8
 - azure_cis_v130_9
-Connector: Azure
-Controls: null
-Description: The CIS Microsoft Azure Foundations Security Benchmark provides prescriptive guidance for establishing a secure baseline configuration for Microsoft Azure.
-Enabled: true
-ID: azure_cis_v130
 Tags:
   category:
   - Compliance
@@ -25,11 +24,15 @@ Tags:
   kaytu_category:
   - Best Practices
   kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
   plugin:
   - azure
   service:
   - Azure
   type:
   - Benchmark
-Title: CIS v1.3.0 for Azure
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

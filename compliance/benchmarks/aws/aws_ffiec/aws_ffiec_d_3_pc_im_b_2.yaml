@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_im_b_2
 Title: D3.PC.IM.B.2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Systems that are accessed from the Internet or by external parties are protected by firewalls or other similar devices.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_use_waf_web_acl
 - aws_elb_application_lb_waf_enabled

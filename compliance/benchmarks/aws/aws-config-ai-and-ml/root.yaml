@@ -1,7 +1,6 @@
 ID: aws-config-ai-and-ml
 Title: AWS Config AI and ML
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config AI and ML
 Children: []
 Tags:

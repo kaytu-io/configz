@@ -1,7 +1,6 @@
 ID: aws_soc_2_legacy_cc_6_7
 Title: CC6.7 The entity restricts the transmission, movement, and removal of information to authorized internal and external users and processes, and protects it during transmission, movement, or removal to meet the entity’s objectives
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -21,7 +20,10 @@ Tags:
   - automated
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_stage_cache_encryption_at_rest_enabled

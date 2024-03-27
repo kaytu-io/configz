@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_5_4
 Title: 5.4 Restrict Administrator Privileges to Dedicated Administrator Accounts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Restrict administrator privileges to dedicated administrator accounts on enterprise assets. Conduct general computing activities, such as internet browsing, email, and productivity suite use, from the user's primary, non-privileged account.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_policy_custom_no_star_star
 - aws_iam_root_user_no_access_keys

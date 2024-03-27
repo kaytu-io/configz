@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_12101_09ab1organizational
 Title: 12101.09ab1Organizational.3-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization specifies how often audit logs are reviewed, how the reviews are documented, and the specific roles and responsibilities of the personnel conducting the reviews, including the professional certifications or other qualifications required.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_scale_set_log_analytics_agent_installed

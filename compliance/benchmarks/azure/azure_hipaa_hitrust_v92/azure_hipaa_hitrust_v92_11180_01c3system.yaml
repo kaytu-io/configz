@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_11180_01c3system
 Title: 11180.01c3System.6-01.c 01.02 Authorized Access to Information Systems
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Access to management functions or administrative consoles for systems hosting virtualized systems are restricted to personnel based upon the principle of least privilege and supported through technical controls.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_jit_access_protected

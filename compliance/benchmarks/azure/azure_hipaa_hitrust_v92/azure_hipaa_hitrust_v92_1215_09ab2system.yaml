@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1215_09ab2system
 Title: 1215.09ab2System.7-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Auditing and monitoring systems employed by the organization support audit reduction and report generation.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_log_analytics_agent_installed

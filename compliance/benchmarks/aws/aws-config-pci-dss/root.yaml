@@ -1,7 +1,6 @@
 ID: aws-config-pci-dss
 Title: AWS Config PCI DSS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config PCI DSS
 Children: []
 Tags:

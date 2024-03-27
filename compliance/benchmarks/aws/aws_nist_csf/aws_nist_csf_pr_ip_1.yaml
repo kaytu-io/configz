@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ip_1
 Title: PR.IP-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: A baseline configuration of information technology/industrial control systems is created and maintained incorporating security principles (e.g. concept of least functionality).
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_part_of_organizations
 - aws_autoscaling_launch_config_hop_limit

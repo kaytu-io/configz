@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_5_1
 Title: CM-5(1) Automated Access Enforcement And Audit Records
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Enforce access restrictions using [Assignment: organization-defined automated mechanisms]; and b.\u2003Automatically generate audit records of the enforcement actions."
 Children:
 - aws_nist_800_53_rev_5_cm_5_1_a
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

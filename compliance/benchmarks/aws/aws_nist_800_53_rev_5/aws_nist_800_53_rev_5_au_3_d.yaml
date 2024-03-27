@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_3_d
 Title: AU-3(d)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Ensure that audit records contain information that establishes the following: d. Source of the event."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

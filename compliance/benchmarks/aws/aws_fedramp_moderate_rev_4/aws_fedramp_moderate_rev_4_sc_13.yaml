@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_sc_13
 Title: Use of Cryptography (SC-13)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system implements FIPS-validated or NSA-approved cryptography in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_kms_key_not_pending_deletion
 - aws_redshift_cluster_kms_enabled

@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_si_2
 Title: Flaw Remediation (SI-2)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization identifies, reports, and corrects information system flaws, tests software and firmware updates related to flaw remediation for effectiveness and potential side effects before installation, installs security-relevant software and firmware updates within the organization-defined time period of the release of the updates, and incorporates flaw remediation into the organizational configuration management process.
 Children:
 - azure_nist_sp_800_53_rev_5_si_2_6
@@ -16,7 +15,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_azure_defender_enabled
 - azure_appservice_function_app_latest_http_version

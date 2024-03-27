@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_crisis_response
 Title: Your Crisis Response
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: As your strategy for responding to and recovering from compromise, this is an essential element of your organization's Culture of Cyber Readiness. Your task for this element is to limit damage and quicken restoration of normal operations.
 Children:
 - aws_cisa_cyber_essentials_your_crisis_response_2
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

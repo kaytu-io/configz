@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_3
 Title: 3 Data Protection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop processes and technical controls to identify, classify, securely handle, retain, and dispose of data.
 Children:
 - aws_cis_controls_v8_ig1_3_3
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

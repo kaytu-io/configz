@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1121_01j3organizational
 Title: 1121.01j3Organizational.2-01.j 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization ensures that redundant user IDs are not issued to other users and that all users are uniquely identified and authenticated for both local and remote access to information systems.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_fedramp_low_rev_4_sa_3
 Title: System Development Life Cycle (SA-3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization manages the information system using organization-defined system development life cycle, defines and documents information security roles and responsibilities throughout the system development life cycle, identifies individuals having information security roles and responsibilities and integrates the organizational information security risk management process into system development life cycle activities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
 - aws_codebuild_project_source_repo_oauth_configured

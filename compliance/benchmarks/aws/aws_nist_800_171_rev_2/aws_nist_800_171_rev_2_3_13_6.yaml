@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_13_6
 Title: 3.13.6 Deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: This requirement applies to inbound and outbound network communications traffic at the system boundary and at identified points within the system. A deny-all, permit-by-exception network communications traffic policy ensures that only those connections which are essential and approved are allowed.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_security_group_restrict_ingress_common_ports_all
 - aws_vpc_security_group_restrict_ingress_ssh_all

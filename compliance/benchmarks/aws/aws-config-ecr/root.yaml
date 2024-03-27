@@ -1,7 +1,6 @@
 ID: aws-config-ecr
 Title: AWS Config ECR
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config ECR
 Children: []
 Tags:

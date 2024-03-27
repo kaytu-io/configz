@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ac_2_1
 Title: AC-2(1) Automated System Account Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization employs automated mechanisms to support the management of information system accounts.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_iam_account_password_policy_strong_min_reuse_24

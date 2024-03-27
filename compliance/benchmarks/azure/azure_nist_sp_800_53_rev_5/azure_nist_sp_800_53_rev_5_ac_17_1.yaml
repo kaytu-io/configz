@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_17_1
 Title: Monitoring and Control AC-17(1)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system monitors and controls remote access methods.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_app_configuration_private_link_used
 - azure_appservice_api_app_remote_debugging_disabled

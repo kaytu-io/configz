@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_3_3_b
 Title: IA-3(3)(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Audit lease information when assigned to a device.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_wafv2_web_acl_logging_enabled

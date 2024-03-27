@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_14_a
 Title: AU-14(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Provide and implement the capability for [Assignment: organization-defined users or roles] to [Selection (one or more): record; view; hear; log] the content of a user session under [Assignment: organization-defined circumstances]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_autoscaling_group_with_lb_use_health_check

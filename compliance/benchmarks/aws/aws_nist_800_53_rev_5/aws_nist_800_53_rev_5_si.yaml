@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si
 Title: System and Information integrity (SI)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The SI control family correlates to controls that protect system and information integrity. These include flaw remediation, malicious code protection, information system monitoring, security alerts, software and firmware integrity, and spam protection.
 Children:
 - aws_nist_800_53_rev_5_si_1
@@ -25,5 +24,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

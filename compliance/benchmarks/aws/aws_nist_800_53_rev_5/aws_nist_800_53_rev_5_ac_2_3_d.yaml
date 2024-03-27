@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_2_3_d
 Title: AC-2(3)(d)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Disable accounts within [Assignment: organization-defined time period] when the accounts: (d) Have been inactive for [Assignment: organization-defined time period]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14
 - aws_iam_user_unused_credentials_90

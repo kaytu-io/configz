@@ -1,7 +1,6 @@
 ID: aws-config-bnm-rmit
 Title: AWS Config BNM RMiT
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config BNM RMiT
 Children: []
 Tags:

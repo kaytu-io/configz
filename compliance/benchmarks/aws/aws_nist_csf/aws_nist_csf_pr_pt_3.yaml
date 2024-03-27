@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_pt_3
 Title: PR.PT-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The principle of least functionality is incorporated by configuring systems to provide only essential capabilities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_codebuild_project_environment_privileged_mode_disabled

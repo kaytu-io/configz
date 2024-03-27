@@ -1,7 +1,6 @@
 ID: aws_foundational_security_ecr
 Title: Elastic Container Registry
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/ECR
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ecr_repository_image_scan_on_push_enabled
 - aws_ecr_repository_tag_immutability_enabled

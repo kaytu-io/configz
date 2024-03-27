@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_sc
 Title: System and Communications Protection (SC)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The SC control family is responsible for systems and communications protection procedures. This includes boundary protection, protection of information at rest, collaborative computing devices, cryptographic protection, denial of service protection, and many others.
 Children:
 - azure_nist_sp_800_53_rev_5_sc_3
@@ -21,5 +20,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

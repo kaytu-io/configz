@@ -1,7 +1,6 @@
 ID: aws-config-cisa-cyber-essentials
 Title: AWS Config CISA Cyber Essentials
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CISA Cyber Essentials
 Children: []
 Tags:

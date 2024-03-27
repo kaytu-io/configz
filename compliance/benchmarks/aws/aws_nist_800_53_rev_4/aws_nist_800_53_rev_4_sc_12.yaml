@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc_12
 Title: Cryptographic Key Establishment And Management (SC-12)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with [Assignment: organization-defined requirements for key generation, distribution, storage, access, and destruction]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_kms_cmk_rotation_enabled

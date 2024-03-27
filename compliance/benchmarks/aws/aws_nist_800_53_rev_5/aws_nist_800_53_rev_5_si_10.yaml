@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_10
 Title: Information Input Validation (SI-10)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Check the validity of the following information inputs: [Assignment: organization-defined information inputs to the system]."
 Children:
 - aws_nist_800_53_rev_5_si_10_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_28_1
 Title: SC-28(1) Cryptographic Protection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement cryptographic mechanisms to prevent unauthorized disclosure and modification of the following information at rest on [Assignment: organization-defined system components or media]: [Assignment: organization-defined information]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

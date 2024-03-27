@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_5_8
 Title: IA-5(8) Multiple System Accounts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement [Assignment: organization-defined security controls] to manage the risk of compromise due to individuals having accounts on multiple systems."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_no_access_keys

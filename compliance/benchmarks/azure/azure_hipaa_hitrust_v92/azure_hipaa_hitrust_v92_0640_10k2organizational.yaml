@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0640_10k2organizational
 Title: 0640.10k2Organizational.1012-10.k 10.05 Security In Development and Support Processes
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Where development is outsourced, change control procedures to address security are included in the contract(s) and specifically require the developer to track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel or roles.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

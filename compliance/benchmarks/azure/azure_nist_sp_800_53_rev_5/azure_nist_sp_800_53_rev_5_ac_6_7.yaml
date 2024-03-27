@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_6_7
 Title: Review of User Privileges AC-6(7)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization reviews organization-defined frequency the privileges assigned to organization-defined roles or classes of users to validate the need for such privileges and reassigns or removes privileges, if necessary, to correctly reflect organizational mission/business needs.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_no_custom_role
 - azure_iam_subscription_owner_max_3

@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_systems_1
 Title: Your Systems-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Learn what is on your network. Maintain inventories of hardware and software assets to know what is in play and at-risk from attack.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ebs_volume_unused
 - aws_ec2_instance_ssm_managed

@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_6_5
 Title: 6.5 Require MFA for Administrative Access
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Require MFA for all administrative access accounts, where supported, on all enterprise assets, whether managed on-site or through a third-party provider.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_mfa_enabled
 - aws_iam_user_console_access_mfa_enabled

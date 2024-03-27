@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_28_2
 Title: SC-28(2) Offline Storage
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Remove the following information from online storage and store offline in a secure location: [Assignment: organization-defined information]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CloudWatch
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_log_group_retention_period_365

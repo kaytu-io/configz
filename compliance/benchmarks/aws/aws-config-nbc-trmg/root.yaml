@@ -1,7 +1,6 @@
 ID: aws-config-nbc-trmg
 Title: AWS Config NBC TRMG
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NBC TRMG
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_4_7
 Title: 3.4.7 Restrict, disable, or prevent the use of nonessential programs, functions, ports, protocols, and services
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Restricting the use of nonessential software (programs) includes restricting the roles allowed to approve program execution; prohibiting auto-execute; program blacklisting and whitelisting; or restricting the number of program instances executed at the same time. The organization makes a security-based determination which functions, ports, protocols, and/or services are restricted. Bluetooth, File Transfer Protocol (FTP), and peer-to-peer networking are examples of protocols organizations consider preventing the use of, restricting, or disabling.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_default_security_group_restricts_all_traffic
 - aws_vpc_security_group_restrict_ingress_common_ports_all

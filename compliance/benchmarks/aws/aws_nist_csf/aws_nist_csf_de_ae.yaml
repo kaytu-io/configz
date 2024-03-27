@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_ae
 Title: Anomalies and Events (DE.AE)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Anomalous activity is detected and the potential impact of events is understood.
 Children:
 - aws_nist_csf_de_ae_1
@@ -20,5 +19,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

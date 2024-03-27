@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ca_7_4
 Title: CA-7(4) Risk Monitoring
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Ensure risk monitoring is an integral part of the continuous monitoring strategy that includes the following: a.\u2003Effectiveness monitoring; b.\u2003Compliance monitoring; and c.\u2003Change monitoring."
 Children:
 - aws_nist_800_53_rev_5_ca_7_4_c
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

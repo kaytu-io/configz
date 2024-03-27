@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ia_2_1_2
 Title: IA-2(1)(2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: (1) The information system implements multifactor authentication for network access to privileged accounts. (2) The information system implements multifactor authentication for network access to non- privileged accounts.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_mfa_enabled
 - aws_iam_user_mfa_enabled

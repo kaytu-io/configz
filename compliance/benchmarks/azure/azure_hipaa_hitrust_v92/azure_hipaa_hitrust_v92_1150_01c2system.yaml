@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1150_01c2system
 Title: 1150.01c2System.10-01.c 01.02 Authorized Access to Information Systems
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The access control system for the system components storing, processing or transmitting covered information is set with a default 'deny-all' setting.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Network
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_network_security_group_remote_access_restricted

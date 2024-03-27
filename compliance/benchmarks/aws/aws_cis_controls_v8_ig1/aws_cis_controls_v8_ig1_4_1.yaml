@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_4_1
 Title: 4.1 Establish and Maintain a Secure Configuration Process
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Establish and maintain a secure configuration process for enterprise assets (end-user devices, including portable and mobile, non-computing/IoT devices, and servers) and software (operating systems and applications). Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_part_of_organizations
 - aws_cloudtrail_security_trail_enabled

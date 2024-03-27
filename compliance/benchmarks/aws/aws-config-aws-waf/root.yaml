@@ -1,7 +1,6 @@
 ID: aws-config-aws-waf
 Title: AWS Config AWS WAF
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config AWS WAF
 Children: []
 Tags:

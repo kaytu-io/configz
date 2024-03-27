@@ -1,7 +1,6 @@
 ID: aws-config-nist-800-172
 Title: AWS Config NIST 800 172
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NIST 800 172
 Children: []
 Tags:

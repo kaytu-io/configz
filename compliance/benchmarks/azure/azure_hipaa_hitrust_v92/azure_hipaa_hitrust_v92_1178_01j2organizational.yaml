@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1178_01j2organizational
 Title: 1178.01j2Organizational.7-01.j 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

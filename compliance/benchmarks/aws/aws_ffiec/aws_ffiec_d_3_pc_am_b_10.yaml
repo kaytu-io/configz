@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_am_b_10
 Title: D3.PC.Am.B.10
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Production and non-production environments are segregated to prevent unauthorized access or changes to information assets. (*N/A if no production environment exists at the institution or the institution's third party.)
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_in_vpc
 - aws_vpc_security_group_restrict_ingress_common_ports_all

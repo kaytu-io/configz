@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_8_3
 Title: PCI DSS requirement 8.3
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Secure all individual non-console administrative access and all remote access to the cardholder data environment using multi-factor authentication. This requires at least two of the three authentication methods described in 8.2 are used for authentication. Using one factor twice (e.g. using two separate passwords) is not considered multi-factor authentication. This requirement applies to administrative personnel with non-console access to the CDE from within the entity's network, and all remote network access (including for users, administrators, and third-parties) originating from outside the entity's network.
 Children:
 - azure_pci_dss_v321_requirement_8_3_1
@@ -16,5 +15,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

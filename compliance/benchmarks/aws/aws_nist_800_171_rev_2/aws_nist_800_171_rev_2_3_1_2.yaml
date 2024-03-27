@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_1_2
 Title: 3.1.2 Limit system access to the types of transactions and functions that authorized users are permitted to execute
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Organizations may choose to define access privileges or other attributes by account, by type of account, or a combination of both. System account types include individual, shared, group, system, anonymous, guest, emergency, developer, manufacturer, vendor, and temporary. Other attributes required for authorizing access include restrictions on time-of-day, day-of-week, and point-oforigin. In defining other account attributes, organizations consider system-related requirements (e.g., system upgrades scheduled maintenance,) and mission or business requirements, (e.g., time zone differences, customer requirements, remote access to support travel requirements).
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_dms_replication_instance_not_publicly_accessible

@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_ae_2
 Title: DE.AE-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Detected events are analyzed to understand attack targets and methods.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_guardduty_finding_archived

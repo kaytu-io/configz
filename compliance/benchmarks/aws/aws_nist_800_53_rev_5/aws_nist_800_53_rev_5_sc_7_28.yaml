@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_28
 Title: SC-7(28) Connections To Public Networks
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Prohibit the direct connection of [Assignment: organization-defined system] to a public network."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

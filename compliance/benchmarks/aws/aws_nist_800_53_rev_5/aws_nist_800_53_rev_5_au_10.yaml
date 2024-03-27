@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_10
 Title: Non-Repudiation (AU-10)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Provide irrefutable evidence that an individual (or process acting on behalf of an individual) has performed [Assignment: organization-defined actions to be covered by non-repudiation]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

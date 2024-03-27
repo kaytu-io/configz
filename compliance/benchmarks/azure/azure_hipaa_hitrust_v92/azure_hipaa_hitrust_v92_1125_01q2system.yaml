@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1125_01q2system
 Title: 1125.01q2System.1-01.q 01.05 Operating System Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Multi-factor authentication methods are used in accordance with organizational policy, (e.g., for remote network access).
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

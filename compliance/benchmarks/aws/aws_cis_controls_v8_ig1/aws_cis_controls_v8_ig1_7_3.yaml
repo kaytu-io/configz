@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_7_3
 Title: 7.3 Perform Automated Operating System Patch Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Perform operating system updates on enterprise assets through automated patch management on a monthly, or more frequent, basis.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_redshift_cluster_maintenance_settings_check
 - aws_ssm_managed_instance_compliance_patch_compliant

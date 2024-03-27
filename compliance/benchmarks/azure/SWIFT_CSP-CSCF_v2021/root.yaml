@@ -1,87 +1,81 @@
 ID: SWIFT_CSP-CSCF_v2021
-Title: '[Preview]: SWIFT CSP-CSCF v2021'
+Title: "[Preview]: SWIFT CSP-CSCF v2021"
 ReferenceCode: ""
 Description: This initiative includes policies that address a subset of the SWIFT Customer Security Program's Customer Security Controls Framework v2021 controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/swift2021-init.
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
-    - public_network_access_on_azure_sql_database_should_be_disabled
-    - function_apps_should_use_managed_identity
-    - resource_logs_in_event_hub_should_be_enabled
-    - microsoft_defender_for_storage_should_be_enabled
-    - service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-    - app_service_apps_should_have_remote_debugging_turned_off
-    - activity_log_should_be_retained_for_at_least_one_year
-    - resource_logs_in_logic_apps_should_be_enabled
-    - vulnerability_assessment_should_be_enabled_on_your_sql_servers
-    - app_service_apps_should_use_a_virtual_network_service_endpoint
-    - app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
-    - cosmos_db_should_use_a_virtual_network_service_endpoint
-    - key_vault_should_use_a_virtual_network_service_endpoint
-    - app_service_apps_should_use_the_latest_tls_version
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - sql_server_should_use_a_virtual_network_service_endpoint
-    - azure_monitor_solution_'_security_and_audit'_must_be_deployed
-    - app_service_apps_should_use_managed_identity
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - azure_sql_database_should_be_running_tls_version_1.2_or_newer
-    - resource_logs_in_service_bus_should_be_enabled
-    - public_network_access_should_be_disabled_for_maria_db_servers
-    - authorized_ip_ranges_should_be_defined_on_kubernetes_services
-    - resource_logs_in_data_lake_analytics_should_be_enabled
-    - azure_key_vault_should_have_firewall_enabled
-    - subnets_should_be_associated_with_a_network_security_group
-    - enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - resource_logs_in_io_t_hub_should_be_enabled
-    - resource_logs_in_key_vault_should_be_enabled
-    - public_network_access_should_be_disabled_for_postgre_sql_servers
-    - sql_managed_instance_should_have_the_minimal_tls_version_of_1.2
-    - auditing_on_sql_server_should_be_enabled
-    - azure_monitor_should_collect_activity_logs_from_all_regions
-    - subscriptions_should_have_a_contact_email_address_for_security_issues
-    - event_hub_should_use_a_virtual_network_service_endpoint
-    - resource_logs_in_search_services_should_be_enabled
-    - resource_logs_in_azure_data_lake_store_should_be_enabled
-    - app_service_apps_should_only_be_accessible_over_https
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
-    - automation_account_variables_should_be_encrypted
-    - vm_image_builder_templates_should_use_private_link
-    - public_network_access_should_be_disabled_for_my_sql_servers
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - function_apps_should_have_remote_debugging_turned_off
-    - private_endpoint_connections_on_azure_sql_database_should_be_enabled
-    - sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - resource_logs_in_batch_accounts_should_be_enabled
-    - function_apps_should_use_the_latest_tls_version
-    - resource_logs_in_azure_stream_analytics_should_be_enabled
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
-    - storage_accounts_should_use_a_virtual_network_service_endpoint
-    - geo_redundant_storage_should_be_enabled_for_storage_accounts
-    - '[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall'
-    - both_operating_systems_and_data_disks_in_azure_kubernetes_service_clusters_should_be_encrypted_by_customer_managed_keys
-    - storage_accounts_should_restrict_network_access
-    - function_apps_should_only_be_accessible_over_https
-    - geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
+- public_network_access_on_azure_sql_database_should_be_disabled
+- function_apps_should_use_managed_identity
+- resource_logs_in_event_hub_should_be_enabled
+- microsoft_defender_for_storage_should_be_enabled
+- service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
+- app_service_apps_should_have_remote_debugging_turned_off
+- activity_log_should_be_retained_for_at_least_one_year
+- resource_logs_in_logic_apps_should_be_enabled
+- vulnerability_assessment_should_be_enabled_on_your_sql_servers
+- app_service_apps_should_use_a_virtual_network_service_endpoint
+- app_service_apps_should_have_client_certificates_(_incoming_client_certificates)_enabled
+- cosmos_db_should_use_a_virtual_network_service_endpoint
+- key_vault_should_use_a_virtual_network_service_endpoint
+- app_service_apps_should_use_the_latest_tls_version
+- secure_transfer_to_storage_accounts_should_be_enabled
+- sql_server_should_use_a_virtual_network_service_endpoint
+- azure_monitor_solution_'_security_and_audit'_must_be_deployed
+- app_service_apps_should_use_managed_identity
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_my_sql
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- azure_sql_database_should_be_running_tls_version_1.2_or_newer
+- resource_logs_in_service_bus_should_be_enabled
+- public_network_access_should_be_disabled_for_maria_db_servers
+- authorized_ip_ranges_should_be_defined_on_kubernetes_services
+- resource_logs_in_data_lake_analytics_should_be_enabled
+- azure_key_vault_should_have_firewall_enabled
+- subnets_should_be_associated_with_a_network_security_group
+- enforce_ssl_connection_should_be_enabled_for_postgre_sql_database_servers
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- resource_logs_in_io_t_hub_should_be_enabled
+- resource_logs_in_key_vault_should_be_enabled
+- public_network_access_should_be_disabled_for_postgre_sql_servers
+- sql_managed_instance_should_have_the_minimal_tls_version_of_1.2
+- auditing_on_sql_server_should_be_enabled
+- azure_monitor_should_collect_activity_logs_from_all_regions
+- subscriptions_should_have_a_contact_email_address_for_security_issues
+- event_hub_should_use_a_virtual_network_service_endpoint
+- resource_logs_in_search_services_should_be_enabled
+- resource_logs_in_azure_data_lake_store_should_be_enabled
+- app_service_apps_should_only_be_accessible_over_https
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- enforce_ssl_connection_should_be_enabled_for_my_sql_database_servers
+- automation_account_variables_should_be_encrypted
+- vm_image_builder_templates_should_use_private_link
+- public_network_access_should_be_disabled_for_my_sql_servers
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- function_apps_should_have_remote_debugging_turned_off
+- private_endpoint_connections_on_azure_sql_database_should_be_enabled
+- sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- resource_logs_in_batch_accounts_should_be_enabled
+- function_apps_should_use_the_latest_tls_version
+- resource_logs_in_azure_stream_analytics_should_be_enabled
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_maria_db
+- storage_accounts_should_use_a_virtual_network_service_endpoint
+- geo_redundant_storage_should_be_enabled_for_storage_accounts
+- "[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall"
+- both_operating_systems_and_data_disks_in_azure_kubernetes_service_clusters_should_be_encrypted_by_customer_managed_keys
+- storage_accounts_should_restrict_network_access
+- function_apps_should_only_be_accessible_over_https
+- geo_redundant_backup_should_be_enabled_for_azure_database_for_postgre_sql

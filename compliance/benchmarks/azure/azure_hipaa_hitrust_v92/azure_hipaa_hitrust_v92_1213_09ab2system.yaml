@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1213_09ab2system
 Title: 1213.09ab2System.128-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Automated systems deployed throughout the organization's environment are used to monitor key events and anomalous activity, and analyze system logs, the results of which are reviewed regularly.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_securitycenter_automatic_provisioning_monitoring_agent_on

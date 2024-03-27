@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_cp
 Title: Contingency Planning (CP)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The CP control family includes controls specific to an organization's contingency plan if a cybersecurity event should occur. This includes controls like contingency plan testing, updating, training, and backups, and system reconstitution.
 Children:
 - azure_nist_sp_800_53_rev_5_cp_6
@@ -18,5 +17,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

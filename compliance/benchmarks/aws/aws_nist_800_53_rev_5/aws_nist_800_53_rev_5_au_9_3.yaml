@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_9_3
 Title: AU-9(3) Cryptographic Protection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement cryptographic mechanisms to protect the integrity of audit information and audit tools.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_apigateway_stage_cache_encryption_at_rest_enabled

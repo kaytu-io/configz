@@ -1,7 +1,6 @@
 ID: aws-config-amazon-s3-with-remediation
 Title: AWS Config Amazon S3 with Remediation
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Amazon S3 with Remediation
 Children: []
 Tags:

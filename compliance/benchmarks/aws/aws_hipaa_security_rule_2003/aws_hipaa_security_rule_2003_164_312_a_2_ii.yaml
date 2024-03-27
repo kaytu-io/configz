@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_312_a_2_ii
 Title: 164.312(a)(2)(ii) Emergency access procedure
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Establish (and implement as needed) procedures for obtaining necessary electronic protected health information during an emergency.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_encryption_enabled

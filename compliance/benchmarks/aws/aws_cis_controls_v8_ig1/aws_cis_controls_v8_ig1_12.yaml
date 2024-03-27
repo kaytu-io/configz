@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_12
 Title: 12 Network Infrastructure Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Establish, implement, and actively manage (track, report, correct) network devices, in order to prevent attackers from exploiting vulnerable network services and access points.
 Children:
 - aws_cis_controls_v8_ig1_12_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

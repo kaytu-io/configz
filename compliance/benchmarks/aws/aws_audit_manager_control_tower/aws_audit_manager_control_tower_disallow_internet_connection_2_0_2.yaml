@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_disallow_internet_connection_2_0_2
 Title: 2.0.2 - Disallow internet connection through SSH
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow internet connection through SSH - Checks whether security groups that are in use disallow unrestricted incoming SSH traffic.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/VPC
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_security_group_restrict_ingress_ssh_all

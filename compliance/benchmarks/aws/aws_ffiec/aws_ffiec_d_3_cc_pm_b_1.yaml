@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_cc_pm_b_1
 Title: D3.CC.PM.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: A patch management program is implemented and ensures that software and firmware patches are applied in a timely manner.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_rds_db_instance_automatic_minor_version_upgrade_enabled
 - aws_redshift_cluster_maintenance_settings_check

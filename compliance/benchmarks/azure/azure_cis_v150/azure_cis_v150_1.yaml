@@ -1,7 +1,6 @@
 ID: azure_cis_v150_1
 Title: 1 Identity and Access Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children:
 - azure_cis_v150_1_1
@@ -21,7 +20,10 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_ad_guest_user_reviewed_monthly
 - azure_iam_user_not_allowed_to_register_application

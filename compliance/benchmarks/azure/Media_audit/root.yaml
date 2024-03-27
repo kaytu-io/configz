@@ -1,31 +1,25 @@
 ID: Media_audit
-Title: '[Preview]: Motion Picture Association of America (MPAA)'
+Title: "[Preview]: Motion Picture Association of America (MPAA)"
 ReferenceCode: ""
 Description: This initiative includes audit and virtual machine extension deployment policies that address a subset of Motion Picture Association of America (MPAA) security and guidelines controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/mpaa-init.
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
-    - all_authorization_rules_except_root_manage_shared_access_key_should_be_removed_from_service_bus_namespace
-    - resource_logs_in_search_services_should_be_enabled
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - storage_accounts_should_restrict_network_access
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
-    - resource_logs_in_logic_apps_should_be_enabled
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- azure_role_based_access_control_(_rbac)_should_be_used_on_kubernetes_services
+- all_authorization_rules_except_root_manage_shared_access_key_should_be_removed_from_service_bus_namespace
+- resource_logs_in_search_services_should_be_enabled
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- storage_accounts_should_restrict_network_access
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- sql_servers_with_auditing_to_storage_account_destination_should_be_configured_with_90_days_retention_or_higher
+- resource_logs_in_logic_apps_should_be_enabled

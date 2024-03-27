@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ac_17_1
 Title: AC-17(1) Automated Monitoring/Control
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system monitors and controls remote access methods.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

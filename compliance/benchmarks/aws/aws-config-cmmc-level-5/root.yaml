@@ -1,7 +1,6 @@
 ID: aws-config-cmmc-level-5
 Title: AWS Config CMMC Level 5
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CMMC Level 5
 Children: []
 Tags:

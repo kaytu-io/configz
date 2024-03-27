@@ -1,7 +1,6 @@
 ID: aws_soc_2_legacy_cc_2
 Title: CC2 Common Criteria Related to Communication and Information
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The criteria relevant to how the entity (i) uses relevant information, (ii) communicates internally, and (iii) communicates externally.
 Children:
 - aws_soc_2_legacy_cc_2_1
@@ -18,5 +17,8 @@ Tags:
   - cc2
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

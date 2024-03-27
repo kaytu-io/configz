@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ra_1_a
 Title: RA-1(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Establish and maintain a cyber threat hunting capability to: 1. Search for indicators of compromise in organizational systems; and 2. Detect, track, and disrupt threats that evade existing controls."
 Children:
 - aws_nist_800_53_rev_5_ra_1_a_1
@@ -17,6 +16,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

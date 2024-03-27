@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_1_rm
 Title: Risk Management (RM)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Risk Management includes a risk management program, risk assessment process, and audit function to effectively manage risk and assess the effectiveness of key controls.
 Children:
 - aws_ffiec_d_1_rm_ra_b_2
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ds_1
 Title: PR.DS-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Data-at-rest is protected.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

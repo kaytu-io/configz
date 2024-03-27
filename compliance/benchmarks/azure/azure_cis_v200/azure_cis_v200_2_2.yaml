@@ -1,7 +1,6 @@
 ID: azure_cis_v200_2_2
 Title: 2.2 Microsoft Defender for IoT
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,5 +18,8 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_3_2
 Title: PCI DSS requirement 3.2
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Do not store sensitive authentication data after authorization (even if it is encrypted). Render all sensitive authentication data unrecoverable upon completion of the authorization process. Issuers and related entities may store sensitive authentication data if there is a business justification, and the data is stored securely.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_external_user_with_owner_role
 - azure_iam_external_user_with_read_permission

@@ -1,7 +1,6 @@
 ID: aws_foundational_security_acm
 Title: ACM
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/ACM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days

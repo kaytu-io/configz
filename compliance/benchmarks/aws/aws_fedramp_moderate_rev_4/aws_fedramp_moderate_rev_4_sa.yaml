@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_sa
 Title: System and Services Acquisition (SA)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The SA control family correlates with controls that protect allocated resources and an organization’s system development life cycle. This includes information system documentation controls, development configuration management controls, and developer security testing and evaluation controls.
 Children:
 - aws_fedramp_moderate_rev_4_sa_3
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

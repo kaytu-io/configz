@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_2
 Title: Account Management (AC-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Manage system accounts, group memberships, privileges, workflow, notifications, deactivations, and authorizations.
 Children:
 - aws_fedramp_moderate_rev_4_ac_2_1
@@ -22,5 +21,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

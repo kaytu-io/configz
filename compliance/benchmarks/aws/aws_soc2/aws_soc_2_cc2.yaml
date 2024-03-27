@@ -1,8 +1,12 @@
 ID: aws_soc_2_cc2
-Children:
-  - aws_soc_2_cc2_1
-Connector: AWS
-Controls: null
-ReferenceCode: CC2
-Description:
 Title: Communication and Information
+ReferenceCode: CC2
+Description: ""
+Children:
+- aws_soc_2_cc2_1
+Tags: {}
+Managed: false
+Enabled: false
+AutoAssign: false
+Baseline: false
+Controls: []

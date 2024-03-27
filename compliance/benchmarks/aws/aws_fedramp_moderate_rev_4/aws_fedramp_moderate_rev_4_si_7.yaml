@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_si_7
 Title: Software, Firmware, and Information Integrity (SI-7)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization employs integrity verification tools to detect unauthorized changes to [Assignment: organization-defined software, firmware, and information]."
 Children:
 - aws_fedramp_moderate_rev_4_si_7_1
@@ -16,6 +15,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled

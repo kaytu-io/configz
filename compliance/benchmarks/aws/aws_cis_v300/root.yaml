@@ -1,7 +1,6 @@
 ID: aws_cis_v300
 Title: CIS v3.0.0 for AWS
 ReferenceCode: ""
-Connector: AWS
 Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
 Children:
 - aws_cis_v300_1
@@ -16,18 +15,18 @@ Tags:
   - "true"
   cis_version:
   - v3.0.0
+  kaytu_benchmark_type:
+  - compliance
+  kaytu_category:
+  - Best Practices
+  kaytu_logo:
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
   plugin:
   - aws
   service:
   - AWS
   type:
   - Benchmark
-  kaytu_benchmark_type:
-    - compliance
-  kaytu_category:
-    - Best Practices
-  kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
 Managed: true
 Enabled: true
 AutoAssign: false

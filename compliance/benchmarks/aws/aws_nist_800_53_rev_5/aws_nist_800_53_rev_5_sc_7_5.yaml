@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_5
 Title: SC-7(5) Deny By Default — Allow By Exception
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Deny network communications traffic by default and allow network communications traffic by exception [Selection (one or more): at managed interfaces; for [Assignment: organization-defined systems]]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_classic_lb_use_ssl_certificate

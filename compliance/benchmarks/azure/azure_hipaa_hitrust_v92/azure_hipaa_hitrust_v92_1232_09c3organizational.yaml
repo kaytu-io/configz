@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1232_09c3organizational
 Title: 1232.09c3Organizational.12-09.c 09.01 Documented Operating Procedures
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Access for individuals responsible for administering access controls is limited to the minimum necessary based upon each user's role and responsibilities and these individuals cannot access audit functions related to these controls.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Network
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_network_security_group_rdp_access_restricted

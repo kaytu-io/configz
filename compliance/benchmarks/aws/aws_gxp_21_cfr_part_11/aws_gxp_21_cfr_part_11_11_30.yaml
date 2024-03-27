@@ -1,7 +1,6 @@
 ID: aws_gxp_21_cfr_part_11_11_30
 Title: 11.30 Controls for open systems
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Persons who use open systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, as appropriate, the confidentiality of electronic records from the point of their creation to the point of their receipt. Such procedures and controls shall include those identified in 11.10, as appropriate, and additional measures such as document encryption and use of appropriate digital signature standards to ensure, as necessary under the circumstances, record authenticity, integrity, and confidentiality.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_apigateway_stage_cache_encryption_at_rest_enabled

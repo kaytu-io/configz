@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_au_6_1_3
 Title: AU-6(1)(3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: (1) The organization employs automated mechanisms to integrate audit review, analysis, and reporting processes to support organizational processes for investigation and response to suspicious activities. (3) The organization analyzes and correlates audit records across different repositories to gain organization-wide situational awareness.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

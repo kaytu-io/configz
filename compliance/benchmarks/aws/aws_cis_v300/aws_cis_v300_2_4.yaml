@@ -1,7 +1,6 @@
 ID: aws_cis_v300_2_4
 Title: 2.4 Elastic File System (EFS)
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children: []
 Tags:

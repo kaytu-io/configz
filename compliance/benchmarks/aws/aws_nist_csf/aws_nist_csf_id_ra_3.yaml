@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_ra_3
 Title: ID.RA-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Threats, both internal and external, are identified and documented.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1619_09l1organizational
 Title: 1619.09l1Organizational.7-09.l 09.05 Information Back-Up
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Inventory records for the backup copies, including content and current location, are maintained.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/MariaDB
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_mariadb_server_geo_redundant_backup_enabled

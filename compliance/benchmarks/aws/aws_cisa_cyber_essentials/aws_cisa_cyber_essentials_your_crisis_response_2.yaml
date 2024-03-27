@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_crisis_response_2
 Title: Your Crisis Response-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Lead development of an internal reporting structure to detect, communicate and contain attacks.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

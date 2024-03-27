@@ -1,7 +1,6 @@
 ID: aws_cis_v300_2_2
 Title: 2.2 Elastic Compute Cloud (EC2)
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children: []
 Tags:

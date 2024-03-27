@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_8
 Title: Time Stamps (AU-8)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Use internal system clocks to generate time stamps for audit records.
 Children:
 - aws_nist_800_53_rev_5_au_8_b
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

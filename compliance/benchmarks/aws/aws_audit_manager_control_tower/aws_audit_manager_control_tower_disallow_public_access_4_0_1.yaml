@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_disallow_public_access_4_0_1
 Title: 4.0.1 - Disallow public access to RDS database instances
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow public access to RDS database instances - Checks whether the Amazon Relational Database Service (RDS) instances are not publicly accessible. The rule is non-compliant if the publiclyAccessible field is true in the instance configuration item.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/RDS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_rds_db_instance_prohibit_public_access

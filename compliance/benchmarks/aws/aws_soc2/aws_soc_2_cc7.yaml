@@ -1,10 +1,14 @@
 ID: aws_soc_2_cc7
-Children:
-  - aws_soc_2_cc7_1
-  - aws_soc_2_cc7_2
-  - aws_soc_2_cc7_5
-Connector: AWS
-Controls: null
-ReferenceCode: CC7
-Description:
 Title: System Operations
+ReferenceCode: CC7
+Description: ""
+Children:
+- aws_soc_2_cc7_1
+- aws_soc_2_cc7_2
+- aws_soc_2_cc7_5
+Tags: {}
+Managed: false
+Enabled: false
+AutoAssign: false
+Baseline: false
+Controls: []

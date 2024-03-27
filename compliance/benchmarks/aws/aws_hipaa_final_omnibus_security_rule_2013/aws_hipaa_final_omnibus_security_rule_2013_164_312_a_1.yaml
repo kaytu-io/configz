@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_312_a_1
 Title: 164.312(a)(1) Access control
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement technical policies and procedures for electronic information systems that maintain electronic protected health information to allow access only to those persons or software programs that have been granted access rights as specified in 164.308(a)(4).
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values

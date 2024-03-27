@@ -1,7 +1,6 @@
 ID: aws-config-amazon-dynamodb
 Title: AWS Config Amazon DynamoDB
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Amazon DynamoDB
 Children: []
 Tags:

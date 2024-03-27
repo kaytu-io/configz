@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_312_a_2_i
 Title: 164.312(a)(2)(i) Unique user identification
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Assign a unique name and/or number for identifying and tracking user identity.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_s3_data_events_enabled
 - aws_iam_root_user_no_access_keys

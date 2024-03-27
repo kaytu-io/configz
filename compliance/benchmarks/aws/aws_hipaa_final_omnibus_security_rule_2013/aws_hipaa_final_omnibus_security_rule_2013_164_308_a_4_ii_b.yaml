@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_308_a_4_ii_b
 Title: 164.308(a)(4)(ii)(B) Access authorization
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement policies and procedures for granting access to electronic protected health information, for example, through access to a workstation, transaction, program, process, or other mechanism.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_iam_profile_attached
 - aws_emr_cluster_kerberos_enabled

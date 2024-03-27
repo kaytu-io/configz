@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0812_01n2organizational
 Title: 0812.01n2Organizational.8-01.n 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Remote devices establishing a non-remote connection are not allowed to communicate with external (remote) resources.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_latest_tls_version
 - azure_appservice_api_app_use_https

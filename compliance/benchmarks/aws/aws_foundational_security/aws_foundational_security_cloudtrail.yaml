@@ -1,7 +1,6 @@
 ID: aws_foundational_security_cloudtrail
 Title: CloudTrail
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/CloudTrail
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

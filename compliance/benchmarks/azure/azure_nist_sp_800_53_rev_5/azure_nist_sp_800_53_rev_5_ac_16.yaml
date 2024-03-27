@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_16
 Title: Security and Privacy Attributes (AC-16)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Support and maintains the binding of security attributes to information in storage, in process, and in transition.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_securitycenter_azure_defender_on_for_sqlservervm
 - azure_sql_server_azure_defender_enabled

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ia_5_1
 Title: IA-5(1) Password-Based Authentication
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system, for password-based authentication that enforces  minimum password complexity, stores and transmits only cryptographically-protected passwords, enforces password minimum and maximum lifetime restrictions, prohibits password reuse, allows the use of a temporary password for system logons with an immediate change to a permanent password etc.
 Children:
 - aws_fedramp_moderate_rev_4_ia_5_1_a_d_e
@@ -16,5 +15,8 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0947_09y2organizational
 Title: 0947.09y2Organizational.2-09.y 09.09 Electronic Commerce Services
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization ensures the storage of the transaction details are located outside of any publicly accessible environments (e.g., on a storage platform existing on the organization's intranet) and not retained and exposed on a storage medium directly accessible from the Internet.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/PostgreSQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_postgres_sql_ssl_enabled

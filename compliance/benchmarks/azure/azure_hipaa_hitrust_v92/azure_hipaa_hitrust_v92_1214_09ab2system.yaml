@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1214_09ab2system
 Title: 1214.09ab2System.3456-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Monitoring includes privileged operations, authorized access or unauthorized access attempts, including attempts to access deactivated accounts, and system alerts or failures.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Monitor
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_monitor_log_profile_enabled_for_all_regions

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0716_10m3organizational
 Title: 0716.10m3Organizational.1-10.m 10.06 Technical Vulnerability Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization conducts an enterprise security posture review as needed but no less than once within every three-hundred-sixty-five (365) days, in accordance with organizational IS procedures.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/SQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_sql_database_vulnerability_findings_resolved

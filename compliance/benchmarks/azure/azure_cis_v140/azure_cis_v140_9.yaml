@@ -1,7 +1,6 @@
 ID: azure_cis_v140_9
 Title: 9 AppService
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_authentication_enabled
 - azure_appservice_web_app_use_https

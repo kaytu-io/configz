@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_308_a_4_ii_a
 Title: 164.308(a)(4)(ii)(A) Isolating healthcare clearing house functions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: If a health care clearinghouse is part of a larger organization, the clearinghouse must implement policies and procedures that protect the electronic protected health information of the clearinghouse from unauthorized access by the larger organization.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_stage_cache_encryption_at_rest_enabled

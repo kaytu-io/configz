@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_36
 Title: Distributed Processing And Storage (SC-36)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Distribute the following processing and storage components across multiple [Selection: physical locations; logical domains]: [Assignment: organization-defined processing and storage components]."
 Children:
 - aws_nist_800_53_rev_5_sc_36_1_a
@@ -16,7 +15,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_elb_classic_lb_cross_zone_load_balancing_enabled

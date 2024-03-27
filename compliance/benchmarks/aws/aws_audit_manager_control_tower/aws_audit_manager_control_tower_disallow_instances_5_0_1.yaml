@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_disallow_instances_5_0_1
 Title: 5.0.1 - Disallow RDS database instances that are not storage encrypted
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow RDS database instances that are not storage encrypted - Checks whether storage encryption is enabled for your RDS DB instances.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/RDS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_rds_db_snapshot_encrypted_at_rest

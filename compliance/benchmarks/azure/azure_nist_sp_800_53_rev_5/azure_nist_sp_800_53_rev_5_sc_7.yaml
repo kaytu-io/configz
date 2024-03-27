@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_sc_7
 Title: Boundary Protection (SC-7)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system monitors and controls communications at the external boundary of the system and at key internal boundaries within the system; implements subnetworks for publicly accessible system components that are physically or logically separated from internal organizational networks; and connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.
 Children:
 - azure_nist_sp_800_53_rev_5_sc_7_3
@@ -16,7 +15,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_apimanagement_service_with_virtual_network
 - azure_app_configuration_private_link_used

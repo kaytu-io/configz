@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ds_4
 Title: PR.DS-4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Adequate capacity to ensure availability is maintained.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_multiple_az_configured
 - aws_autoscaling_group_with_lb_use_health_check

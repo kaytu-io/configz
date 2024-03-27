@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_19
 Title: De-Identification (SI-19)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Remove the following elements of personally identifiable information from datasets: [Assignment: organization-defined elements of personally identifiable information]; and b.\u2003Evaluate [Assignment: organization-defined frequency] for effectiveness of de-identification."
 Children:
 - aws_nist_800_53_rev_5_si_19_4
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

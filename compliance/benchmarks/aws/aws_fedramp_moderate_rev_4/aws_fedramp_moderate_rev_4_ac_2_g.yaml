@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_2_g
 Title: AC-2(g)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: g. Monitors the use of information system accounts."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

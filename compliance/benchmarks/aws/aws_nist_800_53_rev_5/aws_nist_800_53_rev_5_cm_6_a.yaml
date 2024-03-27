@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_6_a
 Title: CM-6(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Establish and document configuration settings for components employed within the system that reflect the most restrictive mode consistent with operational requirements using [Assignment: organization-defined common secure configurations]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_part_of_organizations
 - aws_autoscaling_group_with_lb_use_health_check

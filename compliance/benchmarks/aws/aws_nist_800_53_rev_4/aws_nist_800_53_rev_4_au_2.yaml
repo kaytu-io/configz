@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_au_2
 Title: Event Logging (AU-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Automate security audit function with other organizational entities. Enable mutual support of audit of auditable events.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

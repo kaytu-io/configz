@@ -1,7 +1,6 @@
 ID: aws-config-fda-21cfr-part-11
 Title: AWS Config FDA 21CFR Part 11
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config FDA 21CFR Part 11
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_data
 Title: Your Data
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Your data, intellectual property, and other sensitive information is what your organization is built on. As such, it is an essential element of your organization's Culture of Cyber Readiness. Your task for this element is to make backups and avoid loss of information critical to operations.
 Children:
 - aws_cisa_cyber_essentials_your_data_1
@@ -20,5 +19,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

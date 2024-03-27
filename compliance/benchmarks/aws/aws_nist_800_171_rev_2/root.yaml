@@ -1,3 +1,7 @@
+ID: aws_nist_800_171_rev_2
+Title: NIST 800-171 Revision 2 for AWS
+ReferenceCode: ""
+Description: NIST SP 800-171 focuses on protecting the confidentiality of Controlled Unclassified Information (CUI) in nonfederal systems and organizations, and recommends specific security requirements to achieve that objective. NIST 800-171 is a publication that outlines the required security standards and practices for non-federal organizations that handle CUI on their networks.
 Children:
 - aws_nist_800_171_rev_2_2
 - aws_nist_800_171_rev_2_3_1
@@ -10,11 +14,6 @@ Children:
 - aws_nist_800_171_rev_2_3_12
 - aws_nist_800_171_rev_2_3_13
 - aws_nist_800_171_rev_2_3_14
-Connector: AWS
-Controls: null
-Description: NIST SP 800-171 focuses on protecting the confidentiality of Controlled Unclassified Information (CUI) in nonfederal systems and organizations, and recommends specific security requirements to achieve that objective. NIST 800-171 is a publication that outlines the required security standards and practices for non-federal organizations that handle CUI on their networks.
-Enabled: true
-ID: aws_nist_800_171_rev_2
 Tags:
   category:
   - Compliance
@@ -30,4 +29,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: NIST 800-171 Revision 2 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_er
 Title: Escalation and Reporting (ER)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Escalation & Reporting ensures key stakeholders are informed about the impact of cyber incidents, and regulators, law enforcement, and customers are notified as required.
 Children:
 - aws_ffiec_d_5_er_es_b_4
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

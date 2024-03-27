@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_24
 Title: Access Control Decisions (AC-24)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "[Selection: Establish procedures; Implement mechanisms] to ensure [Assignment: organization-defined access control decisions] are applied to each access request prior to access enforcement."
 Children:
 - aws_nist_800_53_rev_5_ac_24_1
@@ -16,7 +15,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_uses_imdsv2
 - aws_iam_account_password_policy_min_length_14

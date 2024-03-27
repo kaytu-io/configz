@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_au_12
 Title: Audit Generation (AU-12)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Audit events defined in AU-2. Allow trusted personnel to select which events to audit. Generate audit records for events.
 Children:
 - aws_fedramp_moderate_rev_4_au_12_a_c
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

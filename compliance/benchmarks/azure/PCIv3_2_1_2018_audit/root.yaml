@@ -2,34 +2,28 @@ ID: PCIv3_2_1_2018_audit
 Title: PCI v3.2.1:2018
 ReferenceCode: ""
 Description: This initiative includes policies that address a subset of PCI v3.2.1:2018 controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/pciv321-init.
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - auditing_on_sql_server_should_be_enabled
-    - app_service_apps_should_only_be_accessible_over_https
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - function_apps_should_only_be_accessible_over_https
-    - storage_accounts_should_restrict_network_access
-    - audit_usage_of_custom_rbac_roles
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - automation_account_variables_should_be_encrypted
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- auditing_on_sql_server_should_be_enabled
+- app_service_apps_should_only_be_accessible_over_https
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- secure_transfer_to_storage_accounts_should_be_enabled
+- function_apps_should_only_be_accessible_over_https
+- storage_accounts_should_restrict_network_access
+- audit_usage_of_custom_rbac_roles
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- automation_account_variables_should_be_encrypted

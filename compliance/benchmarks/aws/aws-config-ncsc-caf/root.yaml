@@ -1,7 +1,6 @@
 ID: aws-config-ncsc-caf
 Title: AWS Config NCSC CAF
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NCSC CAF
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_gxp_eu_annex_11_project_phase_4_8
 Title: 4.8 Validation - Data Transfer
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: If data are transferred to another data format or system, validation should include checks that data are not altered in value and/or meaning during this migration process.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_encryption_enabled

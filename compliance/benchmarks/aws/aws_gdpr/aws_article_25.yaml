@@ -1,7 +1,6 @@
 ID: aws_article_25
 Title: Article 25 Data protection by design and by default
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -17,7 +16,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_bucket_not_public
 - aws_cloudtrail_multi_region_trail_enabled

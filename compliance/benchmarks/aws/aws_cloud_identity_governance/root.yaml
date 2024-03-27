@@ -1,11 +1,11 @@
-Connector: AWS
+ID: aws_cloud_identity_governance
+Title: Cloud Identity Entitlements and Governance - AWS
+ReferenceCode: ""
+Description: Cloud Identity Entitlements and Governance - AWS
 Children:
 - aws_cloud_identity_governance_sso
 - aws_cloud_identity_governance_iam
 - aws_cloud_identity_governance_aws_account
-Description: Cloud Identity Entitlements and Governance - AWS
-Enabled: true
-ID: aws_cloud_identity_governance
 Tags:
   category:
   - Compliance
@@ -19,4 +19,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: Cloud Identity Entitlements and Governance - AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

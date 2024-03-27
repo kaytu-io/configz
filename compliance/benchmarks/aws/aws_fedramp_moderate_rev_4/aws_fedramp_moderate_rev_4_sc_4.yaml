@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_sc_4
 Title: Information In Shared Resources (SC-4)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system prevents unauthorized and unintended information transfer via shared system resources.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

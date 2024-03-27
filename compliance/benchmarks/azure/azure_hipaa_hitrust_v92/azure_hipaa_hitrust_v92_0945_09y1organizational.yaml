@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0945_09y1organizational
 Title: 0945.09y1Organizational.3-09.y 09.09 Electronic Commerce Services
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Protocols used to communicate between all involved parties are secured using cryptographic techniques (e.g., SSL).
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

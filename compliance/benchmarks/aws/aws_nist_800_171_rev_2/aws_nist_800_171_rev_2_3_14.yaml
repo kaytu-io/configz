@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_14
 Title: 3.14 System and Information integrity
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The SI control family correlates to controls that protect system and information integrity. These include flaw remediation, malicious code protection, information system monitoring, security alerts, software and firmware integrity, and spam protection.
 Children:
 - aws_nist_800_171_rev_2_3_14_1
@@ -21,5 +20,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

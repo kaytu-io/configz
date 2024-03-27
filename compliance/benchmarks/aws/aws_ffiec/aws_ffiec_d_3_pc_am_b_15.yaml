@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_am_b_15
 Title: D3.PC.Am.B.15
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Remote access to critical systems by employees, contractors, and third parties uses encrypted connections and multifactor authentication.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

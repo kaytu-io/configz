@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_au
 Title: Audit and Accountability (AU)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The AU control family consists of security controls related to an organization’s audit capabilities. This includes audit policies and procedures, audit logging, audit report generation, and protection of audit information.
 Children:
 - aws_nist_800_53_rev_4_au_2
@@ -22,5 +21,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

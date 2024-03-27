@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_308_a_6_i
 Title: 164.308(a)(6)(i) Security incident procedures
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement policies and procedures to address security incidents.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_alarm_action_enabled
 - aws_guardduty_enabled

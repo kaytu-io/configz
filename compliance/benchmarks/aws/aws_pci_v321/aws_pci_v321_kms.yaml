@@ -1,7 +1,6 @@
 ID: aws_pci_v321_kms
 Title: KMS
-DisplayCode: ""
-Connector: ""
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -13,6 +12,9 @@ Tags:
   - aws
   service:
   - kms
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_kms_cmk_rotation_enabled

@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_surroundings_2
 Title: Your Surroundings-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Leverage multi-factor authentication for all users, starting with privileged, administrative and remote access users.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_hardware_mfa_enabled
 - aws_iam_root_user_mfa_enabled

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1193_01l2organizational
 Title: 1193.01l2Organizational.13-01.l 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Controls for the access to diagnostic and configuration ports include the use of a key lock and the implementation of supporting procedures to control physical access to the port.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Network
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_network_security_group_remote_access_restricted

@@ -1,7 +1,6 @@
 ID: aws-config-compute-services
 Title: AWS Config Compute Services
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Compute Services
 Children: []
 Tags:

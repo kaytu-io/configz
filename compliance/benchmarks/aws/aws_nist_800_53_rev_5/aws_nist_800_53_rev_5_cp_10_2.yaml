@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_10_2
 Title: CP-10(2) Transaction Recovery
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement transaction recovery for systems that are transaction-based.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_in_backup_plan
 - aws_dynamodb_table_point_in_time_recovery_enabled

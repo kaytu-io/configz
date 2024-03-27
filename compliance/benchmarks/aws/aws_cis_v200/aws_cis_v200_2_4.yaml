@@ -1,7 +1,6 @@
 ID: aws_cis_v200_2_4
 Title: 2.4 Elastic File System (EFS)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/EFS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_efs_file_system_encrypt_data_at_rest

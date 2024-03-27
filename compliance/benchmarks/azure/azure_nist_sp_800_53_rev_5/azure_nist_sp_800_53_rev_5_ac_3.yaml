@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_3
 Title: Access Enforcement (AC-3)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Enforce approved authorizations for access to systems in accordance with policy.
 Children:
 - azure_nist_sp_800_53_rev_5_ac_3_7
@@ -16,7 +15,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_uses_managed_identity
 - azure_appservice_function_app_uses_managed_identity

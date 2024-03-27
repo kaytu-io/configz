@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_dc
 Title: Detective Controls (DC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Detective Controls include threat and vulnerability detection, anomalous activity detection, and event detection, may alert the institution to network and system irregularities that indicate an incident has or may occur.
 Children:
 - aws_ffiec_d_3_dc_an_b_1
@@ -24,5 +23,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

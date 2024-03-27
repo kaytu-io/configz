@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0859_09m1organizational
 Title: 0859.09m1Organizational.78-09.m 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization ensures the security of information in networks, availability of network services and information services using the network, and the protection of connected services from unauthorized access.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

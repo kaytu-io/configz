@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_cm_8_3
 Title: CM-8(3) Automated Unauthorized Component Detection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization employs automated mechanisms to detect the presence of unauthorized hardware, software, and firmware components within the information system and takes actions (disables network access by such components, isolates the components etc) when unauthorized components are detected.
 Children:
 - aws_fedramp_moderate_rev_4_cm_8_3_a
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

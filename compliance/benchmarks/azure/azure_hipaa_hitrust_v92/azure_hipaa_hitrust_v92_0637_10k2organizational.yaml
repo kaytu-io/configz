@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0637_10k2organizational
 Title: 0637.10k2Organizational.2-10.k 10.05 Security In Development and Support Processes
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization has developed, documented, and implemented a configuration management plan for the information system.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

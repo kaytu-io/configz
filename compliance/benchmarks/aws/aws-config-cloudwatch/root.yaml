@@ -1,7 +1,6 @@
 ID: aws-config-cloudwatch
 Title: AWS Config CloudWatch
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CloudWatch
 Children: []
 Tags:

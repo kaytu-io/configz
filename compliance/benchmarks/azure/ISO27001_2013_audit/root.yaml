@@ -2,401 +2,395 @@ ID: ISO27001_2013_audit
 Title: ISO 27001:2013
 ReferenceCode: ""
 Description: The International Organization for Standardization (ISO) 27001 standard provides requirements for establishing, implementing, maintaining, and continuously improving an Information Security Management System (ISMS). These policies address a subset of ISO 27001:2013 controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/iso27001-init
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - review_development_process,_standards_and_tools
-    - prohibit_unfair_practices
-    - implement_a_fault_tolerant_name/address_service
-    - enforce_logical_access
-    - authorize_and_manage_access
-    - implement_transaction_based_recovery
-    - authorize_access_to_security_functions_and_information
-    - review_changes_for_any_unauthorized_changes
-    - review_and_update_risk_assessment_policies_and_procedures
-    - clear_personnel_with_access_to_classified_information
-    - protect_passwords_with_encryption
-    - protect_special_information
-    - ensure_security_categorization_is_approved
-    - review_and_update_information_integrity_policies_and_procedures
-    - document_acquisition_contract_acceptance_criteria
-    - document_access_privileges
-    - define_a_physical_key_management_process
-    - develop_ssp_that_meets_criteria
-    - require_users_to_sign_access_agreement
-    - issue_public_key_certificates
-    - define_information_system_account_types
-    - define_cryptographic_use
-    - review_and_update_system_maintenance_policies_and_procedures
-    - review_malware_detections_report_weekly
-    - review_label_activity_and_analytics
-    - review_contingency_plan
-    - identify_actions_allowed_without_authentication
-    - provide_monitoring_information_as_needed
-    - obtain_legal_opinion_for_monitoring_system_activities
-    - disable_authenticators_upon_termination
-    - use_system_clocks_for_audit_records
-    - document_the_legal_basis_for_processing_personal_information
-    - document_the_protection_of_cardholder_data_in_third_party_contracts
-    - develop_configuration_item_identification_plan
-    - monitor_security_and_privacy_training_completion
-    - monitor_privileged_role_assignment
-    - identify_external_service_providers
-    - establish_configuration_management_requirements_for_developers
-    - develop_contingency_planning_policies_and_procedures
-    - incorporate_security_and_data_privacy_practices_in_research_processing
-    - protect_data_in_transit_using_encryption
-    - secure_the_interface_to_external_systems
-    - enable_network_protection
-    - review_cloud_identity_report_overview
-    - review_cloud_service_provider's_compliance_with_policies_and_agreements
-    - designate_individuals_to_fulfill_specific_roles_and_responsibilities
-    - manage_security_state_of_information_systems
-    - eradicate_contaminated_information
-    - reauthenticate_or_terminate_a_user_session
-    - govern_and_monitor_audit_processing_activities
-    - review_and_update_incident_response_policies_and_procedures
-    - notify_personnel_upon_sanctions
-    - retain_training_records
-    - review_access_control_policies_and_procedures
-    - incorporate_flaw_remediation_into_configuration_management
-    - document_and_implement_wireless_access_guidelines
-    - review_security_assessment_and_authorization_policies_and_procedures
-    - document_mobility_training
-    - update_antivirus_definitions
-    - provide_updated_security_awareness_training
-    - provide_periodic_security_awareness_training
-    - employ_boundary_protection_to_isolate_information_systems
-    - update_rules_of_behavior_and_access_agreements_every_3_years
-    - employ_flow_control_mechanisms_of_encrypted_information
-    - generate_internal_security_alerts
-    - disseminate_security_alerts_to_personnel
-    - establish_a_discrete_line_item_in_budgeting_documentation
-    - implement_methods_for_consumer_requests
-    - implement_incident_handling
-    - establish_a_risk_management_strategy
-    - establish_a_secure_software_development_program
-    - determine_assertion_requirements
-    - determine_auditable_events
-    - maintain_data_breach_records
-    - develop_a_concept_of_operations_(_conops)
-    - automate_process_to_highlight_unreviewed_change_proposals
-    - determine_supplier_contract_obligations
-    - provide_privacy_notice
-    - define_and_document_government_oversight
-    - require_external_service_providers_to_comply_with_security_requirements
-    - select_additional_testing_for_security_control_assessments
-    - employ_independent_assessors_to_conduct_security_control_assessments
-    - establish_and_maintain_an_asset_inventory
-    - establish_authenticator_types_and_processes
-    - reassign_or_remove_user_privileges_as_needed
-    - establish_a_data_leakage_management_procedure
-    - perform_a_privacy_impact_assessment
-    - implement_controls_to_secure_all_media
-    - implement_controls_to_secure_alternate_work_sites
-    - reissue_authenticators_for_changed_groups_and_accounts
-    - remediate_information_system_flaws
-    - document_requirements_for_the_use_of_shared_data_in_contracts
-    - develop_security_assessment_plan
-    - document_remote_access_guidelines
-    - assess_security_controls
-    - manage_gateways
-    - initiate_contingency_plan_testing_corrective_actions
-    - review_the_results_of_contingency_plan_testing
-    - provide_security_training_before_providing_access
-    - provide_security_training_for_new_users
-    - define_information_security_roles_and_responsibilities
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - review_and_sign_revised_rules_of_behavior
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - provide_timely_maintenance_support
-    - employ_independent_team_for_penetration_testing
-    - auditing_on_sql_server_should_be_enabled
-    - automate_process_to_document_implemented_changes
-    - develop_and_document_a_business_continuity_and_disaster_recovery_plan
-    - implement_parameters_for_memorized_secret_verifiers
-    - create_separate_alternate_and_primary_storage_sites
-    - ensure_alternate_storage_site_safeguards_are_equivalent_to_primary_site
-    - provide_contingency_training
-    - provide_information_spillage_training
-    - review_user_accounts
-    - review_user_groups_and_applications_with_access_to_sensitive_data
-    - rescreen_individuals_at_a_defined_frequency
-    - manage_the_input,_output,_processing,_and_storage_of_data
-    - manage_system_and_admin_accounts
-    - obtain_admin_documentation
-    - obtain_user_security_function_documentation
-    - alert_personnel_of_information_spillage
-    - establish_a_threat_intelligence_program
-    - app_service_apps_should_only_be_accessible_over_https
-    - identify_and_manage_downstream_information_exchanges
-    - require_approval_for_account_creation
-    - review_and_update_system_and_communications_protection_policies_and_procedures
-    - perform_disposition_review
-    - perform_audit_for_configuration_change_control
-    - verify_identity_before_distributing_authenticators
-    - review_threat_protection_status_weekly
-    - enforce_and_audit_access_restrictions
-    - document_third_party_personnel_security_requirements
-    - require_third_party_providers_to_comply_with_personnel_security_policies_and_procedures
-    - authorize_remote_access
-    - authorize,_monitor,_and_control_voip
-    - support_personal_verification_credentials_issued_by_legal_authorities
-    - categorize_information
-    - restrict_access_to_privileged_accounts
-    - enforce_rules_of_behavior_and_access_agreements
-    - enforce_security_configuration_settings
-    - define_requirements_for_supplying_goods_and_services
-    - integrate_cloud_app_security_with_a_siem
-    - define_the_duties_of_processors
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - review_file_and_folder_activity
-    - use_privileged_identity_management
-    - document_security_functional_requirements_in_acquisition_contracts
-    - document_security_documentation_requirements_in_acquisition_contract
-    - govern_the_allocation_of_resources
-    - govern_policies_and_procedures
-    - ensure_resources_are_authorized
-    - assign_an_authorizing_official_(_ao)
-    - view_and_configure_system_diagnostic_data
-    - require_developers_to_document_approved_changes_and_potential_impact
-    - view_and_investigate_restricted_users
-    - require_developers_to_implement_only_approved_changes
-    - establish_procedures_for_initial_authenticator_distribution
-    - establish_requirements_for_audit_review_and_reporting
-    - review_and_update_the_information_security_architecture
-    - not_allow_for_information_systems_to_accompany_with_individuals
-    - develop_and_establish_a_system_security_plan
-    - ensure_security_safeguards_not_needed_when_the_individuals_return
-    - protect_incident_response_plan
-    - publish_rules_and_regulations_accessing_privacy_act_records
-    - employ_least_privilege_access
-    - update_organizational_access_agreements
-    - update_rules_of_behavior_and_access_agreements
-    - perform_a_risk_assessment
-    - perform_a_trend_analysis_on_threats
-    - allocate_resources_in_determining_information_system_requirements
-    - implement_security_directives
-    - review_and_update_system_and_services_acquisition_policies_and_procedures
-    - plan_for_resumption_of_essential_business_functions
-    - execute_actions_in_response_to_information_spills
-    - conduct_capacity_planning
-    - conduct_backup_of_information_system_documentation
-    - produce,_control_and_distribute_asymmetric_cryptographic_keys
-    - review_administrator_assignments_weekly
-    - review_account_provisioning_logs
-    - maintain_records_of_processing_of_personal_data
-    - maintain_incident_response_plan
-    - ensure_access_agreements_are_signed_or_resigned_timely
-    - establish_third_party_personnel_security_requirements
-    - function_apps_should_only_be_accessible_over_https
-    - route_traffic_through_managed_network_access_points
-    - storage_accounts_should_restrict_network_access
-    - provide_secure_name_and_address_resolution_services
-    - audit_usage_of_custom_rbac_roles
-    - implement_privacy_notice_delivery_methods
-    - automate_proposed_documented_changes
-    - implement_security_engineering_principles_of_information_systems
-    - develop_acceptable_use_policies_and_procedures
-    - establish_and_document_change_control_processes
-    - address_coding_vulnerabilities
-    - establish_and_document_a_configuration_management_plan
-    - distribute_information_system_documentation
-    - document_security_assurance_requirements_in_acquisition_contracts
-    - document_security_and_privacy_training_activities
-    - manage_contacts_for_authorities_and_special_interest_groups
-    - manage_compliance_activities
-    - implement_the_risk_management_strategy
-    - enforce_user_uniqueness
-    - record_disclosures_of_pii_to_third_parties
-    - implement_an_automated_configuration_management_tool
-    - notify_users_of_system_logon_or_access
-    - notify_when_account_is_not_needed
-    - retain_terminated_user_data
-    - retain_security_policies_and_procedures
-    - manage_symmetric_cryptographic_keys
-    - document_personnel_acceptance_of_privacy_requirements
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - document_organizational_access_agreements
-    - align_business_objectives_and_it_goals
-    - develop_and_document_application_security_requirements
-    - appoint_a_senior_information_security_officer
-    - protect_the_information_security_program_plan
-    - establish_alternate_storage_site_to_store_and_retrieve_backup_information
-    - enable_dual_or_joint_authorization
-    - turn_on_sensors_for_endpoint_security_solution
-    - undergo_independent_security_review
-    - review_role_group_changes_weekly
-    - define_mobile_device_requirements
-    - define_organizational_requirements_for_cryptographic_key_management
-    - develop_contingency_plan
-    - terminate_customer_controlled_account_credentials
-    - identify_and_authenticate_network_devices
-    - document_the_information_system_environment_in_acquisition_contracts
-    - document_separation_of_duties
-    - create_configuration_plan_protection
-    - coordinate_contingency_plans_with_related_plans
-    - develop_configuration_management_plan
-    - terminate_user_session_automatically
-    - correlate_audit_records
-    - restrict_communications
-    - establish_firewall_and_router_configuration_standards
-    - assess_risk_in_third_party_relationships
-    - assign_account_managers
-    - establish_network_segmentation_for_card_holder_data_environment
-    - verify_personal_data_is_deleted_at_the_end_of_processing
-    - verify_security_controls_for_external_information_systems
-    - develop_business_classification_schemes
-    - develop_audit_and_accountability_policies_and_procedures
-    - test_the_business_continuity_and_disaster_recovery_plan
-    - implement_managed_interface_for_each_external_service
-    - separate_duties_of_individuals
-    - identify_and_authenticate_non_organizational_users
-    - configure_detection_whitelist
-    - require_developers_to_build_security_architecture
-    - require_developers_to_describe_accurate_security_functionality
-    - information_flow_control_using_security_policy_filters
-    - develop_security_safeguards
-    - recover_and_reconstitute_resources_after_any_disruption
-    - enforce_mandatory_and_discretionary_access_control_policies
-    - audit_user_account_status
-    - transfer_backup_information_to_an_alternate_storage_site
-    - authenticate_to_cryptographic_module
-    - establish_information_security_workforce_development_and_improvement_program
-    - design_an_access_control_model
-    - limit_privileges_to_make_changes_in_production_environment
-    - conduct_a_security_impact_analysis
-    - conduct_a_full_text_analysis_of_logged_privileged_commands
-    - conduct_risk_assessment_and_document_its_results
-    - generate_error_messages
-    - reveal_error_messages
-    - conduct_risk_assessment
-    - integrate_audit_review,_analysis,_and_reporting
-    - install_an_alarm_system
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - publish_access_procedures_in_sor_ns
-    - identify_and_mitigate_potential_issues_at_alternate_storage_site
-    - update_poa&_m_items
-    - develop_poa&_m
-    - distribute_policies_and_procedures
-    - establish_requirements_for_internet_service_providers
-    - establish_security_requirements_for_the_manufacturing_of_connected_devices
-    - produce_complete_records_of_remote_maintenance_activities
-    - automate_remote_maintenance_activities
-    - review_and_update_planning_policies_and_procedures
-    - manage_the_transportation_of_assets
-    - define_access_authorizations_to_support_separation_of_duties
-    - review_and_update_identification_and_authentication_policies_and_procedures
-    - review_controlled_folder_access_events
-    - define_requirements_for_managing_assets
-    - define_performance_metrics
-    - document_security_operations
-    - document_security_strength_requirements_in_acquisition_contracts
-    - report_atypical_behavior_of_user_accounts
-    - review_and_update_contingency_planning_policies_and_procedures
-    - assess_information_security_events
-    - establish_policies_for_supply_chain_risk_management
-    - document_and_implement_privacy_complaint_procedures
-    - document_and_distribute_a_privacy_policy
-    - require_developers_to_manage_change_integrity
-    - review_and_update_personnel_security_policies_and_procedures
-    - control_physical_access
-    - track_software_license_usage
-    - set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
-    - review_and_update_physical_and_environmental_policies_and_procedures
-    - develop_and_maintain_a_vulnerability_management_standard
-    - develop_and_maintain_baseline_configurations
-    - communicate_contingency_plan_changes
-    - update_contingency_plan
-    - require_compliance_with_intellectual_property_rights
-    - train_staff_on_pii_sharing_and_its_consequences
-    - service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-    - perform_vulnerability_scans
-    - ensure_there_are_no_unencrypted_static_authenticators
-    - employ_a_media_sanitization_mechanism
-    - employ_automatic_emergency_lighting
-    - require_developers_to_provide_unified_security_protection_approach
-    - require_notification_of_third_party_personnel_transfer_or_termination
-    - monitor_third_party_provider_compliance
-    - implement_controls_to_protect_pii
-    - separately_store_backup_information
-    - automate_account_management
-    - perform_information_input_validation
-    - conduct_risk_assessment_and_distribute_its_results
-    - develop_organization_code_of_conduct_policy
-    - block_untrusted_and_unsigned_processes_that_run_from_usb
-    - restrict_access_to_private_keys
-    - update_privacy_plan,_policies,_and_procedures
-    - monitor_access_across_the_organization
-    - require_interconnection_security_agreements
-    - audit_privileged_functions
-    - assign_system_identifiers
-    - ensure_information_system_fails_in_known_state
-    - identify_individuals_with_security_roles_and_responsibilities
-    - integrate_risk_management_process_into_sdlc
-    - resume_all_mission_and_business_functions
-    - plan_for_continuance_of_essential_business_functions
-    - configure_workstations_to_check_for_digital_certificates
-    - review_audit_data
-    - manage_a_secure_surveillance_camera_system
-    - manage_authenticator_lifetime_and_reuse
-    - review_and_update_media_protection_policies_and_procedures
-    - protect_wireless_access
-    - implement_physical_security_for_offices,_working_areas,_and_secure_areas
-    - develop_an_incident_response_plan
-    - develop_access_control_policies_and_procedures
-    - implement_personnel_screening
-    - update_interconnection_security_agreements
-    - update_information_security_policies
-    - revoke_privileged_roles_as_appropriate
-    - create_a_data_inventory
-    - enforce_a_limit_of_consecutive_failed_login_attempts
-    - establish_an_alternate_processing_site
-    - establish_an_information_security_program
-    - adopt_biometric_authentication_mechanisms
-    - protect_administrator_and_user_documentation
-    - document_customer_defined_actions
-    - establish_a_password_policy
-    - establish_a_privacy_program
-    - obtain_consent_prior_to_collection_or_processing_of_personal_data
-    - employ_automated_training_environment
-    - require_developers_to_produce_evidence_of_security_assessment_plan_execution
-    - control_information_flow
-    - refresh_authenticators
-    - ensure_privacy_program_information_is_publicly_available
-    - review_user_privileges
-    - implement_formal_sanctions_process
-    - manage_authenticators
-    - deliver_security_assessment_results
-    - document_protection_of_personal_data_in_acquisition_contracts
-    - produce_security_assessment_report
-    - document_protection_of_security_information_in_acquisition_contracts
-    - establish_backup_policies_and_procedures
-    - establish_conditions_for_role_membership
-    - establish_privacy_requirements_for_contractors_and_service_providers
-    - provide_role_based_security_training
-    - enable_detection_of_network_devices
-    - provide_periodic_role_based_security_training
-    - secure_commitment_from_leadership
-    - implement_training_for_protecting_authenticators
-    - automation_account_variables_should_be_encrypted
-    - implement_system_boundary_protection
-    - ensure_capital_planning_and_investment_requests_include_necessary_resources
-    - employ_business_case_to_record_the_resources_required
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- review_development_process,_standards_and_tools
+- prohibit_unfair_practices
+- implement_a_fault_tolerant_name/address_service
+- enforce_logical_access
+- authorize_and_manage_access
+- implement_transaction_based_recovery
+- authorize_access_to_security_functions_and_information
+- review_changes_for_any_unauthorized_changes
+- review_and_update_risk_assessment_policies_and_procedures
+- clear_personnel_with_access_to_classified_information
+- protect_passwords_with_encryption
+- protect_special_information
+- ensure_security_categorization_is_approved
+- review_and_update_information_integrity_policies_and_procedures
+- document_acquisition_contract_acceptance_criteria
+- document_access_privileges
+- define_a_physical_key_management_process
+- develop_ssp_that_meets_criteria
+- require_users_to_sign_access_agreement
+- issue_public_key_certificates
+- define_information_system_account_types
+- define_cryptographic_use
+- review_and_update_system_maintenance_policies_and_procedures
+- review_malware_detections_report_weekly
+- review_label_activity_and_analytics
+- review_contingency_plan
+- identify_actions_allowed_without_authentication
+- provide_monitoring_information_as_needed
+- obtain_legal_opinion_for_monitoring_system_activities
+- disable_authenticators_upon_termination
+- use_system_clocks_for_audit_records
+- document_the_legal_basis_for_processing_personal_information
+- document_the_protection_of_cardholder_data_in_third_party_contracts
+- develop_configuration_item_identification_plan
+- monitor_security_and_privacy_training_completion
+- monitor_privileged_role_assignment
+- identify_external_service_providers
+- establish_configuration_management_requirements_for_developers
+- develop_contingency_planning_policies_and_procedures
+- incorporate_security_and_data_privacy_practices_in_research_processing
+- protect_data_in_transit_using_encryption
+- secure_the_interface_to_external_systems
+- enable_network_protection
+- review_cloud_identity_report_overview
+- review_cloud_service_provider's_compliance_with_policies_and_agreements
+- designate_individuals_to_fulfill_specific_roles_and_responsibilities
+- manage_security_state_of_information_systems
+- eradicate_contaminated_information
+- reauthenticate_or_terminate_a_user_session
+- govern_and_monitor_audit_processing_activities
+- review_and_update_incident_response_policies_and_procedures
+- notify_personnel_upon_sanctions
+- retain_training_records
+- review_access_control_policies_and_procedures
+- incorporate_flaw_remediation_into_configuration_management
+- document_and_implement_wireless_access_guidelines
+- review_security_assessment_and_authorization_policies_and_procedures
+- document_mobility_training
+- update_antivirus_definitions
+- provide_updated_security_awareness_training
+- provide_periodic_security_awareness_training
+- employ_boundary_protection_to_isolate_information_systems
+- update_rules_of_behavior_and_access_agreements_every_3_years
+- employ_flow_control_mechanisms_of_encrypted_information
+- generate_internal_security_alerts
+- disseminate_security_alerts_to_personnel
+- establish_a_discrete_line_item_in_budgeting_documentation
+- implement_methods_for_consumer_requests
+- implement_incident_handling
+- establish_a_risk_management_strategy
+- establish_a_secure_software_development_program
+- determine_assertion_requirements
+- determine_auditable_events
+- maintain_data_breach_records
+- develop_a_concept_of_operations_(_conops)
+- automate_process_to_highlight_unreviewed_change_proposals
+- determine_supplier_contract_obligations
+- provide_privacy_notice
+- define_and_document_government_oversight
+- require_external_service_providers_to_comply_with_security_requirements
+- select_additional_testing_for_security_control_assessments
+- employ_independent_assessors_to_conduct_security_control_assessments
+- establish_and_maintain_an_asset_inventory
+- establish_authenticator_types_and_processes
+- reassign_or_remove_user_privileges_as_needed
+- establish_a_data_leakage_management_procedure
+- perform_a_privacy_impact_assessment
+- implement_controls_to_secure_all_media
+- implement_controls_to_secure_alternate_work_sites
+- reissue_authenticators_for_changed_groups_and_accounts
+- remediate_information_system_flaws
+- document_requirements_for_the_use_of_shared_data_in_contracts
+- develop_security_assessment_plan
+- document_remote_access_guidelines
+- assess_security_controls
+- manage_gateways
+- initiate_contingency_plan_testing_corrective_actions
+- review_the_results_of_contingency_plan_testing
+- provide_security_training_before_providing_access
+- provide_security_training_for_new_users
+- define_information_security_roles_and_responsibilities
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- review_and_sign_revised_rules_of_behavior
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- provide_timely_maintenance_support
+- employ_independent_team_for_penetration_testing
+- auditing_on_sql_server_should_be_enabled
+- automate_process_to_document_implemented_changes
+- develop_and_document_a_business_continuity_and_disaster_recovery_plan
+- implement_parameters_for_memorized_secret_verifiers
+- create_separate_alternate_and_primary_storage_sites
+- ensure_alternate_storage_site_safeguards_are_equivalent_to_primary_site
+- provide_contingency_training
+- provide_information_spillage_training
+- review_user_accounts
+- review_user_groups_and_applications_with_access_to_sensitive_data
+- rescreen_individuals_at_a_defined_frequency
+- manage_the_input,_output,_processing,_and_storage_of_data
+- manage_system_and_admin_accounts
+- obtain_admin_documentation
+- obtain_user_security_function_documentation
+- alert_personnel_of_information_spillage
+- establish_a_threat_intelligence_program
+- app_service_apps_should_only_be_accessible_over_https
+- identify_and_manage_downstream_information_exchanges
+- require_approval_for_account_creation
+- review_and_update_system_and_communications_protection_policies_and_procedures
+- perform_disposition_review
+- perform_audit_for_configuration_change_control
+- verify_identity_before_distributing_authenticators
+- review_threat_protection_status_weekly
+- enforce_and_audit_access_restrictions
+- document_third_party_personnel_security_requirements
+- require_third_party_providers_to_comply_with_personnel_security_policies_and_procedures
+- authorize_remote_access
+- authorize,_monitor,_and_control_voip
+- support_personal_verification_credentials_issued_by_legal_authorities
+- categorize_information
+- restrict_access_to_privileged_accounts
+- enforce_rules_of_behavior_and_access_agreements
+- enforce_security_configuration_settings
+- define_requirements_for_supplying_goods_and_services
+- integrate_cloud_app_security_with_a_siem
+- define_the_duties_of_processors
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- secure_transfer_to_storage_accounts_should_be_enabled
+- review_file_and_folder_activity
+- use_privileged_identity_management
+- document_security_functional_requirements_in_acquisition_contracts
+- document_security_documentation_requirements_in_acquisition_contract
+- govern_the_allocation_of_resources
+- govern_policies_and_procedures
+- ensure_resources_are_authorized
+- assign_an_authorizing_official_(_ao)
+- view_and_configure_system_diagnostic_data
+- require_developers_to_document_approved_changes_and_potential_impact
+- view_and_investigate_restricted_users
+- require_developers_to_implement_only_approved_changes
+- establish_procedures_for_initial_authenticator_distribution
+- establish_requirements_for_audit_review_and_reporting
+- review_and_update_the_information_security_architecture
+- not_allow_for_information_systems_to_accompany_with_individuals
+- develop_and_establish_a_system_security_plan
+- ensure_security_safeguards_not_needed_when_the_individuals_return
+- protect_incident_response_plan
+- publish_rules_and_regulations_accessing_privacy_act_records
+- employ_least_privilege_access
+- update_organizational_access_agreements
+- update_rules_of_behavior_and_access_agreements
+- perform_a_risk_assessment
+- perform_a_trend_analysis_on_threats
+- allocate_resources_in_determining_information_system_requirements
+- implement_security_directives
+- review_and_update_system_and_services_acquisition_policies_and_procedures
+- plan_for_resumption_of_essential_business_functions
+- execute_actions_in_response_to_information_spills
+- conduct_capacity_planning
+- conduct_backup_of_information_system_documentation
+- produce,_control_and_distribute_asymmetric_cryptographic_keys
+- review_administrator_assignments_weekly
+- review_account_provisioning_logs
+- maintain_records_of_processing_of_personal_data
+- maintain_incident_response_plan
+- ensure_access_agreements_are_signed_or_resigned_timely
+- establish_third_party_personnel_security_requirements
+- function_apps_should_only_be_accessible_over_https
+- route_traffic_through_managed_network_access_points
+- storage_accounts_should_restrict_network_access
+- provide_secure_name_and_address_resolution_services
+- audit_usage_of_custom_rbac_roles
+- implement_privacy_notice_delivery_methods
+- automate_proposed_documented_changes
+- implement_security_engineering_principles_of_information_systems
+- develop_acceptable_use_policies_and_procedures
+- establish_and_document_change_control_processes
+- address_coding_vulnerabilities
+- establish_and_document_a_configuration_management_plan
+- distribute_information_system_documentation
+- document_security_assurance_requirements_in_acquisition_contracts
+- document_security_and_privacy_training_activities
+- manage_contacts_for_authorities_and_special_interest_groups
+- manage_compliance_activities
+- implement_the_risk_management_strategy
+- enforce_user_uniqueness
+- record_disclosures_of_pii_to_third_parties
+- implement_an_automated_configuration_management_tool
+- notify_users_of_system_logon_or_access
+- notify_when_account_is_not_needed
+- retain_terminated_user_data
+- retain_security_policies_and_procedures
+- manage_symmetric_cryptographic_keys
+- document_personnel_acceptance_of_privacy_requirements
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- document_organizational_access_agreements
+- align_business_objectives_and_it_goals
+- develop_and_document_application_security_requirements
+- appoint_a_senior_information_security_officer
+- protect_the_information_security_program_plan
+- establish_alternate_storage_site_to_store_and_retrieve_backup_information
+- enable_dual_or_joint_authorization
+- turn_on_sensors_for_endpoint_security_solution
+- undergo_independent_security_review
+- review_role_group_changes_weekly
+- define_mobile_device_requirements
+- define_organizational_requirements_for_cryptographic_key_management
+- develop_contingency_plan
+- terminate_customer_controlled_account_credentials
+- identify_and_authenticate_network_devices
+- document_the_information_system_environment_in_acquisition_contracts
+- document_separation_of_duties
+- create_configuration_plan_protection
+- coordinate_contingency_plans_with_related_plans
+- develop_configuration_management_plan
+- terminate_user_session_automatically
+- correlate_audit_records
+- restrict_communications
+- establish_firewall_and_router_configuration_standards
+- assess_risk_in_third_party_relationships
+- assign_account_managers
+- establish_network_segmentation_for_card_holder_data_environment
+- verify_personal_data_is_deleted_at_the_end_of_processing
+- verify_security_controls_for_external_information_systems
+- develop_business_classification_schemes
+- develop_audit_and_accountability_policies_and_procedures
+- test_the_business_continuity_and_disaster_recovery_plan
+- implement_managed_interface_for_each_external_service
+- separate_duties_of_individuals
+- identify_and_authenticate_non_organizational_users
+- configure_detection_whitelist
+- require_developers_to_build_security_architecture
+- require_developers_to_describe_accurate_security_functionality
+- information_flow_control_using_security_policy_filters
+- develop_security_safeguards
+- recover_and_reconstitute_resources_after_any_disruption
+- enforce_mandatory_and_discretionary_access_control_policies
+- audit_user_account_status
+- transfer_backup_information_to_an_alternate_storage_site
+- authenticate_to_cryptographic_module
+- establish_information_security_workforce_development_and_improvement_program
+- design_an_access_control_model
+- limit_privileges_to_make_changes_in_production_environment
+- conduct_a_security_impact_analysis
+- conduct_a_full_text_analysis_of_logged_privileged_commands
+- conduct_risk_assessment_and_document_its_results
+- generate_error_messages
+- reveal_error_messages
+- conduct_risk_assessment
+- integrate_audit_review,_analysis,_and_reporting
+- install_an_alarm_system
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- publish_access_procedures_in_sor_ns
+- identify_and_mitigate_potential_issues_at_alternate_storage_site
+- update_poa&_m_items
+- develop_poa&_m
+- distribute_policies_and_procedures
+- establish_requirements_for_internet_service_providers
+- establish_security_requirements_for_the_manufacturing_of_connected_devices
+- produce_complete_records_of_remote_maintenance_activities
+- automate_remote_maintenance_activities
+- review_and_update_planning_policies_and_procedures
+- manage_the_transportation_of_assets
+- define_access_authorizations_to_support_separation_of_duties
+- review_and_update_identification_and_authentication_policies_and_procedures
+- review_controlled_folder_access_events
+- define_requirements_for_managing_assets
+- define_performance_metrics
+- document_security_operations
+- document_security_strength_requirements_in_acquisition_contracts
+- report_atypical_behavior_of_user_accounts
+- review_and_update_contingency_planning_policies_and_procedures
+- assess_information_security_events
+- establish_policies_for_supply_chain_risk_management
+- document_and_implement_privacy_complaint_procedures
+- document_and_distribute_a_privacy_policy
+- require_developers_to_manage_change_integrity
+- review_and_update_personnel_security_policies_and_procedures
+- control_physical_access
+- track_software_license_usage
+- set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
+- review_and_update_physical_and_environmental_policies_and_procedures
+- develop_and_maintain_a_vulnerability_management_standard
+- develop_and_maintain_baseline_configurations
+- communicate_contingency_plan_changes
+- update_contingency_plan
+- require_compliance_with_intellectual_property_rights
+- train_staff_on_pii_sharing_and_its_consequences
+- service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
+- perform_vulnerability_scans
+- ensure_there_are_no_unencrypted_static_authenticators
+- employ_a_media_sanitization_mechanism
+- employ_automatic_emergency_lighting
+- require_developers_to_provide_unified_security_protection_approach
+- require_notification_of_third_party_personnel_transfer_or_termination
+- monitor_third_party_provider_compliance
+- implement_controls_to_protect_pii
+- separately_store_backup_information
+- automate_account_management
+- perform_information_input_validation
+- conduct_risk_assessment_and_distribute_its_results
+- develop_organization_code_of_conduct_policy
+- block_untrusted_and_unsigned_processes_that_run_from_usb
+- restrict_access_to_private_keys
+- update_privacy_plan,_policies,_and_procedures
+- monitor_access_across_the_organization
+- require_interconnection_security_agreements
+- audit_privileged_functions
+- assign_system_identifiers
+- ensure_information_system_fails_in_known_state
+- identify_individuals_with_security_roles_and_responsibilities
+- integrate_risk_management_process_into_sdlc
+- resume_all_mission_and_business_functions
+- plan_for_continuance_of_essential_business_functions
+- configure_workstations_to_check_for_digital_certificates
+- review_audit_data
+- manage_a_secure_surveillance_camera_system
+- manage_authenticator_lifetime_and_reuse
+- review_and_update_media_protection_policies_and_procedures
+- protect_wireless_access
+- implement_physical_security_for_offices,_working_areas,_and_secure_areas
+- develop_an_incident_response_plan
+- develop_access_control_policies_and_procedures
+- implement_personnel_screening
+- update_interconnection_security_agreements
+- update_information_security_policies
+- revoke_privileged_roles_as_appropriate
+- create_a_data_inventory
+- enforce_a_limit_of_consecutive_failed_login_attempts
+- establish_an_alternate_processing_site
+- establish_an_information_security_program
+- adopt_biometric_authentication_mechanisms
+- protect_administrator_and_user_documentation
+- document_customer_defined_actions
+- establish_a_password_policy
+- establish_a_privacy_program
+- obtain_consent_prior_to_collection_or_processing_of_personal_data
+- employ_automated_training_environment
+- require_developers_to_produce_evidence_of_security_assessment_plan_execution
+- control_information_flow
+- refresh_authenticators
+- ensure_privacy_program_information_is_publicly_available
+- review_user_privileges
+- implement_formal_sanctions_process
+- manage_authenticators
+- deliver_security_assessment_results
+- document_protection_of_personal_data_in_acquisition_contracts
+- produce_security_assessment_report
+- document_protection_of_security_information_in_acquisition_contracts
+- establish_backup_policies_and_procedures
+- establish_conditions_for_role_membership
+- establish_privacy_requirements_for_contractors_and_service_providers
+- provide_role_based_security_training
+- enable_detection_of_network_devices
+- provide_periodic_role_based_security_training
+- secure_commitment_from_leadership
+- implement_training_for_protecting_authenticators
+- automation_account_variables_should_be_encrypted
+- implement_system_boundary_protection
+- ensure_capital_planning_and_investment_requests_include_necessary_resources
+- employ_business_case_to_record_the_resources_required

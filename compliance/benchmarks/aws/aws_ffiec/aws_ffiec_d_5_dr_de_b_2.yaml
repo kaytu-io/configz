@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_dr_de_b_2
 Title: D5.DR.De.B.2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: System performance reports contain information that can be used as a risk indicator to detect information security incidents.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_lambda_function_dead_letter_queue_configured

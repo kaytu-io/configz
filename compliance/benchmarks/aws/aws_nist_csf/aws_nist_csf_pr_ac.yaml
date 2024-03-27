@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ac
 Title: Identity Management and Access Control (PR.AC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Access to physical and logical assets and associated facilities is limited to authorized users, processes, and devices, and is managed consistent with the assessed risk of unauthorized access to authorized activities and transactions.
 Children:
 - aws_nist_csf_pr_ac_1
@@ -21,5 +20,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

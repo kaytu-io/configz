@@ -1,7 +1,6 @@
 ID: aws-config-cis-critical-security-controls-v8-ig3
 Title: AWS Config CIS Critical Security Controls v8 IG3
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CIS Critical Security Controls v8 IG3
 Children: []
 Tags:

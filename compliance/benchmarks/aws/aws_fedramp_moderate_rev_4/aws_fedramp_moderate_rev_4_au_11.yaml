@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_au_11
 Title: Audit Record Retention (AU-11)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization retains audit records for at least 90 days to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CloudWatch
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_log_group_retention_period_365

@@ -1,24 +1,27 @@
-Connector: Azure
-Controls:
-  - azure_keyvault_logging_enabled
-  - azure_enable_defender_for_cloud_for_aks_clusters
-  - azure_disable_plain_ftp_deployment
-  - azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
-  - azure_configure_minimum_tls_version
-  - azure_use_azure_cni_add_on_for_managing_network_resources
-  - azure_use_microsoft_entra_id_integration_for_aks_clusters
-  - azure_use_user_assigned_managed_identities_for_aks_clusters
-  - azure_ec2_instances_with_multiple_elastic_network_interfaces
-  - azure_kubernetes_api_version
-  - azure_use_network_contributor_role_for_managing_azure_network_resources
-  - aws_configure_emails_for_vulnerability_assessment_scan_reports_and_alerts
+ID: azure_score_operational_excellence
+Title: Operational Excellence For Azure
 ReferenceCode: azure_score_operational_excellence
 Description: Operational Excellence Description
-ID: azure_score_operational_excellence
-AutoAssign: true
+Children: []
 Tags:
-  type:
-    - SCORE
   score_category:
-    - operational_excellence
-Title: Operational Excellence For Azure
+  - operational_excellence
+  type:
+  - SCORE
+Managed: false
+Enabled: false
+AutoAssign: true
+Baseline: false
+Controls:
+- azure_keyvault_logging_enabled
+- azure_enable_defender_for_cloud_for_aks_clusters
+- azure_disable_plain_ftp_deployment
+- azure_enable_transparent_data_encryption_for_sql_managed_instance_using_customer_managed_keys
+- azure_configure_minimum_tls_version
+- azure_use_azure_cni_add_on_for_managing_network_resources
+- azure_use_microsoft_entra_id_integration_for_aks_clusters
+- azure_use_user_assigned_managed_identities_for_aks_clusters
+- azure_ec2_instances_with_multiple_elastic_network_interfaces
+- azure_kubernetes_api_version
+- azure_use_network_contributor_role_for_managing_azure_network_resources
+- aws_configure_emails_for_vulnerability_assessment_scan_reports_and_alerts

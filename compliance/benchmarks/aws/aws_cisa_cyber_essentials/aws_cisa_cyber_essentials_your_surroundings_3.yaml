@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_surroundings_3
 Title: Your Surroundings-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Grant access and admin permissions based on need-to-know and least privilege.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_network_lb_use_ssl_certificate
 - aws_iam_group_user_role_no_inline_policies

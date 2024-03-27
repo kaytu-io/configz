@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rs_mi
 Title: Mitigation (RS.MI)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Activities are performed to prevent expansion of an event, mitigate its effects, and eradicate the incident.
 Children:
 - aws_nist_csf_rs_mi_3
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

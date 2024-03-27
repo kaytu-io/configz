@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_12_1
 Title: 3.12.1 Periodically assess the security controls in organizational systems to determine if the controls are effective in their application
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Organizations assess security controls in organizational systems and the environments in which those systems operate as part of the system development life cycle. Security controls are the safeguards or countermeasures organizations implement to satisfy security requirements. By assessing the implemented security controls, organizations determine if the security safeguards or countermeasures are in place and operating as intended. Security control assessments ensure that information security is built into organizational systems; identify weaknesses and deficiencies early in the development process; provide essential information needed to make risk-based decisions; and ensure compliance to vulnerability mitigation procedures. Assessments are conducted on the implemented security controls as documented in system security plans.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_bucket_not_public
 - aws_cloudtrail_multi_region_read_write_enabled

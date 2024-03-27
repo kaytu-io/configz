@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_9_2
 Title: AU-9(2) Store On Separate Physical Systems Or Components
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Store audit records [Assignment: organization-defined frequency] in a repository that is part of a physically different system or system component than the system or component being audited."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/S3
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_s3_bucket_cross_region_replication_enabled
 - aws_s3_bucket_versioning_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_b
 Title: SI-4(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Identify unauthorized use of the system through the following techniques and methods: [Assignment: organization-defined techniques and methods]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

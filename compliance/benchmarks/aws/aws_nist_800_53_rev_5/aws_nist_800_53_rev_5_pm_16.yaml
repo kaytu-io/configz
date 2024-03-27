@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_pm_16
 Title: Threat Awareness Program (PM-16)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement a threat awareness program that includes a cross-organization information-sharing capability for threat intelligence.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

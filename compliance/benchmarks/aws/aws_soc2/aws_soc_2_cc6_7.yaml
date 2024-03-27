@@ -1,7 +1,11 @@
 ID: aws_soc_2_cc6_7
-Children: null
-Connector: AWS
-Controls: null
-ReferenceCode: 7
-Description:
 Title: Network Controls (Outbound)
+ReferenceCode: "7"
+Description: ""
+Children: []
+Tags: {}
+Managed: false
+Enabled: false
+AutoAssign: false
+Baseline: false
+Controls: []

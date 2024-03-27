@@ -1,7 +1,6 @@
 ID: aws_gxp_21_cfr_part_11_11_10_k
 Title: 11.10(k) Use of appropriate controls over systems documentation that includes adequate controls over the distribution of, access to, and use of documentation for system operation and maintenance
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following: (k) Use of appropriate controls over systems documentation including: (1) Adequate controls over the distribution of, access to, and use of documentation for system operation and maintenance. (2) Revision and change control procedures to maintain an audit trail that documents time-sequenced development and modification of systems documentation."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_cloudtrail_s3_data_events_enabled

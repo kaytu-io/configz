@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_am_b_7
 Title: D3.PC.Am.B.7
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Access controls include password complexity and limits to password attempts and reuse.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong
