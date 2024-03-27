@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rs_mi_3
 Title: RS.MI-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Newly identified vulnerabilities are mitigated or documented as accepted risks.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_finding_archived

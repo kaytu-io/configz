@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_4_5
 Title: 3.4.5 Define, document, approve, and enforce physical and logical access restrictions associated with changes to organizational systems
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Any changes to the hardware, software, or firmware components of systems can potentially have significant effects on the overall security of the systems. Therefore, organizations permit only qualified and authorized individuals to access systems for purposes of initiating changes, including upgrades and modifications. Access restrictions for change also include software libraries.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_config_enabled_all_regions

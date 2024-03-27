@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_2_d
 Title: SI-2(d)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Incorporate flaw remediation into the organizational configuration management process.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elastic_beanstalk_enhanced_health_reporting_enabled
 - aws_redshift_cluster_maintenance_settings_check

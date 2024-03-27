@@ -1,7 +1,6 @@
 ID: aws_foundational_security_eks
 Title: EKS
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/EKS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_eks_cluster_endpoint_restrict_public_access
 - aws_eks_cluster_with_latest_kubernetes_version

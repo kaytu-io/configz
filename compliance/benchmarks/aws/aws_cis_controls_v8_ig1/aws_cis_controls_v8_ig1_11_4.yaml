@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_11_4
 Title: 11.4 Establish and Maintain an Isolated Instance of Recovery Data
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Establish and maintain an isolated instance of recovery data. Example implementations include, version controlling backup destinations through offline, cloud, or off-site systems or services.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_in_backup_plan
 - aws_dynamodb_table_point_in_time_recovery_enabled

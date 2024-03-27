@@ -1,7 +1,6 @@
 ID: aws-config-ecs
 Title: AWS Config ECS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config ECS
 Children: []
 Tags:

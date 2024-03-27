@@ -1,7 +1,6 @@
 ID: aws-config-codebuild
 Title: AWS Config CodeBuild
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CodeBuild
 Children: []
 Tags:

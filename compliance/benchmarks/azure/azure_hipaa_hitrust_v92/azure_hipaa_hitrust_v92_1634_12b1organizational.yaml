@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1634_12b1organizational
 Title: 1634.12b1Organizational.1-12.b 12.01 Information Security Aspects of Business Continuity Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization identifies the critical business processes requiring business continuity.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_disaster_recovery_enabled

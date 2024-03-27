@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_au_12_a_c
 Title: AU-12(a)(c)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system: a. Provides audit record generation capability for the auditable events defined in AU-2 a. at all information system and network components where audit capability is deployed/available c. Generates audit records for the events defined in AU-2 d. with the content defined in AU-3."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

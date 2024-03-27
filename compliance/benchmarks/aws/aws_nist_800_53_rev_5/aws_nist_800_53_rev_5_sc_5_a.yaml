@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_5_a
 Title: SC-5(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "[Selection: Protect against; Limit] the effects of the following types of denial-of-service events: [Assignment: organization-defined types of denial-of-service events]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ra_5
 Title: Vulnerability Scanning (RA-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Scan for system vulnerabilities. Share vulnerability information and security controls that eliminate vulnerabilities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_guardduty_finding_archived

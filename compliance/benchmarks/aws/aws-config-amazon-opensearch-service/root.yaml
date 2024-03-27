@@ -1,7 +1,6 @@
 ID: aws-config-amazon-opensearch-service
 Title: AWS Config Amazon OpenSearch Service
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Amazon OpenSearch Service
 Children: []
 Tags:

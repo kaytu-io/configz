@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_13
 Title: SI-4(13) Analyze Traffic And Event Patterns
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: a. Analyze communications traffic and event patterns for the system; b. Develop profiles representing common traffic and event patterns; and c. Use the traffic and event profiles in tuning system-monitoring devices.
 Children:
 - aws_nist_800_53_rev_5_si_4_13_a
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

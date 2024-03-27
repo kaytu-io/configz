@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_17_2
 Title: AC-17(2) Protection Of Confidentiality And Integrity Using Encryption
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

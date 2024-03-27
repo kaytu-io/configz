@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1626_09l3organizational
 Title: 1626.09l3Organizational.5-09.l 09.05 Information Back-Up
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization ensures a current, retrievable copy of covered information is available before movement of servers.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/PostgreSQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_postgres_db_server_geo_redundant_backup_enabled

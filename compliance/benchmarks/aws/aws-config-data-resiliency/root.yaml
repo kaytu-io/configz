@@ -1,7 +1,6 @@
 ID: aws-config-data-resiliency
 Title: AWS Config Data Resiliency
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Data Resiliency
 Children: []
 Tags:

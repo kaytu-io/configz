@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_9_a
 Title: AU-9(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Protect audit information and audit logging tools from unauthorized access, modification, and deletion.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled

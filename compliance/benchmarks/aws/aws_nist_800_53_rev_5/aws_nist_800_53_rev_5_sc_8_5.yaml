@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_8_5
 Title: SC-8(5) Protected Distribution System
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement [Assignment: organization-defined protected distribution system] to [Selection (one or more): prevent unauthorized disclosure of information; detect changes to information] during transmission."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

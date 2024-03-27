@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_2_b
 Title: CM-2(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Review and update the baseline configuration of the system: 1. [Assignment: organization-defined frequency]; 2. When required due to [Assignment: organization-defined circumstances]; and 3. When system components are installed or upgraded."
 Children:
 - aws_nist_800_53_rev_5_cm_2_b_1
@@ -18,7 +17,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_part_of_organizations
 - aws_ebs_volume_unused

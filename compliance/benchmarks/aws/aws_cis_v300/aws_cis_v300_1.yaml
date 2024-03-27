@@ -1,7 +1,6 @@
 ID: aws_cis_v300_1
 Title: 1 Identity and Access Management
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children: []
 Tags:

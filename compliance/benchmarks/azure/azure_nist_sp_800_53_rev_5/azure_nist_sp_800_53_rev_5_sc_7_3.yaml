@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_sc_7_3
 Title: Access Points SC-7(3)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization limits the number of external network connections to the information system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_apimanagement_service_with_virtual_network
 - azure_app_configuration_private_link_used

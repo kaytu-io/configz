@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0862_09m2organizational
 Title: 0862.09m2Organizational.8-09.m 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization ensures information systems protect the confidentiality and integrity of transmitted information, including during preparation for transmission and during reception.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/SQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_sql_server_use_virtual_service_endpoint

@@ -1,3 +1,7 @@
+ID: aws_soc_2_legacy
+Title: SOC 2 for AWS - Legacy
+ReferenceCode: ""
+Description: System and Organization Controls (SOC) 2 is an auditing procedure that ensures a company's data is securely managed. AWS Audit Manager provides a prebuilt framework that supports SOC 2 to assist you with your audit preparation.
 Children:
 - aws_soc_2_legacy_cc_1
 - aws_soc_2_legacy_cc_2
@@ -8,11 +12,6 @@ Children:
 - aws_soc_2_legacy_cc_8
 - aws_soc_2_legacy_a_1
 - aws_soc_2_legacy_c_1
-Connector: AWS
-Controls: null
-Description: System and Organization Controls (SOC) 2 is an auditing procedure that ensures a company's data is securely managed. AWS Audit Manager provides a prebuilt framework that supports SOC 2 to assist you with your audit preparation.
-Enabled: true
-ID: aws_soc_2_legacy
 Tags:
   category:
   - Compliance
@@ -22,7 +21,7 @@ Tags:
   - Certifications and Attestations
   - Best Practices
   kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/soc2_large.svg
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/soc2_large.svg
   plugin:
   - aws
   service:
@@ -31,4 +30,8 @@ Tags:
   - "true"
   type:
   - Benchmark
-Title: SOC 2 for AWS - Legacy
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

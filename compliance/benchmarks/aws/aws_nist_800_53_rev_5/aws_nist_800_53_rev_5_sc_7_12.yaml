@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_12
 Title: SC-7(12) Host-Based Protection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement [Assignment: organization-defined host-based boundary protection mechanisms] at [Assignment: organization-defined system components]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_dms_replication_instance_not_publicly_accessible

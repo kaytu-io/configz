@@ -1,7 +1,6 @@
 ID: aws-config-fedramp
 Title: AWS Config FedRAMP
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config FedRAMP
 Children: []
 Tags:

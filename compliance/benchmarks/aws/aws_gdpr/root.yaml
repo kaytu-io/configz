@@ -1,12 +1,11 @@
+ID: aws_gdpr
+Title: General Data Protection Regulation (GDPR) for AWS
+ReferenceCode: ""
+Description: The European Union’s General Data Protection Regulation (GDPR) protects European Union (EU) individuals’ fundamental right to privacy and the protection of personal data. The GDPR includes robust requirements that raise and harmonize standards for data protection, security, and compliance.
 Children:
 - aws_article_25
 - aws_article_30
 - aws_article_32
-Connector: AWS
-Controls: null
-Description: The European Union’s General Data Protection Regulation (GDPR) protects European Union (EU) individuals’ fundamental right to privacy and the protection of personal data. The GDPR includes robust requirements that raise and harmonize standards for data protection, security, and compliance.
-Enabled: true
-ID: aws_gdpr
 Tags:
   category:
   - Compliance
@@ -22,4 +21,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: General Data Protection Regulation (GDPR) for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

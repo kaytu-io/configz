@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_ra
 Title: Risk Assessment (ID.RA)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization understands the cybersecurity risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals.
 Children:
 - aws_nist_csf_id_ra_1
@@ -19,5 +18,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

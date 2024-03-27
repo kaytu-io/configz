@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0912_09s1organizational
 Title: 0912.09s1Organizational.4-09.s 09.08 Exchange of Information
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Cryptography is used to protect the confidentiality and integrity of remote access sessions to the internal network and to external systems.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_remote_debugging_disabled

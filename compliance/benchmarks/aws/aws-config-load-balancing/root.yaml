@@ -1,7 +1,6 @@
 ID: aws-config-load-balancing
 Title: AWS Config Load Balancing
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Load Balancing
 Children: []
 Tags:

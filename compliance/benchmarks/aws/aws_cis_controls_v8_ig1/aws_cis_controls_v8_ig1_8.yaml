@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_8
 Title: 8 Audit Log Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Collect, alert, review, and retain audit logs of events that could help detect, understand, or recover from an attack.
 Children:
 - aws_cis_controls_v8_ig1_8_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_7_a
 Title: SI-7(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ integrity verification tools to detect unauthorized changes to the following software, firmware, and information: [Assignment: organization-defined software, firmware, and information]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CloudTrail
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled

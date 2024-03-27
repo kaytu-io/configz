@@ -1,7 +1,6 @@
 ID: aws_soc_2_legacy_cc_3_2
 Title: "CC3.2 COSO Principle 7: The entity identifies risks to the achievement of its objectives across the entity and analyzes risks as a basis for determining how the risks should be managed"
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -21,7 +20,10 @@ Tags:
   - automated
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_guardduty_enabled

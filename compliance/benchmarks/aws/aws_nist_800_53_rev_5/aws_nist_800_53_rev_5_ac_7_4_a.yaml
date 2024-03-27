@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_7_4_a
 Title: AC-7(4)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Allow the use of [Assignment: organization-defined authentication factors] that are different from the primary authentication factors after the number of organization-defined consecutive invalid logon attempts have been exceeded."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14
 - aws_iam_root_user_hardware_mfa_enabled

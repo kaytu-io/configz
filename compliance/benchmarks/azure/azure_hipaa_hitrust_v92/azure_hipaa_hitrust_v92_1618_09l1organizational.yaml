@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1618_09l1organizational
 Title: 1618.09l1Organizational.45-09.l 09.05 Information Back-Up
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The backups are stored in a physically secure remote location, at a sufficient distance to make them reasonably immune from damage to data at the primary site, and reasonable physical and environmental controls are in place to ensure their protection at the remote location.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/PostgreSQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_postgres_db_server_geo_redundant_backup_enabled

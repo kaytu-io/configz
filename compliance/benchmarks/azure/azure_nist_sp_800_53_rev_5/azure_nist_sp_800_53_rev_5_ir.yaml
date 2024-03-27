@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ir
 Title: Incident Response (IR)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: IR controls are specific to an organization’s incident response policies and procedures. This includes incident response training, testing, monitoring, reporting, and response plan.
 Children:
 - azure_nist_sp_800_53_rev_5_ir_4
@@ -18,5 +17,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

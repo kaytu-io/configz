@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_2_2
 Title: IA-2(2) Multi-Factor Authentication To Non-Privileged Accounts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement multi-factor authentication for access to non-privileged accounts.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_hardware_mfa_enabled
 - aws_iam_root_user_mfa_enabled

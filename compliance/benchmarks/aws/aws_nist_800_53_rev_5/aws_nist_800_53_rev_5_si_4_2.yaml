@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_2
 Title: SI-4(2) Automated Tools For Real-Time Analysis
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement the following additional monitoring of privileged users: [Assignment: organization-defined additional monitoring]. Employ automated tools and mechanisms to support near real-time analysis of events."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_trail_integrated_with_logs

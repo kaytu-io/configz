@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_1_a_2
 Title: CP-1(a)(2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 2. Procedures to facilitate the implementation of the contingency planning policy and the associated contingency planning controls."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_elb_application_lb_deletion_protection_enabled

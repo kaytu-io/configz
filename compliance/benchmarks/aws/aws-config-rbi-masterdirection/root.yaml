@@ -1,7 +1,6 @@
 ID: aws-config-rbi-masterdirection
 Title: AWS Config RBI MasterDirection
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config RBI MasterDirection
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ir
 Title: Incident Response (IR)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: IR controls are specific to an organization’s incident response policies and procedures. This includes incident response training, testing, monitoring, reporting, and response plan.
 Children:
 - aws_fedramp_moderate_rev_4_ir_4
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

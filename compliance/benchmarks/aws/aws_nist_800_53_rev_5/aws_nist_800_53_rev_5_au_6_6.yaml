@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_6_6
 Title: AU-6(6) Correletion With Physical Monitoring
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Correlate information from audit records with information obtained from monitoring physical access to further enhance the ability to identify suspicious, inappropriate, unusual, or malevolent activity.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

@@ -1,3 +1,7 @@
+ID: aws_pci_v321
+Title: PCI v3.2.1
+ReferenceCode: ""
+Description: The Payment Card Industry Data Security Standard (PCI DSS) standard in Security Hub consists of a set of AWS security best practices controls. Each control applies to a specific AWS resource, and relates to one or more PCI DSS version 3.2.1 requirements. A PCI DSS requirement can be related to multiple controls.
 Children:
 - aws_pci_v321_autoscaling
 - aws_pci_v321_cloudtrail
@@ -17,11 +21,6 @@ Children:
 - aws_pci_v321_s3
 - aws_pci_v321_sagemaker
 - aws_pci_v321_ssm
-Connector: ""
-Controls: null
-Description: The Payment Card Industry Data Security Standard (PCI DSS) standard in Security Hub consists of a set of AWS security best practices controls. Each control applies to a specific AWS resource, and relates to one or more PCI DSS version 3.2.1 requirements. A PCI DSS requirement can be related to multiple controls.
-Enabled: true
-ID: aws_pci_v321
 Tags:
   pci:
   - "true"
@@ -29,4 +28,8 @@ Tags:
   - v3.2.1
   plugin:
   - aws
-Title: PCI v3.2.1
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

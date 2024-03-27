@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_multi_factor_authentication_3_0_1
 Title: 3.0.1 - Disallow access to IAM users without MFA
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow access to IAM users without MFA - Checks whether the AWS Identity and Access Management users have multi-factor authentication (MFA) enabled.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_user_mfa_enabled

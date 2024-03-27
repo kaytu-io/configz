@@ -1,7 +1,6 @@
 ID: aws-config-efs
 Title: AWS Config EFS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config EFS
 Children: []
 Tags:

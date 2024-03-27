@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3
 Title: Cybersecurity Controls (Domain 3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Cybersecurity controls are the practices and processes used to protect assets, infrastructure, and information by strengthening the institution's defensive posture through continuous, automated protection and monitoring.
 Children:
 - aws_ffiec_d_3_cc
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_rbi_cyber_security_annex_i_7_1
 Title: Annex I (7.1)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow administrative rights on end-user workstations/PCs/laptops and provide access rights on a ‘need to know’ and ‘need to do’ basis.
 Children: []
 Tags:
@@ -17,7 +16,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_policy_custom_no_service_wildcard
 - aws_iam_group_user_role_no_inline_policies

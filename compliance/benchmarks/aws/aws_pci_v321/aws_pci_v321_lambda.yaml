@@ -1,7 +1,6 @@
 ID: aws_pci_v321_lambda
 Title: Lambda
-DisplayCode: ""
-Connector: ""
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -13,7 +12,10 @@ Tags:
   - aws
   service:
   - lambda
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_lambda_function_restrict_public_access
 - aws_lambda_function_in_vpc

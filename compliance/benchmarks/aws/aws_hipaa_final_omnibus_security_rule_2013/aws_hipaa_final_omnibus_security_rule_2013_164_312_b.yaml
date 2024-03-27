@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_312_b
 Title: 164.312(b) Audit controls
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement hardware, software, and/or procedural mechanisms that record and examine activity in information systems that contain or use electronic protected health information.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_xray_tracing_enabled
 - aws_apigateway_stage_logging_enabled

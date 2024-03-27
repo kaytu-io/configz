@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_16_12
 Title: 16.12 Implement Code-Level Security Checks
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_codebuild_project_artifact_encryption_enabled
 - aws_codebuild_project_environment_privileged_mode_disabled

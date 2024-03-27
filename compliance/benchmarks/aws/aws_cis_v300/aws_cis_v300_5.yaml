@@ -1,7 +1,6 @@
 ID: aws_cis_v300_5
 Title: 5 Networking
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children: []
 Tags:

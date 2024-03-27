@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_1_c_2
 Title: SI-1(c)(2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "c. Review and update the current system and information integrity: 2. Procedures [Assignment: organization-defined frequency] and following [Assignment: organization-defined events]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_cloudtrail_trail_validation_enabled

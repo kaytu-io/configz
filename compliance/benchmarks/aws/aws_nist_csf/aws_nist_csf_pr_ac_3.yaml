@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ac_3
 Title: PR.AC-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Remote access is managed.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_use_waf_web_acl
 - aws_autoscaling_launch_config_public_ip_disabled

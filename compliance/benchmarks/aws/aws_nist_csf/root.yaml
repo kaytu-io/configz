@@ -1,14 +1,13 @@
+ID: aws_nist_csf
+Title: NIST Cybersecurity Framework (CSF) v1.1 for AWS
+ReferenceCode: ""
+Description: NIST Cybersecurity Framework is a set of best practices, standards, and recommendations that help an organization improve its cybersecurity measures.
 Children:
 - aws_nist_csf_de
 - aws_nist_csf_id
 - aws_nist_csf_pr
 - aws_nist_csf_rc
 - aws_nist_csf_rs
-Connector: AWS
-Controls: null
-Description: NIST Cybersecurity Framework is a set of best practices, standards, and recommendations that help an organization improve its cybersecurity measures.
-Enabled: true
-ID: aws_nist_csf
 Tags:
   category:
   - Compliance
@@ -25,4 +24,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: NIST Cybersecurity Framework (CSF) v1.1 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

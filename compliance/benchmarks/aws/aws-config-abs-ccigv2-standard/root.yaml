@@ -1,7 +1,6 @@
 ID: aws-config-abs-ccigv2-standard
 Title: AWS Config ABS CCIGv2 Standard
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config ABS CCIGv2 Standard
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws-config-asset-management
 Title: AWS Config Asset Management
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Asset Management
 Children: []
 Tags:

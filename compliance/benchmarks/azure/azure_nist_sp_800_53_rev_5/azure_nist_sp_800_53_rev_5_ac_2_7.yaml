@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_2_7
 Title: Privileged User Accounts AC-2(7)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization establishes and administers privileged user accounts in accordance with a role-based access scheme that organizes allowed information system access and privileges into roles, monitors privileged role assignments, and takes organization-defined actions when privileged role assignments are no longer appropriate.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_cognitive_service_local_auth_disabled
 - azure_iam_no_custom_role

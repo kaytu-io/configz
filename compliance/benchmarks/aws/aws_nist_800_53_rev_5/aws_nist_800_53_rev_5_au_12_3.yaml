@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_12_3
 Title: AU-12(3) Changes By Authorized Individuals
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Provide and implement the capability for [Assignment: organization-defined individuals or roles] to change the logging to be performed on [Assignment: organization-defined system components] based on [Assignment: organization-defined selectable event criteria] within [Assignment: organization-defined time thresholds]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_autoscaling_group_with_lb_use_health_check

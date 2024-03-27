@@ -1,7 +1,6 @@
 ID: azure_cis_v200_1_1
 Title: 1.1 Security Defaults
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,5 +18,8 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

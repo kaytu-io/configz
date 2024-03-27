@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sa_9_6
 Title: SA-9(6) Organization-Controlled Cryptographic Keys
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Maintain exclusive control of cryptographic keys for encrypted material stored or transmitted through an external system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/KMS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_kms_key_not_pending_deletion
 - aws_kms_cmk_rotation_enabled

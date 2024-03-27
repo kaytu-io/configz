@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_17_10
 Title: AC-17(10) Authenticate Remote Commands
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Provide the capability to disconnect or disable remote access to the system within [Assignment: organization-defined time period]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

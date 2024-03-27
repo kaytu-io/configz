@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_2_12
 Title: AC-2(12) Account Monitoring
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Monitors and reports atypical usage of information system accounts to organization-defined personnel or roles.
 Children:
 - aws_nist_800_53_rev_5_ac_2_12_a
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

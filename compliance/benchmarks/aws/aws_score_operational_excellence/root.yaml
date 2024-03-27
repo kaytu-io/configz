@@ -1,40 +1,43 @@
-Connector: AWS
-Controls:
-  - aws_ec2_instance_naming_conventions
-  - aws_unused_elastic_network_interfaces
-  - aws_multi_account_centralized_management
-  - aws_acm_certificate_expired
-  - aws_acm_certificates_validity
-  - aws_acm_certificates_with_wildcard_domain_names
-  - aws_ebs_volumes_attached_to_stopped_ec2_instances
-  - aws_unused_aws_ec2_key_pairs
-  - aws_opensearch_slow_logs
-  - aws_enable_aurora_cluster_copy_tags_to_snapshots
-  - aws_enable_serverless_log_exports
-  - aws_instance_level_events_subscriptions
-  - aws_log_exports
-  - aws_performance_insights
-  - aws_security_groups_events_subscriptions
-  - aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
-  - aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
-  - aws_lifecycle_policy_in_use
-  - aws_ecs_task_log_driver_in_use
-  - aws_check_for_ecs_container_instance_agent_version
-  - aws_disable_remote_access_to_eks_cluster_node_groups
-  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
-  - aws_eks_cluster_node_group_iam_role_policies
-  - aws_use_aws_managed_policy_to_manage_networking_resources
-  - aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
-  - aws_use_aws_managed_policy_to_manage_aws_resources
-  - aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
-  - aws_enable_cloudwatch_container_insights
+ID: aws_score_operational_excellence
+Title: Operational Excellence For AWS
 ReferenceCode: aws_score_operational_excellence
 Description: Operational Excellence Description
-ID: aws_score_operational_excellence
-AutoAssign: true
+Children: []
 Tags:
-  type:
-    - SCORE
   score_category:
-    - operational_excellence
-Title: Operational Excellence For AWS
+  - operational_excellence
+  type:
+  - SCORE
+Managed: false
+Enabled: false
+AutoAssign: true
+Baseline: false
+Controls:
+- aws_ec2_instance_naming_conventions
+- aws_unused_elastic_network_interfaces
+- aws_multi_account_centralized_management
+- aws_acm_certificate_expired
+- aws_acm_certificates_validity
+- aws_acm_certificates_with_wildcard_domain_names
+- aws_ebs_volumes_attached_to_stopped_ec2_instances
+- aws_unused_aws_ec2_key_pairs
+- aws_opensearch_slow_logs
+- aws_enable_aurora_cluster_copy_tags_to_snapshots
+- aws_enable_serverless_log_exports
+- aws_instance_level_events_subscriptions
+- aws_log_exports
+- aws_performance_insights
+- aws_security_groups_events_subscriptions
+- aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
+- aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
+- aws_lifecycle_policy_in_use
+- aws_ecs_task_log_driver_in_use
+- aws_check_for_ecs_container_instance_agent_version
+- aws_disable_remote_access_to_eks_cluster_node_groups
+- aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+- aws_eks_cluster_node_group_iam_role_policies
+- aws_use_aws_managed_policy_to_manage_networking_resources
+- aws_use_aws_managed_policy_to_access_amazon_ecr_repositories
+- aws_use_aws_managed_policy_to_manage_aws_resources
+- aws_use_oidc_provider_for_authenticating_kubernetes_api_calls
+- aws_enable_cloudwatch_container_insights

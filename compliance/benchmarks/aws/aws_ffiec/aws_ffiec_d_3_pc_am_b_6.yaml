@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_am_b_6
 Title: D3.PC.Am.B.6
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Identification and authentication are required and managed for access to systems, applications, and hardware.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong
 - aws_iam_policy_custom_no_service_wildcard

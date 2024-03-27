@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_3
 Title: Configuration Change Control (CM-3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization authorizes, documents, and controls changes to the information system.
 Children:
 - aws_nist_800_53_rev_5_cm_3_3
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

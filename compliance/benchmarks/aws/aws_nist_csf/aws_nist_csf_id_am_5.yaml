@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_am_5
 Title: ID.AM-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Resources (e.g., hardware, devices, data, time, personnel, and software) are prioritized based on their classification, criticality, and business value.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_dynamodb_table_auto_scaling_enabled

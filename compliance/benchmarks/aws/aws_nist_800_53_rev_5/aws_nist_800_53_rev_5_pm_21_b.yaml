@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_pm_21_b
 Title: PM-21(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Retain the accounting of disclosures for the length of the time the personally identifiable information is maintained or five years after the disclosure is made, whichever is longer.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CloudWatch
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_log_group_retention_period_365

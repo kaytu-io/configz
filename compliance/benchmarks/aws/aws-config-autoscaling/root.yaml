@@ -1,7 +1,6 @@
 ID: aws-config-autoscaling
 Title: AWS Config AutoScaling
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config AutoScaling
 Children: []
 Tags:

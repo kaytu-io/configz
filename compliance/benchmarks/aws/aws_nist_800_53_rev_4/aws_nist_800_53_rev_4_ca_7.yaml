@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ca_7
 Title: Continuous Monitoring (CA-7)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Continuously monitor configuration management processes. Determine security impact, environment and operational risks.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs
 - aws_cloudwatch_alarm_action_enabled

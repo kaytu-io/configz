@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_4_26
 Title: AC-4(26) Audit Filtering Actions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: When transferring information between different security domains, record and audit content filtering actions and results for the information being filtered.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_7_2_1
 Title: PCI DSS requirement 7.2.1
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Coverage of all system components.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_external_user_with_owner_role
 - azure_iam_external_user_with_read_permission

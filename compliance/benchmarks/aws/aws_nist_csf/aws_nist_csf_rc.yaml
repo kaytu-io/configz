@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rc
 Title: Recover (RC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop and implement appropriate activities to maintain plans for resilience and to restore any capabilities or services that were impaired due to a cybersecurity incident.
 Children:
 - aws_nist_csf_rc_rp
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

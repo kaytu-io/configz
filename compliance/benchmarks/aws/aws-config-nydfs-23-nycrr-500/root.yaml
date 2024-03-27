@@ -1,7 +1,6 @@
 ID: aws-config-nydfs-23-nycrr-500
 Title: AWS Config NYDFS 23 NYCRR 500
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NYDFS 23 NYCRR 500
 Children: []
 Tags:

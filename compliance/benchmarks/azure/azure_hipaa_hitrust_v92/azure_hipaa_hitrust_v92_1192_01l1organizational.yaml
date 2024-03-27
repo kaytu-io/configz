@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1192_01l1organizational
 Title: 1192.01l1Organizational.1-01.l 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Access to network equipment is physically protected.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_jit_access_protected

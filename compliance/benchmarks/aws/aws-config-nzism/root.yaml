@@ -1,7 +1,6 @@
 ID: aws-config-nzism
 Title: AWS Config NZISM
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NZISM
 Children: []
 Tags:

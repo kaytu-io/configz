@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_21
 Title: SC-7(21) Isolation Of System Components
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ boundary protection mechanisms to isolate [Assignment: organization-defined system components] supporting [Assignment: organization-defined missions and/or business functions]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

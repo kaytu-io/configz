@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_dc_th_b_1
 Title: D3.DC.Th.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Independent testing (including penetration testing and vulnerability scanning) is conducted according to the risk assessment for external-facing systems and the internal network.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

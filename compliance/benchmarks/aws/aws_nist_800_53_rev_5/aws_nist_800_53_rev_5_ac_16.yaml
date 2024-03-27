@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_16
 Title: Security And Privacy Attributes (AC-16)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Provide the means to associate [Assignment: organization-defined types of security and privacy attributes] with [Assignment: organization-defined security and privacy attribute values] for information in storage, in process, and/or in transmission; b.\u2003Ensure that the attribute associations are made and retained with the information; c.\u2003Establish the following permitted security and privacy attributes from the attributes defined in AC-16a for [Assignment: organization-defined systems]: [Assignment: organization-defined security and privacy attributes]."
 Children:
 - aws_nist_800_53_rev_5_ac_16_b
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1207_09aa2system
 Title: 1207.09aa2System.4-09.aa 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Audit records are retained for 90 days and older audit records are archived for one year.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_eventhub_namespace_logging_enabled
 - azure_stream_analytics_job_logging_enabled

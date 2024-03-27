@@ -1,7 +1,6 @@
 ID: azure_cis_v130_5_2
 Title: 5.2 Monitoring using Activity Log Alerts
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/Monitor
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_monitor_log_alert_create_policy_assignment
 - azure_monitor_log_alert_delete_policy_assignment

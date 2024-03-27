@@ -1,7 +1,6 @@
 ID: aws_gxp_21_cfr_part_11_11_300
 Title: 11.300 Controls for identification codes/passwords
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Persons who use electronic signatures based upon use of identification codes in combination with passwords shall employ controls to ensure their security and integrity. Such controls shall include the following benchmarks.
 Children:
 - aws_gxp_21_cfr_part_11_11_300_b
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

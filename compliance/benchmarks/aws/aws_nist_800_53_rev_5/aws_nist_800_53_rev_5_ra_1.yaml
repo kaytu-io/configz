@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ra_1
 Title: Policy And Procedures (RA-1)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Track risk assessment policies that address purpose, scope, roles, management, and organizational compliance.
 Children:
 - aws_nist_800_53_rev_5_ra_1_a
@@ -16,5 +15,8 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

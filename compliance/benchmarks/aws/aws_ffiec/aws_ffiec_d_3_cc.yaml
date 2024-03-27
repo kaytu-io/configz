@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_cc
 Title: Corrective Controls (CC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Corrective Controls are utilized to resolve system and software vulnerabilities through patch management and remediation of issues identified during vulnerability scans and penetration testing.
 Children:
 - aws_ffiec_d_3_cc_pm_b_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

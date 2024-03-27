@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_au_7_1
 Title: AU-7(1) Automatic Processing
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system provides the capability to process audit records for events of interest based on [Assignment: organization-defined audit fields within audit records]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs
 - aws_cloudwatch_alarm_action_enabled

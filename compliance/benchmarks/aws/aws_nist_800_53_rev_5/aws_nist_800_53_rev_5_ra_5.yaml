@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ra_5
 Title: Vulnerability Monitoring And Scanning (RA-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ the following advanced automation and analytics capabilities to predict and identify risks to [Assignment: organization-defined systems or system components]: [Assignment: organization-defined advanced automation and analytics capabilities]."
 Children:
 - aws_nist_800_53_rev_5_ra_5_4
@@ -17,5 +16,8 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

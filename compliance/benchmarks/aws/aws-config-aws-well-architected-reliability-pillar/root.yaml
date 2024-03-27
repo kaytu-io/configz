@@ -1,7 +1,6 @@
 ID: aws-config-aws-well-architected-reliability-pillar
 Title: AWS Config AWS Well Architected Reliability Pillar
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config AWS Well Architected Reliability Pillar
 Children: []
 Tags:

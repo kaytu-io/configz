@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_multi_factor_authentication_3_0_2
 Title: 3.0.2 - Disallow console access to IAM users without MFA
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow console access to IAM users without MFA - Checks whether AWS Multi-Factor Authentication (MFA) is enabled for all AWS Identity and Access Management (IAM) users that use a console password.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_user_console_access_mfa_enabled

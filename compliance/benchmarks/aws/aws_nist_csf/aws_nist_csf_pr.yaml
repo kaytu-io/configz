@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr
 Title: Protect (PR)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop and implement appropriate safeguards to ensure delivery of critical services.
 Children:
 - aws_nist_csf_pr_ac
@@ -20,5 +19,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws-config-security-services
 Title: AWS Config Security Services
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Security Services
 Children: []
 Tags:

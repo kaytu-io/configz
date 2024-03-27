@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_pe_6
 Title: Monitoring Physical Access (PE-6)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Monitor physical access to the facility where the system resides to detect and respond to physical security incidents; b.\u2003Review physical access logs [Assignment: organization-defined frequency] and upon occurrence of [Assignment: organization-defined events or potential indications of events]; and c.\u2003Coordinate results of reviews and investigations with the organizational incident response capability."
 Children:
 - aws_nist_800_53_rev_5_pe_6_2
@@ -17,5 +16,8 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,13 +1,12 @@
+ID: aws_gxp_21_cfr_part_11
+Title: GxP 21 CFR Part 11 for AWS
+ReferenceCode: ""
+Description: The overall intent of GxP requirements is to ensure that food and medical products are safe for consumers and to ensure the integrity of data used to make product-related safety decisions.
 Children:
 - aws_gxp_21_cfr_part_11_11_10
 - aws_gxp_21_cfr_part_11_11_30
 - aws_gxp_21_cfr_part_11_11_200
 - aws_gxp_21_cfr_part_11_11_300
-Connector: AWS
-Controls: null
-Description: The overall intent of GxP requirements is to ensure that food and medical products are safe for consumers and to ensure the integrity of data used to make product-related safety decisions.
-Enabled: true
-ID: aws_gxp_21_cfr_part_11
 Tags:
   category:
   - Compliance
@@ -23,4 +22,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: GxP 21 CFR Part 11 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

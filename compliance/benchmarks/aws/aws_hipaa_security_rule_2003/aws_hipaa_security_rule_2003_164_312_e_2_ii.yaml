@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_312_e_2_ii
 Title: 164.312(e)(2)(ii) Encryption
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement a mechanism to encrypt electronic protected health information whenever deemed appropriate.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

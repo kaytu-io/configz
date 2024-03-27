@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_8_2
 Title: CM-8(2) Automated Maintenance
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Maintain the currency, completeness, accuracy, and availability of the inventory of system components using [Assignment: organization-defined automated mechanisms]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed

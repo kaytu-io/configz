@@ -1,7 +1,6 @@
 ID: aws_gxp_eu_annex_11_operational_phase_7_1
 Title: 7.1 Data Storage - Damage Protection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Data should be secured by both physical and electronic means against damage. Stored data should be checked for accessibility, readability and accuracy. Access to data should be ensured throughout the retention period.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_cloudfront_distribution_custom_origins_encryption_in_transit_enabled

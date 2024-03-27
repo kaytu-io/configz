@@ -1,7 +1,6 @@
 ID: azure_cis_v150_2_2
 Title: 2.2 Auto Provisioning
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_securitycenter_automatic_provisioning_monitoring_agent_on

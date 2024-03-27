@@ -1,7 +1,6 @@
 ID: aws-config-nist-800-171
 Title: AWS Config NIST 800 171
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NIST 800 171
 Children: []
 Tags:

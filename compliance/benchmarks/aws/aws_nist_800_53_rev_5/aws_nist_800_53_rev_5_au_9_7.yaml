@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_9_7
 Title: AU-9(7) Store On Component With Different Operation Systems
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Store audit information on a component running a different operating system than the system or component being audited.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs

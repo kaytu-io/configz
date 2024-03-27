@@ -1,7 +1,6 @@
 ID: aws_fedramp_low_rev_4_cp_9
 Title: Information System Backup (CP-9)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization conducts backups of user-level information, system-level information  and information system documentation including security-related documentation contained in the information system and protects the confidentiality, integrity, and availability of backup information at storage locations.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_dynamodb_table_point_in_time_recovery_enabled

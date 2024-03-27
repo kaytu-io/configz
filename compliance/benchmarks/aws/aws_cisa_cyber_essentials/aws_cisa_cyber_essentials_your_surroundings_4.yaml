@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_surroundings_4
 Title: Your Surroundings-4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Leverage unique passwords for all user accounts.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong

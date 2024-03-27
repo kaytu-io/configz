@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_4_b
 Title: AC-3(4)(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Enforce [Assignment: organization-defined discretionary access policy] over the set of covered subjects and objects specified in the policy, and where the policy specifies that a subject that has been granted access to information can do one or more of the following: (b) Grant its privileges to other subjects."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_secretsmanager_secret_unused_90_day
 - aws_secretsmanager_secret_rotated_as_scheduled

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_17_1
 Title: AC-17(1) Automated Monitoring/Control
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system monitors and controls remote access methods.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

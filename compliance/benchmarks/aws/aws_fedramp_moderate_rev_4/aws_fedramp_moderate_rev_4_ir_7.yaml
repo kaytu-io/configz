@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ir_7
 Title: Incident Response Assistance (IR-7)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization provides an incident response support resource, integral to the organizational incident response capability that offers advice and assistance to users of the information system for the handling and reporting of security incidents.
 Children:
 - aws_fedramp_moderate_rev_4_ir_7_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

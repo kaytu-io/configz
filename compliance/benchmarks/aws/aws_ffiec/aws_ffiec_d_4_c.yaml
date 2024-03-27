@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_4_c
 Title: Connections (C)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Connections incorporate the identification, monitoring, and management of external connections and data flows to third parties.
 Children:
 - aws_ffiec_d_4_c_co_b_2
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

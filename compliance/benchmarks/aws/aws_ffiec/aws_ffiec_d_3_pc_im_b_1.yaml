@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_im_b_1
 Title: D3.PC.Im.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Network perimeter defense tools (e.g., border router and firewall) are used.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_stage_use_waf_web_acl

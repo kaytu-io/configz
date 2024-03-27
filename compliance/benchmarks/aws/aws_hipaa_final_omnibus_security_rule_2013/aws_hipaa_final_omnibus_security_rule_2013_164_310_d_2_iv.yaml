@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_310_d_2_iv
 Title: 164.310(d)(2)(iv) Data backup and storage
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Create a retrievable, exact copy of electronic protected health information, when needed, before movement of equipment.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_encryption_enabled

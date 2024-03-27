@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1616_09l1organizational
 Title: 1616.09l1Organizational.16-09.l 09.05 Information Back-Up
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Backup copies of information and software are made and tests of the media and restoration procedures are regularly performed at appropriate intervals.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/SQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_sql_database_long_term_geo_redundant_backup_enabled

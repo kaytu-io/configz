@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_6
 Title: Resource Availability (SC-6)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Protect the availability of resources by allocating [Assignment: organization-defined resources] by [Selection (one or more): priority; quota; [Assignment: organization-defined controls]]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_dynamodb_table_auto_scaling_enabled

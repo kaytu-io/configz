@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_8_2_b
 Title: IA-8(2)(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Document and maintain a list of accepted external authenticators.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

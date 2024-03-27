@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_6_2
 Title: CP-6(2) Recovery Time And Recovery Point Objectives
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Configure the alternate storage site to facilitate recovery operations in accordance with recovery time and recovery point objectives.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_dynamodb_table_in_backup_plan

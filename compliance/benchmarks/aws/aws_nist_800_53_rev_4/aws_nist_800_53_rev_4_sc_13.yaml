@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc_13
 Title: Cryptographic Protection (SC-13)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system implements [Assignment: organization-defined cryptographic uses and type of cryptography required for each use] in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/DynamoDB
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_encrypted_with_kms

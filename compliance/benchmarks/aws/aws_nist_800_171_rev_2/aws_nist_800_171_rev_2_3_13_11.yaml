@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_13_11
 Title: 3.13.11 Employ FIPS-validated cryptography when used to protect the confidentiality of CUI
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Cryptography can be employed to support many security solutions including the protection of controlled unclassified information, the provision of digital signatures, and the enforcement of information separation when authorized individuals have the necessary clearances for such information but lack the necessary formal access approvals. Cryptography can also be used to support random number generation and hash generation. Cryptographic standards include FIPSvalidated cryptography and/or NSA-approved cryptography.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

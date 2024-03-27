@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1151_01c3system
 Title: 1151.01c3System.1-01.c 01.02 Authorized Access to Information Systems
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization limits authorization to privileged accounts on information systems to a pre-defined subset of users.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_subscription_owner_max_3

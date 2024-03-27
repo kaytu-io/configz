@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_2
 Title: Threat Intelligence and Collaboration (Domain 2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Threat intelligence and collaboration includes processes to effectively discover, analyze, and understand cyber threats, with the capability to share information internally and with appropriate third parties.
 Children:
 - aws_ffiec_d_2_is
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

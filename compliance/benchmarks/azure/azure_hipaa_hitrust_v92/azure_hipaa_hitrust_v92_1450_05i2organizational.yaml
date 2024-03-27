@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1450_05i2organizational
 Title: 1450.05i2Organizational.2-05.i 05.02 External Parties
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization obtains satisfactory assurances that reasonable information security exists across their information supply chain by performing an annual review, which includes all partners/third party-providers upon which their information supply chain depends.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/PostgreSQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_postgres_sql_ssl_enabled

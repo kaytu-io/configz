@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ip_7
 Title: PR.IP-7
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Protection processes are improved.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/EC2
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ebs_optimized

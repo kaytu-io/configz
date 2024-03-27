@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_dp_5
 Title: DE.DP-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Detection processes are continuously improved.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/EC2
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_ec2_instance_detailed_monitoring_enabled

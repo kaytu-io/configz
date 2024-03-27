@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_13
 Title: 13 Network Monitoring and Defense
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Operate processes and tooling to establish and maintain comprehensive network monitoring and defense against security threats across the enterprise’s network infrastructure and user base.
 Children:
 - aws_cis_controls_v8_ig1_13_1
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

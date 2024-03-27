@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_4_g
 Title: SC-7(4)(g)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Publish information to enable remote networks to detect unauthorized control plane traffic from internal networks.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

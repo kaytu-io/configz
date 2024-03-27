@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac
 Title: Access Control (AC)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The access control family consists of security requirements detailing system logging. This includes who has access to what assets and reporting capabilities like account management, system privileges, and remote access logging to determine when users have access to the system and their level of access.
 Children:
 - aws_fedramp_moderate_rev_4_ac_2
@@ -22,5 +21,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

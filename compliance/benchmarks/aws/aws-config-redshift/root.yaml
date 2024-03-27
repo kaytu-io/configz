@@ -1,7 +1,6 @@
 ID: aws-config-redshift
 Title: AWS Config Redshift
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Redshift
 Children: []
 Tags:

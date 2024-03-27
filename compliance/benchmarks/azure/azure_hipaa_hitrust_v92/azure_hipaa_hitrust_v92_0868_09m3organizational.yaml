@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0868_09m3organizational
 Title: 0868.09m3Organizational.18-09.m 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization builds a firewall configuration to restrict inbound and outbound traffic to that which is necessary for the covered data environment.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/ContainerRegistry
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_container_registry_use_virtual_service_endpoint

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ir_7_1
 Title: IR-7(1) Automation Support For Availability Of Information / Support
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization employs automated mechanisms to increase the availability of incident response-related information and support.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_finding_archived

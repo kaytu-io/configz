@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_2
 Title: Contingency Plan (CP-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Develop a contingency plan for the system that: 1.\u2003Identifies essential mission and business functions and associated contingency requirements; 2.\u2003Provides recovery objectives, restoration priorities, and metrics; b.\u2003Distribute copies of the contingency plan to [Assignment: organization-defined key contingency personnel (identified by name and/or by role) and organizational elements]; c.\u2003Coordinate contingency planning activities with incident handling activities; d.\u2003Review the contingency plan for the system [Assignment: organization-defined frequency]; e.\u2003Update the contingency plan to address changes to the organization, system, or environment of operation and problems encountered during contingency plan implementation, execution, or testing; f.\u2003Communicate contingency plan changes to [Assignment: organization-defined key contingency personnel (identified by name and/or by role) and organizational elements]; g.\u2003Incorporate lessons learned from contingency plan testing, training, or actual contingency activities into contingency testing and training; and h.\u2003Protect the contingency plan from unauthorized disclosure and modification."
 Children:
 - aws_nist_800_53_rev_5_cp_2_a
@@ -20,5 +19,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

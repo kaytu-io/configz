@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_4
 Title: External Dependency Management (Domain 4)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: External dependency management involves establishing and maintaining a comprehensive program to oversee and manage external connections and third-party relationships with access to the institution's technology assets and information.
 Children:
 - aws_ffiec_d_4_c
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws-config-ffiec
 Title: AWS Config FFIEC
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config FFIEC
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_cm_4
 Title: DE.CM-4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Malicious code is detected.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_guardduty_finding_archived

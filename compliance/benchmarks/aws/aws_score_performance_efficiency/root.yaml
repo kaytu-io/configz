@@ -1,32 +1,35 @@
-Connector: AWS
-Controls:
-  - aws_ec2_desired_instance_type
-  - aws_ec2_instance_too_old
-  - aws_opensearch_version
-  - aws_use_gp3_not_gp2
-  - aws_disable_public_ip_address_assignment_for_ec2_instances
-  - aws_unused_elastic_network_interfaces
-  - aws_opensearch_slow_logs
-  - aws_enable_instance_storage_auto_scaling
-  - aws_enable_serverless_log_exports
-  - aws_instance_level_events_subscriptions
-  - aws_performance_insights
-  - aws_rds_event_notifications
-  - aws_security_groups_events_subscriptions
-  - aws_kubernetes_cluster_version
-  - aws_managed_nat_gateway_in_use
-  - aws_enable_support_for_grpc_protocol
-  - aws_db_instance_generation
-  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
-  - aws_enable_cloudwatch_container_insights
-  - aws_enable_cross_region_replication
+ID: aws_score_performance_efficiency
+Title: Efficiency for AWS
 ReferenceCode: aws_score_performance_efficiency
 Description: Performance Efficiency Description
-ID: aws_score_performance_efficiency
-AutoAssign: true
+Children: []
 Tags:
-  type:
-    - SCORE
   score_category:
-    - performance_efficiency
-Title: Efficiency for AWS
+  - performance_efficiency
+  type:
+  - SCORE
+Managed: false
+Enabled: false
+AutoAssign: true
+Baseline: false
+Controls:
+- aws_ec2_desired_instance_type
+- aws_ec2_instance_too_old
+- aws_opensearch_version
+- aws_use_gp3_not_gp2
+- aws_disable_public_ip_address_assignment_for_ec2_instances
+- aws_unused_elastic_network_interfaces
+- aws_opensearch_slow_logs
+- aws_enable_instance_storage_auto_scaling
+- aws_enable_serverless_log_exports
+- aws_instance_level_events_subscriptions
+- aws_performance_insights
+- aws_rds_event_notifications
+- aws_security_groups_events_subscriptions
+- aws_kubernetes_cluster_version
+- aws_managed_nat_gateway_in_use
+- aws_enable_support_for_grpc_protocol
+- aws_db_instance_generation
+- aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+- aws_enable_cloudwatch_container_insights
+- aws_enable_cross_region_replication

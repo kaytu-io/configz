@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1146_01c2system
 Title: 1146.01c2System.23-01.c 01.02 Authorized Access to Information Systems
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization promotes the development and use of programs that avoid the need to run with elevated privileges and system routines to avoid the need to grant privileges to users.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_external_user_with_owner_role

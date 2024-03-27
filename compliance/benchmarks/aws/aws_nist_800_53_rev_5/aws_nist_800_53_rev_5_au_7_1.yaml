@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_7_1
 Title: AU-7(1) Automatic Processing
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Provide and implement the capability to process, sort, and search audit records for events of interest based on the following content: [Assignment: organization-defined fields within audit records]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs

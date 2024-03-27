@@ -1,7 +1,6 @@
 ID: aws-config-serverless
 Title: AWS Config Serverless
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Serverless
 Children: []
 Tags:

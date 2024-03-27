@@ -1,3 +1,7 @@
+ID: azure_hipaa_hitrust_v92
+Title: HIPAA HITRUST 9.2 for Azure
+ReferenceCode: ""
+Description: The HIPAA HITRUST 9.2 provides a combined set of predefined compliance and security best-practice checks for Health Insurance Portability and Accountability Act.
 Children:
 - azure_hipaa_hitrust_v92_privilege_management
 - azure_hipaa_hitrust_v92_user_authentication_for_external_connections
@@ -18,11 +22,6 @@ Children:
 - azure_hipaa_hitrust_v92_education_training_and_awareness
 - azure_hipaa_hitrust_v92_third_party_assurance
 - azure_hipaa_hitrust_v92_business_continuity_and_disaster_recovery
-Connector: Azure
-Controls: null
-Description: The HIPAA HITRUST 9.2 provides a combined set of predefined compliance and security best-practice checks for Health Insurance Portability and Accountability Act.
-Enabled: true
-ID: azure_hipaa_hitrust_v92
 Tags:
   category:
   - Compliance
@@ -35,11 +34,15 @@ Tags:
   - Frameworks
   - Privacy
   kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/hipaa_large.svg
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/hipaa_large.svg
   plugin:
   - azure
   service:
   - Azure
   type:
   - Benchmark
-Title: HIPAA HITRUST 9.2 for Azure
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

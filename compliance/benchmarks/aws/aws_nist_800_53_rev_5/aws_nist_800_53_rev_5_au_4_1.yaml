@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_4_1
 Title: AU-4(1) Transfer To Alternate Storage
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Transfer audit logs [Assignment: organization-defined frequency] to a different system, system component, or media other than the system or system component conducting the logging."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs

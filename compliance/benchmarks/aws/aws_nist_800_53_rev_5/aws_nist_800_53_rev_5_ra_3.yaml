@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ra_3
 Title: Risk Assessment (RA-3)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Assess risks and magnitude of unauthorized system access, use, disclosure, disruption, modifications, or destruction.
 Children:
 - aws_nist_800_53_rev_5_ra_3_4
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

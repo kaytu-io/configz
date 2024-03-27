@@ -1,7 +1,6 @@
 ID: aws-config-ncsc-cloudsec-principles
 Title: AWS Config NCSC CloudSec Principles
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NCSC CloudSec Principles
 Children: []
 Tags:

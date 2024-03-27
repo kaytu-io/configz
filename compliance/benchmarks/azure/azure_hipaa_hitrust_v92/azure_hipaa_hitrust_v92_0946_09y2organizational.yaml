@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0946_09y2organizational
 Title: The organization requires the use of encryption between, and the use of electronic signatures by, each of the parties involved in the transaction
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Redis
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_azure_redis_cache_ssl_enabled

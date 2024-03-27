@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ra_3_a_1
 Title: RA-3(a)(1)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a. Conduct a risk assessment, including: 1. Identifying threats to and vulnerabilities in the system."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_ssm_managed_instance_compliance_patch_compliant

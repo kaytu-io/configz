@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_2_2
 Title: 2.2. List all software components installed on the system
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: List all software components installed on the system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_config_enabled_all_regions
 - aws_ec2_instance_ssm_managed

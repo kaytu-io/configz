@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_au_9
 Title: Protection of Audit Information (AU-9)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system protects audit information and audit tools from unauthorized access, modification, and deletion.
 Children:
 - aws_nist_800_53_rev_4_au_9_2
@@ -16,7 +15,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_log_group_encryption_at_rest_enabled

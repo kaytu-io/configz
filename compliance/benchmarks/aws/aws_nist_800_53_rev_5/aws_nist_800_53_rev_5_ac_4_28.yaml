@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_4_28
 Title: AC-4(28) Linear Filter Pipelines
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: When transferring information between different security domains, implement a linear content filter pipeline that is enforced with discretionary and mandatory access controls.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_uses_imdsv2
 - aws_iam_account_password_policy_min_length_14

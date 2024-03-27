@@ -1,13 +1,12 @@
+ID: aws_hipaa_security_rule_2003
+Title: HIPAA Security Rule 2003 for AWS
+ReferenceCode: ""
+Description: The HIPAA Security Rule establishes national standards to protect individuals’ electronic personal health information that is created, received, used, or maintained by a covered entity. The Security Rule requires appropriate administrative, physical and technical safeguards to ensure the confidentiality, integrity, and security of electronic protected health information.
 Children:
 - aws_hipaa_security_rule_2003_164_308
 - aws_hipaa_security_rule_2003_164_310
 - aws_hipaa_security_rule_2003_164_312
 - aws_hipaa_security_rule_2003_164_314
-Connector: AWS
-Controls: null
-Description: The HIPAA Security Rule establishes national standards to protect individuals’ electronic personal health information that is created, received, used, or maintained by a covered entity. The Security Rule requires appropriate administrative, physical and technical safeguards to ensure the confidentiality, integrity, and security of electronic protected health information.
-Enabled: true
-ID: aws_hipaa_security_rule_2003
 Tags:
   category:
   - Compliance
@@ -19,11 +18,15 @@ Tags:
   - Laws & Regulations
   - Privacy
   kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/hipaa_large.svg
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/hipaa_large.svg
   plugin:
   - aws
   service:
   - AWS
   type:
   - Benchmark
-Title: HIPAA Security Rule 2003 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

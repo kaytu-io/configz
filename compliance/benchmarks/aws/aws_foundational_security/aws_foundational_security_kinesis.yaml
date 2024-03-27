@@ -1,7 +1,6 @@
 ID: aws_foundational_security_kinesis
 Title: Kinesis
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/Kinesis
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_kinesis_stream_server_side_encryption_enabled

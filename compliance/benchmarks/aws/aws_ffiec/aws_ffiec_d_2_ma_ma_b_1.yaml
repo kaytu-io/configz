@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_2_ma_ma_b_1
 Title: D2.MA.Ma.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Audit log records and other security event logs are reviewed and retained in a secure manner.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

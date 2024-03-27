@@ -1,7 +1,11 @@
 ID: aws_soc_2_cc5_2
-Children: null
-Connector: AWS
-Controls: null
-ReferenceCode: 2
-Description:
 Title: Control of Technology and Systems
+ReferenceCode: "2"
+Description: ""
+Children: []
+Tags: {}
+Managed: false
+Enabled: false
+AutoAssign: false
+Baseline: false
+Controls: []

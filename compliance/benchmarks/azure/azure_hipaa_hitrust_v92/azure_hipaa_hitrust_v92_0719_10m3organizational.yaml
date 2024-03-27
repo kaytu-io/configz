@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0719_10m3organizational
 Title: 0719.10m3Organizational.5-10.m 10.06 Technical Vulnerability Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization updates the list of information system vulnerabilities scanned within every thirty (30) days or when new vulnerabilities are identified and reported.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/MySQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_mssql_managed_instance_vulnerability_assessment_enabled

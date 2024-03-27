@@ -1,7 +1,6 @@
 ID: aws-config-cjis
 Title: AWS Config CJIS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CJIS
 Children: []
 Tags:

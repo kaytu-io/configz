@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_13_3
 Title: 3.13.3 Separate user functionality from system management functionality
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: System management functionality includes functions necessary to administer databases, network components, workstations, or servers, and typically requires privileged user access. The separation of user functionality from system management functionality is physical or logical. Organizations can implement separation of system management functionality from user functionality by using different computers, different central processing units, different instances of operating systems, or different network addresses; virtualization techniques; or combinations of these or other methods, as appropriate. This type of separation includes web administrative interfaces that use separate authentication methods for users of any other system resources. Separation of system and user functionality may include isolating administrative interfaces on different domains and with additional access controls.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_group_not_empty
 - aws_iam_policy_custom_no_star_star

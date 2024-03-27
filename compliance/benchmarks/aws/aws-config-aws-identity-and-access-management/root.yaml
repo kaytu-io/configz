@@ -1,7 +1,6 @@
 ID: aws-config-aws-identity-and-access-management
 Title: AWS Config AWS Identity and Access Management
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config AWS Identity and Access Management
 Children: []
 Tags:

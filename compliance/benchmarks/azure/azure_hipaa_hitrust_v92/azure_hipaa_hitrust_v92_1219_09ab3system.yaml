@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1219_09ab3system
 Title: 1219.09ab3System.10-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system is able to automatically process audit records for events of interest based on selectable criteria.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Monitor
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_monitor_log_profile_enabled_for_all_categories

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_28
 Title: Protection Of Information At Rest (SC-28)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Protect the [Selection (one or more): confidentiality; integrity] of the following information at rest: [Assignment: organization-defined information at rest]."
 Children:
 - aws_nist_800_53_rev_5_sc_28_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

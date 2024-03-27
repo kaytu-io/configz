@@ -1,7 +1,6 @@
 ID: aws_fedramp_low_rev_4_ac_17
 Title: Remote Access (AC-17)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Authorize remote access systems prior to connection. Enforce remote connection requirements to information systems.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_dms_replication_instance_not_publicly_accessible

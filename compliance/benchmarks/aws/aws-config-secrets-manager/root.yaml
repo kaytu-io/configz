@@ -1,7 +1,6 @@
 ID: aws-config-secrets-manager
 Title: AWS Config Secrets Manager
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Secrets Manager
 Children: []
 Tags:

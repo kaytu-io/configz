@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ip_3
 Title: PR.IP-3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Configuration change control processes are in place.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/ELB
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_lb_deletion_protection_enabled
 - aws_rds_db_cluster_deletion_protection_enabled

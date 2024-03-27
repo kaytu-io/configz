@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ma_4_1
 Title: MA-4(1) Logging And Review
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Log [Assignment: organization-defined audit events] for nonlocal maintenance and diagnostic sessions; and b.\u2003Review the audit records of the maintenance and diagnostic sessions to detect anomalous behavior."
 Children:
 - aws_nist_800_53_rev_5_ma_4_1_a
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

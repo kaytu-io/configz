@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_16_1
 Title: SC-16(1) Integrity Verification
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Verify the integrity of transmitted security and privacy attributes.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled
 - aws_s3_bucket_default_encryption_enabled

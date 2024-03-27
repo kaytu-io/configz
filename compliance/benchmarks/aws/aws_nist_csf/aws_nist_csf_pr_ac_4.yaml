@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ac_4
 Title: PR.AC-4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Access permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_codebuild_project_environment_privileged_mode_disabled

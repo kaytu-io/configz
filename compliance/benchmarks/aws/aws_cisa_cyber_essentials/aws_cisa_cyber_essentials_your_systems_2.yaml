@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_systems_2
 Title: Your Systems-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Leverage automatic updates for all operating systems and third-party software.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_rds_db_instance_automatic_minor_version_upgrade_enabled
 - aws_redshift_cluster_maintenance_settings_check

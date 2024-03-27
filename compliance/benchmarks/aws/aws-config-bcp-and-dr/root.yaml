@@ -1,7 +1,6 @@
 ID: aws-config-bcp-and-dr
 Title: AWS Config BCP and DR
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config BCP and DR
 Children: []
 Tags:

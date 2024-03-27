@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_10_1
 Title: 10.1 Deploy and Maintain Anti-Malware Software
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Deploy and maintain anti-malware software on all enterprise assets.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_data_1
 Title: Your Data-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Learn how your data is protected.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_backup_recovery_point_encryption_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ca_7_b
 Title: CA-7(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Develop a system-level continuous monitoring strategy and implement continuous monitoring in accordance with the organization-level continuous monitoring strategy that includes: b. Establishing [Assignment: organization-defined frequencies] for monitoring and [Assignment: organization-defined frequencies] for assessment of control effectiveness."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_autoscaling_group_with_lb_use_health_check

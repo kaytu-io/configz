@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_4
 Title: Information Flow Enforcement (AC-4)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Enforce approved authorizations for controlling the flow of information within the system and between connected systems based on [Assignment: organization-defined information flow control policies]."
 Children:
 - aws_nist_800_53_rev_5_ac_4_21
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

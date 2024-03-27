@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_3_8
 Title: 3.3.8 Protect audit information and audit logging tools from unauthorized access, modification, and deletion
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Audit information includes all information (e.g., audit records, audit log settings, and audit reports) needed to successfully audit system activity. Audit logging tools are those programs and devices used to conduct audit and logging activities. This requirement focuses on the technical protection of audit information and limits the ability to access and execute audit logging tools to authorized individuals. Physical protection of audit information is addressed by media protection and physical and environmental protection requirements.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 - aws_cloudtrail_trail_validation_enabled

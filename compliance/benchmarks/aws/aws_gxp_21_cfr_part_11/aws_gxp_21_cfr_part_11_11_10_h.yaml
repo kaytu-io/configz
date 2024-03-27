@@ -1,7 +1,6 @@
 ID: aws_gxp_21_cfr_part_11_11_10_h
 Title: 11.10(h) Use of device (e.g., terminal) checks to determine, as appropriate, the validity of the source of data input or operational instruction
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following: (h) Use of device (e.g., terminal) checks to determine, as appropriate, the validity of the source of data input or operational instruction."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_ssm_managed_instance_compliance_association_compliant

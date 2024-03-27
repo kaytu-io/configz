@@ -1,7 +1,6 @@
 ID: aws_nist_csf_rs
 Title: Respond (RS)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop and implement appropriate activities to take action regarding a detected cybersecurity incident.
 Children:
 - aws_nist_csf_rs_an
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

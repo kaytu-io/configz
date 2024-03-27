@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ra_3_4
 Title: RA-3(4) Predictive Cyber Analytics
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ the following advanced automation and analytics capabilities to predict and identify risks to [Assignment: organization-defined systems or system components]: [Assignment: organization-defined advanced automation and analytics capabilities]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

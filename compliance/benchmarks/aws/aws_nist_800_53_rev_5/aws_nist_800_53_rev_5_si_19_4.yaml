@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_19_4
 Title: SI-19(4) Removal, Masking, Encryption, Hashing, Or Replacement Of Direct Identifiers
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Remove, mask, encrypt, hash, or replace direct identifiers in a dataset.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

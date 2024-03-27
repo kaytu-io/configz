@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_im_b_5
 Title: D3.PC.Im.B.5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Systems configurations (for servers, desktops, routers, etc.) follow industry standards and are enforced
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_ssm_managed_instance_compliance_association_compliant

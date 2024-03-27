@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_systems
 Title: Your Systems
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: As the infrastructure that makes your organization operational, your systems are an essential element of your organization's Culture of Cyber Readiness. Your task for this element is to protect critical assets and applications.
 Children:
 - aws_cisa_cyber_essentials_your_systems_1
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

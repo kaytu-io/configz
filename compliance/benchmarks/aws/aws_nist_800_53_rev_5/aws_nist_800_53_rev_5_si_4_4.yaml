@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_4
 Title: SI-4(4) Inbound and Outbound Communications Traffic
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system monitors inbound and outbound communications traffic continuously for unusual or unauthorized activities or conditions.
 Children:
 - aws_nist_800_53_rev_5_si_4_4_a
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

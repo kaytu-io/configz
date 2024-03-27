@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ac_17_3
 Title: AC-17(3) Managed Access Control Points
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system routes all remote accesses through organization-defined managed network access control points.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/VPC
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_igw_attached_to_authorized_vpc

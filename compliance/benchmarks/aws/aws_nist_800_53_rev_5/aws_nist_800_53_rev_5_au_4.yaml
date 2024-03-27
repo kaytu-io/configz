@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_4
 Title: Audit Log Stprage Capacity (AU-4)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Allocate audit log storage capacity to accommodate [Assignment: organization-defined audit log retention requirements]."
 Children:
 - aws_nist_800_53_rev_5_au_4_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

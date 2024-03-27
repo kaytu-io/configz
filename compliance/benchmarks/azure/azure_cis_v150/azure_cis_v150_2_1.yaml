@@ -1,7 +1,6 @@
 ID: azure_cis_v150_2_1
 Title: 2.1 Defender Plans
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_securitycenter_azure_defender_on_for_server
 - azure_securitycenter_azure_defender_on_for_appservice

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_pm
 Title: Program Management (PM)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The PM control family is specific to who manages your cybersecurity program and how it operates. This includes, but is not limited to, a critical infrastructure plan, information security program plan, plan of action milestones and processes, risk management strategy, and enterprise architecture.
 Children:
 - aws_nist_800_53_rev_5_pm_11
@@ -21,5 +20,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

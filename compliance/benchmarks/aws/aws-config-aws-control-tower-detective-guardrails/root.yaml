@@ -1,7 +1,6 @@
 ID: aws-config-aws-control-tower-detective-guardrails
 Title: AWS Config AWS Control Tower Detective Guardrails
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config AWS Control Tower Detective Guardrails
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_im_b_3
 Title: D3.PC.IM.B.3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: All ports are monitored.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_trail_enabled

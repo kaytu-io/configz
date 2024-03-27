@@ -1,7 +1,6 @@
 ID: aws_cis_v300_4
 Title: 4 Monitoring
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children: []
 Tags:

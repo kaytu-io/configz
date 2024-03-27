@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1211_09aa3system
 Title: 1211.09aa3System.4-09.aa 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization verifies every ninety (90) days for each extract of covered information recorded that the data is erased or its use is still required.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_keyvault_logging_enabled
 - azure_keyvault_managed_hms_logging_enabled

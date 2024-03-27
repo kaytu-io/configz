@@ -1,7 +1,6 @@
 ID: aws_gxp_21_cfr_part_11_11_10_c
 Title: 11.10(c) Protection of records to enable their accurate and ready retrieval throughout the records retention period
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following: (c) Protection of records to enable their accurate and ready retrieval throughout the records retention period."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

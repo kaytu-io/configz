@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_7_24_b
 Title: SC-7(24)(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "For systems that process personally identifiable information: (b) Monitor for permitted processing at the external interfaces to the system and at key internal boundaries within the system."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

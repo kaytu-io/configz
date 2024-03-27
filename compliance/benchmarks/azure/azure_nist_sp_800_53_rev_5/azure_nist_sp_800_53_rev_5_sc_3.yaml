@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_sc_3
 Title: Security Function Isolation (SC-3)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system isolates security functions from nonsecurity functions.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_azure_defender_enabled
 - azure_compute_vm_windows_defender_exploit_guard_enabled

@@ -1,7 +1,6 @@
 ID: azure_cis_v130_7
 Title: 7 Virtual Machines
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_utilizing_managed_disk
 - azure_compute_os_and_data_disk_encrypted_with_cmk

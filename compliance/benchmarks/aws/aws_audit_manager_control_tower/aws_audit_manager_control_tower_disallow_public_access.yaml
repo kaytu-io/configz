@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_disallow_public_access
 Title: Disallow Public Access
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: This benchmark checks if RDS instances, snapshots and S3 buckets are not publicly accessible.
 Children:
 - aws_audit_manager_control_tower_disallow_public_access_4_0_1
@@ -21,5 +20,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

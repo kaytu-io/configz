@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_2_4
 Title: AC-2(4) Automated Audit Actions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system automatically audits account creation, modification, enabling, disabling, and removal actions, and notifies [Assignment: organization-defined personnel or roles]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_s3_data_events_enabled

@@ -1,7 +1,6 @@
 ID: aws-config-germany-c5
 Title: AWS Config Germany C5
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Germany C5
 Children: []
 Tags:

@@ -2,294 +2,288 @@ ID: SWIFT_CSP-CSCF_v2022
 Title: SWIFT CSP-CSCF v2022
 ReferenceCode: ""
 Description: SWIFT's Customer Security Programme (CSP) helps financial institutions ensure their defences against cyberattacks are up to date and effective, to protect the integrity of the wider financial network. Users compare the security measures they have implemented with those detailed in the Customer Security Controls Framework (CSCF). These policies address a subset of SWIFT controls. For more information, visit https://docs.microsoft.com/azure/governance/policy/samples/swift-cscf-v2021
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
-    - information_flow_control_using_security_policy_filters
-    - enforce_security_configuration_settings
-    - manage_system_and_admin_accounts
-    - perform_a_trend_analysis_on_threats
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - establish_an_information_security_program
-    - provide_real_time_alerts_for_audit_event_failures
-    - establish_procedures_for_initial_authenticator_distribution
-    - produce,_control_and_distribute_asymmetric_cryptographic_keys
-    - assess_information_security_events
-    - address_coding_vulnerabilities
-    - identify_and_mitigate_potential_issues_at_alternate_storage_site
-    - email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
-    - recover_and_reconstitute_resources_after_any_disruption
-    - provide_periodic_security_awareness_training
-    - implement_incident_handling
-    - secure_the_interface_to_external_systems
-    - implement_parameters_for_memorized_secret_verifiers
-    - establish_conditions_for_role_membership
-    - provide_security_training_before_providing_access
-    - prepare_alternate_processing_site_for_use_as_operational_site
-    - microsoft_defender_for_storage_should_be_enabled
-    - review_controlled_folder_access_events
-    - employ_flow_control_mechanisms_of_encrypted_information
-    - authorize_remote_access
-    - flow_logs_should_be_configured_for_every_network_security_group
-    - enforce_mandatory_and_discretionary_access_control_policies
-    - develop_and_maintain_baseline_configurations
-    - activity_log_should_be_retained_for_at_least_one_year
-    - review_cloud_identity_report_overview
-    - resource_logs_in_logic_apps_should_be_enabled
-    - establish_a_configuration_control_board
-    - establish_backup_policies_and_procedures
-    - require_developers_to_document_approved_changes_and_potential_impact
-    - define_organizational_requirements_for_cryptographic_key_management
-    - document_the_protection_of_cardholder_data_in_third_party_contracts
-    - define_cryptographic_use
-    - eradicate_contaminated_information
-    - review_user_privileges
-    - reassign_or_remove_user_privileges_as_needed
-    - app_service_apps_should_use_a_virtual_network_service_endpoint
-    - disseminate_security_alerts_to_personnel
-    - block_untrusted_and_unsigned_processes_that_run_from_usb
-    - define_information_system_account_types
-    - establish_a_privacy_program
-    - storage_account_containing_the_container_with_activity_logs_must_be_encrypted_with_byok
-    - perform_vulnerability_scans
-    - perform_a_risk_assessment
-    - use_privileged_identity_management
-    - ensure_access_agreements_are_signed_or_resigned_timely
-    - ensure_alternate_storage_site_safeguards_are_equivalent_to_primary_site
-    - implement_an_automated_configuration_management_tool
-    - establish_network_segmentation_for_card_holder_data_environment
-    - implement_the_risk_management_strategy
-    - alert_personnel_of_information_spillage
-    - document_acquisition_contract_acceptance_criteria
-    - notify_when_account_is_not_needed
-    - identify_and_authenticate_network_devices
-    - audit_user_account_status
-    - key_vault_should_use_a_virtual_network_service_endpoint
-    - define_and_enforce_conditions_for_shared_and_group_accounts
-    - retain_previous_versions_of_baseline_configs
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - reauthenticate_or_terminate_a_user_session
-    - provide_information_spillage_training
-    - require_developers_to_manage_change_integrity
-    - protect_wireless_access
-    - conduct_a_security_impact_analysis
-    - notify_users_of_system_logon_or_access
-    - perform_threat_modeling
-    - install_an_alarm_system
-    - coordinate_contingency_plans_with_related_plans
-    - automate_process_to_highlight_unreviewed_change_proposals
-    - protect_incident_response_plan
-    - establish_and_maintain_an_asset_inventory
-    - provide_contingency_training
-    - implement_a_penetration_testing_methodology
-    - assign_account_managers
-    - establish_alternate_storage_site_to_store_and_retrieve_backup_information
-    - document_security_functional_requirements_in_acquisition_contracts
-    - conduct_risk_assessment
-    - azure_monitor_solution_'_security_and_audit'_must_be_deployed
-    - separate_duties_of_individuals
-    - plan_for_continuance_of_essential_business_functions
-    - address_information_security_issues
-    - require_external_service_providers_to_comply_with_security_requirements
-    - manage_the_transportation_of_assets
-    - require_developers_to_build_security_architecture
-    - app_service_apps_should_have_resource_logs_enabled
-    - perform_audit_for_configuration_change_control
-    - resource_logs_in_service_bus_should_be_enabled
-    - issue_public_key_certificates
-    - employ_least_privilege_access
-    - enforce_logical_access
-    - provide_periodic_role_based_security_training
-    - provide_role_based_practical_exercises
-    - establish_authenticator_types_and_processes
-    - perform_security_function_verification_at_a_defined_frequency
-    - provide_updated_security_awareness_training
-    - identify_classes_of_incidents_and_actions_taken
-    - design_an_access_control_model
-    - route_traffic_through_managed_network_access_points
-    - distribute_policies_and_procedures
-    - azure_key_vault_should_have_firewall_enabled
-    - develop_and_document_application_security_requirements
-    - establish_and_document_a_configuration_management_plan
-    - monitor_privileged_role_assignment
-    - subnets_should_be_associated_with_a_network_security_group
-    - establish_relationship_between_incident_response_capability_and_external_providers
-    - require_developers_to_implement_only_approved_changes
-    - incorporate_simulated_events_into_incident_response_training
-    - disable_authenticators_upon_termination
-    - conduct_backup_of_information_system_documentation
-    - protect_passwords_with_encryption
-    - transfer_backup_information_to_an_alternate_storage_site
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - document_security_and_privacy_training_activities
-    - manage_gateways
-    - configure_workstations_to_check_for_digital_certificates
-    - resource_logs_in_key_vault_should_be_enabled
-    - define_access_authorizations_to_support_separation_of_duties
-    - enable_network_protection
-    - separately_store_backup_information
-    - restore_resources_to_operational_state
-    - implement_system_boundary_protection
-    - implement_managed_interface_for_each_external_service
-    - provide_security_training_for_new_users
-    - establish_firewall_and_router_configuration_standards
-    - automate_account_management
-    - restrict_access_to_privileged_accounts
-    - azure_monitor_should_collect_activity_logs_from_all_regions
-    - provide_monitoring_information_as_needed
-    - document_security_operations
-    - turn_on_sensors_for_endpoint_security_solution
-    - restrict_access_to_private_keys
-    - develop_contingency_planning_policies_and_procedures
-    - notify_personnel_of_any_failed_security_verification_tests
-    - correlate_audit_records
-    - review_account_provisioning_logs
-    - employ_automatic_shutdown/restart_when_violations_are_detected
-    - configure_actions_for_noncompliant_devices
-    - authorize_access_to_security_functions_and_information
-    - conduct_capacity_planning
-    - use_automated_mechanisms_for_security_alerts
-    - establish_a_data_leakage_management_procedure
-    - protect_data_in_transit_using_encryption
-    - review_user_groups_and_applications_with_access_to_sensitive_data
-    - subscriptions_should_have_a_contact_email_address_for_security_issues
-    - remediate_information_system_flaws
-    - establish_requirements_for_internet_service_providers
-    - produce,_control_and_distribute_symmetric_cryptographic_keys
-    - view_and_configure_system_diagnostic_data
-    - implement_controls_to_secure_alternate_work_sites
-    - conduct_incident_response_testing
-    - document_protection_of_personal_data_in_acquisition_contracts
-    - view_and_investigate_restricted_users
-    - review_user_accounts
-    - rescreen_individuals_at_a_defined_frequency
-    - document_separation_of_duties
-    - undergo_independent_security_review
-    - adopt_biometric_authentication_mechanisms
-    - review_audit_data
-    - set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
-    - control_information_flow
-    - resource_logs_in_search_services_should_be_enabled
-    - document_security_assurance_requirements_in_acquisition_contracts
-    - require_approval_for_account_creation
-    - establish_alternate_storage_site_that_facilitates_recovery_operations
-    - obtain_legal_opinion_for_monitoring_system_activities
-    - review_role_group_changes_weekly
-    - determine_assertion_requirements
-    - document_access_privileges
-    - monitor_access_across_the_organization
-    - resume_all_mission_and_business_functions
-    - define_a_physical_key_management_process
-    - employ_restrictions_on_external_system_interconnections
-    - define_requirements_for_supplying_goods_and_services
-    - update_antivirus_definitions
-    - establish_a_risk_management_strategy
-    - assess_risk_in_third_party_relationships
-    - employ_independent_team_for_penetration_testing
-    - protect_special_information
-    - create_alternative_actions_for_identified_anomalies
-    - automation_account_variables_should_be_encrypted
-    - manage_authenticator_lifetime_and_reuse
-    - perform_a_privacy_impact_assessment
-    - vm_image_builder_templates_should_use_private_link
-    - establish_and_document_change_control_processes
-    - review_administrator_assignments_weekly
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - establish_configuration_management_requirements_for_developers
-    - identify_incident_response_personnel
-    - document_remote_access_guidelines
-    - employ_boundary_protection_to_isolate_information_systems
-    - determine_auditable_events
-    - authorize,_monitor,_and_control_voip
-    - develop_security_safeguards
-    - review_exploit_protection_events
-    - document_security_documentation_requirements_in_acquisition_contract
-    - maintain_incident_response_plan
-    - document_mobility_training
-    - determine_supplier_contract_obligations
-    - authorize_and_manage_access
-    - maintain_availability_of_information
-    - automate_proposed_documented_changes
-    - provide_security_awareness_training_for_insider_threats
-    - audit_privileged_functions
-    - document_the_information_system_environment_in_acquisition_contracts
-    - establish_a_password_policy
-    - integrate_audit_review,_analysis,_and_reporting
-    - review_and_update_incident_response_policies_and_procedures
-    - establish_requirements_for_audit_review_and_reporting
-    - verify_software,_firmware_and_information_integrity
-    - review_cloud_service_provider's_compliance_with_policies_and_agreements
-    - implement_controls_to_secure_all_media
-    - implement_security_engineering_principles_of_information_systems
-    - develop_and_document_a_business_continuity_and_disaster_recovery_plan
-    - incorporate_flaw_remediation_into_configuration_management
-    - control_physical_access
-    - establish_a_secure_software_development_program
-    - revoke_privileged_roles_as_appropriate
-    - resource_logs_in_batch_accounts_should_be_enabled
-    - develop_and_establish_a_system_security_plan
-    - review_file_and_folder_activity
-    - detect_network_services_that_have_not_been_authorized_or_approved
-    - establish_security_requirements_for_the_manufacturing_of_connected_devices
-    - saved_queries_in_azure_monitor_should_be_saved_in_customer_storage_account_for_logs_encryption
-    - observe_and_report_security_weaknesses
-    - develop_and_maintain_a_vulnerability_management_standard
-    - provide_role_based_training_on_suspicious_activities
-    - document_protection_of_security_information_in_acquisition_contracts
-    - correlate_vulnerability_scan_information
-    - develop_contingency_plan
-    - maintain_data_breach_records
-    - develop_an_incident_response_plan
-    - define_and_document_government_oversight
-    - create_separate_alternate_and_primary_storage_sites
-    - implement_privileged_access_for_executing_vulnerability_scanning_activities
-    - review_malware_detections_report_weekly
-    - conduct_risk_assessment_and_document_its_results
-    - document_and_implement_wireless_access_guidelines
-    - ensure_external_providers_consistently_meet_interests_of_the_customers
-    - execute_actions_in_response_to_information_spills
-    - automate_process_to_document_implemented_changes
-    - conduct_risk_assessment_and_distribute_its_results
-    - integrate_cloud_app_security_with_a_siem
-    - run_simulation_attacks
-    - plan_for_resumption_of_essential_business_functions
-    - distribute_authenticators
-    - establish_an_alternate_processing_site
-    - clear_personnel_with_access_to_classified_information
-    - storage_accounts_should_use_a_virtual_network_service_endpoint
-    - review_and_update_physical_and_environmental_policies_and_procedures
-    - review_and_update_risk_assessment_policies_and_procedures
-    - enforce_random_unique_session_identifiers
-    - provide_role_based_security_training
-    - require_developers_to_produce_evidence_of_security_assessment_plan_execution
-    - employ_automatic_emergency_lighting
-    - geo_redundant_storage_should_be_enabled_for_storage_accounts
-    - establish_policies_for_supply_chain_risk_management
-    - document_requirements_for_the_use_of_shared_data_in_contracts
-    - isolate_secur_id_systems,_security_incident_management_systems
-    - implement_personnel_screening
-    - manage_symmetric_cryptographic_keys
-    - '[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall'
-    - identify_and_manage_downstream_information_exchanges
-    - storage_accounts_should_restrict_network_access
-    - document_security_strength_requirements_in_acquisition_contracts
-    - implement_physical_security_for_offices,_working_areas,_and_secure_areas
-    - verify_identity_before_distributing_authenticators
-    - manage_a_secure_surveillance_camera_system
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+- information_flow_control_using_security_policy_filters
+- enforce_security_configuration_settings
+- manage_system_and_admin_accounts
+- perform_a_trend_analysis_on_threats
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- establish_an_information_security_program
+- provide_real_time_alerts_for_audit_event_failures
+- establish_procedures_for_initial_authenticator_distribution
+- produce,_control_and_distribute_asymmetric_cryptographic_keys
+- assess_information_security_events
+- address_coding_vulnerabilities
+- identify_and_mitigate_potential_issues_at_alternate_storage_site
+- email_notification_to_subscription_owner_for_high_severity_alerts_should_be_enabled
+- recover_and_reconstitute_resources_after_any_disruption
+- provide_periodic_security_awareness_training
+- implement_incident_handling
+- secure_the_interface_to_external_systems
+- implement_parameters_for_memorized_secret_verifiers
+- establish_conditions_for_role_membership
+- provide_security_training_before_providing_access
+- prepare_alternate_processing_site_for_use_as_operational_site
+- microsoft_defender_for_storage_should_be_enabled
+- review_controlled_folder_access_events
+- employ_flow_control_mechanisms_of_encrypted_information
+- authorize_remote_access
+- flow_logs_should_be_configured_for_every_network_security_group
+- enforce_mandatory_and_discretionary_access_control_policies
+- develop_and_maintain_baseline_configurations
+- activity_log_should_be_retained_for_at_least_one_year
+- review_cloud_identity_report_overview
+- resource_logs_in_logic_apps_should_be_enabled
+- establish_a_configuration_control_board
+- establish_backup_policies_and_procedures
+- require_developers_to_document_approved_changes_and_potential_impact
+- define_organizational_requirements_for_cryptographic_key_management
+- document_the_protection_of_cardholder_data_in_third_party_contracts
+- define_cryptographic_use
+- eradicate_contaminated_information
+- review_user_privileges
+- reassign_or_remove_user_privileges_as_needed
+- app_service_apps_should_use_a_virtual_network_service_endpoint
+- disseminate_security_alerts_to_personnel
+- block_untrusted_and_unsigned_processes_that_run_from_usb
+- define_information_system_account_types
+- establish_a_privacy_program
+- storage_account_containing_the_container_with_activity_logs_must_be_encrypted_with_byok
+- perform_vulnerability_scans
+- perform_a_risk_assessment
+- use_privileged_identity_management
+- ensure_access_agreements_are_signed_or_resigned_timely
+- ensure_alternate_storage_site_safeguards_are_equivalent_to_primary_site
+- implement_an_automated_configuration_management_tool
+- establish_network_segmentation_for_card_holder_data_environment
+- implement_the_risk_management_strategy
+- alert_personnel_of_information_spillage
+- document_acquisition_contract_acceptance_criteria
+- notify_when_account_is_not_needed
+- identify_and_authenticate_network_devices
+- audit_user_account_status
+- key_vault_should_use_a_virtual_network_service_endpoint
+- define_and_enforce_conditions_for_shared_and_group_accounts
+- retain_previous_versions_of_baseline_configs
+- secure_transfer_to_storage_accounts_should_be_enabled
+- reauthenticate_or_terminate_a_user_session
+- provide_information_spillage_training
+- require_developers_to_manage_change_integrity
+- protect_wireless_access
+- conduct_a_security_impact_analysis
+- notify_users_of_system_logon_or_access
+- perform_threat_modeling
+- install_an_alarm_system
+- coordinate_contingency_plans_with_related_plans
+- automate_process_to_highlight_unreviewed_change_proposals
+- protect_incident_response_plan
+- establish_and_maintain_an_asset_inventory
+- provide_contingency_training
+- implement_a_penetration_testing_methodology
+- assign_account_managers
+- establish_alternate_storage_site_to_store_and_retrieve_backup_information
+- document_security_functional_requirements_in_acquisition_contracts
+- conduct_risk_assessment
+- azure_monitor_solution_'_security_and_audit'_must_be_deployed
+- separate_duties_of_individuals
+- plan_for_continuance_of_essential_business_functions
+- address_information_security_issues
+- require_external_service_providers_to_comply_with_security_requirements
+- manage_the_transportation_of_assets
+- require_developers_to_build_security_architecture
+- app_service_apps_should_have_resource_logs_enabled
+- perform_audit_for_configuration_change_control
+- resource_logs_in_service_bus_should_be_enabled
+- issue_public_key_certificates
+- employ_least_privilege_access
+- enforce_logical_access
+- provide_periodic_role_based_security_training
+- provide_role_based_practical_exercises
+- establish_authenticator_types_and_processes
+- perform_security_function_verification_at_a_defined_frequency
+- provide_updated_security_awareness_training
+- identify_classes_of_incidents_and_actions_taken
+- design_an_access_control_model
+- route_traffic_through_managed_network_access_points
+- distribute_policies_and_procedures
+- azure_key_vault_should_have_firewall_enabled
+- develop_and_document_application_security_requirements
+- establish_and_document_a_configuration_management_plan
+- monitor_privileged_role_assignment
+- subnets_should_be_associated_with_a_network_security_group
+- establish_relationship_between_incident_response_capability_and_external_providers
+- require_developers_to_implement_only_approved_changes
+- incorporate_simulated_events_into_incident_response_training
+- disable_authenticators_upon_termination
+- conduct_backup_of_information_system_documentation
+- protect_passwords_with_encryption
+- transfer_backup_information_to_an_alternate_storage_site
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- document_security_and_privacy_training_activities
+- manage_gateways
+- configure_workstations_to_check_for_digital_certificates
+- resource_logs_in_key_vault_should_be_enabled
+- define_access_authorizations_to_support_separation_of_duties
+- enable_network_protection
+- separately_store_backup_information
+- restore_resources_to_operational_state
+- implement_system_boundary_protection
+- implement_managed_interface_for_each_external_service
+- provide_security_training_for_new_users
+- establish_firewall_and_router_configuration_standards
+- automate_account_management
+- restrict_access_to_privileged_accounts
+- azure_monitor_should_collect_activity_logs_from_all_regions
+- provide_monitoring_information_as_needed
+- document_security_operations
+- turn_on_sensors_for_endpoint_security_solution
+- restrict_access_to_private_keys
+- develop_contingency_planning_policies_and_procedures
+- notify_personnel_of_any_failed_security_verification_tests
+- correlate_audit_records
+- review_account_provisioning_logs
+- employ_automatic_shutdown/restart_when_violations_are_detected
+- configure_actions_for_noncompliant_devices
+- authorize_access_to_security_functions_and_information
+- conduct_capacity_planning
+- use_automated_mechanisms_for_security_alerts
+- establish_a_data_leakage_management_procedure
+- protect_data_in_transit_using_encryption
+- review_user_groups_and_applications_with_access_to_sensitive_data
+- subscriptions_should_have_a_contact_email_address_for_security_issues
+- remediate_information_system_flaws
+- establish_requirements_for_internet_service_providers
+- produce,_control_and_distribute_symmetric_cryptographic_keys
+- view_and_configure_system_diagnostic_data
+- implement_controls_to_secure_alternate_work_sites
+- conduct_incident_response_testing
+- document_protection_of_personal_data_in_acquisition_contracts
+- view_and_investigate_restricted_users
+- review_user_accounts
+- rescreen_individuals_at_a_defined_frequency
+- document_separation_of_duties
+- undergo_independent_security_review
+- adopt_biometric_authentication_mechanisms
+- review_audit_data
+- set_automated_notifications_for_new_and_trending_cloud_applications_in_your_organization
+- control_information_flow
+- resource_logs_in_search_services_should_be_enabled
+- document_security_assurance_requirements_in_acquisition_contracts
+- require_approval_for_account_creation
+- establish_alternate_storage_site_that_facilitates_recovery_operations
+- obtain_legal_opinion_for_monitoring_system_activities
+- review_role_group_changes_weekly
+- determine_assertion_requirements
+- document_access_privileges
+- monitor_access_across_the_organization
+- resume_all_mission_and_business_functions
+- define_a_physical_key_management_process
+- employ_restrictions_on_external_system_interconnections
+- define_requirements_for_supplying_goods_and_services
+- update_antivirus_definitions
+- establish_a_risk_management_strategy
+- assess_risk_in_third_party_relationships
+- employ_independent_team_for_penetration_testing
+- protect_special_information
+- create_alternative_actions_for_identified_anomalies
+- automation_account_variables_should_be_encrypted
+- manage_authenticator_lifetime_and_reuse
+- perform_a_privacy_impact_assessment
+- vm_image_builder_templates_should_use_private_link
+- establish_and_document_change_control_processes
+- review_administrator_assignments_weekly
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- establish_configuration_management_requirements_for_developers
+- identify_incident_response_personnel
+- document_remote_access_guidelines
+- employ_boundary_protection_to_isolate_information_systems
+- determine_auditable_events
+- authorize,_monitor,_and_control_voip
+- develop_security_safeguards
+- review_exploit_protection_events
+- document_security_documentation_requirements_in_acquisition_contract
+- maintain_incident_response_plan
+- document_mobility_training
+- determine_supplier_contract_obligations
+- authorize_and_manage_access
+- maintain_availability_of_information
+- automate_proposed_documented_changes
+- provide_security_awareness_training_for_insider_threats
+- audit_privileged_functions
+- document_the_information_system_environment_in_acquisition_contracts
+- establish_a_password_policy
+- integrate_audit_review,_analysis,_and_reporting
+- review_and_update_incident_response_policies_and_procedures
+- establish_requirements_for_audit_review_and_reporting
+- verify_software,_firmware_and_information_integrity
+- review_cloud_service_provider's_compliance_with_policies_and_agreements
+- implement_controls_to_secure_all_media
+- implement_security_engineering_principles_of_information_systems
+- develop_and_document_a_business_continuity_and_disaster_recovery_plan
+- incorporate_flaw_remediation_into_configuration_management
+- control_physical_access
+- establish_a_secure_software_development_program
+- revoke_privileged_roles_as_appropriate
+- resource_logs_in_batch_accounts_should_be_enabled
+- develop_and_establish_a_system_security_plan
+- review_file_and_folder_activity
+- detect_network_services_that_have_not_been_authorized_or_approved
+- establish_security_requirements_for_the_manufacturing_of_connected_devices
+- saved_queries_in_azure_monitor_should_be_saved_in_customer_storage_account_for_logs_encryption
+- observe_and_report_security_weaknesses
+- develop_and_maintain_a_vulnerability_management_standard
+- provide_role_based_training_on_suspicious_activities
+- document_protection_of_security_information_in_acquisition_contracts
+- correlate_vulnerability_scan_information
+- develop_contingency_plan
+- maintain_data_breach_records
+- develop_an_incident_response_plan
+- define_and_document_government_oversight
+- create_separate_alternate_and_primary_storage_sites
+- implement_privileged_access_for_executing_vulnerability_scanning_activities
+- review_malware_detections_report_weekly
+- conduct_risk_assessment_and_document_its_results
+- document_and_implement_wireless_access_guidelines
+- ensure_external_providers_consistently_meet_interests_of_the_customers
+- execute_actions_in_response_to_information_spills
+- automate_process_to_document_implemented_changes
+- conduct_risk_assessment_and_distribute_its_results
+- integrate_cloud_app_security_with_a_siem
+- run_simulation_attacks
+- plan_for_resumption_of_essential_business_functions
+- distribute_authenticators
+- establish_an_alternate_processing_site
+- clear_personnel_with_access_to_classified_information
+- storage_accounts_should_use_a_virtual_network_service_endpoint
+- review_and_update_physical_and_environmental_policies_and_procedures
+- review_and_update_risk_assessment_policies_and_procedures
+- enforce_random_unique_session_identifiers
+- provide_role_based_security_training
+- require_developers_to_produce_evidence_of_security_assessment_plan_execution
+- employ_automatic_emergency_lighting
+- geo_redundant_storage_should_be_enabled_for_storage_accounts
+- establish_policies_for_supply_chain_risk_management
+- document_requirements_for_the_use_of_shared_data_in_contracts
+- isolate_secur_id_systems,_security_incident_management_systems
+- implement_personnel_screening
+- manage_symmetric_cryptographic_keys
+- "[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_firewall"
+- identify_and_manage_downstream_information_exchanges
+- storage_accounts_should_restrict_network_access
+- document_security_strength_requirements_in_acquisition_contracts
+- implement_physical_security_for_offices,_working_areas,_and_secure_areas
+- verify_identity_before_distributing_authenticators
+- manage_a_secure_surveillance_camera_system

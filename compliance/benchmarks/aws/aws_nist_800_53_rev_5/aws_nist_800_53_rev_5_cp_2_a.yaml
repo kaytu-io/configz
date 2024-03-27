@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_2_a
 Title: CP-2(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a. Develop a contingency plan for the system that: 1. Identifies essential mission and business functions and associated contingency requirements; 2. Provides recovery objectives, restoration priorities, and metrics; 3. Addresses contingency roles, responsibilities, assigned individuals with contact information; 4. Addresses maintaining essential mission and business functions despite a system disruption, compromise, or failure; 5. Addresses eventual, full system restoration without deterioration of the controls originally planned and implemented; 6. Addresses the sharing of contingency information; and 7. Is reviewed and approved by [Assignment: organization-defined personnel or roles]."
 Children:
 - aws_nist_800_53_rev_5_cp_2_a_6
@@ -17,7 +16,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_elb_application_lb_deletion_protection_enabled

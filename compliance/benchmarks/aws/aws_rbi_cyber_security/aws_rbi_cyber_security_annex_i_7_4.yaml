@@ -1,7 +1,6 @@
 ID: aws_rbi_cyber_security_annex_i_7_4
 Title: Annex I (7.4)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement appropriate (e.g. centralised) systems and controls to allow, manage, log and monitor privileged/super user/administrative access to critical systems (servers/databases, applications, network devices etc.)
 Children: []
 Tags:
@@ -17,7 +16,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

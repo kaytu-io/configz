@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_7_2
 Title: PCI DSS requirement 7.2
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Establish an access control system(s) for systems components that restricts access based on a user's need to know, and is set to “deny all” unless specifically allowed.
 Children:
 - azure_pci_dss_v321_requirement_7_2_1
@@ -16,5 +15,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

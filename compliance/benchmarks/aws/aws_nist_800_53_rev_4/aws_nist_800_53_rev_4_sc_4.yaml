@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc_4
 Title: Information In Shared Resources (SC-4)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system prevents unauthorized and unintended information transfer via shared system resources.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/EBS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ebs_attached_volume_delete_on_termination_enabled

@@ -1,7 +1,6 @@
 ID: aws_hipaa_final_omnibus_security_rule_2013_164_312_e_1
 Title: 164.312(e)(1) Transmission security
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Implement technical security measures to guard against unauthorized access to electronic protected health information that is being transmitted over an electronic communications network.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_rest_api_stage_use_ssl_certificate

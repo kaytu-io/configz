@@ -1,7 +1,6 @@
 ID: aws_soc_2_legacy_cc_8
 Title: CC8 Change Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The criteria relevant to how an entity (i) identifies the need for changes, (ii) makes the changes using a controlled change management process, and (iii) prevents unauthorized changes from being made.
 Children:
 - aws_soc_2_legacy_cc_8_1
@@ -18,5 +17,8 @@ Tags:
   - cc8
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

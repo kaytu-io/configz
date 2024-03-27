@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1402_05i1organizational
 Title: Remote access connections between the organization and external parties are encrypted
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_function_app_only_https_accessible

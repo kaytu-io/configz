@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1174_01j1organizational
 Title: The organization protects wireless access to systems containing sensitive information by authenticating both users and devices
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

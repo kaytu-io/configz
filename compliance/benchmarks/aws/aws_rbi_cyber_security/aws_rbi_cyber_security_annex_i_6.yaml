@@ -1,7 +1,6 @@
 ID: aws_rbi_cyber_security_annex_i_6
 Title: Annex I (6)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Put in place systems and processes to identify, track, manage and monitor the status of patches to servers, operating system and application software running at the systems used by the UCB officials (end-users). Implement and update antivirus protection for all servers and applicable end points preferably through a centralised system.
 Children: []
 Tags:
@@ -17,7 +16,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_finding_archived
 - aws_rds_db_instance_automatic_minor_version_upgrade_enabled

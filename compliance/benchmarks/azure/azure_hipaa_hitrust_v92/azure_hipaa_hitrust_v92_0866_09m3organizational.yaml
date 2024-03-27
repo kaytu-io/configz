@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0866_09m3organizational
 Title: 0866.09m3Organizational.1516-09.m 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization describes the groups, roles, and responsibilities for the logical management of network components and ensures coordination of and consistency in the elements of the network infrastructure.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Storage
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_storage_account_default_network_access_rule_denied

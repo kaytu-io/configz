@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0709_10m1organizational
 Title: 0709.10m1Organizational.1-10.m 10.06 Technical Vulnerability Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Technical vulnerabilities are identified, evaluated for risk and corrected in a timely manner.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_vulnerability_assessment_solution_enabled
 - azure_mssql_managed_instance_vulnerability_assessment_enabled

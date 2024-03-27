@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0902_09s2organizational
 Title: 0902.09s2Organizational.13-09.s 09.08 Exchange of Information
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Remote (external) access to the organization's information assets and access to external information assets (for which the organization has no control) is based on clearly defined terms and conditions.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_function_app_cors_no_star

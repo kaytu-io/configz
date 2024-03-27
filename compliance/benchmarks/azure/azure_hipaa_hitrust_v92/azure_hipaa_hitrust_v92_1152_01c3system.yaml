@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1152_01c3system
 Title: 1152.01c3System.2-01.c 01.02 Authorized Access to Information Systems
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization audits the execution of privileged functions on information systems and ensures information systems prevent non-privileged users from executing privileged functions.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_subscription_owner_more_than_1

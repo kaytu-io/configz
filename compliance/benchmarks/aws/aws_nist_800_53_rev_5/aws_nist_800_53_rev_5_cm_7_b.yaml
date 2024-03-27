@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_7_b
 Title: CM-7(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Prohibit or restrict the use of the following functions, ports, protocols, software, and/or services: [Assignment: organization-defined prohibited or restricted functions, system ports, protocols, software, and/or services]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_vpc_route_table_restrict_public_access_to_igw
 - aws_vpc_security_group_restrict_ingress_common_ports_all

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_5_b
 Title: AC-5(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Define system access authorizations to support separation of duties.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ecs_task_definition_user_for_host_mode_check
 - aws_iam_policy_custom_no_service_wildcard

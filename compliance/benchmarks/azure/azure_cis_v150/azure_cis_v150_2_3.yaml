@@ -1,7 +1,6 @@
 ID: azure_cis_v150_2_3
 Title: 2.3 Email notifications
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/SecurityCenter
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_securitycenter_security_alerts_to_owner_enabled
 - azure_securitycenter_additional_email_configured

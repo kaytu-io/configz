@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_25
 Title: SI-4(25) Optimize Network Traffic Analysis
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Provide visibility into network traffic at external and key internal system interfaces to optimize the effectiveness of monitoring devices.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

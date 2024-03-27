@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_7_1
 Title: SI-7(1) Integrity Checks
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Perform an integrity check of [Assignment: organization-defined software, firmware, and information] [Selection (one or more): at startup; at [Assignment: organization-defined transitional states or security-relevant events]; [Assignment: organization-defined frequency]]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CloudTrail
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled

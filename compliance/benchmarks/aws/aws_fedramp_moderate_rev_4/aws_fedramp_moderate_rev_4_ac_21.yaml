@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_21
 Title: Information Sharing (AC-21)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Facilitate information sharing. Enable authorized users to grant access to partners.
 Children:
 - aws_fedramp_moderate_rev_4_ac_21_b
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

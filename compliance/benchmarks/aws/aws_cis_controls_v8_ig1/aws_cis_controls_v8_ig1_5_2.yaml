@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_5_2
 Title: 5.2 Use Unique Passwords
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Use unique passwords for all enterprise assets. Best practice implementation includes, at a minimum, an 8-character password for accounts using MFA and a 14-character password for accounts not using MFA.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14
 - aws_iam_root_user_mfa_enabled

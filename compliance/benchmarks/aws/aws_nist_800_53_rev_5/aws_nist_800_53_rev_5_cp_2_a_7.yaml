@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cp_2_a_7
 Title: CP-2(a)(7)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Develop a contingency plan for the system that: 7. Is reviewed and approved by [Assignment: organization-defined personnel or roles]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_elb_application_lb_deletion_protection_enabled

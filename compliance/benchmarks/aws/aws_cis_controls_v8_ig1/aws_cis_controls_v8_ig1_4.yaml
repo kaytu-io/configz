@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_4
 Title: 4 Secure Configuration of Enterprise Assets and Software
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Establish and maintain the secure configuration of enterprise assets (end-user devices, including portable and mobile; network devices; non-computing/IoT devices; and servers) and software (operating systems and applications).
 Children:
 - aws_cis_controls_v8_ig1_4_1
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

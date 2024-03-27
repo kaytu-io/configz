@@ -1,7 +1,6 @@
 ID: aws_gxp_21_cfr_part_11_11_200
 Title: 11.200 Electronic signature components and controls
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Electronic signatures that are not biometric (i.e., not based on a physical feature, like a fingerprint) must be made up of at least two distinct parts  (i.e.,user ID and password). Biometric electronic signature (e.g., fingerprint scan, retinal scan) can only be used by the individuals to whom they are assigned.
 Children:
 - aws_gxp_21_cfr_part_11_11_200_a
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

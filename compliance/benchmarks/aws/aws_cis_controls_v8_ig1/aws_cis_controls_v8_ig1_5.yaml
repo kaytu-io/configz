@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_5
 Title: 5 Account Management
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Use processes and tools to assign and manage authorization to credentials for user accounts, including administrator accounts, as well as service accounts, to enterprise assets and software.
 Children:
 - aws_cis_controls_v8_ig1_5_2
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

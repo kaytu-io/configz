@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_au_6_4
 Title: Central Review and Analysis AU-6(4)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system provides the capability to centrally review and analyze audit records from multiple components within the system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_azure_defender_enabled
 - azure_appservice_web_app_diagnostic_logs_enabled

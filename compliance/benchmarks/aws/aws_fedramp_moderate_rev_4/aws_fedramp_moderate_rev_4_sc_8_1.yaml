@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_sc_8_1
 Title: SC-8(1) Cryptographic Or Alternate Physical Protection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system implements cryptographic mechanisms to [Selection (one or more): prevent unauthorized disclosure of information; detect changes to information] during transmission unless otherwise protected by [Assignment: organization-defined alternative physical safeguards]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

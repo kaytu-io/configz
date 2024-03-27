@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_configuration_management
 Title: 06 Configuration Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Configuration management involves implementing processes and controls to effectively manage and track changes to information systems, ensuring their integrity and security. In the context of compliance, organizations need to establish a robust configuration management program that includes documenting the baseline configuration of systems, implementing change management procedures, and conducting regular configuration reviews and audits.
 Children:
 - azure_hipaa_hitrust_v92_0605_10h1system
@@ -27,5 +26,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

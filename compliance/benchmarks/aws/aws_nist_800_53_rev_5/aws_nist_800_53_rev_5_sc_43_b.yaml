@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_43_b
 Title: SC-43(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Authorize, monitor, and control the use of such components within the system.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

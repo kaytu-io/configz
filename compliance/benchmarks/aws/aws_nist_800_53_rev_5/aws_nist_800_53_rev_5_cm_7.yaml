@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_7
 Title: Least Functionality (CM-7)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization configures the information system to provide only essential capabilities and prohibits or restricts the use of the functions, ports, protocols, and/or services.
 Children:
 - aws_nist_800_53_rev_5_cm_7_b
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

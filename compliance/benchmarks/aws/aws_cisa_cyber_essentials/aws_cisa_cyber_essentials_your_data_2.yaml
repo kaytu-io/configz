@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_data_2
 Title: Your Data-2
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Learn what is happening on your network, manage network and perimeter components, host and device components, data-at-rest and in-transit, and user behavior activities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_rest_api_stage_use_ssl_certificate

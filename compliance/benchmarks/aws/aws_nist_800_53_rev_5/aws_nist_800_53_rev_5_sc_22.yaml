@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_22
 Title: Architecture And Provisioning For Name/Address Resolution Service (SC-22)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Ensure the systems that collectively provide name/address resolution service for an organization are fault-tolerant and implement internal and external role separation.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_auto_scaling_enabled
 - aws_elb_application_lb_deletion_protection_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ia_2
 Title: Identification and Authentication (Organizational users) (IA-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system uniquely identifies and authenticates organizational users (or processes acting on behalf of organizational users).
 Children:
 - aws_nist_800_53_rev_4_ia_2_1
@@ -18,6 +17,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong_min_reuse_24

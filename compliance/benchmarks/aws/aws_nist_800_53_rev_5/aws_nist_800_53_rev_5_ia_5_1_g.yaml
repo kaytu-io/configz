@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_5_1_g
 Title: IA-5(1)(g)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "For password-based authentication: (g) Employ automated tools to assist the user in selecting strong password authenticators."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

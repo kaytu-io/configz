@@ -1,7 +1,6 @@
 ID: azure_cis_v200_5_5
 Title: 5.5 Ensure that SKU Basic/Consumption is not used on artifacts that need to be monitored (Particularly for Production Workloads)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The use of Basic or Free SKUs in Azure whilst cost effective have significant limitations in terms of what can be monitored and what support can be realized from Microsoft. Typically, these SKU's do not have a service SLA and Microsoft will usually refuse to provide support for them. Consequently Basic/Free SKUs should never be used for production workloads.
 Children: []
 Tags:
@@ -23,7 +22,10 @@ Tags:
   - azure
   service:
   - Azure/Monitor
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_network_lb_no_basic_sku
 - azure_network_public_ip_no_basic_sku

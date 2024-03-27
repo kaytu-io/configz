@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_14_3
 Title: AU-14(3) Remote Viewing And Listening
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Provide and implement the capability for authorized users to remotely view and hear content related to an established user session in real time.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

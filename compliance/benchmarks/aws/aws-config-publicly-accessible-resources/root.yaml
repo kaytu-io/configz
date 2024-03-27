@@ -1,7 +1,6 @@
 ID: aws-config-publicly-accessible-resources
 Title: AWS Config Publicly Accessible Resources
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Publicly Accessible Resources
 Children: []
 Tags:

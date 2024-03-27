@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_control_of_operational_software
 Title: Control of Operational Software
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: There shall be procedures in place to control the installation of software on operational systems.
 Children:
 - azure_hipaa_hitrust_v92_0606_10h2system
@@ -17,5 +16,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

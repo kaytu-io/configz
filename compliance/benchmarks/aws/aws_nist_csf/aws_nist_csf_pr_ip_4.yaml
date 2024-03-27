@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ip_4
 Title: PR.IP-4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Backups of information are conducted, maintained, and tested periodically.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_in_backup_plan
 - aws_dynamodb_table_point_in_time_recovery_enabled

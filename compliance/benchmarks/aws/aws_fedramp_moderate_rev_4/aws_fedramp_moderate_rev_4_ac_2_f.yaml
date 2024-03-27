@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_2_f
 Title: AC-2(f)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: f. Creates, enables, modifies, disables, and removes information system accounts in accordance with [Assignment: organization-defined procedures or conditions]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14
 - aws_iam_policy_custom_no_service_wildcard

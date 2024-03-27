@@ -1,7 +1,6 @@
 ID: azure_cis_v130_4
 Title: 4 Database Services
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children:
 - azure_cis_v130_4_1
@@ -22,7 +21,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_sql_db_active_directory_admin_configured
 - azure_sql_server_tde_protector_cmk_encrypted

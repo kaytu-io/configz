@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_11_3
 Title: 3.11.3 Remediate vulnerabilities in accordance with risk assessments
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Vulnerabilities discovered, for example, via the scanning conducted in response to 3.11.2, are remediated with consideration of the related assessment of risk. The consideration of risk influences the prioritization of remediation efforts and the level of effort to be expended in the remediation for specific vulnerabilities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_guardduty_finding_archived

@@ -1,7 +1,6 @@
 ID: aws_foundational_security_sagemaker
 Title: SageMaker
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/SageMaker
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_sagemaker_notebook_instance_direct_internet_access_disabled
 - aws_sagemaker_notebook_instance_in_vpc

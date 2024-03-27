@@ -1,7 +1,6 @@
 ID: aws-config-network-firewall
 Title: AWS Config Network Firewall
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Network Firewall
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_2_ti_ti_b_3
 Title: D2.TI.Ti.B.3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Threat information is used to enhance internal risk management and controls. "
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

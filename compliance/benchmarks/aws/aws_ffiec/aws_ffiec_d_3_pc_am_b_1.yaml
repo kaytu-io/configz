@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_am_b_1
 Title: D3.PC.Am.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Employee access is granted to systems and confidential data based on job responsibilities and the principles of least privilege.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_iam_profile_attached
 - aws_ecs_task_definition_user_for_host_mode_check

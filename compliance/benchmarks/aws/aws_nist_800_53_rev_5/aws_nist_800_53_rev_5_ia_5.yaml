@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_5
 Title: Authenticator Management (IA-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Authenticate users and devices. Automate administrative control. Enforce restrictions. Protect against unauthorized use.
 Children:
 - aws_nist_800_53_rev_5_ia_5_1
@@ -23,6 +22,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

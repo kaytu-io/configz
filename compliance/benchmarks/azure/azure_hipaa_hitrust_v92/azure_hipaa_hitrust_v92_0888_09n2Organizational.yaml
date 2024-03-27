@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0888_09n2Organizational
 Title: 0888.09n2Organizational.6-09.n 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The contract with the external/outsourced service provider includes the specification that the service provider is responsible for the protection of covered information shared.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Network
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_network_watcher_enabled

@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_10_2
 Title: 10.2 Configure Automatic Anti-Malware Signature Updates
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Configure automatic updates for anti-malware signature files on all enterprise assets.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

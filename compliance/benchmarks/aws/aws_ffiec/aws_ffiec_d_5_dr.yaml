@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_dr
 Title: Detection, Response, & Mitigation (DR)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Detection, Response, & Mitigation refers to the steps management takes to identify, prioritize, respond to, and mitigate the effects of internal and external threats and vulnerabilities.
 Children:
 - aws_ffiec_d_5_dr_de_b_1
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

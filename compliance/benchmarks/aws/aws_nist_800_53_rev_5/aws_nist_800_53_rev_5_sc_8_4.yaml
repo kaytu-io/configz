@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_8_4
 Title: SC-8(4) Conceal Or Ramdomize Communications
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement cryptographic mechanisms to conceal or randomize communication patterns unless otherwise protected by [Assignment: organization-defined alternative physical controls]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_apigateway_stage_cache_encryption_at_rest_enabled

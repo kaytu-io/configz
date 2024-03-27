@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_cm_7_a
 Title: CM-7(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: a. Configures the information system to provide only essential capabilities."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_ssm_managed_instance_compliance_association_compliant

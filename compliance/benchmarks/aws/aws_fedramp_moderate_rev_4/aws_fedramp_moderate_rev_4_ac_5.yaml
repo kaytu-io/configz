@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_5
 Title: Separation Of Duties (AC-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Separate duties of individuals to prevent malevolent activity. automate separation of duties and access authorizations.
 Children:
 - aws_fedramp_moderate_rev_4_ac_5_c
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

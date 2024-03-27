@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_1_2
 Title: 1.2 Address Unauthorized Assets
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Ensure that a process exists to address unauthorized assets on a weekly basis. The enterprise may choose to remove the asset from the network, deny the asset from connecting remotely to the network, or quarantine the asset.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

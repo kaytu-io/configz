@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ds_8
 Title: PR.DS-8
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Integrity checking mechanisms are used to verify hardware integrity.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_securityhub_enabled

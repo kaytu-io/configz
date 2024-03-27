@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_13_3
 Title: 13.3 Ensure Network Infrastructure is Up-to-Date
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

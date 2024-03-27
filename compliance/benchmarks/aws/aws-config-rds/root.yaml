@@ -1,7 +1,6 @@
 ID: aws-config-rds
 Title: AWS Config RDS
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config RDS
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_booting_up_things_to_do_first_1
 Title: "Booting Up: Things to Do First-1"
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Employ a backup solution that automatically and continuously backs up critical data and system configurations.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_min_retention_35_days

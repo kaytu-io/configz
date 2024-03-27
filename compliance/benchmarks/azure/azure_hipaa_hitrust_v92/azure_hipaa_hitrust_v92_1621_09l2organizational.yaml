@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1621_09l2organizational
 Title: 1621.09l2Organizational.1-09.l 09.05 Information Back-Up
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Automated tools are used to track all backups.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/SQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_sql_database_long_term_geo_redundant_backup_enabled

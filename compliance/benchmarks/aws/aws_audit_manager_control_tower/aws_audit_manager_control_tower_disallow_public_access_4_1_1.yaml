@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_disallow_public_access_4_1_1
 Title: 4.1.1 - Disallow public read access to S3 buckets
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow public read access to S3 buckets - Checks that your S3 buckets do not allow public read access.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/S3
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_s3_bucket_restrict_public_read_access

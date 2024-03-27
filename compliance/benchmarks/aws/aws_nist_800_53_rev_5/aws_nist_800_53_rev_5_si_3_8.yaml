@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_3_8
 Title: SI-3(8) Detect Unauthorized Commands
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Detect the following unauthorized operating system commands through the kernel application programming interface on [Assignment: organization-defined system hardware components]: [Assignment: organization-defined unauthorized operating system commands]; and b.\u2003[Selection (one or more): issue a warning; audit the command execution; prevent the execution of the command]."
 Children:
 - aws_nist_800_53_rev_5_si_3_8_a
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

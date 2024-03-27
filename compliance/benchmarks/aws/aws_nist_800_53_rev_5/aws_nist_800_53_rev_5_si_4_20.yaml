@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_20
 Title: SI-4(20) Privileged Users
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Implement the following additional monitoring of privileged users: [Assignment: organization-defined additional monitoring]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_s3_data_events_enabled

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_sc_7_3
 Title: SC-7(3) Access Points
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization limits the number of external network connections to the information system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_launch_config_public_ip_disabled
 - aws_dms_replication_instance_not_publicly_accessible

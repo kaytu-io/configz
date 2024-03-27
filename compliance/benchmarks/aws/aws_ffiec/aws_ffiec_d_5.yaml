@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5
 Title: Cyber Incident Management and Resilience (Domain 5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Cyber incident management includes establishing, identifying, and analyzing cyber events; prioritizing the institution's containment or mitigation; and escalating information to appropriate stakeholders. Cyber resilience encompasses both planning and testing to maintain and recover ongoing operations during and following a cyber incident.
 Children:
 - aws_ffiec_d_5_dr
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

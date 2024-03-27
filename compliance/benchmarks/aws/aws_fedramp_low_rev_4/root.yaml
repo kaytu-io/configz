@@ -1,3 +1,7 @@
+ID: aws_fedramp_low_rev_4
+Title: FedRAMP Low Revision 4 for AWS
+ReferenceCode: ""
+Description: The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that delivers a standard approach to the security assessment, authorization, and continuous monitoring for cloud products and services.
 Children:
 - aws_fedramp_low_rev_4_ac
 - aws_fedramp_low_rev_4_au
@@ -8,11 +12,6 @@ Children:
 - aws_fedramp_low_rev_4_ir
 - aws_fedramp_low_rev_4_sa
 - aws_fedramp_low_rev_4_sc
-Connector: AWS
-Controls: null
-Description: The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that delivers a standard approach to the security assessment, authorization, and continuous monitoring for cloud products and services.
-Enabled: true
-ID: aws_fedramp_low_rev_4
 Tags:
   category:
   - Compliance
@@ -28,4 +27,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: FedRAMP Low Revision 4 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

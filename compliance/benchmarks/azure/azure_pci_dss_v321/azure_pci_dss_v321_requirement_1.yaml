@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_1
 Title: Requirement 1 - Install and maintain a firewall configuration to protect cardholder data
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Firewalls are devices that control computer traffic allowed into and out of an organization's network, and into sensitive areas within its internal network. Firewall functionality can also appear in other system components. Routers are hardware or software that connects two or more networks. All such networking devices are in scope for assessment of Requirement 1 if used within the cardholder data environment.
 Children:
 - azure_pci_dss_v321_requirement_1_3
@@ -16,5 +15,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

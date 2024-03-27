@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1116_01j1organizational
 Title: 1116.01j1Organizational.145-01.j 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Prevent unauthorized access to networked services, such as user authentication for external connections.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

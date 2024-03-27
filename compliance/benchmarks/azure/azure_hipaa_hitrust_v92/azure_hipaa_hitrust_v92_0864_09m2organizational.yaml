@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0864_09m2organizational
 Title: 0864.09m2Organizational.12-09.m 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Usage restrictions and implementation guidance are formally defined for VoIP, including the authorization and monitoring of the service.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/CosmosDB
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_cosmosdb_use_virtual_service_endpoint

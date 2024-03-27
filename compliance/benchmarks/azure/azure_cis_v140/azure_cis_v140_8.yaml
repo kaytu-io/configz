@@ -1,7 +1,6 @@
 ID: azure_cis_v140_8
 Title: 8 Other Security Considerations
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_keyvault_with_rbac_key_expiration_set
 - azure_keyvault_with_non_rbac_key_expiration_set

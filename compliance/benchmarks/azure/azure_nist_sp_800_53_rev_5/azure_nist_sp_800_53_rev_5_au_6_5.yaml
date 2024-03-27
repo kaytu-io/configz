@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_au_6_5
 Title: Integrated Analysis of Audit Records AU-6(5)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization integrates analysis of audit records with analysis of vulnerable scanning information, performance data, and information system monitoring information collected from other sources to further enhance the ability to identify inappropriate or unusual activity.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_azure_defender_enabled
 - azure_appservice_web_app_diagnostic_logs_enabled

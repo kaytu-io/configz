@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_12_b
 Title: AC-3(12)(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Provide an enforcement mechanism to prevent unauthorized access;
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

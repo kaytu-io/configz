@@ -1,7 +1,6 @@
 ID: aws_foundational_security_elasticbeanstalk
 Title: Elastic Beanstalk
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/ElasticBeanstalk
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elastic_beanstalk_enhanced_health_reporting_enabled

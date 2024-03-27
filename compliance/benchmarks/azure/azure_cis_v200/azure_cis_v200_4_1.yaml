@@ -1,7 +1,6 @@
 ID: azure_cis_v200_4_1
 Title: 4.1 SQL Server - Auditing
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/SQL
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_sql_server_auditing_on
 - azure_sql_database_allow_internet_access

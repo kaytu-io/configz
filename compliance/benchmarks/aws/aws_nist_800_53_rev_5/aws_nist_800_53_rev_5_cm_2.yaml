@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_2
 Title: Baseline Configuration (CM-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization develops, documents, and maintains under configuration control, a current baseline configuration of the information system.
 Children:
 - aws_nist_800_53_rev_5_cm_2_2
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

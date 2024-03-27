@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc_28
 Title: Protection Of Information At Rest (SC-28)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system protects the [Selection (one or more): confidentiality; integrity] of [Assignment: organization-defined information at rest]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_cache_encryption_at_rest_enabled
 - aws_cloudtrail_trail_logs_encrypted_with_kms_cmk

@@ -1,7 +1,6 @@
 ID: aws_soc_2_legacy_cc_6_6
 Title: CC6.6 The entity implements logical access security measures to protect against threats from sources outside its system boundaries
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -21,7 +20,10 @@ Tags:
   - automated
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

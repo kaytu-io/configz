@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ia_5_f
 Title: IA-5(f)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Manage system authenticators by: f. Changing or refreshing authenticators [Assignment: organization-defined time period by authenticator type] or when [Assignment: organization-defined events] occur."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

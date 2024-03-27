@@ -1,7 +1,6 @@
 ID: aws-config-cis-critical-security-controls-v8-ig2
 Title: AWS Config CIS Critical Security Controls v8 IG2
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CIS Critical Security Controls v8 IG2
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_ae_1
 Title: DE.AE-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: A baseline of network operations and expected data flows for users and systems is established and managed.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_apigateway_stage_use_waf_web_acl

@@ -1,7 +1,6 @@
 ID: aws-config-encryption-and-keys
 Title: AWS Config Encryption and Keys
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Encryption and Keys
 Children: []
 Tags:

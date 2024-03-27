@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_dr_de_b_3
 Title: D5.DR.De.B.3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Tools and processes are in place to detect, alert, and trigger the incident response program.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_s3_data_events_enabled

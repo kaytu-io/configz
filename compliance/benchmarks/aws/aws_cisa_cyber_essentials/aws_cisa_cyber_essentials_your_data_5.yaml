@@ -1,7 +1,6 @@
 ID: aws_cisa_cyber_essentials_your_data_5
 Title: Your Data-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Leverage protections for backups, including physical security, encryption and offline copies.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_recovery_point_encryption_enabled
 - aws_backup_recovery_point_manual_deletion_disabled

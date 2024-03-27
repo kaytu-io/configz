@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_17
 Title: Remote Access (AC-17)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Authorize remote access systems prior to connection. Enforce remote connection requirements to information systems.
 Children:
 - azure_nist_sp_800_53_rev_5_ac_17_1
@@ -16,7 +15,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_app_configuration_private_link_used
 - azure_appservice_api_app_remote_debugging_disabled

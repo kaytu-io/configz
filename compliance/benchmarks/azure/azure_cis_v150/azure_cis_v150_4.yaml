@@ -1,7 +1,6 @@
 ID: azure_cis_v150_4
 Title: 4 Database Services
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children:
 - azure_cis_v150_4_1
@@ -24,5 +23,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

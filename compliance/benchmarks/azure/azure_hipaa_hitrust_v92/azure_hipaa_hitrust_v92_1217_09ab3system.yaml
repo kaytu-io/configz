@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1217_09ab3system
 Title: 1217.09ab3System.3-09.ab 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Alerts are generated for technical personnel to analyze and investigate suspicious activity or suspected violations.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_log_analytics_agent_installed_windows

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0304_09o3organizational
 Title: 0304.09o3Organizational.1-09.o 09.07 Media Handling
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization restricts the use of writable removable media and personally-owned removable media in organizational systems.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_datalake_store_account_encryption_enabled
 - azure_mssql_managed_instance_encryption_at_rest_using_cmk

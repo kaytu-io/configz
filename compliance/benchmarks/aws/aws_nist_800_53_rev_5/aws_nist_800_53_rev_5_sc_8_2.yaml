@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_8_2
 Title: SC-8(2) Pre- And Post-Transmission Handling
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Maintain the [Selection (one or more): confidentiality; integrity] of information during preparation for transmission and during reception."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

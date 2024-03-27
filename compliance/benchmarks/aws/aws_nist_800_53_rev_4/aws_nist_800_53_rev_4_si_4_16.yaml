@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_si_4_16
 Title: SI-4(16) Correlate Monitoring Information
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization correlates information from monitoring tools employed throughout the information system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

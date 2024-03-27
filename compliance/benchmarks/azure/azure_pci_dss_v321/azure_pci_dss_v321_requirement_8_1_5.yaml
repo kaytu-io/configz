@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_8_1_5
 Title: PCI DSS requirement 8.1.5
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: "Manage IDs used by thid parties to access, support, or maintain system components via remote access. Remote access are as follows: - Enabled only during the time period needed and disabled when not in use. - Monitored when in use."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_deprecated_account_with_owner_roles
 - azure_iam_deprecated_account

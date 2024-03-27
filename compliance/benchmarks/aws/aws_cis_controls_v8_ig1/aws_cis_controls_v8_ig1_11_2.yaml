@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_11_2
 Title: 11.2 Perform Automated Backups
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Perform automated backups of in-scope enterprise assets. Run backups weekly, or more frequently, based on the sensitivity of the data.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_in_backup_plan
 - aws_dynamodb_table_point_in_time_recovery_enabled

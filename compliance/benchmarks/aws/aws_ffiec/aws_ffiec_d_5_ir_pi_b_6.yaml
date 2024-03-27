@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_ir_pi_b_6
 Title: D5.IR.Pl.B.6
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The institution plans to use business continuity, disaster recovery, and data backup programs to recover operations following an incident.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_backup_plan_min_retention_35_days

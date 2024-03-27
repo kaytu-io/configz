@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_cp_6_1
 Title: Separation from Primary Site CP-6(1)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization identifies an alternate storage site that is separated from the primary storage site to reduce susceptibility to the same threats.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_mariadb_server_geo_redundant_backup_enabled
 - azure_mysql_db_server_geo_redundant_backup_enabled

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1147_01c2system
 Title: 1147.01c2System.456-01.c 01.02 Authorized Access to Information Systems
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Elevated privileges are assigned to a different user ID from those used for normal business use, all users access privileged services in a single role, and such privileged access is minimized.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_deprecated_account_with_owner_roles

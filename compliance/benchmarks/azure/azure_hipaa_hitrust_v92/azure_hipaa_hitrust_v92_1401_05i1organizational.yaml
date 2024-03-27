@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1401_05i1organizational
 Title: Access to the organizations information and systems by external parties
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Access to the organizations information and systems by external parties is not permitted until due diligence has been conducted, the appropriate controls have been implemented, and a contract/agreement reflecting the security requirements is signed acknowledging they understand and accept their obligations.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/Storage
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_storage_account_secure_transfer_required_enabled

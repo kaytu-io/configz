@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_si_7_1
 Title: SI-7(1) Integrity Checks
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system performs an integrity check of security relevant events at least monthly.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled
 - aws_ec2_instance_ssm_managed

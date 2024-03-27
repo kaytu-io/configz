@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_au_2
 Title: Audit Events (AU-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: a. Determines that the information system is capable of auditing the following events: [Assignment: organization-defined auditable events]; b. Coordinates the security audit function with other organizational entities requiring audit- related information to enhance mutual support and to help guide the selection of auditable events; c. Provides a rationale for why the auditable events are deemed to be adequate support after- the-fact investigations of security incidents."
 Children:
 - aws_fedramp_moderate_rev_4_au_2_a_d
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_cp_9_b
 Title: CP-9(b)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: b. Conducts backups of system-level information contained in the information system (daily incremental; weekly full)."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_dynamodb_table_point_in_time_recovery_enabled

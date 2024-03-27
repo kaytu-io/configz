@@ -1,7 +1,6 @@
 ID: aws_foundational_security_codebuild
 Title: CodeBuild
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/CodeBuild
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_codebuild_project_source_repo_oauth_configured
 - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values

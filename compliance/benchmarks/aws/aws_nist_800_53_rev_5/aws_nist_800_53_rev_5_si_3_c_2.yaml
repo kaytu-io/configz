@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_3_c_2
 Title: SI-3(c)(2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "c. Configure malicious code protection mechanisms to: 2. [Selection (one or more): block malicious code; quarantine malicious code; take [Assignment: organization-defined action]]; and send alert to [Assignment: organization-defined personnel or roles] in response to malicious code detection."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ssm_managed
 - aws_ssm_managed_instance_compliance_association_compliant

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_ac_17
 Title: Remote Access (AC-17)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Authorize remote access systems prior to connection. Enforce remote connection requirements to information systems.
 Children:
 - aws_nist_800_53_rev_4_ac_17_1
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

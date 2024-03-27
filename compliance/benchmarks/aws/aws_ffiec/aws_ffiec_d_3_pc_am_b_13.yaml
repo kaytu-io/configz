@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_am_b_13
 Title: D3.PC.Am.B.13
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Confidential data is encrypted when transmitted across public or untrusted networks (e.g., Internet).
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_si_12
 Title: Information Handling and Retention (SI-12)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization handles and retains information within the information system and information output from the system in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and operational requirements.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_log_group_retention_period_365
 - aws_dynamodb_table_in_backup_plan

@@ -1,7 +1,6 @@
 ID: aws_soc_2_legacy_cc_1
 Title: CC1 Common Criteria Related to Control Environment
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The criteria relevant to how the entity demonstrates commitment to integrity and ethical values, exercises oversight responsibility, establishes structure, authority and responsibility, demonstrates commitment to competence, and enforces accountability.
 Children:
 - aws_soc_2_legacy_cc_1_3
@@ -18,5 +17,8 @@ Tags:
   - cc1
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: aws_foundational_security_s3
 Title: S3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/S3
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_s3_public_access_block_account
 - aws_s3_bucket_restrict_public_read_access

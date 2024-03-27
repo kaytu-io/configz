@@ -1,7 +1,6 @@
 ID: aws_foundational_security_rds
 Title: RDS
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/RDS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_rds_db_snapshot_prohibit_public_access
 - aws_rds_db_instance_prohibit_public_access

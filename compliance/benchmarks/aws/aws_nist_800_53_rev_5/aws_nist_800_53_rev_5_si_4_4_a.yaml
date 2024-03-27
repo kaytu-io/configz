@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_4_a
 Title: SI-4(4)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Determine criteria for unusual or unauthorized activities or conditions for inbound and outbound communications traffic.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

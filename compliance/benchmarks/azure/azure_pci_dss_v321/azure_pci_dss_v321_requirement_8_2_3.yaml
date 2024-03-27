@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_8_2_3
 Title: PCI DSS requirement 8.2.3
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: "Passwords/phrases must meet the following: - Require a minimum length of at least seven characters. - Contain both numeric and alphabetic characters. Alternatively, the passwords/phrases must have complexity and strength at least equivalent to the parameters specified above."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_guest_configuration_installed_windows
 - azure_compute_vm_guest_configuration_with_no_managed_identity

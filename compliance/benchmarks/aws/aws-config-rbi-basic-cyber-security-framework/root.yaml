@@ -1,7 +1,6 @@
 ID: aws-config-rbi-basic-cyber-security-framework
 Title: AWS Config RBI Basic Cyber Security Framework
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config RBI Basic Cyber Security Framework
 Children: []
 Tags:

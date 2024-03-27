@@ -1,40 +1,34 @@
 ID: IRAP_Audit
-Title: '[Preview]: Australian Government ISM PROTECTED'
+Title: "[Preview]: Australian Government ISM PROTECTED"
 ReferenceCode: ""
 Description: This initiative includes policies that address a subset of Australian Government Information Security Manual (ISM) controls. Additional policies will be added in upcoming releases. For more information, visit https://aka.ms/auism-initiative.
-LogoURI: ""
-Category: ""
-DocumentURI: ""
-Enabled: true
+Children: []
+Tags:
+  kaytu_benchmark_type:
+  - compliance
+  plugin:
+  - azure
+  service:
+  - Azure
 Managed: false
+Enabled: true
 AutoAssign: false
 Baseline: false
-Tags:
-    kaytu_benchmark_type:
-        - compliance
-    plugin:
-        - azure
-    service:
-        - Azure
-Connector: Azure
-Children: []
 Controls:
-    - vulnerability_assessment_should_be_enabled_on_your_sql_servers
-    - endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
-    - transparent_data_encryption_on_sql_databases_should_be_enabled
-    - only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
-    - function_apps_should_use_the_latest_tls_version
-    - app_service_apps_should_only_be_accessible_over_https
-    - function_apps_should_have_remote_debugging_turned_off
-    - guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
-    - secure_transfer_to_storage_accounts_should_be_enabled
-    - function_apps_should_only_be_accessible_over_https
-    - storage_accounts_should_restrict_network_access
-    - blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
-    - vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
-    - app_service_apps_should_use_the_latest_tls_version
-    - an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
-    - service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
-    - app_service_apps_should_have_remote_debugging_turned_off
-CreatedAt: 0001-01-01T00:00:00Z
-UpdatedAt: 0001-01-01T00:00:00Z
+- vulnerability_assessment_should_be_enabled_on_your_sql_servers
+- endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_sets
+- transparent_data_encryption_on_sql_databases_should_be_enabled
+- only_secure_connections_to_your_azure_cache_for_redis_should_be_enabled
+- function_apps_should_use_the_latest_tls_version
+- app_service_apps_should_only_be_accessible_over_https
+- function_apps_should_have_remote_debugging_turned_off
+- guest_accounts_with_write_permissions_on_azure_resources_should_be_removed
+- secure_transfer_to_storage_accounts_should_be_enabled
+- function_apps_should_only_be_accessible_over_https
+- storage_accounts_should_restrict_network_access
+- blocked_accounts_with_owner_permissions_on_azure_resources_should_be_removed
+- vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets_should_be_remediated
+- app_service_apps_should_use_the_latest_tls_version
+- an_azure_active_directory_administrator_should_be_provisioned_for_sql_servers
+- service_fabric_clusters_should_only_use_azure_active_directory_for_client_authentication
+- app_service_apps_should_have_remote_debugging_turned_off

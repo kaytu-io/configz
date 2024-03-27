@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_si_4_1
 Title: SI-4(1) System-Wide Intrusion Detection System
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization connects and configures individual intrusion detection tools into an information system-wide intrusion detection system.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

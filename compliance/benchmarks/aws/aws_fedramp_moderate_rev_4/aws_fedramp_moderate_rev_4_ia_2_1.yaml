@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ia_2_1
 Title: IA-2(1) Network Access To Privileged Accounts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system implements multi-factor authentication for network access to privileged accounts.
 Children:
 - aws_fedramp_moderate_rev_4_ia_2_1_2
@@ -16,7 +15,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_hardware_mfa_enabled
 - aws_iam_root_user_mfa_enabled

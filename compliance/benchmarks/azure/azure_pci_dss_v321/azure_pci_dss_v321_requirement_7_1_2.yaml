@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_7_1_2
 Title: PCI DSS requirement 7.1.2
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Restrict access to privileged user IDs to least privileges necessary to perform job responsibilities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/ActiveDirectory
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_iam_subscription_owner_max_3
 - azure_iam_subscription_owner_more_than_1

@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_1_13
 Title: 3.1.13 Employ cryptographic mechanisms to protect the confidentiality of remote access sessions
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Cryptographic standards include FIPS-validated cryptography and NSA-approved cryptography.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_elb_application_lb_redirect_http_request_to_https
 - aws_elb_classic_lb_use_ssl_certificate

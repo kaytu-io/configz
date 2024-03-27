@@ -1,7 +1,6 @@
 ID: aws_hipaa_security_rule_2003_164_308_a_5_ii_c
 Title: 164.308(a)(5)(ii)(C) Log-in monitoring
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Procedures for monitoring log-in attempts and reporting discrepancies.
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_enabled
 - aws_cloudtrail_trail_integrated_with_logs

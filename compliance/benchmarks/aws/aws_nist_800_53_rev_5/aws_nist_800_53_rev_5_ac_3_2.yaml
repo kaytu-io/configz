@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_2
 Title: AC-3(2) Dual Authorization
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Enforce dual authorization for [Assignment: organization-defined privileged commands and/or other organization-defined actions]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_root_user_hardware_mfa_enabled
 - aws_iam_root_user_mfa_enabled

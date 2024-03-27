@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1118_01j2organizational
 Title: 1118.01j2Organizational.124-01.j 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization has implemented encryption (e.g. VPN solutions or private lines) and logs remote access to the organization's network by employees, contractors or third party.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

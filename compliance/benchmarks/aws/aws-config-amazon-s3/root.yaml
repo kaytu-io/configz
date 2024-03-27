@@ -1,7 +1,6 @@
 ID: aws-config-amazon-s3
 Title: AWS Config Amazon S3
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Amazon S3
 Children: []
 Tags:

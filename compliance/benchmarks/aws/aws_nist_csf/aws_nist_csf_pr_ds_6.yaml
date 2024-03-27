@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ds_6
 Title: PR.DS-6
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Integrity checking mechanisms are used to verify software, firmware, and information integrity.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/CloudTrail
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled
 - aws_s3_bucket_versioning_enabled

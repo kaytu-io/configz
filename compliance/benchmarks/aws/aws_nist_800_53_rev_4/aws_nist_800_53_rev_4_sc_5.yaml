@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc_5
 Title: Denial Of Service Protection (SC-5)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system protects against or limits the effects of the following types of denial of service attacks: [Assignment: organization-defined types of denial of service attacks or references to sources for such information] by employing [Assignment: organization-defined security safeguards]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_autoscaling_group_with_lb_use_health_check
 - aws_dynamodb_table_auto_scaling_enabled

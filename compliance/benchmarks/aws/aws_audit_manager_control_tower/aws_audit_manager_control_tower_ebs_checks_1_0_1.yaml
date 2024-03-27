@@ -1,7 +1,6 @@
 ID: aws_audit_manager_control_tower_ebs_checks_1_0_1
 Title: 1.0.1 - Disallow launch of EC2 instance types that are not EBS-optimized
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Disallow launch of EC2 instance types that are not EBS-optimized - Checks whether EBS optimization is enabled for your EC2 instances that can be EBS-optimized.
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - AWS/EBS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_ec2_instance_ebs_optimized

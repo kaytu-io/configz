@@ -1,50 +1,53 @@
-Connector: AWS
-Controls:
-  - aws_rds_db_instance_no_public_subnet
-  - aws_use_aws_backup_service_in_use_for_amazon_rds
-  - aws_rds_automated_backups_enabled
-  - aws_use_io2_not_io1
-  - aws_disable_public_ip_address_assignment_for_ec2_instances
-  - aws_ec2_ami_too_old
-  - aws_opensearch_dedicated_master_enabled
-  - aws_opensearch_zone_awareness_enabled
-  - aws_backtrack
-  - aws_aurora_database_instance_accessibility
-  - aws_enable_serverless_log_exports
-  - aws_performance_insights
-  - aws_rds_event_notifications
-  - aws_rds_multi_az
-  - aws_dynamodb_instances_have_backup_with_lifecyclepolicy_above_35_days
-  - aws_dynamodb_instances_have_backup_withing_48_hours
-  - aws_ebs_instances_have_backup_with_lifecyclepolicy_above_35_days
-  - aws_ebs_instances_have_backup_withing_rpo_period
-  - aws_ec2_instances_have_backup_with_lifecyclepolicy_above_35_days
-  - aws_ec2_instances_have_backup_withing_48_hours
-  - aws_efs_files_have_backup_with_lifecyclepolicy_above_35_days
-  - aws_efs_files_have_backup_withing_48_hours
-  - aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
-  - aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
-  - aws_expired_ssl_tls_certificate
-  - aws_configure_multiple_availability_zones_for_load_balancers
-  - aws_kubernetes_cluster_version
-  - aws_elbv2_alb_minimum_number_of_ec2_target_instances
-  - aws_elbv2_glb_minimum_number_of_ec2_target_instances
-  - aws_ec2_instance_termination_protection
-  - aws_enable_deletion_protection
-  - aws_elb_connection_draining_enabled
-  - aws_elb_cross_zone_load_balancing_enabled
-  - aws_check_for_amazon_ecs_service_placement_strategy
-  - aws_enable_cloudtrail_logging_for_kubernetes_api_calls
-  - aws_enable_cloudwatch_container_insights
-  - aws_check_for_protected_amazon_backup_resource_types
-  - aws_enable_cross_region_replication
+ID: aws_score_reliability
+Title: Reliability for AWS
 ReferenceCode: aws_score_reliability
 Description: Reliability Description
-ID: aws_score_reliability
-AutoAssign: true
+Children: []
 Tags:
-  type:
-    - SCORE
   score_category:
-    - reliability
-Title: Reliability for AWS
+  - reliability
+  type:
+  - SCORE
+Managed: false
+Enabled: false
+AutoAssign: true
+Baseline: false
+Controls:
+- aws_rds_db_instance_no_public_subnet
+- aws_use_aws_backup_service_in_use_for_amazon_rds
+- aws_rds_automated_backups_enabled
+- aws_use_io2_not_io1
+- aws_disable_public_ip_address_assignment_for_ec2_instances
+- aws_ec2_ami_too_old
+- aws_opensearch_dedicated_master_enabled
+- aws_opensearch_zone_awareness_enabled
+- aws_backtrack
+- aws_aurora_database_instance_accessibility
+- aws_enable_serverless_log_exports
+- aws_performance_insights
+- aws_rds_event_notifications
+- aws_rds_multi_az
+- aws_dynamodb_instances_have_backup_with_lifecyclepolicy_above_35_days
+- aws_dynamodb_instances_have_backup_withing_48_hours
+- aws_ebs_instances_have_backup_with_lifecyclepolicy_above_35_days
+- aws_ebs_instances_have_backup_withing_rpo_period
+- aws_ec2_instances_have_backup_with_lifecyclepolicy_above_35_days
+- aws_ec2_instances_have_backup_withing_48_hours
+- aws_efs_files_have_backup_with_lifecyclepolicy_above_35_days
+- aws_efs_files_have_backup_withing_48_hours
+- aws_rds_database_instances_have_a_minimum_acceptable_backup_policy
+- aws_rds_database_instances_must_have_a_minimum_acceptable_restore_time
+- aws_expired_ssl_tls_certificate
+- aws_configure_multiple_availability_zones_for_load_balancers
+- aws_kubernetes_cluster_version
+- aws_elbv2_alb_minimum_number_of_ec2_target_instances
+- aws_elbv2_glb_minimum_number_of_ec2_target_instances
+- aws_ec2_instance_termination_protection
+- aws_enable_deletion_protection
+- aws_elb_connection_draining_enabled
+- aws_elb_cross_zone_load_balancing_enabled
+- aws_check_for_amazon_ecs_service_placement_strategy
+- aws_enable_cloudtrail_logging_for_kubernetes_api_calls
+- aws_enable_cloudwatch_container_insights
+- aws_check_for_protected_amazon_backup_resource_types
+- aws_enable_cross_region_replication

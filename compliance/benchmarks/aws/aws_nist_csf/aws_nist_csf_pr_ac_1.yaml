@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ac_1
 Title: PR.AC-1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Identities and credentials are issued, managed, verified, revoked, and audited for authorized devices, users and processes.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_codebuild_project_environment_privileged_mode_disabled
 - aws_ec2_instance_iam_profile_attached

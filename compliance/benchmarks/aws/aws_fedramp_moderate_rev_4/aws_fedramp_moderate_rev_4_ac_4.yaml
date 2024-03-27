@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_4
 Title: Information Flow Enforcement (AC-4)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The information system enforces approved authorizations for controlling the flow of information within the system and between interconnected systems based on organization-defined information flow control policies.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_dms_replication_instance_not_publicly_accessible

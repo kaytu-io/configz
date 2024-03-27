@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ac_2_1
 Title: Automated System Account Management AC-2(1)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization employs automated mechanisms to support the management of information system accounts.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_cognitive_service_local_auth_disabled
 - azure_servicefabric_cluster_active_directory_authentication_enabled

@@ -1,7 +1,6 @@
 ID: aws_fedramp_low_rev_4_ac_2
 Title: Account Management (AC-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Manage system accounts, group memberships, privileges, workflow, notifications, deactivations, and authorizations.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_logging_enabled
 - aws_cloudtrail_multi_region_trail_enabled

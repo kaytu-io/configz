@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_3_10
 Title: AC-3(10) Audited Override Of Access Control Mechanisms
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ an audited override of automated access mechanisms under [Assignment: organization-defined conditions] by [Assignment: organization-defined roles]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_s3_data_events_enabled

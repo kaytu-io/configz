@@ -1,7 +1,6 @@
 ID: aws-config-sagemaker
 Title: AWS Config SageMaker
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config SageMaker
 Children: []
 Tags:

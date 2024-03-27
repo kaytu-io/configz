@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_43
 Title: Usage Restrictions (SC-43)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Establish usage restrictions and implementation guidelines for the following system components: [Assignment: organization-defined system components]; and b.\u2003Authorize, monitor, and control the use of such components within the system."
 Children:
 - aws_nist_800_53_rev_5_sc_43_b
@@ -16,5 +15,8 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

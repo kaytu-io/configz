@@ -1,7 +1,6 @@
 ID: aws-config-cis-aws-v1.4-level2
 Title: AWS Config CIS AWS v1.4 Level2
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CIS AWS v1.4 Level2
 Children: []
 Tags:

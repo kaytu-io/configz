@@ -1,7 +1,6 @@
 ID: aws-config-logging
 Title: AWS Config Logging
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Logging
 Children: []
 Tags:

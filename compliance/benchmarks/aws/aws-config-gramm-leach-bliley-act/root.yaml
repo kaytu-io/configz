@@ -1,7 +1,6 @@
 ID: aws-config-gramm-leach-bliley-act
 Title: AWS Config Gramm Leach Bliley Act
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Gramm Leach Bliley Act
 Children: []
 Tags:

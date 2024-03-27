@@ -1,7 +1,6 @@
 ID: aws-config-management-governance-services
 Title: AWS Config Management Governance Services
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Management Governance Services
 Children: []
 Tags:

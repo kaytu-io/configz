@@ -1,7 +1,6 @@
 ID: aws-config-storage-services
 Title: AWS Config Storage Services
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Storage Services
 Children: []
 Tags:

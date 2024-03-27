@@ -1,7 +1,6 @@
 ID: aws_pci_v321_es
 Title: Elasticsearch
-DisplayCode: ""
-Connector: ""
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -13,7 +12,10 @@ Tags:
   - aws
   service:
   - es
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_es_domain_in_vpc
 - aws_es_domain_encryption_at_rest_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_2_3
 Title: AC-2(3) Disable Accounts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Disable accounts within [Assignment: organization-defined time period] when the accounts: (a) Have expired; (b) Are no longer associated with a user or individual; (c) Are in violation of organizational policy; or (d) Have been inactive for [Assignment: organization-defined time period]."
 Children:
 - aws_nist_800_53_rev_5_ac_2_3_a
@@ -19,7 +18,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14
 - aws_iam_user_unused_credentials_90

@@ -1,7 +1,6 @@
 ID: azure_cis_v200_3
 Title: 3 Storage Accounts
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/Storage
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_storage_account_secure_transfer_required_enabled
 - azure_storage_account_infrastructure_encryption_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_5_6
 Title: 3.5.6 Disable identifiers after a defined period of inactivity
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Inactive identifiers pose a risk to organizational information because attackers may exploit an inactive identifier to gain undetected access to organizational devices. The owners of the inactive accounts may not notice if unauthorized access to the account has been obtained.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_strong_min_reuse_24
 - aws_iam_user_unused_credentials_90

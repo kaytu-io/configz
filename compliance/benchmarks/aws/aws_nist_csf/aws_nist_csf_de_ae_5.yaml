@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de_ae_5
 Title: DE.AE-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Incident alert thresholds are established.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_alarm_action_enabled
 - aws_codebuild_project_source_repo_oauth_configured

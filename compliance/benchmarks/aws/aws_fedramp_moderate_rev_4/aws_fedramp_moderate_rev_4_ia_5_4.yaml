@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ia_5_4
 Title: IA-5(4) Automated Support For Password Strength Determination
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization employs automated tools to determine if password authenticators are sufficiently strong to satisfy [Assignment: organization-defined requirements]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/IAM
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_account_password_policy_min_length_14

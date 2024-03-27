@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ip_9
 Title: PR.IP-9
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Response plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are in place and managed.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_encryption_enabled

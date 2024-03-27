@@ -1,7 +1,6 @@
 ID: aws_rbi_cyber_security_annex_i_12
 Title: Annex I (12)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Take periodic back up of the important data and store this data ‘off line’ (i.e., transferring important files to a storage device that can be detached from a computer/system after copying all the files).
 Children: []
 Tags:
@@ -17,7 +16,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dynamodb_table_in_backup_plan
 - aws_dynamodb_table_point_in_time_recovery_enabled

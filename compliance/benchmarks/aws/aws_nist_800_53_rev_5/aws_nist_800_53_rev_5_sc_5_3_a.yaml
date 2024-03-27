@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_sc_5_3_a
 Title: SC-5(3)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ the following monitoring tools to detect indicators of denial-of-service attacks against, or launched from, the system: [Assignment: organization-defined monitoring tools]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

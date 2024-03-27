@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_au_6_1
 Title: AU-6(1) Process Integration
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization employs automated mechanisms to integrate audit review, analysis,and reporting processes to support organizational processes for investigation and response to suspicious activities.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs
 - aws_cloudwatch_alarm_action_enabled

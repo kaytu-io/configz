@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_8
 Title: 3.8 Media Protection
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: This control family help organizations control access to sensitive media. Requirements cover best practice storage or destruction of sensitive information and media in both physical and digital formats.
 Children:
 - aws_nist_800_171_rev_2_3_8_9
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

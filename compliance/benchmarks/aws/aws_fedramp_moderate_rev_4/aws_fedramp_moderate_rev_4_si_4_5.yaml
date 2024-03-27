@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_si_4_5
 Title: SI-4(5) System-Generated Alerts
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system alerts organization-defined personnel or roles when the following indications of compromise or potential compromise occur: [Assignment: organization-defined compromise indicators]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs
 - aws_cloudwatch_alarm_action_enabled

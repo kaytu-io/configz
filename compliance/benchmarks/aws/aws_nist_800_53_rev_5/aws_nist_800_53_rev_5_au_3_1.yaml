@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_3_1
 Title: AU-3(1) Additional Audit Information
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Generate audit records containing the following additional information: [Assignment: organization-defined additional information]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_enabled
 - aws_guardduty_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_au_6
 Title: Audit Review, Analysis And Reporting (AU-6)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Integrate audit review, analysis, and reporting with processes for investigation and response to suspicious activities.
 Children:
 - aws_nist_800_53_rev_4_au_6_1
@@ -17,5 +16,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

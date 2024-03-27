@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0915_09s2organizational
 Title: 0915.09s2Organizational.2-09.s 09.08 Exchange of Information
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization limits the use of organization-controlled portable storage media by authorized individuals on external information systems.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_client_certificates_on

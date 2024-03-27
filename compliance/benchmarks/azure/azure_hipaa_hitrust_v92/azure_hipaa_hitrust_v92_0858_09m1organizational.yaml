@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0858_09m1organizational
 Title: 0858.09m1Organizational.4-09.m 09.06 Network Security Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization monitors for all authorized and unauthorized wireless access to the information system and prohibits installation of wireless access points (WAPs) unless explicitly authorized in writing by the CIO or his/her designated representative.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_jit_access_protected
 - azure_compute_vm_remote_access_restricted_all_ports

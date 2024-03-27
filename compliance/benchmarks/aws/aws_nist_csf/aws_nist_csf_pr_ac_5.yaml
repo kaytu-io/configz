@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ac_5
 Title: PR.AC-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Network integrity is protected (e.g., network segregation, network segmentation).
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_acm_certificate_expires_30_days
 - aws_apigateway_stage_use_waf_web_acl

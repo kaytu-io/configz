@@ -1,7 +1,6 @@
 ID: aws-config-cmmc-level-2
 Title: AWS Config CMMC Level 2
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config CMMC Level 2
 Children: []
 Tags:

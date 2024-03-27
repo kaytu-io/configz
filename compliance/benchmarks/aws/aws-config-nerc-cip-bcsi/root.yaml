@@ -1,7 +1,6 @@
 ID: aws-config-nerc-cip-bcsi
 Title: AWS Config NERC CIP BCSI
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config NERC CIP BCSI
 Children: []
 Tags:

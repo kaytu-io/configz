@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_cp_6
 Title: Alternate Storage Site (CP-6)
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The organization establishes an alternate storage site including necessary agreements to permit the storage and retrieval of information system backup information and ensures that the alternate storage site provides information security safeguards equivalent to that of the primary site.
 Children:
 - azure_nist_sp_800_53_rev_5_cp_6_1
@@ -16,7 +15,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_mariadb_server_geo_redundant_backup_enabled
 - azure_mysql_db_server_geo_redundant_backup_enabled

@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_sa_3_a
 Title: SA-3(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: a. Manages the information system using [Assignment: organization-defined system development life cycle] that incorporates information security considerations."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_codebuild_project_plaintext_env_variables_no_sensitive_aws_values
 - aws_codebuild_project_source_repo_oauth_configured

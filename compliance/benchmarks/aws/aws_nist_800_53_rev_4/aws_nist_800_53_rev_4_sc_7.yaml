@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_sc_7
 Title: Boundary Protection (SC-7)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The information system: a. Monitors and controls communications at the external boundary of the system and at key internal boundaries within the system; b. Implements subnetworks for publicly accessible system components that are [Selection: physically; logically] separated from internal organizational networks; and c. Connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture."
 Children:
 - aws_nist_800_53_rev_4_sc_7_3
@@ -16,7 +15,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_dms_replication_instance_not_publicly_accessible
 - aws_ebs_snapshot_not_publicly_restorable

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_identification_of_risks_related_to_external_parties
 Title: Identification of Risks Related to External Parties
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The risks to the organization's information and information assets from business processes involving external parties shall be identified, and appropriate controls implemented before granting access.
 Children:
 - azure_hipaa_hitrust_v92_1401_05i1organizational
@@ -19,5 +18,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

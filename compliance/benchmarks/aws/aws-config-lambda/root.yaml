@@ -1,7 +1,6 @@
 ID: aws-config-lambda
 Title: AWS Config Lambda
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Lambda
 Children: []
 Tags:

@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1229_09c1organizational
 Title: 1229.09c1Organizational.1-09.c 09.01 Documented Operating Procedures
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Separation of duties is used to limit the risk of unauthorized or unintentional modification of information and systems.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/KubernetesService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_kubernetes_instance_rbac_enabled

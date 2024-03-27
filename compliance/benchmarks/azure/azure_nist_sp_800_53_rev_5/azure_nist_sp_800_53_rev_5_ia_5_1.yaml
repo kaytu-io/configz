@@ -1,7 +1,6 @@
 ID: azure_nist_sp_800_53_rev_5_ia_5_1
 Title: "Password-based Authentication IA-5(1) "
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The information system, for password-based authentication, enforces minimum password complexity of organization-defined requirements for case sensitivity, number of characters, mix of upper-case letters, lower-case letters, numbers, and special characters, including minimum requirements for each type; enforces at least the organization-defined number of changed characters when new passwords are created; stores and transmits only cryptographically-protected passwords; enforces password minimum and maximum lifetime restrictions of organization-defined numbers for lifetime minimum, lifetime maximum; prohibits password reuse for organization-defined number generations; and allows the use of a temporary password for system logons with an immediate change to a permanent password.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_compute_vm_guest_configuration_installed_linux
 - azure_compute_vm_guest_configuration_installed_windows

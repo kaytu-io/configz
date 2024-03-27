@@ -1,7 +1,6 @@
 ID: aws_nist_800_171_rev_2_3_8_9
 Title: 3.8.9 Protect the confidentiality of backup CUI at storage locations
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Organizations can employ cryptographic mechanisms or alternative physical controls to protect the confidentiality of backup information at designated storage locations. Backed-up information containing CUI may include system-level information and user-level information. System-level information includes system-state information, operating system software, application software, and licenses. User-level information includes information other than system-level information.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_backup_plan_min_retention_35_days
 - aws_backup_recovery_point_encryption_enabled

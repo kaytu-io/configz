@@ -1,7 +1,6 @@
 ID: aws_cis_v130_4
 Title: 4 Monitoring
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - AWS/CloudWatch
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_log_metric_filter_unauthorized_api
 - aws_log_metric_filter_console_login_mfa

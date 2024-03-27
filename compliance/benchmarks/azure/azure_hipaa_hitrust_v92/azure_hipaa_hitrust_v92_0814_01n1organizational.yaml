@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0814_01n1organizational
 Title: 0814.01n1Organizational.12-01.n 01.04 Network Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: The ability of users to connect to the internal network is restricted using a deny-by-default and allow-by-exception policy at managed interfaces according to the access control policy and the requirements of clinical and business applications.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_api_app_latest_tls_version
 - azure_appservice_api_app_use_https

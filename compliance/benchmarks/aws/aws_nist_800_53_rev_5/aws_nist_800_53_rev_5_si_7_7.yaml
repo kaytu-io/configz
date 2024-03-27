@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_7_7
 Title: SI-7(7) Integration Of Detection And Response
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Incorporate the detection of the following unauthorized changes into the organizational incident response capability: [Assignment: organization-defined security-relevant changes to the system]."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/CloudTrail
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_validation_enabled

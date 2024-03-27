@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_access_control
 Title: 11 Access Control
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Default and unnecessary system accounts are removed, disabled, or otherwise secured (e.g., the passwords are changed, and privileges are reduced to the lowest access levels). Account managers are notified when users' access rights change (e.g., termination, change in position) and modify the user's account accordingly.
 Children:
 - azure_hipaa_hitrust_v92_11109_01q1organizational
@@ -45,5 +44,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

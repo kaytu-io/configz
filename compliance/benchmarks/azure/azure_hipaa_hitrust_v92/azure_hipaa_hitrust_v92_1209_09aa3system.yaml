@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_1209_09aa3system
 Title: 1209.09aa3System.2-09.aa 09.10 Monitoring
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: "The information system generates audit records containing the following detailed information: filename accessed, program or command used to initiate the event and source and destination addresses."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - Azure/AppService
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_appservice_web_app_diagnostic_logs_enabled

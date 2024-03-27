@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_cm_8
 Title: System Component Inventory (CM-8)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization develops and documents an inventory of information system components that accurately reflects the current information system, includes all components within the authorization boundary of the information system, is at the level of granularity deemed necessary for tracking and reporting and reviews and updates the information system component inventory.
 Children:
 - aws_nist_800_53_rev_5_cm_8_1
@@ -21,5 +20,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

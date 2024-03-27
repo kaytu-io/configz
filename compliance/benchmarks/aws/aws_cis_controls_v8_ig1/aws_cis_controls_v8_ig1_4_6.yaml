@@ -1,7 +1,6 @@
 ID: aws_cis_controls_v8_ig1_4_6
 Title: 4.6 Securely Manage Enterprise Assets and Software
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Securely manage enterprise assets and software. Example implementations include managing configuration through version-controlled-infrastructure-as-code and accessing administrative interfaces over secure network protocols, such as Secure Shell (SSH) and Hypertext Transfer Protocol Secure (HTTPS). Do not use insecure management protocols, such as Telnet (Teletype Network) and HTTP, unless operationally essential.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_account_part_of_organizations
 - aws_autoscaling_group_with_lb_use_health_check

@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_ir
 Title: Incident Resilience Planning & Strategy (IR)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Incident Resilience Planning & Strategy incorporates resilience planning and testing into existing business continuity and disaster recovery plans to minimize service disruptions and the destruction or corruption of data.
 Children:
 - aws_ffiec_d_5_ir_pi_b_6
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

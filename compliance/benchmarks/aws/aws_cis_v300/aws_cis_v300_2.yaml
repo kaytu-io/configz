@@ -1,7 +1,6 @@
 ID: aws_cis_v300_2
 Title: 2 Storage
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children:
 - aws_cis_v300_2_1

@@ -1,7 +1,6 @@
 ID: azure_pci_dss_v321_requirement_8_1
 Title: PCI DSS requirement 8.1
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Define and implement policies and procedures to ensure proper user identification management for users and administrators on all system components. Assign all users a unique user name before allowing them to access system components or cardholder data.
 Children:
 - azure_pci_dss_v321_requirement_8_1_2
@@ -18,5 +17,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

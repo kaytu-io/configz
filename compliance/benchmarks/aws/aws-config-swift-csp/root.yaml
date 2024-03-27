@@ -1,7 +1,6 @@
 ID: aws-config-swift-csp
 Title: AWS Config SWIFT CSP
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config SWIFT CSP
 Children: []
 Tags:

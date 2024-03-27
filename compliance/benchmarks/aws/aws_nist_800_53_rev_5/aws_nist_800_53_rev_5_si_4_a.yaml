@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_a
 Title: SI-4(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Monitor the system to detect: 1. Attacks and indicators of potential attacks in accordance with the following monitoring objectives: [Assignment: organization-defined monitoring objectives]; and 2. Unauthorized local, network, and remote connections."
 Children:
 - aws_nist_800_53_rev_5_si_4_a_1
@@ -17,6 +16,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

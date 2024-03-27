@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_er_es_b_4
 Title: D5.ER.Es.B.4
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Incidents are classified, logged and tracked.
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_finding_archived

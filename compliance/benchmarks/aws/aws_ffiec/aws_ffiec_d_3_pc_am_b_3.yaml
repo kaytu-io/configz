@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_3_pc_am_b_3
 Title: D3.PC.Am.B.3
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Elevated privileges (e.g., administrator privileges) are limited and tightly controlled (e.g., assigned to individuals, not shared, and require stronger password controls)
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_iam_policy_custom_no_service_wildcard
 - aws_iam_group_not_empty

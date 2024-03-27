@@ -1,7 +1,6 @@
 ID: aws-config-apra-cpg-234
 Title: AWS Config APRA CPG 234
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config APRA CPG 234
 Children: []
 Tags:

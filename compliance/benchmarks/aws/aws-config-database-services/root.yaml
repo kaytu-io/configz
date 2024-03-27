@@ -1,7 +1,6 @@
 ID: aws-config-database-services
 Title: AWS Config Database Services
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config Database Services
 Children: []
 Tags:

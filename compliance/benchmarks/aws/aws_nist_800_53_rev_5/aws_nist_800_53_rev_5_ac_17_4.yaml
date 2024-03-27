@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_17_4
 Title: AC-17(4) Privileged Commands And Access
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "a.\u2003Authorize the execution of privileged commands and access to security-relevant information via remote access only in a format that provides assessable evidence and for the following needs: [Assignment: organization-defined needs]; and b.\u2003Document the rationale for remote access in the security plan for the system."
 Children:
 - aws_nist_800_53_rev_5_ac_17_4_a
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: azure_cis_v200_5_3
 Title: 5.3 Configuring Application Insights
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,6 +18,9 @@ Tags:
   - Azure/Monitor
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_monitor_application_insights_configured

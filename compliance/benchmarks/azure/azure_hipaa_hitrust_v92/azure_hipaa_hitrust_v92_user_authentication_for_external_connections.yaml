@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_user_authentication_for_external_connections
 Title: User Authentication for External Connections
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: When accessing electronic protected health information (ePHI) from external sources, it's crucial to prioritize user authentication as part of our commitment to HIPAA and HITRUST compliance. To ensure secure access, we have implemented strong authentication measures, including unique user IDs, strong passwords, and multi-factor authentication. These measures verify the identity of individuals accessing ePHI remotely, ensuring that only authorized users with the right credentials can establish secure connections. By prioritizing user authentication, we protect the confidentiality of sensitive health information and minimize the risk of unauthorized access.
 Children:
 - azure_hipaa_hitrust_v92_1117_01j1organizational
@@ -20,5 +19,8 @@ Tags:
   - Azure
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

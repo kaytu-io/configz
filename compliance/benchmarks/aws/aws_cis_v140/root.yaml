@@ -1,14 +1,13 @@
+ID: aws_cis_v140
+Title: CIS v1.4.0 for AWS
+ReferenceCode: ""
+Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
 Children:
 - aws_cis_v140_1
 - aws_cis_v140_2
 - aws_cis_v140_3
 - aws_cis_v140_4
 - aws_cis_v140_5
-Connector: AWS
-Controls: null
-Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
-Enabled: true
-ID: aws_cis_v140
 Tags:
   category:
   - Compliance
@@ -21,11 +20,15 @@ Tags:
   kaytu_category:
   - Best Practices
   kaytu_logo:
-    - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
+  - https://raw.githubusercontent.com/kaytu-io/configz/main/compliance/benchmarks/logos/cis_large.svg
   plugin:
   - aws
   service:
   - AWS
   type:
   - Benchmark
-Title: CIS v1.4.0 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

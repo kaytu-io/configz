@@ -1,7 +1,6 @@
 ID: aws_foundational_security_efs
 Title: EFS
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/EFS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_efs_file_system_encrypt_data_at_rest
 - aws_efs_file_system_automatic_backups_enabled

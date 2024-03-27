@@ -1,7 +1,6 @@
 ID: aws_nist_csf_de
 Title: Detect (DE)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Develop and implement appropriate activities to identify the occurrence of a cybersecurity event.
 Children:
 - aws_nist_csf_de_ae
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

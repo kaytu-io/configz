@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_ac_2_12_a
 Title: AC-2(12)(a)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "The organization: a. Monitors information system accounts for [Assignment: organization-defined atypical use]."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled
 - aws_securityhub_enabled

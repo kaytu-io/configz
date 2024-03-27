@@ -1,7 +1,6 @@
 ID: aws_nist_csf_id_ra_5
 Title: ID.RA-5
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Threats, vulnerabilities, likelihoods, and impacts are used to determine risk.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_bucket_not_public
 - aws_cloudtrail_multi_region_read_write_enabled

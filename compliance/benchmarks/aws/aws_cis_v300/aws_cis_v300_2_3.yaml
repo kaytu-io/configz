@@ -1,7 +1,6 @@
 ID: aws_cis_v300_2_3
 Title: 2.3 Relational Database Service (RDS)
 ReferenceCode: ""
-Connector: AWS
 Description: ""
 Children: []
 Tags:

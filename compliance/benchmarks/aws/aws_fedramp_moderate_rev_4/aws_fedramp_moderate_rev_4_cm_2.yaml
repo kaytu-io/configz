@@ -1,7 +1,6 @@
 ID: aws_fedramp_moderate_rev_4_cm_2
 Title: Baseline Configuration (CM-2)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The organization develops, documents, and maintains under configuration control, a current baseline configuration of the information system.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_stage_use_waf_web_acl
 - aws_autoscaling_launch_config_public_ip_disabled

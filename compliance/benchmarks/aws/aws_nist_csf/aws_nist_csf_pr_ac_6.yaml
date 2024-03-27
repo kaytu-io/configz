@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ac_6
 Title: PR.AC-6
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Identities are proofed and bound to credentials and asserted in interactions.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_multi_region_trail_enabled
 - aws_cloudtrail_trail_enabled

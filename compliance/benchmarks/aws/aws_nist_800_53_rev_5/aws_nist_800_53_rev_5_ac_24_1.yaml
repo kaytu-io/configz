@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_ac_24_1
 Title: AC-24(1)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Transmit [Assignment: organization-defined access authorization information] using [Assignment: organization-defined controls] to [Assignment: organization-defined systems] that enforce access control decisions."
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_apigateway_rest_api_stage_use_ssl_certificate
 - aws_elb_application_lb_redirect_http_request_to_https

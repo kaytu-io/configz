@@ -1,7 +1,6 @@
 ID: azure_hipaa_hitrust_v92_0717_10m3organizational
 Title: 0717.10m3Organizational.2-10.m 10.06 Technical Vulnerability Management
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: Vulnerability scanning tools include the capability to readily update the information system vulnerabilities scanned.
 Children: []
 Tags:
@@ -15,5 +14,8 @@ Tags:
   - Azure/Compute
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

@@ -1,7 +1,6 @@
 ID: azure_cis_v140_6
 Title: 6 Networking
-DisplayCode: ""
-Connector: Azure
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -19,7 +18,10 @@ Tags:
   - Azure/Network
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - azure_network_security_group_rdp_access_restricted
 - azure_network_security_group_ssh_access_restricted

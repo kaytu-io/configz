@@ -1,7 +1,6 @@
 ID: aws-config-enisa-cybersecurity-guide
 Title: AWS Config ENISA Cybersecurity Guide
 ReferenceCode: ""
-Connector: AWS
 Description: AWS Config ENISA Cybersecurity Guide
 Children: []
 Tags:

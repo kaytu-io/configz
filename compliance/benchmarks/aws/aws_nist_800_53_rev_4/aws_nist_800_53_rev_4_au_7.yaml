@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_4_au_7
 Title: Audit Reduction And Report Generation (AU-7)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Support for real-time audit review, analysis, and reporting requirements without altering original audit records.
 Children:
 - aws_nist_800_53_rev_4_au_7_1
@@ -16,5 +15,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

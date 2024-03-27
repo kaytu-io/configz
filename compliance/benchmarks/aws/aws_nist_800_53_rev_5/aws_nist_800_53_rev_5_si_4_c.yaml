@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_si_4_c
 Title: SI-4(c)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "c. Invoke internal monitoring capabilities or deploy monitoring devices: 1. Strategically within the system to collect organization-determined essential information; and 2. At ad hoc locations within the system to track specific types of transactions of interest to the organization."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS/GuardDuty
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_guardduty_enabled

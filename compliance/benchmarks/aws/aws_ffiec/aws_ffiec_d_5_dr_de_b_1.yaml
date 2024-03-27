@@ -1,7 +1,6 @@
 ID: aws_ffiec_d_5_dr_de_b_1
 Title: D5.DR.De.B.1
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Alert parameters are set for detecting information security incidents that prompt mitigating actions.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudwatch_alarm_action_enabled
 - aws_guardduty_enabled

@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_14
 Title: Session Audit (AU-14)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Capture, record and log user sessions. Remotely view all content related to a user session that starts at system start-up.
 Children:
 - aws_nist_800_53_rev_5_au_14_3
@@ -18,5 +17,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

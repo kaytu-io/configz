@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_16
 Title: Cross-Organizational Audit Logging (AU-16)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: "Employ [Assignment: organization-defined methods] for coordinating [Assignment: organization-defined audit information] among external organizations when audit information is transmitted across organizational boundaries."
 Children: []
 Tags:
@@ -15,6 +14,9 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_trail_integrated_with_logs

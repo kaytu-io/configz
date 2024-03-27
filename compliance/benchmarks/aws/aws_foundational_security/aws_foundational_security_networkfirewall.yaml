@@ -1,7 +1,6 @@
 ID: aws_foundational_security_networkfirewall
 Title: Network Firewall
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: ""
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS/NetworkFirewall
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_networkfirewall_firewall_policy_rule_group_not_empty
 - aws_networkfirewall_firewall_policy_default_stateless_action_check_full_packets

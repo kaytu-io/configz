@@ -1,7 +1,6 @@
 ID: aws_nist_800_53_rev_5_au_9
 Title: Protection of Audit Information (AU-9)
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: Protect audit information & tools from unauthorized access, modification & deletion.
 Children:
 - aws_nist_800_53_rev_5_au_9_2
@@ -19,5 +18,8 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls: []

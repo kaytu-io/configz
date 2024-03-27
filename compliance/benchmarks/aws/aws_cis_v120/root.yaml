@@ -1,13 +1,12 @@
+ID: aws_cis_v120
+Title: CIS v1.2.0 for AWS
+ReferenceCode: ""
+Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
 Children:
 - aws_cis_v120_1
 - aws_cis_v120_2
 - aws_cis_v120_3
 - aws_cis_v120_4
-Connector: AWS
-Controls: null
-Description: The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.
-Enabled: true
-ID: aws_cis_v120
 Tags:
   category:
   - Compliance
@@ -27,4 +26,8 @@ Tags:
   - AWS
   type:
   - Benchmark
-Title: CIS v1.2.0 for AWS
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

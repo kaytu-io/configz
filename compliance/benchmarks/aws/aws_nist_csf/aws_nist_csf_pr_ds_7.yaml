@@ -1,7 +1,6 @@
 ID: aws_nist_csf_pr_ds_7
 Title: PR.DS-7
-DisplayCode: ""
-Connector: AWS
+ReferenceCode: ""
 Description: The development and testing environment(s) are separate from the production environment.
 Children: []
 Tags:
@@ -15,7 +14,10 @@ Tags:
   - AWS
   type:
   - Benchmark
+Managed: false
 Enabled: true
+AutoAssign: false
+Baseline: false
 Controls:
 - aws_cloudtrail_security_trail_enabled
 - aws_ebs_volume_unused
