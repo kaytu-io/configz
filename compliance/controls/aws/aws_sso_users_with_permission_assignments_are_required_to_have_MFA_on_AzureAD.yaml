@@ -23,13 +23,14 @@ Query:
       exists(select * from aws_ssoadmin_account_assignment where principal_type = 'USER' and principal_id = iden.id) 
   Connector:
   - AWS
+  - Azure
   PrimaryTable: aws_identitystore_user
   ListOfTables:
   - aws_identitystore_user
   - azuread_user_registration_details
   - aws_ssoadmin_account_assignment
   Parameters: []
-  Global: false
+  Global: true
 ManualVerification: false
 Severity: high
 Tags:
