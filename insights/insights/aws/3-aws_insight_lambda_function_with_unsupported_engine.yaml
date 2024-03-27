@@ -1,20 +1,19 @@
-Connector: AWS
-Description: List Lambda Functions which are using unsupported engines
-Enabled: true
-ID: 3.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List Lambda Functions which are using unsupported engines
+ID: 3
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_lambda_function_with_unsupported_engine
+  Engine: odysseus-v0.0.1
+  QueryToExecute: select name, runtime, handler, arn, account_id, kaytu_account_id, kaytu_resource_id from aws_lambda_function WHERE (runtime != 'nodejs18.x' AND runtime != 'nodejs16.x' AND runtime != 'nodejs14.x' AND runtime != 'python3.11' AND runtime != 'python3.10' AND runtime != 'python3.9' AND runtime != 'python3.8' AND runtime != 'python3.7' AND runtime != 'java17' AND runtime != 'java11' AND runtime != 'java8.al2' AND runtime != 'java8' AND runtime != 'dotnet7' AND runtime != 'dotnet6' AND runtime != 'go1.x' AND runtime != 'ruby3.2' AND runtime != 'ruby2.7' AND runtime != 'provided.al2' AND runtime != 'provided');
+  Connector:
+  - AWS
+  PrimaryTable: aws_lambda_function
   ListOfTables:
   - aws_lambda_function
-  PrimaryTable: aws_lambda_function
-  QueryToExecute: select name, runtime, handler, arn, account_id, kaytu_account_id, kaytu_resource_id from aws_lambda_function WHERE (runtime != 'nodejs18.x' AND runtime != 'nodejs16.x' AND runtime != 'nodejs14.x' AND runtime != 'python3.11' AND runtime != 'python3.10' AND runtime != 'python3.9' AND runtime != 'python3.8' AND runtime != 'python3.7' AND runtime != 'java17' AND runtime != 'java11' AND runtime != 'java8.al2' AND runtime != 'java8' AND runtime != 'dotnet7' AND runtime != 'dotnet6' AND runtime != 'go1.x' AND runtime != 'ruby3.2' AND runtime != 'ruby2.7' AND runtime != 'provided.al2' AND runtime != 'provided');
+  Parameters: []
+Connector: AWS
 ShortTitle: List Lambda Functions with unsupported engines
+LongTitle: List Lambda Functions which are using unsupported engines
+Description: List Lambda Functions which are using unsupported engines
+LogoURL: ""
 Tags:
   category:
   - Technical Debt
@@ -23,3 +22,6 @@ Tags:
   - Executive
   - Product
   - FinOps
+Links: []
+Enabled: true
+Internal: false

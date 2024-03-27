@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List of compute disks which are not encrypted with customer key
-Enabled: true
-ID: 19.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of compute disks which are not encrypted with customer key
+ID: 19
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_compute_disk_not_encrypted_with_customer_key
-  ListOfTables:
-  - azure_compute_disk
-  PrimaryTable: azure_compute_disk
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -21,7 +10,17 @@ Query:
       azure_compute_disk
     where
       encryption_type <> 'EncryptionAtRestWithCustomerKey';
+  Connector:
+  - Azure
+  PrimaryTable: azure_compute_disk
+  ListOfTables:
+  - azure_compute_disk
+  Parameters: []
+Connector: Azure
 ShortTitle: Unecrypted Disks
+LongTitle: List of compute disks which are not encrypted with customer key
+Description: List of compute disks which are not encrypted with customer key
+LogoURL: ""
 Tags:
   category:
   - Security
@@ -30,3 +29,6 @@ Tags:
   - Security
   - DevOps
   - Product
+Links: []
+Enabled: true
+Internal: false

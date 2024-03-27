@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List of database accounts which allows traffic from all networks, including the public Internet.
-Enabled: true
-ID: 21.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of database accounts which allows traffic from all networks, including the public Internet.
+ID: 21
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_cosmosdb_account_which_allows_traffic_from_all_networks_and_internet
-  ListOfTables:
-  - azure_cosmosdb_account
-  PrimaryTable: azure_cosmosdb_account
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -22,8 +11,21 @@ Query:
       azure_cosmosdb_account
     where
       virtual_network_rules = '[]';
+  Connector:
+  - Azure
+  PrimaryTable: azure_cosmosdb_account
+  ListOfTables:
+  - azure_cosmosdb_account
+  Parameters: []
+Connector: Azure
 ShortTitle: Database Accounts with Public access
+LongTitle: List of database accounts which allows traffic from all networks, including the public Internet.
+Description: List of database accounts which allows traffic from all networks, including the public Internet.
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
+Links: []
+Enabled: true
+Internal: false

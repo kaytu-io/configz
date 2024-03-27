@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List storage accounts that allow blob public access
-Enabled: true
-ID: 29.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List storage accounts that allow blob public access
+ID: 29
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_storage_account_with_public_blob_access
-  ListOfTables:
-  - azure_storage_account
-  PrimaryTable: azure_storage_account
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -21,9 +10,22 @@ Query:
       azure_storage_account
     where
       allow_blob_public_access;
+  Connector:
+  - Azure
+  PrimaryTable: azure_storage_account
+  ListOfTables:
+  - azure_storage_account
+  Parameters: []
+Connector: Azure
 ShortTitle: Storage Accounts with Public Internet
+LongTitle: List storage accounts that allow blob public access
+Description: List storage accounts that allow blob public access
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
   - Resiliency
+Links: []
+Enabled: true
+Internal: false

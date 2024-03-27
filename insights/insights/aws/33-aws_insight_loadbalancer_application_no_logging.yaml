@@ -1,18 +1,7 @@
-Connector: AWS
-Description: List application Load Balancers without logging
-Enabled: true
-ID: 33.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List application Load Balancers without logging
+ID: 33
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_loadbalancer_application_no_logging
-  ListOfTables:
-  - aws_ec2_application_load_balancer
-  PrimaryTable: aws_ec2_application_load_balancer
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -24,10 +13,23 @@ Query:
     where
       lb ->> 'Key' = 'access_logs.s3.enabled'
       and lb ->> 'Value' = 'false';
+  Connector:
+  - AWS
+  PrimaryTable: aws_ec2_application_load_balancer
+  ListOfTables:
+  - aws_ec2_application_load_balancer
+  Parameters: []
+Connector: AWS
 ShortTitle: Application Load Balancers without logging
+LongTitle: List application Load Balancers without logging
+Description: List application Load Balancers without logging
+LogoURL: ""
 Tags:
   category:
   - Technical Debt
   persona:
   - Security
   - DevOps
+Links: []
+Enabled: true
+Internal: false

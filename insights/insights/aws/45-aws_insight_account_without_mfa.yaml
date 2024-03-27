@@ -1,20 +1,19 @@
-Connector: AWS
-Description: AWS accounts without MFA enabled
-Enabled: true
-ID: 45.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: AWS Account without MFA
+ID: 45
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_account_without_mfa
+  Engine: odysseus-v0.0.1
+  QueryToExecute: select account_id, kaytu_account_id from aws_iam_account_summary where account_mfa_enabled = false
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_credential_report
   ListOfTables:
   - aws_iam_credential_report
-  PrimaryTable: aws_iam_credential_report
-  QueryToExecute: select account_id, kaytu_account_id from aws_iam_account_summary where account_mfa_enabled = false
+  Parameters: []
+Connector: AWS
 ShortTitle: AWS Account without MFA
+LongTitle: AWS Account without MFA
+Description: AWS accounts without MFA enabled
+LogoURL: ""
 Tags:
   category:
   - Security
@@ -22,3 +21,6 @@ Tags:
   - DevOps
   - Security
   - Executive
+Links: []
+Enabled: true
+Internal: false

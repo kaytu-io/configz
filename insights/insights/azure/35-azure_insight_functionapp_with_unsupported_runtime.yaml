@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List Function Apps with unsupported runtime
-Enabled: true
-ID: 35.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List Function Apps with unsupported runtime
+ID: 35
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_functionapp_with_unsupported_runtime
-  ListOfTables:
-  - azure_app_service_function_app
-  PrimaryTable: azure_app_service_function_app
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     SELECT 
       id, language_runtime_type, language_runtime_version, subscription_id, kaytu_account_id, kaytu_resource_id
@@ -62,7 +51,20 @@ Query:
         )
       )
     );
+  Connector:
+  - Azure
+  PrimaryTable: azure_app_service_function_app
+  ListOfTables:
+  - azure_app_service_function_app
+  Parameters: []
+Connector: Azure
 ShortTitle: Function Apps with unsupported runtime
+LongTitle: List Function Apps with unsupported runtime
+Description: List Function Apps with unsupported runtime
+LogoURL: ""
 Tags:
   category:
   - Technical Debt
+Links: []
+Enabled: true
+Internal: false

@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List failed load balancers
-Enabled: true
-ID: 25.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List failed load balancers
+ID: 25
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_lb_failed
-  ListOfTables:
-  - azure_lb
-  PrimaryTable: azure_lb
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       id,
@@ -23,10 +12,23 @@ Query:
       azure_lb
     where
       provisioning_state = 'Failed';
+  Connector:
+  - Azure
+  PrimaryTable: azure_lb
+  ListOfTables:
+  - azure_lb
+  Parameters: []
+Connector: Azure
 ShortTitle: Unhealthy Load Balancers
+LongTitle: List failed load balancers
+Description: List failed load balancers
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
   - Resiliency
   - Cost Management
+Links: []
+Enabled: true
+Internal: false

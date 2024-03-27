@@ -1,26 +1,28 @@
-Connector: AWS
-Description: List of unattached EBS volumes
-Enabled: true
-ID: 5.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of unattached EBS volumes
+ID: 5
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_ebs_volume_unattached
-  ListOfTables:
-  - aws_ebs_volume
-  PrimaryTable: aws_ebs_volume
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select volume_id, volume_type, account_id, kaytu_account_id, kaytu_resource_id
     from
       aws_ebs_volume
     where
       jsonb_array_length(attachments) = 0;
+  Connector:
+  - AWS
+  PrimaryTable: aws_ebs_volume
+  ListOfTables:
+  - aws_ebs_volume
+  Parameters: []
+Connector: AWS
 ShortTitle: Unused EBS Disks
+LongTitle: List of unattached EBS volumes
+Description: List of unattached EBS volumes
+LogoURL: ""
 Tags:
   category:
   - Technical Debt
   - Cost Management
+Links: []
+Enabled: true
+Internal: false

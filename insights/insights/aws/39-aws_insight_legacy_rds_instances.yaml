@@ -1,20 +1,19 @@
-Connector: AWS
-Description: RDS instances that are not using the supported instance types
-Enabled: true
-ID: 39.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: Legacy RDS Instances
+ID: 39
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_legacy_rds_instances
+  Engine: odysseus-v0.0.1
+  QueryToExecute: SELECT db_instance_identifier, arn, status, class, account_id, kaytu_account_id, kaytu_resource_id FROM aws_rds_db_instance WHERE (class LIKE ANY(ARRAY['db.m1.%','db.m2.%','db.r3.%']))
+  Connector:
+  - AWS
+  PrimaryTable: aws_rds_db_instance
   ListOfTables:
   - aws_rds_db_instance
-  PrimaryTable: aws_rds_db_instance
-  QueryToExecute: SELECT db_instance_identifier, arn, status, class, account_id, kaytu_account_id, kaytu_resource_id FROM aws_rds_db_instance WHERE (class LIKE ANY(ARRAY['db.m1.%','db.m2.%','db.r3.%']))
+  Parameters: []
+Connector: AWS
 ShortTitle: Legacy RDS Instances
+LongTitle: Legacy RDS Instances
+Description: RDS instances that are not using the supported instance types
+LogoURL: ""
 Tags:
   category:
   - Technical Debt
@@ -22,3 +21,6 @@ Tags:
   - Executive
   - Product
   - FinOps
+Links: []
+Enabled: true
+Internal: false

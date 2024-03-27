@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List of database accounts where automatic failover is not enabled
-Enabled: true
-ID: 20.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List of database accounts where automatic failover is not enabled
+ID: 20
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_cosmosdb_account_with_disabled_automatic_failover
-  ListOfTables:
-  - azure_cosmosdb_account
-  PrimaryTable: azure_cosmosdb_account
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -23,7 +12,20 @@ Query:
       azure_cosmosdb_account
     where
       not enable_automatic_failover;
+  Connector:
+  - Azure
+  PrimaryTable: azure_cosmosdb_account
+  ListOfTables:
+  - azure_cosmosdb_account
+  Parameters: []
+Connector: Azure
 ShortTitle: Database with no Auto Failover
+LongTitle: List of database accounts where automatic failover is not enabled
+Description: List of database accounts where automatic failover is not enabled
+LogoURL: ""
 Tags:
   category:
   - Resiliency
+Links: []
+Enabled: true
+Internal: false

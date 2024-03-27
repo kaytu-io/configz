@@ -1,18 +1,7 @@
-Connector: AWS
-Description: List classic Load Balancers without logging
-Enabled: true
-ID: 32.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List classic Load Balancers without logging
+ID: 32
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_loadbalancer_classic_no_logging
-  ListOfTables:
-  - aws_ec2_classic_load_balancer
-  PrimaryTable: aws_ec2_classic_load_balancer
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -21,10 +10,23 @@ Query:
       aws_ec2_classic_load_balancer
     where
       access_log_enabled = 'false';
+  Connector:
+  - AWS
+  PrimaryTable: aws_ec2_classic_load_balancer
+  ListOfTables:
+  - aws_ec2_classic_load_balancer
+  Parameters: []
+Connector: AWS
 ShortTitle: Classic Load Balancers without logging
+LongTitle: List classic Load Balancers without logging
+Description: List classic Load Balancers without logging
+LogoURL: ""
 Tags:
   category:
   - Technical Debt
   persona:
   - Security
   - DevOps
+Links: []
+Enabled: true
+Internal: false

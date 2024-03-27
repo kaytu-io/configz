@@ -1,18 +1,7 @@
-Connector: Azure
-Description: List servers with minimum TLS version lower than 1.2
-Enabled: true
-ID: 27.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: List servers with minimum TLS version lower than 1.2
+ID: 27
 Query:
-  Connector: Azure
-  Engine: odysseus-v0.0.1
   ID: azure_insight_mysql_server_with_minimum_ssl_older_than_1_point_2
-  ListOfTables:
-  - azure_mysql_server
-  PrimaryTable: azure_mysql_server
+  Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select
       name,
@@ -23,9 +12,22 @@ Query:
     where
       (minimal_tls_version = 'TLS1_0'
       or minimal_tls_version = 'TLS1_1');
+  Connector:
+  - Azure
+  PrimaryTable: azure_mysql_server
+  ListOfTables:
+  - azure_mysql_server
+  Parameters: []
+Connector: Azure
 ShortTitle: Servers with Vulnerable TLSA
+LongTitle: List servers with minimum TLS version lower than 1.2
+Description: List servers with minimum TLS version lower than 1.2
+LogoURL: ""
 Tags:
   category:
   - Security
   - Technical Debt
   - Cost Management
+Links: []
+Enabled: true
+Internal: false

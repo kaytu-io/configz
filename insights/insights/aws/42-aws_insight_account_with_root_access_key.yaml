@@ -1,20 +1,19 @@
-Connector: AWS
-Description: AWS Account whose root user has an access key enabled.
-Enabled: true
-ID: 42.0
-Internal: false
-Links: null
-LogoURL: ""
-LongTitle: AWS Account with Root Access Key Enabled
+ID: 42
 Query:
-  Connector: AWS
-  Engine: odysseus-v0.0.1
   ID: aws_insight_account_with_root_access_key
+  Engine: odysseus-v0.0.1
+  QueryToExecute: select user_arn, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where (user_name = '<root_account>' AND (access_key_1_active = true OR access_key_2_active = true))
+  Connector:
+  - AWS
+  PrimaryTable: aws_iam_credential_report
   ListOfTables:
   - aws_iam_credential_report
-  PrimaryTable: aws_iam_credential_report
-  QueryToExecute: select user_arn, account_id, kaytu_account_id, kaytu_resource_id from aws_iam_credential_report where (user_name = '<root_account>' AND (access_key_1_active = true OR access_key_2_active = true))
+  Parameters: []
+Connector: AWS
 ShortTitle: AWS Account with Root Access Key Enabled
+LongTitle: AWS Account with Root Access Key Enabled
+Description: AWS Account whose root user has an access key enabled.
+LogoURL: ""
 Tags:
   category:
   - Security
@@ -23,3 +22,6 @@ Tags:
   - Security
   - Executive
   - Product
+Links: []
+Enabled: true
+Internal: false
