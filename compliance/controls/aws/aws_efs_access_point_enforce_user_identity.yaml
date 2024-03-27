@@ -2,7 +2,6 @@ ID: aws_efs_access_point_enforce_user_identity
 Title: EFS access points should enforce a user identity
 Description: This control checks whether Amazon EFS access points are configured to enforce a user identity. This control fails if a POSIX user identity is not defined while creating the EFS access point.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

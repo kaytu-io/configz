@@ -2,7 +2,6 @@ ID: aws_rds_general_purpose_ssd
 Title: RDS General Purpose SSD
 Description: Ensure RDS instances are using General Purpose SSD storage instead of Provisioned IOPS SSD storage to optimize the RDS service costs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

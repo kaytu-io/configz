@@ -2,7 +2,6 @@ ID: aws_unrestricted_dns_access
 Title: Unrestricted DNS Access
 Description: Ensure no security group allows unrestricted ingress access to port 53.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with ingress_sg as (

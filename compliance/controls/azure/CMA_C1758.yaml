@@ -2,7 +2,6 @@ ID: implement_a_threat_awareness_program
 Title: Implement a threat awareness program
 Description: CMA_C1758 - Implement a threat awareness program
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: develop_a_concept_of_operations_(_conops)
 Title: Develop a concept of operations (CONOPS)
 Description: CMA_0141 - Develop a concept of operations (CONOPS)
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

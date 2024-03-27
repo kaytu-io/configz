@@ -2,7 +2,6 @@ ID: aws_check_for_amazon_ecs_service_placement_strategy
 Title: Check for Amazon ECS Service Placement Strategy
 Description: Ensure that your Amazon ECS cluster services are using optimal placement strategies.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

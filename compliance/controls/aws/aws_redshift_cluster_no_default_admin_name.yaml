@@ -2,7 +2,6 @@ ID: aws_redshift_cluster_no_default_admin_name
 Title: Amazon Redshift clusters should not use the default Admin username
 Description: This control checks whether a Amazon Redshift cluster has changed the admin username from its default value. This control will fail if the admin username for a Redshift cluster is set to awsuser.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

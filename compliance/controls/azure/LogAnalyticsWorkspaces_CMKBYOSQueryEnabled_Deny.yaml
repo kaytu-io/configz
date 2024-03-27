@@ -2,7 +2,6 @@ ID: saved_queries_in_azure_monitor_should_be_saved_in_customer_storage_account_f
 Title: Saved-queries in Azure Monitor should be saved in customer storage account for logs encryption
 Description: "Link storage account to Log Analytics workspace to protect saved-queries with storage account encryption. Customer-managed keys are commonly required to meet regulatory compliance and for more control over the access to your saved-queries in Azure Monitor. For more details on the above, see https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys?tabs=portal#customer-managed-key-for-saved-queries."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

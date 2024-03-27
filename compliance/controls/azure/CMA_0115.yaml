@@ -2,7 +2,6 @@ ID: define_a_physical_key_management_process
 Title: Define a physical key management process
 Description: CMA_0115 - Define a physical key management process
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

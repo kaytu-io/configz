@@ -2,7 +2,6 @@ ID: "[_deprecated]:_resource_logs_in_virtual_machine_scale_sets_should_be_enable
 Title: "[Deprecated]: Resource logs in Virtual Machine Scale Sets should be enabled"
 Description: This policy definition is no longer the recommended way to achieve its intent. Instead of continuing to use this policy, we recommend you assign this replacement policy with policy ID a3a6ea0c-e018-4933-9ef0-5aaa1501449b. Learn more about policy definition deprecation at aka.ms/policydefdeprecation
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, type, kaytu_description

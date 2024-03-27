@@ -2,7 +2,6 @@ ID: compile_audit_records_into_system_wide_audit
 Title: Compile Audit records into system wide audit
 Description: CMA_C1140 - Compile Audit records into system wide audit
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

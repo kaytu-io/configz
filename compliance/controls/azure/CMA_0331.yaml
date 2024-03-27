@@ -2,7 +2,6 @@ ID: incorporate_security_and_data_privacy_practices_in_research_processing
 Title: Incorporate security and data privacy practices in research processing
 Description: CMA_0331 - Incorporate security and data privacy practices in research processing
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

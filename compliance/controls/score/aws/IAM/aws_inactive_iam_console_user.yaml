@@ -2,7 +2,6 @@ ID: aws_inactive_iam_console_user
 Title: Inactive IAM Console User
 Description: Ensure no AWS IAM users have been inactive for a long (specified) period of time.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

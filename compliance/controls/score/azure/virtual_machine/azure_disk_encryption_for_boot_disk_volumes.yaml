@@ -2,7 +2,6 @@ ID: azure_disk_encryption_for_boot_disk_volumes
 Title: Azure Disk Encryption for Boot Disk Volumes
 Description: Ensure that Azure Disk Encryption is enabled for Azure virtual machine boot volumes to protect data at rest.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

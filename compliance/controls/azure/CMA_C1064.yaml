@@ -2,7 +2,6 @@ ID: authorize_remote_access_to_privileged_commands
 Title: Authorize remote access to privileged commands
 Description: CMA_C1064 - Authorize remote access to privileged commands
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

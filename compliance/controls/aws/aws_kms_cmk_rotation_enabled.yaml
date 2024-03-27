@@ -2,7 +2,6 @@ ID: aws_kms_cmk_rotation_enabled
 Title: KMS CMK rotation should be enabled
 Description: Enable key rotation to ensure that keys are rotated once they have reached the end of their crypto period.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

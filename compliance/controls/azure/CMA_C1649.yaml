@@ -2,7 +2,6 @@ ID: explicitly_notify_use_of_collaborative_computing_devices
 Title: Explicitly notify use of collaborative computing devices
 Description: CMA_C1649 - Explicitly notify use of collaborative computing devices
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

@@ -2,7 +2,6 @@ ID: automate_approval_request_for_proposed_changes
 Title: Automate approval request for proposed changes
 Description: CMA_C1192 - Automate approval request for proposed changes
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

@@ -2,7 +2,6 @@ ID: aws_enable_deletion_protection
 Title: Enable Deletion Protection
 Description: Ensure that Deletion Protection is enabled for Amazon Gateway Load Balancers.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

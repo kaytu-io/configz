@@ -2,7 +2,6 @@ ID: aws_cloudtrail_trail_logs_encrypted_with_kms_cmk
 Title: CloudTrail trail logs should be encrypted with KMS CMK
 Description: To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Groups.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

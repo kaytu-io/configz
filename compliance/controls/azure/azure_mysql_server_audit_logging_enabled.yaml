@@ -2,7 +2,6 @@ ID: azure_mysql_server_audit_logging_enabled
 Title: Ensure server parameter 'audit_log_enabled' is set to 'ON' for MySQL Database Server
 Description: Enable audit_log_enabled on MySQL Servers.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

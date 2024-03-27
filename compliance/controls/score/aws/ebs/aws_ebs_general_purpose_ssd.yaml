@@ -2,7 +2,6 @@ ID: aws_ebs_general_purpose_ssd
 Title: EBS General Purpose SSD
 Description: Ensure EC2 instances are using General Purpose SSD (gp3) EBS volumes instead of Provisioned IOPS SSD (io1) volumes to optimize AWS EBS costs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: designate_authorized_personnel_to_post_publicly_accessible_information
 Title: Designate authorized personnel to post publicly accessible information
 Description: CMA_C1083 - Designate authorized personnel to post publicly accessible information
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

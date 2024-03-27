@@ -2,7 +2,6 @@ ID: aws_rds_event_notifications
 Title: RDS Event Notifications
 Description: Enable event notifications for RDS.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select distinct

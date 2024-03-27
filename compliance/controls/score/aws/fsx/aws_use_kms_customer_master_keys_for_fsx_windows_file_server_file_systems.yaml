@@ -2,7 +2,6 @@ ID: aws_use_kms_customer_master_keys_for_fsx_windows_file_server_file_systems
 Title: Use KMS Customer Master Keys for FSx Windows File Server File Systems
 Description: Ensure AWS FSx for Windows File Server file systems data is encrypted using AWS KMS CMKs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

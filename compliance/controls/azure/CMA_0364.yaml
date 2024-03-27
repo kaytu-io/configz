@@ -2,7 +2,6 @@ ID: manage_nonlocal_maintenance_and_diagnostic_activities
 Title: Manage nonlocal maintenance and diagnostic activities
 Description: CMA_0364 - Manage nonlocal maintenance and diagnostic activities
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

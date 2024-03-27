@@ -2,7 +2,6 @@ ID: facilitate_information_sharing
 Title: Facilitate information sharing
 Description: CMA_0284 - Facilitate information sharing
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: azure_monitor_application_insights_configured
 Title: Ensure Application Insights are Configured
 Description: Application Insights within Azure act as an Application Performance Monitoring solution providing valuable data into how well an application performs and additional information when performing incident response. The types of log data collected include application metrics, telemetry data, and application trace logging data providing organizations with detailed information about application activity and application transactions.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with application_insights as (

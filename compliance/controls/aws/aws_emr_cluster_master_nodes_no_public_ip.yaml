@@ -2,7 +2,6 @@ ID: aws_emr_cluster_master_nodes_no_public_ip
 Title: EMR cluster master nodes should not have public IP addresses
 Description: Manage access to the AWS Cloud by ensuring Amazon EMR cluster master nodes cannot be publicly accessed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_ebs_instances_have_backup_withing_rpo_period
 Title: Attached EBS Storage Volumes restoration needs meet RPO Standard
 Description: AWS EBS Storage Volumes that are connected need to have restorable backup within the defined period
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH all_backup AS (

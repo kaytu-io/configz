@@ -2,7 +2,6 @@ ID: aws_ec2_instance_naming_conventions
 Title: EC2 Instance Naming Conventions
 Description: Follow proper naming conventions for EC2 instances.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

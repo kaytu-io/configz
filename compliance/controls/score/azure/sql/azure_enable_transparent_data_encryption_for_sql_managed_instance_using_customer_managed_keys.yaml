@@ -2,7 +2,6 @@ ID: azure_enable_transparent_data_encryption_for_sql_managed_instance_using_cust
 Title: Enable Transparent Data Encryption for SQL Managed Instance using Customer-Managed Keys
 Description: Ensure that Azure SQL managed instances are encrypted at rest using Customer-Managed Keys (CMKs).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

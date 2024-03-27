@@ -2,7 +2,6 @@ ID: document_requirements_for_the_use_of_shared_data_in_contracts
 Title: Document requirements for the use of shared data in contracts
 Description: CMA_0197 - Document requirements for the use of shared data in contracts
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

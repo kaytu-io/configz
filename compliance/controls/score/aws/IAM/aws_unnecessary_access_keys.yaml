@@ -2,7 +2,6 @@ ID: aws_unnecessary_access_keys
 Title: Unnecessary Access Keys
 Description: Ensure there is a maximum of one active access key pair available for any single IAM user.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

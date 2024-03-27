@@ -2,7 +2,6 @@ ID: establish_terms_and_conditions_for_accessing_resources
 Title: Establish terms and conditions for accessing resources
 Description: CMA_C1076 - Establish terms and conditions for accessing resources
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

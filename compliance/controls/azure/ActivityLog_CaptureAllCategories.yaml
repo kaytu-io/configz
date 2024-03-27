@@ -2,7 +2,6 @@ ID: azure_monitor_log_profile_should_collect_logs_for_categories_'write,'_'delet
 Title: Azure Monitor log profile should collect logs for categories 'write,' 'delete,' and 'action'
 Description: This policy ensures that a log profile collects logs for categories 'write,' 'delete,' and 'action'
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

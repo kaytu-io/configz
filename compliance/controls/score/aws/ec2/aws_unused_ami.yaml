@@ -2,7 +2,6 @@ ID: aws_unused_ami
 Title: Unused AMI
 Description: Identify unused Amazon Machine Images (AMI) to help lower the cost of your monthly AWS bill.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

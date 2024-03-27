@@ -2,7 +2,6 @@ ID: aws_ssh_public_keys_rotated_x_days
 Title: SSH Public Keys Rotated X Days
 Description: Ensure IAM SSH public keys are rotated on a periodic basis to adhere to AWS security best practices.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

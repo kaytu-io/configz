@@ -2,7 +2,6 @@ ID: evaluate_alternate_processing_site_capabilities
 Title: Evaluate alternate processing site capabilities
 Description: CMA_C1266 - Evaluate alternate processing site capabilities
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

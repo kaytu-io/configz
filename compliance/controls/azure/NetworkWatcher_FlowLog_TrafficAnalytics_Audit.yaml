@@ -2,7 +2,6 @@ ID: network_watcher_flow_logs_should_have_traffic_analytics_enabled
 Title: Network Watcher flow logs should have traffic analytics enabled
 Description: Traffic analytics analyzes flow logs to provide insights into traffic flow in your Azure cloud. It can be used to visualize network activity across your Azure subscriptions and identify hot spots, identify security threats, understand traffic flow patterns, pinpoint network misconfigurations and more.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

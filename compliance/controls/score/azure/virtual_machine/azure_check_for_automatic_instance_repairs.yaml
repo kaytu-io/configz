@@ -2,7 +2,6 @@ ID: azure_check_for_automatic_instance_repairs
 Title: Check for Automatic Instance Repairs
 Description: Ensure that Azure virtual machine scale sets are configured to use automatic instance repairs
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

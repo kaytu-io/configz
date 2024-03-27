@@ -2,7 +2,6 @@ ID: aws_vpc_configured_to_use_vpc_endpoints
 Title: Amazon EC2 should be configured to use VPC endpoints
 Description: This control checks whether a service endpoint for Amazon EC2 is created for each VPC. The control fails if a VPC does not have a VPC endpoint created for the Amazon EC2 service.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

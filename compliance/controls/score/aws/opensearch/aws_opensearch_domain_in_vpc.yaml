@@ -2,7 +2,6 @@ ID: aws_opensearch_domain_in_vpc
 Title: OpenSearch Domain In VPC
 Description: Ensure that your Amazon OpenSearch domains are accessible only from AWS VPCs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with public_subnets as (

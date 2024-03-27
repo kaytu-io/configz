@@ -2,7 +2,6 @@ ID: aws_rds_default_port
 Title: RDS Default Port
 Description: Ensure Amazon RDS database instances aren't using the default ports.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

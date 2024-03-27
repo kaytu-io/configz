@@ -2,7 +2,6 @@ ID: aws_only_approved_permission_set_can_be_assigned_to_users
 Title: Only Approved Permission set can be assigned to Users
 Description: Only Approved Permission set can be assigned to Users
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select 

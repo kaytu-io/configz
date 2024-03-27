@@ -2,7 +2,6 @@ ID: "[_preview]:_all_internet_traffic_should_be_routed_via_your_deployed_azure_f
 Title: "[Preview]: All Internet traffic should be routed via your deployed Azure Firewall"
 Description: Azure Security Center has identified that some of your subnets aren't protected with a next generation firewall. Protect your subnets from potential threats by restricting access to them with Azure Firewall or a supported next generation firewall
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_virtual_network\nWHERE type = 'Microsoft.Network/virtualNetworks'\nAND jsonb_array_length(kaytu_description->'VirtualNetwork'->'properties'->'subnets') >= 2\nAND NOT (kaytu_description->'VirtualNetwork'->'properties'->'subnets' @> '[{\"name\": \"AzureBastionSubnet\"}]' OR kaytu_description->'VirtualNetwork'->'properties'->'subnets' @> '[{\"name\": \"GatewaySubnet\"}]')\nLIMIT 5;;\n"
   Connector:

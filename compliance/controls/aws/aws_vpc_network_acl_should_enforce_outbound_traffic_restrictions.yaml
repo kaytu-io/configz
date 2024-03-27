@@ -2,7 +2,6 @@ ID: aws_vpc_network_acl_should_enforce_outbound_traffic_restrictions
 Title: Network ACLs should enforce outbound traffic restrictions.
 Description: ""
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with bad_rules as (

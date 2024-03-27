@@ -2,7 +2,6 @@ ID: aws_iam_users_need_to_be_part_of_a_iam_group
 Title: IAM Users need to be part of a IAM Group
 Description: IAM Users need to be part of a IAM Group
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

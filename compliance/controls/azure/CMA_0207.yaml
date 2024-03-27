@@ -2,7 +2,6 @@ ID: document_the_protection_of_cardholder_data_in_third_party_contracts
 Title: Document the protection of cardholder data in third party contracts
 Description: CMA_0207 - Document the protection of cardholder data in third party contracts
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

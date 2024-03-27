@@ -2,7 +2,6 @@ ID: measure_the_time_between_flaw_identification_and_flaw_remediation
 Title: Measure the time between flaw identification and flaw remediation
 Description: CMA_C1674 - Measure the time between flaw identification and flaw remediation
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

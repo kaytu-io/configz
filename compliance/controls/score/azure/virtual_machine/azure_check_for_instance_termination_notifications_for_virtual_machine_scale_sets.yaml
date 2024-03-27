@@ -2,7 +2,6 @@ ID: azure_check_for_instance_termination_notifications_for_virtual_machine_scale
 Title: Check for Instance Termination Notifications for Virtual Machine Scale Sets
 Description: Ensure that instance termination notifications are enabled for your Azure virtual machine scale sets.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

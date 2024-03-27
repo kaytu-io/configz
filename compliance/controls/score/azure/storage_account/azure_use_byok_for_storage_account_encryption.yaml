@@ -2,7 +2,6 @@ ID: azure_use_byok_for_storage_account_encryption
 Title: Use BYOK for Storage Account Encryption
 Description: Ensure that infrastructure encryption is enabled for Microsoft Azure Storage accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

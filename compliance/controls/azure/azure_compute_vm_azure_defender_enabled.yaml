@@ -2,7 +2,6 @@ ID: azure_compute_vm_azure_defender_enabled
 Title: Azure Defender for servers should be enabled
 Description: Azure Defender for servers provides real-time threat protection for server workloads and generates hardening recommendations as well as alerts about suspicious activities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

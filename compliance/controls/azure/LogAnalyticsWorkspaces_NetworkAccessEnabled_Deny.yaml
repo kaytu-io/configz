@@ -2,7 +2,6 @@ ID: log_analytics_workspaces_should_block_log_ingestion_and_querying_from_public
 Title: Log Analytics workspaces should block log ingestion and querying from public networks
 Description: "Improve workspace security by blocking log ingestion and querying from public networks. Only private-link connected networks will be able to ingest and query logs on this workspace. Learn more at https://aka.ms/AzMonPrivateLink#configure-log-analytics."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

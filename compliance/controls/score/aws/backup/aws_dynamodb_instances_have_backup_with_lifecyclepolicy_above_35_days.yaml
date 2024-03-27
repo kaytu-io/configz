@@ -2,7 +2,6 @@ ID: aws_dynamodb_instances_have_backup_with_lifecyclepolicy_above_35_days
 Title: Dynamodb Instances have backup with lifecyclepolicy above 35 days
 Description: Ensure all DynamoDB are covered by a backup plan with a minimum of Life Cycle Policy 35 days
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH points AS (

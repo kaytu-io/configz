@@ -2,7 +2,6 @@ ID: aws_check_for_iam_user_group_membership
 Title: Check for IAM User Group Membership
 Description: Ensure that all Amazon IAM users have group memberships.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

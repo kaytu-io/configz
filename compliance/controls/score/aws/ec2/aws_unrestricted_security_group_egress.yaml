@@ -2,7 +2,6 @@ ID: aws_unrestricted_security_group_egress
 Title: Unrestricted Security Group Egress
 Description: Ensure no security group contains any 0.0.0.0/0 egress rules
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with egress_sg as (

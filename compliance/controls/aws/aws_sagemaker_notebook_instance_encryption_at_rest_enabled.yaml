@@ -2,7 +2,6 @@ ID: aws_sagemaker_notebook_instance_encryption_at_rest_enabled
 Title: SageMaker notebook instance encryption should be enabled
 Description: To help protect data at rest, ensure encryption with AWS Key Management Service (AWS KMS) is enabled for your SageMaker notebook.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

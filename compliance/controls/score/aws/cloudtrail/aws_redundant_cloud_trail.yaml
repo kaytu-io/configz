@@ -2,7 +2,6 @@ ID: aws_redundant_cloud_trail
 Title: Redundant Cloud Trail
 Description: Identifies CloudTrail collecting duplicative data
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with global_trails as (

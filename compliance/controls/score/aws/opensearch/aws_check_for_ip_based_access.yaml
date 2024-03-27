@@ -2,7 +2,6 @@ ID: aws_check_for_ip_based_access
 Title: Check for IP-Based Access
 Description: Ensure that only approved IP addresses can access your Amazon OpenSearch domains.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

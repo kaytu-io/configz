@@ -2,7 +2,6 @@ ID: azure_keyvault_vault_public_network_access_disabled
 Title: Azure Key Vault should disable public network access
 Description: Disable public network access for your key vault so that it's not accessible over the public internet. This can reduce data leakage risks.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_s3_bucket_object_lock_enabled
 Title: S3 bucket object lock should be enabled
 Description: Ensure that your Amazon Simple Storage Service (Amazon S3) bucket has lock enabled, by default.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

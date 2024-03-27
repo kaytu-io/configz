@@ -2,7 +2,6 @@ ID: azure_appservice_azure_defender_enabled
 Title: Azure Defender for App Service should be enabled
 Description: Azure Defender for App Service leverages the scale of the cloud, and the visibility that Azure has as a cloud provider, to monitor for common web app attacks.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

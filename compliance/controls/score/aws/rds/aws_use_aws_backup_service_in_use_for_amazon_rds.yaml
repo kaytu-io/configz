@@ -2,7 +2,6 @@ ID: aws_use_aws_backup_service_in_use_for_amazon_rds
 Title: Use AWS Backup Service in Use for Amazon RDS
 Description: Ensure that Amazon Backup service is used to manage AWS RDS database snapshots.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     with snapshots as (

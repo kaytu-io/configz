@@ -2,7 +2,6 @@ ID: aws_es_domain_encryption_at_rest_enabled
 Title: ES domain encryption at rest should be enabled
 Description: Because sensitive data can exist and to help protect data at rest, ensure encryption is enabled for your Amazon Elasticsearch Service (Amazon ES) domains
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_vpc_route_table_restrict_public_access_to_igw
 Title: VPC route table should restrict public access to IGW
 Description: Ensure if there are public routes in the route table to an Internet Gateway (IGW). The rule is non compliant if a route to an IGW has a destination CIDR block of '0.0.0.0/0' or '::/0'.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with route_with_public_access as (

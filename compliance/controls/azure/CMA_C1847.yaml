@@ -2,7 +2,6 @@ ID: publish_rules_and_regulations_accessing_privacy_act_records
 Title: Publish rules and regulations accessing Privacy Act records
 Description: CMA_C1847 - Publish rules and regulations accessing Privacy Act records
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

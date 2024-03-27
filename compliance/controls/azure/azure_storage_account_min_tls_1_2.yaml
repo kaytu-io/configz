@@ -2,7 +2,6 @@ ID: azure_storage_account_min_tls_1_2
 Title: Ensure the 'Minimum TLS version' is set to 'Version 1.2'
 Description: Azure Storage sets the minimum TLS version to be version 1.0 by default. TLS 1.0 is a legacy version and has known vulnerabilities. This minimum TLS version can be configured to be later protocols such as TLS 1.2.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

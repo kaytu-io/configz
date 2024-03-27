@@ -2,7 +2,6 @@ ID: aws_sagemaker_notebook_instance_root_access_disabled
 Title: Users should not have root access to SageMaker notebook instances
 Description: This control checks whether root access is turned on for an Amazon SageMaker notebook instance. The control fails if root access is turned on for a SageMaker notebook instance.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

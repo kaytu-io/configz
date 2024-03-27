@@ -2,7 +2,6 @@ ID: "[_preview]:_guest_attestation_extension_should_be_installed_on_supported_li
 Title: "[Preview]: Guest Attestation extension should be installed on supported Linux virtual machines"
 Description: Install Guest Attestation extension on supported Linux virtual machines to allow Azure Security Center to proactively attest and monitor the boot integrity. Once installed, boot integrity will be attested via Remote Attestation. This assessment applies to Trusted Launch and Confidential Linux virtual machines.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

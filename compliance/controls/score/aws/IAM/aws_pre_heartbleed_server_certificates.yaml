@@ -2,7 +2,6 @@ ID: aws_pre_heartbleed_server_certificates
 Title: Pre-Heartbleed Server Certificates
 Description: Ensure that your server certificates are not vulnerable to Heartbleed security bug.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

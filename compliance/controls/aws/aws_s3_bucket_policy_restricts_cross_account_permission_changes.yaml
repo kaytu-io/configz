@@ -2,7 +2,6 @@ ID: aws_s3_bucket_policy_restricts_cross_account_permission_changes
 Title: Amazon S3 permissions granted to other AWS accounts in bucket policies should be restricted
 Description: This control checks whether the S3 bucket policy prevents principals from other AWS accounts from performing denied actions on resources in the S3 bucket.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with cross_account_buckets as (

@@ -2,7 +2,6 @@ ID: aws_elb_predefined_security_policy_ssl_check
 Title: Classic Load Balancer SSL listeners should use a predefined policy
 Description: Checks if your Classic Load Balancer SSL listeners use a predefined policy. The rule is ALARM if the Classic Load Balancer HTTPS/SSL listener's policy does not equal the value of the parameter
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH lb_pn AS (

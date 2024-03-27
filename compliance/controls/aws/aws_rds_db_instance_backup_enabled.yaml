@@ -2,7 +2,6 @@ ID: aws_rds_db_instance_backup_enabled
 Title: RDS DB instance backup should be enabled
 Description: The backup feature of Amazon RDS creates backups of your databases and transaction logs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

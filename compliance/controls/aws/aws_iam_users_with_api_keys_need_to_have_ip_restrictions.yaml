@@ -2,7 +2,6 @@ ID: aws_iam_users_with_api_keys_need_to_have_ip_restrictions
 Title: IAM Users with API Keys need to have IP Restrictions
 Description: IAM Users with API Keys need to have IP Restrictions
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with policies as (

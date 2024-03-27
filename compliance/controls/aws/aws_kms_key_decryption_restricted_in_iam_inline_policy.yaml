@@ -2,7 +2,6 @@ ID: aws_kms_key_decryption_restricted_in_iam_inline_policy
 Title: IAM principals should not have IAM inline policies that allow decryption actions on all KMS keys
 Description: Checks whether the inline policies that are embedded in your IAM identities (role, user, or group) allow the AWS KMS decryption actions on all KMS keys. This control uses Zelkova, an automated reasoning engine, to validate and warn you about policies that may grant broad access to your secrets across AWS accounts. This control fails if kms:Decrypt or kms:ReEncryptFrom actions are allowed on all KMS keys in an inline policy.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with user_with_decrypt_grant as (

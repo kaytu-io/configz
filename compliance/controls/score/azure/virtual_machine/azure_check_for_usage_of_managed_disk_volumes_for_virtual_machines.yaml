@@ -2,7 +2,6 @@ ID: azure_check_for_usage_of_managed_disk_volumes_for_virtual_machines
 Title: Check for usage of Managed Disk Volumes for Virtual Machines
 Description: Ensure that your Microsoft Azure virtual machines are using managed disk volumes.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

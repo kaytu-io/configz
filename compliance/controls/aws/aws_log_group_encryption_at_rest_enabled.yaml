@@ -2,7 +2,6 @@ ID: aws_log_group_encryption_at_rest_enabled
 Title: Log group encryption at rest should be enabled
 Description: To help protect sensitive data at rest, ensure encryption is enabled for your Amazon CloudWatch Log Group
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_iam_external_user_with_write_permission
 Title: External accounts with write permissions should be removed from your subscription
 Description: External accounts with write privileges should be removed from your subscription in order to prevent unmonitored access.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with all_write_permission_users as (

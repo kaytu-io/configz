@@ -2,7 +2,6 @@ ID: azure_check_for_kubernetes_version
 Title: Check for Kubernetes Version
 Description: Ensure that AKS clusters are using the latest available version of Kubernetes software.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

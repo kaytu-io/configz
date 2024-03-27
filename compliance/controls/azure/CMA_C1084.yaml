@@ -2,7 +2,6 @@ ID: train_personnel_on_disclosure_of_nonpublic_information
 Title: Train personnel on disclosure of nonpublic information
 Description: CMA_C1084 - Train personnel on disclosure of nonpublic information
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

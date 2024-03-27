@@ -2,7 +2,6 @@ ID: azure_enable_logging_for_azure_storage_table_service
 Title: Enable Logging for Azure Storage Table Service
 Description: Ensure that storage logging is enabled for the Azure Storage Table service.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

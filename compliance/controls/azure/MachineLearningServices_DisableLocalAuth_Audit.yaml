@@ -2,7 +2,6 @@ ID: azure_machine_learning_computes_should_have_local_authentication_methods_dis
 Title: Azure Machine Learning Computes should have local authentication methods disabled
 Description: "Disabling local authentication methods improves security by ensuring that Machine Learning Computes require Azure Active Directory identities exclusively for authentication. Learn more at: https://aka.ms/azure-ml-aad-policy."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

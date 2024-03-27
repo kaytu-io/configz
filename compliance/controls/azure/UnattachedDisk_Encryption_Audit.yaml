@@ -2,7 +2,6 @@ ID: "[_deprecated]:_unattached_disks_should_be_encrypted"
 Title: "[Deprecated]: Unattached disks should be encrypted"
 Description: This policy audits any unattached disk without encryption enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT azure_compute_disk.*

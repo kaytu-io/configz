@@ -2,7 +2,6 @@ ID: aws_gatewayv2_stage_access_logging_enabled
 Title: Access logging should be configured for API Gateway V2 Stages
 Description: This control checks if Amazon API Gateway V2 stages have access logging configured. This control fails if access log settings aren't defined.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

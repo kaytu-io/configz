@@ -2,7 +2,6 @@ ID: control_maintenance_and_repair_activities
 Title: Control maintenance and repair activities
 Description: CMA_0080 - Control maintenance and repair activities
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

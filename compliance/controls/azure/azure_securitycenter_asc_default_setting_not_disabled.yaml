@@ -2,7 +2,6 @@ ID: azure_securitycenter_asc_default_setting_not_disabled
 Title: Ensure any of the ASC Default policy setting is not set to "Disabled"
 Description: None of the settings offered by ASC Default policy should be set to effect "Disabled".
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with policy_assignment_parameters as (

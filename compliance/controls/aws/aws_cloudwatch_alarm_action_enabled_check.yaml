@@ -2,7 +2,6 @@ ID: aws_cloudwatch_alarm_action_enabled_check
 Title: CloudWatch alarm action should be enabled
 Description: Checks if Amazon CloudWatch alarm actions are in enabled state. The rule is non compliant if the CloudWatch alarm actions are not in enabled state.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

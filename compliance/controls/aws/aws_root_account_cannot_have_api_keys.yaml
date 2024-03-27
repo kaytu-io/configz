@@ -2,7 +2,6 @@ ID: aws_root_account_cannot_have_api_keys
 Title: AWS Root Account cannot have API Keys
 Description: AWS Root Account cannot have API Keys
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

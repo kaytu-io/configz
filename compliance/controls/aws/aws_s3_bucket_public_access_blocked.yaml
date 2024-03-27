@@ -2,7 +2,6 @@ ID: aws_s3_bucket_public_access_blocked
 Title: S3 Block Public Access setting should be enabled at the bucket level
 Description: This control checks whether S3 buckets have bucket-level public access blocks applied.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

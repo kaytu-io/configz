@@ -2,7 +2,6 @@ ID: aws_configure_multiple_availability_zones_for_load_balancers
 Title: Configure Multiple Availability Zones for Load Balancers
 Description: Ensure that Amazon Gateway Load Balancers are using Multi-AZ configurations.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

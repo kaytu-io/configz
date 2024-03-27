@@ -2,7 +2,6 @@ ID: ensure_access_agreements_are_signed_or_resigned_timely
 Title: Ensure access agreements are signed or resigned timely
 Description: CMA_C1528 - Ensure access agreements are signed or resigned timely
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

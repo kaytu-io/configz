@@ -2,7 +2,6 @@ ID: azure_check_for_usage_of_approved_extensions_only
 Title: Check for usage of Approved Extensions Only
 Description: Ensure that only approved extensions are installed on your Microsoft Azure virtual machines.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

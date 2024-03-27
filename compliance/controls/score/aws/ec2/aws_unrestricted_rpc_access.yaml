@@ -2,7 +2,6 @@ ID: aws_unrestricted_rpc_access
 Title: Unrestricted RPC Access
 Description: Ensure no security group allows unrestricted inbound access to TCP port 135 (RPC).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

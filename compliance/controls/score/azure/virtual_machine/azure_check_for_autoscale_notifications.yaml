@@ -2,7 +2,6 @@ ID: azure_check_for_autoscale_notifications
 Title: Check for Autoscale Notifications
 Description: Ensure that autoscale notifications are enabled for Azure virtual machine scale sets.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

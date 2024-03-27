@@ -2,7 +2,6 @@ ID: aws_lambda_function_dead_letter_queue_configured
 Title: Lambda functions should be configured with a dead-letter queue
 Description: Enable this rule to help notify the appropriate personnel through Amazon Simple Queue Service (Amazon SQS) or Amazon Simple Notification Service (Amazon SNS) when a function has failed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_iam_root_last_used
 Title: Eliminate use of the root user for administrative and daily tasks
 Description: With the creation of an AWS account, a root user is created that cannot be disabled or deleted. That user has unrestricted access to and control over all resources in the AWS account. It is highly recommended that the use of this account be avoided for everyday tasks.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

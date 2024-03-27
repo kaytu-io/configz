@@ -2,7 +2,6 @@ ID: limit_privileges_to_make_changes_in_production_environment
 Title: Limit privileges to make changes in production environment
 Description: CMA_C1206 - Limit privileges to make changes in production environment
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

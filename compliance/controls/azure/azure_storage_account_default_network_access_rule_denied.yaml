@@ -2,7 +2,6 @@ ID: azure_storage_account_default_network_access_rule_denied
 Title: Ensure default network access rule for Storage Accounts is set to deny
 Description: Restricting default network access helps to provide a new layer of security, since storage accounts accept connections from clients on any network. To limit access to selected networks, the default action must be changed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

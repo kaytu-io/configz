@@ -2,7 +2,6 @@ ID: app_service_apps_should_have_resource_logs_enabled
 Title: App Service apps should have resource logs enabled
 Description: Audit enabling of resource logs on the app. This enables you to recreate activity trails for investigation purposes if a security incident occurs or your network is compromised.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

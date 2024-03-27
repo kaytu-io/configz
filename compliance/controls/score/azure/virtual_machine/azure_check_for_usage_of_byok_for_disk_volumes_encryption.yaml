@@ -2,7 +2,6 @@ ID: azure_check_for_usage_of_byok_for_disk_volumes_encryption
 Title: Check for usage of BYOK for Disk Volumes Encryption
 Description: Use customer-managed keys for Microsoft Azure virtual machine (VM) disk volumes encryption.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_backup_recovery_point_min_retention_35_days
 Title: Backup recovery points should not expire before retention period
 Description: Ensure a recovery point expires no earlier than after the specified period. The rule is non-compliant if the recovery point has a retention point less than 35 days.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

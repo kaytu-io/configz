@@ -2,7 +2,6 @@ ID: azure_monitor_logs_for_application_insights_should_be_linked_to_a_log_analyt
 Title: Azure Monitor Logs for Application Insights should be linked to a Log Analytics workspace
 Description: Link the Application Insights component to a Log Analytics workspace for logs encryption. Customer-managed keys are commonly required to meet regulatory compliance and for more control over the access to your data in Azure Monitor. Linking your component to a Log Analytics workspace that's enabled with a customer-managed key, ensures that your Application Insights logs meet this compliance requirement, see https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

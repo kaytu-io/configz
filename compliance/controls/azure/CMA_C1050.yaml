@@ -2,7 +2,6 @@ ID: define_and_enforce_the_limit_of_concurrent_sessions
 Title: Define and enforce the limit of concurrent sessions
 Description: CMA_C1050 - Define and enforce the limit of concurrent sessions
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

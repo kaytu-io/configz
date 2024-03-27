@@ -2,7 +2,6 @@ ID: azure_container_instance_container_group_should_deploy_into_a_virtual_networ
 Title: Azure Container Instance container group should deploy into a virtual network
 Description: Secure communication between your containers with Azure Virtual Networks. When you specify a virtual network, resources within the virtual network can securely and privately communicate with each other.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, type, provisioning_state, restart_policy, sku, os_type, encryption_properties, containers, ip_address, volumes, instance_view, diagnostics, subnet_ids, dns_config, init_containers, image_registry_credentials, identity, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description

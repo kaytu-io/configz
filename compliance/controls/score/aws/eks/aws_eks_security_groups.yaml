@@ -2,7 +2,6 @@ ID: aws_eks_security_groups
 Title: EKS Security Groups
 Description: Ensure that AWS EKS security groups are configured to allow incoming traffic only on TCP port 443.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

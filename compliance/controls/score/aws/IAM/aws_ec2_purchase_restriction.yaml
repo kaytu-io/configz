@@ -2,7 +2,6 @@ ID: aws_ec2_purchase_restriction
 Title: Amazon EC2 Purchase Restriction
 Description: Restrict unintended IAM users from purchasing Amazon EC2 Reserved Instances and/or Savings Plans.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH too_permissive_policies AS (

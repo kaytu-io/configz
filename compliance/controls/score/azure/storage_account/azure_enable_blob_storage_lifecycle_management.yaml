@@ -2,7 +2,6 @@ ID: azure_enable_blob_storage_lifecycle_management
 Title: Enable Blob Storage Lifecycle Management
 Description: Ensure that Azure Blob Storage service has a lifecycle management policy configured.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

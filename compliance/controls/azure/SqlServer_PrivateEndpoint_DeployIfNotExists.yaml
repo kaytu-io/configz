@@ -2,7 +2,6 @@ ID: configure_azure_sql_server_to_enable_private_endpoint_connections
 Title: Configure Azure SQL Server to enable private endpoint connections
 Description: A private endpoint connection enables private connectivity to your Azure SQL Database via a private IP address inside a virtual network. This configuration improves your security posture and supports Azure networking tools and scenarios.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

@@ -2,7 +2,6 @@ ID: azure_dns_azure_defender_enabled
 Title: Azure Defender for DNS should be enabled
 Description: Azure Defender for DNS provides an additional layer of protection for your cloud resources by continuously monitoring all DNS queries from your Azure resources. Azure Defender alerts you about suspicious activity at the DNS layer.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

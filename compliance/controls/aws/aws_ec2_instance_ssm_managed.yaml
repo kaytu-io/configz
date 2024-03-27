@@ -2,7 +2,6 @@ ID: aws_ec2_instance_ssm_managed
 Title: EC2 instances should be managed by AWS Systems Manager
 Description: An inventory of the software platforms and applications within the organization is possible by managing Amazon Elastic Compute Cloud (Amazon EC2) instances with AWS Systems Manager.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

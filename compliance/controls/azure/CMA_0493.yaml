@@ -2,7 +2,6 @@ ID: separate_user_and_information_system_management_functionality
 Title: Separate user and information system management functionality
 Description: CMA_0493 - Separate user and information system management functionality
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

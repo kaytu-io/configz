@@ -2,7 +2,6 @@ ID: aws_cloudtrail_security_trail_enabled
 Title: At least one trail should be enabled with security best practices
 Description: This rule helps ensure the use of AWS recommended security best practices for AWS CloudTrail, by checking for the enablement of multiple settings. These include the use of log encryption, log validation, and enabling AWS CloudTrail in multiple regions.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with trails_enabled as (

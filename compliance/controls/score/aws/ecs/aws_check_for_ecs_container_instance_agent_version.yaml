@@ -2,7 +2,6 @@ ID: aws_check_for_ecs_container_instance_agent_version
 Title: Check for ECS Container Instance Agent Version
 Description: Ensure that your Amazon ECS instances are using the latest ECS container agent version.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

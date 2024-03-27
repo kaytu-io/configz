@@ -2,7 +2,6 @@ ID: aws_unrestricted_netbios_access
 Title: Unrestricted NetBIOS Access
 Description: Ensure no security group allows unrestricted inbound access to port UDP/137, UDP/138, and TPC/139 (NetBIOS).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

@@ -2,7 +2,6 @@ ID: azure_sql_database_should_be_running_tls_version_1.2_or_newer
 Title: Azure SQL Database should be running TLS version 1.2 or newer
 Description: Setting TLS version to 1.2 or newer improves security by ensuring your Azure SQL Database can only be accessed from clients using TLS 1.2 or newer. Using versions of TLS less than 1.2 is not recommended since they have well documented security vulnerabilities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, type, minimal_tls_version

@@ -2,7 +2,6 @@ ID: aws_ec2_instance_no_amazon_key_pair
 Title: EC2 instances should not use key pairs in running state
 Description: This control checks whether running EC2 instances are using key pairs. The control fails if a running EC2 instance uses a key pair.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

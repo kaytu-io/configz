@@ -2,7 +2,6 @@ ID: aws_ecs_task_definition_no_host_pid_mode
 Title: ECS task definitions should not share the host's process namespace
 Description: This control checks if Amazon ECS task definitions are configured to share a host’s process namespace with its containers. The control fails if the task definition shares the host's process namespace with the containers running on it.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: ensure_alternate_storage_site_safeguards_are_equivalent_to_primary_site
 Title: Ensure alternate storage site safeguards are equivalent to primary site
 Description: CMA_C1268 - Ensure alternate storage site safeguards are equivalent to primary site
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: aws_app_tier_ec2_instance_using_iam_roles
 Title: App-Tier EC2 Instance Using IAM Roles
 Description: Ensure that your app-tier EC2 instances are using IAM roles to grant permissions to applications running on these instances.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

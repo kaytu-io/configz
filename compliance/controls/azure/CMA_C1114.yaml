@@ -2,7 +2,6 @@ ID: provide_real_time_alerts_for_audit_event_failures
 Title: Provide real-time alerts for audit event failures
 Description: CMA_C1114 - Provide real-time alerts for audit event failures
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

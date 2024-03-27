@@ -2,7 +2,6 @@ ID: aws_acm_pca_root_ca_disabled
 Title: ACM PCA root CA should be disabled
 Description: Checks if AWS Private Certificate Authority (AWS Private CA) has a root CA that is disabled. The rule is ALARM for root CAs with status that is not DISABLED.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT

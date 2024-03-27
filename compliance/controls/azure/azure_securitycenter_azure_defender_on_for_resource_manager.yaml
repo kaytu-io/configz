@@ -2,7 +2,6 @@ ID: azure_securitycenter_azure_defender_on_for_resource_manager
 Title: Ensure That Microsoft Defender for Resource Manager Is Set To 'On'
 Description: Microsoft Defender for Resource Manager scans incoming administrative requests to change your infrastructure from both CLI and the Azure portal.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

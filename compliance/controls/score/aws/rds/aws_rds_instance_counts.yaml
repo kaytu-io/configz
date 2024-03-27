@@ -2,7 +2,6 @@ ID: aws_rds_instance_counts
 Title: RDS Instance Counts
 Description: Ensure fewer Amazon RDS instances than the established limit in your AWS account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select 

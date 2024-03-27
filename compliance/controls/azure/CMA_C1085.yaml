@@ -2,7 +2,6 @@ ID: review_content_prior_to_posting_publicly_accessible_information
 Title: Review content prior to posting publicly accessible information
 Description: CMA_C1085 - Review content prior to posting publicly accessible information
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

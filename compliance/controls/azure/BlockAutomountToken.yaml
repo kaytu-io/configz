@@ -2,7 +2,6 @@ ID: kubernetes_clusters_should_disable_automounting_api_credentials
 Title: Kubernetes clusters should disable automounting API credentials
 Description: Disable automounting API credentials to prevent a potentially compromised Pod resource to run API commands against Kubernetes clusters. For more information, see https://aka.ms/kubepolicydoc.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

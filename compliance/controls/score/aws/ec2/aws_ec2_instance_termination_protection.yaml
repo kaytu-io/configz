@@ -2,7 +2,6 @@ ID: aws_ec2_instance_termination_protection
 Title: EC2 Instance Termination Protection
 Description: Ensure termination protection safety feature is enabled for ec2 instances that aren't part of ASGs
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

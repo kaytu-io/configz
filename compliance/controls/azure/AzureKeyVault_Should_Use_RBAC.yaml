@@ -2,7 +2,6 @@ ID: "[_preview]:_azure_key_vault_should_use_rbac_permission_model"
 Title: "[Preview]: Azure Key Vault should use RBAC permission model"
 Description: "Enable RBAC permission model across Key Vaults. Learn more at: https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-migration"
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, create_mode, enable_rbac_authorization

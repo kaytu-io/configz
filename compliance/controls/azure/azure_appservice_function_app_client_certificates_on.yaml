@@ -2,7 +2,6 @@ ID: azure_appservice_function_app_client_certificates_on
 Title: Function apps should have 'Client Certificates (Incoming client certificates)' enabled
 Description: Client certificates allow for the app to request a certificate for incoming requests. Only clients with valid certificates will be able to reach the app.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

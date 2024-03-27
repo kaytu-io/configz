@@ -2,7 +2,6 @@ ID: aws_rds_db_snapshot_encrypted_at_rest
 Title: RDS DB snapshots should be encrypted at rest
 Description: Ensure that encryption is enabled for your Amazon Relational Database Service (Amazon RDS) snapshots.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     (

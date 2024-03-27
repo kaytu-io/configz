@@ -2,7 +2,6 @@ ID: azure_hdinsight_cluster_encryption_in_transit_enabled
 Title: Azure HDInsight clusters should use encryption in transit to encrypt communication between Azure HDInsight cluster nodes
 Description: Data can be tampered with during transmission between Azure HDInsight cluster nodes. Enabling encryption in transit addresses problems of misuse and tampering during this transmission.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: manage_the_input,_output,_processing,_and_storage_of_data
 Title: Manage the input, output, processing, and storage of data
 Description: CMA_0369 - Manage the input, output, processing, and storage of data
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

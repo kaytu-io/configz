@@ -2,7 +2,6 @@ ID: aws_opensearch_domain_node_to_node_encryption_enabled
 Title: OpenSearch domains should encrypt data sent between nodes
 Description: This control checks whether OpenSearch domains have node-to-node encryption enabled. This control fails if node-to-node encryption is disabled on the domain.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_backup_plan_min_retention_35_days
 Title: Backup plan min frequency and min retention check
 Description: Checks if a backup plan has a backup rule that satisfies the required frequency and retention period(35 Days). The rule is non compliant if recovery points are not created at least as often as the specified frequency or expire before the specified period.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with all_plans as (

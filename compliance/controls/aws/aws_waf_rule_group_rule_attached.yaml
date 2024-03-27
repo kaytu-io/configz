@@ -2,7 +2,6 @@ ID: aws_waf_rule_group_rule_attached
 Title: A WAF global rule group should have at least one rule
 Description: This control checks whether an AWS WAF global rule group has at least one rule. The control fails if no rules are present within a rule group.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

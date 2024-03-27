@@ -2,7 +2,6 @@ ID: aws_rds_copy_tags_to_snapshots
 Title: RDS Copy Tags to Snapshots
 Description: Enable RDS Copy Tags to Snapshots.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

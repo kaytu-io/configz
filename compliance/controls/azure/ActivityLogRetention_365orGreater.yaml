@@ -2,7 +2,6 @@ ID: activity_log_should_be_retained_for_at_least_one_year
 Title: Activity log should be retained for at least one year
 Description: This policy audits the activity log if the retention is not set for 365 days or forever (retention days set to 0).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

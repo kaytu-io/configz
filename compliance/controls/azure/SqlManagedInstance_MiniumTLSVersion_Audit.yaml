@@ -2,7 +2,6 @@ ID: sql_managed_instance_should_have_the_minimal_tls_version_of_1.2
 Title: SQL Managed Instance should have the minimal TLS version of 1.2
 Description: Setting minimal TLS version to 1.2 improves security by ensuring your SQL Managed Instance can only be accessed from clients using TLS 1.2. Using versions of TLS less than 1.2 is not recommended since they have well documented security vulnerabilities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

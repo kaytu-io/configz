@@ -2,7 +2,6 @@ ID: aws_elb_cross_zone_load_balancing_enabled
 Title: ELB Cross-Zone Load Balancing Enabled
 Description: Ensure Cross-Zone Load Balancing is enabled for all load balancers. Also select at least two subnets in different availability zones to provide higher availability.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

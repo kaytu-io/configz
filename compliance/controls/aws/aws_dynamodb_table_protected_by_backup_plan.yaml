@@ -2,7 +2,6 @@ ID: aws_dynamodb_table_protected_by_backup_plan
 Title: DynamoDB table should be protected by backup plan
 Description: Ensure if Amazon DynamoDB tables are protected by a backup plan. The rule is non compliant if the DynamoDB Table is not covered by a backup plan.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with backup_protected_table as (

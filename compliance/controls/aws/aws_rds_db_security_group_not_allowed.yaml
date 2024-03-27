@@ -2,7 +2,6 @@ ID: aws_rds_db_security_group_not_allowed
 Title: Amazon Relational Database Service (Amazon RDS) DB security groups should be the default DB security group
 Description: Checks if there are any Amazon Relational Database Service (Amazon RDS) DB security groups that are not the default DB security group. The rule is ALARM if there are any DB security groups that are not the default DB security group.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

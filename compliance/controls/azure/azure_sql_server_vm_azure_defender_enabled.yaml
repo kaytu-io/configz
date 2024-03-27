@@ -2,7 +2,6 @@ ID: azure_sql_server_vm_azure_defender_enabled
 Title: Azure Defender for SQL servers on machines should be enabled
 Description: Azure Defender for SQL provides functionality for surfacing and mitigating potential database vulnerabilities, detecting anomalous activities that could indicate threats to SQL databases, and discovering and classifying sensitive data.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

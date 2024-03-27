@@ -2,7 +2,6 @@ ID: public_network_access_on_azure_sql_database_should_be_disabled
 Title: Public network access on Azure SQL Database should be disabled
 Description: Disabling the public network access property improves security by ensuring your Azure SQL Database can only be accessed from a private endpoint. This configuration denies all logins that match IP or virtual network based firewall rules.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, type, state, kind, location, administrator_login, administrator_login_password, minimal_tls_version, public_network_access, version, fully_qualified_domain_name, server_audit_policy, server_security_alert_policy, server_azure_ad_administrator, server_vulnerability_assessment, firewall_rules, encryption_protector, private_endpoint_connections, tags_src, virtual_network_rules, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description

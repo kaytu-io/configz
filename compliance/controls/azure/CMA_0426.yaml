@@ -2,7 +2,6 @@ ID: reissue_authenticators_for_changed_groups_and_accounts
 Title: Reissue authenticators for changed groups and accounts
 Description: CMA_0426 - Reissue authenticators for changed groups and accounts
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

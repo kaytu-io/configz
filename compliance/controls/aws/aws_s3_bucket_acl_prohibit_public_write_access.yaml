@@ -2,7 +2,6 @@ ID: aws_s3_bucket_acl_prohibit_public_write_access
 Title: S3 bucket ACLs should prohibit public write access
 Description: This control checks if S3 bucket ACLs allow public write access to objects in the bucket.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with data as (

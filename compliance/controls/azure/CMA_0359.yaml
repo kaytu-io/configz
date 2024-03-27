@@ -2,7 +2,6 @@ ID: manage_contacts_for_authorities_and_special_interest_groups
 Title: Manage contacts for authorities and special interest groups
 Description: CMA_0359 - Manage contacts for authorities and special interest groups
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: aws_guardduty_enabled
 Title: GuardDuty should be enabled
 Description: Amazon GuardDuty can help to monitor and detect potential cybersecurity events by using threat intelligence feeds.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

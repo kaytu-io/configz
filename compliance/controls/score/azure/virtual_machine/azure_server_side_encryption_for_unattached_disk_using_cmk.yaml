@@ -2,7 +2,6 @@ ID: azure_server_side_encryption_for_unattached_disk_using_cmk
 Title: Server Side Encryption for Unattached Disk using CMK
 Description: Ensure that unattached managed disk volumes are encrypted at rest using customer-managed keys (CMKs).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

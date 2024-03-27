@@ -2,7 +2,6 @@ ID: azure_sql_database_allow_internet_access
 Title: Ensure no SQL Databases allow ingress 0.0.0.0/0 (ANY IP)
 Description: Ensure that no SQL Databases allow ingress from 0.0.0.0/0 (ANY IP).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

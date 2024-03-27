@@ -2,7 +2,6 @@ ID: azure_check_for_unrestricted_oracle_database_access
 Title: Check for Unrestricted Oracle Database Access
 Description: Ensure that no network security groups allow unrestricted inbound access on TCP port 1521 (Oracle Database).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

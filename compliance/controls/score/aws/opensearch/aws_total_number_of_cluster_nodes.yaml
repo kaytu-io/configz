@@ -2,7 +2,6 @@ ID: aws_total_number_of_cluster_nodes
 Title: Total Number of Cluster Nodes
 Description: Ensure there are fewer OpenSearch cluster nodes than the established limit.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

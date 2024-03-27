@@ -2,7 +2,6 @@ ID: aws_backup_service_lifecycle_configuration
 Title: AWS Backup Service Lifecycle Configuration
 Description: Ensure Amazon Backup plans have a compliant lifecycle configuration enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

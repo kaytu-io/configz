@@ -2,7 +2,6 @@ ID: azure_servicebus_premium_namespace_cmk_encrypted
 Title: Service Bus Premium namespaces should use a customer-managed key for encryption
 Description: Azure Service Bus supports the option of encrypting data at rest with either Microsoft-managed keys (default) or customer-managed keys. Choosing to encrypt data using customer-managed keys enables you to assign, rotate, disable, and revoke access to the keys that Service Bus will use to encrypt data in your namespace. Note that Service Bus only supports encryption with customer-managed keys for premium namespaces.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

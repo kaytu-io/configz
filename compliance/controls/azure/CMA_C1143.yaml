@@ -2,7 +2,6 @@ ID: review_security_assessment_and_authorization_policies_and_procedures
 Title: Review security assessment and authorization policies and procedures
 Description: CMA_C1143 - Review security assessment and authorization policies and procedures
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

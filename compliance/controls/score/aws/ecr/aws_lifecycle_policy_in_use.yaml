@@ -2,7 +2,6 @@ ID: aws_lifecycle_policy_in_use
 Title: Lifecycle Policy in Use
 Description: Ensure that each Amazon ECR container image is automatically scanned for vulnerabilities when pushed to a repository.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with repo_with_policy as (

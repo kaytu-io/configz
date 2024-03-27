@@ -2,7 +2,6 @@ ID: azure_appservice_web_app_register_with_active_directory_enabled
 Title: Ensure that Register with Azure Active Directory is enabled on App Service
 Description: Managed service identity in App Service makes the app more secure by eliminating secrets from the app, such as credentials in the connection strings. When registering with Azure Active Directory in the app service, the app will connect to other Azure services securely without the need of username and passwords.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

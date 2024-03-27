@@ -2,7 +2,6 @@ ID: aws_elbv2_alb_security_group
 Title: ELBv2 ALB Security Group
 Description: Ensure ELBv2 load balancers have secure and valid security groups.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH sg AS (

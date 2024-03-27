@@ -2,7 +2,6 @@ ID: configure_azure_audit_capabilities
 Title: Configure Azure Audit capabilities
 Description: CMA_C1108 - Configure Azure Audit capabilities
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

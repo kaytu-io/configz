@@ -2,7 +2,6 @@ ID: azure_securitycenter_mcas_integration
 Title: Ensure that Microsoft Cloud App Security (MCAS) integration with Security Center is selected
 Description: This setting enables Microsoft Cloud App Security (MCAS) integration with Security Center.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

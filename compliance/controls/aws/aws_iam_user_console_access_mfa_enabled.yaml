@@ -2,7 +2,6 @@ ID: aws_iam_user_console_access_mfa_enabled
 Title: IAM users with console access should have MFA enabled
 Description: Manage access to resources in the AWS Cloud by ensuring that MFA is enabled for all AWS Identity and Access Management (IAM) users that have a console password.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

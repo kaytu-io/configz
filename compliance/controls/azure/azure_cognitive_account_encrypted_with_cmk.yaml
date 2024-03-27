@@ -2,7 +2,6 @@ ID: azure_cognitive_account_encrypted_with_cmk
 Title: Cognitive Services accounts should enable data encryption with a customer-managed key
 Description: Customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data stored in Cognitive Services to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with cognitive_account_cmk as (

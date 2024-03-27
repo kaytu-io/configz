@@ -2,7 +2,6 @@ ID: modify_configure_azure_file_sync_to_disable_public_network_access
 Title: Modify - Configure Azure File Sync to disable public network access
 Description: The Azure File Sync's internet-accessible public endpoint are disabled by your organizational policy. You may still access the Storage Sync Service via its private endpoint(s).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, incoming_traffic_policy

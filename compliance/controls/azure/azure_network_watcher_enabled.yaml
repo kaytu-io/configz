@@ -2,7 +2,6 @@ ID: azure_network_watcher_enabled
 Title: Ensure that Network Watcher is 'Enabled'
 Description: Enable Network Watcher for Azure subscriptions.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

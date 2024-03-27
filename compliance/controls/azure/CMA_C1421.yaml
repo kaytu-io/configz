@@ -2,7 +2,6 @@ ID: manage_maintenance_personnel
 Title: Manage maintenance personnel
 Description: CMA_C1421 - Manage maintenance personnel
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

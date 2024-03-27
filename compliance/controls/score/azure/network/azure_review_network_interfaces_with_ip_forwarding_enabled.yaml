@@ -2,7 +2,6 @@ ID: azure_review_network_interfaces_with_ip_forwarding_enabled
 Title: Review Network Interfaces with IP Forwarding Enabled
 Description: Ensure that the Azure network interfaces with IP forwarding enabled are regularly reviewed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

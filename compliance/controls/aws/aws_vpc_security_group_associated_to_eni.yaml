@@ -2,7 +2,6 @@ ID: aws_vpc_security_group_associated_to_eni
 Title: VPC security groups should be associated with at least one ENI
 Description: This rule ensures the security groups are attached to an Amazon Elastic Compute Cloud (Amazon EC2) instance or to an ENI. This rule helps monitoring unused security groups in the inventory and the management of your environment.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with associated_sg as (

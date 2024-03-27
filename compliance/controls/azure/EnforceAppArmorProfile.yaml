@@ -2,7 +2,6 @@ ID: kubernetes_cluster_containers_should_only_use_allowed_app_armor_profiles
 Title: Kubernetes cluster containers should only use allowed AppArmor profiles
 Description: Containers should only use allowed AppArmor profiles in a Kubernetes cluster. This policy is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

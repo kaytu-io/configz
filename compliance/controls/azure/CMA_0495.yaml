@@ -2,7 +2,6 @@ ID: set_automated_notifications_for_new_and_trending_cloud_applications_in_your_
 Title: Set automated notifications for new and trending cloud applications in your organization
 Description: CMA_0495 - Set automated notifications for new and trending cloud applications in your organization
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

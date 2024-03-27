@@ -2,7 +2,6 @@ ID: azure_compute_vm_scale_set_log_analytics_agent_installed
 Title: The Log Analytics extension should be installed on Virtual Machine Scale Sets
 Description: This policy audits any Windows/Linux Virtual Machine Scale Sets if the Log Analytics extension is not installed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with agent_installed_vm_scale_set as (

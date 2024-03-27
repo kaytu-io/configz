@@ -2,7 +2,6 @@ ID: "[_preview]:_log_analytics_extension_should_be_installed_on_your_linux_azure
 Title: "[Preview]: Log Analytics extension should be installed on your Linux Azure Arc machines"
 Description: This policy audits Linux Azure Arc machines if the Log Analytics extension is not installed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_hybrid_compute_machine\nWHERE type = 'Microsoft.HybridCompute/machines'\nAND kaytu_description -> 'extensions/publisher' @> '[{\"MachineExtensions\": [{\"Properties\": {\"Publisher\": \"Microsoft.EnterpriseCloud.Monitoring\"}}]}]'\nAND kaytu_description -> 'extensions/type' @> '[{\"MachineExtensions\": [{\"Properties\": {\"Type\": \"OmsAgentForLinux\"}}]}]'\nAND kaytu_description -> 'Microsoft.HybridCompute/imageOffer' @> '[{\"Machine\": {\"Properties\": {\"DetectedProperties\": {\"Microsoft.HybridCompute.imageOffer\": \"linux*\"}}}}]'\nAND kaytu_description -> 'extensions/provisioningState' @> '[{\"MachineExtensions\": [{\"Properties\": {\"ProvisioningState\": \"Succeeded\"}}]}]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: deploy_advanced_threat_protection_for_cosmos_db_accounts
 Title: Deploy Advanced Threat Protection for Cosmos DB Accounts
 Description: This policy enables Advanced Threat Protection across Cosmos DB accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

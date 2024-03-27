@@ -2,7 +2,6 @@ ID: aws_apigateway_stage_logging_enabled
 Title: API Gateway stage logging should be enabled
 Description: API Gateway logging displays detailed views of users who accessed the API and the way they accessed the API.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with all_stages as (

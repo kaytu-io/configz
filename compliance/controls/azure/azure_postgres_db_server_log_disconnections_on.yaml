@@ -2,7 +2,6 @@ ID: azure_postgres_db_server_log_disconnections_on
 Title: Ensure server parameter 'log_disconnections' is set to 'ON' for PostgreSQL Database Server
 Description: Enable log_disconnections on PostgreSQL Servers.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

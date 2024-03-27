@@ -2,7 +2,6 @@ ID: aws_cloudwatch_log_group_retention_period_365
 Title: Log group retention period should be at least 365 days
 Description: Ensure a minimum duration of event log data is retained for your log groups to help with troubleshooting and forensics investigations.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

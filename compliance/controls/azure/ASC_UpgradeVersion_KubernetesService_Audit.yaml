@@ -2,7 +2,6 @@ ID: kubernetes_services_should_be_upgraded_to_a_non_vulnerable_kubernetes_versio
 Title: Kubernetes Services should be upgraded to a non-vulnerable Kubernetes version
 Description: Upgrade your Kubernetes service cluster to a later Kubernetes version to protect against known vulnerabilities in your current Kubernetes version. Vulnerability CVE-2019-9946 has been patched in Kubernetes versions 1.11.9+, 1.12.7+, 1.13.5+, and 1.14.0+
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

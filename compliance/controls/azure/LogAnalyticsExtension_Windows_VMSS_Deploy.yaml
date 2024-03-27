@@ -2,7 +2,6 @@ ID: deploy_configure_log_analytics_extension_to_be_enabled_on_windows_virtual_ma
 Title: Deploy - Configure Log Analytics extension to be enabled on Windows virtual machine scale sets
 Description: "Deploy Log Analytics extension for Windows virtual machine scale sets if the virtual machine image is in the list defined and the extension is not installed. If your scale set upgradePolicy is set to Manual, you need to apply the extension to all the virtual machine in the set by updating them. Deprecation notice: The Log Analytics agent is on a deprecation path and won't be supported after August 31, 2024. You must migrate to the replacement 'Azure Monitor agent' prior to that date."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

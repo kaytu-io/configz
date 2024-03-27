@@ -2,7 +2,6 @@ ID: azure_monitor_logs_clusters_should_be_encrypted_with_customer_managed_key
 Title: Azure Monitor Logs clusters should be encrypted with customer-managed key
 Description: Create Azure Monitor logs cluster with customer-managed keys encryption. By default, the log data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance. Customer-managed key in Azure Monitor gives you more control over the access to you data, see https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

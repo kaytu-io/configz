@@ -2,7 +2,6 @@ ID: azure_network_watcher_in_regions_with_virtual_network
 Title: Deploy network watcher when virtual networks are created
 Description: This policy creates a network watcher resource in regions with virtual networks. You need to ensure existence of a resource group named networkWatcherRG, which will be used to deploy network watcher instances.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

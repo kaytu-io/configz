@@ -2,7 +2,6 @@ ID: aws_check_for_protected_amazon_backup_resource_types
 Title: Check for Protected Amazon Backup Resource Types
 Description: Ensure that the appropriate resource types are protected by Amazon Backup within your AWS account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

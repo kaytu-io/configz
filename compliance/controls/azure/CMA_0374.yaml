@@ -2,7 +2,6 @@ ID: modify_access_authorizations_upon_personnel_transfer
 Title: Modify access authorizations upon personnel transfer
 Description: CMA_0374 - Modify access authorizations upon personnel transfer
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

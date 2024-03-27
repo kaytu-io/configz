@@ -2,7 +2,6 @@ ID: develop_and_maintain_a_vulnerability_management_standard
 Title: Develop and maintain a vulnerability management standard
 Description: CMA_0152 - Develop and maintain a vulnerability management standard
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

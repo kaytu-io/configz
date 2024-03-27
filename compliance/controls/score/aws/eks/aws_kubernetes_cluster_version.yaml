@@ -2,7 +2,6 @@ ID: aws_kubernetes_cluster_version
 Title: Kubernetes Cluster Version
 Description: Ensure that the latest version of Kubernetes is installed on your Amazon EKS clusters.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "select\n  arn as resource,\n  kaytu_account_id,\n  kaytu_resource_id,\n  case\n    when (version) :: decimal >= '{{.awsEksClusterLatestVersion}}' :: decimal then 'ok'\n    else 'alarm'\n  end as status,\n  case\n    when (version) :: decimal >= '{{.awsEksClusterLatestVersion}}' :: decimal then title || ' runs on a supported kubernetes version.'\n    else title || ' does not run on a supported kubernetes version.'\n  end as reason,\n  region,\n  account_id\nfrom\n  aws_eks_cluster;\n"
   Connector:

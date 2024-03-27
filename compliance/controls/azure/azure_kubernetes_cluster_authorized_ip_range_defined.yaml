@@ -2,7 +2,6 @@ ID: azure_kubernetes_cluster_authorized_ip_range_defined
 Title: Authorized IP ranges should be defined on Kubernetes Services
 Description: ARestrict access to the Kubernetes Service Management API by granting API access only to IP addresses in specific ranges. It is recommended to limit access to authorized IP ranges to ensure that only applications from allowed networks can access the cluster.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

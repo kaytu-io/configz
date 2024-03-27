@@ -2,7 +2,6 @@ ID: azure_check_for_installataion_for_latest_os_patches
 Title: Check for installataion for latest OS Patches
 Description: Ensure that the latest OS patches available for Microsoft Azure virtual machines are applied.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

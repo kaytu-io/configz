@@ -2,7 +2,6 @@ ID: aws_instance_deletion_protection
 Title: Instance Deletion Protection
 Description: Enable AWS RDS Instance Deletion Protection.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

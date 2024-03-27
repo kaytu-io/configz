@@ -2,7 +2,6 @@ ID: azure_check_for_backups_for_azure_virtual_machines
 Title: Check for Backups for Azure Virtual Machines
 Description: Ensure that Microsoft Azure Backup service is in use for your Azure virtual machines (VMs).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

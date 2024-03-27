@@ -2,7 +2,6 @@ ID: azure_sql_auditing_retention
 Title: SQL Auditing Retention
 Description: Ensure that SQL database auditing has a sufficient log data retention period configured.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

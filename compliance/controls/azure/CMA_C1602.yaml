@@ -2,7 +2,6 @@ ID: require_developers_to_produce_evidence_of_security_assessment_plan_execution
 Title: Require developers to produce evidence of security assessment plan execution
 Description: CMA_C1602 - Require developers to produce evidence of security assessment plan execution
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

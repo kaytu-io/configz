@@ -2,7 +2,6 @@ ID: aws_opensearch_version
 Title: OpenSearch Version
 Description: Ensure that the latest version of OpenSearch engine is used for your OpenSearch domains.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

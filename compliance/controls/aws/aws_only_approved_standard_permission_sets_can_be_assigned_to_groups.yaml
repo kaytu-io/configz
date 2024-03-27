@@ -2,7 +2,6 @@ ID: aws_only_approved_standard_permission_sets_can_be_assigned_to_groups
 Title: Only Approved Standard Permission Sets can be assigned to Groups
 Description: Only Approved Standard Permission Sets can be assigned to Groups
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select  

@@ -2,7 +2,6 @@ ID: azure_check_for_unrestricted_sql_database_access
 Title: Check for Unrestricted SQL Database Access
 Description: Ensure that no SQL databases allow unrestricted inbound access from 0.0.0.0/0 (any IP address).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

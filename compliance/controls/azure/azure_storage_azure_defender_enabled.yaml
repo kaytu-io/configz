@@ -2,7 +2,6 @@ ID: azure_storage_azure_defender_enabled
 Title: Azure Defender for Storage should be enabled
 Description: Azure Defender for Storage provides detections of unusual and potentially harmful attempts to access or exploit storage accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

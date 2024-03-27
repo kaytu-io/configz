@@ -2,7 +2,6 @@ ID: aws_vpc_security_group_restricted_telnet_ports
 Title: Security groups should not allow unrestricted access to Telnet ports
 Description: This control checks whether unrestricted incoming traffic for the security groups is accessible to the Telnet ports. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 for those ports.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with ingress_ssh_rules as (

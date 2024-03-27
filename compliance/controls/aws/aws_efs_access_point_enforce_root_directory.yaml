@@ -2,7 +2,6 @@ ID: aws_efs_access_point_enforce_root_directory
 Title: EFS access points should enforce a root directory
 Description: This control checks if Amazon EFS access points are configured to enforce a root directory. The control fails if the value of Path is set to / (the default root directory of the file system).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

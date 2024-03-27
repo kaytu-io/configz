@@ -2,7 +2,6 @@ ID: bot_service_should_be_encrypted_with_a_customer_managed_key
 Title: Bot Service should be encrypted with a customer-managed key
 Description: "Azure Bot Service automatically encrypts your resource to protect your data and meet organizational security and compliance commitments. By default, Microsoft-managed encryption keys are used. For greater flexibility in managing keys or controlling access to your subscription, select customer-managed keys, also known as bring your own key (BYOK). Learn more about Azure Bot Service encryption: https://docs.microsoft.com/azure/bot-service/bot-service-encryption."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT id, name, kaytu_description

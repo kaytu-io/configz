@@ -2,7 +2,6 @@ ID: aws_vpc_security_group_associated
 Title: Unused EC2 security groups should be removed
 Description: This control helps you maintain an accurate asset inventory of needed security groups in your cardholder data environment (CDE). It does so by checking that security groups are attached to Amazon EC2 instances or to an ENI. A failed finding indicates you may have unused Amazon EC2 security groups.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with associated_sg as (

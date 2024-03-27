@@ -2,7 +2,6 @@ ID: aws_ec2_last_backup_recovery_point_created
 Title: Amazon Elastic Compute Cloud (Amazon EC2) instances should have a recovery point created
 Description: Checks if a recovery point was created for Amazon Elastic Compute Cloud (Amazon EC2) instances. The rule is ALARM if the Amazon EC2 instance does not have a corresponding recovery point created within the specified time period.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH valid_points AS (

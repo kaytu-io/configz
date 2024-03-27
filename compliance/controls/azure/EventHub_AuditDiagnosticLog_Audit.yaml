@@ -2,7 +2,6 @@ ID: resource_logs_in_event_hub_should_be_enabled
 Title: Resource logs in Event Hub should be enabled
 Description: Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes; when a security incident occurs or when your network is compromised
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

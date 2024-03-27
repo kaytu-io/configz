@@ -2,7 +2,6 @@ ID: use_dedicated_machines_for_administrative_tasks
 Title: Use dedicated machines for administrative tasks
 Description: CMA_0527 - Use dedicated machines for administrative tasks
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

@@ -2,7 +2,6 @@ ID: azure_appservice_api_app_uses_managed_identity
 Title: Managed identity should be used in your API App
 Description: Use a managed identity for enhanced authentication security.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with all_api_app as (

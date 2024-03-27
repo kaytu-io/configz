@@ -2,7 +2,6 @@ ID: automation_account_variables_should_be_encrypted
 Title: Automation account variables should be encrypted
 Description: It is important to enable encryption of Automation account variable assets when storing sensitive data
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT aa.name, aa.id, aa.kaytu_description

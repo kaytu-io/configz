@@ -2,7 +2,6 @@ ID: aws_dynamodb_table_auto_scaling_enabled
 Title: DynamoDB table auto scaling should be enabled
 Description: Amazon DynamoDB auto scaling uses the AWS Application Auto Scaling service to adjust provisioned throughput capacity that automatically responds to actual traffic patterns.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with table_with_autocaling as (

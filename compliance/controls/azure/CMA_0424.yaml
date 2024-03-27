@@ -2,7 +2,6 @@ ID: reevaluate_access_upon_personnel_transfer
 Title: Reevaluate access upon personnel transfer
 Description: CMA_0424 - Reevaluate access upon personnel transfer
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

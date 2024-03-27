@@ -2,7 +2,6 @@ ID: azure_network_security_group_diagnostic_setting_deployed
 Title: Deploy Diagnostic Settings for Network Security Groups
 Description: This policy automatically deploys diagnostic settings to network security groups. A storage account with name '{storagePrefixParameter}{NSGLocation}' will be automatically created.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with logging_details as (

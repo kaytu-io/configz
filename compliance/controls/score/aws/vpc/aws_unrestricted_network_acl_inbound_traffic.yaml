@@ -2,7 +2,6 @@ ID: aws_unrestricted_network_acl_inbound_traffic
 Title: Unrestricted Network ACL Inbound Traffic
 Description: Ensure that no Network ACL (NACL) allows inbound/ingress traffic from all ports.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

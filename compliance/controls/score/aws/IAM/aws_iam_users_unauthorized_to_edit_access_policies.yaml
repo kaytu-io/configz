@@ -2,7 +2,6 @@ ID: aws_iam_users_unauthorized_to_edit_access_policies
 Title: IAM Users Unauthorized to Edit Access Policies
 Description: Ensure AWS IAM users that are not authorized to edit IAM access policies are decommissioned..
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH authorize_to_edit_policy AS (

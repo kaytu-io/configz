@@ -2,7 +2,6 @@ ID: test_contingency_plan_at_an_alternate_processing_location
 Title: Test contingency plan at an alternate processing location
 Description: CMA_C1265 - Test contingency plan at an alternate processing location
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

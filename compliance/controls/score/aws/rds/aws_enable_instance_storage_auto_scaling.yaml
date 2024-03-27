@@ -2,7 +2,6 @@ ID: aws_enable_instance_storage_auto_scaling
 Title: Enable Instance Storage AutoScaling
 Description: Ensure that the Storage AutoScaling feature is enabled to support unpredictable database workload.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

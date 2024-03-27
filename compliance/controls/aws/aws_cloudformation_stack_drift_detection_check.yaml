@@ -2,7 +2,6 @@ ID: aws_cloudformation_stack_drift_detection_check
 Title: CloudFormation stacks differ from the expected configuration
 Description: Ensure if the actual configuration of a Cloud Formation stack differs, or has drifted, from the expected configuration, a stack is considered to have drifted if one or more of its resources differ from their expected configuration.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

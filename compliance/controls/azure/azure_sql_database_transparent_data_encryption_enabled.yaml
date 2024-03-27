@@ -2,7 +2,6 @@ ID: azure_sql_database_transparent_data_encryption_enabled
 Title: Ensure that 'Data encryption' is set to 'On' on a SQL Database
 Description: ""
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

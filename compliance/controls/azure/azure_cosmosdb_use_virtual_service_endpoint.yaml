@@ -2,7 +2,6 @@ ID: azure_cosmosdb_use_virtual_service_endpoint
 Title: Cosmos DB should use a virtual network service endpoint
 Description: This policy audits any Cosmos DB not configured to use a virtual network service endpoint.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with cosmosdb_with_virtual_network as (

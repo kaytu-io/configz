@@ -2,7 +2,6 @@ ID: recover_and_reconstitute_resources_after_any_disruption
 Title: Recover and reconstitute resources after any disruption
 Description: CMA_C1295 - Recover and reconstitute resources after any disruption
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

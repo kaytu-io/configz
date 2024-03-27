@@ -2,7 +2,6 @@ ID: aws_cloudfront_distribution_use_custom_ssl_certificate
 Title: CloudFront distributions should use custom SSL/TLS certificates
 Description: This control checks whether CloudFront distributions are using the default SSL/TLS certificate CloudFront provides. This control passes if the CloudFront distribution uses a custom SSL/TLS certificate. This control fails if the CloudFront distribution uses the default SSL/TLS certificate.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

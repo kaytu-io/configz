@@ -2,7 +2,6 @@ ID: aws_rds_last_backup_recovery_point_created
 Title: Amazon Relational Database Service (Amazon RDS) instances should have a recovery point created
 Description: Checks if a recovery point was created for Amazon Relational Database Service (Amazon RDS). The rule is ALARM if the Amazon RDS instance does not have a corresponding recovery point created within the specified time period.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH valid_points AS (

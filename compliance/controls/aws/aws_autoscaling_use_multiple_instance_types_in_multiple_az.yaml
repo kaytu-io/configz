@@ -2,7 +2,6 @@ ID: aws_autoscaling_use_multiple_instance_types_in_multiple_az
 Title: Auto Scaling groups should use multiple instance types in multiple Availability Zones
 Description: This control checks whether an Amazon EC2 Auto Scaling group uses multiple instance types. The control fails if the Auto Scaling group has only one instance type defined.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with autoscaling_groups as (

@@ -2,7 +2,6 @@ ID: aws_waf_web_acl_resource_associated
 Title: WAF web ACL should be associated with an Application Load Balancer, API Gateway stage, or CloudFront distributions
 Description: This control checks if the web ACL is associated with an Application Load Balancer, API Gateway stage, or CloudFront distributions.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

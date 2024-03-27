@@ -2,7 +2,6 @@ ID: public_network_access_should_be_disabled_for_my_sql_flexible_servers
 Title: Public network access should be disabled for MySQL flexible servers
 Description: Disabling the public network access property improves security by ensuring your Azure Database for MySQL flexible servers can only be accessed from a private endpoint. This configuration strictly disables access from any public address space outside of Azure IP range and denies all logins that match IP or virtual network-based firewall rules.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT id, name, kaytu_description->'Network'->>'PublicNetworkAccess' AS public_network_access, kaytu_description->'Network'->>'DelegatedSubnetResourceID' AS delegated_subnet_resource_id, kaytu_description->'Network'->>'PrivateDNSZoneResourceID' AS private_dns_zone_resource_id\nFROM azure_dbformysql_flexibleservers\nWHERE kaytu_description->>'type' = 'Microsoft.DBforMySQL/flexibleServers'\nAND (network.publicNetworkAccess IS NOT NULL OR kaytu_description @> '{\"Network\": {\"PublicNetworkAccess\": {\"$exists\": true}}}')\nAND (network.delegatedSubnetResourceId IS NOT NULL OR kaytu_description @> '{\"Network\": {\"DelegatedSubnetResourceID\": {\"$exists\": true}}}')\nAND (network.privateDnsZoneResourceId IS NOT NULL OR kaytu_description @> '{\"Network\": {\"PrivateDNSZoneResourceID\": {\"$exists\": true}}}')\nLIMIT 5;;\n"
   Connector:

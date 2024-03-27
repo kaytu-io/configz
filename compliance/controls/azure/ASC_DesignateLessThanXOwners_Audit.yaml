@@ -2,7 +2,6 @@ ID: a_maximum_of_3_owners_should_be_designated_for_your_subscription
 Title: A maximum of 3 owners should be designated for your subscription
 Description: It is recommended to designate up to 3 subscription owners in order to reduce the potential for breach by a compromised owner.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

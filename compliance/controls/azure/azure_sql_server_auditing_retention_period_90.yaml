@@ -2,7 +2,6 @@ ID: azure_sql_server_auditing_retention_period_90
 Title: Ensure that 'Auditing' Retention is 'greater than 90 days'
 Description: SQL Server Audit Retention should be configured to be greater than 90 days.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

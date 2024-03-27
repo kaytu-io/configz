@@ -2,7 +2,6 @@ ID: "[_preview]:_recovery_services_vaults_should_use_private_link"
 Title: "[Preview]: Recovery Services vaults should use private link"
 Description: "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Recovery Services vaults, data leakage risks are reduced. Learn more about private links for Azure Site Recovery at: https://aka.ms/HybridScenarios-PrivateLink and https://aka.ms/AzureToAzure-PrivateLink."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, type, provisioning_state, private_endpoint_state_for_site_recovery, private_endpoint_state_for_backup, sku_name, diagnostic_settings, identity, private_endpoint_connections, upgrade_details, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description

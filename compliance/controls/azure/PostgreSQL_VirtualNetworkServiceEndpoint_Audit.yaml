@@ -2,7 +2,6 @@ ID: postgre_sql_server_should_use_a_virtual_network_service_endpoint
 Title: PostgreSQL server should use a virtual network service endpoint
 Description: Virtual network based firewall rules are used to enable traffic from a specific subnet to Azure Database for PostgreSQL while ensuring the traffic stays within the Azure boundary. This policy provides a way to audit if the Azure Database for PostgreSQL has virtual network service endpoint being used.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

@@ -2,7 +2,6 @@ ID: secure_transfer_to_storage_accounts_should_be_enabled
 Title: Secure transfer to storage accounts should be enabled
 Description: Audit requirement of Secure transfer in your storage account. Secure transfer is an option that forces your storage account to accept requests only from secure connections (HTTPS). Use of HTTPS ensures authentication between the server and the service and protects data in transit from network layer attacks such as man-in-the-middle, eavesdropping, and session-hijacking
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

@@ -2,7 +2,6 @@ ID: aws_ecs_task_definition_container_readonly_root_filesystem
 Title: ECS containers should be limited to read-only access to root filesystems
 Description: This control checks if ECS containers are limited to read-only access to mounted root filesystems. This control fails if the ReadonlyRootFilesystem parameter in the container definition of ECS task definitions is set to false.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with privileged_container_definition as (

@@ -2,7 +2,6 @@ ID: aws_networkfirewall_logging_enabled
 Title: Network Firewall logging should be enabled
 Description: This control checks whether a Network Firewall has logging enabled or not.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select 

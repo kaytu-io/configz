@@ -2,7 +2,6 @@ ID: aws_unused_elastic_load_balancers
 Title: Unused Elastic Load Balancers
 Description: Identify unused Elastic Load Balancers, and delete them to help lower the cost of your monthly AWS bill.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

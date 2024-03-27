@@ -2,7 +2,6 @@ ID: aws_ecs_task_log_driver_in_use
 Title: Amazon ECS Task Log Driver in Use
 Description: Ensure that a log driver has been defined for each active Amazon ECS task definition.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

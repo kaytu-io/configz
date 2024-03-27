@@ -2,7 +2,6 @@ ID: aws_ec2_instance_ebs_optimized
 Title: EC2 instance should have EBS optimization enabled
 Description: An optimized instance in Amazon Elastic Block Store (Amazon EBS) provides additional, dedicated capacity for Amazon EBS I/O operations.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

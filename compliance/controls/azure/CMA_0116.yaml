@@ -2,7 +2,6 @@ ID: define_access_authorizations_to_support_separation_of_duties
 Title: Define access authorizations to support separation of duties
 Description: CMA_0116 - Define access authorizations to support separation of duties
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

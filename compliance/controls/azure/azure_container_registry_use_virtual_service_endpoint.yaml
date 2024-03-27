@@ -2,7 +2,6 @@ ID: azure_container_registry_use_virtual_service_endpoint
 Title: Container Registry should use a virtual network service endpoint
 Description: This policy audits any Container Registry not configured to use a virtual network service endpoint.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with container_registry_subnet as (

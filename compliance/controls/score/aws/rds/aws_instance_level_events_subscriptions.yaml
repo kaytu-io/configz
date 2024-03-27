@@ -2,7 +2,6 @@ ID: aws_instance_level_events_subscriptions
 Title: Instance Level Events Subscriptions
 Description: Enable Event Subscriptions for Instance Level Events.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select distinct

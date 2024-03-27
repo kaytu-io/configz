@@ -2,7 +2,6 @@ ID: aws_ssm_managed_instance_compliance_association_compliant
 Title: SSM managed instance associations should be compliant
 Description: Use AWS Systems Manager Associations to help with inventory of software platforms and applications within an organization.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_kubernetes_instance_rbac_enabled
 Title: Role-Based Access Control (RBAC) should be used on Kubernetes Services
 Description: To provide granular filtering on the actions that users can perform, use Role-Based Access Control (RBAC) to manage permissions in Kubernetes Service Clusters and configure relevant authorization policies.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

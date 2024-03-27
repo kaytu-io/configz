@@ -2,7 +2,6 @@ ID: aws_apigateway_stage_cache_encryption_at_rest_enabled
 Title: API Gateway stage cache encryption at rest should be enabled
 Description: To help protect data at rest, ensure encryption is enabled for your API Gateway stage's cache.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

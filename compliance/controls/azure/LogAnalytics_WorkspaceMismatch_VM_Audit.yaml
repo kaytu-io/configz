@@ -2,7 +2,6 @@ ID: virtual_machines_should_be_connected_to_a_specified_workspace
 Title: Virtual machines should be connected to a specified workspace
 Description: Reports virtual machines as non-compliant if they aren't logging to the Log Analytics workspace specified in the policy/initiative assignment.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

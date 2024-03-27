@@ -2,7 +2,6 @@ ID: require_notification_of_third_party_personnel_transfer_or_termination
 Title: Require notification of third-party personnel transfer or termination
 Description: CMA_C1532 - Require notification of third-party personnel transfer or termination
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: aws_web_tier_publicly_shared_ami
 Title: Web-Tier Publicly Shared AMI
 Description: Ensure web-tier AMIs aren't publicly shared to avoid exposing sensitive data.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: control_use_of_portable_storage_devices
 Title: Control use of portable storage devices
 Description: CMA_0083 - Control use of portable storage devices
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

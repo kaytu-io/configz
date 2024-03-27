@@ -2,7 +2,6 @@ ID: aws_iam_user_mfa_enabled
 Title: IAM user MFA should be enabled
 Description: Enable this rule to restrict access to resources in the AWS Cloud.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

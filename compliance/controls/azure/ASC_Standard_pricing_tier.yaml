@@ -2,7 +2,6 @@ ID: security_center_standard_pricing_tier_should_be_selected
 Title: Security Center standard pricing tier should be selected
 Description: The standard pricing tier enables threat detection for networks and virtual machines, providing threat intelligence, anomaly detection, and behavior analytics in Azure Security Center
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

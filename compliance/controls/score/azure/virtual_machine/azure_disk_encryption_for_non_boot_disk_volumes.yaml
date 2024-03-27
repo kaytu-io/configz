@@ -2,7 +2,6 @@ ID: azure_disk_encryption_for_non_boot_disk_volumes
 Title: Azure Disk Encryption for Non Boot Disk Volumes
 Description: Ensure that Azure Disk Encryption is enabled for Microsoft Azure virtual machines for non-boot volumes.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

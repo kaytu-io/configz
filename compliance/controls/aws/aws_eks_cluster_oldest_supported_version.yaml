@@ -2,7 +2,6 @@ ID: aws_eks_cluster_oldest_supported_version
 Title: ""
 Description: ""
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

@@ -2,7 +2,6 @@ ID: azure_check_for_guest_level_diagnostics_for_virtual_machines
 Title: Check for Guest-Level Diagnostics for Virtual Machines
 Description: Ensure that Microsoft Azure virtual machines are configured to use OS guest-level monitoring.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: require_external_service_providers_to_comply_with_security_requirements
 Title: Require external service providers to comply with security requirements
 Description: CMA_C1586 - Require external service providers to comply with security requirements
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

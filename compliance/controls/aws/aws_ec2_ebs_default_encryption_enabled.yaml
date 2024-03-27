@@ -2,7 +2,6 @@ ID: aws_ec2_ebs_default_encryption_enabled
 Title: EBS default encryption should be enabled
 Description: To help protect data at rest, ensure that encryption is enabled for your Amazon Elastic Block Store (Amazon EBS) volumes.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

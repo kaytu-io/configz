@@ -2,7 +2,6 @@ ID: azure_check_for_virtual_machine_access_using_microsoft_entra_id_authenticati
 Title: Check for Virtual Machine Access using Microsoft Entra ID Authentication
 Description: Configure your Microsoft Azure virtual machines to use Microsoft Entra ID credentials for secure authentication.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

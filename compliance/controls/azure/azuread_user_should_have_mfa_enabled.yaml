@@ -2,7 +2,6 @@ ID: azuread_user_should_have_mfa_enabled
 Title: AzureAD Users should have MFA Enabled
 Description: AzureAD Users should have MFA Enabled
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select 

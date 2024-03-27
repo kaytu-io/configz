@@ -2,7 +2,6 @@ ID: aws_unused_rds_reserved_instances
 Title: Unused RDS Reserved Instances
 Description: Ensure that your Amazon RDS Reserved Instances are being fully utilized.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     with classes as (

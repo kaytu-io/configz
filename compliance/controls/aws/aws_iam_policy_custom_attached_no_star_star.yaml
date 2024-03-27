@@ -2,7 +2,6 @@ ID: aws_iam_policy_custom_attached_no_star_star
 Title: IAM policies should not allow full '*' administrative privileges
 Description: "This control checks whether the default version of IAM policies (also known as customer managed policies) has administrator access that includes a statement with 'Effect': 'Allow' with 'Action': '*' over 'Resource': '*'. The control only checks the customer managed policies that you create. It does not check inline and AWS managed policies."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     -- This query checks the customer managed policies having * access and attached to IAM resource(s)

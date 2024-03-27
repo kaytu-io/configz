@@ -2,7 +2,6 @@ ID: azure_keyvault_azure_defender_enabled
 Title: Azure Defender for Key Vault should be enabled
 Description: Azure Defender for Key Vault provides an additional layer of protection and security intelligence by detecting unusual and potentially harmful attempts to access or exploit key vault accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

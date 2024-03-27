@@ -2,7 +2,6 @@ ID: aws_s3_access_point_in_vpc_only
 Title: S3 access points should only be accessible from VPC
 Description: Checks if an Amazon S3 access point does not allow access from the internet (NetworkOrigin is VPC). The rule is ALARM if NetworkOrigin is Internet
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

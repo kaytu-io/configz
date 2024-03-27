@@ -2,7 +2,6 @@ ID: conduct_exit_interview_upon_termination
 Title: Conduct exit interview upon termination
 Description: CMA_0058 - Conduct exit interview upon termination
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

@@ -2,7 +2,6 @@ ID: management_ports_should_be_closed_on_your_virtual_machines
 Title: Management ports should be closed on your virtual machines
 Description: Open remote management ports are exposing your VM to a high level of risk from Internet-based attacks. These attacks attempt to brute force credentials to gain admin access to the machine.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

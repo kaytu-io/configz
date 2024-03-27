@@ -2,7 +2,6 @@ ID: aws_eks_cluster_node_group_iam_role_policies
 Title: EKS Cluster Node Group IAM Role Policies
 Description: Ensure that EKS Cluster node groups are using appropriate permissions.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

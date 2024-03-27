@@ -2,7 +2,6 @@ ID: aws_internet_facing_elbv2s
 Title: Internet Facing ELBv2s
 Description: Ensure Amazon internet-facing ELBs/ALBs are regularly reviewed for security purposes.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

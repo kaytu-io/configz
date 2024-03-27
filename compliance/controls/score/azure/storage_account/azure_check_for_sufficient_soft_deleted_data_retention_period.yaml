@@ -2,7 +2,6 @@ ID: azure_check_for_sufficient_soft_deleted_data_retention_period
 Title: Check for Sufficient Soft Deleted Data Retention Period
 Description: Ensure there is a sufficient retention period configured for Azure Blob Storage soft deleted data.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

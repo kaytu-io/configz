@@ -2,7 +2,6 @@ ID: aws_elbv2_alb_listener_security
 Title: ELBv2 ALB Listener Security
 Description: Ensure ELBv2 ALBs are using a secure protocol.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

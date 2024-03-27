@@ -2,7 +2,6 @@ ID: hotpatch_should_be_enabled_for_windows_server_azure_edition_v_ms
 Title: Hotpatch should be enabled for Windows Server Azure Edition VMs
 Description: Minimize reboots and install updates quickly with hotpatch. Learn more at https://docs.microsoft.com/azure/automanage/automanage-hotpatch
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

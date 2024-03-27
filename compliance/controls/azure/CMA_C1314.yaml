@@ -2,7 +2,6 @@ ID: prevent_identifier_reuse_for_the_defined_time_period
 Title: Prevent identifier reuse for the defined time period
 Description: CMA_C1314 - Prevent identifier reuse for the defined time period
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

@@ -2,7 +2,6 @@ ID: managed_disks_should_be_double_encrypted_with_both_platform_managed_and_cust
 Title: Managed disks should be double encrypted with both platform-managed and customer-managed keys
 Description: High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption. Learn more at https://aka.ms/disks-doubleEncryption.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, encryption_type

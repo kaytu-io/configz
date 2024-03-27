@@ -2,7 +2,6 @@ ID: notify_upon_termination_or_transfer
 Title: Notify upon termination or transfer
 Description: CMA_0381 - Notify upon termination or transfer
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

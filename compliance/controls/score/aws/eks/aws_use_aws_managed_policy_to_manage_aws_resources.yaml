@@ -2,7 +2,6 @@ ID: aws_use_aws_managed_policy_to_manage_aws_resources
 Title: Use AWS-managed policy to manage AWS resources
 Description: Ensure that Amazon EKS clusters implement the "AmazonEKSClusterPolicy" managed policy.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

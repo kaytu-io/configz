@@ -2,7 +2,6 @@ ID: aws_rds_automated_backups_enabled
 Title: RDS Automated Backups Enabled
 Description: Ensure automated backups are enabled for RDS instances. This feature of Amazon RDS enables point-in-time recovery of your database instance.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

@@ -2,7 +2,6 @@ ID: azure_search_service_public_network_access_disabled
 Title: Azure Cognitive Search services should disable public network access
 Description: Disabling public network access improves security by ensuring that your Azure Cognitive Search service is not exposed on the public internet. Creating private endpoints can limit exposure of your Search service.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

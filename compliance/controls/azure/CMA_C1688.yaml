@@ -2,7 +2,6 @@ ID: obtain_legal_opinion_for_monitoring_system_activities
 Title: Obtain legal opinion for monitoring system activities
 Description: CMA_C1688 - Obtain legal opinion for monitoring system activities
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

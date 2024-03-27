@@ -2,7 +2,6 @@ ID: aws_networkfirewall_stateless_rule_group_not_empty
 Title: Stateless network firewall rule group should not be empty
 Description: A rule group contains rules that define how your firewall processes traffic in your VPC. An empty stateless rule group when present in a firewall policy might give the impression that the rule group will process traffic. However, when the stateless rule group is empty, it does not process traffic.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

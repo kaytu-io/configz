@@ -2,7 +2,6 @@ ID: aws_approved_ecs_execute_command_access
 Title: Approved ECS Execute Command Access
 Description: Ensure that all access to the ECS Execute Command action is approved
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT

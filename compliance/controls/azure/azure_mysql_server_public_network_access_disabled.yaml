@@ -2,7 +2,6 @@ ID: azure_mysql_server_public_network_access_disabled
 Title: Public network access should be disabled for MySQL servers
 Description: Disable the public network access property to improve security and ensure your Azure Database for MySQL can only be accessed from a private endpoint. This configuration strictly disables access from any public address space outside of Azure IP range, and denies all logins that match IP or virtual network-based firewall rules.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

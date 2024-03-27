@@ -2,7 +2,6 @@ ID: aws_elb_classic_lb_use_tls_https_listeners
 Title: ELB classic load balancers should only use SSL or HTTPS listeners
 Description: Ensure that your Elastic Load Balancers (ELBs) are configured with SSL or HTTPS listeners. Because sensitive data can exist, enable encryption in transit to help protect that data.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

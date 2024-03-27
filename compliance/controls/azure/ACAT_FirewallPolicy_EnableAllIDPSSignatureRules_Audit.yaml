@@ -2,7 +2,6 @@ ID: firewall_policy_premium_should_enable_all_idps_signature_rules_to_monitor_al
 Title: Firewall Policy Premium should enable all IDPS signature rules to monitor all inbound and outbound traffic flows
 Description: Enabling all Intrusion Detection and Prevention System (IDPS) signature rules is recommanded to better identify known threats in the traffic flows. To learn more about the Intrusion Detection and Prevention System (IDPS) signatures with Azure Firewall Premium, visit https://aka.ms/fw-idps-signature
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, sku_tier, intrusion_detection_configuration

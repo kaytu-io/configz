@@ -2,7 +2,6 @@ ID: assign_information_security_representative_to_change_control
 Title: Assign information security representative to change control
 Description: CMA_C1198 - Assign information security representative to change control
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

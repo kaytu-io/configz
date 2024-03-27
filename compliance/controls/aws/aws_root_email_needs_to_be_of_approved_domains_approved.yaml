@@ -2,7 +2,6 @@ ID: aws_root_email_needs_to_be_of_approved_domains_approved
 Title: Root Email needs to be of approved domains Approved
 Description: Root Email needs to be of approved domains Approved
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select  

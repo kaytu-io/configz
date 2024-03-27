@@ -2,7 +2,6 @@ ID: enforce_a_limit_of_consecutive_failed_login_attempts
 Title: Enforce a limit of consecutive failed login attempts
 Description: CMA_C1044 - Enforce a limit of consecutive failed login attempts
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

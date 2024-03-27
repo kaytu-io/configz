@@ -2,7 +2,6 @@ ID: aws_rds_db_cluster_iam_authentication_enabled
 Title: IAM authentication should be configured for RDS clusters
 Description: This control checks whether an RDS DB cluster has IAM database authentication enabled. IAM database authentication allows for password-free authentication to database instances. The authentication uses an authentication token. Network traffic to and from the database is encrypted using SSL.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

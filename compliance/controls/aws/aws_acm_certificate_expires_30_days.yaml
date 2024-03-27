@@ -2,7 +2,6 @@ ID: aws_acm_certificate_expires_30_days
 Title: ACM certificates should be set to expire within 30 days
 Description: Ensure network integrity is protected by ensuring X509 certificates are issued by AWS ACM.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

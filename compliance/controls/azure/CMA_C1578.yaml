@@ -2,7 +2,6 @@ ID: require_developer_to_identify_sdlc_ports,_protocols,_and_services
 Title: Require developer to identify SDLC ports, protocols, and services
 Description: CMA_C1578 - Require developer to identify SDLC ports, protocols, and services
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: aws_enable_deletion_protection_for_aurora_serverless_clusters
 Title: Enable Deletion Protection for Aurora Serverless Clusters
 Description: Ensure that the Deletion Protection feature is enabled for your Aurora Serverless clusters.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

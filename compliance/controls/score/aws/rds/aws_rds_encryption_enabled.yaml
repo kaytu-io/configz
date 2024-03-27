@@ -2,7 +2,6 @@ ID: aws_rds_encryption_enabled
 Title: RDS Encryption Enabled
 Description: Ensure encryption is setup for RDS instances to fulfill compliance requirements for data-at-rest encryption.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

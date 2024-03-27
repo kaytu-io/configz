@@ -2,7 +2,6 @@ ID: aws_aurora_last_backup_recovery_point_created
 Title: Amazon Aurora DB clusters should have a recovery point created
 Description: Checks if a recovery point was created for Amazon Aurora DB clusters. The rule is ALARM if the Amazon Relational Database Service (Amazon RDS) DB Cluster does not have a corresponding recovery point created within the specified time period.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH valid_points AS (

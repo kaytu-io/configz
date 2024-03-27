@@ -2,7 +2,6 @@ ID: aws_cloudtrail_s3_data_events_enabled
 Title: All S3 buckets should log S3 data events in CloudTrail
 Description: The collection of Simple Storage Service (Amazon S3) data events helps in detecting any anomalous activity. The details include AWS account information that accessed an Amazon S3 bucket, IP address, and time of event.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with s3_selectors as (

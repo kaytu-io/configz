@@ -2,7 +2,6 @@ ID: review_cloud_service_provider's_compliance_with_policies_and_agreements
 Title: Review cloud service provider's compliance with policies and agreements
 Description: CMA_0469 - Review cloud service provider's compliance with policies and agreements
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

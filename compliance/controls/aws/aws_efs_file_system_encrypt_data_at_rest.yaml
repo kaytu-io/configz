@@ -2,7 +2,6 @@ ID: aws_efs_file_system_encrypt_data_at_rest
 Title: Ensure that encryption is enabled for EFS file systems
 Description: EFS data should be encrypted at rest using AWS KMS (Key Management Service).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

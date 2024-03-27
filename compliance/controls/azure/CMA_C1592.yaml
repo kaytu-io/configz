@@ -2,7 +2,6 @@ ID: ensure_external_providers_consistently_meet_interests_of_the_customers
 Title: Ensure external providers consistently meet interests of the customers
 Description: CMA_C1592 - Ensure external providers consistently meet interests of the customers
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

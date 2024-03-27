@@ -2,7 +2,6 @@ ID: aws_elb_custom_security_policy_ssl_check
 Title: Classic Load Balancer SSL listeners should use a custom policy
 Description: Checks whether your Classic Load Balancer SSL listeners are using a custom policy. The rule is only applicable if there are SSL listeners for the Classic Load Balancer.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH lb_pn AS (

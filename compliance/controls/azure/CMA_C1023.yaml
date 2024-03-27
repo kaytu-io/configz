@@ -2,7 +2,6 @@ ID: enforce_appropriate_usage_of_all_accounts
 Title: Enforce appropriate usage of all accounts
 Description: CMA_C1023 - Enforce appropriate usage of all accounts
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

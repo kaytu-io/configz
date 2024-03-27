@@ -2,7 +2,6 @@ ID: aws_guardduty_finding_archived
 Title: GuardDuty findings should be archived
 Description: "Amazon GuardDuty helps you understand the impact of an incident by classifying findings by severity: low, medium, and high."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

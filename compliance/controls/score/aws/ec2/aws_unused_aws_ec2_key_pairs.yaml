@@ -2,7 +2,6 @@ ID: aws_unused_aws_ec2_key_pairs
 Title: Unused AWS EC2 Key Pairs
 Description: Ensure unused AWS EC2 key pairs are decommissioned to follow AWS security best practices.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

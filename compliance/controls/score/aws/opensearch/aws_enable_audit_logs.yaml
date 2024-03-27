@@ -2,7 +2,6 @@ ID: aws_enable_audit_logs
 Title: Enable Audit Logs
 Description: Ensure that audit logging is enabled for all your Amazon OpenSearch domains.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

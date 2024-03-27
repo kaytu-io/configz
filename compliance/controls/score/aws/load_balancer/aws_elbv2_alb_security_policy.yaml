@@ -2,7 +2,6 @@ ID: aws_elbv2_alb_security_policy
 Title: ELBv2 ALB Security Policy
 Description: Ensure that Amazon ALBs are using the latest predefined security policy for their SSL negotiation configuration in order to follow security best practices and protect their front-end connections against SSL/TLS vulnerabilities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

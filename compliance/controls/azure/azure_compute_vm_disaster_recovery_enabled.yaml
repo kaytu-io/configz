@@ -2,7 +2,6 @@ ID: azure_compute_vm_disaster_recovery_enabled
 Title: Audit virtual machines without disaster recovery configured
 Description: Audit virtual machines which do not have disaster recovery configured.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with vm_dr_enabled as (

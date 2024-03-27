@@ -2,7 +2,6 @@ ID: designate_personnel_to_supervise_unauthorized_maintenance_activities
 Title: Designate personnel to supervise unauthorized maintenance activities
 Description: CMA_C1422 - Designate personnel to supervise unauthorized maintenance activities
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

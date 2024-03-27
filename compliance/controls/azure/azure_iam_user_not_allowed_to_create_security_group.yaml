@@ -2,7 +2,6 @@ ID: azure_iam_user_not_allowed_to_create_security_group
 Title: Ensure that 'Users can create security groups in Azure portals, API or PowerShell' is set to 'No'
 Description: Restrict security group creation to administrators only.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_check_for_associated_load_balancers
 Title: Check for Associated Load Balancers
 Description: Ensure that your Azure virtual machine scale sets are using load balancers for traffic distribution.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

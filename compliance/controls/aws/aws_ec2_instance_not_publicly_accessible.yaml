@@ -2,7 +2,6 @@ ID: aws_ec2_instance_not_publicly_accessible
 Title: EC2 instances should not have a public IP address
 Description: Manage access to the AWS Cloud by ensuring Amazon Elastic Compute Cloud (Amazon EC2) instances cannot be publicly accessed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

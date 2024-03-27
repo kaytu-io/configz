@@ -2,7 +2,6 @@ ID: azure_check_for_zone_redundant_virtual_machine_scale_sets
 Title: Check for Zone-Redundant Virtual Machine Scale Sets
 Description: Ensure that Azure virtual machine scale sets are configured for zone redundancy.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

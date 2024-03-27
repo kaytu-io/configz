@@ -2,7 +2,6 @@ ID: azure_iam_user_not_allowed_to_register_application
 Title: "Ensure That ‘Users Can Register Applications’ Is Set to ‘No’ "
 Description: Require administrators or appropriately delegated users to register third-party applications.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

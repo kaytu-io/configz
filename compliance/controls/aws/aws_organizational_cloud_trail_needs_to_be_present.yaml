@@ -2,7 +2,6 @@ ID: aws_organizational_cloud_trail_needs_to_be_present
 Title: Organizational Cloud Trail needs to be present
 Description: Organizational Cloud Trail needs to be present
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with org_cloudtrail_exists as (

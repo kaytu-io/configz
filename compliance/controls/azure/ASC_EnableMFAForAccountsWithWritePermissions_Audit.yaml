@@ -2,7 +2,6 @@ ID: accounts_with_write_permissions_on_azure_resources_should_be_mfa_enabled
 Title: Accounts with write permissions on Azure resources should be MFA enabled
 Description: Multi-Factor Authentication (MFA) should be enabled for all subscription accounts with write privileges to prevent a breach of accounts or resources.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

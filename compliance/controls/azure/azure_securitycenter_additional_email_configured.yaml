@@ -2,7 +2,6 @@ ID: azure_securitycenter_additional_email_configured
 Title: Ensure 'Additional email addresses' is configured with a security contact email
 Description: Security Center emails the subscription owners whenever a high-severity alert is triggered for their subscription. You should provide a security contact email address as an additional email address.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with contact_info as (

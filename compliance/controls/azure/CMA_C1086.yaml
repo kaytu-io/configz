@@ -2,7 +2,6 @@ ID: review_publicly_accessible_content_for_nonpublic_information
 Title: Review publicly accessible content for nonpublic information
 Description: CMA_C1086 - Review publicly accessible content for nonpublic information
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

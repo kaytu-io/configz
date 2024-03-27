@@ -2,7 +2,6 @@ ID: aws_cloudfront_distribution_sni_enabled
 Title: CloudFront distributions should use SNI to serve HTTPS requests
 Description: This control checks if Amazon CloudFront distributions are using a custom SSL/TLS certificate and are configured to use SNI to serve HTTPS requests. This control fails if a custom SSL/TLS certificate is associated but the SSL/TLS support method is a dedicated IP address.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

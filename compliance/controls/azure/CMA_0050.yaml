@@ -2,7 +2,6 @@ ID: block_untrusted_and_unsigned_processes_that_run_from_usb
 Title: Block untrusted and unsigned processes that run from USB
 Description: CMA_0050 - Block untrusted and unsigned processes that run from USB
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

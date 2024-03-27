@@ -2,7 +2,6 @@ ID: aws_use_gp3_not_gp2
 Title: Use GP3, not GP2
 Description: EBS gp2 volumes are legacy, costly, and have lower performance than gp3.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

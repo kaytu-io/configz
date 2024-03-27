@@ -2,7 +2,6 @@ ID: aws_cluster_deletion_protection
 Title: Cluster Deletion Protection
 Description: Enable AWS RDS Cluster Deletion Protection.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

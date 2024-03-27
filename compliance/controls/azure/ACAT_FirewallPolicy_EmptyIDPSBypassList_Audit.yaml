@@ -2,7 +2,6 @@ ID: bypass_list_of_intrusion_detection_and_prevention_system_(_idps)_should_be_e
 Title: Bypass list of Intrusion Detection and Prevention System (IDPS) should be empty in Firewall Policy Premium
 Description: Intrusion Detection and Prevention System (IDPS) Bypass List allows you to not filter traffic to any of the IP addresses, ranges, and subnets specified in the bypass list. However, enabling IDPS is recommanded for all traffic flows to better identify known threats. To learn more about the Intrusion Detection and Prevention System (IDPS) signatures with Azure Firewall Premium, visit https://aka.ms/fw-idps-signature
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

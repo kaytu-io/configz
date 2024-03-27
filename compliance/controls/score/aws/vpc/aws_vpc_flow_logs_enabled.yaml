@@ -2,7 +2,6 @@ ID: aws_vpc_flow_logs_enabled
 Title: VPC Flow Logs Enabled
 Description: Ensure VPC flow logging is enabled in all VPCs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: "[_deprecated]:_azure_defender_for_dns_should_be_enabled"
 Title: "[Deprecated]: Azure Defender for DNS should be enabled"
 Description: This policy definition is no longer the recommended way to achieve its intent, because DNS bundle is being deprecated. Instead of continuing to use this policy, we recommend you assign this replacement policy with policy ID 4da35fc9-c9e7-4960-aec9-797fe7d9051d. Learn more about policy definition deprecation at aka.ms/policydefdeprecation
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

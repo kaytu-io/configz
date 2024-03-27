@@ -2,7 +2,6 @@ ID: aws_elb_classic_lb_cross_zone_load_balancing_enabled
 Title: ELB classic load balancers should have cross-zone load balancing enabled
 Description: Enable cross-zone load balancing for your Elastic Load Balancers (ELBs) to help maintain adequate capacity and availability. The cross-zone load balancing reduces the need to maintain equivalent numbers of instances in each enabled availability zone.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

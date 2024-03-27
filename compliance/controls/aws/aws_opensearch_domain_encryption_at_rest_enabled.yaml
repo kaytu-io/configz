@@ -2,7 +2,6 @@ ID: aws_opensearch_domain_encryption_at_rest_enabled
 Title: OpenSearch domains should have encryption at rest enabled
 Description: This control checks whether OpenSearch domains have encryption-at-rest configuration enabled. The check fails if encryption at rest is not enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

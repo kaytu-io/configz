@@ -2,7 +2,6 @@ ID: aws_iam_support_role
 Title: IAM Support Role
 Description: Ensure there is an active IAM Support Role available within your AWS cloud account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with aws_support_access_roles as (

@@ -2,7 +2,6 @@ ID: azure_check_for_publicly_accessible_web_containers
 Title: Check for Publicly Accessible Web Containers
 Description: Ensure that Azure Storage containers aren't publicly accessible.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_sql_database_long_term_geo_redundant_backup_enabled
 Title: Long-term geo-redundant backup should be enabled for Azure SQL Databases
 Description: This policy audits any Azure SQL Database with long-term geo-redundant backup not enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

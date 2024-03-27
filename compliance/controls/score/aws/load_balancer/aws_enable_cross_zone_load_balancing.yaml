@@ -2,7 +2,6 @@ ID: aws_enable_cross_zone_load_balancing
 Title: Enable Cross-Zone Load Balancing
 Description: Ensure fault tolerance for your Amazon Gateway Load Balancers by enabling Cross-Zone Load Balancing.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

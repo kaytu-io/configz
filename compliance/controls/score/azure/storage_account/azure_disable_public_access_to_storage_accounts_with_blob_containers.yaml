@@ -2,7 +2,6 @@ ID: azure_disable_public_access_to_storage_accounts_with_blob_containers
 Title: Disable public access to storage accounts with blob containers
 Description: Ensure that public access to blob containers is disabled for your Azure storage accounts to override any ACL configurations allowing access.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

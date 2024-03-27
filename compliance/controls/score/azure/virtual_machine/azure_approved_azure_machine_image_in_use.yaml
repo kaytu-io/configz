@@ -2,7 +2,6 @@ ID: azure_approved_azure_machine_image_in_use
 Title: Approved Azure Machine Image in Use
 Description: Ensure that all your Azure virtual machine instances are launched from approved machine images only.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

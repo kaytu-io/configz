@@ -2,7 +2,6 @@ ID: windows_machines_should_schedule_windows_defender_to_perform_a_scheduled_sca
 Title: Windows machines should schedule Windows Defender to perform a scheduled scan every day
 Description: To ensure prompt detection of malware and minimize its impact on your system, it is recommended that Windows machines with Windows Defender schedule a daily scan. Please make sure Windows Defender is supported, preinstalled on the device, and Guest Configuration prerequisites are deployed. Failure to meet these requirements may lead to inaccurate evaluation results. Learn more about Guest Configuration at https://aka.ms/gcpol.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

@@ -2,7 +2,6 @@ ID: aws_iam_users_with_api_keys_should_have_keys_rotated_every_x_days
 Title: IAM Users with API Keys should have keys rotated every X days
 Description: IAM Users with API Keys should have keys rotated every X days
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

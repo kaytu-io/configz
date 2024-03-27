@@ -2,7 +2,6 @@ ID: aws_efs_in_backup_plan
 Title: Amazon Elastic File System (Amazon EFS) file systems should be in a backup plan
 Description: Checks if Amazon Elastic File System (Amazon EFS) file systems are added in the backup plans of AWS Backup. The rule is ALARM if EFS file systems are not included in the backup plans.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with mapped_with_id as (

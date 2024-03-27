@@ -2,7 +2,6 @@ ID: aws_iam_root_user_mfa_enabled
 Title: IAM root user MFA should be enabled
 Description: Manage access to resources in the AWS Cloud by ensuring MFA is enabled for the root user.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

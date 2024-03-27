@@ -2,7 +2,6 @@ ID: azure_compute_os_and_data_disk_encrypted_with_cmk_and_platform_managed
 Title: Managed disks should be double encrypted with both platform-managed and customer-managed keys
 Description: High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

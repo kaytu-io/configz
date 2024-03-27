@@ -2,7 +2,6 @@ ID: azure_service_bus_namespaces_should_use_private_link
 Title: Azure Service Bus namespaces should use private link
 Description: "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Service Bus namespaces, data leakage risks are reduced. Learn more at: https://docs.microsoft.com/azure/service-bus-messaging/private-link-service."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT name, sku_tier, private_endpoint_connections->'PrivateLinkServiceConnectionState'->>'Status' AS connection_status\nFROM azure_servicebus_namespace\nWHERE type = 'Microsoft.ServiceBus/namespaces'\nAND (sku_tier = 'Premium' OR kaytu_description->'SBNamespace'->>'SKU'->>'Tier' = 'Premium')\nAND (private_endpoint_connections->'PrivateLinkServiceConnectionState'->>'Status' = 'Approved' OR kaytu_description->'SBNamespace'->'PrivateEndpointConnections' @> '[{\"PrivateLinkServiceConnectionState\": {\"Status\": \"Approved\"}}]')\nLIMIT 5;;\n"
   Connector:

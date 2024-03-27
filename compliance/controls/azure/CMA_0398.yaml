@@ -2,7 +2,6 @@ ID: protect_against_and_prevent_data_theft_from_departing_employees
 Title: Protect against and prevent data theft from departing employees
 Description: CMA_0398 - Protect against and prevent data theft from departing employees
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

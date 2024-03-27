@@ -2,7 +2,6 @@ ID: aws_unapproved_iam_policy_in_use
 Title: Unapproved IAM Policy in Use
 Description: Ensure there are no unapproved AWS Identity and Access Management (IAM) policies in use.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

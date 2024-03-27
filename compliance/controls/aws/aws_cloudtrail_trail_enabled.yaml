@@ -2,7 +2,6 @@ ID: aws_cloudtrail_trail_enabled
 Title: At least one enabled trail should be present in a region
 Description: AWS CloudTrail can help in non-repudiation by recording AWS Management Console actions and API calls. You can identify the users and AWS accounts that called an AWS service, the source IP address where the calls generated, and the timings of the calls. Details of captured data are seen within AWS CloudTrail Record Contents.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with trails_enabled as (

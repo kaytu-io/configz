@@ -2,7 +2,6 @@ ID: aws_cloudfront_distribution_default_root_object_configured
 Title: CloudFront distributions should have a default root object configured
 Description: This control checks whether an Amazon CloudFront distribution is configured to return a specific object that is the default root object. The control fails if the CloudFront distribution does not have a default root object configured.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_check_for_encryption_for_web_tier_disk_volumes
 Title: Check for Encryption for Web-Tier Disk Volumes
 Description: Ensure that Azure virtual machine disk volumes created for the web tier are encrypted.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

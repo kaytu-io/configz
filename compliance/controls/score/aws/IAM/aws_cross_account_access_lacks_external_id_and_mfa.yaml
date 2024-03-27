@@ -2,7 +2,6 @@ ID: aws_cross_account_access_lacks_external_id_and_mfa
 Title: Cross-Account Access Lacks External ID and MFA
 Description: Ensure cross-account access roles are using Multi-Factor Authentication (MFA) or External IDs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: establish_usage_restrictions_for_mobile_code_technologies
 Title: Establish usage restrictions for mobile code technologies
 Description: CMA_C1652 - Establish usage restrictions for mobile code technologies
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

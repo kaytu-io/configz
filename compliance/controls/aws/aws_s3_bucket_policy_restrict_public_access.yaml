@@ -2,7 +2,6 @@ ID: aws_s3_bucket_policy_restrict_public_access
 Title: S3 bucket policy should prohibit public access
 Description: This control checks that the access granted by the S3 bucket is restricted by any of the principals, federated users, service principals, IP addresses, or VPCs that you provide. The rule is compliant if a bucket policy is not present.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with public_buckets as (

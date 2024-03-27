@@ -2,7 +2,6 @@ ID: azure_databricks_workspaces_should_use_private_link
 Title: Azure Databricks Workspaces should use private link
 Description: "Azure Private Link lets you connect your virtual networks to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Databricks workspaces, you can reduce data leakage risks. Learn more about private links at: https://aka.ms/adbpe."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

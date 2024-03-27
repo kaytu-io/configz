@@ -2,7 +2,6 @@ ID: aws_iam_group_user_role_no_inline_policies
 Title: IAM groups, users, and roles should not have any inline policies
 Description: Ensure an AWS Identity and Access Management (IAM) user, IAM role or IAM group does not have an inline policy to control access to systems and assets.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

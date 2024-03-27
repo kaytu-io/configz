@@ -2,7 +2,6 @@ ID: aws_iam_user_in_group
 Title: IAM users should be in at least one group
 Description: AWS Identity and Access Management (IAM) can help you restrict access permissions and authorizations, by ensuring IAM users are members of at least one group.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

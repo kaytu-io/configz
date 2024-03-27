@@ -2,7 +2,6 @@ ID: azure_securitycenter_email_configured
 Title: Subscriptions should have a contact email address for security issues
 Description: To ensure the relevant people in your organization are notified when there is a potential security breach in one of your subscriptions, set a security contact to receive email notifications from Security Center.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with contact_info as (

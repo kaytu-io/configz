@@ -2,7 +2,6 @@ ID: azure_kubernetes_azure_defender_enabled
 Title: Azure Defender for Kubernetes should be enabled
 Description: Azure Defender for Kubernetes provides real-time threat protection for containerized environments and generates alerts for suspicious activities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

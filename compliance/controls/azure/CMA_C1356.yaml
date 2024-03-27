@@ -2,7 +2,6 @@ ID: incorporate_simulated_events_into_incident_response_training
 Title: Incorporate simulated events into incident response training
 Description: CMA_C1356 - Incorporate simulated events into incident response training
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

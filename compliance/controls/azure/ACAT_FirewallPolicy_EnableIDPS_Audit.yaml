@@ -2,7 +2,6 @@ ID: firewall_policy_premium_should_enable_the_intrusion_detection_and_prevention
 Title: Firewall Policy Premium should enable the Intrusion Detection and Prevention System (IDPS)
 Description: Enabling the Intrusion Detection and Prevention System (IDPS) allows you to monitor your network for malicious activity, log information about this activity, report it, and optionally attempt to block it. To learn more about the Intrusion Detection and Prevention System (IDPS) with Azure Firewall Premium, visit https://aka.ms/fw-idps
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

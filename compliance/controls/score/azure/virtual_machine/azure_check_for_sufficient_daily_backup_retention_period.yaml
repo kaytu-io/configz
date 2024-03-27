@@ -2,7 +2,6 @@ ID: azure_check_for_sufficient_daily_backup_retention_period
 Title: Check for Sufficient Daily Backup Retention Period
 Description: Ensure there is a sufficient daily backup retention period configured for Azure virtual machines.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_opensearch_domain_fine_grained_access_enabled
 Title: OpenSearch domains should have fine-grained access control enabled
 Description: This control checks whether OpenSearch domains have fine-grained access control enabled. The control fails if the fine-grained access control is not enabled. Fine-grained access control requires advanced-security-optionsin the OpenSearch parameter update-domain-config to be enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

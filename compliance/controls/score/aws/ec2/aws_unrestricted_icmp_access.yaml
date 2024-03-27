@@ -2,7 +2,6 @@ ID: aws_unrestricted_icmp_access
 Title: Unrestricted ICMP Access
 Description: Ensure no security group allows unrestricted inbound access to ICMP.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

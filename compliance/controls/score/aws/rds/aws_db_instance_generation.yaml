@@ -2,7 +2,6 @@ ID: aws_db_instance_generation
 Title: DB Instance Generation
 Description: Ensure you always use the latest generation of DB instances to get better performance with lower cost.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

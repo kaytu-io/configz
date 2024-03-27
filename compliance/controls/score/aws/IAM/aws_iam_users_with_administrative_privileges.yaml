@@ -2,7 +2,6 @@ ID: aws_iam_users_with_administrative_privileges
 Title: IAM Users with Administrative Privileges
 Description: Ensure there are no IAM users with administrative permissions available in your AWS cloud account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

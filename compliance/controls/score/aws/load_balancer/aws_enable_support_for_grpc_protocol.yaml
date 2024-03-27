@@ -2,7 +2,6 @@ ID: aws_enable_support_for_grpc_protocol
 Title: Enable Support for gRPC Protocol
 Description: Ensure that support for gRPC protocol is enabled for Application Load Balancers (ALBs).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_rds_reserved_db_instance_payment_pending
 Title: RDS Reserved DB Instance Payment Pending
 Description: Ensure AWS RDS Reserved Instance purchases have not pending.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

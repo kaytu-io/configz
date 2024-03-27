@@ -2,7 +2,6 @@ ID: create_separate_alternate_and_primary_storage_sites
 Title: Create separate alternate and primary storage sites
 Description: CMA_C1269 - Create separate alternate and primary storage sites
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

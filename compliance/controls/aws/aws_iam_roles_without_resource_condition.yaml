@@ -2,7 +2,6 @@ ID: aws_iam_roles_without_resource_condition
 Title: Roles without Conditions on Properties of the resource
 Description: ""
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH have_condition_on_resource as (

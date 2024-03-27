@@ -2,7 +2,6 @@ ID: aws_waf_web_acl_logging_enabled
 Title: AWS WAF Classic Global Web ACL logging should be enabled
 Description: This control checks whether logging is enabled for an AWS WAF global web ACL. This control fails if logging is not enabled for the web ACL.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

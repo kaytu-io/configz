@@ -2,7 +2,6 @@ ID: document_security_documentation_requirements_in_acquisition_contract
 Title: Document security documentation requirements in acquisition contract
 Description: CMA_0200 - Document security documentation requirements in acquisition contract
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

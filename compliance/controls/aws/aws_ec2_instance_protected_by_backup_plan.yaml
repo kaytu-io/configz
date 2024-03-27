@@ -2,7 +2,6 @@ ID: aws_ec2_instance_protected_by_backup_plan
 Title: EC2 instances should be protected by backup plan
 Description: Ensure if Amazon Elastic Compute Cloud (Amazon EC2) instances are protected by a backup plan. The rule is non compliant if the Amazon EC2 instance is not covered by a backup plan.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with backup_protected_instance as (

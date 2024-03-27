@@ -2,7 +2,6 @@ ID: aws_codebuild_project_s3_logs_encryption_enabled
 Title: CodeBuild S3 logs should be encrypted
 Description: This control checks if Amazon S3 logs for an AWS CodeBuild project are encrypted. The control fails if encryption is deactivated for S3 logs for a CodeBuild project.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_enable_ssl_certificate_auto_renewal
 Title: Enable SSL Certificate Auto-Renewal
 Description: Ensure that Auto-Renewal feature is enabled for your Azure Key Vault SSL certificates.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

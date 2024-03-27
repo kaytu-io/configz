@@ -2,7 +2,6 @@ ID: vulnerabilities_in_security_configuration_on_your_virtual_machine_scale_sets
 Title: Vulnerabilities in security configuration on your virtual machine scale sets should be remediated
 Description: Audit the OS vulnerabilities on your virtual machine scale sets to protect them from attacks.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, provisioning_state, type, location, do_not_run_extensions_on_overprovisioned_vms, overprovision, platform_fault_domain_count, single_placement_group, sku_name, sku_capacity, sku_tier, unique_id, extensions, identity, plan, scale_in_policy, tags_src, upgrade_policy, virtual_machine_diagnostics_profile, virtual_machine_extension_profile, virtual_machine_network_profile, virtual_machine_os_profile, virtual_machine_storage_profile, virtual_machine_security_profile, zones, title, tags, akas, region, resource_group, cloud_environment, subscription_id, kaytu_account_id, kaytu_resource_id, kaytu_metadata, kaytu_description, _ctx

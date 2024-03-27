@@ -2,7 +2,6 @@ ID: provide_privacy_notice_to_the_public_and_to_individuals
 Title: Provide privacy notice to the public and to individuals
 Description: CMA_C1861 - Provide privacy notice to the public and to individuals
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

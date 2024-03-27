@@ -2,7 +2,6 @@ ID: aws_check_for_fargate_platform_version
 Title: Check for Fargate Platform Version
 Description: Ensure that your Amazon ECS cluster services are using the latest Fargate platform version.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

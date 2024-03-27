@@ -2,7 +2,6 @@ ID: app_service_apps_should_have_remote_debugging_turned_off
 Title: App Service apps should have remote debugging turned off
 Description: Remote debugging requires inbound ports to be opened on an App Service app. Remote debugging should be turned off.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

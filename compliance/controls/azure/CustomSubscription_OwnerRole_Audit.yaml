@@ -2,7 +2,6 @@ ID: "[_deprecated]:_custom_subscription_owner_roles_should_not_exist"
 Title: "[Deprecated]: Custom subscription owner roles should not exist"
 Description: This policy is deprecated.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT role_name, role_type, assignable_scopes, permissions

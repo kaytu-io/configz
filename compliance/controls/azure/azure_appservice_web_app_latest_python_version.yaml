@@ -2,7 +2,6 @@ ID: azure_appservice_web_app_latest_python_version
 Title: Ensure that 'Python version' is the latest, if used as a part of the Web app
 Description: Periodically, newer versions are released for Python software either due to security flaws or to include additional functionality. Using the latest Python version for web apps is recommended in order to take advantage of security fixes, if any, and/or new functionalities of the latest version. Currently, this policy only applies to Linux web apps.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with all_web_app as (

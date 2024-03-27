@@ -2,7 +2,6 @@ ID: employ_fips_201_approved_technology_for_piv
 Title: Employ FIPS 201-approved technology for PIV
 Description: CMA_C1579 - Employ FIPS 201-approved technology for PIV
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

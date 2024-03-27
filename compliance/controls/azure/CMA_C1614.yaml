@@ -2,7 +2,6 @@ ID: require_developers_to_provide_unified_security_protection_approach
 Title: Require developers to provide unified security protection approach
 Description: CMA_C1614 - Require developers to provide unified security protection approach
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

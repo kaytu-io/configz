@@ -2,7 +2,6 @@ ID: function_apps_should_use_managed_identity
 Title: Function apps should use managed identity
 Description: Use a managed identity for enhanced authentication security
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

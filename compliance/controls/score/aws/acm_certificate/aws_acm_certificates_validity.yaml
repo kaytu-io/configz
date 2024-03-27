@@ -2,7 +2,6 @@ ID: aws_acm_certificates_validity
 Title: AWS ACM Certificates Validity
 Description: Ensure expired SSL/TLS certificates are removed from AWS Certificate Manager (ACM).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

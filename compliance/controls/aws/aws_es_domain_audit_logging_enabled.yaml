@@ -2,7 +2,6 @@ ID: aws_es_domain_audit_logging_enabled
 Title: Elasticsearch domains should have audit logging enabled
 Description: This control checks whether Elasticsearch domains have audit logging enabled. This control fails if an Elasticsearch domain does not have audit logging enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

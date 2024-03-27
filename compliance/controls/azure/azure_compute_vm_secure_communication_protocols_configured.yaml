@@ -2,7 +2,6 @@ ID: azure_compute_vm_secure_communication_protocols_configured
 Title: Windows web servers should be configured to use secure communication protocols
 Description: To protect the privacy of information communicated over the Internet, your web servers should use the latest version of the industry-standard cryptographic protocol, Transport Layer Security (TLS). TLS secures communications over a network by using security certificates to encrypt a connection between machines.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with compute_machine as(

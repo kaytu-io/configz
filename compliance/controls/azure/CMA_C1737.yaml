@@ -2,7 +2,6 @@ ID: implement_plans_of_action_and_milestones_for_security_program_process
 Title: Implement plans of action and milestones for security program process
 Description: CMA_C1737 - Implement plans of action and milestones for security program process
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

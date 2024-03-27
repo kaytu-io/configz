@@ -2,7 +2,6 @@ ID: automate_implementation_of_approved_change_notifications
 Title: Automate implementation of approved change notifications
 Description: CMA_C1196 - Automate implementation of approved change notifications
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

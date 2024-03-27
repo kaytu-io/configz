@@ -2,7 +2,6 @@ ID: document_protection_of_personal_data_in_acquisition_contracts
 Title: Document protection of personal data in acquisition contracts
 Description: CMA_0194 - Document protection of personal data in acquisition contracts
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

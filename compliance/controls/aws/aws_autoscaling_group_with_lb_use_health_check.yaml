@@ -2,7 +2,6 @@ ID: aws_autoscaling_group_with_lb_use_health_check
 Title: Auto Scaling groups with a load balancer should use health checks
 Description: The Elastic Load Balancer (ELB) health checks for Amazon Elastic Compute Cloud (Amazon EC2) Auto Scaling groups support maintenance of adequate capacity and availability.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: sql_servers_with_auditing_to_storage_account_destination_should_be_configure
 Title: SQL servers with auditing to storage account destination should be configured with 90 days retention or higher
 Description: For incident investigation purposes, we recommend setting the data retention for your SQL Server' auditing to storage account destination to at least 90 days. Confirm that you are meeting the necessary retention rules for the regions in which you are operating. This is sometimes required for compliance with regulatory standards.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, kind, kaytu_description->'ServerBlobAuditingPolicies'->0->'properties'->>'retentionDays' AS retention_days, kaytu_description->'ServerBlobAuditingPolicies'->0->'properties'->>'storageEndpoint' AS storage_endpoint, kaytu_description->'ServerBlobAuditingPolicies'->0->'properties'->>'isAzureMonitorTargetEnabled' AS is_azure_monitor_enabled

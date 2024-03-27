@@ -2,7 +2,6 @@ ID: aws_iam_user_no_inline_attached_policies
 Title: IAM user should not have any inline or attached policies
 Description: This rule ensures AWS Identity and Access Management (IAM) policies are attached only to groups or roles to control access to systems and assets.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

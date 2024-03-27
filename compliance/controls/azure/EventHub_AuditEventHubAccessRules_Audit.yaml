@@ -2,7 +2,6 @@ ID: authorization_rules_on_the_event_hub_instance_should_be_defined
 Title: Authorization rules on the Event Hub instance should be defined
 Description: Audit existence of authorization rules on Event Hub entities to grant least-privileged access
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

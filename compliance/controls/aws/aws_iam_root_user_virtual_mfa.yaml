@@ -2,7 +2,6 @@ ID: aws_iam_root_user_virtual_mfa
 Title: Virtual MFA should be enabled for the root user
 Description: This control checks whether users of your AWS account require a multi-factor authentication (MFA) device to sign in with root user credentials. It does not check whether you are using hardware MFA.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

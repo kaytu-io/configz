@@ -2,7 +2,6 @@ ID: azure_postgres_db_server_connection_throttling_on
 Title: Ensure server parameter 'connection_throttling' is set to 'ON' for PostgreSQL Database Server
 Description: Enable connection_throttling on PostgreSQL Servers.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

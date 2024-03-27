@@ -2,7 +2,6 @@ ID: aws_rds_reserved_db_instance_lease_expiration_in_the_next_7_days
 Title: RDS Reserved DB Instance Lease Expiration In The Next 7 Days
 Description: Ensure Amazon RDS Reserved Instances (RI) are renewed before expiration.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

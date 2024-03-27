@@ -2,7 +2,6 @@ ID: aws_opensearch_slow_logs
 Title: AWS OpenSearch Slow Logs
 Description: Ensure that your AWS OpenSearch domains publish slow logs to AWS CloudWatch Logs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

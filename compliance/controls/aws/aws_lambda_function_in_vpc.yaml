@@ -2,7 +2,6 @@ ID: aws_lambda_function_in_vpc
 Title: Lambda functions should be in a VPC
 Description: Deploy AWS Lambda functions within an Amazon Virtual Private Cloud (Amazon VPC) for a secure communication between a function and other services within the Amazon VPC.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

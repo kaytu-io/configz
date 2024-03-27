@@ -2,7 +2,6 @@ ID: azure_sql_server_auditing_on
 Title: Ensure that 'Auditing' is set to 'On'
 Description: Enable auditing on SQL Servers.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

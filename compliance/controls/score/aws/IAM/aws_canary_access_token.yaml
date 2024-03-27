@@ -2,7 +2,6 @@ ID: aws_canary_access_token
 Title: Canary Access Token
 Description: Detects when a canary token access key has been used
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with users as (

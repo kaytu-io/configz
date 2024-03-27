@@ -2,7 +2,6 @@ ID: aws_ebs_encrypted_with_kms_customer_master_keys
 Title: EBS Encrypted With KMS Customer Master Keys
 Description: Ensure EBS volumes are encrypted with CMKs to have full control over encrypting and decrypting data.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

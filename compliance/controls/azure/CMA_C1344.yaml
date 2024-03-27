@@ -2,7 +2,6 @@ ID: obscure_feedback_information_during_authentication_process
 Title: Obscure feedback information during authentication process
 Description: CMA_C1344 - Obscure feedback information during authentication process
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

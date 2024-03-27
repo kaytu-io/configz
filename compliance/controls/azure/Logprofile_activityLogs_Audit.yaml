@@ -2,7 +2,6 @@ ID: azure_subscriptions_should_have_a_log_profile_for_activity_log
 Title: Azure subscriptions should have a log profile for Activity Log
 Description: This policy ensures if a log profile is enabled for exporting activity logs. It audits if there is no log profile created to export the logs either to a storage account or to an event hub.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

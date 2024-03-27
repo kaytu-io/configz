@@ -2,7 +2,6 @@ ID: aws_ec2_instance_uses_imdsv2
 Title: EC2 instances should use IMDSv2
 Description: Ensure the Instance Metadata Service Version 2 (IMDSv2) method is enabled to help protect access and control of Amazon Elastic Compute Cloud (Amazon EC2) instance metadata.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

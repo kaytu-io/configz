@@ -2,7 +2,6 @@ ID: not_allow_for_information_systems_to_accompany_with_individuals
 Title: Not allow for information systems to accompany with individuals
 Description: CMA_C1182 - Not allow for information systems to accompany with individuals
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

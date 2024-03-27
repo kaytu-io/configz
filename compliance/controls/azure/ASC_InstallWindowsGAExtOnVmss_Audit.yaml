@@ -2,7 +2,6 @@ ID: "[_preview]:_guest_attestation_extension_should_be_installed_on_supported_wi
 Title: "[Preview]: Guest Attestation extension should be installed on supported Windows virtual machines scale sets"
 Description: Install Guest Attestation extension on supported virtual machines scale sets to allow Azure Security Center to proactively attest and monitor the boot integrity. Once installed, boot integrity will be attested via Remote Attestation. This assessment applies to Trusted Launch and Confidential Windows virtual machine scale sets.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, id, provisioning_state, type, location, do_not_run_extensions_on_overprovisioned_vms, overprovision, platform_fault_domain_count, single_placement_group, sku_name, sku_capacity, sku_tier, unique_id, extensions, kaytu_description

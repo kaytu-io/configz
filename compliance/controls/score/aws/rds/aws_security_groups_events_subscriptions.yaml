@@ -2,7 +2,6 @@ ID: aws_security_groups_events_subscriptions
 Title: Security Groups Events Subscriptions
 Description: Enable Event Subscriptions for DB Security Groups Events.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select distinct

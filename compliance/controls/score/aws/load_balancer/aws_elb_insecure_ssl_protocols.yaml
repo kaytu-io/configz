@@ -2,7 +2,6 @@ ID: aws_elb_insecure_ssl_protocols
 Title: ELB Insecure SSL Protocols
 Description: Ensure ELBs don't use insecure SSL protocols.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with detailed_classic_listeners as (

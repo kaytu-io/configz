@@ -2,7 +2,6 @@ ID: ensure_security_safeguards_not_needed_when_the_individuals_return
 Title: Ensure security safeguards not needed when the individuals return
 Description: CMA_C1183 - Ensure security safeguards not needed when the individuals return
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

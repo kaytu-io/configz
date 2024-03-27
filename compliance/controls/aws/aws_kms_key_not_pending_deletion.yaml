@@ -2,7 +2,6 @@ ID: aws_kms_key_not_pending_deletion
 Title: KMS keys should not be pending deletion
 Description: To help protect data at rest, ensure necessary customer master keys (CMKs) are not scheduled for deletion in AWS Key Management Service (AWS KMS).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_use_byok_for_transparent_data_encryption
 Title: Use BYOK for Transparent Data Encryption
 Description: Use Bring Your Own Key (BYOK) support for Transparent Data Encryption (TDE).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

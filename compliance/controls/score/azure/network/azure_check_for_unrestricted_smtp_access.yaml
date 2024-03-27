@@ -2,7 +2,6 @@ ID: azure_check_for_unrestricted_smtp_access
 Title: Check for Unrestricted SMTP Access
 Description: Ensure that no network security groups allow unrestricted inbound access on TCP port 25.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

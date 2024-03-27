@@ -2,7 +2,6 @@ ID: certificates_should_be_issued_by_the_specified_integrated_certificate_author
 Title: Certificates should be issued by the specified integrated certificate authority
 Description: Manage your organizational compliance requirements by specifying the Azure integrated certificate authorities that can issue certificates in your key vault such as Digicert or GlobalSign.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

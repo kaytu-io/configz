@@ -2,7 +2,6 @@ ID: aws_lambda_function_restrict_public_access
 Title: Lambda functions should restrict public access
 Description: Manage access to resources in the AWS Cloud by ensuring AWS Lambda functions cannot be publicly accessed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with wildcard_action_policies as (

@@ -2,7 +2,6 @@ ID: kubernetes_cluster_containers_should_only_use_allowed_images
 Title: Kubernetes cluster containers should only use allowed images
 Description: Use images from trusted registries to reduce the Kubernetes cluster's exposure risk to unknown vulnerabilities, security issues and malicious images. For more information, see https://aka.ms/kubepolicydoc.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

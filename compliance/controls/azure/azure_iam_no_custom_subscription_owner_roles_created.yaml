@@ -2,7 +2,6 @@ ID: azure_iam_no_custom_subscription_owner_roles_created
 Title: Ensure that no custom subscription owner roles are created
 Description: Subscription ownership should not include permission to create custom owner roles. The principle of least privilege should be followed and only necessary privileges should be assigned instead of allowing full administrative access.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with owner_custom_roles as (

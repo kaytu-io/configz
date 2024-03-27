@@ -2,7 +2,6 @@ ID: aws_ebs_volume_protected_by_backup_plan
 Title: EBS volumes should be protected by a backup plan
 Description: Ensure if Amazon Elastic Block Store (Amazon EBS) volumes are protected by a backup plan. The rule is non compliant if the Amazon EBS volume is not covered by a backup plan.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with backup_protected_volume as (

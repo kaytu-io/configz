@@ -2,7 +2,6 @@ ID: aws_elb_application_lb_desync_mitigation_mode
 Title: Application Load Balancers should be configured with defensive or strictest desync mitigation mode
 Description: This control checks whether an Application Load Balancer is configured with defensive or strictest desync mitigation mode. The control fails if an Application Load Balancer is not configured with defensive or strictest desync mitigation mode.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with app_lb_desync_mitigation_mode as (

@@ -2,7 +2,6 @@ ID: issue_guidelines_for_ensuring_data_quality_and_integrity
 Title: Issue guidelines for ensuring data quality and integrity
 Description: CMA_C1824 - Issue guidelines for ensuring data quality and integrity
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

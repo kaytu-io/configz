@@ -2,7 +2,6 @@ ID: azure_check_for_accelerated_networking_for_virtual_machines
 Title: Check for Accelerated Networking for Virtual Machines
 Description: Ensure that Microsoft Azure virtual machines are configured to use accelerated networking.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

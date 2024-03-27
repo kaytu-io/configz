@@ -2,7 +2,6 @@ ID: aws_api_gwv2_authorization_type_configured
 Title: API Gatewayv2 API routes should have an authorization type set
 Description: Checks if Amazon API Gatewayv2 API routes have an authorization type set. This rule is ALARM if the authorization type is NONE.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT

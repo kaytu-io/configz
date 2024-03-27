@@ -2,7 +2,6 @@ ID: azure_datalake_store_account_encryption_enabled
 Title: Require encryption on Data Lake Store accounts
 Description: This policy ensures encryption is enabled on all Data Lake Store accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

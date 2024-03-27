@@ -2,7 +2,6 @@ ID: aws_s3_bucket_versioning_enabled
 Title: S3 bucket versioning should be enabled
 Description: Amazon Simple Storage Service (Amazon S3) bucket versioning helps keep multiple variants of an object in the same Amazon S3 bucket.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

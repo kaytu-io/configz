@@ -2,7 +2,6 @@ ID: azure_sql_server_va_setting_reports_notify_admins
 Title: Ensure that VA setting 'Also send email notifications to admins and subscription owners' is set for a SQL server
 Description: Enable Vulnerability Assessment (VA) setting 'Also send email notifications to admins and subscription owners'.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

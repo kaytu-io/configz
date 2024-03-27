@@ -2,7 +2,6 @@ ID: aws_iam_root_user_hardware_mfa_enabled
 Title: IAM root user hardware MFA should be enabled
 Description: Manage access to resources in the AWS Cloud by ensuring hardware MFA is enabled for the root user.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

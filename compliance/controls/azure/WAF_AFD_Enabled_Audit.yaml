@@ -2,7 +2,6 @@ ID: azure_web_application_firewall_should_be_enabled_for_azure_front_door_entry_
 Title: Azure Web Application Firewall should be enabled for Azure Front Door entry-points
 Description: Deploy Azure Web Application Firewall (WAF) in front of public facing web applications for additional inspection of incoming traffic. Web Application Firewall (WAF) provides centralized protection of your web applications from common exploits and vulnerabilities such as SQL injections, Cross-Site Scripting, local and remote file executions. You can also restrict access to your web applications by countries, IP address ranges, and other http(s) parameters via custom rules.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_frontdoor\nWHERE type = 'Microsoft.Network/frontdoors'\nAND (frontend_endpoints->'webApplicationFirewallPolicyLink'->>'id' IS NULL\nOR kaytu_description->'FrontdoorDescription'->'FrontDoor'->'Properties'->'FrontendEndpoints' @> '[{\"Properties\": {\"WebApplicationFirewallPolicyLink\": {\"ID\": null}}}]')\nLIMIT 5;;\n"
   Connector:

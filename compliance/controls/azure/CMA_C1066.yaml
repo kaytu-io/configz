@@ -2,7 +2,6 @@ ID: provide_capability_to_disconnect_or_disable_remote_access
 Title: Provide capability to disconnect or disable remote access
 Description: CMA_C1066 - Provide capability to disconnect or disable remote access
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

@@ -2,7 +2,6 @@ ID: aws_kubernetes_cluster_logging
 Title: Kubernetes Cluster Logging
 Description: Ensure that EKS control plane logging is enabled for your Amazon EKS clusters.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

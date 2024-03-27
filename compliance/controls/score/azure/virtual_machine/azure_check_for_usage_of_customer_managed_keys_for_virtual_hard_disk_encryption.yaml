@@ -2,7 +2,6 @@ ID: azure_check_for_usage_of_customer_managed_keys_for_virtual_hard_disk_encrypt
 Title: Check for usage of Customer Managed Keys for Virtual Hard Disk Encryption
 Description: Ensure that Customer Managed Keys are used to encrypt Virtual Hard Disk (VHD) volumes.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_check_for_unrestricted_rpc_access
 Title: Check for Unrestricted RPC Access
 Description: Ensure that no network security groups allow unrestricted inbound access on TCP port 135.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

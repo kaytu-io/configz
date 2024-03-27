@@ -2,7 +2,6 @@ ID: aws_root_account_access_keys_present
 Title: Root Account Access Keys Present
 Description: Ensure that your AWS root account is not using access keys as a security best practice.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

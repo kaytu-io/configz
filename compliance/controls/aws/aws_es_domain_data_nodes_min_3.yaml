@@ -2,7 +2,6 @@ ID: aws_es_domain_data_nodes_min_3
 Title: Elasticsearch domains should have at least three data nodes
 Description: This control checks whether Elasticsearch domains are configured with at least three data nodes and zoneAwarenessEnabled is true.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_enable_automatic_failover
 Title: Enable Automatic Failover
 Description: Enable automatic failover for Microsoft Azure Cosmos DB accounts.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

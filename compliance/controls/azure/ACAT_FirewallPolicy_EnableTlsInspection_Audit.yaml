@@ -2,7 +2,6 @@ ID: azure_firewall_premium_should_configure_a_valid_intermediate_certificate_to_
 Title: Azure Firewall Premium should configure a valid intermediate certificate to enable TLS inspection
 Description: Configure a valid intermediate certificate and enable Azure Firewall Premium TLS inspection to detect, alert, and mitigate malicious activity in HTTPS. To learn more about TLS inspection with Azure Firewall, visit https://aka.ms/fw-tlsinspect
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

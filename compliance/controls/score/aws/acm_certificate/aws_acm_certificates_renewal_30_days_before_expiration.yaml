@@ -2,7 +2,6 @@ ID: aws_acm_certificates_renewal_30_days_before_expiration
 Title: AWS ACM Certificates Renewal (30 days before expiration)
 Description: Ensure Amazon Certificate Manager (ACM) certificates are renewed before their expiration.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

@@ -2,7 +2,6 @@ ID: aws_backup_recovery_point_manual_deletion_disabled
 Title: Backup recovery points manual deletion should be disabled
 Description: Checks if a backup vault has an attached resource-based policy which prevents deletion of recovery points. The rule is non compliant if the Backup Vault does not have resource-based policies or has policies without a suitable 'Deny' statement.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with recovery_point_manual_deletion_disabled as (

@@ -2,7 +2,6 @@ ID: azure_check_for_sufficient_certificate_auto_renewal_period
 Title: Check for Sufficient Certificate Auto-Renewal Period
 Description: Ensure there is a sufficient period configured for the SSL certificates auto-renewal.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

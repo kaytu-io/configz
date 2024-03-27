@@ -2,7 +2,6 @@ ID: aws_codebuild_project_environment_privileged_mode_disabled
 Title: CodeBuild project environments should not have privileged mode enabled
 Description: This control checks if an AWS CodeBuild project environment has privileged mode enabled. This control fails when an AWS CodeBuild project environment has privileged mode enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

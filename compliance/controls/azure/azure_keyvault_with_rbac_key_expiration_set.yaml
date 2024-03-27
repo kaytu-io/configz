@@ -2,7 +2,6 @@ ID: azure_keyvault_with_rbac_key_expiration_set
 Title: Ensure that the Expiration Date is set for all Keys in RBAC Key Vaults
 Description: Ensure that all Keys in Role Based Access Control (RBAC) Azure Key Vaults have an expiration time set.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with rbac_vault as (

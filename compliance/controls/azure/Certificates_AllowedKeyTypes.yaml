@@ -2,7 +2,6 @@ ID: certificates_should_use_allowed_key_types
 Title: Certificates should use allowed key types
 Description: Manage your organizational compliance requirements by restricting the key types allowed for certificates.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

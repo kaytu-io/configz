@@ -2,7 +2,6 @@ ID: azure_enable_automatic_tuning_for_sql_database_servers
 Title: Enable Automatic Tuning for SQL Database Servers
 Description: Ensure that Automatic Tuning feature is enabled for Microsoft Azure SQL database servers.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

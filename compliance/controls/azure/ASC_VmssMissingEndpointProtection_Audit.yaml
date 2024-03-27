@@ -2,7 +2,6 @@ ID: endpoint_protection_solution_should_be_installed_on_virtual_machine_scale_se
 Title: Endpoint protection solution should be installed on virtual machine scale sets
 Description: Audit the existence and health of an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

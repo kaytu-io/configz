@@ -2,7 +2,6 @@ ID: aws_enable_aws_rds_transport_encryption
 Title: Enable AWS RDS Transport Encryption
 Description: Ensure AWS RDS SQL Server and Postgre instances have Transport Encryption feature enabled.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     with instance_pg as (

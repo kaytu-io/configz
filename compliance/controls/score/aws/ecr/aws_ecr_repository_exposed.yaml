@@ -2,7 +2,6 @@ ID: aws_ecr_repository_exposed
 Title: ECR Repository Exposed
 Description: Ensure that AWS Elastic Container Registry (ECR) repositories are not exposed to everyone.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

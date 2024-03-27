@@ -2,7 +2,6 @@ ID: azure_sql_db_active_directory_admin_configured
 Title: Ensure that Azure Active Directory Admin is configured
 Description: Use Azure Active Directory Authentication for authentication with SQL Database.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

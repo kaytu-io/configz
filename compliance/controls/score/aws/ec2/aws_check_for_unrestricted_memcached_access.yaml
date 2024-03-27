@@ -2,7 +2,6 @@ ID: aws_check_for_unrestricted_memcached_access
 Title: Check for Unrestricted Memcached Access
 Description: Ensure that no security group allows unrestricted inbound access on TCP/UDP port 11211 (Memcached).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH open_sg AS (

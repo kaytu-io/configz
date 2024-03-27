@@ -2,7 +2,6 @@ ID: app_service_apps_should_require_ftps_only
 Title: App Service apps should require FTPS only
 Description: Enable FTPS enforcement for enhanced security.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

@@ -2,7 +2,6 @@ ID: aws_elb_classic_lb_use_ssl_certificate
 Title: ELB classic load balancers should use SSL certificates
 Description: Because sensitive data can exist and to help protect data at transit, ensure encryption is enabled for your Elastic Load Balancing.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with detailed_classic_listeners as (

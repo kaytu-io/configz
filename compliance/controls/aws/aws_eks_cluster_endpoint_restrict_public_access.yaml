@@ -2,7 +2,6 @@ ID: aws_eks_cluster_endpoint_restrict_public_access
 Title: EKS clusters endpoint should restrict public access
 Description: Ensure whether Amazon Elastic Kubernetes Service (Amazon EKS) endpoint is not publicly accessible. The rule is compliant if the endpoint is publicly accessible.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

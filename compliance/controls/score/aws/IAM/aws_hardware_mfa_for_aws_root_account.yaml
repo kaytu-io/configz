@@ -2,7 +2,6 @@ ID: aws_hardware_mfa_for_aws_root_account
 Title: Hardware MFA for AWS Root Account
 Description: Ensure hardware MFA is enabled for the 'root' account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: conduct_a_full_text_analysis_of_logged_privileged_commands
 Title: Conduct a full text analysis of logged privileged commands
 Description: CMA_0056 - Conduct a full text analysis of logged privileged commands
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

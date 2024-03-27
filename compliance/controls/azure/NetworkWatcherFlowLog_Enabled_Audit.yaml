@@ -2,7 +2,6 @@ ID: all_flow_log_resources_should_be_in_enabled_state
 Title: All flow log resources should be in enabled state
 Description: Audit for flow log resources to verify if flow log status is enabled. Enabling flow logs allows to log information about IP traffic flowing. It can be used for optimizing network flows, monitoring throughput, verifying compliance, detecting intrusions and more.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

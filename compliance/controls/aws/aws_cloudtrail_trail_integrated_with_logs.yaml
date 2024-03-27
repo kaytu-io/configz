@@ -2,7 +2,6 @@ ID: aws_cloudtrail_trail_integrated_with_logs
 Title: CloudTrail trails should be integrated with CloudWatch logs
 Description: Use Amazon CloudWatch to centrally collect and manage log event activity. Inclusion of AWS CloudTrail data provides details of API call activity within your AWS account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

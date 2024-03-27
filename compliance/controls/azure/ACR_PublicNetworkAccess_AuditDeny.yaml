@@ -2,7 +2,6 @@ ID: public_network_access_should_be_disabled_for_container_registries
 Title: Public network access should be disabled for Container registries
 Description: "Disabling public network access improves security by ensuring that container registries are not exposed on the public internet. Creating private endpoints can limit exposure of container registry resources. Learn more at: https://aka.ms/acr/portal/public-network and https://aka.ms/acr/private-link."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, kaytu_description->'Registry'->'Properties'->>'PublicNetworkAccess' AS public_network_access

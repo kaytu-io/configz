@@ -2,7 +2,6 @@ ID: azure_check_for_automatic_os_upgrades
 Title: Check for Automatic OS Upgrades
 Description: Ensure that Automatic OS Upgrades feature is enabled for your Azure virtual machine scale sets.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

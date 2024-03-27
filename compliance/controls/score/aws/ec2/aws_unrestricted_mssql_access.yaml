@@ -2,7 +2,6 @@ ID: aws_unrestricted_mssql_access
 Title: Unrestricted MsSQL Access
 Description: Ensure no security group allows unrestricted ingress access to port 1433.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

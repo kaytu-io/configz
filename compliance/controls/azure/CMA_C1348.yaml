@@ -2,7 +2,6 @@ ID: accept_only_ficam_approved_third_party_credentials
 Title: Accept only FICAM-approved third-party credentials
 Description: CMA_C1348 - Accept only FICAM-approved third-party credentials
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

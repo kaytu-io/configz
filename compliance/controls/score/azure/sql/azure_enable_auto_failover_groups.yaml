@@ -2,7 +2,6 @@ ID: azure_enable_auto_failover_groups
 Title: Enable Auto-Failover Groups
 Description: Ensure that your Azure SQL database servers are configured to use auto-failover groups.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_vpc_subnet_auto_assign_public_ip_disabled
 Title: VPC subnet auto assign public IP should be disabled
 Description: Ensure if Amazon Virtual Private Cloud (Amazon VPC) subnets are assigned a public IP address. The control is compliant if Amazon VPC does not have subnets that are assigned a public IP address. The control is non compliant if Amazon VPC has subnets that are assigned a public IP address.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_ebs_volume_unused
 Title: EBS volumes should be attached to EC2 instances
 Description: Checks if EBS volumes are attached to EC2 instances.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: aws_lambda_function_multiple_az_configured
 Title: VPC Lambda functions should operate in more than one Availability Zone
 Description: This control checks if Lambda has more than one availability zone associated. The rule fails if only one availability zone is associated with Lambda.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

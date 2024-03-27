@@ -2,7 +2,6 @@ ID: restrict_unauthorized_software_and_firmware_installation
 Title: Restrict unauthorized software and firmware installation
 Description: CMA_C1205 - Restrict unauthorized software and firmware installation
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

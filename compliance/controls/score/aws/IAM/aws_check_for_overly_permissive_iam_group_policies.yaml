@@ -2,7 +2,6 @@ ID: aws_check_for_overly_permissive_iam_group_policies
 Title: Check for Overly Permissive IAM Group Policies
 Description: Ensure that Amazon IAM policies attached to IAM groups aren't too permissive.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     WITH too_permissive_policies AS (

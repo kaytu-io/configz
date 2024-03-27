@@ -2,7 +2,6 @@ ID: aws_account_alternate_contacts
 Title: Account Alternate Contacts
 Description: Ensure alternate contacts are set to improve the security of your AWS account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

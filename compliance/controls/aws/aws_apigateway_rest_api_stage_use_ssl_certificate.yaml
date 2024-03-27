@@ -2,7 +2,6 @@ ID: aws_apigateway_rest_api_stage_use_ssl_certificate
 Title: API Gateway stage should uses SSL certificate
 Description: Ensure if a REST API stage uses a Secure Sockets Layer (SSL) certificate. This rule is compliant if the REST API stage does not have an associated SSL certificate.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

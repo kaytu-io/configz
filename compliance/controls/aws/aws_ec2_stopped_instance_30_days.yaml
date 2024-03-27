@@ -2,7 +2,6 @@ ID: aws_ec2_stopped_instance_30_days
 Title: EC2 stopped instances should be removed in 30 days
 Description: Enable this rule to help with the baseline configuration of Amazon Elastic Compute Cloud (Amazon EC2) instances by checking whether Amazon EC2 instances have been stopped for more than the allowed number of days, according to your organization's standards.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

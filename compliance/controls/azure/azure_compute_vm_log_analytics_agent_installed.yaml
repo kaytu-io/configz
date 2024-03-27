@@ -2,7 +2,6 @@ ID: azure_compute_vm_log_analytics_agent_installed
 Title: Virtual machines should have the Log Analytics extension installed
 Description: This policy audits any Windows/Linux virtual machines if the Log Analytics extension is not installed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with agent_installed_vm as (

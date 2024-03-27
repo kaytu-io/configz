@@ -2,7 +2,6 @@ ID: azure_appservice_web_app_incoming_client_cert_on
 Title: Ensure the web app has 'Client Certificates (Incoming client certificates)' set to 'On'
 Description: Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

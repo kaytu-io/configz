@@ -2,7 +2,6 @@ ID: aws_rds_db_cluster_events_subscription
 Title: An RDS event notifications subscription should be configured for critical cluster events
 Description: This control checks whether an Amazon RDS event subscription exists that has notifications enabled for the following source type, event category key-value pairs.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

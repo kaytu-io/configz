@@ -2,7 +2,6 @@ ID: function_apps_should_not_have_cors_configured_to_allow_every_resource_to_acc
 Title: Function apps should not have CORS configured to allow every resource to access your apps
 Description: Cross-Origin Resource Sharing (CORS) should not allow all domains to access your Function app. Allow only required domains to interact with your Function app.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

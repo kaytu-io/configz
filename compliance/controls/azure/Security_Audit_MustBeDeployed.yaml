@@ -2,7 +2,6 @@ ID: azure_monitor_solution_'_security_and_audit'_must_be_deployed
 Title: Azure Monitor solution 'Security and Audit' must be deployed
 Description: This policy ensures that Security and Audit is deployed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

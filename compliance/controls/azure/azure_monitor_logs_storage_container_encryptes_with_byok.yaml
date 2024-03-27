@@ -2,7 +2,6 @@ ID: azure_monitor_logs_storage_container_encryptes_with_byok
 Title: Ensure the storage account containing the container with activity logs is encrypted with BYOK (Use Your Own Key)
 Description: The storage account with the activity log export container is configured to use BYOK (Use Your Own Key).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

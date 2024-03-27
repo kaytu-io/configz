@@ -2,7 +2,6 @@ ID: aws_unrestricted_ftp_access
 Title: Unrestricted FTP Access
 Description: Ensure no security group allows unrestricted inbound access to TCP ports 20 and 21 (FTP).
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with ingress_sg as (

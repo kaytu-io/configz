@@ -2,7 +2,6 @@ ID: aws_multi_account_centralized_management
 Title: AWS Multi-Account Centralized Management
 Description: Set up, organize and manage your AWS accounts for optimal security and manageability.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

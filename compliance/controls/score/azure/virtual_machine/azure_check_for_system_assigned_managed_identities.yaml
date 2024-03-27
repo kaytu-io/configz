@@ -2,7 +2,6 @@ ID: azure_check_for_system_assigned_managed_identities
 Title: Check for System-Assigned Managed Identities
 Description: Ensure that Azure virtual machines are configured to use system-assigned managed identities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

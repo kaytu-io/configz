@@ -2,7 +2,6 @@ ID: sql_database_should_avoid_using_grs_backup_redundancy
 Title: SQL Database should avoid using GRS backup redundancy
 Description: "Databases should avoid using the default geo-redundant storage for backups, if data residency rules require data to stay within a specific region. Note: Azure Policy is not enforced when creating a database using T-SQL. If not explicitly specified, database with geo-redundant backup storage is created via T-SQL."
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

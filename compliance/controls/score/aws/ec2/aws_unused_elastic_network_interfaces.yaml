@@ -2,7 +2,6 @@ ID: aws_unused_elastic_network_interfaces
 Title: Unused Elastic Network Interfaces
 Description: Identify and delete any unused Elastic Network Interfaces
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

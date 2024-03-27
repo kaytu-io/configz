@@ -2,7 +2,6 @@ ID: aws_unrestricted_network_acl_outbound_traffic
 Title: Unrestricted Network ACL Outbound Traffic
 Description: Ensure that no Network ACL (NACL) allows outbound/egress traffic to all ports.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

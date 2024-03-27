@@ -2,7 +2,6 @@ ID: prohibit_remote_activation_of_collaborative_computing_devices
 Title: Prohibit remote activation of collaborative computing devices
 Description: CMA_C1648 - Prohibit remote activation of collaborative computing devices
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

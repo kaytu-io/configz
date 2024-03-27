@@ -2,7 +2,6 @@ ID: system_updates_on_virtual_machine_scale_sets_should_be_installed
 Title: System updates on virtual machine scale sets should be installed
 Description: Audit whether there are any missing system security updates and critical updates that should be installed to ensure that your Windows and Linux virtual machine scale sets are secure.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

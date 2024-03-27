@@ -2,7 +2,6 @@ ID: azuread_spn_with_more_than_one_active_client_certificate
 Title: SPNs in AzureAD should not have more than one active Client Certificate
 Description: SPNs in AzureAD should not have more than one active Client Certificate
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with azuread_apps as (

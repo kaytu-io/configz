@@ -2,7 +2,6 @@ ID: aws_unassociated_elastic_ip_addresses
 Title: Unassociated Elastic IP Addresses
 Description: Identify unassociated Elastic IP addresses, and delete them to help lower the cost of your monthly AWS bill.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

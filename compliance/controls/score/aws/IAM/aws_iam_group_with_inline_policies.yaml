@@ -2,7 +2,6 @@ ID: aws_iam_group_with_inline_policies
 Title: IAM Group With Inline Policies
 Description: Ensure IAM groups don't have inline policies attached.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

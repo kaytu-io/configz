@@ -2,7 +2,6 @@ ID: aws_elasticache_replication_group_encryption_in_transit_enabled
 Title: ElastiCache for Redis replication groups should be encrypted in transit
 Description: This control checks if ElastiCache for Redis replication groups are encrypted in transit. This control fails if an ElastiCache for Redis replication group isn't encrypted in transit.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

@@ -2,7 +2,6 @@ ID: azure_iam_external_user_with_owner_role
 Title: Guest accounts with owner permissions on Azure resources should be removed
 Description: External accounts with owner permissions should be removed from your subscription in order to prevent unmonitored access.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with all_owner_users as (

@@ -2,7 +2,6 @@ ID: azure_network_sg_flowlog_retention_period_greater_than_90
 Title: Ensure that Network Security Group Flow Log retention period is 'greater than 90 days'
 Description: Network Security Group Flow Logs should be enabled and the retention period is set to greater than or equal to 90 days.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

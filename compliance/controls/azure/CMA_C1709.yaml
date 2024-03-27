@@ -2,7 +2,6 @@ ID: perform_security_function_verification_at_a_defined_frequency
 Title: Perform security function verification at a defined frequency
 Description: CMA_C1709 - Perform security function verification at a defined frequency
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

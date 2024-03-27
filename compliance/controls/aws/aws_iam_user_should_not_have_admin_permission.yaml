@@ -2,7 +2,6 @@ ID: aws_iam_user_should_not_have_admin_permission
 Title: An IAM privileged user should not have admin permissions in AWS
 Description: ""
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with users_with_admin_access as (

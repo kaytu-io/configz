@@ -2,7 +2,6 @@ ID: azure_restrict_default_network_access_for_azure_cosmos_db_accounts
 Title: Restrict Default Network Access for Azure Cosmos DB Accounts
 Description: Ensure that default network access (i.e. public access) is denied within your Azure Cosmos DB account configuration.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

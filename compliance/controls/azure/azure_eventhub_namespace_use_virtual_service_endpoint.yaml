@@ -2,7 +2,6 @@ ID: azure_eventhub_namespace_use_virtual_service_endpoint
 Title: Event Hub should use a virtual network service endpoint
 Description: This policy audits any Event Hub not configured to use a virtual network service endpoint.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with eventhub_namesapce_with_virtual_network as (

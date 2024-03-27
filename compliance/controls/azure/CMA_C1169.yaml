@@ -2,7 +2,6 @@ ID: analyse_data_obtained_from_continuous_monitoring
 Title: Analyse data obtained from continuous monitoring
 Description: CMA_C1169 - Analyse data obtained from continuous monitoring
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

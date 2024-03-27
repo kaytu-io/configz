@@ -2,7 +2,6 @@ ID: azure_synapse_analytics_dedicated_sql_pools_should_enable_encryption
 Title: Azure Synapse Analytics dedicated SQL pools should enable encryption
 Description: Enable transparent data encryption for Azure Synapse Analytics dedicated SQL pools to protect data-at-rest and meet compliance requirements. Please note that enabling transparent data encryption for the pool may impact query performance. More details can refer to https://go.microsoft.com/fwlink/?linkid=2147714
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

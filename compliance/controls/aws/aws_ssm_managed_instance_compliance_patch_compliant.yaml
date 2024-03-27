@@ -2,7 +2,6 @@ ID: aws_ssm_managed_instance_compliance_patch_compliant
 Title: SSM managed instance patching should be compliant
 Description: Enable this rule to help with identification and documentation of Amazon Elastic Compute Cloud (Amazon EC2) vulnerabilities.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

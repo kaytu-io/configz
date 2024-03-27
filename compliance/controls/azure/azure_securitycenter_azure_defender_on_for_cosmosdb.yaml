@@ -2,7 +2,6 @@ ID: azure_securitycenter_azure_defender_on_for_cosmosdb
 Title: "Ensure That Microsoft Defender for Cosmos DB Is Set To 'On' "
 Description: Microsoft Defender for Cosmos DB scans all incoming network requests for changes to your virtual machine.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

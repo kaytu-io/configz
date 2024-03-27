@@ -2,7 +2,6 @@ ID: aws_rds_multi_az
 Title: RDS Multi-AZ
 Description: Ensure RDS instances are launched into Multi-AZ.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

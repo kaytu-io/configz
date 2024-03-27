@@ -2,7 +2,6 @@ ID: aws_rds_db_cluster_multiple_az_enabled
 Title: RDS DB clusters should be configured for multiple Availability Zones
 Description: This control checks whether high availability is enabled for your RDS DB clusters. RDS DB clusters should be configured for multiple Availability Zones to ensure availability of the data that is stored.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

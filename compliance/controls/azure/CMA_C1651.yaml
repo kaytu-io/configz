@@ -2,7 +2,6 @@ ID: define_acceptable_and_unacceptable_mobile_code_technologies
 Title: Define acceptable and unacceptable mobile code technologies
 Description: CMA_C1651 - Define acceptable and unacceptable mobile code technologies
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

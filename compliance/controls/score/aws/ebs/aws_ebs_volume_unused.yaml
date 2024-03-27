@@ -2,7 +2,6 @@ ID: aws_ebs_volume_unused
 Title: Unused EBS Volumes
 Description: Identify any unused Elastic Block Store volumes to improve cost optimization and security.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

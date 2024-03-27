@@ -2,7 +2,6 @@ ID: integrate_audit_record_analysis
 Title: Integrate Audit record analysis
 Description: CMA_C1120 - Integrate Audit record analysis
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

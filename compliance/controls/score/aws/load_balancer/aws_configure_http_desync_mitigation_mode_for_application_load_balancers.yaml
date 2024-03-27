@@ -2,7 +2,6 @@ ID: aws_configure_http_desync_mitigation_mode_for_application_load_balancers
 Title: Configure HTTP Desync Mitigation Mode for Application Load Balancers
 Description: Ensure that the suitable Desync Mitigation mode is configured for your Application Load Balancers.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with app_lb_desync_mitigation_mode as (

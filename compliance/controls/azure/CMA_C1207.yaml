@@ -2,7 +2,6 @@ ID: review_and_reevaluate_privileges
 Title: Review and reevaluate privileges
 Description: CMA_C1207 - Review and reevaluate privileges
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

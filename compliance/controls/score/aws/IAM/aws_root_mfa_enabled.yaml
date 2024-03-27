@@ -2,7 +2,6 @@ ID: aws_root_mfa_enabled
 Title: Root MFA Enabled
 Description: Ensure that Multi-Factor Authentication (MFA) is enabled for your AWS root account.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

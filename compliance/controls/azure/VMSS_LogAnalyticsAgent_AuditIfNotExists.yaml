@@ -2,7 +2,6 @@ ID: the_log_analytics_extension_should_be_installed_on_virtual_machine_scale_set
 Title: The Log Analytics extension should be installed on Virtual Machine Scale Sets
 Description: This policy audits any Windows/Linux Virtual Machine Scale Sets if the Log Analytics extension is not installed.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT name, provisioning_state, kaytu_description->'VirtualMachineScaleSetExtension'->>0->>'ProvisioningState' AS extensions_provisioning_state, kaytu_description->'VirtualMachineScaleSetExtension'->>0->>'Publisher' AS extensions_publisher, kaytu_description->'VirtualMachineScaleSetExtension'->>0->'Settings'->>'workspaceId' AS extensions_workspace_id, kaytu_description->'VirtualMachineScaleSetExtension'->>0->>'Type' AS extensions_type

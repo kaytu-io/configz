@@ -2,7 +2,6 @@ ID: aws_sso_users_with_permission_assignments_are_required_to_have_MFA_on_AzureA
 Title: AWS SSO Users with Permission Assignments are required to have MFA on AzureAD
 Description: AWS SSO Users with Permission Assignments are required to have MFA on AzureAD
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select 

@@ -2,7 +2,6 @@ ID: aws_vpc_security_group_restrict_egress
 Title: Outbound access on all ports should be restricted
 Description: ""
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with egress_unfettered_rules as (

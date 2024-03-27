@@ -2,7 +2,6 @@ ID: aws_redshift_cluster_audit_logging_enabled
 Title: Amazon Redshift audit logging should be enabled
 Description: This control ensures if redshift clusters are logging audits to a specific bucket. The rule is no compliant if audit logging is not enabled for a redshift cluster or if the 'bucketNames' parameter is provided but the audit logging destination does not match.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

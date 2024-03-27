@@ -2,7 +2,6 @@ ID: aws_iam_database_authentication
 Title: IAM Database Authentication
 Description: Enable IAM Database Authentication.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |-
     select

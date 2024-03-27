@@ -2,7 +2,6 @@ ID: aws_efs_file_system_encrypted_with_cmk
 Title: EFS file systems should be encrypted with CMK
 Description: Ensure Amazon Elastic File Systems (Amazon EFS) are encrypted using CMK. The rule is non compliant if the EFS File System is not encrypted using CMK.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with encrypted_fs as (

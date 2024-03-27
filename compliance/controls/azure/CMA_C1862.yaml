@@ -2,7 +2,6 @@ ID: publish_sor_ns_for_systems_containing_pii
 Title: Publish SORNs for systems containing PII
 Description: CMA_C1862 - Publish SORNs for systems containing PII
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

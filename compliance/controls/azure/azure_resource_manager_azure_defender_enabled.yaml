@@ -2,7 +2,6 @@ ID: azure_resource_manager_azure_defender_enabled
 Title: Azure Defender for Resource Manager should be enabled
 Description: Azure Defender for Resource Manager automatically monitors the resource management operations in your organization. Azure Defender detects threats and alerts you about suspicious activity.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

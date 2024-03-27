@@ -2,7 +2,6 @@ ID: aws_elbv2_access_log
 Title: ELBv2 Access Log
 Description: Ensure that Amazon ALBs have Access Logging feature enabled for security, troubleshooting and statistical analysis purposes.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

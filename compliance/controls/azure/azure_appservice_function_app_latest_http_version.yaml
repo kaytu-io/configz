@@ -2,7 +2,6 @@ ID: azure_appservice_function_app_latest_http_version
 Title: Ensure that 'HTTP Version' is the latest, if used to run the Function app
 Description: Periodically, newer versions are released for HTTP either due to security flaws or to include additional functionality. Using the latest HTTP version for web apps to take advantage of security fixes, if any, and/or new functionalities of the newer version. Currently, this policy only applies to Linux web apps.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with all_function_app as (

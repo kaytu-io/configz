@@ -2,7 +2,6 @@ ID: aws_elb_application_network_lb_use_ssl_certificate
 Title: ELB application and network load balancers should only use SSL or HTTPS listeners
 Description: Ensure if Application Load Balancers and Network Load Balancers are configured to use certificates from AWS Certificate Manager (ACM). This rule is compliant if at least 1 load balancer is configured without a certificate from ACM.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with listeners_without_certificate as (

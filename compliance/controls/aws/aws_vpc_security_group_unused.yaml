@@ -2,7 +2,6 @@ ID: aws_vpc_security_group_unused
 Title: Unused EC2 security groups should be removed
 Description: This AWS control checks that security groups are attached to Amazon Elastic Compute Cloud (Amazon EC2) instances or to an elastic network interface. The control will fail if the security group is not associated with an Amazon EC2 instance or an elastic network interface.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     with associated_sg as (

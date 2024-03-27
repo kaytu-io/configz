@@ -2,7 +2,6 @@ ID: aws_backup_recovery_point_encryption_enabled
 Title: Backup recovery points should be encrypted
 Description: Ensure if a recovery point is encrypted. The rule is non compliant if the recovery point is not encrypted.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

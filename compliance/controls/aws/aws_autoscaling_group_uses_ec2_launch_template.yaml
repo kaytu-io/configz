@@ -2,7 +2,6 @@ ID: aws_autoscaling_group_uses_ec2_launch_template
 Title: EC2 Auto Scaling groups should use EC2 launch templates
 Description: This control checks whether an Amazon EC2 Auto Scaling group is created from an EC2 launch template. This control fails if an Amazon EC2 Auto Scaling group is not created with a launch template or if a launch template is not specified in a mixed instances policy.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select

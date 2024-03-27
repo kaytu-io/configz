@@ -2,7 +2,6 @@ ID: provide_capability_to_process_customer_controlled_audit_records
 Title: Provide capability to process customer-controlled audit records
 Description: CMA_C1126 - Provide capability to process customer-controlled audit records
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

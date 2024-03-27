@@ -2,7 +2,6 @@ ID: aws_ami_encryption
 Title: AWS AMI Encryption
 Description: Ensure that your existing AMIs are encrypted to meet security and compliance requirements.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT 

@@ -2,7 +2,6 @@ ID: automate_process_to_prohibit_implementation_of_unapproved_changes
 Title: Automate process to prohibit implementation of unapproved changes
 Description: CMA_C1194 - Automate process to prohibit implementation of unapproved changes
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: ""
   Connector:

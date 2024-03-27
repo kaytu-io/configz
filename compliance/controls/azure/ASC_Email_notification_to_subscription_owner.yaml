@@ -2,7 +2,6 @@ ID: email_notification_to_subscription_owner_for_high_severity_alerts_should_be_
 Title: Email notification to subscription owner for high severity alerts should be enabled
 Description: To ensure your subscription owners are notified when there is a potential security breach in their subscription, set email notifications to subscription owners for high severity alerts in Security Center.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     SELECT *

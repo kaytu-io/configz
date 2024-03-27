@@ -2,7 +2,6 @@ ID: document_personnel_acceptance_of_privacy_requirements
 Title: Document personnel acceptance of privacy requirements
 Description: CMA_0193 - Document personnel acceptance of privacy requirements
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: "SELECT *\nFROM azure_subscription\nWHERE title = 'Microsoft.Resources/subscriptions'\nAND kaytu_description ->> 'if' = '{\"field\": \"type\", \"equals\": \"Microsoft.Resources/subscriptions\"}'\nAND kaytu_description -> 'then' ->> 'effect' = '[parameters(''effect'')]'\nLIMIT 5;;\n"
   Connector:

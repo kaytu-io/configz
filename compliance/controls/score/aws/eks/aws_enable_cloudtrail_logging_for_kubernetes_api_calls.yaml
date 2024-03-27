@@ -2,7 +2,6 @@ ID: aws_enable_cloudtrail_logging_for_kubernetes_api_calls
 Title: Enable CloudTrail Logging for Kubernetes API Calls
 Description: Ensure that all Kubernetes API calls are logged using Amazon CloudTrail.
 Query:
-  ID: ""
   Engine: odysseus-v0.0.1
   QueryToExecute: |
     select
