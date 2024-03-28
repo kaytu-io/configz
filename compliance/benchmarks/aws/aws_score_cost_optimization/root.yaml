@@ -16,7 +16,6 @@ Controls:
 - aws_ebs_volumes_too_old_snapshots
 - aws_unassociated_elastic_ip_addresses
 - aws_ebs_volume_unused
-- aws_use_gp3_not_gp2
 - aws_unused_ami
 - aws_unused_gateway_load_balancers
 - aws_unused_application_load_balancers
