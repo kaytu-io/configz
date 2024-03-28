@@ -1,0 +1,28 @@
+ID: azure_msb_5
+Title: 5 Logging and Monitoring
+ReferenceCode: ""
+Description: ""
+Children:
+- azure_cis_v200_5_1
+- azure_cis_v200_5_2
+- azure_cis_v200_5_5
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "5"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  type:
+  - Benchmark
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []

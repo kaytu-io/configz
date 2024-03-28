@@ -1,0 +1,35 @@
+ID: azure_msb_ask
+Title: 11 AKS
+ReferenceCode: ""
+Description: ""
+Children:
+- azure_check_for_kubernetes_version
+- azure_enable_defender_for_cloud_for_aks_clusters
+- azure_enable_kubernetes_role_based_access_control
+- azure_kubernetes_api_version
+- azure_secure_access_to_kubernetes_api_server_using_authorized_ip_address_ranges
+- azure_use_azure_cni_add_on_for_managing_network_resources
+- azure_use_microsoft_entra_id_integration_for_aks_clusters
+- azure_use_network_contributor_role_for_managing_azure_network_resources
+- azure_use_system_assigned_managed_identities_for_aks_clusters
+- azure_use_user_assigned_managed_identities_for_aks_clusters
+Tags:
+  category:
+  - Compliance
+  cis:
+  - "true"
+  cis_section_id:
+  - "5"
+  cis_version:
+  - v2.0.0
+  plugin:
+  - azure
+  service:
+  - Azure
+  type:
+  - Benchmark
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls: []
