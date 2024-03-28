@@ -4,6 +4,14 @@ Description: AzureAD Users should have MFA Enabled with Azure subscription role 
 Query:
   Engine: odysseus-v0.0.1
   QueryToExecute: |
+    with users_with_roles as (
+      SELECT distinct u.id as id, 
+        u.kaytu_account_id as kaytu_account_id, 
+        u.kaytu_resource_id as kaytu_resource_id, 
+        u.display_name as display_name, 
+        u.subscription_id as subscription_id 
+      FROM (azuread_user AS u JOIN azure_role_assignment AS ra ON u.id = ra.principal_id)
+    )
     select 
       u.id as resource, 
       u.kaytu_account_id as kaytu_account_id,
@@ -18,10 +26,8 @@ Query:
       end as reason, 
       u.subscription_id
     from 
-      azuread_user as u 
-      left join azuread_user_registration_details as rd on u.id = rd.id 
-    where
-      exists (select 1 from azure_role_assignment as ra where u.id = ra.principal_id)
+      users_with_roles as u 
+      left join azuread_user_registration_details as rd on u.id = rd.id
   Connector:
   - Azure
   PrimaryTable: azuread_user
