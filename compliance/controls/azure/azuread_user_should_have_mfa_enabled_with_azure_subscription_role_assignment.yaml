@@ -30,7 +30,7 @@ Query:
   - azuread_user_registration_details
   - azure_role_assignment
   Parameters: []
-  Global: false
+  Global: true
 ManualVerification: false
 Severity: high
 Tags: {}
