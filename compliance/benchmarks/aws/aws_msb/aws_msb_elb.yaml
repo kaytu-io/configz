@@ -1,0 +1,34 @@
+ID: aws_msb_elb
+Title: ELB
+ReferenceCode: ""
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/ELB
+  type:
+  - Benchmark
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_elb_application_lb_redirect_http_request_to_https
+- aws_elb_classic_lb_use_ssl_certificate
+- aws_elb_classic_lb_use_tls_https_listeners
+- aws_elb_application_lb_drop_http_headers
+- aws_elb_application_classic_lb_logging_enabled
+- aws_elb_application_lb_deletion_protection_enabled
+- aws_ec2_classic_lb_connection_draining_enabled
+- aws_elb_classic_lb_cross_zone_load_balancing_enabled
+- aws_elb_classic_lb_multiple_az_configured
+- aws_elb_application_lb_desync_mitigation_mode
+- aws_elb_application_gateway_network_lb_multiple_az_configured
+- aws_elb_classic_lb_desync_mitigation_mode
+- aws_elb_application_lb_redirect_http_request_to_https

@@ -1,0 +1,23 @@
+ID: aws_msb_eks
+Title: EKS
+ReferenceCode: ""
+Description: ""
+Children: []
+Tags:
+  aws_foundational_security:
+  - "true"
+  category:
+  - Compliance
+  plugin:
+  - aws
+  service:
+  - AWS/EKS
+  type:
+  - Benchmark
+Managed: false
+Enabled: true
+AutoAssign: false
+Baseline: false
+Controls:
+- aws_eks_cluster_endpoint_restrict_public_access
+- aws_kubernetes_cluster_version
